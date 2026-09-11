@@ -10,6 +10,8 @@
 
 项目后续已按用户要求迁移至 pnpm；本页原 npm 命令与原始证据保留历史含义，当前锁文件、安装及构建验证见[pnpm 迁移记录](pnpm-migration.md)。
 
+随后用户授权实施[消融 Review 修复](review-fixes.md)：补充 P01 / P04 / P06 / V04 的极端输入与并发回归，并自动检查 I03 / I06 / S01 / T08 的主程序接线、分期构建与内容见证。该记录提供修复后实际结果和证据映射；本页 E / B 历史编号与截图保持原含义，新增 Chrome 冒烟不冒充另一次新档全通关或全部 63 项重新验收。
+
 ## 1. 首次 M1 记录与后续追加
 
 2026-09-11，Asia/Shanghai。应用版本 `0.1.0`，本次取证使用 `profile=M1 / contentVersion=1 / ruleVersion=1 / schemaVersion=1`；分支 `codex/full-implementation`，基线 HEAD 为 `bfb924b075aa6a153ed33b95ce4492260e18a8d9`。证据来自该基线上的未提交实施工作区，不是已发布构建。内容校验于 02:10 前后、测试于 02:17 重新执行；浏览器记录已补至 02:20 左右的 preview 导入恢复；后续实施状态仍以进度页为准。

@@ -6,22 +6,23 @@
 
 ## 1. 当前静态交付物
 
-- [完整静态 ZIP](evidence/m5-chrome-release-dist.zip)：解压后直接包含 `index.html` 和 `assets/`。
-- [ZIP SHA-256](evidence/m5-chrome-release-dist.zip.sha256)、[逐文件清单与归档校验](evidence/m5-chrome-release-package.json)。
-- [资源及本地 HTTP 审计](offline-build-audit.md)、[当前生产包机器记录](evidence/m5-chrome-release-build-audit.json)。
+当前包包含[消融 Review 修复](review-fixes.md)：极大修订号、深层坏档、画质类型和异步音频请求的修复，以及配套回归校验。版本仍为0.5.0 / M5，地图、奖励、内容 / 规则 / 存档版本和验收范围不变。
 
-| 项目         | 实际结果                                                                                   |
-| ------------ | ------------------------------------------------------------------------------------------ |
-| ZIP          | 845,629 字节；SHA-256 `62b119813a7d3269a95f30f4894e3f4efb5996ccabd054d5fe9acf7d1a888175`   |
-| 解压内容     | 84 文件，1,674,897 字节；CRC 检查通过，每项解压字节均与当前 `dist/` 一致                   |
-| 文件清单指纹 | `daa2962d0f1b0d7bb8a06af544485ada9e6395f8447c81544f0c3c0fdd079172`；算法与逐项值见机器记录 |
-| 应用入口     | `assets/index-BpL7y5kK.js`，917,896 字节，gzip 约 216.96 kB                                |
-| 本地资源     | 45 条记录，78 个内容哈希和 2 个许可哈希匹配；33 个图标、两字体和十段声音随包提供           |
-| 生产排除项   | 未包含验收故障面板、只读快照、会话诊断入口、HMR 或 source map                              |
+- [完整静态 ZIP](evidence/review-fixes/review-fixes-dist.zip)：解压后直接包含 `index.html` 和 `assets/`。
+- [ZIP SHA-256](evidence/review-fixes/review-fixes-dist.zip.sha256)、[逐文件与归档校验](evidence/review-fixes/package.json)。
+- [最终验证日志](evidence/review-fixes/verify-final.log)、[五分期及七项Chrome回归](evidence/review-fixes/pipeline/browser-results.json)、[本地HTTP审计](evidence/review-fixes/http-audit.json)。
 
-本包包含失锁恢复入口修复：离开前的内存副本保留原代数并明确标注来源；重新取得会话后须读取本地进度才能游玩。新提示所需的“副”“它”已显式加入本地字体，802 个源码字符覆盖检查通过。归档与审计均未改写构建。单 JS 超过 650 kB 的 Vite 提示保留，未调高阈值隐藏它。资源来源与重建差异见[美术实施记录](../references/art-implementation.md)和[六类视觉对照](../references/visual-comparison-m5.md)。
+| 项目         | 实际结果                                                                                    |
+| ------------ | ------------------------------------------------------------------------------------------- |
+| ZIP          | 847,180字节；SHA-256 `e93b1f3b8e769d7e049c4e5264140b061caab82e2d747dffc6aebc0fa7d9c4b4`     |
+| 解压内容     | 84文件，1,677,281字节；CRC、当前dist与Chrome验证的production目录逐项字节一致                |
+| 文件清单指纹 | `adb641f8dd769199e57ecbf3c6d982479bb80fe55165559223102b54e1bac07b`；算法与逐项值见机器记录  |
+| 应用入口     | `assets/index-D8BNFoQ2.js`，918,522字节                                                     |
+| 本地资源     | 45条记录，78项内容及2项许可哈希匹配；33图标、两字体、十段声音随包提供                       |
+| 生产排除项   | 无验收故障面板、只读快照或会话诊断入口；正式包隔离经过实际消融验证                          |
+| 完整验证     | 干净冻结安装通过；`pnpm run verify`退出0，458项原生测试、五分期Chrome流程和七项修复回归通过 |
 
-后续 pnpm 迁移已从干净依赖目录重建并逐项核对：84 个产物与本 ZIP 完全相同，归档无须替换。[迁移记录](pnpm-migration.md)提供当前锁文件、工程检查和 85 次 HTTP 核对；原 npm 日志及源指纹保留原提交含义。
+字体按原配方补齐六个字符，808个源码字符实际解码覆盖；构建检查保持只读。已有固定5174 preview继续服务新包，85次HTTP字节与Content-Type核对通过。原650kB单JS警告保留。该短流程回归没有重新完成全收集或性能采样；下文原M5全流程与性能记录保留当时含义。
 
 ## 2. 安装和启动
 
@@ -45,7 +46,7 @@ pnpm run preview --host localhost --port 5174 --strictPort --outDir /absolute/pa
 
 ## 3. 工程检查
 
-以下 npm 日志保留 M5 原交付时的实际执行方式；项目现已使用 pnpm，迁移后的安装、锁文件与全部工程检查见[pnpm 迁移记录](pnpm-migration.md)。
+当前检查入口与修复后458项测试、五分期和七项Chrome回归见[修复记录](review-fixes.md#4-完整验证与交付)。以下 npm 日志保留 M5 原交付时的实际执行方式；后续[pnpm 迁移记录](pnpm-migration.md)也保留迁移时点的锁文件和构建等价结论。
 
 | 命令 / 检查      | 实际结果与原始证据                                                                                                                                                                                                                                                    |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -60,7 +61,7 @@ pnpm run preview --host localhost --port 5174 --strictPort --outDir /absolute/pa
 
 411 项包括新增的 6 项会话进度回归，使用真实旧导出、权威规则及存储适配器验证。此前 405、392、360 等日志保留对应时点结果，不能与本次数量相加。工程检查不替代浏览器正常游玩或指定设备实测。
 
-## 4. 当前 Chrome 生产包回归
+## 4. 原M5 Chrome生产包回归（历史证据）
 
 这组验证延续 M4 独立 Chrome 正常新档全收集链，没有注入游戏进度，也不另称一次新档全通关。
 
@@ -80,13 +81,15 @@ pnpm run preview --host localhost --port 5174 --strictPort --outDir /absolute/pa
 
 ## 5. 历史候选包
 
+原M5 Chrome交付包 [m5-chrome-release-dist.zip](evidence/m5-chrome-release-dist.zip) 为845,629字节，SHA-256 `62b119813a7d3269a95f30f4894e3f4efb5996ccabd054d5fe9acf7d1a888175`，84文件 / 1,674,897字节，入口 `index-BpL7y5kK.js` 917,896字节。其[逐文件记录](evidence/m5-chrome-release-package.json)及[构建审计](evidence/m5-chrome-release-build-audit.json)保持原样。该包加入失锁恢复入口和“副”“它”字体补字；pnpm迁移时重建的84个文件曾与它完全相同。本轮运行时修复后由第1节新包替代，不能把原包等价结论套用到当前源码。
+
 先前 [m5-production ZIP](evidence/m5-production-dist.zip) 为 844,320 字节，SHA-256 `135d0a8c0fd00386989f46ff3361e95a920b37a18744b6d010b485e58b9e85b9`，入口 `index-BAHDLcEY.js`，84 文件 / 1,672,132 字节。其 [405 项测试](evidence/m5-production-native-tests.log)、[归档清单](evidence/m5-production-package.json)及全部实际浏览器证据保持原样；该包已被第 1 节修复后的候选替代。
 
 旧 Chrome 正式包重复结算和刷新保持 947 / 130，内嵌浏览器真实升级链保持 170 / 26。Safari 自身新档正常续玩到 B 首访 340 / 21，后因原生窗口不可用中断；后续导出确认载荷未变。详细结果见[历史 Safari 记录](safari-production-journey.md)。用户取消其必需验收后，不继续补齐，也不把历史未验证项改为通过。
 
 ## 6. 验收范围、限制与交付状态
 
-- **本机基准通过。** 当前 Apple M1 Pro / 32 GB / macOS / Chrome 的生产继续、刷新，同源码观察包两档持续帧率、输入和移动 / 镜头，以及 30 次区域往返达到原预算。用户接受这台机器作为本次基准，V05 通过。原 M1 / 8 GB 与 Windows 基线仍未实测，其他机器出现实际问题后再修复；[性能记录](performance.md)保留方法与设备边界。
+- **本机基准通过。** 原M5交付时 Apple M1 Pro / 32 GB / macOS / Chrome 的生产继续、刷新，同源码观察包两档持续帧率、输入和移动 / 镜头，以及 30 次区域往返达到原预算。用户接受这台机器作为本次基准，V05 通过。原 M1 / 8 GB 与 Windows 基线仍未实测，其他机器出现实际问题后再修复；[性能记录](performance.md)保留方法与设备边界。
 - **离线不再作为发布门槛。** V06 仍未真实验证，记为“不再要求”。静态资源与本地 HTTP 审计通过，不能据此宣称断网全流程通过。原步骤作为可选的后续方法保留于[离线核查](offline-build-audit.md#5-真实断网验收步骤待执行)。
 - **美术与地图为明确记录的重建。** 无法确认原资产的适用发布条件，实际采用 33 个补制图标、10 段补制声音和两份本地许可字体；没有把候选库发现当作原资产授权。六类原参考、本版截图及差异见[视觉对照](../references/visual-comparison-m5.md)，固定坐标与可解见证由[来源索引](../references/index.md)串联。
 - **DevTools 清理有环境限制。** 请求隔离未建立，任务标签及附属 DevTools 均已关闭；依据 Chrome 官方行为，该目标运行中的拦截已停止。持久默认规则删除及 Network 过滤文字恢复因 ScreenCaptureKit `-3811` 未完成，人工恢复方法与实际边界见[清理记录](offline-build-audit.md#93-取消离线验收后的有界清理尝试)。这不作为游戏故障，也不写成全部浏览器设置已恢复。

@@ -1,0 +1,12 @@
+{
+  "cleanTemporaryInstall": true,
+  "command": "pnpm install --frozen-lockfile",
+  "exitCode": 0,
+  "lockSha256": "9574e28c82b0278dd5f25df61b85d92a3f83310396a64e54668d9ef1bc7efc12",
+  "lockUnchanged": true,
+  "probe": {
+    "node": "v24.18.0",
+    "playwright": "function"
+  },
+  "originalNodeModulesUntouched": true
+}

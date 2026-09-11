@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import type { TestContext } from "node:test";
 import type { Direction, GameCommand } from "../src/core/types.ts";
-import { InputAdapter } from "../src/platform/input.ts";
+import { AutoWalkScheduler, InputAdapter } from "../src/platform/input.ts";
 
 class TestDocument extends EventTarget {
   activeElement: EventTarget | null = null;
@@ -201,6 +201,35 @@ test("I02 动画期新方向覆盖唯一等待方向，到 140ms 仅提交最新
   assert.deepEqual(input.sent, [move("up", 0), move("left", 140)]);
   input.frame(280);
   assert.deepEqual(input.sent, [move("up", 0), move("left", 140), move("left", 280)]);
+});
+
+test("I02 新物理按键在 139ms 等待、140ms 当场提交，不等待下一渲染帧", (context) => {
+  const input = harness(context);
+  input.key("keydown", "ArrowUp", 0);
+  input.key("keyup", "ArrowUp", 0);
+  input.key("keydown", "ArrowLeft", 139);
+  input.key("keyup", "ArrowLeft", 139);
+  assert.deepEqual(input.sent, [move("up", 0)]);
+  input.key("keydown", "ArrowRight", 140);
+  input.key("keyup", "ArrowRight", 140);
+  assert.deepEqual(input.sent, [move("up", 0), move("right", 140)]);
+  input.frame(280);
+  assert.deepEqual(input.sent, [move("up", 0), move("right", 140)], "已替换的等待方向不补发");
+});
+
+test("I03 自动续步在 139ms 不执行、140ms 执行；不可操作时不消耗到期动作", () => {
+  const scheduler = new AutoWalkScheduler();
+  scheduler.observe(
+    { kind: "ClickTile", tileId: "fixture.destination" },
+    { mode: "explore", autoPath: ["fixture.next", "fixture.destination"] },
+    100,
+  );
+  assert.equal(scheduler.nextCommand(239, true), null);
+  assert.equal(scheduler.nextCommand(240, false), null);
+  assert.deepEqual(scheduler.nextCommand(240, true), { kind: "AdvanceAutoPath" });
+  assert.equal(scheduler.nextCommand(379, true), null);
+  assert.deepEqual(scheduler.nextCommand(380, true), { kind: "AdvanceAutoPath" });
+  assert.equal(scheduler.nextCommand(380, true), null);
 });
 
 test("I02 帧调用迟到时至多派发一次，不积攒或追补长按步数", (context) => {

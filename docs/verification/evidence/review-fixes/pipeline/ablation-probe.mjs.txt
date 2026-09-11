@@ -1,0 +1,49 @@
+import assert from 'node:assert/strict';
+import { cp, mkdir, mkdtemp, readFile, rm, symlink, writeFile } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join, resolve } from 'node:path';
+import { build, preview } from 'vite';
+import { chromium } from 'playwright';
+import { verifyProductionProfile } from '../../../scripts/browser/production-profile.ts';
+import { verifyArtifacts } from '../../../scripts/verify-artifacts.ts';
+const root=process.cwd();
+const directory=await mkdtemp(join(tmpdir(),'camellia-verification-ablation-'));
+const outputRoot=resolve('test-results/review-fixes/pipeline/ablations');
+await mkdir(outputRoot,{recursive:true});
+for(const path of ['src','public','scripts','index.html','package.json','tsconfig.json','vite.config.ts']) await cp(join(root,path),join(directory,path),{recursive:true});
+await symlink(join(root,'node_modules'),join(directory,'node_modules'),'dir');
+const mainPath=join(directory,'src/main.ts');
+const configPath=join(directory,'vite.config.ts');
+const originalMain=await readFile(mainPath,'utf8');
+const originalConfig=await readFile(configPath,'utf8');
+const mutants=[
+ {id:'empty-main',file:mainPath,source:()=> 'export {};',mode:'production',profile:'M5',browser:true},
+ {id:'missing-render-update',file:mainPath,source:s=>s.replace('renderer?.update(projectBoard(content, state), state.settings);',''),mode:'production',profile:'M5',browser:true},
+ {id:'missing-auto-save',file:mainPath,source:s=>s.replace('if (update.stable) persist(stablePayload(state), "auto");',''),mode:'production',profile:'M5',browser:true},
+ {id:'production-inspection-enabled',file:mainPath,source:s=>s.replace('if (import.meta.env.DEV || import.meta.env.MODE === "acceptance") {','if (true) {'),mode:'production',profile:'M5',browser:false},
+ {id:'m1-emits-m5',file:configPath,source:s=>s.replace('const selected = profileForMode(mode);','const selected = "M5";'),mode:'m1',profile:'M1',browser:false},
+];
+const browser=await chromium.launch({channel:'chrome',headless:true});
+const results=[];
+try {
+ for (const mutant of mutants){
+  await writeFile(mainPath,originalMain);await writeFile(configPath,originalConfig);
+  const original=mutant.file===mainPath?originalMain:originalConfig;
+  const changed=mutant.source(original);assert.notEqual(changed,original,`${mutant.id} must actually mutate`);
+  await writeFile(mutant.file,changed);
+  const outputDir=join(outputRoot,mutant.id);await mkdir(outputDir,{recursive:true});
+  const outDir=join(directory,'dist',mutant.id);
+  await build({root:directory,configFile:configPath,mode:mutant.mode,logLevel:'silent',build:{outDir,emptyOutDir:true}});
+  let server;let error;
+  try {
+   await verifyArtifacts(outDir,mutant.profile);
+   if(mutant.browser){server=await preview({root:directory,configFile:configPath,mode:mutant.mode,logLevel:'silent',build:{outDir},preview:{host:'127.0.0.1',port:0,strictPort:true,open:false}});const address=server.httpServer.address();await verifyProductionProfile({browser,url:`http://127.0.0.1:${address.port}`,profile:mutant.profile,outputDir,completeJourney:false});}
+  } catch (failure){error=failure.stack??String(failure);}
+  finally{if(server)await new Promise((r,j)=>server.httpServer.close(e=>e?j(e):r()));}
+  assert.ok(error,`${mutant.id} unexpectedly survived`);
+  results.push({id:mutant.id,detected:true,error});console.log(mutant.id,'DETECTED');
+ }
+} finally {
+ await browser.close();await writeFile(join(outputRoot,'results.json'),JSON.stringify({createdAt:new Date().toISOString(),method:'Real isolated source mutation, actual Vite bundle, same production Chrome verifier (no progress injection).',results},null,2));
+ await rm(directory,{recursive:true,force:true});
+}

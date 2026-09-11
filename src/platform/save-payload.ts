@@ -15,13 +15,7 @@ import type {
 import { AREA_LABELS, gateSatisfied } from "../core/progress.ts";
 import { applyMigrationStep, resolveMigrationPlan } from "./migrations.ts";
 import type { MigrationRegistry } from "./migrations.ts";
-import type {
-  GameContent,
-  GameState,
-  PlayerPosition,
-  ProfileId,
-  ProgressState,
-} from "../core/types.ts";
+import type { GameContent, GameState, PlayerPosition, ProgressState } from "../core/types.ts";
 
 export interface StableRoom {
   roomId: string;
@@ -301,7 +295,7 @@ function validateSnapshot(
     [settings.muted, settings.reducedFlash, settings.reducedMotion].some(
       (flag) => typeof flag !== "boolean",
     ) ||
-    !["standard", "low"].includes(String(settings.quality))
+    (settings.quality !== "standard" && settings.quality !== "low")
   )
     return invalid("设置包含非法数值或选项");
   if (!Array.isArray(raw.bestResults)) return invalid("成绩列表无效");
@@ -673,6 +667,9 @@ export function restorePayload(
   const state = createGame(content, monotonicTimeMs);
   for (const field of PROGRESS_FIELDS)
     Object.assign(state, { [field]: structuredClone(payload[field]) });
+  // A resumed external counter must leave room for subsequent stable transactions.
+  // Local saveGeneration remains the independent, monotonic persistence identity.
+  if (state.stateRevision >= 2 ** 52) state.stateRevision = 0;
   state.resumeHint = structuredClone(payload.resumeHint);
   if (payload.room) {
     const definition = content.staticChallenges.find(
@@ -737,9 +734,4 @@ export function payloadSummary(payload: SavePayload, content: GameContent): stri
     0,
   );
   return `${payload.releaseProfileId} · ${AREA_LABELS[payload.playerPosition.areaId]} · ${units} 单位物资 · 已完成 ${payload.completedObjectiveIds.filter((id) => id.endsWith(".main")).length} 区主路径`;
-}
-
-export function previousProfile(id: ProfileId): ProfileId | null {
-  const stage = Number(id.slice(1));
-  return stage > 1 ? (`M${stage - 1}` as ProfileId) : null;
 }

@@ -1,0 +1,5 @@
+{
+  "errors": [],
+  "error": "AssertionError [ERR_ASSERTION]: 失败前按住的方向不能在重试观察结束后继续移动\n+ actual - expected\n\n+ 'a.maze.01.t.0.1'\n- 'a.maze.01.t.0.4'\n                 ^\n",
+  "body": "CGW\n沙罗黄金周\nCAMELLIA GOLDEN WEEK\n当前目标\n完成 仓储区 A 的主路径终端\n已保存 · 20:03:37\n菜单 Esc\nMEMORY / FIREWALL\n仓储区 A\nM5 / 机关内\n区域数据\n0 / 100\n完整数据 0 / 100\n沙罗物资\n1 / 130\n阳炎增幅仪 ∞\n收集记录 ↗\n已移动。\nWASD / ↑↓←→ 移动\nZ 撤销\n重置房间\n返回入口\n验收故障控制 · 仅平台"
+}

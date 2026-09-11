@@ -10,7 +10,7 @@
       "sourceUrl": "https://raw.githubusercontent.com/notofonts/noto-cjk/165c01b46ea533872e002e0785ff17e44f6d97d8/Sans/SubsetOTF/SC/NotoSansSC-Regular.otf",
       "sourceVersion": "165c01b46ea533872e002e0785ff17e44f6d97d8",
       "sourceSha256": "faa6c9df652116dde789d351359f3d7e5d2285a2b2a1f04a2d7244df706d5ea9",
-      "sha256": "c78799c16975421b3513435fa8a71f031434d8d39840682051f804473c89f217",
+      "sha256": "ba2add796baba8269f938c780cbcab6440cb54c68992b7d61f1dd49b28054484",
       "family": "Noto Sans SC",
       "weights": "400",
       "dimensions": null,
@@ -305,6 +305,7 @@
           20570,
           20572,
           20648,
+          20799,
           20801,
           20808,
           20809,
@@ -317,6 +318,7 @@
           20854,
           20855,
           20869,
+          20876,
           20877,
           20889,
           20914,
@@ -430,6 +432,7 @@
           23376,
           23383,
           23384,
+          23396,
           23398,
           23427,
           23433,
@@ -627,6 +630,7 @@
           27809,
           27839,
           27861,
+          27880,
           27934,
           27963,
           27966,
@@ -778,6 +782,7 @@
           35282,
           35299,
           35302,
+          35328,
           35745,
           35746,
           35748,
@@ -913,6 +918,7 @@
           39588,
           39640,
           40644,
+          40664,
           40736,
           40784,
           65281,
@@ -1140,8 +1146,8 @@
           65517,
           65518
         ],
-        "glyphCount": 1420,
-        "cmapCount": 1111,
+        "glyphCount": 1426,
+        "cmapCount": 1117,
         "fonttoolsVersion": "4.65.0",
         "brotliVersion": "1.2.0",
         "reservedUnicodeRanges": [
@@ -1162,7 +1168,7 @@
           },
           {
             "path": "src/audio/audio.ts",
-            "sha256": "790034f5bc52646c12499df5b163daac65e0a5d97d427c8a13c1103fd2b4e445"
+            "sha256": "d90ad6f6de88591f4987705cc6e709957a79e1835283094d343260f03d5ef5e9"
           },
           {
             "path": "src/content/areas/a.json",
@@ -1206,7 +1212,7 @@
           },
           {
             "path": "src/content/assemble.ts",
-            "sha256": "6b907dbdd722a8abc09234f62a58e847a78cef3477a7a43788507493d9966b40"
+            "sha256": "21ecef9e4ee0f63e46cc972e294df7a0eac4ca7da5f989c1d4c0a702e8f64784"
           },
           {
             "path": "src/content/challenges/realtime.json",
@@ -1217,8 +1223,16 @@
             "sha256": "890512a795e5556e5fdc9fc026c85f46b193bfc57ad3db996529718321efbdb7"
           },
           {
+            "path": "src/content/source-validation.ts",
+            "sha256": "c096da6a6679b4ea69240801116a2a7fb3eebc9e74d967846a29713acd12f32b"
+          },
+          {
             "path": "src/content/validate.ts",
-            "sha256": "f0a657fc7edd1b723a42c4a3fbf60e81125c98ad0e378b23ad332a834e367dda"
+            "sha256": "3d86db9446e74da3cfc3a4c3e50b64a8f8c6fb3271b6b04574f6cfc351bd9b3d"
+          },
+          {
+            "path": "src/content/witnesses/index.ts",
+            "sha256": "850b7b48bd04bbb95e6a5f8b4ccc406c6a4f56b9ea9dd35a43b55c2e963cf460"
           },
           {
             "path": "src/content/witnesses/m1.json",
@@ -1266,7 +1280,7 @@
           },
           {
             "path": "src/core/static-puzzle.ts",
-            "sha256": "7094bdbb61b0c15d6b74edf554d5761972fa40211b4d0c3271d80986802dc979"
+            "sha256": "2fec34a4d23428f36adfc94903ea908316be5f94ba630ab4d3f940a9f054ffae"
           },
           {
             "path": "src/core/types.ts",
@@ -1278,7 +1292,7 @@
           },
           {
             "path": "src/main.ts",
-            "sha256": "11af077e372fee620ecb7ba1687dca0227d3bf466e3a0d911bed78016597cebb"
+            "sha256": "196030b7031e73d98bc0ace594b96c8f342327bc64b235b1c9a0c18dfa858987"
           },
           {
             "path": "src/platform/acceptance-faults.ts",
@@ -1286,7 +1300,7 @@
           },
           {
             "path": "src/platform/input.ts",
-            "sha256": "a39eb543f29ae70a1ca020cdbd1178db10b26e10c3a8949f3b8d89e5dbe7bf8f"
+            "sha256": "f347281b72d3443fc211525b16a3c34d13bc58d6a106d716a38005b44bf682ae"
           },
           {
             "path": "src/platform/migrations.ts",
@@ -1294,11 +1308,11 @@
           },
           {
             "path": "src/platform/save-payload.ts",
-            "sha256": "b0bd29901fd7a10bfd032a0319bd3aa16220b12d7b4fa2ae6b7afdb71da6456c"
+            "sha256": "12c4401d56344ad70e2aa4102f70d01699aa67780e86ff4e73c7f0899c37e0d7"
           },
           {
             "path": "src/platform/save-store.ts",
-            "sha256": "01d1ea913c2f9168c5becf814b1d29d624706c9a58bf593829376e47992a6f8c"
+            "sha256": "dccd98231d15ffe8eec3df9d8b59e7234b051625f089dae26a42ccc18ab531bc"
           },
           {
             "path": "src/platform/session-diagnostics.ts",
@@ -1524,6 +1538,7 @@
           20570,
           20572,
           20648,
+          20799,
           20801,
           20808,
           20809,
@@ -1536,6 +1551,7 @@
           20854,
           20855,
           20869,
+          20876,
           20877,
           20889,
           20914,
@@ -1649,6 +1665,7 @@
           23376,
           23383,
           23384,
+          23396,
           23398,
           23427,
           23433,
@@ -1846,6 +1863,7 @@
           27809,
           27839,
           27861,
+          27880,
           27934,
           27963,
           27966,
@@ -1997,6 +2015,7 @@
           35282,
           35299,
           35302,
+          35328,
           35745,
           35746,
           35748,
@@ -2132,6 +2151,7 @@
           39588,
           39640,
           40644,
+          40664,
           40736,
           40784,
           65288,
@@ -2141,9 +2161,9 @@
           65307,
           65311
         ],
-        "coverageSha256": "e234a41d01261772dfe24533bb8a38f8c46136871efb7f016d3a0ff7ac8fedcc",
-        "outputSha256": "c78799c16975421b3513435fa8a71f031434d8d39840682051f804473c89f217",
-        "byteLength": 182592
+        "coverageSha256": "d94dd608fb53ae7e077a68d8edd131b3891bc6a2736dcea0ce18a230bd5a1d65",
+        "outputSha256": "ba2add796baba8269f938c780cbcab6440cb54c68992b7d61f1dd49b28054484",
+        "byteLength": 183808
       },
       "licenseSha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2"
     },

@@ -143,8 +143,12 @@ M1 在批量铺设前交付中心 / A 区代表画面及资源清单，此后各
 | `pnpm run format:check` | 执行 `oxfmt --check`，只检查，不写入；格式不一致时非零退出 |
 | `pnpm run typecheck` | tsc 无输出类型检查，含源代码、校验脚本与测试，零错误；采用 Vue 时增加 `vue-tsc --noEmit` 覆盖 SFC 与模板类型 |
 | `pnpm run validate:content` | 执行 TypeScript 内容校验脚本，逐 profile 检查并重放关卡见证 |
-| `pnpm test` | Node 原生测试运行器执行规则 / 时间 / 内容 / 存档用例，失败返回非零 |
-| `pnpm run build` | lint、格式检查、类型检查、内容校验通过后执行 Vite build，产出完整静态 dist；构建过程不自动修复或格式化源码 |
+| `pnpm test` | 递归发现 tests/ 下的 .test.ts，由 Node 原生测试运行器执行；没有实际执行的用例、失败或发现过程异常均返回非零 |
+| `pnpm run validate:architecture` | 只读检查真实 TypeScript 依赖与符号；核心层只引用 core 内模块，不依赖浏览器或平台 API |
+| `pnpm run build` | lint、格式检查、类型检查、架构与内容校验通过后执行 Vite build，产出完整静态 dist；构建过程不自动修复或格式化源码 |
+| `pnpm run validate:artifacts` | 只读检查实际 dist 的 M5 profile、对应资源 / 哈希与生产验收入口隔离 |
+| `pnpm run test:browser` | 独立 Chrome context / 临时端口运行五个分期静态包的正常键鼠与保存恢复，并运行具名异常输入 / 存储 / 音频回归；不修改日常浏览器进度 |
+| `pnpm run verify` | 串联原生测试、完整 build、dist 检查和 Chrome 回归；任一失败均不能作为完整验证通过 |
 | `pnpm run preview --host localhost --port 5174 --strictPort` | 关闭 dev 后使用同一来源验证静态构建与存档 |
 
 不要求玩家安装测试工具、MCP 或浏览器插件。每里程碑先跑必要的 lint / 格式 / 类型 / 内容 / 规则检查，再跑该阶段新增流程与受影响的升级路径；只有代码变更、失败或未关闭风险才重复扩大全套测试。

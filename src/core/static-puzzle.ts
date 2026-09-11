@@ -851,11 +851,6 @@ export function validateStaticDefinition(raw: unknown): string[] {
   return errors;
 }
 
-export function assertStaticDefinition(raw: unknown): asserts raw is StaticDefinition {
-  const errors = validateStaticDefinition(raw);
-  if (errors.length > 0) throw new Error(errors.join("\n"));
-}
-
 function validateLayoutSnapshot(
   definition: StaticDefinition,
   raw: unknown,

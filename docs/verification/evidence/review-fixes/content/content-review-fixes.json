@@ -1,0 +1,45 @@
+{
+  "recordedAt": "2026-09-11T11:58:36.828Z",
+  "baseline": "e70fc7d5fc90c688ed82d39a89ec25c8d3e67174",
+  "scope": "Raw content assembly and M1–M5 world witness inventory only",
+  "red": [
+    {
+      "log": "source-red.log",
+      "tests": 10,
+      "pass": 1,
+      "fail": 9
+    },
+    {
+      "log": "witness-red.log",
+      "tests": 1,
+      "pass": 0,
+      "fail": 1
+    }
+  ],
+  "green": [
+    {
+      "log": "combined-green.log",
+      "tests": 29,
+      "pass": 29,
+      "fail": 0
+    },
+    {
+      "log": "content-validation-green.log",
+      "exitCode": 0,
+      "worldWitnessesReplayed": 10
+    }
+  ],
+  "checks": {
+    "typecheck": "passed",
+    "scopedOxlint": "passed",
+    "scopedOxfmt": "passed",
+    "assembledProfilesVsBaseline": "deep equality M1–M5; see profile-equivalence.json"
+  },
+  "decisions": [
+    "Validate authored base membership and raw extension ownership before merge/cropping; malformed future definitions fail even when building M1.",
+    "Keep release profile includedRoomIds authoritative; validate it against definitions rather than replacing it.",
+    "Challenge definitions remain authoritative for room board/start/witness details; no raw map, reward ledger or profile behavior changes.",
+    "Require named main-path and full-collection journeys for each released profile, allow extra valid witnesses, and verify their completion/reward/data/scored-challenge scope.",
+    "Exercise the actual validation CLI in an isolated copy and delete only the test-owned temporary copy."
+  ]
+}

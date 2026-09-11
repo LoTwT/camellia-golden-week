@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "command": "pnpm run verify",
+  "exitCode": 0,
+  "node": "24.18.0",
+  "pnpm": "11.25.0",
+  "tests": 458,
+  "testFiles": 33,
+  "testFailures": 0,
+  "testSkipped": 0,
+  "testCancelled": 0,
+  "testTodo": 0,
+  "sourceInputsChecked": 182,
+  "changedInputs": [],
+  "beforeSnapshot": "verification-inputs-before-final.json",
+  "browserResult": "pipeline/browser-results.json",
+  "log": "verify-final.log"
+}

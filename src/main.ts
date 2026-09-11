@@ -88,6 +88,7 @@ const store = createSaveStore<SavePayload>(
   () => session.isHeld() && !temporary,
 );
 const audio = new GameAudio();
+let audioEnableRequest = 0;
 const frameSamples: number[] = [];
 let previousFrame = 0;
 let lastFrameSummaryAt = 0;
@@ -167,6 +168,7 @@ function requireSessionPermission(): boolean {
   return false;
 }
 function enableAudio() {
+  const request = ++audioEnableRequest;
   try {
     faults?.beforeAudioEnable();
   } catch {
@@ -175,13 +177,14 @@ function enableAudio() {
     return;
   }
   void audio.enable().then((enabled) => {
+    if (request !== audioEnableRequest) return;
     shell.setAudioAvailable(enabled);
     if (!enabled) failAudio();
   });
 }
 function failAudio() {
-  audio.cancelBeats();
-  audio.enabled = false;
+  audioEnableRequest += 1;
+  audio.disable();
   shell.setAudioAvailable(false);
   if (state)
     state.lastResult = {

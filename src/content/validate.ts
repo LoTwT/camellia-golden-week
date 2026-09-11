@@ -1185,6 +1185,83 @@ export interface WorldWitnessResult {
   readonly checkpoints: Readonly<Record<string, GameState>>;
 }
 
+/** Required journeys come from release scope, never from the supplied witness count. */
+export function validateWorldWitnessInventory(
+  raw: unknown,
+  catalog: WorldDefinition,
+  availableProfile: ProfileId,
+): ContentValidationIssue[] {
+  if (!Array.isArray(raw)) return [{ path: "worldWitnesses", message: "必须是见证数组" }];
+  if (!oneOf(availableProfile, profiles))
+    return [{ path: "worldWitnesses", message: "未知已发布 profile" }];
+  const issues: ContentValidationIssue[] = [];
+  const witnesses = new Map<string, WorldWitness>();
+  for (const [index, value] of raw.entries()) {
+    const invalid = validateWorldWitness(value);
+    issues.push(
+      ...invalid.map((entry) => ({ ...entry, path: `worldWitnesses[${index}].${entry.path}` })),
+    );
+    if (invalid.length) continue;
+    const witness = value as WorldWitness;
+    if (witnesses.has(witness.id)) issue(issues, witness.id, "重复世界见证 ID");
+    witnesses.set(witness.id, witness);
+  }
+  for (const profileId of profiles) {
+    const stage = Number(profileId.slice(1));
+    if (stage > Number(availableProfile.slice(1))) continue;
+    const profile = catalog.releaseProfiles.find((candidate) => candidate.id === profileId);
+    if (!profile) {
+      issue(issues, profileId, "缺少发布范围，无法校验世界见证");
+      continue;
+    }
+    const required = [
+      profile.fullCampaign ? "main-path-without-scored-challenges" : "main-path",
+      "full-collection-and-return",
+    ] as const;
+    for (const scope of required) {
+      const witnessId = `${profileId.toLowerCase()}.world.${scope}`;
+      const witness = witnesses.get(witnessId);
+      if (!witness) {
+        issue(issues, witnessId, "缺少必需的世界见证");
+        continue;
+      }
+      if (
+        witness.profileId !== profileId ||
+        witness.contentVersion !== Math.min(stage, 4) ||
+        witness.ruleVersion !== catalog.ruleVersion
+      )
+        issue(issues, witnessId, "见证版本或 profile 与必需范围不一致");
+      const expected = witness.expected;
+      if (!expected.completedObjectiveIds.includes(profile.scopeTerminalObjectiveId))
+        issue(issues, witnessId, `缺少本版终点 ${profile.scopeTerminalObjectiveId} 的完成断言`);
+      if (scope === "full-collection-and-return") {
+        if (!sameIds(expected.claimedRewardIds, profile.includedRewardIds))
+          issue(issues, witnessId, "全收集见证必须断言本版完整奖励集合");
+        const units = catalog.rewards
+          .filter((reward) => profile.includedRewardIds.includes(reward.id))
+          .reduce((sum, reward) => sum + reward.units, 0);
+        if (expected.supplyUnits !== units)
+          issue(issues, witnessId, `全收集见证物资必须为 ${units}`);
+        for (const node of catalog.dataNodes.filter((node) => node.includedFrom <= stage))
+          if (!expected.completedObjectiveIds.includes(node.completionObjectiveId))
+            issue(issues, witnessId, `全收集见证缺少数据目标 ${node.completionObjectiveId}`);
+      } else {
+        const scoredObjectives = catalog.objectives.filter(
+          (objective) =>
+            objective.includedFrom <= stage && /^(a\.firewall|b\.antivirus)\./.test(objective.id),
+        );
+        for (const objective of scoredObjectives) {
+          if (expected.completedObjectiveIds.includes(objective.id))
+            issue(issues, witnessId, `主路径见证不能依赖计分挑战 ${objective.id}`);
+          if (profile.fullCampaign && !expected.absentObjectiveIds.includes(objective.id))
+            issue(issues, witnessId, `通关见证缺少计分挑战未完成断言 ${objective.id}`);
+        }
+      }
+    }
+  }
+  return issues;
+}
+
 function validateExpectation(value: unknown, path: string, issues: ContentValidationIssue[]): void {
   if (!record(value)) {
     issue(issues, path, "缺少预期状态");

@@ -10,6 +10,8 @@ function audioHarness(context: TestContext) {
   let rejectResume = false;
   let resourceStatus = 200;
   let requests = 0;
+  let responseOverride: (url: string) => Promise<Response> | null = () => null;
+  let resumeOverride: () => Promise<void> | null = () => null;
   const starts: number[] = [];
   const gains: number[] = [];
   let stopped = 0;
@@ -18,6 +20,8 @@ function audioHarness(context: TestContext) {
     state = "running";
     destination = {};
     resume() {
+      const overridden = resumeOverride();
+      if (overridden) return overridden;
       return rejectResume ? Promise.reject(new Error("gesture rejected")) : Promise.resolve();
     }
     close() {
@@ -56,8 +60,10 @@ function audioHarness(context: TestContext) {
     configurable: true,
     value: FakeAudioContext,
   });
-  context.mock.method(globalThis, "fetch", async () => {
+  context.mock.method(globalThis, "fetch", async (input: RequestInfo | URL) => {
     requests += 1;
+    const overridden = responseOverride(String(input));
+    if (overridden) return overridden;
     return new Response(new Uint8Array(8), { status: resourceStatus });
   });
   context.after(() => {
@@ -86,6 +92,12 @@ function audioHarness(context: TestContext) {
     resourceStatus(value: number) {
       resourceStatus = value;
     },
+    interceptResponse(handler: typeof responseOverride) {
+      responseOverride = handler;
+    },
+    interceptResume(handler: typeof resumeOverride) {
+      resumeOverride = handler;
+    },
     sync(activeTimeMs: number) {
       state.clock = { ...state.clock, activeTimeMs };
       audio.syncFirewall(state, definition, activeTimeMs);
@@ -106,6 +118,77 @@ test("音频错过一个调度窗口后跳过过期拍，后续节拍继续且�
   assert.equal(h.starts.length, 2);
   assert.deepEqual(h.starts, [10.09, 10.09]);
 });
+
+function deferred<Value>() {
+  let resolve!: (value: Value) => void;
+  let reject!: (reason: Error) => void;
+  const promise = new Promise<Value>((resolvePromise, rejectPromise) => {
+    resolve = resolvePromise;
+    reject = rejectPromise;
+  });
+  return { promise, resolve, reject };
+}
+
+test("V04 新一次启用成功后，旧声音请求迟到失败不能关闭声音", async (context) => {
+  const h = audioHarness(context);
+  const firstMove = deferred<Response>();
+  const firstMoveRequested = deferred<void>();
+  let intercepted = false;
+  h.interceptResponse((url) => {
+    if (url.endsWith("/move.wav") && !intercepted) {
+      intercepted = true;
+      firstMoveRequested.resolve();
+      return firstMove.promise;
+    }
+    return null;
+  });
+  const earlier = h.audio.enable();
+  await firstMoveRequested.promise;
+  assert.equal(await h.audio.enable(), true);
+  firstMove.reject(new Error("earlier download failed late"));
+  await earlier;
+  assert.equal(h.audio.enabled, true);
+  h.audio.play("move");
+  assert.deepEqual(h.starts, [10], "迟到失败后仍可播放已解码声音");
+});
+
+test("V04 新一次启用失败后，旧 resume 迟到成功不能覆盖最新失败", async (context) => {
+  const h = audioHarness(context);
+  const firstResume = deferred<void>();
+  let resumes = 0;
+  h.interceptResume(() => (++resumes === 1 ? firstResume.promise : null));
+  const earlier = h.audio.enable();
+  h.denyResume(true);
+  assert.equal(await h.audio.enable(), false);
+  firstResume.resolve();
+  await earlier;
+  assert.equal(h.audio.enabled, false);
+  h.audio.play("move");
+  assert.deepEqual(h.starts, []);
+  h.denyResume(false);
+  assert.equal(await h.audio.enable(), true, "新手势仍可在失败后重试");
+});
+
+for (const action of ["disable", "dispose"] as const)
+  test(`V04 ${action} 使尚未完成的音频启用失效，迟到资源不会重新启用`, async (context) => {
+    const h = audioHarness(context);
+    const firstMove = deferred<Response>();
+    const requested = deferred<void>();
+    h.interceptResponse((url) => {
+      if (!url.endsWith("/move.wav")) return null;
+      requested.resolve();
+      return firstMove.promise;
+    });
+    const pending = h.audio.enable();
+    await requested.promise;
+    assert.equal(h.audio.enabled, false, "资源未齐时不能报告声音可用");
+    h.audio[action]();
+    firstMove.resolve(new Response(new Uint8Array(8)));
+    assert.equal(await pending, false);
+    assert.equal(h.audio.enabled, false);
+    h.audio.play("move");
+    assert.deepEqual(h.starts, []);
+  });
 
 test("暂停取消已排节拍，恢复倒数期间不播积压声音", async (context) => {
   const h = audioHarness(context);

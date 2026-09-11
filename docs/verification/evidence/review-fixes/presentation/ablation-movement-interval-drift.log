@@ -1,0 +1,459 @@
+✖ I03 自动续步从物理点击的首步起等待 140ms，最后一格也按同一节奏 (2.512792ms)
+✖ I03 迟到帧只续走一格，下一步从实际执行时刻再等 140ms，不补跑 (0.8825ms)
+✖ I03 中途及最后一格重新校验全部安全条件，变化时停在前格且不拾取、不入房、不另算绕路 (0.790959ms)
+✖ I03 已开且无其他事件的门仍可逐步通过；新点击替换目标并重锚续步 (2.322666ms)
+✔ I03 取消是瞬时临时命令，不改变时钟、稳定 revision、永久进度或反馈 (0.941125ms)
+✔ I03 暂停或时钟断档丢弃旧路径，恢复后不补走 (1.701958ms)
+✔ I03 物理相邻点击仍可探索未访问格并触发对象，自动续步没有改变手动规则 (1.710625ms)
+✖ I03 新物理方向即使进入 140ms 等待队列也立即取消旧路径，随后只执行等待方向 (2.089625ms)
+✖ I01 八个方向键只派发对应四向一步，画布消费游戏按键而不消费其他输入 (3.472334ms)
+✖ I01 长按由适配器在 250ms 首次重复，再以 140ms 节奏派发；浏览器 repeat 不改时序 (0.5415ms)
+✖ I01 两方向按住时重复最新方向，释放它后回到前一个仍按住方向 (0.301542ms)
+✖ I02 动画期新方向覆盖唯一等待方向，到 140ms 仅提交最新一步 (0.2605ms)
+✖ I02 新物理按键在 139ms 等待、140ms 当场提交，不等待下一渲染帧 (0.264709ms)
+✖ I03 自动续步在 139ms 不执行、140ms 执行；不可操作时不消耗到期动作 (0.145209ms)
+✖ I02 帧调用迟到时至多派发一次，不积攒或追补长按步数 (0.22ms)
+✔ I07 clear 丢弃等待方向并抑制仍按住的键，恢复后必须 keyup 再次按下 (0.220625ms)
+✖ I07 连续暂停或模式切换重复 clear 不解除按住抑制，释放后新方向正常操作 (0.242375ms)
+✔ I10 菜单、输入框或导入控件拥有焦点时，不消费快捷键、方向或菜单键 (0.217792ms)
+✔ I07 / I10 画布失去焦点或 canPlay 关闭期间，按住重复与等待命令均不穿透 (0.215167ms)
+✔ I10 画布快捷键派发语义命令，重复事件无效，地图和暂停只调用对应 UI 接口 (0.185917ms)
+✔ I01 / T02 防火墙每次物理按下只派发一次，不生成适配器长按或等待移动 (0.168291ms)
+✔ dispose 移除监听，后续键盘不会派发或消费按键 (0.091833ms)
+✔ 浏览器修饰快捷键不移动、增幅或撤销，保留刷新与常规键盘操作 (0.117084ms)
+✔ Tab或鼠标移出画布清除等待方向，重新聚焦不会执行旧输入 (0.120375ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 11
+ℹ fail 13
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 142.652666
+
+✖ failing tests:
+
+test at tests/auto-walk.test.ts:46:1
+✖ I03 自动续步从物理点击的首步起等待 140ms，最后一格也按同一节奏 (2.512792ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + undefined
+  - 'accepted'
+  
+      at TestContext.<anonymous> (file:///private/var/folders/4s/gltp69rs7tzgs6lp0mb4kbtc0000gn/T/cgw-presentation-guard-nxdq7lyc/movement-interval-drift/tests/auto-walk.test.ts:52:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: 'accepted',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/auto-walk.test.ts:67:1
+✖ I03 迟到帧只续走一格，下一步从实际执行时刻再等 140ms，不补跑 (0.8825ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'a.t.0.-2'
+  - 'a.t.1.-2'
+         ^
+  
+      at TestContext.<anonymous> (file:///private/var/folders/4s/gltp69rs7tzgs6lp0mb4kbtc0000gn/T/cgw-presentation-guard-nxdq7lyc/movement-interval-drift/tests/auto-walk.test.ts:75:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'a.t.0.-2',
+    expected: 'a.t.1.-2',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/auto-walk.test.ts:131:1
+✖ I03 中途及最后一格重新校验全部安全条件，变化时停在前格且不拾取、不入房、不另算绕路 (0.790959ms)
+  TypeError: Cannot read properties of null (reading 'code')
+      at TestContext.<anonymous> (file:///private/var/folders/4s/gltp69rs7tzgs6lp0mb4kbtc0000gn/T/cgw-presentation-guard-nxdq7lyc/movement-interval-drift/tests/auto-walk.test.ts:144:27)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7)
+
+test at tests/auto-walk.test.ts:162:1
+✖ I03 已开且无其他事件的门仍可逐步通过；新点击替换目标并重锚续步 (2.322666ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'a.t.0.-2'
+  - 'a.t.-1.-2'
+         ^
+  
+      at TestContext.<anonymous> (file:///private/var/folders/4s/gltp69rs7tzgs6lp0mb4kbtc0000gn/T/cgw-presentation-guard-nxdq7lyc/movement-interval-drift/tests/auto-walk.test.ts:176:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'a.t.0.-2',
+    expected: 'a.t.-1.-2',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/auto-walk.test.ts:232:1
+✖ I03 新物理方向即使进入 140ms 等待队列也立即取消旧路径，随后只执行等待方向 (2.089625ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'a.t.0.-2'
+  - 'a.t.0.-1'
+            ^
+  
+      at TestContext.<anonymous> (file:///private/var/folders/4s/gltp69rs7tzgs6lp0mb4kbtc0000gn/T/cgw-presentation-guard-nxdq7lyc/movement-interval-drift/tests/auto-walk.test.ts:274:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'a.t.0.-2',
+    expected: 'a.t.0.-1',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/input.test.ts:124:1
+✖ I01 八个方向键只派发对应四向一步，画布消费游戏按键而不消费其他输入 (3.472334ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        command: {
+          direction: 'up',
+          kind: 'Move'
+  ...
+        command: {
+  -       direction: 'up',
+  -       kind: 'Move'
+  -     },
+  -     time: 140
+  -   },
+  -   {
+  -     command: {
+          direction: 'right',
+          kind: 'Move'
+        },
+        time: 280
+      },
+      {
+        command: {
+  -       direction: 'right',
+  -       kind: 'Move'
+  -     },
+  -     time: 420
+  -   },
+  -   {
+  -     command: {
+          direction: 'down',
+          kind: 'Move'
+        },
+        time: 560
+      },
+      {
+        command: {
+  -       direction: 'down',
+  -       kind: 'Move'
+  -     },
+  -     time: 700
+  -   },
+  -   {
+  -     command: {
+          direction: 'left',
+          kind: 'Move'
+        },
+        time: 840
+      },
+  -   {
+  -     command: {
+  -       direction: 'left',
+  -       kind: 'Move'
+  -     },
+  -     time: 980
+  -   }
+    ]
+  
+      at TestContext.<anonymous> (file:///private/var/folders/4s/gltp69rs7tzgs6lp0mb4kbtc0000gn/T/cgw-presentation-guard-nxdq7lyc/movement-interval-drift/tests/input.test.ts:140:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { command: [Object], time: 0 }, { command: [Object], time: 280 }, { command: [Object], time: 560 }, { command: [Object], time: 840 } ],
+    expected: [ { command: [Object], time: 0 }, { command: [Object], time: 140 }, { command: [Object], time: 280 }, { command: [Object], time: 420 }, { command: [Object], time: 560 }, { command: [Object], time: 700 }, { command: [Object], time: 840 }, { command: [Object], time: 980 } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/input.test.ts:150:1
+✖ I01 长按由适配器在 250ms 首次重复，再以 140ms 节奏派发；浏览器 repeat 不改时序 (0.5415ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        command: {
+          direction: 'right',
+          kind: 'Move'
+  ...
+        },
+  +     time: 529
+  -     time: 390
+      },
+  -   {
+  -     command: {
+  -       direction: 'right',
+  -       kind: 'Move'
+  -     },
+  -     time: 530
+  -   }
+    ]
+  
+      at TestContext.<anonymous> (file:///private/var/folders/4s/gltp69rs7tzgs6lp0mb4kbtc0000gn/T/cgw-presentation-guard-nxdq7lyc/movement-interval-drift/tests/input.test.ts:165:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { command: [Object], time: 0 }, { command: [Object], time: 250 }, { command: [Object], time: 529 } ],
+    expected: [ { command: [Object], time: 0 }, { command: [Object], time: 250 }, { command: [Object], time: 390 }, { command: [Object], time: 530 } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/input.test.ts:173:1
+✖ I01 两方向按住时重复最新方向，释放它后回到前一个仍按住方向 (0.301542ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        command: {
+          direction: 'up',
+          kind: 'Move'
+  ...
+      },
+  -   {
+  -     command: {
+  -       direction: 'up',
+  -       kind: 'Move'
+  -     },
+  -     time: 540
+  -   }
+    ]
+  
+      at TestContext.<anonymous> (file:///private/var/folders/4s/gltp69rs7tzgs6lp0mb4kbtc0000gn/T/cgw-presentation-guard-nxdq7lyc/movement-interval-drift/tests/input.test.ts:182:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { command: [Object], time: 0 }, { command: [Object], time: 150 }, { command: [Object], time: 400 } ],
+    expected: [ { command: [Object], time: 0 }, { command: [Object], time: 150 }, { command: [Object], time: 400 }, { command: [Object], time: 540 } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/input.test.ts:190:1
+✖ I02 动画期新方向覆盖唯一等待方向，到 140ms 仅提交最新一步 (0.2605ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        command: {
+          direction: 'up',
+          kind: 'Move'
+  ...
+        },
+  +     time: 279
+  -     time: 140
+      }
+    ]
+  
+      at TestContext.<anonymous> (file:///private/var/folders/4s/gltp69rs7tzgs6lp0mb4kbtc0000gn/T/cgw-presentation-guard-nxdq7lyc/movement-interval-drift/tests/input.test.ts:201:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { command: [Object], time: 0 }, { command: [Object], time: 279 } ],
+    expected: [ { command: [Object], time: 0 }, { command: [Object], time: 140 } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/input.test.ts:206:1
+✖ I02 新物理按键在 139ms 等待、140ms 当场提交，不等待下一渲染帧 (0.264709ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        command: {
+          direction: 'up',
+          kind: 'Move'
+  ...
+      },
+  -   {
+  -     command: {
+  -       direction: 'right',
+  -       kind: 'Move'
+  -     },
+  -     time: 140
+  -   }
+    ]
+  
+      at TestContext.<anonymous> (file:///private/var/folders/4s/gltp69rs7tzgs6lp0mb4kbtc0000gn/T/cgw-presentation-guard-nxdq7lyc/movement-interval-drift/tests/input.test.ts:215:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { command: [Object], time: 0 } ],
+    expected: [ { command: [Object], time: 0 }, { command: [Object], time: 140 } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/input.test.ts:220:1
+✖ I03 自动续步在 139ms 不执行、140ms 执行；不可操作时不消耗到期动作 (0.145209ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + null
+  - {
+  -   kind: 'AdvanceAutoPath'
+  - }
+  
+      at TestContext.<anonymous> (file:///private/var/folders/4s/gltp69rs7tzgs6lp0mb4kbtc0000gn/T/cgw-presentation-guard-nxdq7lyc/movement-interval-drift/tests/input.test.ts:229:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: { kind: 'AdvanceAutoPath' },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/input.test.ts:235:1
+✖ I02 帧调用迟到时至多派发一次，不积攒或追补长按步数 (0.22ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        command: {
+          direction: 'down',
+          kind: 'Move'
+  ...
+      },
+  -   {
+  -     command: {
+  -       direction: 'down',
+  -       kind: 'Move'
+  -     },
+  -     time: 5140
+  -   }
+    ]
+  
+      at TestContext.<anonymous> (file:///private/var/folders/4s/gltp69rs7tzgs6lp0mb4kbtc0000gn/T/cgw-presentation-guard-nxdq7lyc/movement-interval-drift/tests/input.test.ts:243:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { command: [Object], time: 0 }, { command: [Object], time: 5000 } ],
+    expected: [ { command: [Object], time: 0 }, { command: [Object], time: 5000 }, { command: [Object], time: 5140 } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/input.test.ts:267:1
+✖ I07 连续暂停或模式切换重复 clear 不解除按住抑制，释放后新方向正常操作 (0.242375ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      {
+        command: {
+          direction: 'up',
+          kind: 'Move'
+  ...
+      },
+  -   {
+  -     command: {
+  -       direction: 'up',
+  -       kind: 'Move'
+  -     },
+  -     time: 641
+  -   }
+    ]
+  
+      at TestContext.<anonymous> (file:///private/var/folders/4s/gltp69rs7tzgs6lp0mb4kbtc0000gn/T/cgw-presentation-guard-nxdq7lyc/movement-interval-drift/tests/input.test.ts:278:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { command: [Object], time: 0 }, { command: [Object], time: 501 } ],
+    expected: [ { command: [Object], time: 0 }, { command: [Object], time: 501 }, { command: [Object], time: 641 } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

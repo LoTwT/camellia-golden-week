@@ -10,8 +10,10 @@ export class GameAudio {
   private beatKey = "";
   private lastBeatIndex = -1;
   private configuredVolume = -1;
+  private enableSequence = 0;
   enabled = false;
   async enable() {
+    const sequence = ++this.enableSequence;
     try {
       this.context ??= new AudioContext();
       if (!this.gain) {
@@ -19,7 +21,7 @@ export class GameAudio {
         this.gain.connect(this.context.destination);
       }
       await this.context.resume();
-      this.enabled = this.context.state === "running";
+      if (sequence !== this.enableSequence) return this.enabled;
       await Promise.all(
         [
           "move",
@@ -39,10 +41,16 @@ export class GameAudio {
           this.buffers.set(id, await this.context.decodeAudioData(await response.arrayBuffer()));
         }),
       );
+      if (sequence === this.enableSequence) this.enabled = this.context.state === "running";
     } catch {
-      this.enabled = false;
+      if (sequence === this.enableSequence) this.enabled = false;
     }
     return this.enabled;
+  }
+  disable() {
+    this.enableSequence += 1;
+    this.enabled = false;
+    this.cancelBeats();
   }
   configure(settings: GameSettings) {
     const volume = settings.muted ? 0 : settings.masterVolume;
@@ -136,7 +144,7 @@ export class GameAudio {
     this.lastBeatIndex = -1;
   }
   dispose() {
-    this.cancelBeats();
+    this.disable();
     void this.context?.close();
   }
 }

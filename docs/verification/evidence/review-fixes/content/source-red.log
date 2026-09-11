@@ -1,0 +1,198 @@
+✖ 装配前拒绝不存在的实体格，即使其所属区域尚未收录 (2.955625ms)
+✖ 回访合并前检查 A 首访 tileIds，不能用派生集合掩盖孤儿格 (0.859875ms)
+✖ 装配前拒绝错误的区域 entityIds，不静默重建 (1.058042ms)
+✖ 装配前拒绝错误的区域 roomIds，不静默重建 (0.5425ms)
+✖ 装配前拒绝跨区实体归属 (0.532375ms)
+✖ 装配前拒绝基础地图与回访扩展之间的重复 ID (0.300208ms)
+✖ 装配前拒绝未找到父区域的回访扩展 (0.360791ms)
+✖ 装配前拒绝重复区域扩展，不能只读取第一份 (0.369334ms)
+✖ 原始 profile 的房间清单不能被实际房间覆盖后假称闭合 (0.2715ms)
+✔ 合法的未来地图和回访仍按 M1–M5 裁剪，装配只读 (36.426792ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 1
+ℹ fail 9
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 150.749834
+
+✖ failing tests:
+
+test at tests/content-source.test.ts:37:1
+✖ 装配前拒绝不存在的实体格，即使其所属区域尚未收录 (2.955625ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:43:18
+      at withSourceChange (file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:18:5)
+      at TestContext.<anonymous> (file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:38:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /d\.t\.missing/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/content-source.test.ts:47:1
+✖ 回访合并前检查 A 首访 tileIds，不能用派生集合掩盖孤儿格 (0.859875ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:53:18
+      at withSourceChange (file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:18:5)
+      at TestContext.<anonymous> (file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:48:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /tileIds.*a\.t\.0\.0/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/content-source.test.ts:58:3
+✖ 装配前拒绝错误的区域 entityIds，不静默重建 (1.058042ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:64:20
+      at withSourceChange (file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:18:5)
+      at TestContext.<anonymous> (file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:59:5)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /entityIds.*a\.missing/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/content-source.test.ts:58:3
+✖ 装配前拒绝错误的区域 roomIds，不静默重建 (0.5425ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:64:20
+      at withSourceChange (file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:18:5)
+      at TestContext.<anonymous> (file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:59:5)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /roomIds.*a\.missing/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/content-source.test.ts:69:1
+✖ 装配前拒绝跨区实体归属 (0.532375ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:75:18
+      at withSourceChange (file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:18:5)
+      at TestContext.<anonymous> (file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:70:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /d\.teleport\.point.*a\.t\.0\.0/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/content-source.test.ts:79:1
+✖ 装配前拒绝基础地图与回访扩展之间的重复 ID (0.300208ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:85:18
+      at withSourceChange (file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:18:5)
+      at TestContext.<anonymous> (file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:80:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /a\.t\.0\.0.*重复 ID/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/content-source.test.ts:89:1
+✖ 装配前拒绝未找到父区域的回访扩展 (0.360791ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:95:18
+      at withSourceChange (file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:18:5)
+      at TestContext.<anonymous> (file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:90:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /missing.*未解析区域/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/content-source.test.ts:99:1
+✖ 装配前拒绝重复区域扩展，不能只读取第一份 (0.369334ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:105:18
+      at withSourceChange (file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:18:5)
+      at TestContext.<anonymous> (file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:100:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /revisits.*重复区域/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/content-source.test.ts:109:1
+✖ 原始 profile 的房间清单不能被实际房间覆盖后假称闭合 (0.2715ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:116:18
+      at withSourceChange (file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:18:5)
+      at TestContext.<anonymous> (file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:111:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /M1.*includedRoomIds.*a\.maze\.01/,
+    operator: 'throws',
+    diff: 'simple'
+  }

@@ -1,0 +1,40 @@
+✔ I04 未发现边界仅显示未知占位，移动显露后投影跟随权威位置且不泄漏其他棋盘 (2.697042ms)
+✔ I05 覆盖显露仍显示覆盖，真实增幅后节点变为已使用、被清除格变为道路 (0.5155ms)
+✖ G09 物资实际领取前后保留同一实体，图标从可领取切换到已收集 (2.753875ms)
+✔ G02 主终端交互完成才切换完成图标，可选挑战完成后对应奖励门才显示开放 (18.566ms)
+✔ S01 迷宫危险只在真实观察阶段展示，观察结束后投影不保留答案图标或文字 (0.787417ms)
+✔ I04 / D 未揭示的隐藏路线不作为未知边界泄漏，揭示并走近后才展示 (14.525959ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 147.430083
+
+✖ failing tests:
+
+test at tests/projection.test.ts:80:1
+✖ G09 物资实际领取前后保留同一实体，图标从可领取切换到已收集 (2.753875ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'supply-collected'
+  - 'supply-ready'
+            ^
+  
+      at TestContext.<anonymous> (file:///private/var/folders/4s/gltp69rs7tzgs6lp0mb4kbtc0000gn/T/cgw-presentation-guard-nxdq7lyc/supply-icons-reversed/tests/projection.test.ts:88:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'supply-collected',
+    expected: 'supply-ready',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

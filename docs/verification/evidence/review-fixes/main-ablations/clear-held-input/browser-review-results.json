@@ -1,0 +1,19 @@
+{
+  "startedAt": "2026-09-11T12:03:17.988Z",
+  "browser": "153.0.8010.36",
+  "node": "v24.18.0",
+  "mode": "targeted-review-regressions",
+  "profileChecks": [
+    {
+      "profile": "M5",
+      "assets": 45,
+      "representations": 80,
+      "javascriptFiles": [
+        "assets/index-C_2ptjYV.js"
+      ]
+    }
+  ],
+  "success": false,
+  "error": "AssertionError [ERR_ASSERTION]: 失败前按住的方向不能在重试观察结束后继续移动\n+ actual - expected\n\n+ 'a.maze.01.t.0.1'\n- 'a.maze.01.t.0.4'\n                 ^\n\n    at file:///private/var/folders/4s/gltp69rs7tzgs6lp0mb4kbtc0000gn/T/camellia-main-ablations-9xNf9S/clear-held-input/scripts/browser/review-regressions.ts:308:14\n    at async scenario (file:///private/var/folders/4s/gltp69rs7tzgs6lp0mb4kbtc0000gn/T/camellia-main-ablations-9xNf9S/clear-held-input/scripts/browser/review-regressions.ts:106:22)\n    at async verifyReviewRegressions (file:///private/var/folders/4s/gltp69rs7tzgs6lp0mb4kbtc0000gn/T/camellia-main-ablations-9xNf9S/clear-held-input/scripts/browser/review-regressions.ts:281:3)\n    at async file:///private/var/folders/4s/gltp69rs7tzgs6lp0mb4kbtc0000gn/T/camellia-main-ablations-9xNf9S/clear-held-input/scripts/verify-browser.ts:72:31",
+  "finishedAt": "2026-09-11T12:03:37.434Z"
+}

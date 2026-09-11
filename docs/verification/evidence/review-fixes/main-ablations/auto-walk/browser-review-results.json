@@ -1,0 +1,19 @@
+{
+  "startedAt": "2026-09-11T12:04:08.050Z",
+  "browser": "153.0.8010.36",
+  "node": "v24.18.0",
+  "mode": "targeted-review-regressions",
+  "profileChecks": [
+    {
+      "profile": "M5",
+      "assets": 45,
+      "representations": 80,
+      "javascriptFiles": [
+        "assets/index-DDNJMPBC.js"
+      ]
+    }
+  ],
+  "success": false,
+  "error": "page.waitForFunction: Timeout 10000ms exceeded.\n    at waitForPosition (/private/var/folders/4s/gltp69rs7tzgs6lp0mb4kbtc0000gn/T/camellia-main-ablations-9xNf9S/auto-walk/scripts/browser/review-regressions.ts:28:14)\n    at /private/var/folders/4s/gltp69rs7tzgs6lp0mb4kbtc0000gn/T/camellia-main-ablations-9xNf9S/auto-walk/scripts/browser/review-regressions.ts:275:11\n    at async scenario (/private/var/folders/4s/gltp69rs7tzgs6lp0mb4kbtc0000gn/T/camellia-main-ablations-9xNf9S/auto-walk/scripts/browser/review-regressions.ts:106:22)\n    at async verifyReviewRegressions (/private/var/folders/4s/gltp69rs7tzgs6lp0mb4kbtc0000gn/T/camellia-main-ablations-9xNf9S/auto-walk/scripts/browser/review-regressions.ts:255:3)\n    at async file:///private/var/folders/4s/gltp69rs7tzgs6lp0mb4kbtc0000gn/T/camellia-main-ablations-9xNf9S/auto-walk/scripts/verify-browser.ts:72:31",
+  "finishedAt": "2026-09-11T12:04:25.642Z"
+}

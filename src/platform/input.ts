@@ -1,17 +1,19 @@
 import type { Direction, GameCommand, GameState } from "../core/types.ts";
 
+const MOVEMENT_INTERVAL_MS = 140;
+
 export class AutoWalkScheduler {
   private nextStepAt = Infinity;
 
   observe(command: GameCommand, state: Pick<GameState, "mode" | "autoPath">, now: number) {
     if (state.mode !== "explore" || state.autoPath.length === 0) this.nextStepAt = Infinity;
     else if (command.kind === "ClickTile" || command.kind === "AdvanceAutoPath")
-      this.nextStepAt = now + 140;
+      this.nextStepAt = now + MOVEMENT_INTERVAL_MS;
   }
 
   nextCommand(now: number, canPlay: boolean): GameCommand | null {
     if (!canPlay || now < this.nextStepAt) return null;
-    this.nextStepAt = now + 140;
+    this.nextStepAt = now + MOVEMENT_INTERVAL_MS;
     return { kind: "AdvanceAutoPath" };
   }
 }
@@ -105,7 +107,7 @@ export class InputAdapter {
     if (this.held.length === 0) this.nextRepeatAt = Infinity;
   };
   private move(direction: Direction, now: number, observedAt = now) {
-    if (now - this.lastAcceptedAt < 140) {
+    if (now - this.lastAcceptedAt < MOVEMENT_INTERVAL_MS) {
       this.pending = direction;
       this.pendingObservedAt = observedAt;
       return;
@@ -117,14 +119,14 @@ export class InputAdapter {
   frame(now: number) {
     if (document.activeElement !== this.target || !this.mode().canPlay || this.mode().firewall)
       return;
-    if (this.pending && now - this.lastAcceptedAt >= 140) {
+    if (this.pending && now - this.lastAcceptedAt >= MOVEMENT_INTERVAL_MS) {
       this.move(this.pending, now, this.pendingObservedAt);
       return;
     }
     const held = this.held.at(-1);
     const direction = held ? DIRECTIONS[held] : undefined;
     if (direction && now >= this.nextRepeatAt) {
-      this.nextRepeatAt = now + 140;
+      this.nextRepeatAt = now + MOVEMENT_INTERVAL_MS;
       this.move(direction, now);
     }
   }

@@ -1,0 +1,65 @@
+{
+  "kind": "firewall-beats",
+  "method": "Supplemental read-only observer after normal keys/mouse; actual unmodified verification CLI has already failed at its intended check.",
+  "errors": [],
+  "result": {
+    "mode": "challengeRunning",
+    "enabled": true,
+    "totalSoundSources": 13,
+    "futureScheduledSources": 0,
+    "starts": [
+      {
+        "aheadSeconds": 0,
+        "at": 544.6000000238419
+      },
+      {
+        "aheadSeconds": 0,
+        "at": 732.8999999761581
+      },
+      {
+        "aheadSeconds": 0,
+        "at": 920.5
+      },
+      {
+        "aheadSeconds": 0,
+        "at": 1106.1000000238419
+      },
+      {
+        "aheadSeconds": 0,
+        "at": 1106.1000000238419
+      },
+      {
+        "aheadSeconds": 0,
+        "at": 1294.7999999523163
+      },
+      {
+        "aheadSeconds": 0,
+        "at": 1482
+      },
+      {
+        "aheadSeconds": 0,
+        "at": 1672.2999999523163
+      },
+      {
+        "aheadSeconds": 0,
+        "at": 1860.8999999761581
+      },
+      {
+        "aheadSeconds": 0,
+        "at": 2061
+      },
+      {
+        "aheadSeconds": 0,
+        "at": 2246.899999976158
+      },
+      {
+        "aheadSeconds": 0,
+        "at": 2435.899999976158
+      },
+      {
+        "aheadSeconds": 0,
+        "at": 2623.2000000476837
+      }
+    ]
+  }
+}

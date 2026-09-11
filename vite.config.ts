@@ -1,14 +1,13 @@
 import { defineConfig } from "vite";
 import { readFileSync } from "node:fs";
 import assetManifest from "./public/assets/manifest.json" with { type: "json" };
-import { assembleContent, AVAILABLE_PROFILE } from "./src/content/assemble.ts";
+import { assembleContent } from "./src/content/assemble.ts";
 import type { ProfileId } from "./src/core/types.ts";
 import { contentModuleSource } from "./scripts/content-module.ts";
+import { profileForMode } from "./scripts/build-profile.ts";
 
 export default defineConfig(({ mode }) => {
-  const selected = /^m[1-5]$/i.test(mode) ? (mode.toUpperCase() as ProfileId) : AVAILABLE_PROFILE;
-  if (Number(selected.slice(1)) > Number(AVAILABLE_PROFILE.slice(1)))
-    throw new Error(`尚未交付 ${selected}`);
+  const selected = profileForMode(mode);
   return {
     server: { host: "localhost", port: 5174, strictPort: true },
     preview: { host: "localhost", port: 5174, strictPort: true },

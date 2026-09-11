@@ -12,19 +12,23 @@ import {
   validateContent,
   replayWorldWitness,
   validateWorldWitness,
+  validateWorldWitnessInventory,
 } from "../src/content/validate.ts";
 import type { WorldWitness } from "../src/content/validate.ts";
 import type { ProfileId } from "../src/core/types.ts";
 import { validateStaticContent } from "../src/core/static-puzzle.ts";
 import { replayRealtimeWitness, validateRealtimeDefinition } from "../src/core/realtime.ts";
 import type { RealtimeWitness } from "../src/core/realtime.ts";
-import m1WorldWitnessContent from "../src/content/witnesses/m1.json" with { type: "json" };
-import m2WorldWitnessContent from "../src/content/witnesses/m2.json" with { type: "json" };
-import m3WorldWitnessContent from "../src/content/witnesses/m3.json" with { type: "json" };
-import m4WorldWitnessContent from "../src/content/witnesses/m4.json" with { type: "json" };
-import { m5WorldWitnesses } from "../src/content/witnesses/m5.ts";
+import { worldWitnesses } from "../src/content/witnesses/index.ts";
 
 assert.deepEqual(validateCatalog(worldCatalog), [], "完整设计目录与分期账本");
+const inventoryIssues = validateWorldWitnessInventory(
+  worldWitnesses,
+  worldCatalog,
+  AVAILABLE_PROFILE,
+);
+if (inventoryIssues.length)
+  throw new Error(inventoryIssues.map((issue) => `${issue.path}: ${issue.message}`).join("\n"));
 for (const profile of worldCatalog.releaseProfiles) {
   const units = worldCatalog.rewards
     .filter((reward) => profile.includedRewardIds.includes(reward.id))
@@ -98,13 +102,9 @@ console.log(
   `实时独立规则：${realtimeContent.definitions.length} 个固定定义 / ${realtimeWitnesses.length} 条成功与失败见证通过；尚未收录区域不据此视为世界验收通过`,
 );
 
-for (const rawWitness of [
-  ...m1WorldWitnessContent.witnesses,
-  ...m2WorldWitnessContent.witnesses,
-  ...m3WorldWitnessContent.witnesses,
-  ...m4WorldWitnessContent.witnesses,
-  ...(AVAILABLE_PROFILE === "M5" ? m5WorldWitnesses : []),
-]) {
+for (const rawWitness of worldWitnesses.filter(
+  (witness) => Number(witness.profileId.slice(1)) <= Number(AVAILABLE_PROFILE.slice(1)),
+)) {
   assert.deepEqual(validateWorldWitness(rawWitness), [], rawWitness.id);
   const witness = rawWitness as WorldWitness;
   const result = replayWorldWitness(assembleContent(witness.profileId), witness);

@@ -6,7 +6,7 @@
 
 当前交付状态见[实施进度](docs/verification/implementation-progress.md)和[验收记录](docs/verification/acceptance-results.md)。按用户本轮确认，仅以本机 Chrome 验收，性能达到原预算即通过，断网游玩不再作为发布门槛。**63 个原始用例中 62 项通过、V06 不再要求**；其他设备与 Safari / Edge 的未验证、历史失败保留，具体依据见[范围调整](docs/verification/acceptance-scope-2026-09-11.md)。
 
-[M5 静态交付包](docs/verification/release-candidate.md)提供 ZIP、校验值、411/411 测试与构建日志。Chrome 正式包正常续玩与刷新保持 130/130；真实历史返回与双标签验证了旧内存不能覆盖新存档。M1–M5 已按里程碑提交并推送至 `codex/full-implementation`，[PR #1](https://github.com/LoTwT/camellia-golden-week/pull/1) 已创建，供审阅；main 尚未合并。
+[M5 静态交付包](docs/verification/release-candidate.md)提供 ZIP、校验值与构建日志；后续[消融 Review 修复](docs/verification/review-fixes.md)记录异常存档、音频并发及新增回归检查。Chrome 原交付正式包正常续玩与刷新保持 130/130；真实历史返回与双标签验证了旧内存不能覆盖新存档。M1–M5 已按里程碑提交并推送至 `codex/full-implementation`，[PR #1](https://github.com/LoTwT/camellia-golden-week/pull/1) 已创建，供审阅；main 尚未合并。
 
 项目文档统一从 [文档索引](docs/index.md) 进入，按任务查阅主规格、玩法、内容数据、工程、验收与来源记录。
 
@@ -78,10 +78,16 @@ pnpm run preview --host localhost --port 5174 --strictPort
 pnpm run lint
 pnpm run format:check
 pnpm run typecheck
+pnpm run validate:architecture
 pnpm run validate:content
 pnpm test
+pnpm run verify
 ```
 
-核心为 Vite、TypeScript、Three.js，界面为原生 DOM；权威状态与规则是独立纯 TypeScript 层。Oxlint 检查代码，Oxfmt 检查格式，规则测试使用 Node 原生测试运行器。内容校验读取固定地图、稳定 ID、发布清单及正常命令见证。`pnpm run build` 包含只读 lint、格式、类型与内容检查；规则测试需单独执行 `pnpm test`，通过后再按上面的构建与 preview 命令验证静态包。原始验收证据与已批准规格不由 formatter 重写，新增实现、脚本、测试和维护文档接受 Oxfmt 检查。
+核心为 Vite、TypeScript、Three.js，界面为原生 DOM；权威状态与规则是独立纯 TypeScript 层。Oxlint 检查代码，Oxfmt 检查格式，规则测试使用 Node 原生测试运行器，递归发现 `tests/` 中的 `.test.ts`，没有实际执行的用例时失败。架构检查拒绝核心层的反向引用与浏览器 API；内容校验先检查原始地图，再按 profile 裁剪，并验证必需的主路径 / 全收集见证。
+
+`pnpm run build` 包含只读 lint、格式、类型、架构与内容检查。交付前使用 `pnpm run verify` 串联规则测试、完整构建、实际 `dist/` 资源检查和 Chrome 浏览器回归。浏览器验证需要本机已安装 Google Chrome，使用锁定的 Playwright 开发依赖启动独立 context 和临时端口，不读取日常 Chrome 进度、不占用 5174；结果写入 ignored `test-results/review-fixes/`。玩家不需要这些测试工具。浏览器检查本身不等于重跑全部 63 项历史验收，覆盖与故障注入边界见[修复记录](docs/verification/review-fixes.md)。
+
+单独运行 `pnpm run test:browser` 可复验五个分期的静态包和本轮浏览器回归；`pnpm run test:browser --review-only` 仅用于定位修复相关用例，不能替代正式完整验证。分期构建使用 `pnpm run build --mode m1` 至 `m5`，默认 production 为 M5；未知模式明确报错。原始验收证据与已批准规格不由 formatter 重写，新增实现、脚本、测试和维护文档接受 Oxfmt 检查。
 
 包管理已按用户要求从 npm 迁移至 pnpm，旧 npm 命令日志保留历史含义。锁文件导入、依赖等价与本轮安装 / 检查 / 构建结果见[pnpm 迁移记录](docs/verification/pnpm-migration.md)。

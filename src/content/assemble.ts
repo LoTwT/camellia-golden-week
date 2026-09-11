@@ -13,6 +13,8 @@ import staticJson from "./challenges/static.json" with { type: "json" };
 import realtimeJson from "./challenges/realtime.json" with { type: "json" };
 import type { StaticContent } from "../core/static-puzzle.ts";
 import type { RealtimeDefinition } from "../core/realtime.ts";
+import { assertSourceIntegrity } from "./source-validation.ts";
+import type { AreaSource, AreaExtension } from "./source-validation.ts";
 import type {
   GameContent,
   WorldDefinition,
@@ -62,33 +64,35 @@ export const worldCatalog = {
   }),
 } as WorldDefinition;
 
-type AreaFile = Pick<WorldDefinition, "tiles" | "entities" | "rooms"> & {
-  area: WorldDefinition["areas"][number];
-};
-
-const sourceAreas = (
-  [hubJson, aJson, bJson, cJson, dJson, warehouseJson] as unknown as AreaFile[]
-).map((source): AreaFile => {
-  const extension = revisitsJson.areas.find((candidate) => candidate.areaId === source.area.id);
-  if (!extension) return source;
-  const tiles = [...source.tiles, ...extension.tiles] as WorldDefinition["tiles"];
-  const entities = [...source.entities, ...extension.entities] as WorldDefinition["entities"];
-  const rooms = [...source.rooms, ...extension.rooms] as WorldDefinition["rooms"];
-  return {
-    area: {
-      ...source.area,
-      tileIds: tiles.map((tile) => tile.id),
-      entityIds: entities.map((entity) => entity.id),
-      roomIds: rooms.map((room) => room.id),
-      sourceRecordIds: [...source.area.sourceRecordIds, ...extension.sourceRecordIds],
-    },
-    tiles,
-    entities,
-    rooms,
-  };
-});
+const rawAreas = [hubJson, aJson, bJson, cJson, dJson, warehouseJson] as unknown as AreaSource[];
+const rawExtensions = revisitsJson.areas as unknown as AreaExtension[];
 
 export function assembleContent(profileId: ProfileId = AVAILABLE_PROFILE): GameContent {
+  assertSourceIntegrity(
+    rawAreas,
+    rawExtensions,
+    worldCatalog,
+    revisitsJson.includedFrom,
+    [...staticContent.definitions, ...realtimeContent.definitions].map(
+      (definition) => definition.id,
+    ),
+  );
+  const sourceAreas = rawAreas.map((source): AreaSource => {
+    const extension = rawExtensions.find((candidate) => candidate.areaId === source.area.id);
+    if (!extension) return source;
+    return {
+      area: {
+        ...source.area,
+        tileIds: [...source.area.tileIds, ...extension.tiles.map((tile) => tile.id)],
+        entityIds: [...source.area.entityIds, ...extension.entities.map((entity) => entity.id)],
+        roomIds: [...source.area.roomIds, ...extension.rooms.map((room) => room.id)],
+        sourceRecordIds: [...source.area.sourceRecordIds, ...extension.sourceRecordIds],
+      },
+      tiles: [...source.tiles, ...extension.tiles],
+      entities: [...source.entities, ...extension.entities],
+      rooms: [...source.rooms, ...extension.rooms],
+    };
+  });
   const stage = Number(profileId.slice(1));
   const profileSource = worldCatalog.releaseProfiles.find(
     (candidate) => candidate.id === profileId,
@@ -160,7 +164,7 @@ export function assembleContent(profileId: ProfileId = AVAILABLE_PROFILE): GameC
     ...worldCatalog,
     contentVersion: Math.min(stage, 4),
     areaIds: areas.map((area) => area.id),
-    profile: { ...profileSource, includedRoomIds: rooms.map((room) => room.id) },
+    profile: { ...profileSource },
     areas: areas.map((area) => ({
       ...area,
       tileIds: area.tileIds.filter((id) => tileIds.has(id)),
