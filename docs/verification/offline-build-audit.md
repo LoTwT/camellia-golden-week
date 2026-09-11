@@ -408,3 +408,29 @@ PY
 ```
 
 本次资源审计、同源HTTP和ZIP完整性通过；它们不测浏览器实际解码、音频反馈、键鼠流程或保存恢复，也不证明真实外网断开后的运行。**V06实际断网仍未验证，不能将本包审计结果写成全量验收通过。**
+
+## 9. Chrome 请求隔离尝试：未建立，任务标签已关闭
+
+2026-09-11，在第8节同一production包、固定5174服务和自身真实1109代存档基础上，尝试使用Chrome原生DevTools的Request conditions隔离外部请求。仅使用CUA公开原生界面和正常导航；没有CDP、终端浏览器控制、网络脚本、存储写入或游戏状态注入。**本次未建立并证明“外部阻断、localhost放行”，没有进行隔离下的游戏验收，V06仍为未验证。** [实际尝试记录](evidence/m5-chrome-offline-attempt.json)区分了观察结果、推断及剩余清理事项。
+
+[Chrome官方说明](https://developer.chrome.com/docs/devtools/request-conditions)确认规则按首个匹配项生效，关闭DevTools会停用请求阻断，但规则仍会保存。因此原计划是在本任务标签中先配置localhost豁免，再添加其他请求阻断；没有使用会同时封锁本地服务的“全部离线”模式。本节也不将浏览器级请求条件等同于整机所有外网通道已断开。
+
+### 9.1 实际操作与观察
+
+| 步骤           | 实际结果与证据                                                                                                                                                                                                                                                                                            |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 保存原设置     | [初始设置摘录](evidence/m5-chrome-offline-devtools-before.txt)：Request conditions没有规则且未启用；设备仿真开启、1920×1080、Fit to window；Disable cache开启；Keep log关闭；Network过滤文字为`Request conditions`。没有覆盖既有规则。                                                                    |
+| 第一个外部对照 | 同一任务标签正常访问并刷新`https://example.com/?camellia-offline-control=20260911`；[页面与Network摘录](evidence/m5-chrome-offline-online-example-com.txt)包含对应请求的200 OK。                                                                                                                          |
+| 第二个外部对照 | 正常访问`https://example.org/?camellia-offline-control=20260911`，Example Domain页面可见；[实际摘录](evidence/m5-chrome-offline-online-example-org.txt)中的Network仍只显示此前example.com行，因此未取得example.org响应状态，不把旧行当作新请求200。                                                       |
+| 配置尝试       | 两次依据新鲜AX点击Add condition后，紧接的AX均未显示编辑表单；DevTools内的Reload page曾返回工具错误`elementHasNoFrame`。后一次设置记录出现启用的`*://*` / Block规则、0 affected。未输入过该pattern，可能是Add的默认值，此处只是推断；localhost豁免始终未配置完成，也没有取得`(blocked:devtools)`对照证据。 |
+| 停止原生操作   | 后续新鲜AX显示当前所选标签与验收目标不一致、变成非任务页面，原因未确认；立即停止全局原生键鼠，未操作该页面。这是界面控制与取证未完成，不能归因于游戏缺陷。                                                                                                                                                |
+
+原生全窗AX包含用户其他标签或扩展内容，完整记录仅留在忽略的`test-results/m5-chrome-offline-raw/`。随仓库交付的文字证据只摘取本任务的DevTools设置、两个对照URL及相应状态，省略其他标签、书签、扩展请求和非任务页面正文。
+
+### 9.2 保护进度与恢复边界
+
+停止前的实际AX确认Keep log已恢复关闭；设备仿真、画质和Disable cache从未修改。网络过滤文字尚为空，原值为`Request conditions`。新出现的默认阻断规则是否已被删除尚未验证，不能写成所有DevTools设置均已恢复。
+
+随后按主任务授权，通过本任务标签自身的公开`close()`接口关闭仅由本agent拥有的Chrome标签546939540及其附属DevTools；[关闭记录](evidence/m5-chrome-offline-target-closed.json)和紧接的只读浏览器清单确认该ID已不存在，未关闭其他标签、未新建页面。依据官方行为，该目标的请求阻断随DevTools关闭停用；**持久规则的删除及过滤文字恢复仍待可安全操作的窗口，不将目标关闭等同于规则清除。**
+
+本次没有执行游戏命令，没有修改或清除存档。[此前正常UI导出的1109代真实存档](evidence/m5-chrome-final-production-restored-save.json)继续保留：中央仓库`warehouse.t.7.0`、26个奖励、130单位物资、默认设置。这里是对已有导出文件的保护记录，不是隔离后的保存恢复证据。外部请求失败、localhost隔离刷新、进区、静态/实时重试和隔离下保存恢复均未验证。

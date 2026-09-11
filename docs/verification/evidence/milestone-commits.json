@@ -48,6 +48,21 @@
       "provenanceSource": "user-specified for current Goal",
       "verified": true,
       "gitExitCode": 0
+    },
+    {
+      "stage": "M5",
+      "commit": "811da5a1eb6ac175aa380418c2d84cf079469713",
+      "parent": "dcc6307326d8aef80e8204ea348769fa8afe07f6",
+      "tree": "417b5066cbd4d12dad443691da10c6a6f175b77f",
+      "message": "feat(m5): refine presentation and recover browser sessions\n\n精修六类电视场景、反馈、键盘操作、画质与资源加载，补齐故障恢复。\n保护双槽存档与历史返回后的旧内存，重新取得会话后须读取最新进度。\n交付本地静态候选包、来源差异、411项测试及Chrome正常流程证据。\n原指定基准设备与真实断外网仍未验证，M5全量验收保持未完成。\n\nAgent-Model: gpt-6-astra\nAgent-Effort: max\n",
+      "author": "eruoos <github@eruoo.me>",
+      "committer": "eruoos <github@eruoo.me>",
+      "provenanceSource": "user-specified for current Goal",
+      "verified": true,
+      "gitExitCode": 0,
+      "scope": "implementation candidate; original benchmark devices and offline acceptance pending",
+      "milestoneAcceptanceComplete": false
     }
-  ]
+  ],
+  "updatedAt": "2026-09-11T09:02:23.238578+00:00"
 }

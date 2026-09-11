@@ -2,7 +2,7 @@
 
 [文档索引](../index.md) · [操作与存档说明](../../README.md) · [验收结果](acceptance-results.md) · [实施进度](implementation-progress.md)
 
-2026-09-11：当前交付物为 **0.5.0 / M5 / content4 / rule1 / schema2** 的 production 构建，包含全部游戏内容。63 项合同当前有 61 项按规定层通过；V05 的原指定基准设备、V06 的真实断外网尚待完成，不能将候选包称为全量验收通过。用户已将本次必需浏览器限制为 Chrome。实现分支 `codex/full-implementation` 从 `bfb924b075aa6a153ed33b95ce4492260e18a8d9` 建立，M1–M4 已提交，M5 提交和最终推送 / PR 待交付收尾。
+2026-09-11：当前交付物为 **0.5.0 / M5 / content4 / rule1 / schema2** 的 production 构建，包含全部游戏内容。63 项合同当前有 61 项按规定层通过；V05 的原指定基准设备、V06 的真实断外网尚待完成，不能将候选包称为全量验收通过。用户已将本次必需浏览器限制为 Chrome。实现分支 `codex/full-implementation` 从 `bfb924b075aa6a153ed33b95ce4492260e18a8d9` 建立，M1–M4 已提交，M5 实现候选已提交为 `811da5a1eb6ac175aa380418c2d84cf079469713`；M5 验收及最终推送 / PR 尚待收尾。
 
 ## 1. 当前静态交付物
 
@@ -83,5 +83,7 @@ npm run preview -- --host localhost --port 5174 --strictPort --outDir /absolute/
 ## 6. 剩余交付条件
 
 1. **V05：设备与性能。** Chrome 当前设备上的生产继续与刷新预算已通过；同源码观察包两档各60秒帧率、60输入，以及普通移动 / 跟随镜头预算也已通过。原 Apple M1 / 8 GB、Windows i5-1135G7 / Iris Xe / 16 GB 仍缺设备证据，已询问用户是否以本机 M1 Pro / 32 GB 为本次基准，尚未收到答复。见[性能记录](performance.md)和[浏览器矩阵](browser-matrix.md)。
-2. **V06：真实断外网。** 当前静态包与本地 HTTP 前置审计通过；断网后的正常刷新、进区、重试、保存恢复仍待实测。见[离线验收步骤](offline-build-audit.md#5-真实断网验收步骤待执行)。
-3. **Git 交付。** 本 Goal 使用用户指定的 `Agent-Model: gpt-6-astra`、`Agent-Effort: max`。M1–M4 提交的精确树、父提交、身份和消息见[回读证据](evidence/milestone-commits.json)。M5 提交及用户已授权的最终推送 / PR 尚待收尾，未将缺少环境的必需项标为通过。
+2. **V06：真实断外网。** 当前静态包与本地 HTTP 前置审计通过；断网后的正常刷新、进区、重试、保存恢复仍待实测。本次浏览器请求隔离未建立，已关闭任务标签及其DevTools；新默认规则清除、网络过滤文字恢复仍待稳定窗口，见[尝试与恢复边界](offline-build-audit.md#9-chrome-请求隔离尝试未建立任务标签已关闭)。见[离线验收步骤](offline-build-audit.md#5-真实断网验收步骤待执行)。
+3. **Git 交付。** 本 Goal 使用用户指定的 `Agent-Model: gpt-6-astra`、`Agent-Effort: max`。M1–M5 实现提交的精确树、父提交、身份和消息见[回读证据](evidence/milestone-commits.json)。M5 实现候选已本地提交；用户已授权的最终推送 / PR 尚待收尾，未将缺少环境的必需项标为通过。
+
+2026-09-11 17:06 后的实际界面状态：为停止请求隔离尝试，已关闭本任务Chrome标签及附属DevTools；此前可玩截图对应关闭前时刻。正式preview仍在固定5174运行，真实1109代存档与导出未改写。没有把目标关闭当作已删除浏览器保存的临时规则。

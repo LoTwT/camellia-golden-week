@@ -202,3 +202,7 @@ JS
 同一冻结源码随后以独立acceptance观察包`index-BswYUKV9.js`在固定5174实测仓库6次玩家/镜头跟随、64格房间6次移动，以及标准/低画质各连续前台60次正常移动；本机本次均满足原性能阈值。逐步和窗口口径见[性能记录第8节](performance.md#8-最终同源码观察包chrome移动与两档60秒采样)，没有借观察包改位置、分数、目标或门。
 
 观察结束后正常恢复默认设置并走回仓库，主任务把5174恢复production。最终正常reload/继续、F重复访问已完成终端、UI导出后返回游戏，仍为**1109代、仓库7,0、26奖励/130**，48目标、9完成布局、9最好成绩保持；DOM确认无验收快照与故障面板、画布就绪且没有对话框。[最终恢复记录](evidence/m5-chrome-final-production-restored.json)、[完整UI导出](evidence/m5-chrome-final-production-restored-save.json)与[可玩画面](evidence/m5-chrome-final-playable-production.jpg)均已保存，保留可玩Chrome标签546939540。本段是正常续档收尾，不是另一遍新档通关。
+
+## 8. 隔离尝试后的当前界面状态
+
+B133尝试浏览器请求隔离未成功，未配置并验证localhost豁免，也没有取得外部阻断对照。原生所选页面与验收目标不一致后停止全局键鼠；通过owned tab.close仅关闭任务标签546939540及DevTools，当前不再保留该可玩标签。此前1109真实导出和生产服务仍保留；默认规则删除与过滤文字恢复待可安全操作的窗口。详细实际记录见[离线审计第9节](offline-build-audit.md#9-chrome-请求隔离尝试未建立任务标签已关闭)，不把原生AX可读或关闭标签当作V06通过。
