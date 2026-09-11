@@ -199,7 +199,7 @@ C 图只能证实推车的这些粗轮廓；信号球本体和基站外观仍未
 
 子集保留 hint、名称、版权、layout features 和 `.notdef` 轮廓，设置 `recalcTimestamp=False`；源 OTF 的固定 SHA-256 为 `faa6c9df652116dde789d351359f3d7e5d2285a2b2a1f04a2d7244df706d5ea9`，写入前必须匹配。运行源码需要的每一个字符都必须存在于源字体和生成后的 cmap；任意用户导入文件名所带的额外字符允许使用 CSS 系统 fallback，不在冻结 UI 字符集合中。
 
-以下命令从仓库根目录运行。Python 工具和原字体保留在隔离目录，不成为 `npm ci`、构建或离线运行依赖：
+以下命令从仓库根目录运行。Python 工具和原字体保留在隔离目录，不成为 `pnpm install --frozen-lockfile`、构建或离线运行依赖：
 
 ```sh
 python3 -m venv /tmp/camellia-art-tools

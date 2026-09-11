@@ -1,0 +1,8 @@
+{
+  "oldNpmLockSha256": "c3d84387ca0e8398f415206cbcc418b6342da47fb19c73cd92e53bc05f48fcbd",
+  "pnpmLockSha256": "0cec93ea51b4782f8e65752398391f980a1d02038dce313300aadda22b23026a",
+  "lockedPackages": 112,
+  "packageVersionsAndIntegrityIdentical": true,
+  "directDependenciesIdentical": true,
+  "method": "Read npm packages and every generated pnpm packages resolution; assert exact name/version/integrity map equality."
+}

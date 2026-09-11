@@ -11,7 +11,7 @@
     "typecheck": "tsc --noEmit",
     "validate:content": "node scripts/generate-assets.ts --check && node scripts/validate-content.ts",
     "test": "node --test tests/*.test.ts",
-    "build": "npm run lint && npm run format:check && npm run typecheck && npm run validate:content && vite build",
+    "build": "pnpm run lint && pnpm run format:check && pnpm run typecheck && pnpm run validate:content && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -27,7 +27,7 @@
   },
   "engines": {
     "node": ">=24.18.0 <25",
-    "npm": ">=11.16.0 <12"
+    "pnpm": "11.25.0"
   },
-  "packageManager": "npm@11.16.0"
+  "packageManager": "pnpm@11.25.0"
 }

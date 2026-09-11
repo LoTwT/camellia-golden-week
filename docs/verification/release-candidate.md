@@ -21,14 +21,16 @@
 
 本包包含失锁恢复入口修复：离开前的内存副本保留原代数并明确标注来源；重新取得会话后须读取本地进度才能游玩。新提示所需的“副”“它”已显式加入本地字体，802 个源码字符覆盖检查通过。归档与审计均未改写构建。单 JS 超过 650 kB 的 Vite 提示保留，未调高阈值隐藏它。资源来源与重建差异见[美术实施记录](../references/art-implementation.md)和[六类视觉对照](../references/visual-comparison-m5.md)。
 
+后续 pnpm 迁移已从干净依赖目录重建并逐项核对：84 个产物与本 ZIP 完全相同，归档无须替换。[迁移记录](pnpm-migration.md)提供当前锁文件、工程检查和 85 次 HTTP 核对；原 npm 日志及源指纹保留原提交含义。
+
 ## 2. 安装和启动
 
-使用 Node **24.18.0**、npm **11.16.0**，在仓库根目录运行：
+使用 Node **24.18.0**、pnpm **11.25.0**，在仓库根目录运行：
 
 ```sh
-npm ci
-npm run build
-npm run preview -- --host localhost --port 5174 --strictPort
+pnpm install --frozen-lockfile
+pnpm run build
+pnpm run preview --host localhost --port 5174 --strictPort
 ```
 
 打开 [localhost:5174](http://localhost:5174)。不要同时启动另一个占用 5174 的 dev 或 preview。游戏使用本地 HTTP 服务，不直接双击 HTML；外网断开时仍需保持本地服务运行。首次安装依赖需要网络；V06 本次不再要求，离线可玩不作交付保证。
@@ -36,12 +38,14 @@ npm run preview -- --host localhost --port 5174 --strictPort
 已有依赖时可预览归档包。先核对 ZIP 的 SHA-256，解压到新的目录，再将目录的绝对路径作为 `--outDir`：
 
 ```sh
-npm run preview -- --host localhost --port 5174 --strictPort --outDir /absolute/path/to/unpacked-game
+pnpm run preview --host localhost --port 5174 --strictPort --outDir /absolute/path/to/unpacked-game
 ```
 
 本机 Vite 8.3.0 的 `preview --help` 已确认支持该选项。实际 Chrome 生产回归运行默认 `dist/`，其字节已与 ZIP 逐项比较相同。键鼠、暂停、声音、导出、导入、旧档保护与跨浏览器迁移统一见 [README](../../README.md#操作与进度)。
 
 ## 3. 工程检查
+
+以下 npm 日志保留 M5 原交付时的实际执行方式；项目现已使用 pnpm，迁移后的安装、锁文件与全部工程检查见[pnpm 迁移记录](pnpm-migration.md)。
 
 | 命令 / 检查      | 实际结果与原始证据                                                                                                                                                                                                                                                    |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

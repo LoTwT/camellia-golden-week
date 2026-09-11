@@ -1,0 +1,520 @@
+{
+  "recordedAt": "2026-09-11T10:18:31.493163+00:00",
+  "command": "pnpm run preview --host localhost --port 5174 --strictPort",
+  "previewPid": 99719,
+  "requests": 85,
+  "allResponsesEqualDist": true,
+  "checks": [
+    {
+      "route": "/",
+      "status": 200,
+      "bytes": 476,
+      "sha256": "e3b6f8816f0d1f69aad496fa12e4d85e0d560d58db0de18e647c5ab68662079c"
+    },
+    {
+      "route": "/assets/audio/amplify.wav",
+      "status": 200,
+      "bytes": 31796,
+      "sha256": "b9511d1d35cf1a932c0d417622467a03c0c9682bec1627d0a6ea8261a5adf148"
+    },
+    {
+      "route": "/assets/audio/beat.wav",
+      "status": 200,
+      "bytes": 4014,
+      "sha256": "fe3f0fcf1ce1bf5244bc241d0aae2509a18feca1c1b21db6bbf5ed937710a826"
+    },
+    {
+      "route": "/assets/audio/door.wav",
+      "status": 200,
+      "bytes": 16802,
+      "sha256": "49ec2f0e2280cc369b0f9e7338371676cd14d5665f36fd22de37145e686b7d14"
+    },
+    {
+      "route": "/assets/audio/failure.wav",
+      "status": 200,
+      "bytes": 28268,
+      "sha256": "ba8cf995974d5d05e3ff4c867bd5fbf5325180848ce8e4e32b4e332c715ad6a0"
+    },
+    {
+      "route": "/assets/audio/invalid.wav",
+      "status": 200,
+      "bytes": 8864,
+      "sha256": "7cba424f718a072fb03f5808ddc7464775f349017ed6a5dca8dd9e85d692a2c9"
+    },
+    {
+      "route": "/assets/audio/move.wav",
+      "status": 200,
+      "bytes": 6218,
+      "sha256": "f1bd5b88a0a151a68099deb4077db98ddadd50e2e40513335560c6601072614b"
+    },
+    {
+      "route": "/assets/audio/pickup.wav",
+      "status": 200,
+      "bytes": 21212,
+      "sha256": "8920a19c6f191a2c0cbc89882a7696fc579c51c8afc714c5f924489b1f156e90"
+    },
+    {
+      "route": "/assets/audio/portal.wav",
+      "status": 200,
+      "bytes": 30032,
+      "sha256": "8bdd5ec6b3a9588c7079219f65e65fd1b66a1fafa11e8dea75300c98ed1262a5"
+    },
+    {
+      "route": "/assets/audio/reveal.wav",
+      "status": 200,
+      "bytes": 15920,
+      "sha256": "7aa37724210d97db3ee2530c914133256713ae1803b55d2e603a2a76330969fe"
+    },
+    {
+      "route": "/assets/audio/success.wav",
+      "status": 200,
+      "bytes": 45908,
+      "sha256": "92ca1f296bc50631f7430cebbf2f4ace8d31434d9ea686d416b73d5a2f100a74"
+    },
+    {
+      "route": "/assets/fonts/barlow-OFL.txt",
+      "status": 200,
+      "bytes": 4377,
+      "sha256": "186d750eb496a4c17a76385f82be6aea2ac1cf2de074a811d63786cf374ea73f"
+    },
+    {
+      "route": "/assets/fonts/camellia-numerals.woff2",
+      "status": 200,
+      "bytes": 39384,
+      "sha256": "b8e2a9d1682b07a98f5a7330389dbd30417ee6be449310fd54feff4e6690b608"
+    },
+    {
+      "route": "/assets/fonts/camellia-ui.woff2",
+      "status": 200,
+      "bytes": 182592,
+      "sha256": "c78799c16975421b3513435fa8a71f031434d8d39840682051f804473c89f217"
+    },
+    {
+      "route": "/assets/fonts/noto-OFL.txt",
+      "status": 200,
+      "bytes": 4301,
+      "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2"
+    },
+    {
+      "route": "/assets/icons/antivirus.png",
+      "status": 200,
+      "bytes": 5742,
+      "sha256": "b77afaf65dcab267b5ffa6197f051c73509a5aba16be08bfb8219668428d8f36"
+    },
+    {
+      "route": "/assets/icons/antivirus.svg",
+      "status": 200,
+      "bytes": 412,
+      "sha256": "494e4b00faba7f8f58a8dbbf2830c116e4de0a00bc6ee2b02a296c681b9f1ebf"
+    },
+    {
+      "route": "/assets/icons/cart.png",
+      "status": 200,
+      "bytes": 8094,
+      "sha256": "34127d750def1f349550ba85f8491bf715ad86feb8b09485c311e889009f73fc"
+    },
+    {
+      "route": "/assets/icons/cart.svg",
+      "status": 200,
+      "bytes": 907,
+      "sha256": "e213428418072122e69b0c44f50d9291066c2cff49a44f85c1a7eb2ad6a53402"
+    },
+    {
+      "route": "/assets/icons/checkpoint.png",
+      "status": 200,
+      "bytes": 2303,
+      "sha256": "70700f650aa17a27d8fbf5ea85ce9647eec3d679c21a49de2fd284e1d4619162"
+    },
+    {
+      "route": "/assets/icons/checkpoint.svg",
+      "status": 200,
+      "bytes": 368,
+      "sha256": "0908a565c0f22e1c8ea9b233a778ba3c15183b9682d7e0cc84aedd7349edca4e"
+    },
+    {
+      "route": "/assets/icons/data-collected.png",
+      "status": 200,
+      "bytes": 2593,
+      "sha256": "601f3b9862723f252d2da8cef2eab8efaa0e387872ca74dd1147e7374b48ba91"
+    },
+    {
+      "route": "/assets/icons/data-collected.svg",
+      "status": 200,
+      "bytes": 376,
+      "sha256": "5fa350e50439d5c4adb5cda8dd41c4cd8cd8be5a115759506346535dcc8ddb73"
+    },
+    {
+      "route": "/assets/icons/data-object.png",
+      "status": 200,
+      "bytes": 3430,
+      "sha256": "d3382e7545fa87c731d5b240cef2c4f59f7e6b947ef288b6763b2d745caf588b"
+    },
+    {
+      "route": "/assets/icons/data-object.svg",
+      "status": 200,
+      "bytes": 389,
+      "sha256": "7f3f99ba349f8c149c842e2a16ffe54f8910c21cf66aaa8c50e4b55af233298b"
+    },
+    {
+      "route": "/assets/icons/data-ready.png",
+      "status": 200,
+      "bytes": 1963,
+      "sha256": "cff56ba717b6733b3a619b6d3e89c1bfafcaf9b1fc4c21c6b582b78922edb8d3"
+    },
+    {
+      "route": "/assets/icons/data-ready.svg",
+      "status": 200,
+      "bytes": 423,
+      "sha256": "9fd7dc4fd59309334feef483d531adaae77ea36f8907dd97a260b21d578716cd"
+    },
+    {
+      "route": "/assets/icons/door-closed.png",
+      "status": 200,
+      "bytes": 2207,
+      "sha256": "99cbce2d6ad165c4324e03e6fb643430b3a475f8c831819ac1845d3e5f4baf6d"
+    },
+    {
+      "route": "/assets/icons/door-closed.svg",
+      "status": 200,
+      "bytes": 410,
+      "sha256": "ac0a16357ad5b14bcb0f8188998fe828689678f9e8221656920d44ad1a81c47e"
+    },
+    {
+      "route": "/assets/icons/door-open.png",
+      "status": 200,
+      "bytes": 3078,
+      "sha256": "a327c116ff7487d9515f307d5dcecf5da47da3257fff1765c74e8b472a538095"
+    },
+    {
+      "route": "/assets/icons/door-open.svg",
+      "status": 200,
+      "bytes": 349,
+      "sha256": "cd32ddcc814333246ca9ced8f4332e21ef9fdf48cbf62de939a51cd4a7c14791"
+    },
+    {
+      "route": "/assets/icons/enrichment-ready.png",
+      "status": 200,
+      "bytes": 11221,
+      "sha256": "6db61071942b4172dc797ca8df1550b68effa51e22b5f08ef633ad612f0dfd3a"
+    },
+    {
+      "route": "/assets/icons/enrichment-ready.svg",
+      "status": 200,
+      "bytes": 460,
+      "sha256": "1d8a6800a9c8bb6a2b808f185e77595a7dbbaf3c5c10cc78e5f260e5de011761"
+    },
+    {
+      "route": "/assets/icons/enrichment-used.png",
+      "status": 200,
+      "bytes": 5875,
+      "sha256": "51b9ea8602c2d57310358c372a7880880256df6b6c3b3698ba3adec150bc0845"
+    },
+    {
+      "route": "/assets/icons/enrichment-used.svg",
+      "status": 200,
+      "bytes": 350,
+      "sha256": "fa71fe12251dfcfed5aba7a4487bb7dd623bd52dc07b766a2ab97c3553f05fd3"
+    },
+    {
+      "route": "/assets/icons/firewall.png",
+      "status": 200,
+      "bytes": 3182,
+      "sha256": "13d2e1c38467c392f36e5a0e55662ab9496634fd7eaa050062616e75ad2d7d17"
+    },
+    {
+      "route": "/assets/icons/firewall.svg",
+      "status": 200,
+      "bytes": 441,
+      "sha256": "086ec458cc6bc924e17c98c25cce8a007ace9462253d77f8987b505dc24f8308"
+    },
+    {
+      "route": "/assets/icons/ghost.png",
+      "status": 200,
+      "bytes": 6315,
+      "sha256": "01963c35b33514e3b6bd8d915367e52416baf4d52671a6a8751b8e9cd0d104b8"
+    },
+    {
+      "route": "/assets/icons/ghost.svg",
+      "status": 200,
+      "bytes": 644,
+      "sha256": "3c8454ec2b926f619fb6d96d4b7696590b493aafcedfdb7341b07fdccb26e0ae"
+    },
+    {
+      "route": "/assets/icons/hazard-active.png",
+      "status": 200,
+      "bytes": 6365,
+      "sha256": "2a6732ec561a2521174a2df6eafbdd57909b73447073008930c83487264482ce"
+    },
+    {
+      "route": "/assets/icons/hazard-active.svg",
+      "status": 200,
+      "bytes": 340,
+      "sha256": "cdf56bfffde0e5cb2990b23876f83fac91db2482e665e295a54eae504ae09438"
+    },
+    {
+      "route": "/assets/icons/hazard-safe.png",
+      "status": 200,
+      "bytes": 3340,
+      "sha256": "9476f6758a086c83cfd21910c81801a17f4335a2482dcad925b217c4fbec4fe6"
+    },
+    {
+      "route": "/assets/icons/hazard-safe.svg",
+      "status": 200,
+      "bytes": 292,
+      "sha256": "20b7884d408e5e2c9d0354daf1368eca4385cb5a674f31403e70e9ff1e255dcd"
+    },
+    {
+      "route": "/assets/icons/lamp-lit.png",
+      "status": 200,
+      "bytes": 6116,
+      "sha256": "05b942ae124eb2ecbe1fc610c388d437bf00274e2acb3d97b8fa2f38128c7a2a"
+    },
+    {
+      "route": "/assets/icons/lamp-lit.svg",
+      "status": 200,
+      "bytes": 487,
+      "sha256": "fab059e5bdb8ccac2b7f7040e948be7841565f319fd6616c53e5e4e8e6f84e20"
+    },
+    {
+      "route": "/assets/icons/lamp-unlit.png",
+      "status": 200,
+      "bytes": 6916,
+      "sha256": "9a69f611d9cbaf128ee20986327dc62c0ec479a6ad18c6254218cdae6ef37a69"
+    },
+    {
+      "route": "/assets/icons/lamp-unlit.svg",
+      "status": 200,
+      "bytes": 353,
+      "sha256": "f622c0bb5d3a72271444712ec54595265e77303d441a7a6abe3521e9d0b3ab2d"
+    },
+    {
+      "route": "/assets/icons/observation.png",
+      "status": 200,
+      "bytes": 5850,
+      "sha256": "90a45105541ffb0667e6aac7cae8933270fb869dcb6ab098d44532cb78e86dde"
+    },
+    {
+      "route": "/assets/icons/observation.svg",
+      "status": 200,
+      "bytes": 386,
+      "sha256": "2606a26bf45032d86b1367c6db299a1ccf742eb0fe1187a1e7b8b9e1fa15fed1"
+    },
+    {
+      "route": "/assets/icons/player-hurt.png",
+      "status": 200,
+      "bytes": 8589,
+      "sha256": "37869f1f036cf26bb3528d16c376f2e3c9a8027dc4611c1b936ef2ac6e74a9b4"
+    },
+    {
+      "route": "/assets/icons/player-hurt.svg",
+      "status": 200,
+      "bytes": 654,
+      "sha256": "939119163f39b3a094582ef624ff75ae575d23579f95f1d504374e0dd9bbb97f"
+    },
+    {
+      "route": "/assets/icons/player-idle.png",
+      "status": 200,
+      "bytes": 9158,
+      "sha256": "ec5a1ea8c4f64adbf8f54ac89083f887396614a6397a8c53f4a88040a90cce0a"
+    },
+    {
+      "route": "/assets/icons/player-idle.svg",
+      "status": 200,
+      "bytes": 748,
+      "sha256": "4d716487c73b8ce86ca5746575d14270f1854bb2c7f43047ff318b7f0421e2a9"
+    },
+    {
+      "route": "/assets/icons/player-move.png",
+      "status": 200,
+      "bytes": 9215,
+      "sha256": "1059af5a7b7e604ac262eef8a124ab70d7b4b702e95b12a72c3ac6595d40e10b"
+    },
+    {
+      "route": "/assets/icons/player-move.svg",
+      "status": 200,
+      "bytes": 819,
+      "sha256": "65d56830a749d0d86c5e421bdb6f5bf45351a14496f87f9f14960b9ecac8c8c3"
+    },
+    {
+      "route": "/assets/icons/portal-locked.png",
+      "status": 200,
+      "bytes": 7356,
+      "sha256": "bdc7827a13e1306f674cb98dc4dbc04314d67952d811f5748d4de142ad45f95f"
+    },
+    {
+      "route": "/assets/icons/portal-locked.svg",
+      "status": 200,
+      "bytes": 457,
+      "sha256": "7ead15e2b9449a844a216e7b3f63f6ab07e9a8d739bec523193a64bad005b69d"
+    },
+    {
+      "route": "/assets/icons/portal-ready.png",
+      "status": 200,
+      "bytes": 6206,
+      "sha256": "a8fde719c5d4218f457540e1b8b08ea23c9d5498b772ae4a1d695d838dcf2bcc"
+    },
+    {
+      "route": "/assets/icons/portal-ready.svg",
+      "status": 200,
+      "bytes": 362,
+      "sha256": "4208fcdfb50b138e53f52cbf16c20f0992c3b87dc83cd69a9b3ab93c2220f96f"
+    },
+    {
+      "route": "/assets/icons/signal-ball.png",
+      "status": 200,
+      "bytes": 9868,
+      "sha256": "c594fc107f7062ba9babb20893011bd73daf85e7c13b106e04d95156a5d72ba2"
+    },
+    {
+      "route": "/assets/icons/signal-ball.svg",
+      "status": 200,
+      "bytes": 465,
+      "sha256": "33987507a25766638487180b5e66125f135d6675ae383b5840819f250c6b1ada"
+    },
+    {
+      "route": "/assets/icons/socket.png",
+      "status": 200,
+      "bytes": 3614,
+      "sha256": "a1605cb5f3488e2b5307546bf863243cd28c59f88cfcd83f18e00da71bb97c41"
+    },
+    {
+      "route": "/assets/icons/socket.svg",
+      "status": 200,
+      "bytes": 370,
+      "sha256": "97ab7ea8dc377cd46cea4210f5a8a0f11a3f9f83d5a664683be50daaa2d1d63b"
+    },
+    {
+      "route": "/assets/icons/station.png",
+      "status": 200,
+      "bytes": 10906,
+      "sha256": "0cd83cd97bf43e9b3f2c926ffbea9c5f865b0e70ebf83b62c707d982c36b01f8"
+    },
+    {
+      "route": "/assets/icons/station.svg",
+      "status": 200,
+      "bytes": 613,
+      "sha256": "58d238a820a77b0cfffd17916efc7d5c2b127cd739e59cb27ab7e50b43894fba"
+    },
+    {
+      "route": "/assets/icons/supply-collected.png",
+      "status": 200,
+      "bytes": 3298,
+      "sha256": "9f08472ce89b8600ca118e715ad4fbfb3259a1d349efa4b152f6b3aa3f96d950"
+    },
+    {
+      "route": "/assets/icons/supply-collected.svg",
+      "status": 200,
+      "bytes": 375,
+      "sha256": "82b110d68764d2bbdfb5e162a60cacec65f484ddaefe7474598af44a161a6f46"
+    },
+    {
+      "route": "/assets/icons/supply-ready.png",
+      "status": 200,
+      "bytes": 2005,
+      "sha256": "e21a39a4ea029c97156268b251d4de157df32dedbf3a2e2f7336b44f201b078e"
+    },
+    {
+      "route": "/assets/icons/supply-ready.svg",
+      "status": 200,
+      "bytes": 496,
+      "sha256": "f1f461bbdbff189d36aaedbcd569a2aaa3bab731a2848e2d2d3d26b4d4ebc820"
+    },
+    {
+      "route": "/assets/icons/target-blue.png",
+      "status": 200,
+      "bytes": 2201,
+      "sha256": "b2fa4ec95c20612efc13f5d2d5e102286d6c9dedea4a745eecdb4d7f4cb6a814"
+    },
+    {
+      "route": "/assets/icons/target-blue.svg",
+      "status": 200,
+      "bytes": 383,
+      "sha256": "629f596d08878f370c465887d72341db206c7b3bfea5d2773ef6069a68f7e1c2"
+    },
+    {
+      "route": "/assets/icons/target-purple.png",
+      "status": 200,
+      "bytes": 7601,
+      "sha256": "1544eef29da637053585a480343131053197140fbf8fe6eb8fad5c22f5dec426"
+    },
+    {
+      "route": "/assets/icons/target-purple.svg",
+      "status": 200,
+      "bytes": 445,
+      "sha256": "cc5de612ecbd2d140e303d5c0584ee31d8758dec3e4964ec2c522aa43e3d7ccd"
+    },
+    {
+      "route": "/assets/icons/target-star.png",
+      "status": 200,
+      "bytes": 6120,
+      "sha256": "21f238dc9846aaa08d527c56dad81df64cb7032cd29541171d550cb7f0c2907b"
+    },
+    {
+      "route": "/assets/icons/target-star.svg",
+      "status": 200,
+      "bytes": 347,
+      "sha256": "7ab4b2828590fde81fb08601d6e7b47bde06c2a1d3b48f71ddf1277f7c5e2545"
+    },
+    {
+      "route": "/assets/icons/terminal-complete.png",
+      "status": 200,
+      "bytes": 3096,
+      "sha256": "8ff1c3f7742c05ff9ac18fae74d7bf8a219fadb675802d757360ccf990277e8b"
+    },
+    {
+      "route": "/assets/icons/terminal-complete.svg",
+      "status": 200,
+      "bytes": 425,
+      "sha256": "a97cb2adca741d9c2a42a9a91f3c935c5d9be0987e085fe38d46dc407bcf86bf"
+    },
+    {
+      "route": "/assets/icons/terminal-ready.png",
+      "status": 200,
+      "bytes": 3338,
+      "sha256": "95f66cd24c989fb3b01f6f6d95eef708523d47759a5f129c734a11297e383bb4"
+    },
+    {
+      "route": "/assets/icons/terminal-ready.svg",
+      "status": 200,
+      "bytes": 492,
+      "sha256": "6e51024a7d7ad42dee10d3a6f70239319a3a1c7c6e84ea8a1c00847e486d511c"
+    },
+    {
+      "route": "/assets/icons/unknown.png",
+      "status": 200,
+      "bytes": 3169,
+      "sha256": "9aeaa9f3e83b1be6950b7180e98b589822cde4c8ed03c1d8286a682d36e381f8"
+    },
+    {
+      "route": "/assets/icons/unknown.svg",
+      "status": 200,
+      "bytes": 355,
+      "sha256": "056d54ecf3cc62a5366d65e272eb3690c528decb7a85089be703f985cb6bd11f"
+    },
+    {
+      "route": "/assets/index-BpL7y5kK.js",
+      "status": 200,
+      "bytes": 917896,
+      "sha256": "f4ccd401cec5d6512dfd4fd4a015858486fd3166be5a4d60dfadc4297d5b0753"
+    },
+    {
+      "route": "/assets/index-XdWH7aHE.css",
+      "status": 200,
+      "bytes": 7940,
+      "sha256": "aa5dd9fc22231c02015400123975941dd426dc270b44164fa8918fce3313657f"
+    },
+    {
+      "route": "/assets/manifest.json",
+      "status": 200,
+      "bytes": 113374,
+      "sha256": "dfd663d053d0b0ee85662ae3fbbe55158c1761756acac013d1e8a523529fac6c"
+    },
+    {
+      "route": "/index.html",
+      "status": 200,
+      "bytes": 476,
+      "sha256": "e3b6f8816f0d1f69aad496fa12e4d85e0d560d58db0de18e647c5ab68662079c"
+    }
+  ],
+  "scope": "Local HTTP resources only; no new browser playthrough or offline assertion"
+}

@@ -1,0 +1,25 @@
+$ node scripts/generate-assets.ts --check && node scripts/validate-content.ts
+Asset check passed: 45 records (prepared-all-profiles); exact profile membership, local checksums and recorded font coverage.
+M1 目录账本：6 个奖励 ID / 26 单位；世界地图已收录，继续校验
+M1 世界结构：2 区 / 61 格 / 7 房 / 80 本版数据，引用闭合通过
+M2 目录账本：11 个奖励 ID / 51 单位；世界地图已收录，继续校验
+M2 世界结构：3 区 / 105 格 / 12 房 / 160 本版数据，引用闭合通过
+M3 目录账本：17 个奖励 ID / 81 单位；世界地图已收录，继续校验
+M3 世界结构：4 区 / 146 格 / 16 房 / 260 本版数据，引用闭合通过
+M4 目录账本：26 个奖励 ID / 130 单位；世界地图已收录，继续校验
+M4 世界结构：6 区 / 214 格 / 18 房 / 400 本版数据，引用闭合通过
+M5 目录账本：26 个奖励 ID / 130 单位；世界地图已收录，继续校验
+M5 世界结构：6 区 / 214 格 / 18 房 / 400 本版数据，引用闭合通过
+静态独立规则：9 个固定定义 / 27 条成功、替代解与恢复见证通过
+实时独立规则：9 个固定定义 / 18 条成功与失败见证通过；尚未收录区域不据此视为世界验收通过
+m1.world.main-path：40 条公开命令，2 次首次领取；6 物资，通过
+m1.world.full-collection-and-return：1309 条公开命令，6 次首次领取；26 物资，通过
+m2.world.main-path：78 条公开命令，3 次首次领取；11 物资，通过
+m2.world.full-collection-and-return：2480 条公开命令，11 次首次领取；51 物资，通过
+m3.world.main-path：131 条公开命令，3 次首次领取；11 物资，通过
+m3.world.full-collection-and-return：2788 条公开命令，17 次首次领取；81 物资，通过
+m4.world.main-path-without-scored-challenges：688 条公开命令，20 次首次领取；100 物资，通过
+m4.world.full-collection-and-return：3135 条公开命令，26 次首次领取；130 物资，通过
+m5.world.main-path-without-scored-challenges：688 条公开命令，20 次首次领取；100 物资，通过
+m5.world.full-collection-and-return：3135 条公开命令，26 次首次领取；130 物资，通过
+内容校验只读完成。浏览器、存档故障与视听验收由各自记录承担。

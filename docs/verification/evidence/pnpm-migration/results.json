@@ -1,0 +1,168 @@
+{
+  "recordedAt": "2026-09-11T10:22:02.349972+00:00",
+  "platform": "macOS arm64",
+  "runtime": {
+    "node": "v24.18.0",
+    "pnpm": "11.25.0"
+  },
+  "baselineCommit": "6a845ab5fb6bcdd15e6795c5387e4024a0e963c2",
+  "migration": "npm to pnpm; game dependencies and runtime unchanged",
+  "commands": [
+    {
+      "command": "pnpm import",
+      "exitCode": 0,
+      "log": "import.log"
+    },
+    {
+      "command": "pnpm install --frozen-lockfile",
+      "exitCode": 0,
+      "log": "install.log"
+    },
+    {
+      "command": "pnpm run lint",
+      "exitCode": 0,
+      "log": "lint.log"
+    },
+    {
+      "command": "pnpm run format:check",
+      "exitCode": 0,
+      "log": "format-check.log"
+    },
+    {
+      "command": "pnpm run typecheck",
+      "exitCode": 0,
+      "log": "typecheck.log"
+    },
+    {
+      "command": "pnpm run validate:content",
+      "exitCode": 0,
+      "log": "content.log"
+    },
+    {
+      "command": "pnpm test",
+      "exitCode": 0,
+      "log": "test.log"
+    },
+    {
+      "command": "pnpm run build",
+      "exitCode": 0,
+      "log": "build.log"
+    },
+    {
+      "command": "pnpm run format:check (final documentation)",
+      "exitCode": 0,
+      "log": "final-format-check.log"
+    }
+  ],
+  "testSummary": {
+    "tests": 411,
+    "pass": 411,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0,
+    "durationMs": 3021.299833
+  },
+  "frozenInstallLockBytesUnchanged": true,
+  "oldLockMatchesBaselineCommit": true,
+  "gameSourceAssetsTestsAndViteConfigUnchanged": true,
+  "readOnlyBuildInputFilesChecked": 161,
+  "buildComparison": "build-comparison.json",
+  "developmentHttpSmoke": "dev-http.json",
+  "productionHttpCheck": "preview-http.json",
+  "occupiedPortCheck": "port-conflict.json",
+  "secretPatternScan": "No matches in selected migration evidence files",
+  "browserScope": "No new gameplay, performance, offline or compatibility test; production bytes match the previously validated archive",
+  "evidence": [
+    {
+      "file": "build-comparison.json",
+      "bytes": 13968,
+      "sha256": "5cc0ddbe60c20d6aec92fef1b0c2511356ec1073c24d82efc6cef92e1f50a97f"
+    },
+    {
+      "file": "build-inputs.json",
+      "bytes": 16643,
+      "sha256": "7bcd16d6917bb7337cae860fbbcb82371d592f9224da31fa95e4c850616ad8e5"
+    },
+    {
+      "file": "build.log",
+      "bytes": 8352,
+      "sha256": "034fd173e52a502946f3684008ff41d477fdf9938a3ebfcb41e25ba0198dad7e"
+    },
+    {
+      "file": "content.log",
+      "bytes": 2318,
+      "sha256": "6650c998bc039c9e6a38cf44695a298f97b916f8e6aa5ac7a250a09ed4926ed8"
+    },
+    {
+      "file": "dev-http.json",
+      "bytes": 573,
+      "sha256": "9140463f1a6d1fcdbbd2408c029f78d089315b212bdb0fc83fdb1b7b0e0bbc4c"
+    },
+    {
+      "file": "dev.log",
+      "bytes": 169,
+      "sha256": "b7824d68ffcd9b70be00d865dc84b31163a775eed95c9f2e96e43f26f7e931f3"
+    },
+    {
+      "file": "final-format-check.log",
+      "bytes": 131,
+      "sha256": "22420c0c72c27fbcb72053f96821ea379683ca8e32e331cb1e6a60037bff007f"
+    },
+    {
+      "file": "format-check.log",
+      "bytes": 132,
+      "sha256": "ded91e5be502e9f1646b2bc2ad1d1d179143775f42045487c5310613301d6dc7"
+    },
+    {
+      "file": "import.log",
+      "bytes": 487,
+      "sha256": "d8fb393bf38c37767f9e9b50d4467b3964d071f1c51c8c149ae2ac0878fdb5ff"
+    },
+    {
+      "file": "install.log",
+      "bytes": 1760,
+      "sha256": "74d2ba63276fd829d1d9bb2977eeddad0ae26a2977638f528a7db754acc3c3ce"
+    },
+    {
+      "file": "lint.log",
+      "bytes": 25,
+      "sha256": "d4a09b61560776ae8feee6a490738c8d5748a904be5cbbc1d00a2d92a4587484"
+    },
+    {
+      "file": "lock-comparison.json",
+      "bytes": 422,
+      "sha256": "7ec6989f59a15162cb9a4e03f0f9bb32759158c9ff3c2a0d3c99a9fd0ea5e9bf"
+    },
+    {
+      "file": "port-conflict.json",
+      "bytes": 397,
+      "sha256": "1620e21df909730300fc91f348a4daa05c07eaf24440be5e21d7a54cfff8dbd9"
+    },
+    {
+      "file": "preview-http.json",
+      "bytes": 15985,
+      "sha256": "4773ab2bdf10b8ae281bf08ce1ddb840c52de535515f179d1635c20984b1c76a"
+    },
+    {
+      "file": "preview-port-conflict.log",
+      "bytes": 781,
+      "sha256": "e169bb982a115e505f070aa3bedb615a88c06f801a6cd435f926f5d255881a6e"
+    },
+    {
+      "file": "preview.log",
+      "bytes": 96,
+      "sha256": "6364617c493de12a5da9493f8a10bf360eab0ee6eb4c6abb5583206423a0c2bb"
+    },
+    {
+      "file": "test.log",
+      "bytes": 43064,
+      "sha256": "464616a5eec028cc05a3016b4d190a724125e948c97a6863e537ffa57fa1f795"
+    },
+    {
+      "file": "typecheck.log",
+      "bytes": 15,
+      "sha256": "8366207267355d3e3d5bf3bf6e8c94c5f93f6078c34f08973fa2b38cdda6cc92"
+    }
+  ]
+}

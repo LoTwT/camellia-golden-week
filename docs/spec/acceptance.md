@@ -130,22 +130,22 @@ M1 在批量铺设前交付中心 / A 区代表画面及资源清单，此后各
 
 ## 8. 未来工程命令合同
 
-下列命令已在 M1–M5 实施中建立并实际执行，当前说明见 [README](../../README.md#工程检查)，原始日志见[验收结果](../verification/acceptance-results.md)。最初规格交付时尚无 package.json 的状态属于历史记录。
+下列工程入口在 M1–M5 实施中建立；后续按用户要求统一改为 pnpm，本轮结果见[pnpm 迁移记录](../verification/pnpm-migration.md)，当前说明见 [README](../../README.md#工程检查)，原始日志见[验收结果](../verification/acceptance-results.md)。最初规格交付时尚无 package.json 的状态属于历史记录。
 
 工作目录是当前 `camellia-golden-week` 仓库，不新建旁支应用目录。
 
 | 命令 | 行为与通过标准 |
 | --- | --- |
-| `npm ci` | 按已提交锁文件安装；首次建工程生成锁文件后才可使用 |
-| `npm run dev -- --host localhost --port 5174 --strictPort` | 单个本地开发服务，端口占用时报错 |
-| `npm run lint` | 执行 `oxlint --deny-warnings`，只检查，不自动修改；源码、脚本与测试零警告 / 错误 |
-| `npm run format` | 执行 `oxfmt`，按项目配置写入支持文件的格式变更 |
-| `npm run format:check` | 执行 `oxfmt --check`，只检查，不写入；格式不一致时非零退出 |
-| `npm run typecheck` | tsc 无输出类型检查，含源代码、校验脚本与测试，零错误；采用 Vue 时增加 `vue-tsc --noEmit` 覆盖 SFC 与模板类型 |
-| `npm run validate:content` | 执行 TypeScript 内容校验脚本，逐 profile 检查并重放关卡见证 |
-| `npm test` | Node 原生测试运行器执行规则 / 时间 / 内容 / 存档用例，失败返回非零 |
-| `npm run build` | lint、格式检查、类型检查、内容校验通过后执行 Vite build，产出完整静态 dist；构建过程不自动修复或格式化源码 |
-| `npm run preview -- --host localhost --port 5174 --strictPort` | 关闭 dev 后使用同一来源验证静态构建与存档 |
+| `pnpm install --frozen-lockfile` | 严格按已提交 pnpm-lock.yaml 安装；缺失或不匹配时失败，不在验收安装中重写锁文件 |
+| `pnpm run dev --host localhost --port 5174 --strictPort` | 单个本地开发服务，端口占用时报错 |
+| `pnpm run lint` | 执行 `oxlint --deny-warnings`，只检查，不自动修改；源码、脚本与测试零警告 / 错误 |
+| `pnpm run format` | 执行 `oxfmt`，按项目配置写入支持文件的格式变更 |
+| `pnpm run format:check` | 执行 `oxfmt --check`，只检查，不写入；格式不一致时非零退出 |
+| `pnpm run typecheck` | tsc 无输出类型检查，含源代码、校验脚本与测试，零错误；采用 Vue 时增加 `vue-tsc --noEmit` 覆盖 SFC 与模板类型 |
+| `pnpm run validate:content` | 执行 TypeScript 内容校验脚本，逐 profile 检查并重放关卡见证 |
+| `pnpm test` | Node 原生测试运行器执行规则 / 时间 / 内容 / 存档用例，失败返回非零 |
+| `pnpm run build` | lint、格式检查、类型检查、内容校验通过后执行 Vite build，产出完整静态 dist；构建过程不自动修复或格式化源码 |
+| `pnpm run preview --host localhost --port 5174 --strictPort` | 关闭 dev 后使用同一来源验证静态构建与存档 |
 
 不要求玩家安装测试工具、MCP 或浏览器插件。每里程碑先跑必要的 lint / 格式 / 类型 / 内容 / 规则检查，再跑该阶段新增流程与受影响的升级路径；只有代码变更、失败或未关闭风险才重复扩大全套测试。
 

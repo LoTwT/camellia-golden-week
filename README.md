@@ -14,18 +14,18 @@
 
 ## 安装与运行
 
-开发与验收使用 Node **24.18.0**、npm **11.16.0**；版本约束见 `.node-version` 和 `package.json`，依赖版本由 `package-lock.json` 固定。在仓库根目录运行：
+开发与验收使用 Node **24.18.0**、pnpm **11.25.0**；版本约束见 `.node-version` 和 `package.json`，依赖版本由 `pnpm-lock.yaml` 固定，安装设置见 `pnpm-workspace.yaml`。尚未安装 pnpm 时，按[官方安装说明](https://pnpm.io/installation#installing-a-specific-version)安装指定版本。在仓库根目录运行：
 
 ```sh
-npm ci
-npm run dev -- --host localhost --port 5174 --strictPort
+pnpm install --frozen-lockfile
+pnpm run dev --host localhost --port 5174 --strictPort
 ```
 
 打开 [localhost:5174](http://localhost:5174)。成品构建按以下命令运行；先关闭 dev，避免占用同一端口。
 
 ```sh
-npm run build
-npm run preview -- --host localhost --port 5174 --strictPort
+pnpm run build
+pnpm run preview --host localhost --port 5174 --strictPort
 ```
 
 `dist/` 是静态构建，运行所需图片、字体、声音与内容均随包提供。使用本地 HTTP 服务，不能直接双击 `index.html`；固定入口为 `http://localhost:5174`，端口占用时命令报错。首次安装依赖需要访问 npm 注册表；游戏没有后端、账号或第三方运行服务。离线运行未实测通过，也不作为本次交付保证。
@@ -75,11 +75,13 @@ npm run preview -- --host localhost --port 5174 --strictPort
 ## 工程检查
 
 ```sh
-npm run lint
-npm run format:check
-npm run typecheck
-npm run validate:content
-npm test
+pnpm run lint
+pnpm run format:check
+pnpm run typecheck
+pnpm run validate:content
+pnpm test
 ```
 
-核心为 Vite、TypeScript、Three.js，界面为原生 DOM；权威状态与规则是独立纯 TypeScript 层。Oxlint 检查代码，Oxfmt 检查格式，规则测试使用 Node 原生测试运行器。内容校验读取固定地图、稳定 ID、发布清单及正常命令见证。`npm run build` 包含只读 lint、格式、类型与内容检查；规则测试需单独执行 `npm test`，通过后再按上面的构建与 preview 命令验证静态包。原始验收证据与已批准规格不由 formatter 重写，新增实现、脚本、测试和维护文档接受 Oxfmt 检查。
+核心为 Vite、TypeScript、Three.js，界面为原生 DOM；权威状态与规则是独立纯 TypeScript 层。Oxlint 检查代码，Oxfmt 检查格式，规则测试使用 Node 原生测试运行器。内容校验读取固定地图、稳定 ID、发布清单及正常命令见证。`pnpm run build` 包含只读 lint、格式、类型与内容检查；规则测试需单独执行 `pnpm test`，通过后再按上面的构建与 preview 命令验证静态包。原始验收证据与已批准规格不由 formatter 重写，新增实现、脚本、测试和维护文档接受 Oxfmt 检查。
+
+包管理已按用户要求从 npm 迁移至 pnpm，旧 npm 命令日志保留历史含义。锁文件导入、依赖等价与本轮安装 / 检查 / 构建结果见[pnpm 迁移记录](docs/verification/pnpm-migration.md)。

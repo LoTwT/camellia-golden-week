@@ -10,7 +10,7 @@
 
 核心栈固定为 Vite + TypeScript + Three.js；用户指定 linter 使用 **Oxlint**、formatter 使用 **Oxfmt**，并允许在有实际需要时使用 **Tailwind CSS 与 Vue 相关生态**。按需可用不表示这些界面依赖已经安装或必须一起引入，采用条件见本节后文。
 
-UI 以 HTML / CSS 为基础，音频使用 Web Audio。唯一运行应用是浏览器前端，没有后端、数据库服务或第三方账号。开发环境沿用 Node 24 LTS 系列与 npm；开工锁定实际相容的稳定包版本并记录 Node / npm / 浏览器版本，不复制其他项目的锁文件。
+UI 以 HTML / CSS 为基础，音频使用 Web Audio。唯一运行应用是浏览器前端，没有后端、数据库服务或第三方账号。开发环境使用 Node 24 LTS 系列与 pnpm；当前固定 Node 24.18.0、pnpm 11.25.0。`packageManager` 和 `engines` 声明版本，`pnpm-workspace.yaml` 维护安装设置，提交 `pnpm-lock.yaml` 并以 `pnpm install --frozen-lockfile` 安装。此次按用户要求由 npm 迁移，实际等价检查与运行结果见[pnpm 迁移记录](../verification/pnpm-migration.md)，不复制其他项目的锁文件。
 
 Vite 提供原生 TypeScript 转译，但不执行类型检查，因此 `typecheck` 必须独立运行，`build` 也须包含类型检查。[Vite TypeScript 说明](https://vite.dev/guide/features.html#typescript)
 
@@ -76,7 +76,7 @@ Vue 生态按职责选用：重复的浏览器交互可使用 VueUse；跨组件
 
 Oxlint 和 Oxfmt 作为项目开发依赖安装，分别维护 `.oxlintrc.json` 与 `.oxfmtrc.json`；格式选项先采用 Oxfmt 默认值。`lint` 执行只读检查并将警告视为失败，`format` 写入格式变更，`format:check` 只检查格式。采用 Vue 时启用 Oxlint 内置 `vue` 插件并保留项目所需的默认插件；其 Vue 规则覆盖脚本部分，不能把 lint 通过当作全部模板规则已检查。模板类型由 `vue-tsc` 检查，交互仍按浏览器验收执行。[Oxlint CLI](https://oxc.rs/docs/guide/usage/linter/cli.html)、[Oxlint 插件范围](https://oxc.rs/docs/guide/usage/linter/plugins.html)
 
-使用 Oxfmt 的 npm 包以覆盖 Vue、HTML、Markdown 等文件；采用 Tailwind 时启用 Oxfmt 的类名排序能力。项目 lint 和格式入口统一使用上述工具，不再维护第二套 ESLint / Prettier 配置；Oxfmt 内部使用的格式引擎不属于项目另行选型。[Oxfmt 快速开始](https://oxc.rs/docs/guide/usage/formatter/quickstart.html)、[Oxfmt 格式支持](https://oxc.rs/docs/guide/usage/formatter/language-support)
+通过 pnpm 安装 Oxfmt 包以覆盖 Vue、HTML、Markdown 等文件；采用 Tailwind 时启用 Oxfmt 的类名排序能力。项目 lint 和格式入口统一使用上述工具，不再维护第二套 ESLint / Prettier 配置；Oxfmt 内部使用的格式引擎不属于项目另行选型。[Oxfmt 快速开始](https://oxc.rs/docs/guide/usage/formatter/quickstart.html)、[Oxfmt 格式支持](https://oxc.rs/docs/guide/usage/formatter/language-support)
 
 当前没有阻塞 M1 的其他技术栈确认项。包管理、规则测试、本地存档与音频沿用本文默认方案；M1 实现者按上述条件决定界面依赖并记录实际采用项。只有新增联网服务、账号 / 云存档、桌面安装包或改变目标平台等超出当前范围的需求，才需要重新讨论相应技术选择。
 

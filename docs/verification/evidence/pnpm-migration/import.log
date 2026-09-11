@@ -1,0 +1,9 @@
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Progress: resolved 3, reused 0, downloaded 0, added 0
+Progress: resolved 6, reused 0, downloaded 0, added 0
+Progress: resolved 7, reused 0, downloaded 0, added 0
+Progress: resolved 77, reused 0, downloaded 0, added 0
+Progress: resolved 112, reused 0, downloaded 0, added 0, done
+
+Added 1 entry to minimumReleaseAgeExclude in pnpm-workspace.yaml (set minimumReleaseAgeStrict to true to gate these updates with a prompt):
+  vite@8.3.0
