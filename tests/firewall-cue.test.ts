@@ -14,22 +14,24 @@ const clockAt = (activeTimeMs: number) => ({ ...createClock(0, { realtime: true 
 
 test("防火墙视觉可移动窗口与四档真实评分的首末边界完全一致", () => {
   for (const definition of definitions) {
-    const lastBeat = definition.rules.durationMs - 250;
+    const { firstBeatMs, bpm, windowMs, durationMs, beatMasks } = definition.rules;
+    const period = 60_000 / bpm;
+    const lastBeat = firstBeatMs + (beatMasks.length - 1) * period;
     for (const at of [
       0,
-      99,
-      100,
-      250,
-      400,
-      401,
-      599,
-      600,
-      lastBeat - 151,
-      lastBeat - 150,
+      firstBeatMs - windowMs - 1,
+      firstBeatMs - windowMs,
+      firstBeatMs,
+      firstBeatMs + windowMs,
+      firstBeatMs + windowMs + 1,
+      firstBeatMs + period - windowMs - 1,
+      firstBeatMs + period - windowMs,
+      lastBeat - windowMs - 1,
+      lastBeat - windowMs,
       lastBeat,
-      lastBeat + 150,
-      lastBeat + 151,
-      definition.rules.durationMs,
+      lastBeat + windowMs,
+      lastBeat + windowMs + 1,
+      durationMs,
     ]) {
       const active = createRealtime(definition);
       const cue = firewallCue(definition, active, clockAt(at));
@@ -74,15 +76,20 @@ test("拍点提示读取内容参数，不另写一套250/500/150ms常数", () =
 
 test("已经计分的同一拍显示命中，下一拍重新提示移动", () => {
   const initial = createRealtime(tutorial);
-  const result = advanceRealtime(tutorial, initial, 250, [
-    { kind: "move", direction: "right", activeTimeMs: 250, sequence: 1 },
+  const firstBeat = tutorial.rules.firstBeatMs;
+  const nextBeat = firstBeat + 60_000 / tutorial.rules.bpm;
+  const result = advanceRealtime(tutorial, initial, firstBeat, [
+    { kind: "move", direction: "right", activeTimeMs: firstBeat, sequence: 1 },
   ]);
   assert.equal(result.state.kind, "firewall");
   if (result.state.kind !== "firewall") assert.fail();
-  assert.equal(firewallCue(tutorial, result.state, clockAt(300)).label, "本拍命中");
-  assert.equal(firewallCue(tutorial, result.state, clockAt(450)).label, "等待拍点");
-  assert.equal(firewallCue(tutorial, result.state, clockAt(750)).label, "现在移动");
-  assert.equal(firewallCue(tutorial, result.state, clockAt(750)).beatNumber, 2);
+  assert.equal(firewallCue(tutorial, result.state, clockAt(firstBeat + 50)).label, "本拍命中");
+  assert.equal(
+    firewallCue(tutorial, result.state, clockAt(firstBeat + tutorial.rules.windowMs + 1)).label,
+    "等待拍点",
+  );
+  assert.equal(firewallCue(tutorial, result.state, clockAt(nextBeat)).label, "现在移动");
+  assert.equal(firewallCue(tutorial, result.state, clockAt(nextBeat)).beatNumber, 2);
 });
 
 test("暂停、失焦待恢复和准备倒数不提示玩家输入", () => {
@@ -109,7 +116,10 @@ test("时间终点与已结算状态都关闭输入提示，拍数不会越界",
     firewallCue(tutorial, { ...active, status: "success" }, clockAt(14750)).phase,
     "ended",
   );
-  assert.equal(firewallCue(tutorial, active, clockAt(20000)).beatNumber, 30);
+  assert.equal(
+    firewallCue(tutorial, active, clockAt(20000)).beatNumber,
+    tutorial.rules.beatMasks.length,
+  );
 });
 
 test("画面白光只在有效窗口亮起，拍点达到峰值，命中后仍保持同一节拍", () => {

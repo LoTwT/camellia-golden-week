@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { lstatSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
-import { assembleContent } from "../src/content/assemble.ts";
+import { assembleLegacyContent } from "../src/content/assemble.ts";
 import type { ProfileId } from "../src/core/types.ts";
 import { additiveProfileMigrations } from "../src/platform/migrations.ts";
 import { validatePayload } from "../src/platform/save-payload.ts";
@@ -43,7 +43,8 @@ interface FixtureEnvelope {
   payload: SavePayload;
 }
 const source = JSON.parse(sourceRaw) as FixtureEnvelope;
-const releases = (["M1", "M2", "M3", "M4", "M5"] as ProfileId[]).map(assembleContent);
+// This generator reproduces the published v1 evidence manifest and its original rule boundaries.
+const releases = (["M1", "M2", "M3", "M4", "M5"] as ProfileId[]).map(assembleLegacyContent);
 const target = releases.at(-1)!;
 const registry = additiveProfileMigrations(releases);
 const validate = (payload: unknown) => validatePayload(payload, target, registry);

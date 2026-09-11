@@ -111,6 +111,10 @@ export interface FirewallState extends RealtimeStateBase {
   readonly scoredBeatIndices: readonly number[];
   readonly nextBeatIndex: number;
   readonly maskIndex: number;
+  readonly lastJudgment: {
+    readonly kind: "perfect" | "miss";
+    readonly activeTimeMs: number;
+  } | null;
 }
 
 export interface AntivirusState extends RealtimeStateBase {
@@ -225,6 +229,7 @@ export function createRealtime(definition: RealtimeDefinition): RealtimeState {
         scoredBeatIndices: [],
         nextBeatIndex: 0,
         maskIndex: 0,
+        lastJudgment: null,
       };
     case "antivirus":
       return {
@@ -349,10 +354,39 @@ export function firewallDangerTileIds(
   definition: FirewallDefinition,
   activeTimeMs: number,
 ): readonly string[] {
+  if (
+    !Number.isFinite(activeTimeMs) ||
+    activeTimeMs < 0 ||
+    activeTimeMs >= definition.rules.durationMs
+  )
+    return [];
   const intervalMs = 60_000 / definition.rules.bpm;
   const firstMaskMs = definition.rules.firstBeatMs - intervalMs / 2;
-  const index = Math.floor((activeTimeMs - firstMaskMs) / intervalMs);
+  const index = Math.min(
+    definition.rules.beatMasks.length - 1,
+    Math.floor((activeTimeMs - firstMaskMs) / intervalMs),
+  );
   return definition.rules.beatMasks[index] ?? [];
+}
+
+/** Visual preview only: entering a warning cell never changes the danger judgment. */
+export function firewallWarningTileIds(
+  definition: FirewallDefinition,
+  activeTimeMs: number,
+): readonly string[] {
+  if (
+    !Number.isFinite(activeTimeMs) ||
+    activeTimeMs < 0 ||
+    activeTimeMs >= definition.rules.durationMs
+  )
+    return [];
+  const intervalMs = 60_000 / definition.rules.bpm;
+  const firstMaskMs = definition.rules.firstBeatMs - intervalMs / 2;
+  const nextIndex = Math.floor((activeTimeMs - firstMaskMs) / intervalMs) + 1;
+  const untilNextMask = firstMaskMs + nextIndex * intervalMs - activeTimeMs;
+  if (untilNextMask <= 0 || untilNextMask > 150) return [];
+  const active = new Set(firewallDangerTileIds(definition, activeTimeMs));
+  return (definition.rules.beatMasks[nextIndex] ?? []).filter((tileId) => !active.has(tileId));
 }
 
 function advanceFirewall(
@@ -402,11 +436,13 @@ function advanceFirewall(
         state.combo += 1;
         state.bestCombo = Math.max(state.bestCombo, state.combo);
         state.scoredBeatIndices = [...state.scoredBeatIndices, beatIndex];
+        state.lastJudgment = { kind: "perfect", activeTimeMs: command.activeTimeMs };
         emit("hit", command.activeTimeMs, { tileId: destination, value: state.combo });
       }
     } else {
       const danger = firewallDangerTileIds(definition, command.activeTimeMs).includes(destination);
       state.combo = danger ? 0 : Math.max(0, state.combo - rules.offbeatPenalty);
+      state.lastJudgment = { kind: "miss", activeTimeMs: command.activeTimeMs };
       emit("miss", command.activeTimeMs, {
         tileId: destination,
         value: state.combo,
@@ -758,11 +794,15 @@ export function validateRealtimeDefinition(value: unknown): readonly RealtimeVal
   if (!isRecord(value.goal) || value.goal.kind !== expectedGoal)
     report("goal", "目标与挑战类型不一致。");
   if (value.kind !== "ghosts") {
+    const rows = value.kind === "firewall" && Number(value.ruleVersion) >= 2 ? 4 : 5;
     if (
-      tiles.length !== 25 ||
-      [...coordinates].some((coordinate) => !/^[0-4],[0-4]$/.test(coordinate))
+      tiles.length !== 5 * rows ||
+      tiles.some((tile) => tile.x < 0 || tile.x > 4 || tile.y < 0 || tile.y >= rows)
     )
-      report("tiles", "防火墙和杀毒必须为完整 5 × 5 棋盘。");
+      report(
+        "tiles",
+        `本规则版本的${value.kind === "firewall" ? "防火墙" : "杀毒"}必须为完整 5 × ${rows} 棋盘。`,
+      );
     if (
       tiles.find((tile) => tile.id === entryTileId)?.x !== 2 ||
       tiles.find((tile) => tile.id === entryTileId)?.y !== 2
@@ -783,20 +823,22 @@ function validateCanonicalChallenge(
   tiles: readonly RealtimeTile[],
   report: (path: string, message: string) => void,
 ): void {
-  const firewallContracts: Readonly<Record<string, readonly [number, number, number]>> = {
-    "a.firewall.tutorial": [15000, 12, 0],
-    "a.firewall.inner": [45000, 40, 5],
-    "a.firewall.deep": [45000, 55, 9],
-    "a.firewall.core": [45000, 70, 13],
+  const firewallContracts: Readonly<Record<string, readonly [number, number, number, number]>> = {
+    "a.firewall.tutorial": [15000, 12, 0, 0],
+    "a.firewall.inner": [45000, 40, 5, 5],
+    "a.firewall.deep": [45000, 55, 9, 8],
+    "a.firewall.core": [45000, 70, 13, 12],
   };
   const firewallContract = typeof value.id === "string" ? firewallContracts[value.id] : undefined;
   if (value.kind === "firewall" && firewallContract) {
-    const [durationMs, comboTarget, maskLimit] = firewallContract;
+    const [durationMs, comboTarget, legacyMaskLimit, currentMaskLimit] = firewallContract;
+    const maskLimit = value.ruleVersion === 1 ? legacyMaskLimit : currentMaskLimit;
+    const bpm = value.ruleVersion === 1 ? 120 : 110;
     if (
       rules.durationMs !== durationMs ||
       rules.comboTarget !== comboTarget ||
-      rules.bpm !== 120 ||
-      rules.firstBeatMs !== 250 ||
+      rules.bpm !== bpm ||
+      rules.firstBeatMs !== 60_000 / bpm / 2 ||
       rules.windowMs !== 150 ||
       rules.offbeatPenalty !== 5
     )
@@ -867,8 +909,10 @@ function validateFirewallRules(
   for (const field of ["bpm", "windowMs", "comboTarget", "offbeatPenalty"]) {
     if (!finitePositive(rules[field])) report(`rules.${field}`, "参数必须为有限正数。");
   }
-  if (!validNonnegativeInteger(rules.firstBeatMs))
-    report("rules.firstBeatMs", "首拍时间必须为非负整数。");
+  const firstBeatMs = rules.firstBeatMs;
+  const validFirstBeat =
+    typeof firstBeatMs === "number" && Number.isFinite(firstBeatMs) && firstBeatMs >= 0;
+  if (!validFirstBeat) report("rules.firstBeatMs", "首拍时间必须为有限非负毫秒。");
   if (!Array.isArray(rules.beatMasks) || rules.beatMasks.length === 0) {
     report("rules.beatMasks", "必须冻结逐拍危险图案。");
     return;
@@ -885,13 +929,13 @@ function validateFirewallRules(
   if (
     finitePositive(rules.bpm) &&
     finitePositive(rules.windowMs) &&
-    validNonnegativeInteger(rules.firstBeatMs) &&
+    validFirstBeat &&
     finitePositive(rules.durationMs)
   ) {
     const intervalMs = 60_000 / rules.bpm;
-    const lastBeatMs = rules.firstBeatMs + (rules.beatMasks.length - 1) * intervalMs;
+    const lastBeatMs = firstBeatMs + (rules.beatMasks.length - 1) * intervalMs;
     if (2 * rules.windowMs >= intervalMs) report("rules.windowMs", "节拍窗口重叠或相接。");
-    if (rules.firstBeatMs - rules.windowMs < 0 || lastBeatMs + rules.windowMs >= rules.durationMs)
+    if (firstBeatMs - rules.windowMs < 0 || lastBeatMs + rules.windowMs >= rules.durationMs)
       report("rules.beatMasks", "首末窗口必须完整位于挑战内。");
     if (lastBeatMs + intervalMs < rules.durationMs)
       report("rules.beatMasks", "逐拍危险图案不完整。");

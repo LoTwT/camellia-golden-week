@@ -40,7 +40,9 @@ test("见证清单拒绝重复 ID、错误版本和 profile", () => {
       witness.profileId === "M5" ? { ...witness, profileId: "M4" } : witness,
     ),
     worldWitnesses.map((witness) =>
-      witness.profileId === "M5" ? { ...witness, contentVersion: 5 } : witness,
+      witness.profileId === "M5"
+        ? { ...witness, contentVersion: witness.contentVersion + 1 }
+        : witness,
     ),
   ])
     assert.ok(validateWorldWitnessInventory(changed, worldCatalog, "M5").length > 0);

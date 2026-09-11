@@ -11,6 +11,7 @@ import revisitsJson from "./areas/revisits.json" with { type: "json" };
 import warehouseJson from "./areas/warehouse.json" with { type: "json" };
 import staticJson from "./challenges/static.json" with { type: "json" };
 import realtimeJson from "./challenges/realtime.json" with { type: "json" };
+import legacyRealtimeJson from "./history/realtime-v1.json" with { type: "json" };
 import type { StaticContent } from "../core/static-puzzle.ts";
 import type { RealtimeDefinition } from "../core/realtime.ts";
 import { assertSourceIntegrity } from "./source-validation.ts";
@@ -29,6 +30,8 @@ export const realtimeContent = realtimeJson as unknown as {
   definitions: RealtimeDefinition[];
   witnesses: unknown[];
 };
+/** Original released scoring tables must remain available for old best-result validation. */
+export const legacyRealtimeContent = legacyRealtimeJson as unknown as typeof realtimeContent;
 const baseCatalog = worldJson as unknown as WorldDefinition;
 const registrations = [bRegistration, cRegistration, dRegistration];
 export const worldCatalog = {
@@ -68,12 +71,38 @@ const rawAreas = [hubJson, aJson, bJson, cJson, dJson, warehouseJson] as unknown
 const rawExtensions = revisitsJson.areas as unknown as AreaExtension[];
 
 export function assembleContent(profileId: ProfileId = AVAILABLE_PROFILE): GameContent {
+  return assembleRelease(
+    profileId,
+    realtimeContent,
+    worldCatalog.contentVersion,
+    worldCatalog.ruleVersion,
+  );
+}
+
+export function assembleLegacyContent(profileId: ProfileId = AVAILABLE_PROFILE): GameContent {
+  return assembleRelease(profileId, legacyRealtimeContent, 1, 1);
+}
+
+/** Current release is last; a partial build never includes a later stage's playable maps. */
+export function migrationContentReleases(profileId: ProfileId = AVAILABLE_PROFILE): GameContent[] {
+  const profiles = worldCatalog.releaseProfiles
+    .filter((profile) => Number(profile.id.slice(1)) <= Number(profileId.slice(1)))
+    .map((profile) => profile.id);
+  return [...profiles.map(assembleLegacyContent), ...profiles.map(assembleContent)];
+}
+
+function assembleRelease(
+  profileId: ProfileId,
+  realtimeSource: typeof realtimeContent,
+  firstContentVersion: number,
+  ruleVersion: number,
+): GameContent {
   assertSourceIntegrity(
     rawAreas,
     rawExtensions,
     worldCatalog,
     revisitsJson.includedFrom,
-    [...staticContent.definitions, ...realtimeContent.definitions].map(
+    [...staticContent.definitions, ...realtimeSource.definitions].map(
       (definition) => definition.id,
     ),
   );
@@ -136,7 +165,7 @@ export function assembleContent(profileId: ProfileId = AVAILABLE_PROFILE): GameC
   const staticChallenges = staticContent.definitions.filter((definition) =>
     rooms.some((room) => room.id === definition.id),
   );
-  const realtimeChallenges = realtimeContent.definitions.filter((definition) =>
+  const realtimeChallenges = realtimeSource.definitions.filter((definition) =>
     rooms.some((room) => room.id === definition.id),
   );
   const resolvedRooms = rooms.map((room) => {
@@ -162,7 +191,8 @@ export function assembleContent(profileId: ProfileId = AVAILABLE_PROFILE): GameC
   ]);
   return {
     ...worldCatalog,
-    contentVersion: Math.min(stage, 4),
+    contentVersion: firstContentVersion + Math.min(stage, 4) - 1,
+    ruleVersion,
     areaIds: areas.map((area) => area.id),
     profile: { ...profileSource },
     areas: areas.map((area) => ({

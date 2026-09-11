@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { assembleContent, realtimeContent } from "../src/content/assemble.ts";
 import type { WorldWitness } from "../src/content/validate.ts";
-import worldJson from "../src/content/witnesses/m4.json" with { type: "json" };
+import { worldWitnesses } from "../src/content/witnesses/index.ts";
 import { createGame, dispatch } from "../src/core/engine.ts";
 import type { RealtimeInput, RealtimeWitness } from "../src/core/realtime.ts";
 import type { GameCommand, GameSettings, GameState, RuleResult } from "../src/core/types.ts";
@@ -42,7 +42,7 @@ interface ChallengeEntrance {
 }
 
 function reachChallengeEntrances(): Map<string, ChallengeEntrance> {
-  const worldWitness = (worldJson.witnesses as WorldWitness[]).find(
+  const worldWitness = (worldWitnesses as WorldWitness[]).find(
     (candidate) => candidate.id === "m4.world.full-collection-and-return",
   );
   assert.ok(worldWitness);

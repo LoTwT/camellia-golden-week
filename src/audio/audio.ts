@@ -1,5 +1,6 @@
 import type { FeedbackEvent, GameSettings, GameState } from "../core/types.ts";
 import type { FirewallDefinition } from "../core/realtime.ts";
+import { FIREWALL_MUSIC_IDS, firewallMusicId, firewallMusicPlayback } from "./firewall-music.ts";
 
 export class GameAudio {
   private context: AudioContext | null = null;
@@ -8,7 +9,13 @@ export class GameAudio {
   private readonly scheduled = new Set<AudioBufferSourceNode>();
   private lastInvalid = -Infinity;
   private beatKey = "";
-  private lastBeatIndex = -1;
+  private musicTiming:
+    | (ReturnType<typeof firewallMusicPlayback> & {
+        id: string;
+        firstBeatMs: number;
+        driftMs: number;
+      })
+    | null = null;
   private configuredVolume = -1;
   private enableSequence = 0;
   enabled = false;
@@ -34,6 +41,7 @@ export class GameAudio {
           "failure",
           "portal",
           "beat",
+          ...FIREWALL_MUSIC_IDS,
         ].map(async (id) => {
           if (this.buffers.has(id)) return;
           const response = await fetch(`/assets/audio/${id}.wav`);
@@ -80,7 +88,7 @@ export class GameAudio {
         this.lastInvalid = now;
       }
       if (event.kind === "reveal" && events.some((item) => item.kind === "move")) continue;
-      this.play(event.kind === "score" ? "pickup" : event.kind);
+      this.play(event.kind === "score" ? (this.beatKey ? "beat" : "pickup") : event.kind);
     }
   }
   syncFirewall(state: GameState, definition: FirewallDefinition | undefined, now: number) {
@@ -91,18 +99,13 @@ export class GameAudio {
       state.mode !== "challengeRunning" ||
       state.clock.pauseReasons.length ||
       state.clock.awaitingResume ||
-      state.clock.countdownRemainingMs > 0
+      state.clock.countdownRemainingMs > 0 ||
+      state.clock.activeTimeMs >= definition.rules.durationMs
     ) {
       this.cancelBeats();
       return;
     }
     const key = `${definition.id}:${state.clock.inputEpoch}`;
-    if (key !== this.beatKey) {
-      this.cancelBeats();
-      this.beatKey = key;
-      this.lastBeatIndex =
-        Math.ceil((state.clock.activeTimeMs - definition.rules.firstBeatMs) / 500) - 1;
-    }
     const timestamp = this.context.getOutputTimestamp?.();
     const audioAnchor =
       timestamp?.contextTime !== undefined &&
@@ -110,26 +113,52 @@ export class GameAudio {
       timestamp.contextTime > 0
         ? timestamp.contextTime + (now - timestamp.performanceTime) / 1000
         : this.context.currentTime;
-    const nextIndex = Math.max(
-      0,
-      this.lastBeatIndex + 1,
-      Math.ceil((state.clock.activeTimeMs - definition.rules.firstBeatMs) / 500),
-    );
-    const beatTime = definition.rules.firstBeatMs + nextIndex * 500;
-    if (
-      beatTime < definition.rules.durationMs &&
-      beatTime - state.clock.activeTimeMs <= 100 &&
-      beatTime >= state.clock.activeTimeMs
-    ) {
-      this.play(
-        "beat",
-        Math.max(
-          this.context.currentTime,
-          audioAnchor + (beatTime - state.clock.activeTimeMs) / 1000,
-        ),
-      );
-      this.lastBeatIndex = nextIndex;
+    if (this.musicTiming && key === this.beatKey) {
+      const drift = this.musicDriftMs(audioAnchor, state.clock.activeTimeMs);
+      // Device changes can shift the output clock without pausing the game. Ignore small jitter.
+      if (Math.abs(drift) > 40) this.cancelBeats();
     }
+    if (key !== this.beatKey) {
+      this.cancelBeats();
+      const id = firewallMusicId(definition);
+      const buffer = this.buffers.get(id);
+      if (!buffer || !this.gain) throw new Error("防火墙配乐未完成加载。");
+      const timing = firewallMusicPlayback(
+        definition,
+        buffer.duration,
+        state.clock.activeTimeMs,
+        audioAnchor,
+        this.context.currentTime,
+      );
+      const source = this.context.createBufferSource();
+      source.buffer = buffer;
+      source.loop = true;
+      source.loopStart = 0;
+      source.loopEnd = buffer.duration;
+      source.playbackRate.setValueAtTime(timing.playbackRate, this.context.currentTime);
+      source.connect(this.gain);
+      this.scheduled.add(source);
+      source.onended = () => {
+        this.scheduled.delete(source);
+        source.disconnect();
+      };
+      source.start(timing.atAudioTime, timing.offsetSeconds);
+      this.beatKey = key;
+      this.musicTiming = { ...timing, id, firstBeatMs: definition.rules.firstBeatMs, driftMs: 0 };
+    }
+    if (this.musicTiming) {
+      this.musicTiming.driftMs = this.musicDriftMs(audioAnchor, state.clock.activeTimeMs);
+    }
+  }
+  private musicDriftMs(audioAnchor: number, activeTimeMs: number) {
+    const timing = this.musicTiming!;
+    const audibleSongTime =
+      timing.offsetSeconds / timing.playbackRate + audioAnchor - timing.atAudioTime;
+    const expectedSongTime = (activeTimeMs - timing.firstBeatMs) / 1000;
+    const loop = timing.loopDurationSeconds;
+    return (
+      (((((audibleSongTime - expectedSongTime) % loop) + loop * 1.5) % loop) - loop / 2) * 1000
+    );
   }
   cancelBeats() {
     for (const source of this.scheduled) {
@@ -141,7 +170,10 @@ export class GameAudio {
     }
     this.scheduled.clear();
     this.beatKey = "";
-    this.lastBeatIndex = -1;
+    this.musicTiming = null;
+  }
+  metrics() {
+    return { enabled: this.enabled, music: this.musicTiming ? { ...this.musicTiming } : null };
   }
   dispose() {
     this.disable();

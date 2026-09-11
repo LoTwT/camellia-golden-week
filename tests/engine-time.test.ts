@@ -22,8 +22,14 @@ test("暂停输入所在截止时刻先提交实时结算，再冻结；重复�
   send({ kind: "Interact" });
   send({ kind: "StartChallenge", challengeId: "a.firewall.tutorial" });
   for (let tick = 0; tick < 30; tick++) send({ kind: "Tick" }, 100);
-  for (let beat = 0; beat < 30; beat++) {
-    const target = 250 + beat * 500;
+  const definition = content.realtimeChallenges.find(
+    (challenge) => challenge.id === "a.firewall.tutorial",
+  );
+  assert.ok(definition?.kind === "firewall");
+  for (let beat = 0; beat < definition.rules.beatMasks.length; beat++) {
+    const target = Math.round(
+      definition.rules.firstBeatMs + beat * (60_000 / definition.rules.bpm),
+    );
     while (state.clock.activeTimeMs < target)
       send({ kind: "Tick" }, Math.min(100, target - state.clock.activeTimeMs));
     send({ kind: "Move", direction: beat % 2 === 0 ? "right" : "left" }, 0);

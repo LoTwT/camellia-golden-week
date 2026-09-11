@@ -12,7 +12,7 @@ interface Inspection {
   position: { tileId: string };
   mode: string;
   phase: string;
-  audio: { enabled: boolean };
+  audio: { enabled: boolean; music: { id: string; atAudioTime: number } | null };
   saveGeneration: number;
   render: { layout: BoardLayout & { displayedFocus: Point2 } };
 }
@@ -70,11 +70,16 @@ async function enterA(page: Page) {
 
 async function installAudioObserver(page: Page) {
   await page.addInitScript(() => {
-    const starts: { aheadSeconds: number; at: number }[] = [];
+    const starts: { aheadSeconds: number; at: number; loop: boolean; duration: number }[] = [];
     Reflect.set(window, "__CGW_TEST_AUDIO_STARTS__", starts);
     const original = AudioBufferSourceNode.prototype.start;
     AudioBufferSourceNode.prototype.start = function (when = 0, offset = 0, duration?: number) {
-      starts.push({ aheadSeconds: when - this.context.currentTime, at: performance.now() });
+      starts.push({
+        aheadSeconds: when - this.context.currentTime,
+        at: performance.now(),
+        loop: this.loop,
+        duration: this.buffer?.duration ?? 0,
+      });
       if (duration === undefined) original.call(this, when, offset);
       else original.call(this, when, offset, duration);
     };
@@ -327,15 +332,23 @@ export async function verifyReviewRegressions(options: {
       for (const key of ["ArrowUp", "ArrowUp", "ArrowUp", "f"]) await pressGameKey(page, key);
       await page.getByRole("button", { name: "教学 · 15 秒 / Combo 12", exact: true }).click();
       await waitForGameReady(page);
-      await page.waitForFunction(
-        () =>
-          (Reflect.get(window, "__CGW_TEST_AUDIO_STARTS__") as { aheadSeconds: number }[]).filter(
-            (item) => item.aheadSeconds > 0.005,
-          ).length >= 2,
+      await page.waitForFunction(() =>
+        (
+          Reflect.get(window, "__CGW_TEST_AUDIO_STARTS__") as { loop: boolean; duration: number }[]
+        ).some((item) => item.loop && item.duration > 17),
       );
       assert.equal((await inspect(page)).mode, "challengeRunning");
+      const music = (await inspect(page)).audio.music;
+      assert.equal(music?.id, "firewall-music-inner");
+      await page.waitForTimeout(650);
+      assert.equal(
+        (await inspect(page)).audio.music?.atAudioTime,
+        music!.atAudioTime,
+        "主程序应维持同一连续配乐声源，而非逐帧重新启动",
+      );
       await page.keyboard.press("Escape");
       await page.getByRole("heading", { name: "探索已暂停", exact: true }).waitFor();
+      assert.equal((await inspect(page)).audio.music, null, "暂停停止连续配乐");
       const count = await page.evaluate(
         () => (Reflect.get(window, "__CGW_TEST_AUDIO_STARTS__") as unknown[]).length,
       );
@@ -347,9 +360,9 @@ export async function verifyReviewRegressions(options: {
         count,
       );
       return {
-        scheduledBeats: await page.evaluate(() =>
-          (Reflect.get(window, "__CGW_TEST_AUDIO_STARTS__") as { aheadSeconds: number }[]).filter(
-            (item) => item.aheadSeconds > 0.005,
+        continuousMusicSources: await page.evaluate(() =>
+          (Reflect.get(window, "__CGW_TEST_AUDIO_STARTS__") as { loop: boolean }[]).filter(
+            (item) => item.loop,
           ),
         ),
         pauseStoppedScheduling: true,

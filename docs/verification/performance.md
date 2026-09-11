@@ -2,6 +2,8 @@
 
 [文档索引](../index.md) · [工程预算](../spec/architecture.md#3-浏览器与运行预算) · [验收总表](acceptance-results.md) · [浏览器与设备](browser-matrix.md) · [视口矩阵](viewport-matrix.md)
 
+2026-09-12 新增[防火墙 v2 专项](firewall-restoration.md#4-验证与交付)：本机 Chrome 153 / headless / 标准画质 / 1920×1080 / DPR1，三档正常游玩各约 42.23 秒有效采样。帧间隔中位数均约16.7ms、p95最高16.8ms；按键至可见命中反馈p95最高31.1ms、所有样本≤32.4ms。活动态58 draw calls /18几何/9纹理，退出侧屏释放。原始帧数组、方法与条件见[性能摘要](evidence/firewall-restoration/performance-summary.json)及关联浏览器记录；不替代下面原M5的60秒/30次往返实测。
+
 核对日期：2026-09-11。**用户已接受本机 Apple M1 Pro / 32 GB / macOS / 独立 Chrome 作为本次性能基准，V05 通过。** 最终 production 正常继续、刷新，以及同源码观察包的两档 64 格帧间隔、输入反馈和玩家 / 镜头计量达到原预算；30 次区域往返的已观测资源计数稳定。原 M1 / 8 GB 和 Windows 设备未实测，按[范围调整](acceptance-scope-2026-09-11.md)保留为非必需的后续覆盖，不将本机数值冒充这些设备的实测。
 
 Safari 两档中位 17ms 超过 16.7ms 的失败，以及 100ms 视觉目标下 IAB / Safari 各六步 ≤140ms 的通过子项，均按原结果保留。Safari / Edge 本次不再必需，停止补测不表示 Safari 帧率已修复。性能数值阈值保持不变；用户取消真实断外网发布门槛，V06 不计为通过。

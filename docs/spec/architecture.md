@@ -188,6 +188,8 @@ UI 正文基线 14 CSS px，主要目标 16 px；正文与背景对比度目标�
 
 三类版本分开：`schemaVersion` 为存档结构整数（首版 1）；`contentVersion` 识别完整地图 / 奖励清单；`ruleVersion` 识别可比较的挑战计分规则。发布 profile 不是 schema，也不是“将未收录区域判通关”的开关。
 
+当前防火墙 v2 发布：schema 仍为 2，M1–M5 的 contentVersion 分别为 2/3/4/5/5，ruleVersion 统一为 2。旧 v1 内容视图保留，`publishedProfileMigrations` 先迁移到同 profile 的 v2，再按阶段升级，路径唯一；旧最好成绩归档、永久结果保留，未完成实时挑战从安全准备态重启。版本与实际验证见[防火墙还原记录](../verification/firewall-restoration.md)，历史夹具继续明确使用 `assembleLegacyContent`，避免把旧记录解释成新谱面。
+
 实施版本记录（2026-09-11）：M1 验收样本使用 schema 1；M2 实施中增加首次成功布局持久化后，当前写入 schema 2。历史 schema 1 的 M1 / M2、rule 1 可明确恢复无推物房间的唯一完成布局：记忆迷宫为空局部布局，一笔画为全部必经格集合。缺少球 / 车 / 盗取实际成功占格的旧载荷不能用标准解补造。结构转换仍先校验、保护原槽并回读备份，再写入，真实浏览器样本与结果见[实施验收](../verification/acceptance-results.md)。
 
 | 变更 | 兼容规则 |

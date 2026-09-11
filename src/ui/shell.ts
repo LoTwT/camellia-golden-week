@@ -34,6 +34,7 @@ export class GameShell {
   readonly dialog: HTMLDialogElement;
   private readonly content: GameContent;
   private readonly actions: ShellActions;
+  private readonly element: HTMLElement;
   private state: GameState | null = null;
   private dialogKey = "";
   private panel: "none" | "pause" | "map" | "settings" | "collection" | "storage" = "none";
@@ -59,6 +60,13 @@ export class GameShell {
     this.canvas = canvas;
     this.labels = labels;
     this.dialog = dialog;
+    this.element = root.querySelector<HTMLElement>(".game-shell")!;
+    const firewallOverlay = document.createElement("section");
+    firewallOverlay.id = "firewall-overlay";
+    firewallOverlay.className = "firewall-overlay";
+    firewallOverlay.hidden = true;
+    firewallOverlay.innerHTML = `<aside class="firewall-help"><span class="firewall-help-icon" aria-hidden="true">♪</span>跟随音乐节拍移动，<em>白光</em>亮起时踩拍。<br>注意即将变红的危险格！</aside><div class="firewall-run-status"><span id="firewall-difficulty"></span><span id="firewall-goal"></span><span id="firewall-time"></span></div><progress id="firewall-song-progress" class="firewall-song-progress" max="1" value="0" aria-label="挑战时间进度"></progress><output id="firewall-combo-value" class="visually-hidden" aria-label="当前连击"></output>`;
+    root.querySelector(".playfield")!.append(firewallOverlay);
     for (const id of [
       "mission-text",
       "area-subtitle",
@@ -76,6 +84,12 @@ export class GameShell {
       "firewall-beat-count",
       "firewall-beat-status",
       "firewall-screen-light",
+      "firewall-overlay",
+      "firewall-difficulty",
+      "firewall-goal",
+      "firewall-time",
+      "firewall-song-progress",
+      "firewall-combo-value",
       "controls",
       "save-status",
     ]) {
@@ -320,8 +334,12 @@ export class GameShell {
       range("主音量", settings.masterVolume, "0", "1", "0.05", (masterVolume) =>
         update({ masterVolume }),
       );
-      range("棋盘缩放", settings.zoom, "0.75", "1.5", "0.05", (zoom) => update({ zoom }));
-      this.dialog.append(text("p", "机关棋盘会限制放大倍数，以保持全盘可见和可点击。", "muted"));
+      if (state.activeRealtime?.state.kind === "firewall") {
+        this.dialog.append(text("p", "防火墙固定显示完整电视墙。", "muted"));
+      } else {
+        range("棋盘缩放", settings.zoom, "0.75", "1.5", "0.05", (zoom) => update({ zoom }));
+        this.dialog.append(text("p", "机关棋盘会限制放大倍数，以保持全盘可见和可点击。", "muted"));
+      }
       for (const [key, labelText] of [
         ["muted", "静音"],
         ["reducedFlash", "减少闪烁"],
@@ -409,6 +427,9 @@ export class GameShell {
   }
   update(state: GameState) {
     this.state = state;
+    const isFirewall = state.activeRealtime?.state.kind === "firewall";
+    this.element.dataset.challenge = isFirewall ? "firewall" : "";
+    this.fields["firewall-overlay"]!.hidden = !isFirewall;
     const settingsKey = `${state.settings.reducedMotion}:${state.settings.reducedFlash}:${state.settings.quality}`;
     if (settingsKey !== this.settingsKey) {
       document.documentElement.dataset.reducedMotion = String(state.settings.reducedMotion);
@@ -486,6 +507,29 @@ export class GameShell {
         (item) => item.id === state.activeRealtime?.roomId,
       );
       if (active.kind === "firewall" && definition?.kind === "firewall") {
+        const difficultyNames: Record<string, string> = {
+          tutorial: "防火墙 · 教学",
+          inner: "防火墙 · 内层",
+          deep: "防火墙 · 深层",
+          core: "防火墙 · 核心",
+        };
+        this.set(
+          "firewall-difficulty",
+          difficultyNames[definition.id.split(".").at(-1)!] ?? "防火墙",
+        );
+        this.set(
+          "firewall-goal",
+          `最高 ${active.bestCombo} / 目标 ${definition.rules.comboTarget}`,
+        );
+        this.set(
+          "firewall-time",
+          `${Math.max(0, (definition.rules.durationMs - state.clock.activeTimeMs) / 1000).toFixed(1)} s`,
+        );
+        this.set("firewall-combo-value", String(active.combo));
+        (this.fields["firewall-song-progress"] as HTMLProgressElement).value = Math.min(
+          1,
+          state.clock.activeTimeMs / definition.rules.durationMs,
+        );
         meter = `COMBO ${active.combo}   /   最高 ${active.bestCombo} · 目标 ${definition.rules.comboTarget}   /   ${Math.max(0, (definition.rules.durationMs - state.clock.activeTimeMs) / 1000).toFixed(1)} s`;
         const cue = firewallCue(definition, active, state.clock);
         const screenLight = this.fields["firewall-screen-light"];
@@ -528,7 +572,7 @@ export class GameShell {
     if (rhythm) rhythm.hidden = state.activeRealtime?.state.kind !== "firewall";
     const screenLight = this.fields["firewall-screen-light"];
     if (screenLight) screenLight.hidden = state.activeRealtime?.state.kind !== "firewall";
-    const controlKey = `${state.mode}:${state.activeStatic?.state.phase ?? ""}`;
+    const controlKey = `${state.mode}:${state.activeStatic?.state.phase ?? ""}:${isFirewall}`;
     const controls = this.fields.controls;
     if (controls && controls.dataset.mode !== controlKey) {
       controls.dataset.mode = controlKey;
@@ -600,7 +644,7 @@ export class GameShell {
           ? "杀毒：移动到数据格或鼠标点选当前出现的数据。蓝色 +1，紫色 +2；星星清除当前蓝 / 紫数据。目标有时限，移动到空格不会扣分。"
           : kind === "ghosts"
             ? "幽灵：用方向键逐格避开幽灵，点亮灯以清除指定幽灵组。与幽灵碰撞或交换位置会重试；长距离自动寻路已停用。"
-            : "防火墙：先选择下方档位开始。看画面周围白光跟拍，也可看左侧拍点条。“现在移动”时移动一次；“本拍命中”后等待下一拍。鼠标可直接点任意不同格；方向键每次按下只移动一次，不能长按。";
+            : "跟随音乐与画面周围白光，在拍点移动。两侧电视显示连击，命中显示 PERFECT。底部文字也会提示拍点；减少闪烁时可依文字操作。鼠标可直接点任意不同格；方向键每次按下移动一次，每拍计分一次。";
       if (this.modal("终端挑战", description, `ready:${state.playerPosition.tileId}`)) {
         const names: Record<string, string> = {
           tutorial: "教学 · 15 秒 / Combo 12",

@@ -1,11 +1,12 @@
 import content, { migrationReleases } from "virtual:camellia-content";
-import { additiveProfileMigrations } from "./platform/migrations.ts";
+import { publishedProfileMigrations } from "./platform/migrations.ts";
 import { contentUpgradeSummary } from "./platform/upgrade-summary.ts";
 import { createGame, dispatch } from "./core/engine.ts";
 import { projectBoard } from "./core/projection.ts";
 import { areaData, supplyProgress } from "./core/progress.ts";
 import type { GameCommand, GameState } from "./core/types.ts";
 import { BoardRenderer } from "./render/board.ts";
+import { boardProjectionKey } from "./render/projection-key.ts";
 import { GameShell } from "./ui/shell.ts";
 import { AutoWalkScheduler, InputAdapter } from "./platform/input.ts";
 import { GameAudio } from "./audio/audio.ts";
@@ -23,6 +24,7 @@ import {
 import type { SavePayload } from "./platform/save-payload.ts";
 import type { AcceptanceFaultController } from "./platform/acceptance-faults.ts";
 import "./ui/style.css";
+import "./ui/firewall.css";
 
 const root = document.querySelector<HTMLElement>("#app");
 if (!root) throw new Error("应用入口不存在");
@@ -65,7 +67,7 @@ if (import.meta.env.MODE === "acceptance") {
 const session = createSessionLock(sessionDiagnostics?.manager ?? navigator.locks);
 let sessionRequest: AbortController | null = null;
 let retrySessionWhenVisible = false;
-const migrationRegistry = additiveProfileMigrations(migrationReleases);
+const migrationRegistry = publishedProfileMigrations(migrationReleases);
 const browserStorage = {
   getItem: (key: string) => localStorage.getItem(key),
   setItem: (key: string, value: string) => localStorage.setItem(key, value),
@@ -647,7 +649,7 @@ function snapshot() {
           pauseReasons: state.clock.pauseReasons,
           viewport: { width: innerWidth, height: innerHeight, devicePixelRatio },
           settings: state.settings,
-          audio: { enabled: audio.enabled },
+          audio: audio.metrics(),
           completedObjectiveIds: state.completedObjectiveIds,
           completedRoomLayouts: state.completedRoomLayouts,
           staticRoom: state.activeStatic
@@ -746,7 +748,7 @@ if (import.meta.env.DEV || import.meta.env.MODE === "acceptance") {
 function render() {
   if (!state) return;
   shell.update(state);
-  const key = `${state.stateRevision}:${state.playerPosition.tileId}:${state.mode}:${state.phase}:${state.activeRealtime?.state.eventSequence ?? 0}:${Math.floor(state.clock.activeTimeMs / 500)}:${JSON.stringify(state.settings)}`;
+  const key = boardProjectionKey(state);
   if (graphicsAvailable && key !== lastProjection) {
     try {
       renderer?.update(projectBoard(content, state), state.settings);

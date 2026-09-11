@@ -2,11 +2,22 @@
 
 [文档索引](../index.md) · [操作与存档说明](../../README.md) · [验收结果](acceptance-results.md) · [实施进度](implementation-progress.md)
 
-2026-09-11：当前交付物为 **0.5.0 / M5 / content4 / rule1 / schema2** 的 production 构建，包含全部游戏内容。按[用户本轮范围调整](acceptance-scope-2026-09-11.md)，本机 Chrome 为验收环境，V05 达到原预算；63 个原始用例中 **62 项通过、V06 不再要求**。真实断外网、其他硬件与历史 Safari 结果不冒充已通过。实现分支 `codex/full-implementation` 从 `bfb924b075aa6a153ed33b95ce4492260e18a8d9` 建立；M1–M5 已按里程碑提交，M5 实现为 `811da5a1eb6ac175aa380418c2d84cf079469713`。游戏验收已按当前范围收口，实现分支已推送，[PR #1](https://github.com/LoTwT/camellia-golden-week/pull/1) 已创建，供用户审阅；main 尚未合并。
+2026-09-12：当前交付物为 **0.5.0 / M5 / content5 / rule2 / schema2** 的 production 构建，包含全部游戏内容。按[用户本轮范围调整](acceptance-scope-2026-09-11.md)，本机 Chrome 为验收环境，V05 达到原预算；63 个原始用例中 **62 项通过、V06 不再要求**。真实断外网、其他硬件与历史 Safari 结果不冒充已通过。实现分支 `codex/full-implementation` 从 `bfb924b075aa6a153ed33b95ce4492260e18a8d9` 建立；M1–M5 已按里程碑提交，M5 实现为 `811da5a1eb6ac175aa380418c2d84cf079469713`。游戏验收已按当前范围收口，实现分支已推送，[PR #1](https://github.com/LoTwT/camellia-golden-week/pull/1) 已创建，供用户审阅；main 尚未合并。
 
 ## 1. 当前静态交付物
 
-当前包包含[画面周边节拍补修](firewall-visual-cue.md#原版核对后的画面周边节拍补修)、首轮可读拍点与[消融Review修复](review-fixes.md)。防火墙画面周围白光随同一有效时钟亮起，在拍点达到峰值；减少闪烁关闭白光与面板亮暗变化，保留文字提示。版本仍为0.5.0 / M5，地图、奖励、内容 / 规则 / 存档版本和验收范围不变。
+当前包已完成[防火墙原版还原与 v2 迁移](firewall-restoration.md)：中央 5×4 与四块 COMBO 电视、110 BPM 本地原创替代配乐及同步白光、PERFECT / MISS、危险预告；旧成绩归档，物资和主线进度保留。
+
+- [完整静态 ZIP](evidence/firewall-restoration/firewall-restoration-dist.zip)：4,995,583 字节；SHA-256 `88ca1a72a2381de703ef7c9bc98a0cc124df61b1b7da6d315e55c30a7341fbd1`。
+- [产物与文件清单](evidence/firewall-restoration/package.json)：87 文件 / 6,344,521 字节，48 条资源记录，CRC / 当前 dist / Chrome production 构建字节一致。
+- [固定 5174 HTTP 复核](evidence/firewall-restoration/http-audit.json)：根入口及全部文件共 88 次 200、字节一致。
+- [最终工程检查](evidence/firewall-restoration/verification.json)：484 项、五分期与七项故障回归全通过；三档正常键鼠 47 / 57 / 72 Combo、真实 130 物资旧档升级与性能专项均有证据。198 个实现输入哈希未变。
+
+原版曲名与实测见 [S11](../references/firewall-audio.md)，补制配乐不是原录音；视觉与计分尚未证实部分仍明确标为重建。下面的旧包保留原时点含义。
+
+### 前一轮周边节拍包（历史）
+
+此前包包含[画面周边节拍补修](firewall-visual-cue.md#原版核对后的画面周边节拍补修)、首轮可读拍点与[消融Review修复](review-fixes.md)。防火墙画面周围白光随同一有效时钟亮起，在拍点达到峰值；减少闪烁关闭白光与面板亮暗变化，保留文字提示。版本仍为0.5.0 / M5，地图、奖励、内容 / 规则 / 存档版本和验收范围不变。
 
 - [完整静态ZIP](evidence/firewall-perimeter/firewall-perimeter-dist.zip)：解压后直接包含 `index.html` 和 `assets/`。
 - [ZIP SHA-256](evidence/firewall-perimeter/firewall-perimeter-dist.zip.sha256)、[逐文件与归档校验](evidence/firewall-perimeter/package.json)。
@@ -46,7 +57,7 @@ pnpm run preview --host localhost --port 5174 --strictPort --outDir /absolute/pa
 
 ## 3. 工程检查
 
-当前464项测试、五分期和画面周边拍点操作见[拍点补修](firewall-visual-cue.md#原版核对后的画面周边节拍补修)。前次458项和消融结果见[Review修复记录](review-fixes.md#4-完整验证与交付)。以下 npm 日志保留 M5 原交付时的实际执行方式；后续[pnpm 迁移记录](pnpm-migration.md)也保留迁移时点的锁文件和构建等价结论。
+当前484项及v2实际浏览器结果见[防火墙还原记录](firewall-restoration.md)。前次464项测试、五分期和画面周边拍点操作见[拍点补修](firewall-visual-cue.md#原版核对后的画面周边节拍补修)。前次458项和消融结果见[Review修复记录](review-fixes.md#4-完整验证与交付)。以下 npm 日志保留 M5 原交付时的实际执行方式；后续[pnpm 迁移记录](pnpm-migration.md)也保留迁移时点的锁文件和构建等价结论。
 
 | 命令 / 检查      | 实际结果与原始证据                                                                                                                                                                                                                                                    |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

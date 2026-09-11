@@ -18,7 +18,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "4d716487c73b8ce86ca5746575d14270f1854bb2c7f43047ff318b7f0421e2a9",
       "dimensions": [
         128,
@@ -58,7 +58,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "65d56830a749d0d86c5e421bdb6f5bf45351a14496f87f9f14960b9ecac8c8c3",
       "dimensions": [
         128,
@@ -98,7 +98,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "939119163f39b3a094582ef624ff75ae575d23579f95f1d504374e0dd9bbb97f",
       "dimensions": [
         128,
@@ -138,7 +138,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "056d54ecf3cc62a5366d65e272eb3690c528decb7a85089be703f985cb6bd11f",
       "dimensions": [
         128,
@@ -178,7 +178,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "1d8a6800a9c8bb6a2b808f185e77595a7dbbaf3c5c10cc78e5f260e5de011761",
       "dimensions": [
         128,
@@ -218,7 +218,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "fa71fe12251dfcfed5aba7a4487bb7dd623bd52dc07b766a2ab97c3553f05fd3",
       "dimensions": [
         128,
@@ -258,7 +258,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "9fd7dc4fd59309334feef483d531adaae77ea36f8907dd97a260b21d578716cd",
       "dimensions": [
         128,
@@ -298,7 +298,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "5fa350e50439d5c4adb5cda8dd41c4cd8cd8be5a115759506346535dcc8ddb73",
       "dimensions": [
         128,
@@ -338,7 +338,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "f1f461bbdbff189d36aaedbcd569a2aaa3bab731a2848e2d2d3d26b4d4ebc820",
       "dimensions": [
         128,
@@ -378,7 +378,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "82b110d68764d2bbdfb5e162a60cacec65f484ddaefe7474598af44a161a6f46",
       "dimensions": [
         128,
@@ -418,7 +418,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "4208fcdfb50b138e53f52cbf16c20f0992c3b87dc83cd69a9b3ab93c2220f96f",
       "dimensions": [
         128,
@@ -458,7 +458,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "7ead15e2b9449a844a216e7b3f63f6ab07e9a8d739bec523193a64bad005b69d",
       "dimensions": [
         128,
@@ -498,7 +498,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "6e51024a7d7ad42dee10d3a6f70239319a3a1c7c6e84ea8a1c00847e486d511c",
       "dimensions": [
         128,
@@ -538,7 +538,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "a97cb2adca741d9c2a42a9a91f3c935c5d9be0987e085fe38d46dc407bcf86bf",
       "dimensions": [
         128,
@@ -578,7 +578,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "20b7884d408e5e2c9d0354daf1368eca4385cb5a674f31403e70e9ff1e255dcd",
       "dimensions": [
         128,
@@ -618,7 +618,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "cdf56bfffde0e5cb2990b23876f83fac91db2482e665e295a54eae504ae09438",
       "dimensions": [
         128,
@@ -658,7 +658,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "2606a26bf45032d86b1367c6db299a1ccf742eb0fe1187a1e7b8b9e1fa15fed1",
       "dimensions": [
         128,
@@ -698,7 +698,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "ac0a16357ad5b14bcb0f8188998fe828689678f9e8221656920d44ad1a81c47e",
       "dimensions": [
         128,
@@ -738,7 +738,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "cd32ddcc814333246ca9ced8f4332e21ef9fdf48cbf62de939a51cd4a7c14791",
       "dimensions": [
         128,
@@ -778,7 +778,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "0908a565c0f22e1c8ea9b233a778ba3c15183b9682d7e0cc84aedd7349edca4e",
       "dimensions": [
         128,
@@ -818,7 +818,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "086ec458cc6bc924e17c98c25cce8a007ace9462253d77f8987b505dc24f8308",
       "dimensions": [
         128,
@@ -857,7 +857,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "494e4b00faba7f8f58a8dbbf2830c116e4de0a00bc6ee2b02a296c681b9f1ebf",
       "dimensions": [
         128,
@@ -896,7 +896,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "629f596d08878f370c465887d72341db206c7b3bfea5d2773ef6069a68f7e1c2",
       "dimensions": [
         128,
@@ -935,7 +935,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "cc5de612ecbd2d140e303d5c0584ee31d8758dec3e4964ec2c522aa43e3d7ccd",
       "dimensions": [
         128,
@@ -974,7 +974,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "7ab4b2828590fde81fb08601d6e7b47bde06c2a1d3b48f71ddf1277f7c5e2545",
       "dimensions": [
         128,
@@ -1012,7 +1012,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "58d238a820a77b0cfffd17916efc7d5c2b127cd739e59cb27ab7e50b43894fba",
       "dimensions": [
         128,
@@ -1050,7 +1050,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "33987507a25766638487180b5e66125f135d6675ae383b5840819f250c6b1ada",
       "dimensions": [
         128,
@@ -1088,7 +1088,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "e213428418072122e69b0c44f50d9291066c2cff49a44f85c1a7eb2ad6a53402",
       "dimensions": [
         128,
@@ -1126,7 +1126,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "7f3f99ba349f8c149c842e2a16ffe54f8910c21cf66aaa8c50e4b55af233298b",
       "dimensions": [
         128,
@@ -1164,7 +1164,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "97ab7ea8dc377cd46cea4210f5a8a0f11a3f9f83d5a664683be50daaa2d1d63b",
       "dimensions": [
         128,
@@ -1201,7 +1201,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "fab059e5bdb8ccac2b7f7040e948be7841565f319fd6616c53e5e4e8e6f84e20",
       "dimensions": [
         128,
@@ -1238,7 +1238,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "f622c0bb5d3a72271444712ec54595265e77303d441a7a6abe3521e9d0b3ab2d",
       "dimensions": [
         128,
@@ -1275,7 +1275,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "3c8454ec2b926f619fb6d96d4b7696590b493aafcedfdb7341b07fdccb26e0ae",
       "dimensions": [
         128,
@@ -1315,7 +1315,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "f1bd5b88a0a151a68099deb4077db98ddadd50e2e40513335560c6601072614b",
       "durationSeconds": 0.07,
       "sampleRate": 44100,
@@ -1345,7 +1345,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "7cba424f718a072fb03f5808ddc7464775f349017ed6a5dca8dd9e85d692a2c9",
       "durationSeconds": 0.1,
       "sampleRate": 44100,
@@ -1375,7 +1375,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "8920a19c6f191a2c0cbc89882a7696fc579c51c8afc714c5f924489b1f156e90",
       "durationSeconds": 0.24,
       "sampleRate": 44100,
@@ -1405,7 +1405,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "7aa37724210d97db3ee2530c914133256713ae1803b55d2e603a2a76330969fe",
       "durationSeconds": 0.18,
       "sampleRate": 44100,
@@ -1435,7 +1435,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "b9511d1d35cf1a932c0d417622467a03c0c9682bec1627d0a6ea8261a5adf148",
       "durationSeconds": 0.36,
       "sampleRate": 44100,
@@ -1465,7 +1465,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "49ec2f0e2280cc369b0f9e7338371676cd14d5665f36fd22de37145e686b7d14",
       "durationSeconds": 0.19,
       "sampleRate": 44100,
@@ -1495,7 +1495,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "92ca1f296bc50631f7430cebbf2f4ace8d31434d9ea686d416b73d5a2f100a74",
       "durationSeconds": 0.52,
       "sampleRate": 44100,
@@ -1525,7 +1525,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "ba8cf995974d5d05e3ff4c867bd5fbf5325180848ce8e4e32b4e332c715ad6a0",
       "durationSeconds": 0.32,
       "sampleRate": 44100,
@@ -1555,7 +1555,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "8bdd5ec6b3a9588c7079219f65e65fd1b66a1fafa11e8dea75300c98ed1262a5",
       "durationSeconds": 0.34,
       "sampleRate": 44100,
@@ -1572,7 +1572,7 @@
     {
       "id": "beat",
       "kind": "audio",
-      "purpose": "防火墙有效时间拍点；适配器按时钟调度",
+      "purpose": "防火墙踩拍成功的短确认音；背景配乐独立保持节奏",
       "profiles": [
         "M1",
         "M2",
@@ -1585,7 +1585,7 @@
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
       "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
       "sha256": "fe3f0fcf1ce1bf5244bc241d0aae2509a18feca1c1b21db6bbf5ed937710a826",
       "durationSeconds": 0.04501133786848072,
       "sampleRate": 44100,
@@ -1600,6 +1600,102 @@
       "differences": "未取得且未核对可用原版短音效；仅匹配动作反馈职责，不声称原音色、原节奏或原响度还原"
     },
     {
+      "id": "firewall-music-inner",
+      "kind": "audio",
+      "purpose": "防火墙连续电子节奏配乐；与白光、输入判定共享110BPM时间轴",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/audio/firewall-music-inner.wav",
+      "sourcePath": "scripts/firewall-music.ts + src/audio/firewall-music.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-firewall-score-v1",
+      "sourceSha256": "56d2ba535c3772572e693237a73f9755f677fdda04f5a17728d837f9e36546b9",
+      "sha256": "51d448964620ea258e769ab7fb2d377314e442988997067191400d2b14fce12f",
+      "durationSeconds": 17.45453514739229,
+      "sampleRate": 44100,
+      "channels": 1,
+      "bitDepth": 16,
+      "bpm": 110,
+      "loopBeats": 32,
+      "author": "为 camellia-golden-week 创作的项目配乐",
+      "rights": "原创合成；不采样原游戏、Apple试听或视频音轨，不复制原曲旋律",
+      "usage": "随本项目本地打包",
+      "transform": "确定性鼓组、低音、和弦与短分解；D小调32拍循环；16-bit mono PCM WAV；首末归零，峰值-3.61dBFS",
+      "referenceId": "S11",
+      "referenceUrl": "https://music.apple.com/jp/song/1787721526",
+      "differences": "原版为Red!/Red!!/Red!!!；本配乐仅接近电子律动与实测110BPM速度，旋律、编曲、音色及长度均为补制，不冒充原录音"
+    },
+    {
+      "id": "firewall-music-deep",
+      "kind": "audio",
+      "purpose": "防火墙连续电子节奏配乐；与白光、输入判定共享110BPM时间轴",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/audio/firewall-music-deep.wav",
+      "sourcePath": "scripts/firewall-music.ts + src/audio/firewall-music.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-firewall-score-v1",
+      "sourceSha256": "56d2ba535c3772572e693237a73f9755f677fdda04f5a17728d837f9e36546b9",
+      "sha256": "c6a69bf359798c33c8a1db14df9a5d8310d39ba8ff880e0cc6707c0fe2d2e098",
+      "durationSeconds": 17.45453514739229,
+      "sampleRate": 44100,
+      "channels": 1,
+      "bitDepth": 16,
+      "bpm": 110,
+      "loopBeats": 32,
+      "author": "为 camellia-golden-week 创作的项目配乐",
+      "rights": "原创合成；不采样原游戏、Apple试听或视频音轨，不复制原曲旋律",
+      "usage": "随本项目本地打包",
+      "transform": "确定性鼓组、低音、和弦与短分解；D小调32拍循环；16-bit mono PCM WAV；首末归零，峰值-3.61dBFS",
+      "referenceId": "S11",
+      "referenceUrl": "https://music.apple.com/jp/song/1787721526",
+      "differences": "原版为Red!/Red!!/Red!!!；本配乐仅接近电子律动与实测110BPM速度，旋律、编曲、音色及长度均为补制，不冒充原录音"
+    },
+    {
+      "id": "firewall-music-core",
+      "kind": "audio",
+      "purpose": "防火墙连续电子节奏配乐；与白光、输入判定共享110BPM时间轴",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/audio/firewall-music-core.wav",
+      "sourcePath": "scripts/firewall-music.ts + src/audio/firewall-music.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-firewall-score-v1",
+      "sourceSha256": "56d2ba535c3772572e693237a73f9755f677fdda04f5a17728d837f9e36546b9",
+      "sha256": "b4352e52a04ab8c289fae26605e64fff40d6c886699687ca5c9bab834d63a455",
+      "durationSeconds": 17.45453514739229,
+      "sampleRate": 44100,
+      "channels": 1,
+      "bitDepth": 16,
+      "bpm": 110,
+      "loopBeats": 32,
+      "author": "为 camellia-golden-week 创作的项目配乐",
+      "rights": "原创合成；不采样原游戏、Apple试听或视频音轨，不复制原曲旋律",
+      "usage": "随本项目本地打包",
+      "transform": "确定性鼓组、低音、和弦与短分解；D小调32拍循环；16-bit mono PCM WAV；首末归零，峰值-3.61dBFS",
+      "referenceId": "S11",
+      "referenceUrl": "https://music.apple.com/jp/song/1787721526",
+      "differences": "原版为Red!/Red!!/Red!!!；本配乐仅接近电子律动与实测110BPM速度，旋律、编曲、音色及长度均为补制，不冒充原录音"
+    },
+    {
       "id": "font-noto",
       "kind": "font",
       "purpose": "本地中文正文替代字体",
@@ -1609,7 +1705,7 @@
       "sourceUrl": "https://raw.githubusercontent.com/notofonts/noto-cjk/165c01b46ea533872e002e0785ff17e44f6d97d8/Sans/SubsetOTF/SC/NotoSansSC-Regular.otf",
       "sourceVersion": "165c01b46ea533872e002e0785ff17e44f6d97d8",
       "sourceSha256": "faa6c9df652116dde789d351359f3d7e5d2285a2b2a1f04a2d7244df706d5ea9",
-      "sha256": "758b0556ff431d4eb22f215ecf9abf75fb270e1c6b7b37e2dc9f576486ee75e9",
+      "sha256": "ba720c7cadcdd2232037e40b7f5c9c00bfa21d06969c4bdf9e1855111ec0c937",
       "family": "Noto Sans SC",
       "weights": "400",
       "dimensions": null,
@@ -1625,7 +1721,7 @@
       "subset": {
         "recipeVersion": "project-runtime-v1",
         "generatorPath": "scripts/generate-assets.ts",
-        "generatorSha256": "0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251",
+        "generatorSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
         "coverageCodepoints": [
           32,
           33,
@@ -1768,6 +1864,7 @@
           9642,
           9675,
           9678,
+          9834,
           10003,
           12288,
           12289,
@@ -1853,6 +1950,7 @@
           20037,
           20041,
           20043,
+          20048,
           20061,
           20063,
           20064,
@@ -2075,6 +2173,7 @@
           24207,
           24211,
           24212,
+          24213,
           24230,
           24314,
           24320,
@@ -2405,6 +2504,7 @@
           35835,
           35843,
           35868,
+          35889,
           35937,
           36127,
           36133,
@@ -2747,8 +2847,8 @@
           65517,
           65518
         ],
-        "glyphCount": 1428,
-        "cmapCount": 1119,
+        "glyphCount": 1432,
+        "cmapCount": 1123,
         "fonttoolsVersion": "4.65.0",
         "brotliVersion": "1.2.0",
         "reservedUnicodeRanges": [
@@ -2769,7 +2869,11 @@
           },
           {
             "path": "src/audio/audio.ts",
-            "sha256": "d90ad6f6de88591f4987705cc6e709957a79e1835283094d343260f03d5ef5e9"
+            "sha256": "9fc1aac99115c22907f0d648126403586c6f9ca4ef778dbbdf18dfd4f1eeb258"
+          },
+          {
+            "path": "src/audio/firewall-music.ts",
+            "sha256": "233d85e6f8d0164616aee6d8905c3e8ef9df69cba79f64433d9d2cb403f56550"
           },
           {
             "path": "src/content/areas/a.json",
@@ -2813,15 +2917,19 @@
           },
           {
             "path": "src/content/assemble.ts",
-            "sha256": "21ecef9e4ee0f63e46cc972e294df7a0eac4ca7da5f989c1d4c0a702e8f64784"
+            "sha256": "da1f51dcf110f00449836e3a38910c35d68290f6a78c0375d2d8b37027753c67"
           },
           {
             "path": "src/content/challenges/realtime.json",
-            "sha256": "3600214a533fffc2152184ba99d30d008d36584bb73778c85745638915249edf"
+            "sha256": "fe746e9e816a88a0956de297014e2ab19c7b3fccd3e883cf65ccfa04d666e353"
           },
           {
             "path": "src/content/challenges/static.json",
             "sha256": "890512a795e5556e5fdc9fc026c85f46b193bfc57ad3db996529718321efbdb7"
+          },
+          {
+            "path": "src/content/history/realtime-v1.json",
+            "sha256": "3600214a533fffc2152184ba99d30d008d36584bb73778c85745638915249edf"
           },
           {
             "path": "src/content/source-validation.ts",
@@ -2829,11 +2937,15 @@
           },
           {
             "path": "src/content/validate.ts",
-            "sha256": "3d86db9446e74da3cfc3a4c3e50b64a8f8c6fb3271b6b04574f6cfc351bd9b3d"
+            "sha256": "5afd2cbda02c348c1c7238a3f73dd40448ac044f7a39a9f5933787b737dfdc00"
+          },
+          {
+            "path": "src/content/witnesses/current.ts",
+            "sha256": "f5fd0aea20a5b0a0fa5dddb3b30836bcead27097fc99ce9d1baf85329ec2fa90"
           },
           {
             "path": "src/content/witnesses/index.ts",
-            "sha256": "850b7b48bd04bbb95e6a5f8b4ccc406c6a4f56b9ea9dd35a43b55c2e963cf460"
+            "sha256": "c75cc3e37c309c112caf6569a34cdef7671ce826588ef13fbb2dba9a78e39d0a"
           },
           {
             "path": "src/content/witnesses/m1.json",
@@ -2853,11 +2965,11 @@
           },
           {
             "path": "src/content/witnesses/m5.ts",
-            "sha256": "01b36ad2c55f42fdf80c6cdcdc00bc068c47bb12306cd9b23729fcaa73a9bce9"
+            "sha256": "f0bc6ba7ce3d4219c3b6e16eb3ad0bf362f9de76076a8158db64f8b12ad84075"
           },
           {
             "path": "src/content/world.json",
-            "sha256": "c86d2dbc2df0d4071081446eec3cb717b1d1ef775bc5708a21603b6822339d6f"
+            "sha256": "3084cdc97a46308f850256c90b9e3defc8cf170796896ce9d75f448859b7f144"
           },
           {
             "path": "src/core/clock.ts",
@@ -2873,11 +2985,11 @@
           },
           {
             "path": "src/core/projection.ts",
-            "sha256": "4c847410c7e530e49d27d50b147367b5349a747acfa000cc79f1c91b4e3a9d4d"
+            "sha256": "735f38a8c642da4374ddad88ce7bd19bc85cd2695033cb9b5e78a74e40320fdb"
           },
           {
             "path": "src/core/realtime.ts",
-            "sha256": "461f9d5d5d44792e4d10908a5d0ca6d11ae3fc3fc1bce00bcc98915c34ec4fad"
+            "sha256": "8ee5567b8af28e6c126d52279919b08cc6a62e149483217c7941c3cbbe828d2d"
           },
           {
             "path": "src/core/static-puzzle.ts",
@@ -2893,7 +3005,7 @@
           },
           {
             "path": "src/main.ts",
-            "sha256": "196030b7031e73d98bc0ace594b96c8f342327bc64b235b1c9a0c18dfa858987"
+            "sha256": "950a4d8c040e342b91186d02ee751dfba7249c0f873c8ca919265b261f23305a"
           },
           {
             "path": "src/platform/acceptance-faults.ts",
@@ -2905,7 +3017,7 @@
           },
           {
             "path": "src/platform/migrations.ts",
-            "sha256": "c67c77bfe84d117e58b6e27ed9ae612f7a677466bc5891333d5c4bf3ba7271e3"
+            "sha256": "271fd23dbaf824ffe83bef3ea4f40ce20fe445def1f5905714602e0456ac2253"
           },
           {
             "path": "src/platform/save-payload.ts",
@@ -2933,15 +3045,27 @@
           },
           {
             "path": "src/render/board.ts",
-            "sha256": "349a888d8cdef2ad1125910b48b38aa4ab26870f05c6c8432540839e304ea6f2"
+            "sha256": "0ff577b88815afc7dcd8dd82f7cef8dc42ae81c8f6faa71d47e0f0c758cb0e7d"
+          },
+          {
+            "path": "src/render/firewall-stage.ts",
+            "sha256": "4757fef67f8b1d9cacccdabf7c923a951c86a224e6506546579d805139d5a88d"
           },
           {
             "path": "src/render/layout.ts",
-            "sha256": "d18fe40e9eeb1f4a57287060ecf472c1e4e54cd3c338e188cdb588dfc87bf054"
+            "sha256": "a669abadeba36e87afc1cf9d20d2452221231944cced4d06ffa04900d34d2574"
+          },
+          {
+            "path": "src/render/projection-key.ts",
+            "sha256": "2b7e29b5074ea1ff70f1d1045ae8b9df19272798c0b6c99b4d57dbcac3f0bf24"
           },
           {
             "path": "src/ui/firewall-cue.ts",
             "sha256": "0bd0dfe50e423dcc519a3dc0da4aa8b7b352210b52e1c5472523f5a13be94eff"
+          },
+          {
+            "path": "src/ui/firewall.css",
+            "sha256": "8e9874fe57ee4a4af356ec586a871210699375b339069353bbd82304db1fd2c4"
           },
           {
             "path": "src/ui/labels.ts",
@@ -2949,7 +3073,7 @@
           },
           {
             "path": "src/ui/shell.ts",
-            "sha256": "8a2563a542fdb93ccd7741704d69c6d6fab7e85258f298bb3d17f910d763513b"
+            "sha256": "b6d83c6971bb21bf1847a30bedee0a6916a36c1c0c9488630020353689fbb9fd"
           },
           {
             "path": "src/ui/style.css",
@@ -3069,6 +3193,7 @@
           9642,
           9675,
           9678,
+          9834,
           10003,
           12289,
           12290,
@@ -3094,6 +3219,7 @@
           20037,
           20041,
           20043,
+          20048,
           20061,
           20063,
           20064,
@@ -3316,6 +3442,7 @@
           24207,
           24211,
           24212,
+          24213,
           24230,
           24314,
           24320,
@@ -3646,6 +3773,7 @@
           35835,
           35843,
           35868,
+          35889,
           35937,
           36127,
           36133,
@@ -3763,6 +3891,7 @@
           40664,
           40736,
           40784,
+          65281,
           65288,
           65289,
           65292,
@@ -3770,9 +3899,9 @@
           65307,
           65311
         ],
-        "coverageSha256": "366b957f57b526b972bd5daf0e5476ab22efcc3412466d6e56de8ada26e1eba3",
-        "outputSha256": "758b0556ff431d4eb22f215ecf9abf75fb270e1c6b7b37e2dc9f576486ee75e9",
-        "byteLength": 183336
+        "coverageSha256": "bef918a1661ef5acce301d29add22d038984f1788d372db47913c6dd41a5bf04",
+        "outputSha256": "ba720c7cadcdd2232037e40b7f5c9c00bfa21d06969c4bdf9e1855111ec0c937",
+        "byteLength": 184736
       },
       "licenseSha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
       "profiles": [

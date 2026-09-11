@@ -1,0 +1,229 @@
+/* AR-A-FIREWALL: a television wall fills the screen; controls remain at its edges. */
+.game-shell[data-challenge="firewall"] {
+  display: block;
+}
+.game-shell[data-challenge="firewall"] .playfield {
+  height: 100%;
+}
+.game-shell[data-challenge="firewall"] #game-canvas:focus-visible {
+  outline: none;
+}
+.game-shell[data-challenge="firewall"]:has(#game-canvas:focus-visible) .key-hint {
+  outline: 2px solid var(--acid);
+  outline-offset: 5px;
+  border-radius: 2px;
+}
+.game-shell[data-challenge="firewall"] .hud-top {
+  position: absolute;
+  top: 2.4%;
+  left: 3%;
+  width: 55%;
+  padding: 0;
+  gap: 16px;
+  border: 0;
+  background: transparent;
+  pointer-events: none;
+}
+.game-shell[data-challenge="firewall"] #menu-button {
+  order: -1;
+  pointer-events: auto;
+  border: 3px solid #09090d;
+  border-radius: 30px;
+  background: #29282fee;
+  box-shadow: inset 0 2px 2px #817b89;
+}
+.game-shell[data-challenge="firewall"] .mission {
+  padding: 0;
+  border: 0;
+  text-shadow:
+    2px 2px #0e0b14,
+    -2px -2px #0e0b14,
+    2px -2px #0e0b14,
+    -2px 2px #0e0b14;
+}
+.game-shell[data-challenge="firewall"] .mission strong {
+  font-size: clamp(14px, 1.3vw, 22px);
+}
+.game-shell[data-challenge="firewall"] .brand,
+.game-shell[data-challenge="firewall"] .mission .eyebrow,
+.game-shell[data-challenge="firewall"] .save-area,
+.game-shell[data-challenge="firewall"] .area-title,
+.game-shell[data-challenge="firewall"] .progress-rail,
+.game-shell[data-challenge="firewall"] .context-tip {
+  display: none;
+}
+.game-shell[data-challenge="firewall"] .hud-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  min-height: 44px;
+  padding: 0 3%;
+  border: 0;
+  background: transparent;
+}
+.game-shell[data-challenge="firewall"] .controls {
+  width: 100%;
+  justify-content: space-between;
+  text-shadow: 0 2px 3px #17121c;
+}
+.game-shell[data-challenge="firewall"] .controls .muted {
+  display: none;
+}
+.game-shell[data-challenge="firewall"] .controls button {
+  background: #201f2dcc;
+  border: 2px solid #17151f;
+  border-radius: 30px;
+  padding: 8px 20px;
+}
+.firewall-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.firewall-help {
+  position: absolute;
+  right: 5%;
+  top: 3.5%;
+  max-width: 33%;
+  padding: 10px 24px 10px 15px;
+  background: repeating-linear-gradient(135deg, #25252b 0 2px, #29282f 2px 4px);
+  border: 3px solid #111017;
+  border-radius: 28px;
+  box-shadow: inset 0 1px 2px #b5acbd;
+  color: #f6f4ed;
+  font-size: clamp(13px, 1.15vw, 20px);
+  font-weight: 800;
+  font-style: italic;
+  line-height: 1.5;
+}
+.firewall-help em {
+  color: #ffd156;
+}
+.firewall-help-icon {
+  position: absolute;
+  right: -20px;
+  top: -7px;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 3px solid #e0e5f1;
+  border-radius: 50%;
+  background: #314f8a;
+  box-shadow:
+    0 0 0 4px #171b29,
+    inset 0 0 0 3px #7799cf;
+  font-size: 27px;
+  font-style: normal;
+}
+.firewall-run-status {
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  bottom: 9.5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: #f1edf4;
+  font-size: clamp(12px, 1vw, 16px);
+  text-shadow: 0 2px 2px #242130;
+}
+.firewall-song-progress {
+  position: absolute;
+  left: 3%;
+  bottom: 8%;
+  width: 94%;
+  height: 5px;
+  border: 0;
+  background: #39314777;
+  appearance: none;
+}
+.firewall-song-progress::-webkit-progress-bar {
+  background: repeating-linear-gradient(90deg, #39314788 0 27px, #b0a6c488 27px 30px);
+}
+.firewall-song-progress::-webkit-progress-value {
+  background: repeating-linear-gradient(90deg, #ea86a6 0 27px, #ffb5ca 27px 30px);
+}
+.game-shell[data-challenge="firewall"] .challenge-meter.firewall-meter {
+  top: auto;
+  left: 32%;
+  bottom: 0;
+  width: 36%;
+  max-width: none;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  border-radius: 0;
+  z-index: 3;
+}
+.firewall-meter #challenge-summary,
+.firewall-meter .firewall-count,
+.firewall-meter .firewall-track,
+.firewall-meter .firewall-instruction {
+  display: none;
+}
+.firewall-meter .firewall-rhythm {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.firewall-meter .firewall-beat-status {
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+  min-height: 44px;
+  padding: 7px 4px;
+  background: transparent;
+  color: #f1edf4;
+  text-shadow: 0 2px 3px #272333;
+  font-size: 20px;
+  line-height: 1.5;
+}
+.firewall-meter [data-phase="ready"] .firewall-beat-status,
+.firewall-meter [data-phase="hit"] .firewall-beat-status {
+  color: #fff3a5;
+}
+.game-shell[data-challenge="firewall"] .mode-banner {
+  top: 43%;
+  left: 38%;
+  max-width: none;
+  width: 24%;
+  text-align: center;
+  font-size: clamp(24px, 3.5vw, 60px);
+  font-style: italic;
+  color: #fff1ae;
+  text-shadow:
+    3px 3px #17101c,
+    -2px -2px #17101c;
+  z-index: 2;
+}
+.firewall-tile-mark {
+  margin: -0.7em 0 0 -0.3em;
+  font:
+    700 clamp(28px, 4.5vw, 74px) Camellia Numbers,
+    sans-serif;
+  color: #ffd874;
+  -webkit-text-stroke: 2px #21182a;
+  text-shadow: 2px 3px #181220;
+}
+.game-shell[data-challenge="firewall"] .audio-prompt {
+  bottom: 11%;
+  left: 3%;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+[data-reduced-flash="true"] .firewall-meter .firewall-beat-status,
+[data-reduced-flash="true"] .firewall-meter [data-phase="ready"] .firewall-beat-status,
+[data-reduced-flash="true"] .firewall-meter [data-phase="hit"] .firewall-beat-status {
+  color: #f1edf4;
+  background: transparent;
+}

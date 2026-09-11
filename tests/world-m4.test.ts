@@ -1,7 +1,11 @@
+// These tests replay the original v1 recordings/exports against their published content view.
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
-import { assembleContent, realtimeContent } from "../src/content/assemble.ts";
+import {
+  assembleLegacyContent as assembleContent,
+  legacyRealtimeContent as realtimeContent,
+} from "../src/content/assemble.ts";
 import {
   replayWorldWitness,
   validateContent,

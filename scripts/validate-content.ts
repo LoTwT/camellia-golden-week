@@ -80,6 +80,9 @@ for (const definition of realtimeContent.definitions)
   assert.deepEqual(validateRealtimeDefinition(definition), [], definition.id);
 const realtimeWitnesses = realtimeContent.witnesses as RealtimeWitness[];
 for (const witness of realtimeWitnesses) {
+  const release = assembleContent(witness.profileId as ProfileId);
+  assert.equal(witness.contentVersion, release.contentVersion, `${witness.id}: 内容版本`);
+  assert.equal(witness.ruleVersion, release.ruleVersion, `${witness.id}: 计分规则版本`);
   const definition = realtimeContent.definitions.find(
     (candidate) => candidate.id === witness.challengeId,
   );

@@ -1,6 +1,7 @@
+// These tests replay the original v1 recordings/exports against their published content view.
 import assert from "node:assert/strict";
 import test from "node:test";
-import { assembleContent } from "../src/content/assemble.ts";
+import { assembleLegacyContent as assembleContent } from "../src/content/assemble.ts";
 import { replayWorldWitness } from "../src/content/validate.ts";
 import type { WorldWitness } from "../src/content/validate.ts";
 import { createGame, dispatch, safePath, tileCleared } from "../src/core/engine.ts";

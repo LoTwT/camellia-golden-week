@@ -1,5 +1,5 @@
 import { entitiesAt, tileCleared } from "./engine.ts";
-import { firewallDangerTileIds, ghostTileIds } from "./realtime.ts";
+import { firewallDangerTileIds, firewallWarningTileIds, ghostTileIds } from "./realtime.ts";
 import { gateOpen } from "./progress.ts";
 import { completedStaticExitTileId } from "./static-puzzle.ts";
 import type { GameContent, GameState } from "./types.ts";
@@ -21,6 +21,7 @@ export interface BoardProjection {
   tiles: ScreenTile[];
   focus: { x: number; y: number };
   local: boolean;
+  firewall?: { combo: number; judgment: "perfect" | "miss" | null };
 }
 const COLORS = {
   floor: "#363345",
@@ -258,6 +259,12 @@ export function projectBoard(content: GameContent, state: GameState): BoardProje
           color = COLORS.danger;
           icon = "hazard-active";
           label = "危险格 · 拍点内可通过";
+        } else if (
+          definition.kind === "firewall" &&
+          firewallWarningTileIds(definition, state.clock.activeTimeMs).includes(tile.id)
+        ) {
+          icon = "hazard-active";
+          label = "即将出现危险格";
         }
         if (definition.kind === "antivirus" && active.kind === "antivirus") {
           const target = definition.rules.spawns.find(
@@ -300,7 +307,14 @@ export function projectBoard(content: GameContent, state: GameState): BoardProje
           color,
           icon,
           label,
-          mark: "",
+          mark:
+            definition.kind === "firewall"
+              ? label === "即将出现危险格"
+                ? "!"
+                : state.settings.reducedFlash && icon === "hazard-active"
+                  ? "×"
+                  : ""
+              : "",
           player: tile.id === position.tileId,
           visited: false,
         };
@@ -312,5 +326,21 @@ export function projectBoard(content: GameContent, state: GameState): BoardProje
     tiles,
     focus: { x: player?.x ?? 0, y: player?.y ?? 0 },
     local: position.space === "room",
+    ...(state.activeRealtime?.state.kind === "firewall"
+      ? {
+          firewall: {
+            combo: state.activeRealtime.state.combo,
+            judgment:
+              state.mode === "challengeRunning" &&
+              !state.clock.pauseReasons.length &&
+              !state.clock.awaitingResume &&
+              !state.clock.countdownRemainingMs &&
+              state.activeRealtime.state.lastJudgment &&
+              state.clock.activeTimeMs - state.activeRealtime.state.lastJudgment.activeTimeMs < 220
+                ? state.activeRealtime.state.lastJudgment.kind
+                : null,
+          },
+        }
+      : {}),
   };
 }

@@ -16,6 +16,10 @@ import type { SaveStorage } from "../src/platform/save-store.ts";
 
 const content = assembleContent("M1");
 const savedAt = "2026-09-11T10:00:00.000Z";
+const tutorial = content.realtimeChallenges.find(
+  (definition) => definition.id === "a.firewall.tutorial",
+);
+assert.ok(tutorial?.kind === "firewall");
 
 class PlaySession {
   state: GameState;
@@ -494,11 +498,13 @@ test("P02 防火墙真实达标后立即保存结果，恢复不强制重打或�
   const session = new PlaySession();
   session.startFirewall();
   session.wait(3000);
-  for (let index = 0; index < 12; index += 1)
+  for (let index = 0; index < 12; index += 1) {
+    const atMs = Math.round(tutorial.rules.firstBeatMs + index * (60_000 / tutorial.rules.bpm));
     session.send(
       { kind: "Move", direction: index % 2 === 0 ? "right" : "left" },
-      index === 0 ? 250 : 500,
+      atMs - session.state.clock.activeTimeMs,
     );
+  }
   session.wait(15000 - session.state.clock.activeTimeMs);
   assert.equal(session.state.mode, "challengeResult");
   assert.equal(session.state.phase, "success");

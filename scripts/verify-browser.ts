@@ -23,6 +23,9 @@ const results: Record<string, unknown> = {
   startedAt: new Date().toISOString(),
   browser: browser.version(),
   node: process.version,
+  headless: process.env.CAMELLIA_HEADED !== "1",
+  platform: process.platform,
+  arch: process.arch,
   mode: reviewOnly ? "targeted-review-regressions" : "full",
   profileChecks: [],
 };
@@ -76,7 +79,12 @@ try {
     acceptanceUrl: acceptance.url,
     outputDir,
   });
-  results.firewallCue = await verifyFirewallCue({ browser, url: production.url, outputDir });
+  results.firewallCue = await verifyFirewallCue({
+    browser,
+    url: production.url,
+    acceptanceUrl: acceptance.url,
+    outputDir,
+  });
   results.success = true;
   console.log(
     reviewOnly

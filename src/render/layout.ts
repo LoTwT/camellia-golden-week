@@ -51,6 +51,7 @@ export interface BoardLayoutRequest {
   readonly local: boolean;
   readonly zoom: number;
   readonly insets?: ViewportInsets;
+  readonly fitPadding?: number;
 }
 
 export interface BoardLayout {
@@ -91,6 +92,20 @@ export function defaultViewportInsets(width: number): ViewportInsets {
   return width < COMPACT_BOARD_WIDTH_CSS
     ? { left: 206, right: 16, top: 0, bottom: 0 }
     : { left: 248, right: 202, top: 0, bottom: 0 };
+}
+
+/** Reference framing is 16:9; preserve the television proportions in wider/taller windows. */
+export function firewallViewportInsets(width: number, height: number): ViewportInsets {
+  const frameWidth = Math.min(width, (height * 16) / 9);
+  const frameHeight = (frameWidth * 9) / 16;
+  const horizontalMargin = (width - frameWidth) / 2;
+  const verticalMargin = (height - frameHeight) / 2;
+  return {
+    left: horizontalMargin + frameWidth * 0.236,
+    right: horizontalMargin + frameWidth * 0.236,
+    top: verticalMargin + frameHeight * 0.185,
+    bottom: verticalMargin + frameHeight * 0.157,
+  };
 }
 
 export function projectGridPoint(point: Point2): Point2 {
@@ -141,6 +156,9 @@ export function fitBoardLayout(request: BoardLayoutRequest): BoardLayout {
   )
     throw new RangeError("画布尺寸、缩放和焦点必须有限且尺寸为正。");
   const insets = { ...(request.insets ?? defaultViewportInsets(request.width)) };
+  const fitPadding = request.fitPadding ?? FIT_PADDING;
+  if (!Number.isFinite(fitPadding) || fitPadding < 0)
+    throw new RangeError("棋盘取景留白必须为有限非负数。");
   if (Object.values(insets).some((value) => !Number.isFinite(value) || value < 0))
     throw new RangeError("画布内边距必须为有限非负数。");
   const available = {
@@ -161,8 +179,8 @@ export function fitBoardLayout(request: BoardLayoutRequest): BoardLayout {
   );
   const defaultScale = request.local
     ? Math.min(
-        available.width / (boardBounds.width + FIT_PADDING),
-        available.height / (boardBounds.height + FIT_PADDING),
+        available.width / (boardBounds.width + fitPadding),
+        available.height / (boardBounds.height + fitPadding),
       )
     : Math.min(
         available.width / (9 * TELEVISION.stepX),

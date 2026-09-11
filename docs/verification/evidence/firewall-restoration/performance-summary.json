@@ -1,0 +1,104 @@
+[
+  {
+    "difficulty": "inner",
+    "combo": 47,
+    "frame": {
+      "method": "相邻rAF仅在waiting/ready/hit、无菜单且页面可见并聚焦时纳入；暂停/倒数/菜单/焦点边界重置前帧。",
+      "samples": 2534,
+      "medianMs": 16.69999999999709,
+      "p95Ms": 16.70000000001164,
+      "maxMs": 16.80000000000291,
+      "coverageSeconds": 42.23160000000001,
+      "firstEligibleFrameMs": 33707,
+      "lastEligibleFrameMs": 75938.6,
+      "excludedFrames": 0,
+      "stopReason": "natural-settlement"
+    },
+    "input": {
+      "method": "捕获实际keydown至rAF观察到对应可见命中提示，再至下一rAF留出一次绘制机会；不含自动化协议往返。",
+      "samples": 52,
+      "medianMs": 27.5,
+      "p95Ms": 30.899999976158142,
+      "maxMs": 32.39999997615814,
+      "thresholdMs": 100,
+      "includesWarmupHits": true,
+      "excludesIntentionalMiss": true
+    },
+    "driftMs": 0.13666666666267702,
+    "resources": {
+      "calls": 58,
+      "geometries": 18,
+      "textures": 9,
+      "tileCount": 20,
+      "firewallScoreboards": 4
+    }
+  },
+  {
+    "difficulty": "deep",
+    "combo": 57,
+    "frame": {
+      "method": "相邻rAF仅在waiting/ready/hit、无菜单且页面可见并聚焦时纳入；暂停/倒数/菜单/焦点边界重置前帧。",
+      "samples": 2534,
+      "medianMs": 16.69999999999709,
+      "p95Ms": 16.79999999998836,
+      "maxMs": 16.80000000000291,
+      "coverageSeconds": 42.23159999999999,
+      "firstEligibleFrameMs": 85788.3,
+      "lastEligibleFrameMs": 128019.9,
+      "excludedFrames": 0,
+      "stopReason": "natural-settlement"
+    },
+    "input": {
+      "method": "捕获实际keydown至rAF观察到对应可见命中提示，再至下一rAF留出一次绘制机会；不含自动化协议往返。",
+      "samples": 57,
+      "medianMs": 28.299999952316284,
+      "p95Ms": 30.600000023841858,
+      "maxMs": 32.200000047683716,
+      "thresholdMs": 100,
+      "includesWarmupHits": false,
+      "excludesIntentionalMiss": true
+    },
+    "driftMs": 0.15766666664518425,
+    "resources": {
+      "calls": 58,
+      "geometries": 18,
+      "textures": 9,
+      "tileCount": 20,
+      "firewallScoreboards": 4
+    }
+  },
+  {
+    "difficulty": "core",
+    "combo": 72,
+    "frame": {
+      "method": "相邻rAF仅在waiting/ready/hit、无菜单且页面可见并聚焦时纳入；暂停/倒数/菜单/焦点边界重置前帧。",
+      "samples": 2535,
+      "medianMs": 16.699999999982538,
+      "p95Ms": 16.70000000001164,
+      "maxMs": 16.800000000017462,
+      "coverageSeconds": 42.248299999999986,
+      "firstEligibleFrameMs": 137869.5,
+      "lastEligibleFrameMs": 180117.8,
+      "excludedFrames": 0,
+      "stopReason": "natural-settlement"
+    },
+    "input": {
+      "method": "捕获实际keydown至rAF观察到对应可见命中提示，再至下一rAF留出一次绘制机会；不含自动化协议往返。",
+      "samples": 72,
+      "medianMs": 28.05000001192093,
+      "p95Ms": 31.100000023841858,
+      "maxMs": 32.39999997615814,
+      "thresholdMs": 100,
+      "includesWarmupHits": false,
+      "excludesIntentionalMiss": true
+    },
+    "driftMs": 0.10599990459780884,
+    "resources": {
+      "calls": 58,
+      "geometries": 18,
+      "textures": 9,
+      "tileCount": 20,
+      "firewallScoreboards": 4
+    }
+  }
+]

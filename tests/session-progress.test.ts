@@ -1,7 +1,8 @@
+// These tests replay the original v1 recordings/exports against their published content view.
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
-import { assembleContent } from "../src/content/assemble.ts";
+import { assembleLegacyContent as assembleContent } from "../src/content/assemble.ts";
 import { createGame, dispatch } from "../src/core/engine.ts";
 import type { GameCommand } from "../src/core/types.ts";
 import { restorePayload, stablePayload, validatePayload } from "../src/platform/save-payload.ts";

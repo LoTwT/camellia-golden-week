@@ -2,6 +2,8 @@
 
 [文档索引](../index.md) · [工程矩阵与预算](../spec/architecture.md#3-浏览器与运行预算) · [验收总表](acceptance-results.md) · [视口矩阵](viewport-matrix.md) · [离线资源审计](offline-build-audit.md)
 
+2026-09-12 补充：[防火墙 v2](firewall-restoration.md)在实际 Google Chrome 153.0.8010.36（Playwright `channel: chrome`，headless）完成五分期回归、两种生产教学、三正式档正常键鼠与真实旧全收集档导入/刷新。分别覆盖1512×771有声、1024×640静音与减少效果、1920×1080正式档；验收包截图明确带诊断面板，不冒充production。其他浏览器和硬件范围维持原决定。
+
 核对日期：2026-09-11。**本次必需环境为用户接受的 Apple M1 Pro / 32 GB / macOS 26.6.2 / 独立 Chrome 153.0.8010.36。** Chrome 已有 M4 正常新档 130 全收集、M5 承接、最终 production 续玩恢复和同源码观察包的完整本机运行预算证据，当前必需范围通过。原 M1 / 8 GB 与 Windows 基线未实测，不再阻塞本次交付；真实断外网 V06 不再要求，仍不记为通过。范围依据见[用户调整记录](acceptance-scope-2026-09-11.md)。
 
 Safari / Edge 以下均作历史记录，不再作为本次必需验收。Safari已有新档教学、三迷宫、A/B首访340/21与部分恢复；两档64格中位帧间隔17ms的失败及未完成全流程均保留，不改记通过，也不作为本次继续等待Safari环境的条件。

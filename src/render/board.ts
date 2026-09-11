@@ -2,10 +2,12 @@ import * as THREE from "three";
 import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
 import type { BoardProjection, ScreenTile } from "../core/projection.ts";
 import type { GameSettings } from "../core/types.ts";
+import { FirewallStage } from "./firewall-stage.ts";
 import {
   boardBoundsCss,
   cameraFocusAt,
   fitBoardLayout,
+  firewallViewportInsets,
   MOVEMENT_TRANSITION_MS,
   TELEVISION,
 } from "./layout.ts";
@@ -57,7 +59,10 @@ function requiredIcons(board: BoardProjection): Set<string> {
   return ids;
 }
 
-function makeGlassTextures(): { shading: THREE.CanvasTexture; reflection: THREE.CanvasTexture } {
+function makeGlassTextures(firewall = false): {
+  shading: THREE.CanvasTexture;
+  reflection: THREE.CanvasTexture;
+} {
   const shadingCanvas = document.createElement("canvas");
   shadingCanvas.width = shadingCanvas.height = 256;
   const context = shadingCanvas.getContext("2d");
@@ -86,6 +91,33 @@ function makeGlassTextures(): { shading: THREE.CanvasTexture; reflection: THREE.
     glow.addColorStop(1, "rgba(192,185,219,0)");
     reflection.fillStyle = glow;
     reflection.fillRect(0, 0, 256, 256);
+  }
+  if (firewall) {
+    reflection.fillStyle = "#c9c0e250";
+    reflection.beginPath();
+    reflection.moveTo(0, 225);
+    reflection.bezierCurveTo(50, 180, 19, 126, 76, 112);
+    reflection.bezierCurveTo(129, 93, 76, 28, 147, 0);
+    reflection.lineTo(219, 0);
+    reflection.bezierCurveTo(176, 58, 218, 91, 153, 126);
+    reflection.bezierCurveTo(96, 146, 148, 216, 76, 256);
+    reflection.lineTo(0, 256);
+    reflection.closePath();
+    reflection.fill();
+    reflection.fillStyle = "#aaa5c02a";
+    reflection.beginPath();
+    reflection.ellipse(215, 202, 56, 71, -0.5, 0, Math.PI * 2);
+    reflection.fill();
+    const glassRim = reflection.createLinearGradient(0, 0, 0, 256);
+    glassRim.addColorStop(0, "#ddd5f060");
+    glassRim.addColorStop(0.07, "#ddd5f000");
+    glassRim.addColorStop(0.91, "#06031100");
+    glassRim.addColorStop(1, "#060311a0");
+    reflection.fillStyle = glassRim;
+    reflection.fillRect(0, 0, 256, 256);
+    reflection.fillStyle = "#e7daff20";
+    for (let y = 0; y < 256; y += 3)
+      for (let x = 0; x < 256; x += 3) reflection.fillRect(x, y, 1, 1);
   }
   const shadingTexture = new THREE.CanvasTexture(shadingCanvas);
   const reflectionTexture = new THREE.CanvasTexture(reflectionCanvas);
@@ -193,6 +225,8 @@ export class BoardRenderer {
     MAX_TILES * 2,
   );
   private readonly glassTextures: ReturnType<typeof makeGlassTextures>;
+  private firewallGlassTextures: ReturnType<typeof makeGlassTextures> | null = null;
+  private firewallStage: FirewallStage | null = null;
   private readonly backdrop = makeBackdrop();
   private readonly icons = new Map<string, IconResource>();
   private readonly textureLoader = new THREE.TextureLoader();
@@ -453,8 +487,12 @@ export class BoardRenderer {
       tiles: this.board.tiles,
       focus: this.board.focus,
       local: this.board.local,
-      zoom: this.settings?.zoom ?? 1,
-      ...(this.viewportInsets ? { insets: this.viewportInsets } : {}),
+      zoom: this.board.firewall ? 1 : (this.settings?.zoom ?? 1),
+      ...(this.board.firewall
+        ? { insets: firewallViewportInsets(width, height), fitPadding: 0.03 }
+        : this.viewportInsets
+          ? { insets: this.viewportInsets }
+          : {}),
     });
     if (snapFocus || this.settings?.reducedMotion) {
       this.focus = this.layout.focus;
@@ -477,6 +515,27 @@ export class BoardRenderer {
     if (this.disposed) return;
     if (board.tiles.length > MAX_TILES) throw new RangeError("棋盘超过实例容量。");
     const newBoard = this.board.id !== board.id;
+    if (board.firewall && !this.firewallStage) {
+      this.firewallStage = new FirewallStage();
+      this.scene.add(this.firewallStage.group);
+      this.firewallGlassTextures = makeGlassTextures(true);
+      this.screenMaterial.map = this.firewallGlassTextures.shading;
+      this.reflectionMaterial.map = this.firewallGlassTextures.reflection;
+      this.bodyMaterial.color.set("#3c3849");
+      this.backdrop.material.color.set("#cbc7d4");
+    } else if (!board.firewall && this.firewallStage) {
+      this.scene.remove(this.firewallStage.group);
+      this.firewallStage.dispose();
+      this.firewallStage = null;
+      this.firewallGlassTextures?.shading.dispose();
+      this.firewallGlassTextures?.reflection.dispose();
+      this.firewallGlassTextures = null;
+      this.screenMaterial.map = this.glassTextures.shading;
+      this.reflectionMaterial.map = this.glassTextures.reflection;
+      this.bodyMaterial.color.set("#494455");
+      this.backdrop.material.color.set("#ffffff");
+    }
+    if (board.firewall) this.firewallStage?.update(board.firewall.combo, board.firewall.judgment);
     const previousPlayer = this.board.tiles.find((tile) => tile.player);
     const player = board.tiles.find((tile) => tile.player);
     if (!newBoard && player?.id !== previousPlayer?.id) {
@@ -517,7 +576,7 @@ export class BoardRenderer {
       ])
         mesh.count = board.tiles.length;
       this.controls.count = board.tiles.length * 2;
-      this.selection.visible = player !== undefined;
+      this.selection.visible = player !== undefined && !board.firewall;
       const iconGroups = new Map<string, ScreenTile[]>();
       board.tiles.forEach((tile, index) => {
         const x = tile.x * TELEVISION.stepX,
@@ -527,13 +586,19 @@ export class BoardRenderer {
         this.dummy.position.set(x, 0, z);
         this.dummy.updateMatrix();
         this.body.setMatrixAt(index, this.dummy.matrix);
-        this.body.setColorAt(index, this.color.set(tile.known ? "#98939f" : "#55505a"));
+        this.body.setColorAt(
+          index,
+          this.color.set(board.firewall ? "#85818d" : tile.known ? "#98939f" : "#55505a"),
+        );
         this.dummy.position.set(x, TELEVISION.screenY, z + TELEVISION.screenOffsetZ);
         this.dummy.updateMatrix();
         this.screens.setMatrixAt(index, this.dummy.matrix);
         this.screens.setColorAt(index, this.color.set(tile.player ? "#e2e1dc" : tile.color));
         this.dummy.position.y = 0.164;
         this.dummy.rotation.x = -Math.PI / 2;
+        this.dummy.rotation.z = board.firewall && (tile.x + tile.y * 3) % 3 === 0 ? Math.PI : 0;
+        if (board.firewall && (tile.player || (tile.icon === "hazard-active" && tile.mark !== "!")))
+          this.dummy.scale.setScalar(0);
         this.dummy.updateMatrix();
         this.reflections.setMatrixAt(index, this.dummy.matrix);
         this.reflections.setColorAt(
@@ -544,7 +609,8 @@ export class BoardRenderer {
               : "#ffffff",
           ),
         );
-        this.dummy.rotation.x = 0;
+        this.dummy.rotation.set(0, 0, 0);
+        this.dummy.scale.setScalar(1);
         this.dummy.position.set(x, 0.132, z + 0.31);
         this.dummy.updateMatrix();
         this.trims.setMatrixAt(index, this.dummy.matrix);
@@ -559,7 +625,11 @@ export class BoardRenderer {
           this.dummy.updateMatrix();
           this.controls.setMatrixAt(index * 2 + control, this.dummy.matrix);
         }
-        const ids = tile.player ? ["player-idle", "player-move"] : tile.icon ? [tile.icon] : [];
+        const ids = tile.player
+          ? ["player-idle", "player-move"]
+          : tile.icon && !(board.firewall && tile.icon === "hazard-active")
+            ? [tile.icon]
+            : [];
         for (const id of ids) {
           const group = iconGroups.get(id) ?? [];
           group.push(tile);
@@ -604,7 +674,7 @@ export class BoardRenderer {
         .filter((tile) => tile.mark)
         .map((tile) => {
           const element = document.createElement("span");
-          element.className = "tile-mark";
+          element.className = board.firewall ? "tile-mark firewall-tile-mark" : "tile-mark";
           element.textContent = tile.mark;
           element.dataset.tileId = tile.id;
           this.labelLayer.append(element);
@@ -651,12 +721,15 @@ export class BoardRenderer {
     this.renderer.render(this.backgroundScene, this.camera);
     this.renderer.clearDepth();
     const available = this.layout.available;
-    this.renderer.setScissor(
-      available.left,
-      this.layout.canvas.height - available.top - available.height,
-      available.width,
-      available.height,
-    );
+    if (this.board.firewall)
+      this.renderer.setScissor(0, 0, this.layout.canvas.width, this.layout.canvas.height);
+    else
+      this.renderer.setScissor(
+        available.left,
+        this.layout.canvas.height - available.top - available.height,
+        available.width,
+        available.height,
+      );
     this.renderer.setScissorTest(true);
     this.renderer.render(this.scene, this.camera);
     this.renderer.setScissorTest(false);
@@ -674,7 +747,11 @@ export class BoardRenderer {
     this.hasPresented = true;
     for (const { element, tile } of this.labels) {
       this.labelPosition
-        .set(tile.x * TELEVISION.stepX + 0.27, 0.2, tile.y * TELEVISION.stepZ + 0.2)
+        .set(
+          tile.x * TELEVISION.stepX + (this.board.firewall ? 0 : 0.27),
+          0.2,
+          tile.y * TELEVISION.stepZ + (this.board.firewall ? -0.02 : 0.2),
+        )
         .project(this.camera);
       const x = ((this.labelPosition.x + 1) / 2) * this.layout.canvas.width;
       const y = ((1 - this.labelPosition.y) / 2) * this.layout.canvas.height;
@@ -712,6 +789,7 @@ export class BoardRenderer {
       textures: this.renderer.info.memory.textures,
       calls: this.renderer.info.render.calls,
       tileCount: this.board.tiles.length,
+      firewallScoreboards: this.firewallStage?.group.children.length ?? 0,
       residentIconCount: this.icons.size,
       pendingIconCount: [...this.icons.values()].filter(
         (resource) => !resource.texture && !resource.error,
@@ -768,6 +846,9 @@ export class BoardRenderer {
       material.dispose();
     this.glassTextures.shading.dispose();
     this.glassTextures.reflection.dispose();
+    this.firewallStage?.dispose();
+    this.firewallGlassTextures?.shading.dispose();
+    this.firewallGlassTextures?.reflection.dispose();
     for (const mesh of [
       this.body,
       this.screens,

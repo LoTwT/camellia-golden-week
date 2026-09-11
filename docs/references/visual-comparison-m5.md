@@ -85,6 +85,8 @@ M5 六类外壳在这些样本中约1.18–1.19，已接近原图的横向厚壳
 
 ## 4. A 防火墙
 
+当前防火墙已重建为 5×4 / 四块 COMBO 电视，原曲实测、连续配乐、PERFECT / MISS、危险预告与新版 Chrome 画面对照见[防火墙原版还原](../verification/firewall-restoration.md)。以下保留原 M5 帧及随后两轮补修的历史差异，不代表 v2 仍使用左侧计数框。
+
 原参考 `AR-A-FIREWALL`：S05 [区域攻略](https://game8.jp/zenless/634710)「防火壁突破」，图片ID `10416126`；[1920×1080原图片](https://img.game8.jp/10416126/90d0be6152e66b41e8d600a6033fe4ae.jpeg/original)，本机调查缓存 `/tmp/camellia-art-reference/s05-12-original.jpg`。原图中央5×4，两侧共四块大型COMBO屏；原时序未证实，本版规则来源见[实时重建记录](maps/realtime.md)。
 
 **主图：[M5核心防火墙活动态](../verification/evidence/m5-firewall-1366-dpr1.jpg)**。画面本次COMBO0、最高0、目标70、余44.2秒；这些是所拍810.6ms活动帧的值，不是失败或通关结论。左侧计数框在该帧有浅黄描边，静态单帧不能证明拍点整个周期和同步音效。

@@ -13,10 +13,20 @@ function audioHarness(context: TestContext) {
   let responseOverride: (url: string) => Promise<Response> | null = () => null;
   let resumeOverride: () => Promise<void> | null = () => null;
   const starts: number[] = [];
+  const offsets: number[] = [];
+  const rates: number[] = [];
+  let audioTime = 10;
+  let outputLatencySeconds = 0;
+  let monotonicTime = 0;
   const gains: number[] = [];
   let stopped = 0;
   class FakeAudioContext {
-    currentTime = 10;
+    get currentTime() {
+      return audioTime;
+    }
+    getOutputTimestamp() {
+      return { contextTime: audioTime - outputLatencySeconds, performanceTime: monotonicTime };
+    }
     state = "running";
     destination = {};
     resume() {
@@ -41,10 +51,16 @@ function audioHarness(context: TestContext) {
       return {
         buffer: null,
         onended: null,
+        playbackRate: {
+          setValueAtTime(value: number) {
+            rates.push(value);
+          },
+        },
         connect() {},
         disconnect() {},
-        start(at: number) {
+        start(at: number, offset = 0) {
           starts.push(at);
+          offsets.push(offset);
         },
         stop() {
           stopped += 1;
@@ -52,7 +68,7 @@ function audioHarness(context: TestContext) {
       };
     }
     decodeAudioData() {
-      return Promise.resolve({});
+      return Promise.resolve({ duration: (32 * 60) / 110 });
     }
   }
   const descriptor = Object.getOwnPropertyDescriptor(globalThis, "AudioContext");
@@ -83,6 +99,8 @@ function audioHarness(context: TestContext) {
     state,
     definition,
     starts,
+    offsets,
+    rates,
     gains,
     stopped: () => stopped,
     requests: () => requests,
@@ -98,25 +116,52 @@ function audioHarness(context: TestContext) {
     interceptResume(handler: typeof resumeOverride) {
       resumeOverride = handler;
     },
+    outputLatency(seconds: number) {
+      outputLatencySeconds = seconds;
+    },
     sync(activeTimeMs: number) {
+      monotonicTime = activeTimeMs;
+      audioTime = 10 + activeTimeMs / 1000;
       state.clock = { ...state.clock, activeTimeMs };
       audio.syncFirewall(state, definition, activeTimeMs);
     },
   };
 }
 
-test("音频错过一个调度窗口后跳过过期拍，后续节拍继续且不补播", async (context) => {
+test("配乐迟到启用时从当前乐句位置播放，逐帧同步不重播或叠加循环", async (context) => {
   const h = audioHarness(context);
   assert.equal(await h.audio.enable(), true);
   h.sync(310);
-  assert.deepEqual(h.starts, []);
+  assert.equal(h.starts.length, 1);
+  assert.ok(Math.abs(h.starts[0]! - 10.315) < 1e-9);
+  assert.ok(h.offsets[0]! > 0.04 && h.offsets[0]! < 0.05);
   h.sync(660);
-  assert.deepEqual(h.starts, [10.09]);
   h.sync(660);
   assert.equal(h.starts.length, 1);
   h.sync(1160);
+  assert.equal(h.starts.length, 1);
+  assert.deepEqual(h.rates, [1]);
+  assert.ok(Math.abs(h.audio.metrics().music!.driftMs) < 0.001);
+});
+
+test("同局音频设备延迟变化后重新对齐当前乐句，小幅测量抖动不会重启", async (context) => {
+  const h = audioHarness(context);
+  h.outputLatency(0.08);
+  assert.equal(await h.audio.enable(), true);
+  h.sync(310);
+  h.sync(500);
+  assert.equal(h.starts.length, 1);
+  h.outputLatency(0.3);
+  h.sync(600);
+  assert.equal(h.starts.length, 2, "设备延迟增加220ms后必须修复超出判定窗的相位偏差");
+  assert.equal(h.stopped(), 1);
+  assert.ok(Math.abs(h.audio.metrics().music!.driftMs) < 0.001);
+  for (let tick = 1; tick <= 8; tick += 1) {
+    h.outputLatency(tick % 2 ? 0.304 : 0.297);
+    h.sync(600 + tick * 16);
+  }
   assert.equal(h.starts.length, 2);
-  assert.deepEqual(h.starts, [10.09, 10.09]);
+  assert.ok(Math.abs(h.audio.metrics().music!.driftMs) <= 4.001);
 });
 
 function deferred<Value>() {
@@ -190,7 +235,7 @@ for (const action of ["disable", "dispose"] as const)
     assert.deepEqual(h.starts, []);
   });
 
-test("暂停取消已排节拍，恢复倒数期间不播积压声音", async (context) => {
+test("暂停停止配乐，恢复倒数不播放，倒数结束从冻结的乐句位置继续", async (context) => {
   const h = audioHarness(context);
   await h.audio.enable();
   h.sync(180);
@@ -212,7 +257,8 @@ test("暂停取消已排节拍，恢复倒数期间不播积压声音", async (c
   h.state.clock = { ...h.state.clock, countdownRemainingMs: 0, inputEpoch: 2 };
   h.sync(200);
   assert.equal(h.starts.length, 2);
-  assert.equal(h.starts[1], 10.05);
+  assert.ok(Math.abs(h.starts[1]! - (10 + h.definition.rules.firstBeatMs / 1000)) < 1e-9);
+  assert.ok(h.offsets[1]! < 1e-9);
 });
 
 test("浏览器拒绝声音和本地声音缺失均可再次启用，不静默标为正常", async (context) => {

@@ -2,7 +2,9 @@
 
 [文档索引](../../index.md) · [玩法合同](../../spec/gameplay.md) · [内容合同](../../spec/content.md) · [验收合同](../../spec/acceptance.md) · [来源入口](../index.md)
 
-内容版本 1，规则版本 1。2026-09-11 制作并执行纯规则验证。本文对应的权威数据是 [`realtime.json`](../../../src/content/challenges/realtime.json)，运行规则是 [`realtime.ts`](../../../src/core/realtime.ts)，有效时钟是 [`clock.ts`](../../../src/core/clock.ts)。所有坐标和精确时间均为本版重建，不声称测得原版地图或节奏算法。
+当前防火墙 v2 采用原参考的 5×4 构图及约 110 BPM 节奏。新版固定数据是 [`realtime.json`](../../../src/content/challenges/realtime.json)，行列危险组与首末拍均有公开命令见证；来源、参数推断边界及实际验证见[防火墙还原记录](../../verification/firewall-restoration.md)与 [S11](../firewall-audio.md)。
+
+下文保留 2026-09-11 首轮内容版本 1 / 规则版本 1 的测绘与纯规则验证，权威数据已冻结为 [`history/realtime-v1.json`](../../../src/content/history/realtime-v1.json)，不会随新版重写。运行规则是 [`realtime.ts`](../../../src/core/realtime.ts)，有效时钟是 [`clock.ts`](../../../src/core/clock.ts)。下列旧坐标和精确时间均为当时的重建，不声称测得原版地图或节奏算法。
 
 ## 来源与核对范围
 

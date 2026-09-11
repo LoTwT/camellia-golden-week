@@ -4,6 +4,14 @@ import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, extname, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  createFirewallMusic,
+  FIREWALL_MUSIC_IDS,
+  FIREWALL_MUSIC_BPM,
+  FIREWALL_MUSIC_LOOP_BEATS,
+  FIREWALL_MUSIC_SAMPLE_COUNT,
+  FIREWALL_MUSIC_SAMPLE_RATE,
+} from "./firewall-music.ts";
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const assetRoot = resolve(projectRoot, "public/assets");
@@ -339,7 +347,7 @@ const tones: ToneDefinition[] = [
     id: "beat",
     duration: 0.045,
     frequencies: [880],
-    purpose: "防火墙有效时间拍点；适配器按时钟调度",
+    purpose: "防火墙踩拍成功的短确认音；背景配乐独立保持节奏",
   },
 ];
 
@@ -353,6 +361,12 @@ const selectedIcons = icons.filter(
 );
 const sha256 = (bytes: Buffer | string) => createHash("sha256").update(bytes).digest("hex");
 const generatorHash = sha256(readFileSync(fileURLToPath(import.meta.url)));
+const musicGeneratorHash = sha256(
+  Buffer.concat([
+    readFileSync(resolve(projectRoot, "scripts/firewall-music.ts")),
+    readFileSync(resolve(projectRoot, "src/audio/firewall-music.ts")),
+  ]),
+);
 const assetVersion = "camellia-assets-v2";
 const fontManifestPath = resolve(assetRoot, "font-manifest.json");
 const fontInputExtensions = new Set([".ts", ".js", ".json", ".css", ".html"]);
@@ -563,6 +577,7 @@ if (process.argv.includes("--check")) {
       (icon) => [icon.id, profilesStartingAt(icon.firstProfile ?? "M1")] as const,
     ),
     ...tones.map((tone) => [tone.id, profileOrder] as const),
+    ...FIREWALL_MUSIC_IDS.map((id) => [id, profileOrder] as const),
     ...fonts.map((font) => [font.id, profileOrder] as const),
   ]);
   assert.equal(manifest.assets.length, expectedProfiles.size, "Complete asset records for phase");
@@ -601,7 +616,12 @@ if (process.argv.includes("--check")) {
         assert.equal(png[25], 6, `${id}: RGBA PNG`);
       }
     } else if (asset.kind === "audio") {
-      assert.equal(asset.sourceSha256, generatorHash, `${id}: regenerate after source changes`);
+      const music = FIREWALL_MUSIC_IDS.some((candidate) => candidate === id);
+      assert.equal(
+        asset.sourceSha256,
+        music ? musicGeneratorHash : generatorHash,
+        `${id}: regenerate after source changes`,
+      );
       assert.equal(bytes.toString("ascii", 0, 4), "RIFF");
       assert.equal(bytes.toString("ascii", 8, 12), "WAVE");
       assert.equal(bytes.readUInt16LE(20), 1);
@@ -617,6 +637,11 @@ if (process.argv.includes("--check")) {
         peak = Math.max(peak, Math.abs(bytes.readInt16LE(offset)));
       }
       assert(peak > 0 && peak < 32767, `${id}: audible and unclipped`);
+      if (music) {
+        assert.equal(asset.bpm, FIREWALL_MUSIC_BPM);
+        assert.equal(asset.loopBeats, FIREWALL_MUSIC_LOOP_BEATS);
+        assert.equal(bytes.readUInt32LE(40) / 2, FIREWALL_MUSIC_SAMPLE_COUNT);
+      }
     } else if (asset.kind === "font") {
       assert.equal(bytes.toString("ascii", 0, 4), "wOF2");
       assert.equal(typeof asset.licenseLocalPath, "string");
@@ -771,6 +796,40 @@ for (const tone of tones) {
   });
 }
 
+for (const id of FIREWALL_MUSIC_IDS) {
+  const wav = createFirewallMusic(id);
+  const path = `audio/${id}.wav`;
+  writeFileSync(resolve(assetRoot, path), wav);
+  generatedAssets.push({
+    id,
+    kind: "audio",
+    purpose: "防火墙连续电子节奏配乐；与白光、输入判定共享110BPM时间轴",
+    profiles: [...profileOrder],
+    status: "补制",
+    localPath: `/assets/${path}`,
+    sourcePath: "scripts/firewall-music.ts + src/audio/firewall-music.ts",
+    sourceUrl: null,
+    sourceVersion: "camellia-firewall-score-v1",
+    sourceSha256: musicGeneratorHash,
+    sha256: sha256(wav),
+    durationSeconds: FIREWALL_MUSIC_SAMPLE_COUNT / FIREWALL_MUSIC_SAMPLE_RATE,
+    sampleRate: FIREWALL_MUSIC_SAMPLE_RATE,
+    channels: 1,
+    bitDepth: 16,
+    bpm: FIREWALL_MUSIC_BPM,
+    loopBeats: FIREWALL_MUSIC_LOOP_BEATS,
+    author: "为 camellia-golden-week 创作的项目配乐",
+    rights: "原创合成；不采样原游戏、Apple试听或视频音轨，不复制原曲旋律",
+    usage: "随本项目本地打包",
+    transform:
+      "确定性鼓组、低音、和弦与短分解；D小调32拍循环；16-bit mono PCM WAV；首末归零，峰值-3.61dBFS",
+    referenceId: "S11",
+    referenceUrl: "https://music.apple.com/jp/song/1787721526",
+    differences:
+      "原版为Red!/Red!!/Red!!!；本配乐仅接近电子律动与实测110BPM速度，旋律、编曲、音色及长度均为补制，不冒充原录音",
+  });
+}
+
 const fontAssets = existsSync(fontManifestPath)
   ? (
       JSON.parse(readFileSync(fontManifestPath, "utf8")) as { assets: Record<string, unknown>[] }
@@ -781,5 +840,5 @@ writeFileSync(
   `${JSON.stringify({ assetVersion, phase: allProfiles ? "prepared-all-profiles" : fullM1 ? "m1" : "representative", assets: [...generatedAssets, ...fontAssets] }, null, 2)}\n`,
 );
 process.stdout.write(
-  `Generated ${selectedIcons.length} SVG icons and ${tones.length} local WAV files.\n`,
+  `Generated ${selectedIcons.length} SVG icons and ${tones.length + FIREWALL_MUSIC_IDS.length} local WAV files.\n`,
 );

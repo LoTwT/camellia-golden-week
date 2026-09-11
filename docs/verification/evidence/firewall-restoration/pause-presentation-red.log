@@ -1,0 +1,33 @@
+✔ 原参考的防火墙为完整 5 列 4 行，四档均不能沿用通用 5×5 棋盘 (0.840209ms)
+✖ 正常命中后同一16ms画面桶内暂停，必须刷新投影以清除四屏PERFECT (8.216666ms)
+✔ 完整电视墙在三种 Chrome 验收视口保留四侧屏空间，中央二十格均可点击 (0.503333ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 2
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 123.545417
+
+✖ failing tests:
+
+test at tests/firewall-presentation.test.ts:23:1
+✖ 正常命中后同一16ms画面桶内暂停，必须刷新投影以清除四屏PERFECT (8.216666ms)
+  AssertionError [ERR_ASSERTION]: Expected "actual" to be strictly unequal to:
+  
+  '85:a.firewall.tutorial.tile.3.2:challengeRunning:running:3:17:{"masterVolume":0.6,"muted":false,"reducedFlash":false,"reducedMotion":false,"quality":"standard","zoom":1}'
+      at TestContext.<anonymous> (file:///Users/caoyujie/codes/camellia-golden-week/tests/firewall-presentation.test.ts:37:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '85:a.firewall.tutorial.tile.3.2:challengeRunning:running:3:17:{"masterVolume":0.6,"muted":false,"reducedFlash":false,"reducedMotion":false,"quality":"standard","zoom":1}',
+    expected: '85:a.firewall.tutorial.tile.3.2:challengeRunning:running:3:17:{"masterVolume":0.6,"muted":false,"reducedFlash":false,"reducedMotion":false,"quality":"standard","zoom":1}',
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }

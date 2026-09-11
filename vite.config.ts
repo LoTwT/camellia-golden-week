@@ -1,8 +1,7 @@
 import { defineConfig } from "vite";
 import { readFileSync } from "node:fs";
 import assetManifest from "./public/assets/manifest.json" with { type: "json" };
-import { assembleContent } from "./src/content/assemble.ts";
-import type { ProfileId } from "./src/core/types.ts";
+import { migrationContentReleases } from "./src/content/assemble.ts";
 import { contentModuleSource } from "./scripts/content-module.ts";
 import { profileForMode } from "./scripts/build-profile.ts";
 
@@ -20,11 +19,7 @@ export default defineConfig(({ mode }) => {
         },
         load(id) {
           if (id === "\0virtual:camellia-content")
-            return contentModuleSource(
-              ["M1", "M2", "M3", "M4", "M5"]
-                .slice(0, Number(selected.slice(1)))
-                .map((profile) => assembleContent(profile as ProfileId)),
-            );
+            return contentModuleSource(migrationContentReleases(selected));
         },
         generateBundle() {
           const assets = assetManifest.assets.filter((asset) => asset.profiles.includes(selected));

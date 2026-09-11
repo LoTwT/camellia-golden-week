@@ -1092,6 +1092,12 @@ export function validateContent(raw: unknown): ContentValidationIssue[] {
       );
   }
   for (const definition of content.realtimeChallenges) {
+    if (definition.ruleVersion !== content.ruleVersion)
+      issue(
+        issues,
+        `realtimeChallenges.${definition.id}.ruleVersion`,
+        "挑战计分版本必须与已发布规则视图一致",
+      );
     issues.push(
       ...validateRealtimeDefinition(definition).map((value) => ({
         path: `realtimeChallenges.${definition.id}`,
@@ -1227,7 +1233,7 @@ export function validateWorldWitnessInventory(
       }
       if (
         witness.profileId !== profileId ||
-        witness.contentVersion !== Math.min(stage, 4) ||
+        witness.contentVersion !== catalog.contentVersion + Math.min(stage, 4) - 1 ||
         witness.ruleVersion !== catalog.ruleVersion
       )
         issue(issues, witnessId, "见证版本或 profile 与必需范围不一致");
