@@ -2,7 +2,7 @@
 
 《绝区零》「沙罗黄金周」（Camellia Golden Week）空洞电视格子玩法的单人本地复刻。保留探索、机关、格子内挑战与四区联动，移除剧情、空洞外流程和动作战斗。
 
-已按用户批准的 bfb924b 规格进入连续实施。当前可运行内容为 M2：中心区、A / B 首访、三个记忆迷宫、两个一笔画、防火墙教学及三个正式档位、三档杀毒、51 单位物资和本地存档。实际检查与未验证项以[实施进度](docs/verification/implementation-progress.md)和[验收记录](docs/verification/acceptance-results.md)为准。
+已按用户批准的 bfb924b 规格进入连续实施。当前可运行内容为 M3：中心区、A / B / C 首访、三个记忆迷宫、两个一笔画、球车组合与三组数据盗取、防火墙教学及三个正式档位、三档杀毒、81 单位物资和本地存档。实际检查与未验证项以[实施进度](docs/verification/implementation-progress.md)和[验收记录](docs/verification/acceptance-results.md)为准。
 
 项目文档统一从 [文档索引](docs/index.md) 进入，按任务查阅主规格、玩法、内容数据、工程、验收与来源记录。
 

@@ -191,12 +191,17 @@ export function projectBoard(content: GameContent, state: GameState): BoardProje
             icon = "station";
             mark = String(definition.stationIds.indexOf(station[0]) + 1);
             color = COLORS.data;
-            label = "基站";
+            label = `基站 ${mark}`;
           }
           const object = Object.entries(layout.objectTileById).find(([, id]) => id === tile.id);
           if (object) {
             icon = definition.ballIds.includes(object[0]) ? "signal-ball" : "cart";
-            label = definition.ballIds.includes(object[0]) ? "信号球" : "推车";
+            if (definition.ballIds.includes(object[0])) {
+              mark = String(
+                definition.stationIds.indexOf(definition.targetStationByBallId[object[0]]!) + 1,
+              );
+              label = `信号球 ${mark}`;
+            } else label = "推车";
           }
         }
         if (definition.kind === "theft") {

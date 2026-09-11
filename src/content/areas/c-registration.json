@@ -1,0 +1,90 @@
+{
+  "areaFile": "src/content/areas/c.json",
+  "includedFrom": 3,
+  "effects": [
+    {
+      "id": "c.routing.01.effects",
+      "completeObjectiveIds": ["c.routing.01"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "c.main.terminal.effects",
+      "completeObjectiveIds": ["c.main"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "c.theft.01.effects",
+      "completeObjectiveIds": ["c.theft.01"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "c.theft.02.effects",
+      "completeObjectiveIds": ["c.theft.02"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "c.theft.03.effects",
+      "completeObjectiveIds": ["c.theft.03"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "c.side.terminal.effects",
+      "completeObjectiveIds": ["c.side.terminal"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    }
+  ],
+  "gates": [],
+  "sources": [
+    {
+      "id": "map.c.reconstructed",
+      "urlOrPath": "docs/references/maps/world-m3.md",
+      "locator": "C 首访固定地图、节点映射与接入验证",
+      "checkedAt": "2026-09-11",
+      "evidenceLevel": "reconstruction",
+      "supportedClaim": "固定 C 拓扑保持球/推车组合机关→主终端；入口侧三盗取与侧路数据支路独立可达，六处物资按合同分别拾取，安全返回 B。",
+      "limitation": "S09 原图仅支持球/推车机制类别和推车外观；完整通路、世界坐标、球与基站位置均按合同重建，不是原活动逐格测绘。",
+      "adaptedElementIds": [
+        "c.teleport.point",
+        "c.to.b",
+        "c.routing.01.entrance",
+        "c.routing.door",
+        "c.return.door",
+        "c.supply.route.entry.pickup",
+        "c.supply.route.exit.pickup",
+        "c.main.terminal",
+        "c.to.d",
+        "c.theft.01.entrance",
+        "c.theft.01.door",
+        "c.supply.theft01.pickup",
+        "c.theft.02.entrance",
+        "c.theft.02.door",
+        "c.supply.theft02.pickup",
+        "c.theft.03.entrance",
+        "c.theft.03.door",
+        "c.supply.theft03.pickup",
+        "c.side.terminal",
+        "c.side.door",
+        "c.supply.side.pickup"
+      ]
+    }
+  ],
+  "objectiveAdditions": [],
+  "objectiveProducerCorrections": [],
+  "profileAdditions": {
+    "from": "M3",
+    "includedRoomIds": ["c.routing.01", "c.theft.01", "c.theft.02", "c.theft.03"],
+    "includedObjectiveIds": []
+  }
+}

@@ -20,6 +20,7 @@ import { replayRealtimeWitness, validateRealtimeDefinition } from "../src/core/r
 import type { RealtimeWitness } from "../src/core/realtime.ts";
 import m1WorldWitnessContent from "../src/content/witnesses/m1.json" with { type: "json" };
 import m2WorldWitnessContent from "../src/content/witnesses/m2.json" with { type: "json" };
+import m3WorldWitnessContent from "../src/content/witnesses/m3.json" with { type: "json" };
 
 assert.deepEqual(validateCatalog(worldCatalog), [], "完整设计目录与分期账本");
 for (const profile of worldCatalog.releaseProfiles) {
@@ -95,7 +96,11 @@ console.log(
   `实时独立规则：${realtimeContent.definitions.length} 个固定定义 / ${realtimeWitnesses.length} 条成功与失败见证通过；尚未收录区域不据此视为世界验收通过`,
 );
 
-for (const rawWitness of [...m1WorldWitnessContent.witnesses, ...m2WorldWitnessContent.witnesses]) {
+for (const rawWitness of [
+  ...m1WorldWitnessContent.witnesses,
+  ...m2WorldWitnessContent.witnesses,
+  ...m3WorldWitnessContent.witnesses,
+]) {
   assert.deepEqual(validateWorldWitness(rawWitness), [], rawWitness.id);
   const witness = rawWitness as WorldWitness;
   const result = replayWorldWitness(assembleContent(witness.profileId), witness);

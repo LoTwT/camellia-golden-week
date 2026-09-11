@@ -1,0 +1,949 @@
+{
+  "area": {
+    "id": "c",
+    "label": "仓储区 C",
+    "subtitle": "信号调度 / 数据转存",
+    "statsAreaId": "c",
+    "tileIds": [
+      "c.t.0.0",
+      "c.t.1.0",
+      "c.t.2.0",
+      "c.t.3.0",
+      "c.t.4.0",
+      "c.t.5.0",
+      "c.t.6.0",
+      "c.t.7.0",
+      "c.t.8.0",
+      "c.t.0.1",
+      "c.t.1.1",
+      "c.t.2.1",
+      "c.t.3.1",
+      "c.t.4.1",
+      "c.t.5.1",
+      "c.t.5.-1",
+      "c.t.6.-1",
+      "c.t.-1.0",
+      "c.t.-2.0",
+      "c.t.-2.1",
+      "c.t.-1.1",
+      "c.t.-3.1",
+      "c.t.-4.1",
+      "c.t.-4.2",
+      "c.t.-5.2",
+      "c.t.-6.2",
+      "c.t.0.2",
+      "c.t.0.-1",
+      "c.t.0.-2",
+      "c.t.-1.-2",
+      "c.t.-2.-2",
+      "c.t.-3.-2",
+      "c.t.-4.-2",
+      "c.t.-5.-2",
+      "c.t.-6.-2",
+      "c.t.-2.-3",
+      "c.t.-2.-4",
+      "c.t.-4.-3",
+      "c.t.-4.-4",
+      "c.t.-6.-3",
+      "c.t.-6.-4"
+    ],
+    "roomIds": ["c.routing.01", "c.theft.01", "c.theft.02", "c.theft.03"],
+    "entryTileId": "c.t.0.0",
+    "teleportId": "c.teleport",
+    "entityIds": [
+      "c.teleport.point",
+      "c.to.b",
+      "c.routing.01.entrance",
+      "c.routing.door",
+      "c.return.door",
+      "c.supply.route.entry.pickup",
+      "c.supply.route.exit.pickup",
+      "c.main.terminal",
+      "c.to.d",
+      "c.theft.01.entrance",
+      "c.theft.01.door",
+      "c.supply.theft01.pickup",
+      "c.theft.02.entrance",
+      "c.theft.02.door",
+      "c.supply.theft02.pickup",
+      "c.theft.03.entrance",
+      "c.theft.03.door",
+      "c.supply.theft03.pickup",
+      "c.side.terminal",
+      "c.side.door",
+      "c.supply.side.pickup"
+    ],
+    "revealGroups": [],
+    "sourceRecordIds": ["map.c.reconstructed"],
+    "includedFrom": 3
+  },
+  "tiles": [
+    {
+      "id": "c.t.0.0",
+      "boardId": "c",
+      "x": 0,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": true,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.1.0",
+      "boardId": "c",
+      "x": 1,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.2.0",
+      "boardId": "c",
+      "x": 2,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.3.0",
+      "boardId": "c",
+      "x": 3,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.4.0",
+      "boardId": "c",
+      "x": 4,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.5.0",
+      "boardId": "c",
+      "x": 5,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.6.0",
+      "boardId": "c",
+      "x": 6,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.7.0",
+      "boardId": "c",
+      "x": 7,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.8.0",
+      "boardId": "c",
+      "x": 8,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.0.1",
+      "boardId": "c",
+      "x": 0,
+      "y": 1,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.1.1",
+      "boardId": "c",
+      "x": 1,
+      "y": 1,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.2.1",
+      "boardId": "c",
+      "x": 2,
+      "y": 1,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.3.1",
+      "boardId": "c",
+      "x": 3,
+      "y": 1,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.4.1",
+      "boardId": "c",
+      "x": 4,
+      "y": 1,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.5.1",
+      "boardId": "c",
+      "x": 5,
+      "y": 1,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.5.-1",
+      "boardId": "c",
+      "x": 5,
+      "y": -1,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.6.-1",
+      "boardId": "c",
+      "x": 6,
+      "y": -1,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.-1.0",
+      "boardId": "c",
+      "x": -1,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.-2.0",
+      "boardId": "c",
+      "x": -2,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.-2.1",
+      "boardId": "c",
+      "x": -2,
+      "y": 1,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.-1.1",
+      "boardId": "c",
+      "x": -1,
+      "y": 1,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.-3.1",
+      "boardId": "c",
+      "x": -3,
+      "y": 1,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.-4.1",
+      "boardId": "c",
+      "x": -4,
+      "y": 1,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.-4.2",
+      "boardId": "c",
+      "x": -4,
+      "y": 2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.-5.2",
+      "boardId": "c",
+      "x": -5,
+      "y": 2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.-6.2",
+      "boardId": "c",
+      "x": -6,
+      "y": 2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.0.2",
+      "boardId": "c",
+      "x": 0,
+      "y": 2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.0.-1",
+      "boardId": "c",
+      "x": 0,
+      "y": -1,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.0.-2",
+      "boardId": "c",
+      "x": 0,
+      "y": -2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.-1.-2",
+      "boardId": "c",
+      "x": -1,
+      "y": -2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.-2.-2",
+      "boardId": "c",
+      "x": -2,
+      "y": -2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.-3.-2",
+      "boardId": "c",
+      "x": -3,
+      "y": -2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.-4.-2",
+      "boardId": "c",
+      "x": -4,
+      "y": -2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.-5.-2",
+      "boardId": "c",
+      "x": -5,
+      "y": -2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.-6.-2",
+      "boardId": "c",
+      "x": -6,
+      "y": -2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.-2.-3",
+      "boardId": "c",
+      "x": -2,
+      "y": -3,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.-2.-4",
+      "boardId": "c",
+      "x": -2,
+      "y": -4,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.-4.-3",
+      "boardId": "c",
+      "x": -4,
+      "y": -3,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.-4.-4",
+      "boardId": "c",
+      "x": -4,
+      "y": -4,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.-6.-3",
+      "boardId": "c",
+      "x": -6,
+      "y": -3,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.t.-6.-4",
+      "boardId": "c",
+      "x": -6,
+      "y": -4,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 3
+    }
+  ],
+  "entities": [
+    {
+      "id": "c.teleport.point",
+      "kind": "checkpoint",
+      "tileId": "c.t.0.0",
+      "label": "C 区传送点",
+      "params": {
+        "teleportId": "c.teleport"
+      },
+      "gateId": "always",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.c.reconstructed"],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.to.b",
+      "kind": "teleport",
+      "tileId": "c.t.0.2",
+      "label": "返回仓储区 B",
+      "params": {
+        "destinationAreaId": "b",
+        "destinationTileId": "b.t.0.0",
+        "activationObjectiveId": null
+      },
+      "gateId": "always",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.c.reconstructed"],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.routing.01.entrance",
+      "kind": "roomEntrance",
+      "tileId": "c.t.2.0",
+      "label": "信号调度 · 球与推车",
+      "params": {
+        "roomId": "c.routing.01",
+        "interactionMode": "enter"
+      },
+      "gateId": "always",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.c.reconstructed"],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.routing.door",
+      "kind": "door",
+      "tileId": "c.t.4.0",
+      "label": "主终端通路",
+      "params": {
+        "closedBlocksMovement": true,
+        "lockedReasonKey": "c.routing.01"
+      },
+      "gateId": "gate.c.routing.01",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.c.reconstructed"],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.return.door",
+      "kind": "door",
+      "tileId": "c.t.2.1",
+      "label": "机关返程通路",
+      "params": {
+        "closedBlocksMovement": true,
+        "lockedReasonKey": "c.routing.01"
+      },
+      "gateId": "gate.c.routing.01",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.c.reconstructed"],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.supply.route.entry.pickup",
+      "kind": "supply",
+      "tileId": "c.t.-2.0",
+      "label": "沙罗物资 · 5",
+      "params": {
+        "rewardId": "c.supply.route.entry"
+      },
+      "gateId": "gate.c.supply.route.entry",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.c.reconstructed"],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.supply.route.exit.pickup",
+      "kind": "supply",
+      "tileId": "c.t.6.-1",
+      "label": "沙罗物资 · 5",
+      "params": {
+        "rewardId": "c.supply.route.exit"
+      },
+      "gateId": "gate.c.supply.route.exit",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.c.reconstructed"],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.main.terminal",
+      "kind": "terminal",
+      "tileId": "c.t.7.0",
+      "label": "C 区主路径终端",
+      "params": {
+        "interactionMode": "interact",
+        "prerequisites": {
+          "kind": "always"
+        },
+        "effectBundleId": "c.main.terminal.effects"
+      },
+      "gateId": "always",
+      "effectBundleId": "c.main.terminal.effects",
+      "sourceRecordIds": ["map.c.reconstructed"],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.to.d",
+      "kind": "teleport",
+      "tileId": "c.t.8.0",
+      "label": "进入仓储区 D",
+      "params": {
+        "destinationAreaId": "d",
+        "destinationTileId": "d.t.0.0",
+        "activationObjectiveId": null
+      },
+      "gateId": "gate.c.main",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.c.reconstructed"],
+      "includedFrom": 4
+    },
+    {
+      "id": "c.theft.01.entrance",
+      "kind": "roomEntrance",
+      "tileId": "c.t.-2.-2",
+      "label": "数据盗取 01 · 按 F 打开",
+      "params": {
+        "roomId": "c.theft.01",
+        "interactionMode": "interact"
+      },
+      "gateId": "always",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.c.reconstructed"],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.theft.01.door",
+      "kind": "door",
+      "tileId": "c.t.-2.-3",
+      "label": "盗取 01 奖励门",
+      "params": {
+        "closedBlocksMovement": true,
+        "lockedReasonKey": "c.theft.01"
+      },
+      "gateId": "gate.c.theft.01",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.c.reconstructed"],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.supply.theft01.pickup",
+      "kind": "supply",
+      "tileId": "c.t.-2.-4",
+      "label": "沙罗物资 · 5",
+      "params": {
+        "rewardId": "c.supply.theft01"
+      },
+      "gateId": "gate.c.supply.theft01",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.c.reconstructed"],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.theft.02.entrance",
+      "kind": "roomEntrance",
+      "tileId": "c.t.-4.-2",
+      "label": "数据盗取 02 · 按 F 打开",
+      "params": {
+        "roomId": "c.theft.02",
+        "interactionMode": "interact"
+      },
+      "gateId": "always",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.c.reconstructed"],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.theft.02.door",
+      "kind": "door",
+      "tileId": "c.t.-4.-3",
+      "label": "盗取 02 奖励门",
+      "params": {
+        "closedBlocksMovement": true,
+        "lockedReasonKey": "c.theft.02"
+      },
+      "gateId": "gate.c.theft.02",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.c.reconstructed"],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.supply.theft02.pickup",
+      "kind": "supply",
+      "tileId": "c.t.-4.-4",
+      "label": "沙罗物资 · 5",
+      "params": {
+        "rewardId": "c.supply.theft02"
+      },
+      "gateId": "gate.c.supply.theft02",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.c.reconstructed"],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.theft.03.entrance",
+      "kind": "roomEntrance",
+      "tileId": "c.t.-6.-2",
+      "label": "数据盗取 03 · 按 F 打开",
+      "params": {
+        "roomId": "c.theft.03",
+        "interactionMode": "interact"
+      },
+      "gateId": "always",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.c.reconstructed"],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.theft.03.door",
+      "kind": "door",
+      "tileId": "c.t.-6.-3",
+      "label": "盗取 03 奖励门",
+      "params": {
+        "closedBlocksMovement": true,
+        "lockedReasonKey": "c.theft.03"
+      },
+      "gateId": "gate.c.theft.03",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.c.reconstructed"],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.supply.theft03.pickup",
+      "kind": "supply",
+      "tileId": "c.t.-6.-4",
+      "label": "沙罗物资 · 5",
+      "params": {
+        "rewardId": "c.supply.theft03"
+      },
+      "gateId": "gate.c.supply.theft03",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.c.reconstructed"],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.side.terminal",
+      "kind": "terminal",
+      "tileId": "c.t.-4.2",
+      "label": "侧路数据终端",
+      "params": {
+        "interactionMode": "interact",
+        "prerequisites": {
+          "kind": "always"
+        },
+        "effectBundleId": "c.side.terminal.effects"
+      },
+      "gateId": "always",
+      "effectBundleId": "c.side.terminal.effects",
+      "sourceRecordIds": ["map.c.reconstructed"],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.side.door",
+      "kind": "door",
+      "tileId": "c.t.-5.2",
+      "label": "侧路物资通路",
+      "params": {
+        "closedBlocksMovement": true,
+        "lockedReasonKey": "c.side.terminal"
+      },
+      "gateId": "gate.c.side.terminal",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.c.reconstructed"],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.supply.side.pickup",
+      "kind": "supply",
+      "tileId": "c.t.-6.2",
+      "label": "沙罗物资 · 5",
+      "params": {
+        "rewardId": "c.supply.side"
+      },
+      "gateId": "gate.c.supply.side",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.c.reconstructed"],
+      "includedFrom": 3
+    }
+  ],
+  "rooms": [
+    {
+      "id": "c.routing.01",
+      "areaId": "c",
+      "boardId": "c.routing.01",
+      "mode": "staticPuzzle",
+      "worldEntranceTileId": "c.t.2.0",
+      "entryTileId": "c.routing.01.t.1.5",
+      "returnTileId": "c.t.1.0",
+      "successExitTileId": "c.t.3.0",
+      "resetState": "c.routing.01",
+      "goal": "c.routing.01",
+      "effectBundleId": "c.routing.01.effects",
+      "witnessIds": [
+        "c.routing.01.witness.success",
+        "c.routing.01.witness.alternative",
+        "c.routing.01.witness.recovery"
+      ],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.theft.01",
+      "areaId": "c",
+      "boardId": "c.theft.01",
+      "mode": "staticPuzzle",
+      "worldEntranceTileId": "c.t.-2.-2",
+      "entryTileId": "c.theft.01.t.1.5",
+      "returnTileId": "c.t.-2.-2",
+      "successExitTileId": "c.t.-2.-2",
+      "resetState": "c.theft.01",
+      "goal": "c.theft.01",
+      "effectBundleId": "c.theft.01.effects",
+      "witnessIds": [
+        "c.theft.01.witness.success",
+        "c.theft.01.witness.alternative",
+        "c.theft.01.witness.recovery"
+      ],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.theft.02",
+      "areaId": "c",
+      "boardId": "c.theft.02",
+      "mode": "staticPuzzle",
+      "worldEntranceTileId": "c.t.-4.-2",
+      "entryTileId": "c.theft.02.t.3.5",
+      "returnTileId": "c.t.-4.-2",
+      "successExitTileId": "c.t.-4.-2",
+      "resetState": "c.theft.02",
+      "goal": "c.theft.02",
+      "effectBundleId": "c.theft.02.effects",
+      "witnessIds": [
+        "c.theft.02.witness.success",
+        "c.theft.02.witness.alternative",
+        "c.theft.02.witness.recovery"
+      ],
+      "includedFrom": 3
+    },
+    {
+      "id": "c.theft.03",
+      "areaId": "c",
+      "boardId": "c.theft.03",
+      "mode": "staticPuzzle",
+      "worldEntranceTileId": "c.t.-6.-2",
+      "entryTileId": "c.theft.03.t.1.6",
+      "returnTileId": "c.t.-6.-2",
+      "successExitTileId": "c.t.-6.-2",
+      "resetState": "c.theft.03",
+      "goal": "c.theft.03",
+      "effectBundleId": "c.theft.03.effects",
+      "witnessIds": [
+        "c.theft.03.witness.success",
+        "c.theft.03.witness.alternative",
+        "c.theft.03.witness.recovery"
+      ],
+      "includedFrom": 3
+    }
+  ]
+}

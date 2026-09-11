@@ -1,0 +1,252 @@
+{
+  "profile": "M3",
+  "schemaVersion": 2,
+  "contentVersion": 3,
+  "ruleVersion": 1,
+  "position": {
+    "space": "world",
+    "areaId": "c",
+    "boardId": "c",
+    "tileId": "c.t.-4.-2"
+  },
+  "mode": "explore",
+  "phase": "active",
+  "activeTimeMs": 193.40000004768444,
+  "countdownRemainingMs": 0,
+  "pauseReasons": [],
+  "completedObjectiveIds": [
+    "hub.amplifier",
+    "hub.tutorial",
+    "a.nexus.route",
+    "a.maze.01",
+    "a.main",
+    "a.maze.02",
+    "a.nexus.side",
+    "a.side.terminal",
+    "a.maze.03",
+    "a.firewall.access",
+    "a.firewall.tutorial",
+    "a.firewall.core",
+    "a.firewall.deep",
+    "a.firewall.inner",
+    "b.line.01",
+    "b.switch.shortcut",
+    "b.main",
+    "b.line.02",
+    "b.nexus.north",
+    "b.north.terminal",
+    "b.south.terminal",
+    "b.antivirus.access",
+    "b.antivirus.heavy",
+    "b.antivirus.medium",
+    "b.antivirus.light",
+    "c.routing.01",
+    "c.main",
+    "c.side.terminal",
+    "c.theft.01",
+    "c.theft.02"
+  ],
+  "completedRoomLayouts": {
+    "a.maze.01": {
+      "objectTileById": {},
+      "visitedTileIds": [],
+      "activatedLocalIds": []
+    },
+    "a.maze.02": {
+      "objectTileById": {},
+      "visitedTileIds": [],
+      "activatedLocalIds": []
+    },
+    "a.maze.03": {
+      "objectTileById": {},
+      "visitedTileIds": [],
+      "activatedLocalIds": []
+    },
+    "b.line.01": {
+      "objectTileById": {},
+      "visitedTileIds": [
+        "b.line.01.t.0.0",
+        "b.line.01.t.1.0",
+        "b.line.01.t.2.0",
+        "b.line.01.t.3.0",
+        "b.line.01.t.0.1",
+        "b.line.01.t.1.1",
+        "b.line.01.t.2.1",
+        "b.line.01.t.3.1",
+        "b.line.01.t.0.2",
+        "b.line.01.t.1.2",
+        "b.line.01.t.2.2",
+        "b.line.01.t.3.2"
+      ],
+      "activatedLocalIds": []
+    },
+    "b.line.02": {
+      "objectTileById": {},
+      "visitedTileIds": [
+        "b.line.02.t.0.0",
+        "b.line.02.t.1.0",
+        "b.line.02.t.2.0",
+        "b.line.02.t.3.0",
+        "b.line.02.t.4.0",
+        "b.line.02.t.0.1",
+        "b.line.02.t.1.1",
+        "b.line.02.t.2.1",
+        "b.line.02.t.3.1",
+        "b.line.02.t.4.1",
+        "b.line.02.t.0.2",
+        "b.line.02.t.1.2",
+        "b.line.02.t.3.2",
+        "b.line.02.t.4.2",
+        "b.line.02.t.0.3",
+        "b.line.02.t.1.3",
+        "b.line.02.t.2.3",
+        "b.line.02.t.3.3",
+        "b.line.02.t.4.3",
+        "b.line.02.t.0.4",
+        "b.line.02.t.1.4",
+        "b.line.02.t.2.4",
+        "b.line.02.t.3.4",
+        "b.line.02.t.4.4"
+      ],
+      "activatedLocalIds": []
+    },
+    "c.routing.01": {
+      "objectTileById": {
+        "c.routing.01.ball.01": "c.routing.01.t.4.1",
+        "c.routing.01.ball.02": "c.routing.01.t.2.1",
+        "c.routing.01.cart.01": "c.routing.01.t.5.3"
+      },
+      "visitedTileIds": [],
+      "activatedLocalIds": []
+    },
+    "c.theft.01": {
+      "objectTileById": {
+        "c.theft.01.object.01": "c.theft.01.t.2.1",
+        "c.theft.01.object.02": "c.theft.01.t.4.1"
+      },
+      "visitedTileIds": [],
+      "activatedLocalIds": []
+    },
+    "c.theft.02": {
+      "objectTileById": {
+        "c.theft.02.object.01": "c.theft.02.t.4.1",
+        "c.theft.02.object.02": "c.theft.02.t.2.1"
+      },
+      "visitedTileIds": [],
+      "activatedLocalIds": []
+    }
+  },
+  "staticRoom": null,
+  "completedRoom": null,
+  "data": {
+    "a": {
+      "collected": 80,
+      "total": 100,
+      "includedCollected": 80,
+      "includedTotal": 80,
+      "complete": false
+    },
+    "b": {
+      "collected": 80,
+      "total": 100,
+      "includedCollected": 80,
+      "includedTotal": 80,
+      "complete": false
+    },
+    "c": {
+      "collected": 80,
+      "total": 100,
+      "includedCollected": 80,
+      "includedTotal": 100,
+      "complete": false
+    },
+    "d": {
+      "collected": 0,
+      "total": 100,
+      "includedCollected": 0,
+      "includedTotal": 0,
+      "complete": false
+    }
+  },
+  "claimedRewardIds": [
+    "hub.supply.tutorial",
+    "a.supply.maze01",
+    "a.supply.maze03",
+    "a.supply.firewall.core",
+    "a.supply.firewall.inner",
+    "a.supply.firewall.deep",
+    "b.supply.line01",
+    "b.supply.line02",
+    "b.supply.antivirus.heavy",
+    "b.supply.antivirus.medium",
+    "b.supply.antivirus.light",
+    "c.supply.route.exit",
+    "c.supply.route.entry",
+    "c.supply.side",
+    "c.supply.theft01"
+  ],
+  "supply": {
+    "collected": 71,
+    "total": 81,
+    "count": 15
+  },
+  "bestResults": [
+    {
+      "challengeId": "a.firewall.tutorial",
+      "ruleVersion": 1,
+      "bestCombo": 30
+    },
+    {
+      "challengeId": "a.firewall.core",
+      "ruleVersion": 1,
+      "bestCombo": 90
+    },
+    {
+      "challengeId": "a.firewall.deep",
+      "ruleVersion": 1,
+      "bestCombo": 90
+    },
+    {
+      "challengeId": "a.firewall.inner",
+      "ruleVersion": 1,
+      "bestCombo": 90
+    },
+    {
+      "challengeId": "b.antivirus.heavy",
+      "ruleVersion": 1,
+      "bestScore": 140,
+      "bestStarClear": 3
+    },
+    {
+      "challengeId": "b.antivirus.medium",
+      "ruleVersion": 1,
+      "bestScore": 99,
+      "bestStarClear": 0
+    },
+    {
+      "challengeId": "b.antivirus.light",
+      "ruleVersion": 1,
+      "bestScore": 71,
+      "bestStarClear": 0
+    }
+  ],
+  "lastResult": {
+    "code": "success",
+    "message": "机关完成。"
+  },
+  "saveStatus": "已保存 · 03:06:44",
+  "saveGeneration": 434,
+  "session": "held",
+  "render": {
+    "geometries": 7,
+    "textures": 14,
+    "calls": 18,
+    "tileCount": 39
+  },
+  "frameSummary": {
+    "sampleCount": 724,
+    "medianMs": 8.300000000001091,
+    "p95Ms": 10.100000000000364,
+    "meanMs": 8.343508287292817
+  }
+}

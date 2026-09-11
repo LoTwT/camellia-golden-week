@@ -68,6 +68,21 @@ E11：M2新增世界15测试、完成布局15测试、明确版本迁移20测试
 
 E12：M2 schema 2 production build 的 lint/format:check/typecheck/validate:content/build 实际通过。02:58–02:59 正常升级真实 M2 旧档，进入一笔画完成布局、重复行走、Z被拒、内部刷新，F独立练习后再次走到已领取物资格，仍为51。见[完成布局](evidence/m2-completed-room.png)、[内部刷新](evidence/m2-completed-room-restored.png)、[练习后再领取](evidence/m2-practice-repickup.png)、[schema2真实导出](evidence/m2-browser-save.json)。控制台error为空。
 
+### M3 追加实测（03:02–03:12）
+
+版本0.3.0、M3/content3/rule1/schema2，相同M1 Pro/内嵌浏览器/1280×720。B14–B18使用acceptance静态preview，仅开放只读检查；B19在正常production build中恢复。
+
+| 证据 ID | 正常操作与实际结果                                                                                                     | 证据                                                                                                                                                                                                                                                                                     |
+| ------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| B14     | 真实M2的51物资升级M3并进入C；组合机关故意推球至边界死角，Z和重置恢复；车移动一格后刷新，精确保留局部布局且undoDepth为0 | [升级](evidence/m3-upgrade-initial.json)、[死角](evidence/m3-routing-dead-corner.json)、[推车后](evidence/m3-cart-moved.json)、[刷新](evidence/m3-cart-restored.json)、[代表画面](evidence/m3-routing-representative.png)                                                                |
+| B15     | 只完成组合机关和C主终端，C20/100、三盗取未做、仍51物资；D入口在M3提示未收录，通过UI导出此主线样本                      | [主线快照](evidence/m3-main-only.json)、[画面](evidence/m3-main-only.png)、[真实主线导出](evidence/m3-browser-main-save.json)                                                                                                                                                            |
+| B16     | 盗取01实际死角后撤销/重置，中途刷新布局保留；盗取02采用同色对象交换槽位的合法替代解；盗取03实际死角后撤销/重置再完成   | [01死角](evidence/m3-theft01-corner.json)、[刷新前](evidence/m3-theft01-before-refresh.json)、[刷新后](evidence/m3-theft01-restored.json)、[02替代解](evidence/m3-theft02-alternative.json)、[03死角](evidence/m3-theft03-corner.json)、[03画面](evidence/m3-theft03-representative.png) |
+| B17     | 正常领取C六项物资，17唯一奖励/81单位、C100、A/B各80；刷新保持全部进度与位置                                            | [全收集](evidence/m3-full-collection.json)、[画面](evidence/m3-full-collection.png)、[恢复](evidence/m3-full-restored.json)                                                                                                                                                              |
+| B18     | 重新进入完成的盗取02，尝试向上推冻结物体被拒；原先交换后的对象槽位与81物资不变，退出后从UI导出全量样本                 | [冻结结果](evidence/m3-completed-objects-frozen.json)、[真实完整导出](evidence/m3-browser-save.json)                                                                                                                                                                                     |
+| B19     | production build后刷新并继续，收集记录列出全部17奖励/81单位，继续返回C世界且数据100，控制台无error                     | [生产包收集](evidence/m3-production-collection.png)                                                                                                                                                                                                                                      |
+
+E13：M3新增31项世界测试，全仓`npm test`236/236、零失败/跳过；lint、format:check、typecheck、validate:content和build通过。M3世界4区146格16房；新档主线/全收集131/2788公开命令，M2载荷续玩54/309命令。[固定见证](../../src/content/witnesses/m3.json)与[世界测试](../../tests/world-m3.test.ts)覆盖全部四房替代解、死角恢复、首次布局、练习和30次B/C往返。后者是规则往返，I09浏览器30次尚未执行。
+
 ## 2. 全流程与分期：G01–G12
 
 | ID  | 实现位置                                                                                   | 验证方法 / 已有证据                                                                                                                       | 当前结果及缺口                                                                                 |
