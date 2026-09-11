@@ -516,3 +516,85 @@ test("页面在获取锁完成前离开，迟到回调立即释放，不留下�
   assert.equal(await acquisition, "cancelled");
   assert.equal(lock.isHeld(), false);
 });
+
+test("P03 临时读取失败保留最后可信基线，恢复读取后一次重试即可成功", () => {
+  const storage = new MemoryStorage();
+  storage.values.set(SAVE_KEYS.a, envelope(5, payload(5)));
+  const store = createSaveStore(storage, validate, () => true);
+  const expected = store.inspect();
+  storage.failReadKeys.add(SAVE_KEYS.a);
+  const rejected = store.write(payload(6), { expected, intent: "retry", savedAt });
+  assert.ok(!rejected.ok && rejected.code === "storageUnavailable");
+  assert.equal(rejected.retryInspection, expected);
+  assert.equal(rejected.retryInspection.maxGeneration, 5);
+  storage.failReadKeys.clear();
+  const recovered = store.write(payload(6), {
+    expected: rejected.retryInspection,
+    intent: "retry",
+    savedAt,
+  });
+  assert.ok(recovered.ok);
+  assert.equal(recovered.envelope.saveGeneration, 6);
+  assert.equal(recovered.inspection.backup?.payload?.progress, 5);
+});
+
+test("P10 新外部槽使连续重试均拒绝，不能用一次冲突结果接受新基线覆盖旧内存", () => {
+  const storage = new MemoryStorage();
+  storage.values.set(SAVE_KEYS.a, envelope(5, payload(5)));
+  const store = createSaveStore(storage, validate, () => true);
+  let expected = store.inspect();
+  const externalRaw = envelope(6, payload(9));
+  storage.values.set(SAVE_KEYS.b, externalRaw);
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    const rejected = store.write(payload(6), { expected, intent: "retry", savedAt });
+    assert.ok(!rejected.ok && rejected.code === "generationConflict");
+    expected = rejected.retryInspection;
+    assert.equal(expected.maxGeneration, 5);
+    assert.equal(storage.values.get(SAVE_KEYS.b), externalRaw);
+  }
+  assert.equal(storage.writes.length, 0);
+});
+
+test("P03 回读异常后只有确认本次原文和保留槽均一致才接续本次写入基线", () => {
+  const storage = new MemoryStorage();
+  storage.values.set(SAVE_KEYS.a, envelope(5, payload(5)));
+  const originalGet = storage.getItem.bind(storage);
+  let mismatch = false;
+  storage.getItem = (key) => {
+    if (mismatch && key === SAVE_KEYS.b) {
+      mismatch = false;
+      return "{one-shot-readback-mismatch";
+    }
+    return originalGet(key);
+  };
+  storage.afterWrite = () => {
+    mismatch = true;
+  };
+  const store = createSaveStore(storage, validate, () => true);
+  const rejected = store.write(payload(6), { expected: store.inspect(), intent: "retry", savedAt });
+  assert.ok(!rejected.ok && rejected.code === "readbackFailed");
+  assert.equal(rejected.retryInspection.maxGeneration, 6);
+  assert.equal(rejected.retryInspection.latest?.payload?.progress, 6);
+  storage.afterWrite = null;
+  const recovered = store.write(payload(6), {
+    expected: rejected.retryInspection,
+    intent: "retry",
+    savedAt,
+  });
+  assert.ok(recovered.ok);
+  assert.equal(recovered.envelope.saveGeneration, 7);
+  assert.equal(recovered.inspection.backup?.payload?.progress, 6);
+});
+
+test("P10 本次写入后保留槽被外部更改也不接受新基线", () => {
+  const storage = new MemoryStorage();
+  storage.values.set(SAVE_KEYS.a, envelope(5, payload(5)));
+  const store = createSaveStore(storage, validate, () => true);
+  const expected = store.inspect();
+  const externalRaw = envelope(99, payload(99));
+  storage.afterWrite = () => storage.values.set(SAVE_KEYS.a, externalRaw);
+  const result = store.write(payload(6), { expected, intent: "retry", savedAt });
+  assert.ok(!result.ok && result.code === "generationConflict");
+  assert.equal(result.retryInspection, expected);
+  assert.equal(storage.values.get(SAVE_KEYS.a), externalRaw);
+});

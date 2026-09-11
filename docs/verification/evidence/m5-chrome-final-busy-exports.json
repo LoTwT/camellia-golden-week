@@ -1,0 +1,43 @@
+{
+  "recordedAt": "2026-09-11T08:22:55.689Z",
+  "method": "Normal second Chrome tab, actual A/B export buttons; A returns by button, B returns by Escape. No storage or game state injection.",
+  "initial": {
+    "dialog": "CAMELLIA / TERMINAL进度正在另一窗口使用请在原窗口继续，或关闭原窗口后重试。本窗口不会抢锁或写入进度。重试获取会话导出原始槽 A导出原始槽 B",
+    "hasFaultPanel": false,
+    "hasInspection": false,
+    "scripts": [
+      "http://localhost:5174/assets/index-BpL7y5kK.js"
+    ],
+    "url": "http://localhost:5174/",
+    "viewport": {
+      "dpr": 2,
+      "height": 771,
+      "width": 1512
+    }
+  },
+  "slots": {
+    "a": {
+      "file": "m5-chrome-final-busy-slot-a.json",
+      "bytes": 9340,
+      "sha256": "d2dae58736400d73675d052e1912ad0ea7e4ecce3f659b115df6405e890d296f",
+      "generation": 947,
+      "matchesPriorProductionExport": false,
+      "priorExportComparison": {
+        "sameGeneration": true,
+        "samePayload": true,
+        "diskSlotSavedAt": "2026-09-11T04:07:15.725Z",
+        "priorMemoryExportSavedAt": "2026-09-11T04:08:47.539Z",
+        "note": "Earlier file came from exportCurrent, which stamps export time; raw slot bytes are kept separately and are not expected to equal that envelope timestamp."
+      }
+    },
+    "b": {
+      "file": "m5-chrome-final-busy-slot-b.json",
+      "bytes": 9340,
+      "sha256": "21e34ae9ae19353bf213ae3d710d3716c5c3413b96334cbabe8441cdda1049e0",
+      "generation": 946
+    }
+  },
+  "afterAButton": "- main:\n  - generic: CGW\n  - text: 沙罗黄金周\n  - generic: CAMELLIA GOLDEN WEEK\n  - generic: 当前目标\n  - strong\n  - status\n  - button \"打开暂停菜单\": 菜单 Esc\n  - generic \"电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停\"\n  - heading [level=1]\n  - complementary:\n    - generic: 区域数据\n    - strong\n    - generic: 沙罗物资\n    - strong\n    - button \"收集记录 ↗\"\n  - status\n  - dialog \"进度正在另一窗口使用\":\n    - generic: CAMELLIA / TERMINAL\n    - heading \"进度正在另一窗口使用\" [level=2]\n    - paragraph: 请在原窗口继续，或关闭原窗口后重试。本窗口不会抢锁或写入进度。\n    - button \"重试获取会话\" [active]\n    - button \"导出原始槽 A\"\n    - button \"导出原始槽 B\"",
+  "afterBEscape": "- main:\n  - generic: CGW\n  - text: 沙罗黄金周\n  - generic: CAMELLIA GOLDEN WEEK\n  - generic: 当前目标\n  - strong\n  - status\n  - button \"打开暂停菜单\": 菜单 Esc\n  - generic \"电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停\"\n  - heading [level=1]\n  - complementary:\n    - generic: 区域数据\n    - strong\n    - generic: 沙罗物资\n    - strong\n    - button \"收集记录 ↗\"\n  - status\n  - dialog \"进度正在另一窗口使用\":\n    - generic: CAMELLIA / TERMINAL\n    - heading \"进度正在另一窗口使用\" [level=2]\n    - paragraph: 请在原窗口继续，或关闭原窗口后重试。本窗口不会抢锁或写入进度。\n    - button \"重试获取会话\" [active]\n    - button \"导出原始槽 A\"\n    - button \"导出原始槽 B\"",
+  "screenshot": "m5-chrome-final-busy-return.jpg"
+}

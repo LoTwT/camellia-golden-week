@@ -9,6 +9,7 @@ export class GameAudio {
   private lastInvalid = -Infinity;
   private beatKey = "";
   private lastBeatIndex = -1;
+  private configuredVolume = -1;
   enabled = false;
   async enable() {
     try {
@@ -19,37 +20,36 @@ export class GameAudio {
       }
       await this.context.resume();
       this.enabled = this.context.state === "running";
-      if (this.buffers.size === 0)
-        await Promise.all(
-          [
-            "move",
-            "invalid",
-            "pickup",
-            "reveal",
-            "amplify",
-            "door",
-            "success",
-            "failure",
-            "portal",
-            "beat",
-          ].map(async (id) => {
-            const response = await fetch(`/assets/audio/${id}.wav`);
-            if (!response.ok || !this.context) return;
-            this.buffers.set(id, await this.context.decodeAudioData(await response.arrayBuffer()));
-          }),
-        );
+      await Promise.all(
+        [
+          "move",
+          "invalid",
+          "pickup",
+          "reveal",
+          "amplify",
+          "door",
+          "success",
+          "failure",
+          "portal",
+          "beat",
+        ].map(async (id) => {
+          if (this.buffers.has(id)) return;
+          const response = await fetch(`/assets/audio/${id}.wav`);
+          if (!response.ok || !this.context) throw new Error(`声音资源读取失败：${id}`);
+          this.buffers.set(id, await this.context.decodeAudioData(await response.arrayBuffer()));
+        }),
+      );
     } catch {
       this.enabled = false;
     }
     return this.enabled;
   }
   configure(settings: GameSettings) {
-    if (this.gain && this.context)
-      this.gain.gain.setTargetAtTime(
-        settings.muted ? 0 : settings.masterVolume,
-        this.context.currentTime,
-        0.015,
-      );
+    const volume = settings.muted ? 0 : settings.masterVolume;
+    if (this.gain && this.context && volume !== this.configuredVolume) {
+      this.gain.gain.setTargetAtTime(volume, this.context.currentTime, 0.015);
+      this.configuredVolume = volume;
+    }
   }
   play(id: string, atAudioTime?: number) {
     const context = this.context;
@@ -102,7 +102,11 @@ export class GameAudio {
       timestamp.contextTime > 0
         ? timestamp.contextTime + (now - timestamp.performanceTime) / 1000
         : this.context.currentTime;
-    const nextIndex = Math.max(0, this.lastBeatIndex + 1);
+    const nextIndex = Math.max(
+      0,
+      this.lastBeatIndex + 1,
+      Math.ceil((state.clock.activeTimeMs - definition.rules.firstBeatMs) / 500),
+    );
     const beatTime = definition.rules.firstBeatMs + nextIndex * 500;
     if (
       beatTime < definition.rules.durationMs &&

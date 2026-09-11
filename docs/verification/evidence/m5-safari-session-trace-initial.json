@@ -1,0 +1,142 @@
+{
+  "profile": "M5",
+  "loaded": false,
+  "sessionDiagnostics": {
+    "pageId": "6dded395-dd9b-4bd0-850c-ea97ce081865",
+    "storage": "available",
+    "discardedStoredTraces": 0,
+    "events": [
+      {
+        "sequence": 1,
+        "pageId": "6dded395-dd9b-4bd0-850c-ea97ce081865",
+        "path": "/",
+        "timeOriginMs": 1789097565266,
+        "elapsedMs": 88,
+        "visibility": "visible",
+        "kind": "page-start",
+        "details": {
+          "navigationType": "reload"
+        }
+      },
+      {
+        "sequence": 2,
+        "pageId": "6dded395-dd9b-4bd0-850c-ea97ce081865",
+        "path": "/",
+        "timeOriginMs": 1789097565266,
+        "elapsedMs": 122,
+        "visibility": "visible",
+        "kind": "acquire-start",
+        "details": {
+          "pending": false,
+          "session": "idle",
+          "hidden": false
+        }
+      },
+      {
+        "sequence": 3,
+        "pageId": "6dded395-dd9b-4bd0-850c-ea97ce081865",
+        "path": "/",
+        "timeOriginMs": 1789097565266,
+        "elapsedMs": 122,
+        "visibility": "visible",
+        "kind": "request-start",
+        "details": {
+          "requestId": 1,
+          "name": "camellia-golden-week.save-writer",
+          "mode": "exclusive",
+          "ifAvailable": true
+        }
+      },
+      {
+        "sequence": 4,
+        "pageId": "6dded395-dd9b-4bd0-850c-ea97ce081865",
+        "path": "/",
+        "timeOriginMs": 1789097565266,
+        "elapsedMs": 174.00000000000003,
+        "visibility": "visible",
+        "kind": "request-callback",
+        "details": {
+          "requestId": 1,
+          "result": "acquired"
+        }
+      },
+      {
+        "sequence": 5,
+        "pageId": "6dded395-dd9b-4bd0-850c-ea97ce081865",
+        "path": "/",
+        "timeOriginMs": 1789097565266,
+        "elapsedMs": 174.00000000000003,
+        "visibility": "visible",
+        "kind": "acquire-result",
+        "details": {
+          "outcome": "acquired",
+          "stale": false
+        }
+      },
+      {
+        "sequence": 6,
+        "pageId": "6dded395-dd9b-4bd0-850c-ea97ce081865",
+        "path": "/",
+        "timeOriginMs": 1789097565266,
+        "elapsedMs": 174.00000000000003,
+        "visibility": "visible",
+        "kind": "query-start",
+        "details": {
+          "reason": "acquired"
+        }
+      },
+      {
+        "sequence": 7,
+        "pageId": "6dded395-dd9b-4bd0-850c-ea97ce081865",
+        "path": "/",
+        "timeOriginMs": 1789097565266,
+        "elapsedMs": 183,
+        "visibility": "visible",
+        "kind": "query-result",
+        "details": {
+          "reason": "acquired",
+          "heldCount": 1,
+          "pendingCount": 0
+        },
+        "locks": {
+          "held": [
+            {
+              "name": "camellia-golden-week.save-writer",
+              "mode": "exclusive",
+              "clientId": "0d96c6de-e787-4e90-9fe7-cf3625ab7a8f"
+            }
+          ],
+          "pending": []
+        }
+      }
+    ]
+  },
+  "session": "held",
+  "saveStatus": "正在读取进度",
+  "saveInspection": {
+    "status": "ready",
+    "maxGeneration": 207,
+    "latestId": "a",
+    "backupId": "b",
+    "slots": {
+      "a": {
+        "status": "valid",
+        "generation": 207,
+        "savedAt": "2026-09-11T03:32:28.523Z"
+      },
+      "b": {
+        "status": "valid",
+        "generation": 206,
+        "savedAt": "2026-09-11T03:25:42.644Z"
+      }
+    }
+  },
+  "faults": {
+    "active": true,
+    "storage": null,
+    "feedback": null,
+    "rendererStartup": false,
+    "audioEnable": false,
+    "records": []
+  }
+}

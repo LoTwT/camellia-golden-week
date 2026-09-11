@@ -1,6 +1,7 @@
 import { areaData, AREA_LABELS, currentObjective, supplyProgress } from "../core/progress.ts";
 import { entitiesAt } from "../core/engine.ts";
 import type { GameCommand, GameContent, GameSettings, GameState } from "../core/types.ts";
+import { REWARD_LABELS } from "./labels.ts";
 
 export interface ShellActions {
   send: (command: GameCommand) => void;
@@ -8,6 +9,7 @@ export interface ShellActions {
   export: () => void;
   import: (file: File) => void;
   save: () => void;
+  reload: () => void;
   enableAudio: () => void;
 }
 function button(label: string, action: () => void, className = ""): HTMLButtonElement {
@@ -39,12 +41,16 @@ export class GameShell {
   private restoreFocus = true;
   private externalModal = false;
   private externalCancel: (() => void) | null = null;
-  saveLabel = "临时进度 · 存档模块接入中";
+  private transitioning = false;
+  private settingsKey = "";
+  private lastFeedback: GameState["lastResult"] | null = null;
+  private feedbackVisibleUntil = 0;
+  saveLabel = "正在读取进度";
 
   constructor(root: HTMLElement, content: GameContent, actions: ShellActions) {
     this.content = content;
     this.actions = actions;
-    root.innerHTML = `<main class="game-shell"><header class="hud-top"><div class="brand"><span class="brand-mark">CGW</span><span>沙罗黄金周<small>CAMELLIA GOLDEN WEEK</small></span></div><div class="mission"><span class="eyebrow">当前目标</span><strong id="mission-text"></strong></div><button id="menu-button" aria-label="打开暂停菜单">菜单 <kbd>Esc</kbd></button></header><section class="playfield"><canvas id="game-canvas" tabindex="0" aria-label="电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停"></canvas><div id="tile-labels" aria-hidden="true"></div><div class="vignette" aria-hidden="true"></div><div class="area-title"><span class="eyebrow" id="area-subtitle"></span><h1 id="area-name"></h1><span class="area-coordinates" id="area-coordinates"></span></div><aside class="progress-rail"><span class="rail-label">区域数据</span><strong id="area-data"></strong><span id="full-data"></span><div class="rail-divider"></div><span class="rail-label">沙罗物资</span><strong id="supplies"></strong><span id="amplifier"></span><button id="collection-button">收集记录 ↗</button></aside><div class="mode-banner" id="mode-banner" role="status"></div><div class="context-tip" id="context-tip"></div><div class="challenge-meter" id="challenge-meter"></div></section><footer class="hud-bottom"><div class="controls" id="controls"></div><div class="save-area"><span class="status-dot"></span><span id="save-status" role="status"></span></div></footer><dialog id="game-dialog" aria-labelledby="dialog-title"></dialog><p class="small-window">建议将窗口扩大至 1024 × 640 以上；菜单与存档功能仍可使用。</p></main>`;
+    root.innerHTML = `<main class="game-shell"><header class="hud-top"><div class="brand"><span class="brand-mark">CGW</span><span>沙罗黄金周<small>CAMELLIA GOLDEN WEEK</small></span></div><div class="mission"><span class="eyebrow">当前目标</span><strong id="mission-text"></strong></div><div class="save-area"><span class="status-dot"></span><span id="save-status" role="status"></span></div><button id="menu-button" aria-label="打开暂停菜单">菜单 <kbd>Esc</kbd></button></header><section class="playfield"><canvas id="game-canvas" tabindex="0" aria-label="电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停"></canvas><div id="tile-labels" aria-hidden="true"></div><div class="vignette" aria-hidden="true"></div><div class="area-title"><span class="eyebrow" id="area-subtitle"></span><h1 id="area-name"></h1><span class="area-coordinates" id="area-coordinates"></span></div><aside class="progress-rail"><span class="rail-label">区域数据</span><strong id="area-data"></strong><span id="full-data"></span><div class="rail-divider"></div><span class="rail-label">沙罗物资</span><strong id="supplies"></strong><span id="amplifier"></span><button id="collection-button">收集记录 ↗</button></aside><div class="scene-transition" role="status" hidden>正在连接电视…</div><button class="audio-prompt" hidden>启用声音</button><div class="mode-banner" id="mode-banner" role="status"></div><div class="context-tip" id="context-tip"></div><div class="challenge-meter" id="challenge-meter"></div></section><footer class="hud-bottom"><div class="controls" id="controls"></div></footer><dialog id="game-dialog" aria-labelledby="dialog-title"></dialog><p class="small-window">建议将窗口扩大至 1024 × 640 以上；菜单与存档功能仍可使用。</p></main>`;
     const canvas = root.querySelector<HTMLCanvasElement>("#game-canvas");
     const labels = root.querySelector<HTMLElement>("#tile-labels");
     const dialog = root.querySelector<HTMLDialogElement>("#game-dialog");
@@ -74,8 +80,7 @@ export class GameShell {
     root
       .querySelector("#collection-button")
       ?.addEventListener("click", () => this.openPanel("collection"));
-    dialog.addEventListener("cancel", (event) => {
-      event.preventDefault();
+    const cancelDialog = () => {
       if (this.externalModal) {
         this.externalCancel?.();
         return;
@@ -83,7 +88,18 @@ export class GameShell {
       if (this.panel !== "none") this.resume();
       else if (this.state?.mode === "challengeReady" || this.state?.mode === "challengeResult")
         this.actions.send({ kind: "ExitRoom" });
+    };
+    dialog.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      event.preventDefault();
+      event.stopPropagation();
+      if (!event.repeat) cancelDialog();
     });
+    dialog.addEventListener("cancel", (event) => {
+      event.preventDefault();
+      cancelDialog();
+    });
+    root.querySelector(".audio-prompt")?.addEventListener("click", this.actions.enableAudio);
     this.showStart();
   }
   private set(id: string, value: string) {
@@ -93,9 +109,11 @@ export class GameShell {
   private modal(title: string, description: string, key: string) {
     if (this.dialogKey === key) return false;
     this.dialogKey = key;
-    if (!this.dialog.open)
+    if (!this.dialog.open) {
+      this.restoreFocus = true;
       this.previousFocus =
         document.activeElement instanceof HTMLElement ? document.activeElement : this.canvas;
+    }
     this.dialog.replaceChildren();
     this.dialog.append(
       text("span", "CAMELLIA / TERMINAL", "eyebrow"),
@@ -106,7 +124,9 @@ export class GameShell {
     if (heading) heading.id = "dialog-title";
     if (!this.dialog.open) this.dialog.showModal();
     queueMicrotask(() =>
-      this.dialog.querySelector<HTMLButtonElement>("button:not(:disabled)")?.focus(),
+      this.dialog
+        .querySelector<HTMLElement>("button:not(:disabled), input, select, textarea")
+        ?.focus(),
     );
     return true;
   }
@@ -114,7 +134,10 @@ export class GameShell {
     if (this.dialog.open) this.dialog.close();
     this.dialogKey = "";
     if (this.restoreFocus) {
-      (this.previousFocus?.isConnected ? this.previousFocus : this.canvas)?.focus({
+      (this.previousFocus?.isConnected && this.previousFocus.getClientRects().length
+        ? this.previousFocus
+        : this.canvas
+      )?.focus({
         preventScroll: true,
       });
       this.restoreFocus = false;
@@ -140,10 +163,14 @@ export class GameShell {
     const input = document.createElement("input");
     input.type = "file";
     input.accept = ".json,application/json";
+    input.hidden = true;
     input.addEventListener("change", () => {
       const file = input.files?.[0];
+      input.remove();
       if (file) this.actions.import(file);
     });
+    input.addEventListener("cancel", () => input.remove(), { once: true });
+    document.body.append(input);
     input.click();
   }
   openPanel(panel: typeof this.panel = "pause") {
@@ -157,7 +184,6 @@ export class GameShell {
   private resume() {
     this.panel = "none";
     this.close();
-    this.canvas.focus();
     this.actions.send({
       kind: "Resume",
       pageVisible: document.visibilityState === "visible",
@@ -289,6 +315,7 @@ export class GameShell {
         update({ masterVolume }),
       );
       range("棋盘缩放", settings.zoom, "0.75", "1.5", "0.05", (zoom) => update({ zoom }));
+      this.dialog.append(text("p", "机关棋盘会限制放大倍数，以保持全盘可见和可点击。", "muted"));
       for (const [key, labelText] of [
         ["muted", "静音"],
         ["reducedFlash", "减少闪烁"],
@@ -328,20 +355,31 @@ export class GameShell {
           `本版本物资 ${supplyProgress(this.content, state).collected} / ${supplyProgress(this.content, state).total} · 永久奖励不会重复领取。`,
         ),
       );
+      const dataOverview = text("p", "", "data-overview");
+      dataOverview.textContent = (["a", "b", "c", "d"] as const)
+        .filter((area) => this.content.profile.includedAreaIds.includes(area))
+        .map((area) => {
+          const data = areaData(this.content, state, area);
+          return `${area.toUpperCase()} 区数据 ${data.collected} / ${data.total}`;
+        })
+        .join(" · ");
+      this.dialog.append(dataOverview);
       const list = document.createElement("ul");
       list.className = "collection-list";
       for (const reward of this.content.rewards)
         list.append(
           text(
             "li",
-            `${state.claimedRewardIds.includes(reward.id) ? "✓" : "○"} ${reward.id} · ${reward.units}`,
+            `${state.claimedRewardIds.includes(reward.id) ? "✓ 已领取" : "○ 未领取"} ${REWARD_LABELS[reward.id] ?? reward.id} · ${reward.units}`,
           ),
         );
       this.dialog.append(list);
     }
     if (panel === "storage") {
+      this.fields["storage-save-status"] = text("p", this.saveLabel);
+      this.fields["storage-save-status"].setAttribute("role", "status");
       this.dialog.append(
-        text("p", this.saveLabel),
+        this.fields["storage-save-status"],
         text(
           "p",
           `存档属于当前浏览器来源 ${location.origin}。更换协议、主机或端口会使用另一份存储，可通过导入迁移。`,
@@ -350,6 +388,7 @@ export class GameShell {
         button("导出当前进度", this.actions.export),
         button("导入存档", () => this.pickImport()),
         button("重试保存", this.actions.save),
+        button("重新读取本地进度…", this.actions.reload),
         button("开始新游戏…", () => this.actions.start()),
       );
     }
@@ -359,8 +398,18 @@ export class GameShell {
         button("继续探索", () => this.resume(), "primary"),
       );
   }
+  showActionFeedback() {
+    this.feedbackVisibleUntil = performance.now() + 2400;
+  }
   update(state: GameState) {
     this.state = state;
+    const settingsKey = `${state.settings.reducedMotion}:${state.settings.reducedFlash}:${state.settings.quality}`;
+    if (settingsKey !== this.settingsKey) {
+      document.documentElement.dataset.reducedMotion = String(state.settings.reducedMotion);
+      document.documentElement.dataset.reducedFlash = String(state.settings.reducedFlash);
+      document.documentElement.dataset.quality = state.settings.quality;
+      this.settingsKey = settingsKey;
+    }
     this.set("mission-text", currentObjective(this.content, state));
     this.set("area-name", AREA_LABELS[state.playerPosition.areaId]);
     this.set(
@@ -392,11 +441,22 @@ export class GameShell {
           : "增幅仪待领取",
     );
     this.set("save-status", this.saveLabel);
-    this.set("context-tip", state.lastResult.message);
+    this.set("storage-save-status", this.saveLabel);
+    if (
+      state.lastResult.code !== this.lastFeedback?.code ||
+      state.lastResult.message !== this.lastFeedback?.message
+    ) {
+      this.lastFeedback = state.lastResult;
+      this.showActionFeedback();
+    }
+    this.set(
+      "context-tip",
+      performance.now() < this.feedbackVisibleUntil ? state.lastResult.message : "",
+    );
     let banner = "",
       meter = "";
     if (state.activeStatic?.state.phase === "preview")
-      banner = `记住安全路线 · ${Math.max(0, (4000 - state.clock.activeTimeMs) / 1000).toFixed(1)} 秒`;
+      banner = `记住安全路线\n${Math.max(0, (4000 - state.clock.activeTimeMs) / 1000).toFixed(1)} 秒`;
     if (state.activeStatic) {
       const definition = this.content.staticChallenges.find(
         (room) => room.id === state.activeStatic?.roomId,
@@ -435,6 +495,8 @@ export class GameShell {
         meter = `已点亮 ${active.litLampIds.length} 盏灯 · 触碰幽灵会重试`;
     }
     this.set("mode-banner", banner);
+    if (state.activeRealtime?.state.kind !== "firewall")
+      this.fields["challenge-meter"]?.classList.remove("beat-window");
     this.set("challenge-meter", meter);
     const controlKey = `${state.mode}:${state.activeStatic?.state.phase ?? ""}`;
     const controls = this.fields.controls;
@@ -484,6 +546,8 @@ export class GameShell {
         : "撤销最近一次行动";
     }
     if (this.externalModal) return;
+    if (this.transitioning && state.clock.pauseReasons.every((reason) => reason === "transition"))
+      return;
     if (state.clock.awaitingResume || state.clock.pauseReasons.length) {
       this.renderPanel();
       return;
@@ -609,6 +673,20 @@ export class GameShell {
   }
   requestImport() {
     this.pickImport();
+  }
+  setTransition(active: boolean) {
+    this.transitioning = active;
+    this.canvas.setAttribute("aria-busy", String(active));
+    const mask = this.canvas.parentElement?.querySelector<HTMLElement>(".scene-transition");
+    if (mask) mask.hidden = !active;
+  }
+  setAudioAvailable(available: boolean) {
+    const prompt = this.canvas.parentElement?.querySelector<HTMLElement>(".audio-prompt");
+    if (prompt) {
+      const returnToCanvas = available && !prompt.hidden && !this.dialog.open;
+      prompt.hidden = available;
+      if (returnToCanvas) this.canvas.focus({ preventScroll: true });
+    }
   }
   showExport(raw: string, download: () => void, close: () => void) {
     this.showDecision(

@@ -1,0 +1,2044 @@
+{
+  "method": "M5 normal mouse clicks at screenshot-verified 1366x768 DPR2 centers; readonly clock; at least 200ms after spawn",
+  "trace": [
+    {
+      "targetId": "b.antivirus.heavy.target.000",
+      "tileId": "b.antivirus.heavy.tile.0.0",
+      "kind": "blue",
+      "spawnAtMs": 500,
+      "beforeMs": 715.0999999523046,
+      "afterMs": 764.4999999523279,
+      "reactionMs": 215.09999995230464,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.001",
+      "tileId": "b.antivirus.heavy.tile.2.1",
+      "kind": "blue",
+      "spawnAtMs": 850,
+      "beforeMs": 1054.999999952328,
+      "afterMs": 1112.0999999523046,
+      "reactionMs": 204.99999995232793,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.002",
+      "tileId": "b.antivirus.heavy.tile.4.2",
+      "kind": "blue",
+      "spawnAtMs": 1200,
+      "beforeMs": 1411.6999999523396,
+      "afterMs": 1439.399999952293,
+      "reactionMs": 211.69999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.003",
+      "tileId": "b.antivirus.heavy.tile.1.4",
+      "kind": "purple",
+      "spawnAtMs": 1550,
+      "beforeMs": 1764.399999952293,
+      "afterMs": 1822.499999952328,
+      "reactionMs": 214.399999952293,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.004",
+      "tileId": "b.antivirus.heavy.tile.3.0",
+      "kind": "blue",
+      "spawnAtMs": 1900,
+      "beforeMs": 2118.399999952293,
+      "afterMs": 2176.1999999523396,
+      "reactionMs": 218.399999952293,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.005",
+      "tileId": "b.antivirus.heavy.tile.0.2",
+      "kind": "blue",
+      "spawnAtMs": 2250,
+      "beforeMs": 2476.0999999523046,
+      "afterMs": 2501.999999952328,
+      "reactionMs": 226.09999995230464,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.006",
+      "tileId": "b.antivirus.heavy.tile.2.3",
+      "kind": "blue",
+      "spawnAtMs": 2600,
+      "beforeMs": 2818.1999999523396,
+      "afterMs": 2864.7999999523163,
+      "reactionMs": 218.19999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.007",
+      "tileId": "b.antivirus.heavy.tile.4.4",
+      "kind": "purple",
+      "spawnAtMs": 2950,
+      "beforeMs": 3157.1999999523396,
+      "afterMs": 3204.899999952293,
+      "reactionMs": 207.19999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.008",
+      "tileId": "b.antivirus.heavy.tile.1.1",
+      "kind": "blue",
+      "spawnAtMs": 3300,
+      "beforeMs": 3536.6999999523396,
+      "afterMs": 3568.6999999523396,
+      "reactionMs": 236.69999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.009",
+      "tileId": "b.antivirus.heavy.tile.3.2",
+      "kind": "star",
+      "spawnAtMs": 3650,
+      "beforeMs": 3867.6999999523396,
+      "afterMs": 3906.499999952328,
+      "reactionMs": 217.69999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "星星清除 · 0 个数据"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.010",
+      "tileId": "b.antivirus.heavy.tile.0.4",
+      "kind": "blue",
+      "spawnAtMs": 4000,
+      "beforeMs": 4203.099999952305,
+      "afterMs": 4272.799999952316,
+      "reactionMs": 203.09999995230464,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.011",
+      "tileId": "b.antivirus.heavy.tile.2.0",
+      "kind": "purple",
+      "spawnAtMs": 4350,
+      "beforeMs": 4570.599999952305,
+      "afterMs": 4628.899999952293,
+      "reactionMs": 220.59999995230464,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.012",
+      "tileId": "b.antivirus.heavy.tile.4.1",
+      "kind": "blue",
+      "spawnAtMs": 4700,
+      "beforeMs": 4918.69999995234,
+      "afterMs": 4963.799999952316,
+      "reactionMs": 218.69999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.013",
+      "tileId": "b.antivirus.heavy.tile.1.3",
+      "kind": "blue",
+      "spawnAtMs": 5050,
+      "beforeMs": 5259.299999952316,
+      "afterMs": 5302.599999952305,
+      "reactionMs": 209.29999995231628,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.014",
+      "tileId": "b.antivirus.heavy.tile.3.4",
+      "kind": "blue",
+      "spawnAtMs": 5400,
+      "beforeMs": 5606.499999952328,
+      "afterMs": 5669.399999952293,
+      "reactionMs": 206.49999995232793,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.015",
+      "tileId": "b.antivirus.heavy.tile.0.1",
+      "kind": "purple",
+      "spawnAtMs": 5750,
+      "beforeMs": 5968.19999995234,
+      "afterMs": 6022.899999952293,
+      "reactionMs": 218.19999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.016",
+      "tileId": "b.antivirus.heavy.tile.2.2",
+      "kind": "blue",
+      "spawnAtMs": 6100,
+      "beforeMs": 6313.69999995234,
+      "afterMs": 6364.299999952316,
+      "reactionMs": 213.69999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.017",
+      "tileId": "b.antivirus.heavy.tile.4.3",
+      "kind": "blue",
+      "spawnAtMs": 6450,
+      "beforeMs": 6660.099999952305,
+      "afterMs": 6709.899999952293,
+      "reactionMs": 210.09999995230464,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.018",
+      "tileId": "b.antivirus.heavy.tile.1.0",
+      "kind": "blue",
+      "spawnAtMs": 6800,
+      "beforeMs": 7032.999999952328,
+      "afterMs": 7082.899999952293,
+      "reactionMs": 232.99999995232793,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.019",
+      "tileId": "b.antivirus.heavy.tile.3.1",
+      "kind": "star",
+      "spawnAtMs": 7150,
+      "beforeMs": 7363.499999952328,
+      "afterMs": 7388.999999952328,
+      "reactionMs": 213.49999995232793,
+      "result": {
+        "code": "accepted",
+        "message": "星星清除 · 0 个数据"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.020",
+      "tileId": "b.antivirus.heavy.tile.0.3",
+      "kind": "blue",
+      "spawnAtMs": 7500,
+      "beforeMs": 7728.099999952305,
+      "afterMs": 7768.599999952305,
+      "reactionMs": 228.09999995230464,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.021",
+      "tileId": "b.antivirus.heavy.tile.2.4",
+      "kind": "blue",
+      "spawnAtMs": 7850,
+      "beforeMs": 8061.099999952305,
+      "afterMs": 8095.099999952305,
+      "reactionMs": 211.09999995230464,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.022",
+      "tileId": "b.antivirus.heavy.tile.4.0",
+      "kind": "blue",
+      "spawnAtMs": 8200,
+      "beforeMs": 8439.999999952328,
+      "afterMs": 8464.899999952293,
+      "reactionMs": 239.99999995232793,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.023",
+      "tileId": "b.antivirus.heavy.tile.1.2",
+      "kind": "purple",
+      "spawnAtMs": 8550,
+      "beforeMs": 8756.799999952316,
+      "afterMs": 8800.299999952316,
+      "reactionMs": 206.79999995231628,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.024",
+      "tileId": "b.antivirus.heavy.tile.3.3",
+      "kind": "blue",
+      "spawnAtMs": 8900,
+      "beforeMs": 9106.69999995234,
+      "afterMs": 9147.799999952316,
+      "reactionMs": 206.69999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.025",
+      "tileId": "b.antivirus.heavy.tile.0.0",
+      "kind": "blue",
+      "spawnAtMs": 9250,
+      "beforeMs": 9477.999999952328,
+      "afterMs": 9527.899999952293,
+      "reactionMs": 227.99999995232793,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.026",
+      "tileId": "b.antivirus.heavy.tile.2.1",
+      "kind": "blue",
+      "spawnAtMs": 9600,
+      "beforeMs": 9815.899999952293,
+      "afterMs": 9872.999999952328,
+      "reactionMs": 215.899999952293,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.027",
+      "tileId": "b.antivirus.heavy.tile.4.2",
+      "kind": "purple",
+      "spawnAtMs": 9950,
+      "beforeMs": 10156.299999952316,
+      "afterMs": 10214.899999952293,
+      "reactionMs": 206.29999995231628,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.028",
+      "tileId": "b.antivirus.heavy.tile.1.4",
+      "kind": "blue",
+      "spawnAtMs": 10300,
+      "beforeMs": 10505.69999995234,
+      "afterMs": 10548.399999952293,
+      "reactionMs": 205.69999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.029",
+      "tileId": "b.antivirus.heavy.tile.3.0",
+      "kind": "star",
+      "spawnAtMs": 10650,
+      "beforeMs": 10881.19999995234,
+      "afterMs": 10922.999999952328,
+      "reactionMs": 231.19999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "星星清除 · 0 个数据"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.030",
+      "tileId": "b.antivirus.heavy.tile.0.2",
+      "kind": "blue",
+      "spawnAtMs": 11000,
+      "beforeMs": 11231.099999952305,
+      "afterMs": 11263.899999952293,
+      "reactionMs": 231.09999995230464,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.031",
+      "tileId": "b.antivirus.heavy.tile.2.3",
+      "kind": "purple",
+      "spawnAtMs": 11350,
+      "beforeMs": 11574.19999995234,
+      "afterMs": 11625.899999952293,
+      "reactionMs": 224.19999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.032",
+      "tileId": "b.antivirus.heavy.tile.4.4",
+      "kind": "blue",
+      "spawnAtMs": 11700,
+      "beforeMs": 11912.19999995234,
+      "afterMs": 11963.899999952293,
+      "reactionMs": 212.19999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.033",
+      "tileId": "b.antivirus.heavy.tile.1.1",
+      "kind": "blue",
+      "spawnAtMs": 12050,
+      "beforeMs": 12251.899999952293,
+      "afterMs": 12284.899999952293,
+      "reactionMs": 201.899999952293,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.034",
+      "tileId": "b.antivirus.heavy.tile.3.2",
+      "kind": "blue",
+      "spawnAtMs": 12400,
+      "beforeMs": 12609.899999952293,
+      "afterMs": 12665.599999952305,
+      "reactionMs": 209.899999952293,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.035",
+      "tileId": "b.antivirus.heavy.tile.0.4",
+      "kind": "purple",
+      "spawnAtMs": 12750,
+      "beforeMs": 12957.399999952293,
+      "afterMs": 13041.099999952305,
+      "reactionMs": 207.399999952293,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.036",
+      "tileId": "b.antivirus.heavy.tile.2.0",
+      "kind": "blue",
+      "spawnAtMs": 13100,
+      "beforeMs": 13324.599999952305,
+      "afterMs": 13359.299999952316,
+      "reactionMs": 224.59999995230464,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.037",
+      "tileId": "b.antivirus.heavy.tile.4.1",
+      "kind": "blue",
+      "spawnAtMs": 13450,
+      "beforeMs": 13665.099999952305,
+      "afterMs": 13698.499999952328,
+      "reactionMs": 215.09999995230464,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.038",
+      "tileId": "b.antivirus.heavy.tile.1.3",
+      "kind": "blue",
+      "spawnAtMs": 13800,
+      "beforeMs": 14010.499999952328,
+      "afterMs": 14050.69999995234,
+      "reactionMs": 210.49999995232793,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.039",
+      "tileId": "b.antivirus.heavy.tile.3.4",
+      "kind": "star",
+      "spawnAtMs": 14150,
+      "beforeMs": 14354.499999952328,
+      "afterMs": 14385.499999952328,
+      "reactionMs": 204.49999995232793,
+      "result": {
+        "code": "accepted",
+        "message": "星星清除 · 0 个数据"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.040",
+      "tileId": "b.antivirus.heavy.tile.0.1",
+      "kind": "blue",
+      "spawnAtMs": 14500,
+      "beforeMs": 14716.69999995234,
+      "afterMs": 14760.899999976158,
+      "reactionMs": 216.69999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.041",
+      "tileId": "b.antivirus.heavy.tile.2.2",
+      "kind": "blue",
+      "spawnAtMs": 14850,
+      "beforeMs": 15060.099999952305,
+      "afterMs": 15123.599999952305,
+      "reactionMs": 210.09999995230464,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.042",
+      "tileId": "b.antivirus.heavy.tile.4.3",
+      "kind": "blue",
+      "spawnAtMs": 15200,
+      "beforeMs": 15414.299999952316,
+      "afterMs": 15464.399999952293,
+      "reactionMs": 214.29999995231628,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.043",
+      "tileId": "b.antivirus.heavy.tile.1.0",
+      "kind": "purple",
+      "spawnAtMs": 15550,
+      "beforeMs": 15754.099999952305,
+      "afterMs": 15805.499999952328,
+      "reactionMs": 204.09999995230464,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.044",
+      "tileId": "b.antivirus.heavy.tile.3.1",
+      "kind": "blue",
+      "spawnAtMs": 15900,
+      "beforeMs": 16104.599999952305,
+      "afterMs": 16145.099999904633,
+      "reactionMs": 204.59999995230464,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.045",
+      "tileId": "b.antivirus.heavy.tile.0.3",
+      "kind": "blue",
+      "spawnAtMs": 16250,
+      "beforeMs": 16460.799999952316,
+      "afterMs": 16514.299999952316,
+      "reactionMs": 210.79999995231628,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.046",
+      "tileId": "b.antivirus.heavy.tile.2.4",
+      "kind": "blue",
+      "spawnAtMs": 16600,
+      "beforeMs": 16826.999999952328,
+      "afterMs": 16876.799999952316,
+      "reactionMs": 226.99999995232793,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.047",
+      "tileId": "b.antivirus.heavy.tile.4.0",
+      "kind": "purple",
+      "spawnAtMs": 16950,
+      "beforeMs": 17160.69999995234,
+      "afterMs": 17235.19999995234,
+      "reactionMs": 210.69999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.048",
+      "tileId": "b.antivirus.heavy.tile.1.2",
+      "kind": "blue",
+      "spawnAtMs": 17300,
+      "beforeMs": 17516.599999952305,
+      "afterMs": 17569.19999995234,
+      "reactionMs": 216.59999995230464,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.049",
+      "tileId": "b.antivirus.heavy.tile.3.3",
+      "kind": "star",
+      "spawnAtMs": 17650,
+      "beforeMs": 17874.599999952305,
+      "afterMs": 17913.999999952328,
+      "reactionMs": 224.59999995230464,
+      "result": {
+        "code": "accepted",
+        "message": "星星清除 · 0 个数据"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.050",
+      "tileId": "b.antivirus.heavy.tile.0.0",
+      "kind": "blue",
+      "spawnAtMs": 18000,
+      "beforeMs": 18205.799999952316,
+      "afterMs": 18263.899999952293,
+      "reactionMs": 205.79999995231628,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.051",
+      "tileId": "b.antivirus.heavy.tile.2.1",
+      "kind": "purple",
+      "spawnAtMs": 18350,
+      "beforeMs": 18580.599999952305,
+      "afterMs": 18625.799999952316,
+      "reactionMs": 230.59999995230464,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.052",
+      "tileId": "b.antivirus.heavy.tile.4.2",
+      "kind": "blue",
+      "spawnAtMs": 18700,
+      "beforeMs": 18930.399999952293,
+      "afterMs": 19079.999999952328,
+      "reactionMs": 230.399999952293,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.053",
+      "tileId": "b.antivirus.heavy.tile.1.4",
+      "kind": "blue",
+      "spawnAtMs": 19050,
+      "beforeMs": 19265.799999952316,
+      "afterMs": 19314.69999995234,
+      "reactionMs": 215.79999995231628,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.054",
+      "tileId": "b.antivirus.heavy.tile.3.0",
+      "kind": "blue",
+      "spawnAtMs": 19400,
+      "beforeMs": 19610.499999952328,
+      "afterMs": 19672.899999952293,
+      "reactionMs": 210.49999995232793,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.055",
+      "tileId": "b.antivirus.heavy.tile.0.2",
+      "kind": "purple",
+      "spawnAtMs": 19750,
+      "beforeMs": 19977.69999995234,
+      "afterMs": 20015.499999952328,
+      "reactionMs": 227.69999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.056",
+      "tileId": "b.antivirus.heavy.tile.2.3",
+      "kind": "blue",
+      "spawnAtMs": 20100,
+      "beforeMs": 20301.299999952316,
+      "afterMs": 20372.599999952305,
+      "reactionMs": 201.29999995231628,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.057",
+      "tileId": "b.antivirus.heavy.tile.4.4",
+      "kind": "blue",
+      "spawnAtMs": 20450,
+      "beforeMs": 20681.19999995234,
+      "afterMs": 20723.099999952305,
+      "reactionMs": 231.19999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.058",
+      "tileId": "b.antivirus.heavy.tile.1.1",
+      "kind": "blue",
+      "spawnAtMs": 20800,
+      "beforeMs": 21001.999999952328,
+      "afterMs": 21052.799999952316,
+      "reactionMs": 201.99999995232793,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.059",
+      "tileId": "b.antivirus.heavy.tile.3.2",
+      "kind": "star",
+      "spawnAtMs": 21150,
+      "beforeMs": 21372.69999995234,
+      "afterMs": 21422.999999952328,
+      "reactionMs": 222.69999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "星星清除 · 0 个数据"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.060",
+      "tileId": "b.antivirus.heavy.tile.0.4",
+      "kind": "blue",
+      "spawnAtMs": 21500,
+      "beforeMs": 21702.899999952293,
+      "afterMs": 21760.599999952305,
+      "reactionMs": 202.899999952293,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.061",
+      "tileId": "b.antivirus.heavy.tile.2.0",
+      "kind": "blue",
+      "spawnAtMs": 21850,
+      "beforeMs": 22059.499999952328,
+      "afterMs": 22100.799999952316,
+      "reactionMs": 209.49999995232793,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.062",
+      "tileId": "b.antivirus.heavy.tile.4.1",
+      "kind": "blue",
+      "spawnAtMs": 22200,
+      "beforeMs": 22401.69999995234,
+      "afterMs": 22440.19999995234,
+      "reactionMs": 201.69999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.063",
+      "tileId": "b.antivirus.heavy.tile.1.3",
+      "kind": "purple",
+      "spawnAtMs": 22550,
+      "beforeMs": 22764.599999952305,
+      "afterMs": 22797.19999995234,
+      "reactionMs": 214.59999995230464,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.064",
+      "tileId": "b.antivirus.heavy.tile.3.4",
+      "kind": "blue",
+      "spawnAtMs": 22900,
+      "beforeMs": 23129.999999952328,
+      "afterMs": 23180.499999952328,
+      "reactionMs": 229.99999995232793,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.065",
+      "tileId": "b.antivirus.heavy.tile.0.1",
+      "kind": "blue",
+      "spawnAtMs": 23250,
+      "beforeMs": 23466.799999952316,
+      "afterMs": 23510.499999952328,
+      "reactionMs": 216.79999995231628,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.066",
+      "tileId": "b.antivirus.heavy.tile.2.2",
+      "kind": "blue",
+      "spawnAtMs": 23600,
+      "beforeMs": 23814.399999952293,
+      "afterMs": 23872.299999952316,
+      "reactionMs": 214.399999952293,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.067",
+      "tileId": "b.antivirus.heavy.tile.4.3",
+      "kind": "purple",
+      "spawnAtMs": 23950,
+      "beforeMs": 24168.19999995234,
+      "afterMs": 24204.899999952293,
+      "reactionMs": 218.19999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.068",
+      "tileId": "b.antivirus.heavy.tile.1.0",
+      "kind": "blue",
+      "spawnAtMs": 24300,
+      "beforeMs": 24508.899999952293,
+      "afterMs": 24571.999999952328,
+      "reactionMs": 208.899999952293,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.069",
+      "tileId": "b.antivirus.heavy.tile.3.1",
+      "kind": "star",
+      "spawnAtMs": 24650,
+      "beforeMs": 24854.19999995234,
+      "afterMs": 24903.999999952328,
+      "reactionMs": 204.19999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "星星清除 · 0 个数据"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.070",
+      "tileId": "b.antivirus.heavy.tile.0.3",
+      "kind": "blue",
+      "spawnAtMs": 25000,
+      "beforeMs": 25214.19999995234,
+      "afterMs": 25265.69999995234,
+      "reactionMs": 214.19999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.071",
+      "tileId": "b.antivirus.heavy.tile.2.4",
+      "kind": "purple",
+      "spawnAtMs": 25350,
+      "beforeMs": 25577.499999952328,
+      "afterMs": 25628.099999952305,
+      "reactionMs": 227.49999995232793,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.072",
+      "tileId": "b.antivirus.heavy.tile.4.0",
+      "kind": "blue",
+      "spawnAtMs": 25700,
+      "beforeMs": 25913.999999952328,
+      "afterMs": 25970.19999995234,
+      "reactionMs": 213.99999995232793,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.073",
+      "tileId": "b.antivirus.heavy.tile.1.2",
+      "kind": "blue",
+      "spawnAtMs": 26050,
+      "beforeMs": 26260.099999952305,
+      "afterMs": 26317.399999952293,
+      "reactionMs": 210.09999995230464,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.074",
+      "tileId": "b.antivirus.heavy.tile.3.3",
+      "kind": "blue",
+      "spawnAtMs": 26400,
+      "beforeMs": 26622.499999952328,
+      "afterMs": 26663.499999952328,
+      "reactionMs": 222.49999995232793,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.075",
+      "tileId": "b.antivirus.heavy.tile.0.0",
+      "kind": "purple",
+      "spawnAtMs": 26750,
+      "beforeMs": 26980.499999952328,
+      "afterMs": 27031.899999952293,
+      "reactionMs": 230.49999995232793,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.076",
+      "tileId": "b.antivirus.heavy.tile.2.1",
+      "kind": "blue",
+      "spawnAtMs": 27100,
+      "beforeMs": 27302.999999952328,
+      "afterMs": 27358.69999995234,
+      "reactionMs": 202.99999995232793,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.077",
+      "tileId": "b.antivirus.heavy.tile.4.2",
+      "kind": "blue",
+      "spawnAtMs": 27450,
+      "beforeMs": 27659.899999952293,
+      "afterMs": 27713.299999952316,
+      "reactionMs": 209.899999952293,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.078",
+      "tileId": "b.antivirus.heavy.tile.1.4",
+      "kind": "blue",
+      "spawnAtMs": 27800,
+      "beforeMs": 28022.999999952328,
+      "afterMs": 28051.19999995234,
+      "reactionMs": 222.99999995232793,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.079",
+      "tileId": "b.antivirus.heavy.tile.3.0",
+      "kind": "star",
+      "spawnAtMs": 28150,
+      "beforeMs": 28352.499999952328,
+      "afterMs": 28385.799999952316,
+      "reactionMs": 202.49999995232793,
+      "result": {
+        "code": "accepted",
+        "message": "星星清除 · 0 个数据"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.080",
+      "tileId": "b.antivirus.heavy.tile.0.2",
+      "kind": "blue",
+      "spawnAtMs": 28500,
+      "beforeMs": 28718.999999952328,
+      "afterMs": 28773.299999952316,
+      "reactionMs": 218.99999995232793,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.081",
+      "tileId": "b.antivirus.heavy.tile.2.3",
+      "kind": "blue",
+      "spawnAtMs": 28850,
+      "beforeMs": 29060.599999952305,
+      "afterMs": 29143.999999952328,
+      "reactionMs": 210.59999995230464,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.082",
+      "tileId": "b.antivirus.heavy.tile.4.4",
+      "kind": "blue",
+      "spawnAtMs": 29200,
+      "beforeMs": 29409.299999952316,
+      "afterMs": 29459.999999952328,
+      "reactionMs": 209.29999995231628,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.083",
+      "tileId": "b.antivirus.heavy.tile.1.1",
+      "kind": "purple",
+      "spawnAtMs": 29550,
+      "beforeMs": 29792.399999952293,
+      "afterMs": 29825.899999952293,
+      "reactionMs": 242.399999952293,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.084",
+      "tileId": "b.antivirus.heavy.tile.3.2",
+      "kind": "blue",
+      "spawnAtMs": 29900,
+      "beforeMs": 30112.599999952305,
+      "afterMs": 30171.499999952328,
+      "reactionMs": 212.59999995230464,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.085",
+      "tileId": "b.antivirus.heavy.tile.0.4",
+      "kind": "blue",
+      "spawnAtMs": 30250,
+      "beforeMs": 30450.799999952316,
+      "afterMs": 30506.099999952305,
+      "reactionMs": 200.79999995231628,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.086",
+      "tileId": "b.antivirus.heavy.tile.2.0",
+      "kind": "blue",
+      "spawnAtMs": 30600,
+      "beforeMs": 30869.19999995234,
+      "afterMs": 30911.299999952316,
+      "reactionMs": 269.19999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.087",
+      "tileId": "b.antivirus.heavy.tile.4.1",
+      "kind": "purple",
+      "spawnAtMs": 30950,
+      "beforeMs": 31164.499999952328,
+      "afterMs": 31205.799999952316,
+      "reactionMs": 214.49999995232793,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.088",
+      "tileId": "b.antivirus.heavy.tile.1.3",
+      "kind": "blue",
+      "spawnAtMs": 31300,
+      "beforeMs": 31511.799999952316,
+      "afterMs": 31579.099999952305,
+      "reactionMs": 211.79999995231628,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.089",
+      "tileId": "b.antivirus.heavy.tile.3.4",
+      "kind": "star",
+      "spawnAtMs": 31650,
+      "beforeMs": 31880.499999952328,
+      "afterMs": 31960.19999995234,
+      "reactionMs": 230.49999995232793,
+      "result": {
+        "code": "accepted",
+        "message": "星星清除 · 0 个数据"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.090",
+      "tileId": "b.antivirus.heavy.tile.0.1",
+      "kind": "blue",
+      "spawnAtMs": 32000,
+      "beforeMs": 32218.799999952316,
+      "afterMs": 32285.19999995234,
+      "reactionMs": 218.79999995231628,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.091",
+      "tileId": "b.antivirus.heavy.tile.2.2",
+      "kind": "purple",
+      "spawnAtMs": 32350,
+      "beforeMs": 32588.69999995234,
+      "afterMs": 32636.299999952316,
+      "reactionMs": 238.69999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.092",
+      "tileId": "b.antivirus.heavy.tile.4.3",
+      "kind": "blue",
+      "spawnAtMs": 32700,
+      "beforeMs": 32926.299999952316,
+      "afterMs": 32975.69999995234,
+      "reactionMs": 226.29999995231628,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.093",
+      "tileId": "b.antivirus.heavy.tile.1.0",
+      "kind": "blue",
+      "spawnAtMs": 33050,
+      "beforeMs": 33284.99999995233,
+      "afterMs": 33318.299999952316,
+      "reactionMs": 234.99999995232793,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.094",
+      "tileId": "b.antivirus.heavy.tile.3.1",
+      "kind": "blue",
+      "spawnAtMs": 33400,
+      "beforeMs": 33617.799999952316,
+      "afterMs": 33667.299999952316,
+      "reactionMs": 217.79999995231628,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.095",
+      "tileId": "b.antivirus.heavy.tile.0.3",
+      "kind": "purple",
+      "spawnAtMs": 33750,
+      "beforeMs": 33965.39999995229,
+      "afterMs": 34044.299999952316,
+      "reactionMs": 215.399999952293,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.096",
+      "tileId": "b.antivirus.heavy.tile.2.4",
+      "kind": "blue",
+      "spawnAtMs": 34100,
+      "beforeMs": 34317.49999995233,
+      "afterMs": 34343.19999995234,
+      "reactionMs": 217.49999995232793,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.097",
+      "tileId": "b.antivirus.heavy.tile.4.0",
+      "kind": "blue",
+      "spawnAtMs": 34450,
+      "beforeMs": 34659.19999995234,
+      "afterMs": 34684.99999995233,
+      "reactionMs": 209.19999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.098",
+      "tileId": "b.antivirus.heavy.tile.1.2",
+      "kind": "blue",
+      "spawnAtMs": 34800,
+      "beforeMs": 35008.49999995233,
+      "afterMs": 35060.799999952316,
+      "reactionMs": 208.49999995232793,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.099",
+      "tileId": "b.antivirus.heavy.tile.3.3",
+      "kind": "star",
+      "spawnAtMs": 35150,
+      "beforeMs": 35376.99999995233,
+      "afterMs": 35421.89999995229,
+      "reactionMs": 226.99999995232793,
+      "result": {
+        "code": "accepted",
+        "message": "星星清除 · 0 个数据"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.100",
+      "tileId": "b.antivirus.heavy.tile.0.0",
+      "kind": "blue",
+      "spawnAtMs": 35500,
+      "beforeMs": 35701.299999952316,
+      "afterMs": 35734.69999995234,
+      "reactionMs": 201.29999995231628,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.101",
+      "tileId": "b.antivirus.heavy.tile.2.1",
+      "kind": "blue",
+      "spawnAtMs": 35850,
+      "beforeMs": 36063.799999952316,
+      "afterMs": 36113.89999995229,
+      "reactionMs": 213.79999995231628,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.102",
+      "tileId": "b.antivirus.heavy.tile.4.2",
+      "kind": "blue",
+      "spawnAtMs": 36200,
+      "beforeMs": 36401.89999995229,
+      "afterMs": 36426.599999952305,
+      "reactionMs": 201.899999952293,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.103",
+      "tileId": "b.antivirus.heavy.tile.1.4",
+      "kind": "purple",
+      "spawnAtMs": 36550,
+      "beforeMs": 36768.69999995234,
+      "afterMs": 36829.19999995234,
+      "reactionMs": 218.69999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.104",
+      "tileId": "b.antivirus.heavy.tile.3.0",
+      "kind": "blue",
+      "spawnAtMs": 36900,
+      "beforeMs": 37118.89999995229,
+      "afterMs": 37168.599999952305,
+      "reactionMs": 218.899999952293,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.105",
+      "tileId": "b.antivirus.heavy.tile.0.2",
+      "kind": "blue",
+      "spawnAtMs": 37250,
+      "beforeMs": 37480.69999995234,
+      "afterMs": 37518.69999995234,
+      "reactionMs": 230.69999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.106",
+      "tileId": "b.antivirus.heavy.tile.2.3",
+      "kind": "blue",
+      "spawnAtMs": 37600,
+      "beforeMs": 37813.19999995234,
+      "afterMs": 37888.69999995234,
+      "reactionMs": 213.19999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.107",
+      "tileId": "b.antivirus.heavy.tile.4.4",
+      "kind": "purple",
+      "spawnAtMs": 37950,
+      "beforeMs": 38172.19999995234,
+      "afterMs": 38213.89999995229,
+      "reactionMs": 222.19999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.108",
+      "tileId": "b.antivirus.heavy.tile.1.1",
+      "kind": "blue",
+      "spawnAtMs": 38300,
+      "beforeMs": 38504.39999995229,
+      "afterMs": 38547.19999995234,
+      "reactionMs": 204.399999952293,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.109",
+      "tileId": "b.antivirus.heavy.tile.3.2",
+      "kind": "star",
+      "spawnAtMs": 38650,
+      "beforeMs": 38852.099999952305,
+      "afterMs": 38913.799999952316,
+      "reactionMs": 202.09999995230464,
+      "result": {
+        "code": "accepted",
+        "message": "星星清除 · 0 个数据"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.110",
+      "tileId": "b.antivirus.heavy.tile.0.4",
+      "kind": "blue",
+      "spawnAtMs": 39000,
+      "beforeMs": 39231.099999952305,
+      "afterMs": 39268.19999995234,
+      "reactionMs": 231.09999995230464,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.111",
+      "tileId": "b.antivirus.heavy.tile.2.0",
+      "kind": "purple",
+      "spawnAtMs": 39350,
+      "beforeMs": 39551.599999952305,
+      "afterMs": 40031.599999952305,
+      "reactionMs": 201.59999995230464,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.112",
+      "tileId": "b.antivirus.heavy.tile.4.1",
+      "kind": "blue",
+      "spawnAtMs": 39700,
+      "beforeMs": 40047.19999995234,
+      "afterMs": 40081.39999995229,
+      "reactionMs": 347.19999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.113",
+      "tileId": "b.antivirus.heavy.tile.1.3",
+      "kind": "blue",
+      "spawnAtMs": 40050,
+      "beforeMs": 40259.99999995233,
+      "afterMs": 40318.19999995234,
+      "reactionMs": 209.99999995232793,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.114",
+      "tileId": "b.antivirus.heavy.tile.3.4",
+      "kind": "blue",
+      "spawnAtMs": 40400,
+      "beforeMs": 40629.799999952316,
+      "afterMs": 40693.299999952316,
+      "reactionMs": 229.79999995231628,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.115",
+      "tileId": "b.antivirus.heavy.tile.0.1",
+      "kind": "purple",
+      "spawnAtMs": 40750,
+      "beforeMs": 40951.299999952316,
+      "afterMs": 40995.69999995234,
+      "reactionMs": 201.29999995231628,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.116",
+      "tileId": "b.antivirus.heavy.tile.2.2",
+      "kind": "blue",
+      "spawnAtMs": 41100,
+      "beforeMs": 41309.599999952305,
+      "afterMs": 41342.49999995233,
+      "reactionMs": 209.59999995230464,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.117",
+      "tileId": "b.antivirus.heavy.tile.4.3",
+      "kind": "blue",
+      "spawnAtMs": 41450,
+      "beforeMs": 41693.19999995234,
+      "afterMs": 41725.599999952305,
+      "reactionMs": 243.19999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.118",
+      "tileId": "b.antivirus.heavy.tile.1.0",
+      "kind": "blue",
+      "spawnAtMs": 41800,
+      "beforeMs": 42013.69999995234,
+      "afterMs": 42079.19999995234,
+      "reactionMs": 213.69999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.119",
+      "tileId": "b.antivirus.heavy.tile.3.1",
+      "kind": "star",
+      "spawnAtMs": 42150,
+      "beforeMs": 42381.89999995229,
+      "afterMs": 42415.39999995229,
+      "reactionMs": 231.899999952293,
+      "result": {
+        "code": "accepted",
+        "message": "星星清除 · 0 个数据"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.120",
+      "tileId": "b.antivirus.heavy.tile.0.3",
+      "kind": "blue",
+      "spawnAtMs": 42500,
+      "beforeMs": 42734.89999995229,
+      "afterMs": 42784.799999952316,
+      "reactionMs": 234.899999952293,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.121",
+      "tileId": "b.antivirus.heavy.tile.2.4",
+      "kind": "blue",
+      "spawnAtMs": 42850,
+      "beforeMs": 43051.69999995234,
+      "afterMs": 43093.19999995234,
+      "reactionMs": 201.69999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.122",
+      "tileId": "b.antivirus.heavy.tile.4.0",
+      "kind": "blue",
+      "spawnAtMs": 43200,
+      "beforeMs": 43410.69999995234,
+      "afterMs": 43443.299999952316,
+      "reactionMs": 210.69999995233957,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.123",
+      "tileId": "b.antivirus.heavy.tile.1.2",
+      "kind": "purple",
+      "spawnAtMs": 43550,
+      "beforeMs": 43758.89999995229,
+      "afterMs": 43793.099999952305,
+      "reactionMs": 208.899999952293,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.124",
+      "tileId": "b.antivirus.heavy.tile.3.3",
+      "kind": "blue",
+      "spawnAtMs": 43900,
+      "beforeMs": 44108.89999995229,
+      "afterMs": 44153.19999995234,
+      "reactionMs": 208.899999952293,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.125",
+      "tileId": "b.antivirus.heavy.tile.0.0",
+      "kind": "blue",
+      "spawnAtMs": 44250,
+      "beforeMs": 44467.89999995229,
+      "afterMs": 44510.299999952316,
+      "reactionMs": 217.899999952293,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "targetId": "b.antivirus.heavy.target.126",
+      "tileId": "b.antivirus.heavy.tile.2.1",
+      "kind": "blue",
+      "spawnAtMs": 44600,
+      "beforeMs": 44800.599999952305,
+      "afterMs": 44863.99999995233,
+      "reactionMs": 200.59999995230464,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    }
+  ],
+  "result": {
+    "profile": "M5",
+    "schemaVersion": 2,
+    "contentVersion": 4,
+    "ruleVersion": 1,
+    "position": {
+      "space": "room",
+      "areaId": "b",
+      "boardId": "b.antivirus.heavy.board",
+      "tileId": "b.antivirus.heavy.tile.2.1"
+    },
+    "mode": "challengeResult",
+    "phase": "success",
+    "activeTimeMs": 45000,
+    "countdownRemainingMs": 0,
+    "pauseReasons": [],
+    "completedObjectiveIds": [
+      "hub.amplifier",
+      "hub.tutorial",
+      "a.nexus.route",
+      "a.maze.01",
+      "a.main",
+      "b.line.01",
+      "b.switch.shortcut",
+      "b.main",
+      "c.routing.01",
+      "c.main",
+      "d.reveal.03",
+      "d.permission.03",
+      "d.reveal.04",
+      "d.permission.04",
+      "d.ghost.01",
+      "d.permission.01",
+      "d.ghost.02",
+      "d.ghosts.cleared",
+      "d.permission.02",
+      "d.main",
+      "d.reveal.hidden",
+      "d.hidden.terminal",
+      "a.revisit.nexus",
+      "a.revisit.terminal",
+      "a.maze.03",
+      "a.maze.02",
+      "a.nexus.side",
+      "a.side.terminal",
+      "b.revisit.nexus",
+      "b.revisit.terminal",
+      "b.south.terminal",
+      "b.nexus.north",
+      "b.north.terminal",
+      "b.line.02",
+      "c.side.terminal",
+      "c.theft.01",
+      "c.theft.02",
+      "c.theft.03",
+      "warehouse.complete",
+      "a.firewall.access",
+      "a.firewall.tutorial",
+      "a.firewall.inner",
+      "a.firewall.deep",
+      "a.firewall.core",
+      "b.antivirus.access",
+      "b.antivirus.light",
+      "b.antivirus.medium",
+      "b.antivirus.heavy"
+    ],
+    "completedRoomLayouts": {
+      "a.maze.01": {
+        "objectTileById": {},
+        "visitedTileIds": [],
+        "activatedLocalIds": []
+      },
+      "b.line.01": {
+        "objectTileById": {},
+        "visitedTileIds": [
+          "b.line.01.t.0.0",
+          "b.line.01.t.1.0",
+          "b.line.01.t.2.0",
+          "b.line.01.t.2.1",
+          "b.line.01.t.1.1",
+          "b.line.01.t.0.1",
+          "b.line.01.t.0.2",
+          "b.line.01.t.1.2",
+          "b.line.01.t.2.2",
+          "b.line.01.t.3.2",
+          "b.line.01.t.3.1",
+          "b.line.01.t.3.0"
+        ],
+        "activatedLocalIds": []
+      },
+      "c.routing.01": {
+        "objectTileById": {
+          "c.routing.01.ball.01": "c.routing.01.t.4.1",
+          "c.routing.01.ball.02": "c.routing.01.t.2.1",
+          "c.routing.01.cart.01": "c.routing.01.t.5.3"
+        },
+        "visitedTileIds": [],
+        "activatedLocalIds": []
+      },
+      "a.maze.03": {
+        "objectTileById": {},
+        "visitedTileIds": [],
+        "activatedLocalIds": []
+      },
+      "a.maze.02": {
+        "objectTileById": {},
+        "visitedTileIds": [],
+        "activatedLocalIds": []
+      },
+      "b.line.02": {
+        "objectTileById": {},
+        "visitedTileIds": [
+          "b.line.02.t.0.0",
+          "b.line.02.t.1.0",
+          "b.line.02.t.2.0",
+          "b.line.02.t.3.0",
+          "b.line.02.t.4.0",
+          "b.line.02.t.4.1",
+          "b.line.02.t.4.2",
+          "b.line.02.t.3.2",
+          "b.line.02.t.3.1",
+          "b.line.02.t.2.1",
+          "b.line.02.t.1.1",
+          "b.line.02.t.0.1",
+          "b.line.02.t.0.2",
+          "b.line.02.t.1.2",
+          "b.line.02.t.1.3",
+          "b.line.02.t.0.3",
+          "b.line.02.t.0.4",
+          "b.line.02.t.1.4",
+          "b.line.02.t.2.4",
+          "b.line.02.t.2.3",
+          "b.line.02.t.3.3",
+          "b.line.02.t.3.4",
+          "b.line.02.t.4.4",
+          "b.line.02.t.4.3"
+        ],
+        "activatedLocalIds": []
+      },
+      "c.theft.01": {
+        "objectTileById": {
+          "c.theft.01.object.01": "c.theft.01.t.2.1",
+          "c.theft.01.object.02": "c.theft.01.t.4.1"
+        },
+        "visitedTileIds": [],
+        "activatedLocalIds": []
+      },
+      "c.theft.02": {
+        "objectTileById": {
+          "c.theft.02.object.01": "c.theft.02.t.2.1",
+          "c.theft.02.object.02": "c.theft.02.t.4.1"
+        },
+        "visitedTileIds": [],
+        "activatedLocalIds": []
+      },
+      "c.theft.03": {
+        "objectTileById": {
+          "c.theft.03.object.01": "c.theft.03.t.2.1",
+          "c.theft.03.object.02": "c.theft.03.t.5.1",
+          "c.theft.03.object.03": "c.theft.03.t.5.3"
+        },
+        "visitedTileIds": [],
+        "activatedLocalIds": []
+      }
+    },
+    "staticRoom": null,
+    "completedRoom": null,
+    "data": {
+      "a": {
+        "collected": 100,
+        "total": 100,
+        "includedCollected": 100,
+        "includedTotal": 100,
+        "complete": true
+      },
+      "b": {
+        "collected": 100,
+        "total": 100,
+        "includedCollected": 100,
+        "includedTotal": 100,
+        "complete": true
+      },
+      "c": {
+        "collected": 100,
+        "total": 100,
+        "includedCollected": 100,
+        "includedTotal": 100,
+        "complete": true
+      },
+      "d": {
+        "collected": 100,
+        "total": 100,
+        "includedCollected": 100,
+        "includedTotal": 100,
+        "complete": true
+      }
+    },
+    "claimedRewardIds": [
+      "hub.supply.tutorial",
+      "a.supply.maze01",
+      "b.supply.line01",
+      "d.supply.permission03",
+      "d.supply.permission04",
+      "d.supply.permission01",
+      "d.supply.permission02",
+      "d.supply.ghosts",
+      "d.supply.hidden",
+      "a.supply.revisit",
+      "a.supply.maze03",
+      "b.supply.revisit",
+      "b.supply.line02",
+      "c.supply.route.entry",
+      "c.supply.side",
+      "c.supply.route.exit",
+      "c.supply.theft01",
+      "c.supply.theft02",
+      "c.supply.theft03",
+      "hub.supply.final",
+      "a.supply.firewall.inner",
+      "a.supply.firewall.deep",
+      "a.supply.firewall.core",
+      "b.supply.antivirus.light",
+      "b.supply.antivirus.medium",
+      "b.supply.antivirus.heavy"
+    ],
+    "supply": {
+      "collected": 130,
+      "total": 130,
+      "count": 26
+    },
+    "bestResults": [
+      {
+        "challengeId": "d.ghost.01",
+        "ruleVersion": 1
+      },
+      {
+        "challengeId": "d.ghost.02",
+        "ruleVersion": 1
+      },
+      {
+        "challengeId": "a.firewall.tutorial",
+        "ruleVersion": 1,
+        "bestCombo": 30
+      },
+      {
+        "challengeId": "a.firewall.inner",
+        "ruleVersion": 1,
+        "bestCombo": 88
+      },
+      {
+        "challengeId": "a.firewall.deep",
+        "ruleVersion": 1,
+        "bestCombo": 84
+      },
+      {
+        "challengeId": "a.firewall.core",
+        "ruleVersion": 1,
+        "bestCombo": 89
+      },
+      {
+        "challengeId": "b.antivirus.light",
+        "ruleVersion": 1,
+        "bestScore": 71,
+        "bestStarClear": 0
+      },
+      {
+        "challengeId": "b.antivirus.medium",
+        "ruleVersion": 1,
+        "bestScore": 99,
+        "bestStarClear": 0
+      },
+      {
+        "challengeId": "b.antivirus.heavy",
+        "ruleVersion": 1,
+        "bestScore": 140,
+        "bestStarClear": 1
+      }
+    ],
+    "lastResult": {
+      "code": "success",
+      "message": "独立练习完成 · 永久进度保持"
+    },
+    "saveStatus": "已保存 · 08:46:59",
+    "saveGeneration": 561,
+    "session": "held",
+    "render": {
+      "geometries": 10,
+      "textures": 8,
+      "calls": 11,
+      "tileCount": 25,
+      "residentIconCount": 5,
+      "pendingIconCount": 0,
+      "layout": {
+        "canvas": {
+          "width": 1366,
+          "height": 644
+        },
+        "insets": {
+          "left": 248,
+          "right": 202,
+          "top": 8,
+          "bottom": 8
+        },
+        "available": {
+          "left": 248,
+          "top": 8,
+          "width": 916,
+          "height": 628
+        },
+        "boardBounds": {
+          "minX": -0.495,
+          "maxX": 4.495,
+          "minY": -0.4509821799343498,
+          "maxY": 3.9018326583804415,
+          "width": 4.99,
+          "height": 4.352814838314791
+        },
+        "focus": {
+          "x": 2,
+          "y": 1.7254252392230458
+        },
+        "pixelsPerWorldUnit": 123.06932936006699,
+        "camera": {
+          "left": -5.736603942436692,
+          "right": 5.362830881031468,
+          "top": 2.616411429836565,
+          "bottom": -2.616411429836565
+        },
+        "requestedZoom": 1,
+        "effectiveZoom": 1,
+        "zoomLimited": false,
+        "targetCss": {
+          "width": 119.37724947926498,
+          "height": 104.48578278283426,
+          "minimum": 104.48578278283426
+        },
+        "visibleColumns": 7.442959222764887,
+        "visibleRows": 5.869802950167148,
+        "fitsBoard": true,
+        "requiresExpandedViewport": false,
+        "compactViewport": false,
+        "boardBoundsCss": {
+          "minX": 398.94202324663286,
+          "maxX": 1013.0579767533671,
+          "minY": 54.15099851002509,
+          "maxY": 589.8490014899749,
+          "width": 614.1159535067343,
+          "height": 535.6980029799497
+        },
+        "displayedFocus": {
+          "x": 2,
+          "y": 1.7254252392230458
+        },
+        "devicePixelRatio": 1
+      }
+    },
+    "transition": {
+      "active": false,
+      "lastDurationMs": 10.600000023841858
+    },
+    "firstStartupReadyMs": 160.79999995231628,
+    "firstGamePreparationMs": 52,
+    "inputLatency": {
+      "method": "physical input handler (including pending direction) to animation frame after presentation",
+      "sampleCount": 296,
+      "p95Ms": 18.1999999761465,
+      "maxMs": 38.09999995231556
+    },
+    "faults": {
+      "active": true,
+      "storage": null,
+      "feedback": null,
+      "rendererStartup": false,
+      "audioEnable": false,
+      "records": [
+        {
+          "sequence": 1,
+          "message": "已拒绝一次音频启用，未改变进度或时间。"
+        }
+      ]
+    },
+    "frameSummary": {
+      "sampleCount": 5494,
+      "medianMs": 8.300000000046566,
+      "p95Ms": 11.100000000034925,
+      "meanMs": 8.588915180196578
+    }
+  }
+}

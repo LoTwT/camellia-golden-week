@@ -92,6 +92,7 @@ export type SaveWriteResult<T> =
   | {
       readonly ok: true;
       readonly inspection: SaveInspection<T>;
+      readonly retryInspection: SaveInspection<T>;
       readonly envelope: SaveEnvelope<T>;
       readonly raw: string;
       readonly slot: SaveSlotId;
@@ -101,6 +102,7 @@ export type SaveWriteResult<T> =
       readonly code: SaveFailureCode;
       readonly message: string;
       readonly inspection: SaveInspection<T>;
+      readonly retryInspection: SaveInspection<T>;
     };
 
 export type PreparedImport<T> =
@@ -513,11 +515,13 @@ export function createSaveStore<T>(
   const inspect = () => inspectSaveSlots(storage, validate);
   const write = (payload: T, options: SaveWriteOptions<T>): SaveWriteResult<T> => {
     let current = inspect();
+    let retryInspection = options.expected;
     const failure = (code: SaveFailureCode, message: string): SaveWriteResult<T> => ({
       ok: false,
       code,
       message,
       inspection: current,
+      retryInspection,
     });
     if (!isWriter())
       return failure("notWriter", "进度正在另一窗口使用，或当前为临时模式；未写入存档。");
@@ -607,6 +611,15 @@ export function createSaveStore<T>(
       }
     }
     if (!isWriter()) return failure("notWriter", "保存前会话锁已释放，当前快照未写入。");
+    const inspectOwnWrite = () => {
+      current = inspect();
+      if (
+        current.status === "ready" &&
+        current.slots[targetSlot].raw === serialized.raw &&
+        current.slots[retainedSlot.id].raw === retainedSlot.raw
+      )
+        retryInspection = current;
+    };
     try {
       storage.setItem(SAVE_KEYS[targetSlot], serialized.raw);
     } catch {
@@ -614,14 +627,19 @@ export function createSaveStore<T>(
     }
     try {
       if (storage.getItem(SAVE_KEYS[targetSlot]) !== serialized.raw) {
-        current = inspect();
+        inspectOwnWrite();
         return failure("readbackFailed", "新存档回读不匹配；未标记已保存，上一有效槽保留。");
       }
     } catch {
-      current = inspect();
+      inspectOwnWrite();
       return failure("readbackFailed", "新存档无法回读；未标记已保存，上一有效槽保留。");
     }
-    current = inspect();
+    inspectOwnWrite();
+    if (current.slots[retainedSlot.id].raw !== retainedSlot.raw)
+      return failure(
+        "generationConflict",
+        "写后复核发现另一槽已变化；未接受新的保存基线，请先导出当前进度再重新读取。",
+      );
     const confirmed = current.slots[targetSlot];
     if (
       current.status !== "ready" ||
@@ -634,6 +652,7 @@ export function createSaveStore<T>(
     return {
       ok: true,
       inspection: current,
+      retryInspection: current,
       envelope: {
         saveGeneration: generation,
         savedAt: options.savedAt,

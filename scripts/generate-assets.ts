@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
+import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { dirname, resolve } from "node:path";
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { dirname, extname, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -25,32 +26,31 @@ interface IconDefinition {
 
 const check = `<path d="m46 67 12 12 26-29" fill="none" stroke="${ink}" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"/>`;
 const face = (expression: "idle" | "move" | "hurt") => `
-  <path d="M33 53V25c0-9 15-9 16 0l3 23m24 0 3-27c1-9 16-8 16 1v35" fill="${paper}" stroke="${ink}" stroke-width="6" stroke-linejoin="round"/>
-  <path d="M40 25v19m47-20-2 20" stroke="${muted}" stroke-width="5"/>
-  <path d="M38 50Q64 42 90 50l11 43-15 12H42L27 92Z" fill="${paper}" stroke="${ink}" stroke-width="6" stroke-linejoin="round"/>
-  <rect x="36" y="61" width="56" height="28" rx="13" fill="${ink}"/>
-  ${expression === "hurt" ? `<path d="m45 68 12 12m0-12L45 80m26-12 12 12m0-12L71 80" stroke="${red}" stroke-width="4"/>` : `<rect x="47" y="67" width="8" height="16" rx="4" fill="${paper}"/><rect x="73" y="67" width="8" height="16" rx="4" fill="${paper}"/>`}
-  <path d="M55 96h18" stroke="${ink}" stroke-width="4"/>
-  ${expression === "move" ? `<path d="m11 68 9 7-9 7m95-7h11" fill="none" stroke="${amber}" stroke-width="5" stroke-linecap="round"/>` : ""}`;
+  <path d="m41 49-6-29c-2-11 14-14 16-3l5 28m17-2 5-26c2-11 18-9 16 2l-6 30" fill="${ink}" stroke="${paper}" stroke-width="3"/>
+  <path d="m43 20 3 14m40-15-2 13" stroke="${muted}" stroke-width="4"/>
+  <path d="M23 91V70c0-25 16-39 41-39s41 14 41 39v21q0 18-15 18H38q-15 0-15-18Z" fill="${ink}" stroke="${paper}" stroke-width="3"/>
+  ${expression === "hurt" ? `<path d="m39 64 17 17m0-17L39 81m33-17 17 17m0-17L72 81" stroke="${red}" stroke-width="6"/>` : `<circle cx="${expression === "move" ? 49 : 47}" cy="73" r="13" fill="${paper}"/><circle cx="${expression === "move" ? 83 : 81}" cy="73" r="13" fill="${paper}"/><circle cx="${expression === "move" ? 51 : 47}" cy="73" r="5" fill="${muted}"/><circle cx="${expression === "move" ? 85 : 81}" cy="73" r="5" fill="${muted}"/>`}
+  <path d="M35 98q29 9 58 0" fill="none" stroke="#444650" stroke-width="3"/>
+  ${expression === "move" ? `<path d="M7 63h11M4 77h13m-8 14h11" stroke="${paper}" stroke-width="4"/>` : ""}`;
 
 const icons: IconDefinition[] = [
   {
     id: "player-idle",
     purpose: "玩家：静止；以双耳与双眼识别当前格",
-    referenceId: "AR-A-MAZE",
+    referenceId: "AR-A-FIREWALL",
     representative: true,
     paths: face("idle"),
   },
   {
     id: "player-move",
     purpose: "玩家：有效移动的短反馈",
-    referenceId: "AR-A-MAZE",
+    referenceId: "AR-A-FIREWALL",
     paths: face("move"),
   },
   {
     id: "player-hurt",
     purpose: "玩家：受损的短反馈",
-    referenceId: "AR-A-MAZE",
+    referenceId: "AR-A-FIREWALL",
     paths: face("hurt"),
   },
   {
@@ -211,10 +211,10 @@ const icons: IconDefinition[] = [
   },
   {
     id: "cart",
-    purpose: "推车：方形车箱与双轮；表达逐格推动对象",
+    purpose: "推车：箱形车体、圆形前面板与底部小轮；表达逐格推动对象",
     referenceId: "AR-C-COMBINED",
     firstProfile: "M3",
-    paths: `<path d="M16 24h13l12 66h59" fill="none" stroke="${paper}" stroke-width="6"/><path d="M34 38h77l-13 39H41Z" fill="${muted}" stroke="${ink}" stroke-width="6"/><path d="M60 40v36m23-36v36" stroke="${paper}" stroke-width="4"/><circle cx="48" cy="103" r="10" fill="${ink}" stroke="${paper}" stroke-width="5"/><circle cx="92" cy="103" r="10" fill="${ink}" stroke="${paper}" stroke-width="5"/>`,
+    paths: `<path d="m27 31 12-11h53l13 11-6 66H27Z" fill="${muted}" stroke="${paper}" stroke-width="4"/><path d="m27 31 12-11h53l13 11Z" fill="#c1cbce" stroke="${ink}" stroke-width="4"/><path d="M99 32v65H27V32Z" fill="#899397" stroke="${ink}" stroke-width="5"/><circle cx="63" cy="63" r="24" fill="#384351" stroke="${paper}" stroke-width="5"/><circle cx="63" cy="63" r="15" fill="none" stroke="${ink}" stroke-width="4"/><path d="M29 98h73" stroke="${paper}" stroke-width="5"/><path d="M32 105h66" stroke="${ink}" stroke-width="6"/><circle cx="42" cy="108" r="8" fill="${ink}" stroke="${paper}" stroke-width="4"/><circle cx="86" cy="108" r="8" fill="${ink}" stroke="${paper}" stroke-width="4"/><path d="M34 39h4m49 0h4M34 88h4m49 0h4" stroke="${paper}" stroke-width="3"/>`,
   },
   {
     id: "data-object",
@@ -260,14 +260,14 @@ const references = {
   "AR-A-MAZE": "https://img.game8.jp/10416118/7024cc093a8e3f064101bf37e09703db.jpeg/original",
   "AR-A-FIREWALL": "https://img.game8.jp/10416126/90d0be6152e66b41e8d600a6033fe4ae.jpeg/original",
   "AR-B-ANTIVIRUS": "https://img.game8.jp/10419120/602cc237bdd8cf72a9ee0dcaa63dc430.jpeg/original",
-  "AR-C-COMBINED": "https://img1.ali213.net/glpic/2024/08/23/584_2024082342229370.png",
+  "AR-C-COMBINED": "https://img1.ali213.net/glpic/2024/08/23/2024082342229370.png",
   "AR-C-THEFT": "https://img.game8.jp/10422394/1517f985085bd4dd2888455995c57349.jpeg/original",
   "AR-D-GHOST": "https://img.game8.jp/10425919/85aab7d6be2de4425b7488e92ef92fd5.jpeg/original",
 };
 
 function describeIconDifferences(id: string): string {
   if (id.startsWith("player"))
-    return "参考中为白底牌上的深色双耳头像与白色圆眼；本版为透明底、白色外壳与黑色面板，眼形及耳部比例有差异；移动及受损帧是新绘状态";
+    return "M5按防火墙原参考的深色圆顶、双耳和浅色圆眼重新补制；透明底由游戏屏面承接，保留独立轮廓与尺寸差异；移动偏眼/速度线及受损叉眼是新增状态，未声称取得原动画帧";
   if (id.startsWith("enrichment"))
     return "保留圆形富集指示的视觉职责，改用四角星与双环；已用状态加勾；未匹配原图的涡旋纹样";
   if (id.startsWith("supply"))
@@ -288,14 +288,60 @@ function describeIconDifferences(id: string): string {
     return "匹配原参考的深色本体、粉红双圆眼与下沿杂讯职责；轮廓和静态杂讯为独立补制，未复制原版噪声纹理或动画；不把粉红砖墙当幽灵图形";
   if (id.startsWith("lamp"))
     return "使用灯泡轮廓，已亮为实心光源和光线，未亮为空心与斜杠；未匹配原作灯的完整状态帧；静态差别在减少动态/闪烁时仍存在";
-  if (id === "station" || id === "signal-ball" || id === "cart")
-    return "原C参考可见圆形球和车体相关格；本版用经线圆球、双轮方车和同心基站独立补制，强调滑行球/逐格车/固定接收点三者差别";
+  if (id === "cart")
+    return "M5按原C图17/18可辨的箱体、圆形前面板与底轮补制，替换首轮购物车篮筐；精细表面与机械结构未证实，未复制原图像素";
+  if (id === "station" || id === "signal-ball")
+    return "原C静图未证实球本体与基站外观；本版以经线圆球和同心基站独立补制，编号由投影层提供，不宣称单项原版图标已匹配";
   if (id.startsWith("target"))
     return "蓝色目标参考为倾斜像素团；本版蓝目标为单菱形像素十字、紫目标为双菱形与速度线、星为五角星，确保非颜色编码；没有声称紫/星的原版帧已逐项核对";
   if (id === "antivirus")
     return "本版盾牌与像素十字表示杀毒入口，原参考只支持局部目标与屏幕风格，未匹配原作入口图标";
   return "独立矢量补制与状态辅助符号；未复现原作逐像素图形或原始动画帧";
 }
+
+interface ToneDefinition {
+  id: string;
+  duration: number;
+  frequencies: number[];
+  purpose: string;
+}
+const tones: ToneDefinition[] = [
+  { id: "move", duration: 0.07, frequencies: [180, 310], purpose: "有效移动的轻短脉冲" },
+  { id: "invalid", duration: 0.1, frequencies: [115, 90], purpose: "无效动作；由音频适配器限频" },
+  {
+    id: "pickup",
+    duration: 0.24,
+    frequencies: [523.25, 783.99, 1046.5],
+    purpose: "物资或数据领取",
+  },
+  { id: "reveal", duration: 0.18, frequencies: [330, 440, 660], purpose: "隐藏格显露" },
+  {
+    id: "amplify",
+    duration: 0.36,
+    frequencies: [164.81, 329.63, 659.25, 987.77],
+    purpose: "增幅仪启动",
+  },
+  { id: "door", duration: 0.19, frequencies: [220, 330], purpose: "门或主路径开放" },
+  {
+    id: "success",
+    duration: 0.52,
+    frequencies: [523.25, 659.25, 783.99, 1046.5],
+    purpose: "挑战成功或区段完成",
+  },
+  {
+    id: "failure",
+    duration: 0.32,
+    frequencies: [293.66, 220, 146.83],
+    purpose: "挑战失败；可立即重试",
+  },
+  { id: "portal", duration: 0.34, frequencies: [220, 440, 880], purpose: "区域或房间切换" },
+  {
+    id: "beat",
+    duration: 0.045,
+    frequencies: [880],
+    purpose: "防火墙有效时间拍点；适配器按时钟调度",
+  },
+];
 
 const fullM1 = process.argv.includes("--m1");
 const allProfiles = process.argv.includes("--all-profiles");
@@ -307,11 +353,219 @@ const selectedIcons = icons.filter(
 );
 const sha256 = (bytes: Buffer | string) => createHash("sha256").update(bytes).digest("hex");
 const generatorHash = sha256(readFileSync(fileURLToPath(import.meta.url)));
+const assetVersion = "camellia-assets-v2";
+const fontManifestPath = resolve(assetRoot, "font-manifest.json");
+const fontInputExtensions = new Set([".ts", ".js", ".json", ".css", ".html"]);
+interface FontSubsetMetadata {
+  recipeVersion: string;
+  generatorPath: string;
+  generatorSha256: string;
+  fonttoolsVersion: string;
+  brotliVersion: string;
+  reservedUnicodeRanges: string[];
+  inputPatterns: string[];
+  inputFiles: { path: string; sha256: string }[];
+  requiredCodepoints: number[];
+  coverageCodepoints: number[];
+  coverageSha256: string;
+  outputSha256: string;
+  glyphCount: number;
+  cmapCount: number;
+  byteLength: number;
+}
+interface FontAsset extends Record<string, unknown> {
+  id: string;
+  kind: "font";
+  localPath: string;
+  sourceSha256: string;
+  sha256: string;
+  licenseLocalPath: string;
+  licenseSha256?: string;
+  subset?: FontSubsetMetadata;
+}
+function fontInputs(): { inputFiles: { path: string; sha256: string }[]; codepoints: number[] } {
+  const files = [resolve(projectRoot, "index.html")];
+  const visit = (directory: string): void => {
+    for (const entry of readdirSync(directory, { withFileTypes: true })) {
+      const path = resolve(directory, entry.name);
+      if (entry.isDirectory()) visit(path);
+      else if (entry.isFile() && fontInputExtensions.has(extname(path))) files.push(path);
+    }
+  };
+  visit(resolve(projectRoot, "src"));
+  const codepoints = new Set<number>();
+  for (let point = 0x20; point <= 0x7e; point += 1) codepoints.add(point);
+  const inputFiles = files.sort().map((file) => {
+    const bytes = readFileSync(file);
+    for (const character of bytes.toString("utf8")) {
+      const point = character.codePointAt(0)!;
+      if (point >= 0x20 && point !== 0xfeff && !/\p{Cc}/u.test(character)) codepoints.add(point);
+    }
+    return { path: relative(projectRoot, file).split("\\").join("/"), sha256: sha256(bytes) };
+  });
+  return { inputFiles, codepoints: [...codepoints].sort((a, b) => a - b) };
+}
+function readFontAssets(): FontAsset[] {
+  return (JSON.parse(readFileSync(fontManifestPath, "utf8")) as { assets: FontAsset[] }).assets;
+}
+function fontCoverageCheck(asset: FontAsset): void {
+  const subset = asset.subset;
+  if (!subset) return;
+  assert.equal(subset.outputSha256, asset.sha256, `${asset.id}: coverage bound to font bytes`);
+  assert.deepEqual(
+    subset.coverageCodepoints,
+    [...new Set(subset.coverageCodepoints)].sort((a, b) => a - b),
+    `${asset.id}: canonical cmap coverage`,
+  );
+  assert.equal(subset.cmapCount, subset.coverageCodepoints.length);
+  assert.equal(sha256(JSON.stringify(subset.coverageCodepoints)), subset.coverageSha256);
+  const covered = new Set(subset.coverageCodepoints);
+  const current = fontInputs();
+  const missing = current.codepoints.filter((point) => !covered.has(point));
+  assert.equal(
+    missing.length,
+    0,
+    `中文字体缺字：${missing.map((point) => `${String.fromCodePoint(point)} U+${point.toString(16).toUpperCase()}`).join("、")}；请显式执行 generate-assets.ts --subset-font，构建不会改写字体`,
+  );
+}
+
+assert(
+  !(process.argv.includes("--check") && process.argv.includes("--subset-font")),
+  "--check 只读，不能与 --subset-font 写入模式一起使用",
+);
+if (process.argv.includes("--subset-font")) {
+  const sourceArgument = process.argv.indexOf("--font-source");
+  const sourcePath =
+    (sourceArgument >= 0 ? process.argv[sourceArgument + 1] : undefined) ??
+    process.env.CAMELLIA_ASSET_FONT_SOURCE;
+  assert(sourcePath, "提供 --font-source <固定源 OTF 路径> 或 CAMELLIA_ASSET_FONT_SOURCE");
+  const fonts = readFontAssets();
+  const font = fonts.find((item) => item.id === "font-noto");
+  assert(font, "font-manifest.json 必须含 font-noto");
+  assert.equal(sha256(readFileSync(resolve(sourcePath))), font.sourceSha256, "固定 OTF 源校验值");
+  const inputs = fontInputs();
+  const outputPath = resolve(projectRoot, "public", font.localPath.slice(1));
+  const python = process.env.CAMELLIA_ASSET_FONT_PYTHON ?? "python3";
+  const result = JSON.parse(
+    execFileSync(
+      python,
+      [
+        "-c",
+        `import json, sys
+import fontTools, brotli
+from fontTools import subset
+from fontTools.ttLib import TTFont
+assert fontTools.__version__ == "4.65.0", "Requires fonttools 4.65.0"
+assert brotli.__version__ == "1.2.0", "Requires brotli 1.2.0"
+request = json.load(sys.stdin)
+font = TTFont(request["sourcePath"], recalcTimestamp=False)
+source_cmap = font.getBestCmap()
+required = set(request["requiredCodepoints"])
+missing = required - set(source_cmap)
+assert not missing, "Source font lacks: " + repr(sorted(missing))
+reserved = set(range(0x20, 0x7f)) | {0xa0} | set(range(0x2000, 0x2070)) | set(range(0x3000, 0x3040)) | set(range(0xff00, 0xfff0))
+options = subset.Options()
+options.flavor = "woff2"
+options.hinting = True
+options.name_IDs = ["*"]
+options.name_languages = ["*"]
+options.name_legacy = True
+options.layout_features = ["*"]
+options.notdef_outline = True
+subsetter = subset.Subsetter(options=options)
+subsetter.populate(unicodes=required | (reserved & set(source_cmap)))
+subsetter.subset(font)
+font.flavor = "woff2"
+font.recalcTimestamp = False
+font.save(request["outputPath"], reorderTables=True)
+written = TTFont(request["outputPath"], recalcTimestamp=False)
+coverage = sorted(written.getBestCmap())
+assert not (required - set(coverage)), "Written subset missing runtime characters"
+print(json.dumps({"coverageCodepoints": coverage, "glyphCount": len(written.getGlyphOrder()), "cmapCount": len(coverage), "fonttoolsVersion": fontTools.__version__, "brotliVersion": brotli.__version__}))`,
+      ],
+      {
+        input: JSON.stringify({
+          sourcePath: resolve(sourcePath),
+          outputPath,
+          requiredCodepoints: inputs.codepoints,
+        }),
+        encoding: "utf8",
+        maxBuffer: 1024 * 1024,
+      },
+    ),
+  ) as Pick<
+    FontSubsetMetadata,
+    "coverageCodepoints" | "glyphCount" | "cmapCount" | "fonttoolsVersion" | "brotliVersion"
+  >;
+  const bytes = readFileSync(outputPath);
+  font.sha256 = sha256(bytes);
+  font.transform =
+    "fonttools 4.65.0 / brotli 1.2.0; project-runtime-v1 Unicode subset plus supported punctuation ranges; retained hints, names, layout features; recalcTimestamp=False; WOFF2";
+  font.differences =
+    "原作字体未确认；OFL替代字体按全部运行时源码字符及保留标点制作子集；字体比例、字重仍有差异；任意导入文件名的额外字符可使用系统fallback";
+  font.subset = {
+    recipeVersion: "project-runtime-v1",
+    generatorPath: "scripts/generate-assets.ts",
+    generatorSha256: generatorHash,
+    ...result,
+    reservedUnicodeRanges: ["U+0020-007E", "U+00A0", "U+2000-206F", "U+3000-303F", "U+FF00-FFEF"],
+    inputPatterns: ["index.html", "src/**/*.{ts,js,json,css,html}"],
+    inputFiles: inputs.inputFiles,
+    requiredCodepoints: inputs.codepoints,
+    coverageSha256: sha256(JSON.stringify(result.coverageCodepoints)),
+    outputSha256: font.sha256,
+    byteLength: bytes.length,
+  };
+  for (const item of fonts)
+    item.licenseSha256 = sha256(
+      readFileSync(resolve(projectRoot, "public", item.licenseLocalPath.slice(1))),
+    );
+  writeFileSync(fontManifestPath, `${JSON.stringify({ assets: fonts }, null, 2)}\n`);
+  const manifestPath = resolve(assetRoot, "manifest.json");
+  if (existsSync(manifestPath)) {
+    const manifest = JSON.parse(readFileSync(manifestPath, "utf8")) as {
+      assets: Record<string, unknown>[];
+    };
+    manifest.assets = manifest.assets.map((asset) => {
+      const replacement = fonts.find((item) => item.id === asset.id);
+      return replacement ? { ...replacement, profiles: [...profileOrder] } : asset;
+    });
+    writeFileSync(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
+  }
+  fontCoverageCheck(font);
+  process.stdout.write(
+    `Font subset: ${bytes.length} bytes, ${result.glyphCount} glyphs, ${result.cmapCount} cmap entries; all ${inputs.codepoints.length} runtime codepoints covered.\n`,
+  );
+  process.exit(0);
+}
 if (process.argv.includes("--check")) {
   const manifest = JSON.parse(readFileSync(resolve(assetRoot, "manifest.json"), "utf8")) as {
+    assetVersion: string;
     phase: string;
     assets: Record<string, unknown>[];
   };
+  assert.equal(manifest.assetVersion, assetVersion, "Asset manifest version");
+  assert(["prepared-all-profiles", "m1", "representative"].includes(manifest.phase));
+  const expectedIcons = icons.filter(
+    (icon) =>
+      manifest.phase === "prepared-all-profiles" ||
+      (manifest.phase === "m1" && (icon.firstProfile ?? "M1") === "M1") ||
+      icon.representative,
+  );
+  const fonts = readFontAssets();
+  assert.deepEqual(
+    fonts.map((font) => font.id).sort(),
+    ["font-barlow", "font-noto"],
+    "Pinned local fonts",
+  );
+  const expectedProfiles = new Map<string, readonly string[]>([
+    ...expectedIcons.map(
+      (icon) => [icon.id, profilesStartingAt(icon.firstProfile ?? "M1")] as const,
+    ),
+    ...tones.map((tone) => [tone.id, profileOrder] as const),
+    ...fonts.map((font) => [font.id, profileOrder] as const),
+  ]);
+  assert.equal(manifest.assets.length, expectedProfiles.size, "Complete asset records for phase");
   const ids = new Set<string>();
   for (const asset of manifest.assets) {
     assert.equal(typeof asset.id, "string");
@@ -323,6 +577,7 @@ if (process.argv.includes("--check")) {
     assert(profiles.length > 0);
     assert(profiles.every((profile) => profileOrder.some((candidate) => candidate === profile)));
     assert.equal(new Set(profiles).size, profiles.length);
+    assert.deepEqual(profiles, expectedProfiles.get(id), `${id}: exact release profiles`);
     assert.equal(typeof asset.localPath, "string");
     const localPath = asset.localPath as string;
     assert(localPath.startsWith("/assets/"));
@@ -334,6 +589,7 @@ if (process.argv.includes("--check")) {
       assert.match(svg, /^<svg[^>]+width="128" height="128"/);
       assert.doesNotMatch(svg, /<script|(?:href|src)=/);
       assert.equal(asset.sourceSha256, generatorHash, `${id}: regenerate after source changes`);
+      if (manifest.phase === "prepared-all-profiles") assert(asset.raster, `${id}: PNG cache`);
       if (asset.raster) {
         const raster = asset.raster as { localPath: string; sha256: string; sourceSha256: string };
         assert(raster.localPath.startsWith("/assets/") && !raster.localPath.includes(".."));
@@ -369,12 +625,23 @@ if (process.argv.includes("--check")) {
         "utf8",
       );
       assert.match(license, /SIL OPEN FONT LICENSE/);
+      if (asset.licenseSha256)
+        assert.equal(sha256(license), asset.licenseSha256, `${id}: OFL checksum`);
+      const { profiles: _profiles, ...fontRecord } = asset;
+      assert.deepEqual(
+        fontRecord,
+        fonts.find((font) => font.id === id),
+        `${id}: font manifest`,
+      );
+      const subset = (asset as FontAsset).subset;
+      if (subset) assert.equal(bytes.length, subset.byteLength, `${id}: recorded subset size`);
+      fontCoverageCheck(asset as FontAsset);
     } else {
       throw new Error(`Unsupported asset kind: ${String(asset.kind)}`);
     }
   }
   process.stdout.write(
-    `Asset check passed: ${manifest.assets.length} records (${manifest.phase}).\n`,
+    `Asset check passed: ${manifest.assets.length} records (${manifest.phase}); exact profile membership, local checksums and recorded font coverage.\n`,
   );
   process.exit(0);
 }
@@ -424,7 +691,7 @@ for (const icon of selectedIcons) {
     localPath: `/assets/${path}`,
     sourcePath: "scripts/generate-assets.ts",
     sourceUrl: null,
-    sourceVersion: "camellia-assets-v1",
+    sourceVersion: assetVersion,
     sourceSha256: generatorHash,
     sha256: sha256(svg),
     dimensions: [128, 128],
@@ -438,50 +705,6 @@ for (const icon of selectedIcons) {
     differences: describeIconDifferences(icon.id),
   });
 }
-
-interface ToneDefinition {
-  id: string;
-  duration: number;
-  frequencies: number[];
-  purpose: string;
-}
-const tones: ToneDefinition[] = [
-  { id: "move", duration: 0.07, frequencies: [180, 310], purpose: "有效移动的轻短脉冲" },
-  { id: "invalid", duration: 0.1, frequencies: [115, 90], purpose: "无效动作；由音频适配器限频" },
-  {
-    id: "pickup",
-    duration: 0.24,
-    frequencies: [523.25, 783.99, 1046.5],
-    purpose: "物资或数据领取",
-  },
-  { id: "reveal", duration: 0.18, frequencies: [330, 440, 660], purpose: "隐藏格显露" },
-  {
-    id: "amplify",
-    duration: 0.36,
-    frequencies: [164.81, 329.63, 659.25, 987.77],
-    purpose: "增幅仪启动",
-  },
-  { id: "door", duration: 0.19, frequencies: [220, 330], purpose: "门或主路径开放" },
-  {
-    id: "success",
-    duration: 0.52,
-    frequencies: [523.25, 659.25, 783.99, 1046.5],
-    purpose: "挑战成功或区段完成",
-  },
-  {
-    id: "failure",
-    duration: 0.32,
-    frequencies: [293.66, 220, 146.83],
-    purpose: "挑战失败；可立即重试",
-  },
-  { id: "portal", duration: 0.34, frequencies: [220, 440, 880], purpose: "区域或房间切换" },
-  {
-    id: "beat",
-    duration: 0.045,
-    frequencies: [880],
-    purpose: "防火墙有效时间拍点；适配器按时钟调度",
-  },
-];
 
 for (const tone of tones) {
   const sampleRate = 44100;
@@ -530,7 +753,7 @@ for (const tone of tones) {
     localPath: `/assets/${path}`,
     sourcePath: "scripts/generate-assets.ts",
     sourceUrl: null,
-    sourceVersion: "camellia-assets-v1",
+    sourceVersion: assetVersion,
     sourceSha256: generatorHash,
     sha256: sha256(wav),
     durationSeconds: samples / sampleRate,
@@ -548,7 +771,6 @@ for (const tone of tones) {
   });
 }
 
-const fontManifestPath = resolve(assetRoot, "font-manifest.json");
 const fontAssets = existsSync(fontManifestPath)
   ? (
       JSON.parse(readFileSync(fontManifestPath, "utf8")) as { assets: Record<string, unknown>[] }
@@ -556,7 +778,7 @@ const fontAssets = existsSync(fontManifestPath)
   : [];
 writeFileSync(
   resolve(assetRoot, "manifest.json"),
-  `${JSON.stringify({ assetVersion: "camellia-assets-v1", phase: allProfiles ? "prepared-all-profiles" : fullM1 ? "m1" : "representative", assets: [...generatedAssets, ...fontAssets] }, null, 2)}\n`,
+  `${JSON.stringify({ assetVersion, phase: allProfiles ? "prepared-all-profiles" : fullM1 ? "m1" : "representative", assets: [...generatedAssets, ...fontAssets] }, null, 2)}\n`,
 );
 process.stdout.write(
   `Generated ${selectedIcons.length} SVG icons and ${tones.length} local WAV files.\n`,

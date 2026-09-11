@@ -1,0 +1,10 @@
+
+> camellia-golden-week@0.5.0 preview
+> vite preview --host localhost --port 5174 --strictPort
+
+error when starting preview server:
+Error: Port 5174 is already in use
+    at httpServerStart (file:///Users/caoyujie/codes/camellia-golden-week/node_modules/vite/dist/node/chunks/node.js:14167:10)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async preview (file:///Users/caoyujie/codes/camellia-golden-week/node_modules/vite/dist/node/chunks/node.js:35092:2)
+    at async CAC.<anonymous> (file:///Users/caoyujie/codes/camellia-golden-week/node_modules/vite/dist/node/cli.js:811:18)

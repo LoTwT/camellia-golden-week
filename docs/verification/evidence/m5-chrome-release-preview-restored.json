@@ -1,0 +1,20 @@
+{
+  "recordedAt": "2026-09-11T08:44:52.213415+00:00",
+  "mode": "production",
+  "command": "npm run preview -- --host localhost --port 5174 --strictPort",
+  "checks": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "bytes": 476,
+      "sha256": "e3b6f8816f0d1f69aad496fa12e4d85e0d560d58db0de18e647c5ab68662079c"
+    },
+    {
+      "path": "assets/index-BpL7y5kK.js",
+      "status": 200,
+      "bytes": 917896,
+      "sha256": "f4ccd401cec5d6512dfd4fd4a015858486fd3166be5a4d60dfadc4297d5b0753"
+    }
+  ],
+  "observationPreviewStopped": true
+}

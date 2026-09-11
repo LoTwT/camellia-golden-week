@@ -19,6 +19,8 @@
   font-synthesis: weight;
   color-scheme: dark;
   font-size: 14px;
+  --board-inset-left: 248px;
+  --board-inset-right: 202px;
   --acid: #eddf9d;
   --muted: #aaa9ac;
 }
@@ -72,7 +74,7 @@ button.primary {
 .game-shell {
   height: 100dvh;
   display: grid;
-  grid-template-rows: 90px minmax(0, 1fr) 72px;
+  grid-template-rows: 68px minmax(0, 1fr) 56px;
 }
 .hud-top,
 .hud-bottom {
@@ -81,8 +83,8 @@ button.primary {
   background: #18181b;
   display: flex;
   align-items: center;
-  gap: 32px;
-  padding: 14px 32px;
+  gap: 24px;
+  padding: 6px 24px;
 }
 .hud-top {
   border-bottom: 4px solid #09090b;
@@ -161,14 +163,14 @@ canvas {
 }
 .area-title {
   position: absolute;
-  top: 28px;
-  left: 34px;
+  top: 24px;
+  left: 24px;
   pointer-events: none;
   text-shadow: 0 2px 3px #17121c;
 }
 .area-title h1 {
   margin: 0;
-  font-size: 30px;
+  font-size: 27px;
   font-weight: 900;
   letter-spacing: 1px;
 }
@@ -181,10 +183,10 @@ canvas {
 }
 .progress-rail {
   position: absolute;
-  top: 28px;
-  right: 30px;
-  width: 172px;
-  padding: 18px 16px;
+  top: 24px;
+  right: 20px;
+  width: 166px;
+  padding: 14px;
   display: flex;
   flex-direction: column;
   background: #17171fdf;
@@ -193,29 +195,29 @@ canvas {
   box-shadow: 0 3px 14px #0002;
 }
 .rail-label {
-  font-size: 13px;
+  font-size: 14px;
   color: #d3cdd6;
 }
 .progress-rail strong {
   font:
-    700 37px Camellia Numbers,
+    700 33px Camellia Numbers,
     sans-serif;
   letter-spacing: 1px;
   margin: 3px 0;
   color: #f2eacb;
 }
 .progress-rail > span:not(.rail-label) {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.6;
   color: #c5c1c9;
 }
 .rail-divider {
   height: 1px;
   background: #676171;
-  margin: 17px 0;
+  margin: 12px 0;
 }
 .progress-rail button {
-  font-size: 12px;
+  font-size: 14px;
   padding: 8px;
   margin-top: 14px;
 }
@@ -233,7 +235,7 @@ canvas {
 .key-hint {
   color: #d9d7d3;
   padding-right: 10px;
-  font-size: 13px;
+  font-size: 14px;
 }
 kbd {
   font: inherit;
@@ -244,9 +246,11 @@ kbd {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
+  font-size: 14px;
   color: #c0bdc6;
-  white-space: nowrap;
+  max-width: 230px;
+  white-space: normal;
+  line-height: 1.4;
 }
 .status-dot {
   width: 6px;
@@ -257,32 +261,36 @@ kbd {
 .context-tip {
   position: absolute;
   bottom: 16px;
-  left: 32px;
+  left: 24px;
   padding: 9px 14px;
   border-radius: 5px;
   background: #15141ddc;
   color: #eee8dc;
-  max-width: 248px;
+  max-width: 208px;
   text-align: left;
   pointer-events: none;
   line-height: 1.65;
 }
 .mode-banner {
+  white-space: pre-line;
   position: absolute;
-  left: 34px;
+  left: 24px;
   top: 125px;
-  max-width: 236px;
+  max-width: 208px;
   color: #fff4d1;
   font-size: 21px;
   font-weight: 800;
   text-shadow: 0 2px 4px #000;
   pointer-events: none;
 }
+.context-tip:empty {
+  display: none;
+}
 .challenge-meter {
   position: absolute;
-  left: 32px;
+  left: 24px;
   top: 174px;
-  max-width: 248px;
+  max-width: 208px;
   font:
     700 20px Camellia Numbers,
     Camellia UI,
@@ -348,7 +356,7 @@ dialog > button {
 }
 .muted {
   color: #bdb7c2;
-  font-size: 13px;
+  font-size: 14px;
 }
 .region-map {
   display: grid;
@@ -357,7 +365,7 @@ dialog > button {
 }
 .region-map button {
   text-align: left;
-  font-size: 13px;
+  font-size: 14px;
 }
 .discovered-map {
   display: grid;
@@ -377,7 +385,8 @@ dialog > button {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 14px 0;
+  min-height: 54px;
+  padding: 8px 0;
   border-bottom: 1px solid #48434c;
 }
 input[type="range"] {
@@ -385,8 +394,8 @@ input[type="range"] {
   accent-color: #d7c993;
 }
 input[type="checkbox"] {
-  width: 22px;
-  height: 22px;
+  width: 26px;
+  height: 26px;
   accent-color: #d7c993;
 }
 select {
@@ -399,7 +408,7 @@ select {
 .collection-list {
   padding: 0;
   list-style: none;
-  font-size: 13px;
+  font-size: 14px;
 }
 .collection-list li {
   padding: 9px 0;
@@ -414,16 +423,14 @@ select {
 }
 @media (max-width: 1250px) {
   .progress-rail {
-    width: 140px;
-    right: 20px;
-    padding: 12px;
+    display: none;
   }
   .brand small {
     display: none;
   }
   .hud-top {
     gap: 20px;
-    padding: 12px 22px;
+    padding: 6px 20px;
   }
   .save-area {
     max-width: 220px;
@@ -438,7 +445,7 @@ select {
     display: none;
   }
   .game-shell {
-    grid-template-rows: 80px minmax(0, 1fr) 90px;
+    grid-template-rows: 68px minmax(0, 1fr) 82px;
   }
   .small-window {
     display: block;
@@ -462,7 +469,7 @@ select {
     padding: 8px 12px 20px;
   }
   .save-area {
-    font-size: 10px;
+    font-size: 14px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -485,4 +492,96 @@ select {
   border-radius: 6px;
   font: 12px/1.4 monospace;
   resize: vertical;
+}
+
+[hidden] {
+  display: none !important;
+}
+.scene-transition {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: grid;
+  place-content: center;
+  background: #24212d;
+  color: #eee7cb;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+.audio-prompt {
+  position: absolute;
+  left: 24px;
+  bottom: 104px;
+  z-index: 3;
+}
+[data-reduced-motion="true"] button {
+  transition: none;
+}
+[data-quality="low"] .vignette {
+  display: none;
+}
+canvas:focus-visible {
+  outline-offset: -4px;
+}
+textarea:focus-visible {
+  outline: 3px solid var(--acid);
+  outline-offset: 3px;
+}
+input[type="range"] {
+  min-height: 44px;
+}
+@media (max-width: 1250px) {
+  .area-title,
+  .mode-banner,
+  .context-tip,
+  .challenge-meter {
+    left: 16px;
+    max-width: 174px;
+  }
+  .challenge-meter {
+    font-size: 18px;
+    padding: 10px;
+  }
+}
+@media (max-width: 1023px), (max-height: 639px) {
+  .area-title,
+  .mode-banner,
+  .context-tip,
+  .challenge-meter {
+    max-width: 142px;
+  }
+  .area-title h1 {
+    font-size: 20px;
+  }
+  .challenge-meter {
+    top: 138px;
+    font-size: 16px;
+  }
+  .mode-banner {
+    top: 100px;
+    font-size: 16px;
+  }
+  .small-window {
+    z-index: 10;
+    font-size: 12px;
+  }
+  .save-area {
+    max-width: 170px;
+  }
+  .brand {
+    display: none;
+  }
+}
+
+@media (max-width: 1250px) {
+  :root {
+    --board-inset-left: 206px;
+    --board-inset-right: 16px;
+  }
+}
+@media (max-width: 1023px), (max-height: 639px) {
+  :root {
+    --board-inset-left: 174px;
+    --board-inset-right: 16px;
+  }
 }

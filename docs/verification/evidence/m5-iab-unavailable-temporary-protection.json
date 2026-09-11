@@ -1,0 +1,265 @@
+{
+  "futureExportMatches": true,
+  "unavailableUI": "Browser tab: 2, Title: \"沙罗黄金周 · Camellia Golden Week\", URL: \"http://localhost:5174/\".\n1 AXWebArea 沙罗黄金周 · Camellia Golden Week, URL: localhost:5174/\n\t2 container 需要处理本地存档, ID: game-dialog\n\t\t3 text CAMELLIA / TERMINAL\n\t\t4 heading 需要处理本地存档, Value: 2, ID: dialog-title\n\t\t\t5 text 需要处理本地存档\n\t\t6 text 存储不可读，可主动选择临时游玩并导出。\n\t\t7 button 临时游玩新游戏，可导出\n\t\t8 button 导出原始槽 B\n\t\t9 button 重新读取\n\t\t10 container\n\t\t\t11 button (expanded) 验收故障控制 · 仅平台, Secondary Actions: Collapse\n\t\t\t\t12 text 验收故障控制 · 仅平台\n\t\t\t13 text 边界故障证据与正常通关证据分开记录。每个已配置故障只触发一次。\n\t\t\t14 container 精确存储目标\n\t\t\t\t15 text 精确存储目标\n\t\t\t\t16 pop up button (collapsed, settable) Description: 故障存储目标键, Value: 槽 A · camellia-golden-week.save.a, Secondary Actions: Expand\n\t\t\t\t\t17 menu\n\t\t\t\t\t\t18 (selected) 槽 A · camellia-golden-week.save.a\n\t\t\t\t\t\t19 槽 B · camellia-golden-week.save.b\n\t\t\t\t\t\t20 迁移前原槽备份 · camellia-golden-week.save.pre-migration\n\t\t\t\t21 button 下次读取抛错\n\t\t\t\t22 button 下次写入抛错\n\t\t\t\t23 button 下次成功写入后回读不匹配\n\t\t\t24 container 存储损坏与版本保护夹具\n\t\t\t\t25 text 存储损坏与版本保护夹具\n\t\t\t\t26 text 先用游戏导出保存备份。此入口只修改上方选中的 A/B 测试槽原文，不能用于制造通关结果。写入后重新读取或刷新验证。\n\t\t\t\t27 text entry area (settable) 测试槽原文\n\t\t\t\t28 button 写入指定测试槽\n\t\t\t29 container 下一次成功反馈\n\t\t\t\t30 text 下一次成功反馈\n\t\t\t\t31 button 下次启用声音被拒绝\n\t\t\t\t32 button 成功后音频抛错\n\t\t\t\t33 button 成功后渲染抛错\n\t\t\t34 container 图形与调度\n\t\t\t\t35 text 图形与调度\n\t\t\t\t36 link Description: 重新载入并模拟启动 WebGL2 不可用, Value: localhost:5174/?acceptanceFault=webgl2-unavailable\n\t\t\t\t37 button 请求真实上下文丢失\n\t\t\t\t38 button 请求真实上下文恢复\n\t\t\t\t39 button 实际阻塞前台 300ms\n\t\t\t40 button 解除未触发故障\n\t\t\t41 container 验收故障状态与触发记录\n\t\t\t\t42 text 待触发：存储 无；成功反馈 无；启动图形 无；音频启用 正常\n1. 已配置 槽 A 的一次 get 故障：camellia-golden-week.save.a\n2. 已触发一次读取拒绝：camellia-golden-week.save.a\n\t\t\t43 button (collapsed) 只读验收快照, Secondary Actions: Expand\n\t\t\t\t44 text 只读验收快照\n\nThe focused UI element is 7 button 临时游玩新游戏，可导出",
+  "unavailable": {
+    "profile": "M5",
+    "loaded": false,
+    "session": "held",
+    "saveStatus": "正在读取进度",
+    "saveInspection": {
+      "status": "unavailable",
+      "maxGeneration": 516,
+      "latestId": "b",
+      "backupId": null,
+      "slots": {
+        "a": {
+          "status": "unreadable",
+          "generation": null,
+          "savedAt": null
+        },
+        "b": {
+          "status": "valid",
+          "generation": 516,
+          "savedAt": "2026-09-10T20:01:51.693Z"
+        }
+      }
+    },
+    "faults": {
+      "active": true,
+      "storage": null,
+      "feedback": null,
+      "rendererStartup": false,
+      "audioEnable": false,
+      "records": [
+        {
+          "sequence": 1,
+          "message": "已配置 槽 A 的一次 get 故障：camellia-golden-week.save.a"
+        },
+        {
+          "sequence": 2,
+          "message": "已触发一次读取拒绝：camellia-golden-week.save.a"
+        }
+      ]
+    }
+  },
+  "temporary": {
+    "profile": "M5",
+    "schemaVersion": 2,
+    "contentVersion": 4,
+    "ruleVersion": 1,
+    "position": {
+      "space": "world",
+      "areaId": "hub",
+      "boardId": "hub",
+      "tileId": "hub.t.0.2"
+    },
+    "mode": "explore",
+    "phase": "active",
+    "activeTimeMs": 111.5,
+    "countdownRemainingMs": 0,
+    "pauseReasons": [],
+    "viewport": {
+      "width": 1366,
+      "height": 768,
+      "devicePixelRatio": 1
+    },
+    "settings": {
+      "masterVolume": 0.6,
+      "muted": false,
+      "reducedFlash": false,
+      "reducedMotion": false,
+      "quality": "standard",
+      "zoom": 1
+    },
+    "audio": {
+      "enabled": true
+    },
+    "completedObjectiveIds": [],
+    "completedRoomLayouts": {},
+    "staticRoom": null,
+    "completedRoom": null,
+    "realtimeRoom": null,
+    "data": {
+      "a": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 100,
+        "complete": false
+      },
+      "b": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 100,
+        "complete": false
+      },
+      "c": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 100,
+        "complete": false
+      },
+      "d": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 100,
+        "complete": false
+      }
+    },
+    "claimedRewardIds": [],
+    "supply": {
+      "collected": 0,
+      "total": 130,
+      "count": 0
+    },
+    "bestResults": [],
+    "lastResult": {
+      "code": "accepted",
+      "message": "已继续"
+    },
+    "saveStatus": "临时进度 · 可导出",
+    "saveGeneration": 516,
+    "session": "held",
+    "render": {
+      "geometries": 10,
+      "textures": 10,
+      "calls": 15,
+      "tileCount": 7,
+      "residentIconCount": 7,
+      "pendingIconCount": 0,
+      "layout": {
+        "canvas": {
+          "width": 1366,
+          "height": 644
+        },
+        "insets": {
+          "left": 248,
+          "right": 202,
+          "top": 8,
+          "bottom": 8
+        },
+        "available": {
+          "left": 248,
+          "top": 8,
+          "width": 916,
+          "height": 628
+        },
+        "boardBounds": {
+          "minX": -0.495,
+          "maxX": 2.495,
+          "minY": -0.4509821799343498,
+          "maxY": 3.03249941472028,
+          "width": 2.99,
+          "height": 3.48348159465463
+        },
+        "focus": {
+          "x": 0,
+          "y": 1.738666487320323
+        },
+        "pixelsPerWorldUnit": 101.77777777777777,
+        "camera": {
+          "left": -6.936681222707424,
+          "right": 6.4847161572052405,
+          "top": 3.163755458515284,
+          "bottom": -3.163755458515284
+        },
+        "requestedZoom": 1,
+        "effectiveZoom": 1,
+        "zoomLimited": false,
+        "targetCss": {
+          "width": 98.72444444444443,
+          "height": 86.40926895681164,
+          "minimum": 86.40926895681164
+        },
+        "visibleColumns": 9,
+        "visibleRows": 7.097744992331138,
+        "fitsBoard": true,
+        "requiresExpandedViewport": false,
+        "compactViewport": false,
+        "boardBoundsCss": {
+          "minX": 655.62,
+          "maxX": 959.9355555555555,
+          "minY": 99.14242453274665,
+          "maxY": 453.6834401664845,
+          "width": 304.31555555555553,
+          "height": 354.54101563373786
+        },
+        "displayedFocus": {
+          "x": 0,
+          "y": 1.738666487320323
+        },
+        "devicePixelRatio": 1
+      }
+    },
+    "transition": {
+      "active": false,
+      "lastDurationMs": 42.199999928474426
+    },
+    "firstStartupReadyMs": 91.29999995231628,
+    "firstGamePreparationMs": 42.199999928474426,
+    "inputLatency": {
+      "method": "physical input handler (including pending direction) to animation frame after presentation",
+      "sampleCount": 0,
+      "p95Ms": 0,
+      "maxMs": 0
+    },
+    "faults": {
+      "active": true,
+      "storage": null,
+      "feedback": null,
+      "rendererStartup": false,
+      "audioEnable": false,
+      "records": [
+        {
+          "sequence": 1,
+          "message": "已配置 槽 A 的一次 get 故障：camellia-golden-week.save.a"
+        },
+        {
+          "sequence": 2,
+          "message": "已触发一次读取拒绝：camellia-golden-week.save.a"
+        }
+      ]
+    },
+    "frameSummary": {
+      "sampleCount": 1,
+      "medianMs": 8.299999999999955,
+      "p95Ms": 8.299999999999955,
+      "meanMs": 8.299999999999955
+    }
+  },
+  "afterReload": {
+    "profile": "M5",
+    "loaded": false,
+    "session": "held",
+    "saveStatus": "正在读取进度",
+    "saveInspection": {
+      "status": "future",
+      "maxGeneration": 517,
+      "latestId": "a",
+      "backupId": "b",
+      "slots": {
+        "a": {
+          "status": "future",
+          "generation": 517,
+          "savedAt": "2026-09-10T20:01:51.693Z"
+        },
+        "b": {
+          "status": "valid",
+          "generation": 516,
+          "savedAt": "2026-09-10T20:01:51.693Z"
+        }
+      }
+    },
+    "faults": {
+      "active": true,
+      "storage": null,
+      "feedback": null,
+      "rendererStartup": false,
+      "audioEnable": false,
+      "records": []
+    }
+  }
+}

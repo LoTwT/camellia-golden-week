@@ -93,15 +93,15 @@ export function currentObjective(content: GameContent, state: ProgressState): st
     if (!done(`${area}.main`)) {
       if (area === "d")
         return `取得 D 区四处权限 · ${["01", "02", "03", "04"].filter((id) => done(`d.permission.${id}`)).length} / 4`;
-      return `完成${AREA_LABELS[area]}的主路径终端`;
+      return `完成 ${AREA_LABELS[area]} 的主路径终端`;
     }
   }
   if (content.profile.fullCampaign) {
     for (const area of ["a", "b"] as const)
-      if (!done(`${area}.revisit.terminal`)) return `回访${AREA_LABELS[area]}，取得新增数据`;
+      if (!done(`${area}.revisit.terminal`)) return `回访 ${AREA_LABELS[area]}，取得新增数据`;
     for (const area of ["a", "b", "c", "d"] as const)
       if (!areaData(content, state, area).complete)
-        return `补齐${AREA_LABELS[area]}必需数据 · ${areaData(content, state, area).collected} / 100`;
+        return `补齐 ${AREA_LABELS[area]} 必需数据 · ${areaData(content, state, area).collected} / 100`;
     if (!done("warehouse.complete")) return "返回中心区，进入中央仓库并激活最终终端";
     return "主目标完成 · 可自由回访与补齐物资";
   }

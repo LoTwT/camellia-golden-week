@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import assetManifest from "./public/assets/manifest.json" with { type: "json" };
 import { assembleContent, AVAILABLE_PROFILE } from "./src/content/assemble.ts";
 import type { ProfileId } from "./src/core/types.ts";
+import { contentModuleSource } from "./scripts/content-module.ts";
 
 export default defineConfig(({ mode }) => {
   const selected = /^m[1-5]$/i.test(mode) ? (mode.toUpperCase() as ProfileId) : AVAILABLE_PROFILE;
@@ -20,16 +21,11 @@ export default defineConfig(({ mode }) => {
         },
         load(id) {
           if (id === "\0virtual:camellia-content")
-            return `const content = ${JSON.stringify(assembleContent(selected))}; export default content; export const migrationReleases = [${[
-              "M1",
-              "M2",
-              "M3",
-              "M4",
-              "M5",
-            ]
-              .slice(0, Number(selected.slice(1)) - 1)
-              .map((profile) => JSON.stringify(assembleContent(profile as ProfileId)))
-              .join(",")}${selected === "M1" ? "" : ","}content];`;
+            return contentModuleSource(
+              ["M1", "M2", "M3", "M4", "M5"]
+                .slice(0, Number(selected.slice(1)))
+                .map((profile) => assembleContent(profile as ProfileId)),
+            );
         },
         generateBundle() {
           const assets = assetManifest.assets.filter((asset) => asset.profiles.includes(selected));

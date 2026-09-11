@@ -1,0 +1,15 @@
+{
+  "afterWriteFailureReload": [
+    {
+      "id": "a",
+      "unchanged": true,
+      "bytes": 9359
+    },
+    {
+      "id": "b",
+      "unchanged": true,
+      "bytes": 9292
+    }
+  ],
+  "readbackFailureUI": "Browser tab: 2, Title: \"沙罗黄金周 · Camellia Golden Week\", URL: \"http://localhost:5174/\".\n1 AXWebArea 沙罗黄金周 · Camellia Golden Week, URL: localhost:5174/\n\t2 container 进度升级未保存, ID: game-dialog\n\t\t3 text CAMELLIA / TERMINAL\n\t\t4 heading 进度升级未保存, Value: 2, ID: dialog-title\n\t\t\t5 text 进度升级未保存\n\t\t6 text 未保存，可导出 · 迁移前原槽备份回读失败；两槽未改写，可导出原文。\n\t\t7 button 重试\n\t\t8 button 导出原始槽 A\n\t\t9 button 导出原始槽 B\n\t\t10 button 返回\n\t\t11 container\n\t\t\t12 button (expanded) 验收故障控制 · 仅平台, Secondary Actions: Collapse\n\t\t\t\t13 text 验收故障控制 · 仅平台\n\t\t\t14 text 边界故障证据与正常通关证据分开记录。每个已配置故障只触发一次。\n\t\t\t15 container 精确存储目标\n\t\t\t\t16 text 精确存储目标\n\t\t\t\t17 pop up button (collapsed, settable) Description: 故障存储目标键, Value: 迁移前原槽备份 · camellia-golden-week.save.pre-migration, Secondary Actions: Expand\n\t\t\t\t\t18 menu\n\t\t\t\t\t\t19 槽 A · camellia-golden-week.save.a\n\t\t\t\t\t\t20 槽 B · camellia-golden-week.save.b\n\t\t\t\t\t\t21 (selected) 迁移前原槽备份 · camellia-golden-week.save.pre-migration\n\t\t\t\t22 button 下次读取抛错\n\t\t\t\t23 button 下次写入抛错\n\t\t\t\t24 button 下次成功写入后回读不匹配\n\t\t\t25 container 存储损坏与版本保护夹具\n\t\t\t\t26 text 存储损坏与版本保护夹具\n\t\t\t\t27 text 先用游戏导出保存备份。此入口只修改上方选中的 A/B 测试槽原文，不能用于制造通关结果。写入后重新读取或刷新验证。\n\t\t\t\t28 text entry area (settable) 测试槽原文\n\t\t\t\t29 button 写入指定测试槽\n\t\t\t30 container 下一次成功反馈\n\t\t\t\t31 text 下一次成功反馈\n\t\t\t\t32 button 下次启用声音被拒绝\n\t\t\t\t33 button 成功后音频抛错\n\t\t\t\t34 button 成功后渲染抛错\n\t\t\t35 container 图形与调度\n\t\t\t\t36 text 图形与调度\n\t\t\t\t37 link Description: 重新载入并模拟启动 WebGL2 不可用, Value: localhost:5174/?acceptanceFault=webgl2-unavailable\n\t\t\t\t38 button 请求真实上下文丢失\n\t\t\t\t39 button 请求真实上下文恢复\n\t\t\t\t40 button 实际阻塞前台 300ms\n\t\t\t41 button 解除未触发故障\n\t\t\t42 container 验收故障状态与触发记录\n\t\t\t\t43 text 待触发：存储 无；成功反馈 无；启动图形 无；音频启用 正常\n1. 已配置 迁移前原槽备份 的一次 readback 故障：camellia-golden-week.save.pre-migration\n2. 目标写入成功，等待其下一次回读：camellia-golden-week.save.pre-migration\n3. 已触发一次回读不匹配：camellia-golden-week.save.pre-migration；实际槽字节保留。\n\t\t\t44 button (collapsed) 只读验收快照, Secondary Actions: Expand\n\t\t\t\t45 text 只读验收快照\n\nThe focused UI element is 7 button 重试"
+}

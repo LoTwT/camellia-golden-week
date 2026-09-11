@@ -1,4 +1,20 @@
-import type { Direction, GameCommand } from "../core/types.ts";
+import type { Direction, GameCommand, GameState } from "../core/types.ts";
+
+export class AutoWalkScheduler {
+  private nextStepAt = Infinity;
+
+  observe(command: GameCommand, state: Pick<GameState, "mode" | "autoPath">, now: number) {
+    if (state.mode !== "explore" || state.autoPath.length === 0) this.nextStepAt = Infinity;
+    else if (command.kind === "ClickTile" || command.kind === "AdvanceAutoPath")
+      this.nextStepAt = now + 140;
+  }
+
+  nextCommand(now: number, canPlay: boolean): GameCommand | null {
+    if (!canPlay || now < this.nextStepAt) return null;
+    this.nextStepAt = now + 140;
+    return { kind: "AdvanceAutoPath" };
+  }
+}
 
 const DIRECTIONS: Record<string, Direction> = {
   ArrowUp: "up",
@@ -14,31 +30,44 @@ export class InputAdapter {
   private held: string[] = [];
   private suppressed = new Set<string>();
   private pending: Direction | null = null;
+  private pendingObservedAt = 0;
   private lastAcceptedAt = -Infinity;
   private nextRepeatAt = Infinity;
   private readonly target: HTMLCanvasElement;
-  private readonly send: (command: GameCommand, time: number) => void;
+  private readonly send: (command: GameCommand, time: number, observedAt?: number) => void;
   private readonly mode: () => { firewall: boolean; canPlay: boolean };
   private readonly openMap: () => void;
   private readonly pause: () => void;
+  private readonly cancelAutoPath: (time: number) => void;
 
   constructor(
     target: HTMLCanvasElement,
-    send: (command: GameCommand, time: number) => void,
+    send: (command: GameCommand, time: number, observedAt?: number) => void,
     mode: () => { firewall: boolean; canPlay: boolean },
     openMap: () => void,
     pause: () => void,
+    cancelAutoPath: (time: number) => void = () => {},
   ) {
     this.target = target;
     this.send = send;
     this.mode = mode;
     this.openMap = openMap;
     this.pause = pause;
+    this.cancelAutoPath = cancelAutoPath;
     document.addEventListener("keydown", this.keydown);
     document.addEventListener("keyup", this.keyup);
+    target.addEventListener("blur", this.blur);
   }
+  private blur = () => this.clear();
   private keydown = (event: KeyboardEvent) => {
-    if (document.activeElement !== this.target || event.isComposing) return;
+    if (
+      document.activeElement !== this.target ||
+      event.isComposing ||
+      event.ctrlKey ||
+      event.metaKey ||
+      event.altKey
+    )
+      return;
     const direction = DIRECTIONS[event.code];
     if (direction || ["KeyF", "KeyR", "KeyZ", "KeyM", "Escape"].includes(event.code))
       event.preventDefault();
@@ -54,6 +83,7 @@ export class InputAdapter {
     if (!this.mode().canPlay) return;
     const now = performance.now();
     if (direction) {
+      this.cancelAutoPath(now);
       this.held = this.held.filter((key) => key !== event.code);
       this.held.push(event.code);
       this.nextRepeatAt = now + 250;
@@ -74,20 +104,21 @@ export class InputAdapter {
     this.suppressed.delete(event.code);
     if (this.held.length === 0) this.nextRepeatAt = Infinity;
   };
-  private move(direction: Direction, now: number) {
+  private move(direction: Direction, now: number, observedAt = now) {
     if (now - this.lastAcceptedAt < 140) {
       this.pending = direction;
+      this.pendingObservedAt = observedAt;
       return;
     }
     this.pending = null;
     this.lastAcceptedAt = now;
-    this.send({ kind: "Move", direction }, now);
+    this.send({ kind: "Move", direction }, now, observedAt);
   }
   frame(now: number) {
     if (document.activeElement !== this.target || !this.mode().canPlay || this.mode().firewall)
       return;
     if (this.pending && now - this.lastAcceptedAt >= 140) {
-      this.move(this.pending, now);
+      this.move(this.pending, now, this.pendingObservedAt);
       return;
     }
     const held = this.held.at(-1);
@@ -106,5 +137,6 @@ export class InputAdapter {
   dispose() {
     document.removeEventListener("keydown", this.keydown);
     document.removeEventListener("keyup", this.keyup);
+    this.target.removeEventListener("blur", this.blur);
   }
 }

@@ -1,6 +1,6 @@
 import type { CompletedStaticLayout, StaticDefinition, StaticState } from "./static-puzzle.ts";
 import type { RealtimeDefinition, RealtimeState } from "./realtime.ts";
-import type { ClockState } from "./clock.ts";
+import type { ClockState, PauseReason } from "./clock.ts";
 
 export type AreaId = "hub" | "a" | "b" | "c" | "d" | "warehouse";
 export type ProfileId = "M1" | "M2" | "M3" | "M4" | "M5";
@@ -254,6 +254,7 @@ export interface GameState extends ProgressState {
 export type GameCommand =
   | { kind: "Move"; direction: Direction }
   | { kind: "ClickTile"; tileId: string }
+  | { kind: "AdvanceAutoPath" | "CancelAutoPath" }
   | {
       kind:
         | "Interact"
@@ -268,7 +269,7 @@ export type GameCommand =
   | { kind: "Teleport"; teleportId: string }
   | {
       kind: "Pause";
-      reason: "manual" | "hidden" | "blur" | "clockGap" | "graphicsLost";
+      reason: PauseReason;
       present: boolean;
     }
   | { kind: "Resume"; pageVisible: boolean; canvasOperable: boolean; graphicsAvailable: boolean }

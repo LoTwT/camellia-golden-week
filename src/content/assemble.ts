@@ -21,7 +21,7 @@ import type {
   EntityDefinition,
 } from "../core/types.ts";
 
-export const AVAILABLE_PROFILE: ProfileId = "M4";
+export const AVAILABLE_PROFILE: ProfileId = "M5";
 export const staticContent = staticJson as unknown as StaticContent;
 export const realtimeContent = realtimeJson as unknown as {
   definitions: RealtimeDefinition[];

@@ -1,0 +1,371 @@
+{
+  "method": "Clean up only known injected futureA fixture via visible fault control; actual UI import of prior temporary1-unit export, confirm then reloadContinue.",
+  "imported": {
+    "profile": "M5",
+    "schemaVersion": 2,
+    "contentVersion": 4,
+    "ruleVersion": 1,
+    "position": {
+      "space": "world",
+      "areaId": "hub",
+      "boardId": "hub",
+      "tileId": "hub.t.3.2"
+    },
+    "mode": "explore",
+    "phase": "active",
+    "activeTimeMs": 318.29999997615823,
+    "countdownRemainingMs": 0,
+    "pauseReasons": [],
+    "viewport": {
+      "width": 1366,
+      "height": 768,
+      "devicePixelRatio": 1
+    },
+    "settings": {
+      "masterVolume": 0.6,
+      "muted": false,
+      "reducedFlash": false,
+      "reducedMotion": false,
+      "quality": "standard",
+      "zoom": 1
+    },
+    "audio": {
+      "enabled": true
+    },
+    "completedObjectiveIds": [
+      "hub.amplifier",
+      "hub.tutorial"
+    ],
+    "completedRoomLayouts": {},
+    "staticRoom": null,
+    "completedRoom": null,
+    "realtimeRoom": null,
+    "data": {
+      "a": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 100,
+        "complete": false
+      },
+      "b": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 100,
+        "complete": false
+      },
+      "c": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 100,
+        "complete": false
+      },
+      "d": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 100,
+        "complete": false
+      }
+    },
+    "claimedRewardIds": [
+      "hub.supply.tutorial"
+    ],
+    "supply": {
+      "collected": 1,
+      "total": 130,
+      "count": 1
+    },
+    "bestResults": [],
+    "lastResult": {
+      "code": "accepted",
+      "message": "已继续"
+    },
+    "saveStatus": "已保存 · 10:03:08",
+    "saveGeneration": 518,
+    "session": "held",
+    "render": {
+      "geometries": 10,
+      "textures": 10,
+      "calls": 17,
+      "tileCount": 11,
+      "residentIconCount": 7,
+      "pendingIconCount": 0,
+      "layout": {
+        "canvas": {
+          "width": 1366,
+          "height": 644
+        },
+        "insets": {
+          "left": 248,
+          "right": 202,
+          "top": 8,
+          "bottom": 8
+        },
+        "available": {
+          "left": 248,
+          "top": 8,
+          "width": 916,
+          "height": 628
+        },
+        "boardBounds": {
+          "minX": -0.495,
+          "maxX": 5.495,
+          "minY": -0.4509821799343498,
+          "maxY": 3.03249941472028,
+          "width": 5.99,
+          "height": 3.48348159465463
+        },
+        "focus": {
+          "x": 3,
+          "y": 1.738666487320323
+        },
+        "pixelsPerWorldUnit": 101.77777777777777,
+        "camera": {
+          "left": -6.936681222707424,
+          "right": 6.4847161572052405,
+          "top": 3.163755458515284,
+          "bottom": -3.163755458515284
+        },
+        "requestedZoom": 1,
+        "effectiveZoom": 1,
+        "zoomLimited": false,
+        "targetCss": {
+          "width": 98.72444444444443,
+          "height": 86.40926895681164,
+          "minimum": 86.40926895681164
+        },
+        "visibleColumns": 9,
+        "visibleRows": 7.097744992331138,
+        "fitsBoard": true,
+        "requiresExpandedViewport": false,
+        "compactViewport": false,
+        "boardBoundsCss": {
+          "minX": 350.2866666666667,
+          "maxX": 959.9355555555555,
+          "minY": 99.14242453274665,
+          "maxY": 453.6834401664845,
+          "width": 609.6488888888889,
+          "height": 354.54101563373786
+        },
+        "displayedFocus": {
+          "x": 3,
+          "y": 1.738666487320323
+        },
+        "devicePixelRatio": 1
+      }
+    },
+    "transition": {
+      "active": false,
+      "lastDurationMs": 54.700000047683716
+    },
+    "firstStartupReadyMs": 112.09999990463257,
+    "firstGamePreparationMs": 54.700000047683716,
+    "inputLatency": {
+      "method": "physical input handler (including pending direction) to animation frame after presentation",
+      "sampleCount": 0,
+      "p95Ms": 0,
+      "maxMs": 0
+    },
+    "faults": {
+      "active": true,
+      "storage": null,
+      "feedback": null,
+      "rendererStartup": false,
+      "audioEnable": false,
+      "records": []
+    },
+    "frameSummary": {
+      "sampleCount": 35,
+      "medianMs": 8.399999999999977,
+      "p95Ms": 11.799999999999955,
+      "meanMs": 8.74
+    }
+  },
+  "reloaded": {
+    "profile": "M5",
+    "schemaVersion": 2,
+    "contentVersion": 4,
+    "ruleVersion": 1,
+    "position": {
+      "space": "world",
+      "areaId": "hub",
+      "boardId": "hub",
+      "tileId": "hub.t.3.2"
+    },
+    "mode": "explore",
+    "phase": "active",
+    "activeTimeMs": 362.1999999284744,
+    "countdownRemainingMs": 0,
+    "pauseReasons": [],
+    "viewport": {
+      "width": 1366,
+      "height": 768,
+      "devicePixelRatio": 1
+    },
+    "settings": {
+      "masterVolume": 0.6,
+      "muted": false,
+      "reducedFlash": false,
+      "reducedMotion": false,
+      "quality": "standard",
+      "zoom": 1
+    },
+    "audio": {
+      "enabled": true
+    },
+    "completedObjectiveIds": [
+      "hub.amplifier",
+      "hub.tutorial"
+    ],
+    "completedRoomLayouts": {},
+    "staticRoom": null,
+    "completedRoom": null,
+    "realtimeRoom": null,
+    "data": {
+      "a": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 100,
+        "complete": false
+      },
+      "b": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 100,
+        "complete": false
+      },
+      "c": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 100,
+        "complete": false
+      },
+      "d": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 100,
+        "complete": false
+      }
+    },
+    "claimedRewardIds": [
+      "hub.supply.tutorial"
+    ],
+    "supply": {
+      "collected": 1,
+      "total": 130,
+      "count": 1
+    },
+    "bestResults": [],
+    "lastResult": {
+      "code": "accepted",
+      "message": "已继续"
+    },
+    "saveStatus": "已保存 · 2026/9/11 10:03:08",
+    "saveGeneration": 518,
+    "session": "held",
+    "render": {
+      "geometries": 10,
+      "textures": 10,
+      "calls": 17,
+      "tileCount": 11,
+      "residentIconCount": 7,
+      "pendingIconCount": 0,
+      "layout": {
+        "canvas": {
+          "width": 1366,
+          "height": 644
+        },
+        "insets": {
+          "left": 248,
+          "right": 202,
+          "top": 8,
+          "bottom": 8
+        },
+        "available": {
+          "left": 248,
+          "top": 8,
+          "width": 916,
+          "height": 628
+        },
+        "boardBounds": {
+          "minX": -0.495,
+          "maxX": 5.495,
+          "minY": -0.4509821799343498,
+          "maxY": 3.03249941472028,
+          "width": 5.99,
+          "height": 3.48348159465463
+        },
+        "focus": {
+          "x": 3,
+          "y": 1.738666487320323
+        },
+        "pixelsPerWorldUnit": 101.77777777777777,
+        "camera": {
+          "left": -6.936681222707424,
+          "right": 6.4847161572052405,
+          "top": 3.163755458515284,
+          "bottom": -3.163755458515284
+        },
+        "requestedZoom": 1,
+        "effectiveZoom": 1,
+        "zoomLimited": false,
+        "targetCss": {
+          "width": 98.72444444444443,
+          "height": 86.40926895681164,
+          "minimum": 86.40926895681164
+        },
+        "visibleColumns": 9,
+        "visibleRows": 7.097744992331138,
+        "fitsBoard": true,
+        "requiresExpandedViewport": false,
+        "compactViewport": false,
+        "boardBoundsCss": {
+          "minX": 350.2866666666667,
+          "maxX": 959.9355555555555,
+          "minY": 99.14242453274665,
+          "maxY": 453.6834401664845,
+          "width": 609.6488888888889,
+          "height": 354.54101563373786
+        },
+        "displayedFocus": {
+          "x": 3,
+          "y": 1.738666487320323
+        },
+        "devicePixelRatio": 1
+      }
+    },
+    "transition": {
+      "active": false,
+      "lastDurationMs": 45.200000047683716
+    },
+    "firstStartupReadyMs": 103.80000007152557,
+    "firstGamePreparationMs": 45.200000047683716,
+    "inputLatency": {
+      "method": "physical input handler (including pending direction) to animation frame after presentation",
+      "sampleCount": 0,
+      "p95Ms": 0,
+      "maxMs": 0
+    },
+    "faults": {
+      "active": true,
+      "storage": null,
+      "feedback": null,
+      "rendererStartup": false,
+      "audioEnable": false,
+      "records": []
+    },
+    "frameSummary": {
+      "sampleCount": 0,
+      "medianMs": 0,
+      "p95Ms": 0,
+      "meanMs": 0
+    }
+  }
+}

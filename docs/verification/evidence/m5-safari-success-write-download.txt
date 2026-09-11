@@ -1,0 +1,6 @@
+				71 scroll area DownloadsList
+					72 table Downloads
+							74 cell camellia-golden-week-progress-2026-09-11T01-49-17.061Z.json
+								75 container camellia-golden-week-progress-2026-09-11T01-49-17.061Z.json
+									77 text Value: camellia-golden-week-progress-2026-09-11T01-49-17.061Z.json 2 KB, ID: DownloadTableCellViewFilename
+The focused UI element is 72 table Downloads

@@ -1,0 +1,477 @@
+{
+  "recordedAt": "2026-09-11T08:35:03.227Z",
+  "method": "Read-only real UI export payload validation using current M5 validatePayload/restorePayload and derived progress. No browser state or source modified.",
+  "records": [
+    {
+      "file": "m5-chrome-final-after-continue-left-save.json",
+      "generation": 948,
+      "position": {
+        "space": "world",
+        "areaId": "warehouse",
+        "boardId": "warehouse",
+        "tileId": "warehouse.t.6.0"
+      },
+      "rewards": 26,
+      "supply": {
+        "collected": 130,
+        "total": 130,
+        "count": 26
+      },
+      "data": {
+        "a": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "b": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "c": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "d": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        }
+      },
+      "valid": true
+    },
+    {
+      "file": "m5-chrome-final-before-refresh-save.json",
+      "generation": 949,
+      "position": {
+        "space": "world",
+        "areaId": "warehouse",
+        "boardId": "warehouse",
+        "tileId": "warehouse.t.7.0"
+      },
+      "rewards": 26,
+      "supply": {
+        "collected": 130,
+        "total": 130,
+        "count": 26
+      },
+      "data": {
+        "a": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "b": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "c": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "d": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        }
+      },
+      "valid": true
+    },
+    {
+      "file": "m5-chrome-final-busy-slot-a.json",
+      "generation": 947,
+      "position": {
+        "space": "world",
+        "areaId": "warehouse",
+        "boardId": "warehouse",
+        "tileId": "warehouse.t.7.0"
+      },
+      "rewards": 26,
+      "supply": {
+        "collected": 130,
+        "total": 130,
+        "count": 26
+      },
+      "data": {
+        "a": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "b": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "c": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "d": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        }
+      },
+      "valid": true
+    },
+    {
+      "file": "m5-chrome-final-busy-slot-b.json",
+      "generation": 946,
+      "position": {
+        "space": "world",
+        "areaId": "warehouse",
+        "boardId": "warehouse",
+        "tileId": "warehouse.t.6.0"
+      },
+      "rewards": 26,
+      "supply": {
+        "collected": 130,
+        "total": 130,
+        "count": 26
+      },
+      "data": {
+        "a": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "b": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "c": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "d": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        }
+      },
+      "valid": true
+    },
+    {
+      "file": "m5-chrome-final-history-new-writer-save.json",
+      "generation": 950,
+      "position": {
+        "space": "world",
+        "areaId": "warehouse",
+        "boardId": "warehouse",
+        "tileId": "warehouse.t.6.0"
+      },
+      "rewards": 26,
+      "supply": {
+        "collected": 130,
+        "total": 130,
+        "count": 26
+      },
+      "data": {
+        "a": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "b": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "c": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "d": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        }
+      },
+      "valid": true
+    },
+    {
+      "file": "m5-chrome-final-history-raw-slot-b.json",
+      "generation": 950,
+      "position": {
+        "space": "world",
+        "areaId": "warehouse",
+        "boardId": "warehouse",
+        "tileId": "warehouse.t.6.0"
+      },
+      "rewards": 26,
+      "supply": {
+        "collected": 130,
+        "total": 130,
+        "count": 26
+      },
+      "data": {
+        "a": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "b": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "c": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "d": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        }
+      },
+      "valid": true
+    },
+    {
+      "file": "m5-chrome-final-history-retained-memory.json",
+      "generation": 949,
+      "position": {
+        "space": "world",
+        "areaId": "warehouse",
+        "boardId": "warehouse",
+        "tileId": "warehouse.t.7.0"
+      },
+      "rewards": 26,
+      "supply": {
+        "collected": 130,
+        "total": 130,
+        "count": 26
+      },
+      "data": {
+        "a": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "b": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "c": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "d": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        }
+      },
+      "valid": true
+    },
+    {
+      "file": "m5-chrome-final-production-complete-save.json",
+      "generation": 951,
+      "position": {
+        "space": "world",
+        "areaId": "warehouse",
+        "boardId": "warehouse",
+        "tileId": "warehouse.t.7.0"
+      },
+      "rewards": 26,
+      "supply": {
+        "collected": 130,
+        "total": 130,
+        "count": 26
+      },
+      "data": {
+        "a": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "b": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "c": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "d": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        }
+      },
+      "valid": true
+    },
+    {
+      "file": "m5-chrome-final-restored-save.json",
+      "generation": 949,
+      "position": {
+        "space": "world",
+        "areaId": "warehouse",
+        "boardId": "warehouse",
+        "tileId": "warehouse.t.7.0"
+      },
+      "rewards": 26,
+      "supply": {
+        "collected": 130,
+        "total": 130,
+        "count": 26
+      },
+      "data": {
+        "a": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "b": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "c": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "d": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        }
+      },
+      "valid": true
+    },
+    {
+      "file": "m5-chrome-final-production-restored-save.json",
+      "generation": 1109,
+      "position": {
+        "space": "world",
+        "areaId": "warehouse",
+        "boardId": "warehouse",
+        "tileId": "warehouse.t.7.0"
+      },
+      "rewards": 26,
+      "supply": {
+        "collected": 130,
+        "total": 130,
+        "count": 26
+      },
+      "data": {
+        "a": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "b": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "c": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "d": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        }
+      },
+      "valid": true
+    }
+  ],
+  "finalProductionCheckedAt": "2026-09-11T08:49:29.188Z"
+}

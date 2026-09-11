@@ -1,0 +1,9 @@
+{
+  "startedAt": "2026-09-11T08:06:36.767Z",
+  "clickStartedAtMs": 1789113996769,
+  "explorationObservedAfterMs": 591,
+  "loadedDOM": "- main:\n  - generic: CGW\n  - text: 沙罗黄金周\n  - generic: CAMELLIA GOLDEN WEEK\n  - generic: 当前目标\n  - strong\n  - status\n  - button \"打开暂停菜单\": 菜单 Esc\n  - generic \"电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停\"\n  - heading [level=1]\n  - complementary:\n    - generic: 区域数据\n    - strong\n    - generic: 沙罗物资\n    - strong\n    - button \"收集记录 ↗\"\n  - status\n  - dialog \"继续探索\" [active]:\n    - generic: CAMELLIA / TERMINAL\n    - heading \"继续探索\" [level=2]\n    - paragraph: M5 · 中央仓库 · 130 单位物资 · 已完成 4 区主路径。关闭浏览器后的进度已就绪。\n    - button \"继续游戏\"\n    - button \"新游戏…\"\n    - button \"导入存档\"\n    - button \"导出原始槽 A\"\n    - button \"导出原始槽 B\"",
+  "afterMoveDOM": "- main:\n  - generic: CGW\n  - text: 沙罗黄金周\n  - generic: CAMELLIA GOLDEN WEEK\n  - generic: 当前目标\n  - strong\n  - status\n  - button \"打开暂停菜单\": 菜单 Esc\n  - generic \"电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停\"\n  - heading [level=1]\n  - complementary:\n    - generic: 区域数据\n    - strong\n    - generic: 沙罗物资\n    - strong\n    - button \"收集记录 ↗\"\n  - status\n  - dialog \"继续探索\" [active]:\n    - generic: CAMELLIA / TERMINAL\n    - heading \"继续探索\" [level=2]\n    - paragraph: M5 · 中央仓库 · 130 单位物资 · 已完成 4 区主路径。关闭浏览器后的进度已就绪。\n    - button \"继续游戏\"\n    - button \"新游戏…\"\n    - button \"导入存档\"\n    - button \"导出原始槽 A\"\n    - button \"导出原始槽 B\"",
+  "screenshotAfterMs": 1088,
+  "result": "not measured: AX click did not dismiss the continue dialog"
+}

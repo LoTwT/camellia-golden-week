@@ -1,0 +1,63 @@
+Window: "沙罗黄金周 · Camellia Golden Week", App: Safari.
+0 standard window 沙罗黄金周 · Camellia Golden Week, ID: SafariWindow?IsSecure=false&UUID=071A0516-098B-4EF2-9A5F-FB1E6C6E8E4C, Secondary Actions: Raise
+	1 split group
+		2 tab group
+			3 scroll area
+				4 HTML content Description: 沙罗黄金周 · Camellia Golden Week, URL: localhost:5174/
+					5 container
+						6 text CGW 沙罗黄金周 CAMELLIA GOLDEN WEEK 当前目标
+						7 text 完成 仓储区 A 的主路径终端
+						8 text 已保存 · 09:38:42
+						9 button 打开暂停菜单
+						10 image 电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停
+						11 text MEMORY / FIREWALL
+						12 heading 仓储区 A, Value: 1
+							13 text 仓储区 A
+						14 text M5 / 探索中 区域数据 20 / 100 完整数据 20 / 100 沙罗物资 1 / 130 阳炎增幅仪 ∞
+						15 button 收集记录 ↗
+						16 button 启用声音
+						17 text 已继续 WASD / ↑↓←→ 移动
+						18 button F 交互
+						19 button R 增幅
+						20 button M 区域图
+					21 summary 验收故障控制 · 仅平台, Value: off
+						22 text 验收故障控制 · 仅平台
+	23 image WindowControlShadowView._shadowImageView
+	24 toolbar
+		25 container Secondary Actions: Move next, Remove from toolbar
+			26 button Description: show sidebar, Help: Show sidebar, ID: SidebarButton
+			27 menu button Description: Tab Group picker, ID: TabGroupPickerButton?TabGroup=
+		28 container BackForwardSegmentedControl
+			29 button Description: Go back, Help: Show the previous page, ID: BackButton
+			30 button (disabled) Description: Go forward, Help: Show the next page, ID: ForwardButton
+		31 container Secondary Actions: Move previous, Move next, Remove from toolbar
+			32 button Page Menu, ID: AssistantButton
+			33 button Add page to Reading List, ID: OneStepBookmarkingButton
+			34 text field (settable) Description: smart search field, Value: localhost:5174, ID: WEB_BROWSER_ADDRESS_AND_SEARCH_FIELD
+			35 button Translation Available, ID: TranslationButton
+			36 button Reload this page, ID: ReloadButton
+		37 button Description: Share, ID: ShareButton, Secondary Actions: Move previous, Move next, Remove from toolbar
+		38 button Description: New Tab, ID: NewTabButton, Secondary Actions: Move previous, Move next, Remove from toolbar
+		39 button Description: Tab Overview, ID: TabOverviewButton, Secondary Actions: Move previous, Remove from toolbar
+	40 tab group Description: Tab bar, 2 tabs, ID: TabBar?isSeparate=false
+		41 tab Start Page, Value: off, ID: TabBarTab?isPinned=false&isNarrow=false&isActive=false, Secondary Actions: close tab
+			42 image Description: favorite, ID: FaviconImageView
+			43 text Value: Start Page, ID: UnifiedTabBarButton._titleTextField
+		44 tab 沙罗黄金周 · Camellia Golden Week, Help: To interact with the items in this button, press Control-Option-Shift-Down Arrow., Value: on, ID: TabBarTab?isPinned=false&isNarrow=false&isActive=true, Secondary Actions: close tab
+			45 image FaviconImageView
+			46 text Value: 沙罗黄金周 · Camellia Golden Week, ID: UnifiedTabBarButton._titleTextField
+	47 close button
+	48 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	49 minimize button
+50 menu bar
+	51 Safari
+	52 File
+	53 Edit
+	54 View, ID: SafariViewMenu
+	55 History
+	56 Bookmarks, ID: SafariBookmarksMenu
+	57 Develop
+	58 Window, ID: SafariWindowMenu
+	59 Help, ID: SafariHelpMenu
+
+The focused UI element is 10 image 电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停

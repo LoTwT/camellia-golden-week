@@ -1,0 +1,2168 @@
+[
+  {
+    "action": "Continue Enter",
+    "focus": {
+      "dialogOpen": false,
+      "id": "game-canvas",
+      "label": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "tag": "CANVAS",
+      "text": "",
+      "title": "继续探索",
+      "type": null
+    },
+    "snapshot": {
+      "profile": "M5",
+      "schemaVersion": 2,
+      "contentVersion": 4,
+      "ruleVersion": 1,
+      "position": {
+        "space": "world",
+        "areaId": "d",
+        "boardId": "d",
+        "tileId": "d.t.0.-2"
+      },
+      "mode": "explore",
+      "phase": "active",
+      "activeTimeMs": 22.80000004768226,
+      "countdownRemainingMs": 0,
+      "pauseReasons": [],
+      "viewport": {
+        "width": 1512,
+        "height": 771,
+        "devicePixelRatio": 2
+      },
+      "settings": {
+        "masterVolume": 0.6,
+        "muted": false,
+        "reducedFlash": false,
+        "reducedMotion": false,
+        "quality": "standard",
+        "zoom": 1.5
+      },
+      "audio": {
+        "enabled": true
+      },
+      "completedObjectiveIds": [
+        "hub.amplifier",
+        "hub.tutorial",
+        "a.nexus.route",
+        "a.maze.01",
+        "a.main",
+        "b.line.01",
+        "b.switch.shortcut",
+        "b.main",
+        "c.routing.01",
+        "c.main",
+        "d.reveal.03",
+        "d.permission.03",
+        "d.reveal.04",
+        "d.permission.04",
+        "d.ghost.01",
+        "d.permission.01",
+        "d.ghost.02",
+        "d.ghosts.cleared",
+        "d.permission.02",
+        "d.main",
+        "d.reveal.hidden",
+        "d.hidden.terminal",
+        "a.revisit.nexus",
+        "a.revisit.terminal",
+        "a.maze.03",
+        "a.maze.02",
+        "a.nexus.side",
+        "a.side.terminal",
+        "b.revisit.nexus",
+        "b.revisit.terminal",
+        "b.south.terminal",
+        "b.nexus.north",
+        "b.north.terminal",
+        "b.line.02",
+        "c.side.terminal",
+        "c.theft.01",
+        "c.theft.02",
+        "c.theft.03",
+        "warehouse.complete",
+        "a.firewall.access",
+        "a.firewall.tutorial",
+        "a.firewall.inner",
+        "a.firewall.deep",
+        "a.firewall.core",
+        "b.antivirus.access",
+        "b.antivirus.light",
+        "b.antivirus.medium",
+        "b.antivirus.heavy"
+      ],
+      "completedRoomLayouts": {
+        "a.maze.01": {
+          "objectTileById": {},
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "b.line.01": {
+          "objectTileById": {},
+          "visitedTileIds": [
+            "b.line.01.t.0.0",
+            "b.line.01.t.1.0",
+            "b.line.01.t.2.0",
+            "b.line.01.t.2.1",
+            "b.line.01.t.1.1",
+            "b.line.01.t.0.1",
+            "b.line.01.t.0.2",
+            "b.line.01.t.1.2",
+            "b.line.01.t.2.2",
+            "b.line.01.t.3.2",
+            "b.line.01.t.3.1",
+            "b.line.01.t.3.0"
+          ],
+          "activatedLocalIds": []
+        },
+        "c.routing.01": {
+          "objectTileById": {
+            "c.routing.01.ball.01": "c.routing.01.t.4.1",
+            "c.routing.01.ball.02": "c.routing.01.t.2.1",
+            "c.routing.01.cart.01": "c.routing.01.t.5.3"
+          },
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "a.maze.03": {
+          "objectTileById": {},
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "a.maze.02": {
+          "objectTileById": {},
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "b.line.02": {
+          "objectTileById": {},
+          "visitedTileIds": [
+            "b.line.02.t.0.0",
+            "b.line.02.t.1.0",
+            "b.line.02.t.2.0",
+            "b.line.02.t.3.0",
+            "b.line.02.t.4.0",
+            "b.line.02.t.4.1",
+            "b.line.02.t.4.2",
+            "b.line.02.t.3.2",
+            "b.line.02.t.3.1",
+            "b.line.02.t.2.1",
+            "b.line.02.t.1.1",
+            "b.line.02.t.0.1",
+            "b.line.02.t.0.2",
+            "b.line.02.t.1.2",
+            "b.line.02.t.1.3",
+            "b.line.02.t.0.3",
+            "b.line.02.t.0.4",
+            "b.line.02.t.1.4",
+            "b.line.02.t.2.4",
+            "b.line.02.t.2.3",
+            "b.line.02.t.3.3",
+            "b.line.02.t.3.4",
+            "b.line.02.t.4.4",
+            "b.line.02.t.4.3"
+          ],
+          "activatedLocalIds": []
+        },
+        "c.theft.01": {
+          "objectTileById": {
+            "c.theft.01.object.01": "c.theft.01.t.2.1",
+            "c.theft.01.object.02": "c.theft.01.t.4.1"
+          },
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "c.theft.02": {
+          "objectTileById": {
+            "c.theft.02.object.01": "c.theft.02.t.2.1",
+            "c.theft.02.object.02": "c.theft.02.t.4.1"
+          },
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "c.theft.03": {
+          "objectTileById": {
+            "c.theft.03.object.01": "c.theft.03.t.2.1",
+            "c.theft.03.object.02": "c.theft.03.t.5.1",
+            "c.theft.03.object.03": "c.theft.03.t.5.3"
+          },
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        }
+      },
+      "staticRoom": null,
+      "completedRoom": null,
+      "realtimeRoom": null,
+      "data": {
+        "a": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "b": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "c": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "d": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        }
+      },
+      "claimedRewardIds": [
+        "hub.supply.tutorial",
+        "a.supply.maze01",
+        "b.supply.line01",
+        "d.supply.permission03",
+        "d.supply.permission04",
+        "d.supply.permission01",
+        "d.supply.permission02",
+        "d.supply.ghosts",
+        "d.supply.hidden",
+        "a.supply.revisit",
+        "a.supply.maze03",
+        "b.supply.revisit",
+        "b.supply.line02",
+        "c.supply.route.entry",
+        "c.supply.side",
+        "c.supply.route.exit",
+        "c.supply.theft01",
+        "c.supply.theft02",
+        "c.supply.theft03",
+        "hub.supply.final",
+        "a.supply.firewall.inner",
+        "a.supply.firewall.deep",
+        "a.supply.firewall.core",
+        "b.supply.antivirus.light",
+        "b.supply.antivirus.medium",
+        "b.supply.antivirus.heavy"
+      ],
+      "supply": {
+        "collected": 130,
+        "total": 130,
+        "count": 26
+      },
+      "bestResults": [
+        {
+          "challengeId": "d.ghost.01",
+          "ruleVersion": 1
+        },
+        {
+          "challengeId": "d.ghost.02",
+          "ruleVersion": 1
+        },
+        {
+          "challengeId": "a.firewall.tutorial",
+          "ruleVersion": 1,
+          "bestCombo": 30
+        },
+        {
+          "challengeId": "a.firewall.inner",
+          "ruleVersion": 1,
+          "bestCombo": 88
+        },
+        {
+          "challengeId": "a.firewall.deep",
+          "ruleVersion": 1,
+          "bestCombo": 84
+        },
+        {
+          "challengeId": "a.firewall.core",
+          "ruleVersion": 1,
+          "bestCombo": 89
+        },
+        {
+          "challengeId": "b.antivirus.light",
+          "ruleVersion": 1,
+          "bestScore": 71,
+          "bestStarClear": 0
+        },
+        {
+          "challengeId": "b.antivirus.medium",
+          "ruleVersion": 1,
+          "bestScore": 99,
+          "bestStarClear": 0
+        },
+        {
+          "challengeId": "b.antivirus.heavy",
+          "ruleVersion": 1,
+          "bestScore": 140,
+          "bestStarClear": 1
+        }
+      ],
+      "lastResult": {
+        "code": "accepted",
+        "message": "已继续"
+      },
+      "saveStatus": "已保存 · 2026/9/11 10:42:39",
+      "saveGeneration": 861,
+      "session": "held",
+      "render": {
+        "geometries": 10,
+        "textures": 15,
+        "calls": 21,
+        "tileCount": 39,
+        "residentIconCount": 12,
+        "pendingIconCount": 0,
+        "layout": {
+          "canvas": {
+            "width": 1512,
+            "height": 647
+          },
+          "insets": {
+            "left": 248,
+            "right": 202,
+            "top": 8,
+            "bottom": 8
+          },
+          "available": {
+            "left": 248,
+            "top": 8,
+            "width": 1062,
+            "height": 631
+          },
+          "boardBounds": {
+            "minX": -5.495,
+            "maxX": 6.495,
+            "minY": -5.666981641895319,
+            "maxY": 3.9018326583804415,
+            "width": 11.99,
+            "height": 9.568814300275761
+          },
+          "focus": {
+            "x": 0,
+            "y": -1.738666487320323
+          },
+          "pixelsPerWorldUnit": 155.5379213901815,
+          "camera": {
+            "left": -5.008424910384428,
+            "right": 4.712677097961214,
+            "top": 2.0798786373676026,
+            "bottom": -2.0798786373676026
+          },
+          "requestedZoom": 1.5,
+          "effectiveZoom": 1.5,
+          "zoomLimited": false,
+          "targetCss": {
+            "width": 150.87178374847605,
+            "height": 132.05159687935438,
+            "minimum": 132.05159687935438
+          },
+          "visibleColumns": 6.827916886814201,
+          "visibleRows": 4.666666666666667,
+          "fitsBoard": false,
+          "requiresExpandedViewport": false,
+          "compactViewport": false,
+          "boardBoundsCss": {
+            "minX": -75.68087803904746,
+            "maxX": 1789.218799429229,
+            "minY": -287.5019737081444,
+            "maxY": 1200.8115127253914,
+            "width": 1864.8996774682764,
+            "height": 1488.3134864335357
+          },
+          "displayedFocus": {
+            "x": 0,
+            "y": -1.738666487320323
+          },
+          "devicePixelRatio": 2
+        }
+      },
+      "transition": {
+        "active": false,
+        "lastDurationMs": 101.20000004768372
+      },
+      "firstStartupReadyMs": 9287.100000023842,
+      "firstGamePreparationMs": 101.20000004768372,
+      "inputLatency": {
+        "method": "physical input handler (including pending direction) to animation frame after presentation",
+        "sampleCount": 0,
+        "p95Ms": 0,
+        "maxMs": 0
+      },
+      "faults": {
+        "active": true,
+        "storage": null,
+        "feedback": null,
+        "rendererStartup": false,
+        "audioEnable": false,
+        "records": []
+      },
+      "frameSummary": {
+        "sampleCount": 1,
+        "medianMs": 48.299999999995634,
+        "p95Ms": 48.299999999995634,
+        "meanMs": 48.299999999995634
+      }
+    }
+  },
+  {
+    "action": "Map Tab to A",
+    "focus": {
+      "dialogOpen": true,
+      "id": "",
+      "label": null,
+      "tag": "BUTTON",
+      "text": "仓储区 A · 已激活",
+      "title": "区域图与传送",
+      "type": "button"
+    }
+  },
+  {
+    "action": "Firewall ready keyboard",
+    "focus": {
+      "dialogOpen": true,
+      "id": "",
+      "label": null,
+      "tag": "BUTTON",
+      "text": "教学 · 15 秒 / Combo 12",
+      "title": "终端挑战",
+      "type": "button"
+    }
+  },
+  {
+    "action": "Toggle 静音",
+    "focus": {
+      "dialogOpen": true,
+      "id": "",
+      "label": "静音",
+      "tag": "INPUT",
+      "text": "",
+      "title": "声音与显示",
+      "type": "checkbox"
+    }
+  },
+  {
+    "action": "Toggle 减少闪烁",
+    "focus": {
+      "dialogOpen": true,
+      "id": "",
+      "label": "减少闪烁",
+      "tag": "INPUT",
+      "text": "",
+      "title": "声音与显示",
+      "type": "checkbox"
+    }
+  },
+  {
+    "action": "Toggle 减少动态效果",
+    "focus": {
+      "dialogOpen": true,
+      "id": "",
+      "label": "减少动态效果",
+      "tag": "INPUT",
+      "text": "",
+      "title": "声音与显示",
+      "type": "checkbox"
+    }
+  },
+  {
+    "action": "Timed failure with no scoring input",
+    "focus": {
+      "dialogOpen": true,
+      "id": "",
+      "label": null,
+      "tag": "BUTTON",
+      "text": "再挑战一次",
+      "title": "重新尝试",
+      "type": "button"
+    },
+    "snapshot": {
+      "profile": "M5",
+      "schemaVersion": 2,
+      "contentVersion": 4,
+      "ruleVersion": 1,
+      "position": {
+        "space": "room",
+        "areaId": "a",
+        "boardId": "a.firewall.tutorial.board",
+        "tileId": "a.firewall.tutorial.tile.2.2"
+      },
+      "mode": "challengeResult",
+      "phase": "failure",
+      "activeTimeMs": 15000,
+      "countdownRemainingMs": 0,
+      "pauseReasons": [],
+      "viewport": {
+        "width": 1512,
+        "height": 771,
+        "devicePixelRatio": 2
+      },
+      "settings": {
+        "masterVolume": 0.2,
+        "muted": true,
+        "reducedFlash": true,
+        "reducedMotion": true,
+        "quality": "standard",
+        "zoom": 1
+      },
+      "audio": {
+        "enabled": true
+      },
+      "completedObjectiveIds": [
+        "hub.amplifier",
+        "hub.tutorial",
+        "a.nexus.route",
+        "a.maze.01",
+        "a.main",
+        "b.line.01",
+        "b.switch.shortcut",
+        "b.main",
+        "c.routing.01",
+        "c.main",
+        "d.reveal.03",
+        "d.permission.03",
+        "d.reveal.04",
+        "d.permission.04",
+        "d.ghost.01",
+        "d.permission.01",
+        "d.ghost.02",
+        "d.ghosts.cleared",
+        "d.permission.02",
+        "d.main",
+        "d.reveal.hidden",
+        "d.hidden.terminal",
+        "a.revisit.nexus",
+        "a.revisit.terminal",
+        "a.maze.03",
+        "a.maze.02",
+        "a.nexus.side",
+        "a.side.terminal",
+        "b.revisit.nexus",
+        "b.revisit.terminal",
+        "b.south.terminal",
+        "b.nexus.north",
+        "b.north.terminal",
+        "b.line.02",
+        "c.side.terminal",
+        "c.theft.01",
+        "c.theft.02",
+        "c.theft.03",
+        "warehouse.complete",
+        "a.firewall.access",
+        "a.firewall.tutorial",
+        "a.firewall.inner",
+        "a.firewall.deep",
+        "a.firewall.core",
+        "b.antivirus.access",
+        "b.antivirus.light",
+        "b.antivirus.medium",
+        "b.antivirus.heavy"
+      ],
+      "completedRoomLayouts": {
+        "a.maze.01": {
+          "objectTileById": {},
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "b.line.01": {
+          "objectTileById": {},
+          "visitedTileIds": [
+            "b.line.01.t.0.0",
+            "b.line.01.t.1.0",
+            "b.line.01.t.2.0",
+            "b.line.01.t.2.1",
+            "b.line.01.t.1.1",
+            "b.line.01.t.0.1",
+            "b.line.01.t.0.2",
+            "b.line.01.t.1.2",
+            "b.line.01.t.2.2",
+            "b.line.01.t.3.2",
+            "b.line.01.t.3.1",
+            "b.line.01.t.3.0"
+          ],
+          "activatedLocalIds": []
+        },
+        "c.routing.01": {
+          "objectTileById": {
+            "c.routing.01.ball.01": "c.routing.01.t.4.1",
+            "c.routing.01.ball.02": "c.routing.01.t.2.1",
+            "c.routing.01.cart.01": "c.routing.01.t.5.3"
+          },
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "a.maze.03": {
+          "objectTileById": {},
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "a.maze.02": {
+          "objectTileById": {},
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "b.line.02": {
+          "objectTileById": {},
+          "visitedTileIds": [
+            "b.line.02.t.0.0",
+            "b.line.02.t.1.0",
+            "b.line.02.t.2.0",
+            "b.line.02.t.3.0",
+            "b.line.02.t.4.0",
+            "b.line.02.t.4.1",
+            "b.line.02.t.4.2",
+            "b.line.02.t.3.2",
+            "b.line.02.t.3.1",
+            "b.line.02.t.2.1",
+            "b.line.02.t.1.1",
+            "b.line.02.t.0.1",
+            "b.line.02.t.0.2",
+            "b.line.02.t.1.2",
+            "b.line.02.t.1.3",
+            "b.line.02.t.0.3",
+            "b.line.02.t.0.4",
+            "b.line.02.t.1.4",
+            "b.line.02.t.2.4",
+            "b.line.02.t.2.3",
+            "b.line.02.t.3.3",
+            "b.line.02.t.3.4",
+            "b.line.02.t.4.4",
+            "b.line.02.t.4.3"
+          ],
+          "activatedLocalIds": []
+        },
+        "c.theft.01": {
+          "objectTileById": {
+            "c.theft.01.object.01": "c.theft.01.t.2.1",
+            "c.theft.01.object.02": "c.theft.01.t.4.1"
+          },
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "c.theft.02": {
+          "objectTileById": {
+            "c.theft.02.object.01": "c.theft.02.t.2.1",
+            "c.theft.02.object.02": "c.theft.02.t.4.1"
+          },
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "c.theft.03": {
+          "objectTileById": {
+            "c.theft.03.object.01": "c.theft.03.t.2.1",
+            "c.theft.03.object.02": "c.theft.03.t.5.1",
+            "c.theft.03.object.03": "c.theft.03.t.5.3"
+          },
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        }
+      },
+      "staticRoom": null,
+      "completedRoom": null,
+      "realtimeRoom": {
+        "roomId": "a.firewall.tutorial",
+        "returnAnchor": {
+          "space": "world",
+          "areaId": "a",
+          "boardId": "a",
+          "tileId": "a.t.0.-3"
+        },
+        "state": {
+          "challengeId": "a.firewall.tutorial",
+          "activeTimeMs": 15000,
+          "playerTileId": "a.firewall.tutorial.tile.2.2",
+          "status": "failure",
+          "eventSequence": 31,
+          "lastInputSequence": -1,
+          "kind": "firewall",
+          "combo": 0,
+          "bestCombo": 0,
+          "scoredBeatIndices": [],
+          "nextBeatIndex": 30,
+          "maskIndex": 29
+        },
+        "practice": true
+      },
+      "data": {
+        "a": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "b": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "c": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "d": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        }
+      },
+      "claimedRewardIds": [
+        "hub.supply.tutorial",
+        "a.supply.maze01",
+        "b.supply.line01",
+        "d.supply.permission03",
+        "d.supply.permission04",
+        "d.supply.permission01",
+        "d.supply.permission02",
+        "d.supply.ghosts",
+        "d.supply.hidden",
+        "a.supply.revisit",
+        "a.supply.maze03",
+        "b.supply.revisit",
+        "b.supply.line02",
+        "c.supply.route.entry",
+        "c.supply.side",
+        "c.supply.route.exit",
+        "c.supply.theft01",
+        "c.supply.theft02",
+        "c.supply.theft03",
+        "hub.supply.final",
+        "a.supply.firewall.inner",
+        "a.supply.firewall.deep",
+        "a.supply.firewall.core",
+        "b.supply.antivirus.light",
+        "b.supply.antivirus.medium",
+        "b.supply.antivirus.heavy"
+      ],
+      "supply": {
+        "collected": 130,
+        "total": 130,
+        "count": 26
+      },
+      "bestResults": [
+        {
+          "challengeId": "d.ghost.01",
+          "ruleVersion": 1
+        },
+        {
+          "challengeId": "d.ghost.02",
+          "ruleVersion": 1
+        },
+        {
+          "challengeId": "a.firewall.tutorial",
+          "ruleVersion": 1,
+          "bestCombo": 30
+        },
+        {
+          "challengeId": "a.firewall.inner",
+          "ruleVersion": 1,
+          "bestCombo": 88
+        },
+        {
+          "challengeId": "a.firewall.deep",
+          "ruleVersion": 1,
+          "bestCombo": 84
+        },
+        {
+          "challengeId": "a.firewall.core",
+          "ruleVersion": 1,
+          "bestCombo": 89
+        },
+        {
+          "challengeId": "b.antivirus.light",
+          "ruleVersion": 1,
+          "bestScore": 71,
+          "bestStarClear": 0
+        },
+        {
+          "challengeId": "b.antivirus.medium",
+          "ruleVersion": 1,
+          "bestScore": 99,
+          "bestStarClear": 0
+        },
+        {
+          "challengeId": "b.antivirus.heavy",
+          "ruleVersion": 1,
+          "bestScore": 140,
+          "bestStarClear": 1
+        }
+      ],
+      "lastResult": {
+        "code": "failure",
+        "message": "本次未达标 · 可重试"
+      },
+      "saveStatus": "已保存 · 10:52:25",
+      "saveGeneration": 881,
+      "session": "held",
+      "render": {
+        "geometries": 10,
+        "textures": 5,
+        "calls": 11,
+        "tileCount": 25,
+        "residentIconCount": 2,
+        "pendingIconCount": 0,
+        "layout": {
+          "canvas": {
+            "width": 1512,
+            "height": 647
+          },
+          "insets": {
+            "left": 248,
+            "right": 202,
+            "top": 8,
+            "bottom": 8
+          },
+          "available": {
+            "left": 248,
+            "top": 8,
+            "width": 1062,
+            "height": 631
+          },
+          "boardBounds": {
+            "minX": -0.495,
+            "maxX": 4.495,
+            "minY": -0.4509821799343498,
+            "maxY": 3.9018326583804415,
+            "width": 4.99,
+            "height": 4.352814838314791
+          },
+          "focus": {
+            "x": 2,
+            "y": 1.7254252392230458
+          },
+          "pixelsPerWorldUnit": 123.65724016911189,
+          "camera": {
+            "left": -6.299671567428245,
+            "right": 5.927675557028118,
+            "top": 2.6161023774878527,
+            "bottom": -2.6161023774878527
+          },
+          "requestedZoom": 1,
+          "effectiveZoom": 1,
+          "zoomLimited": false,
+          "targetCss": {
+            "width": 119.94752296403853,
+            "height": 104.9849186878478,
+            "minimum": 104.9849186878478
+          },
+          "visibleColumns": 8.58825571836816,
+          "visibleRows": 5.869802950167148,
+          "fitsBoard": true,
+          "requiresExpandedViewport": false,
+          "compactViewport": false,
+          "boardBoundsCss": {
+            "minX": 470.47518577806585,
+            "maxX": 1087.524814221934,
+            "minY": 54.37146506341696,
+            "maxY": 592.628534936583,
+            "width": 617.0496284438682,
+            "height": 538.2570698731661
+          },
+          "displayedFocus": {
+            "x": 2,
+            "y": 1.7254252392230458
+          },
+          "devicePixelRatio": 2
+        }
+      },
+      "transition": {
+        "active": false,
+        "lastDurationMs": 6.599999904632568
+      },
+      "firstStartupReadyMs": 9287.100000023842,
+      "firstGamePreparationMs": 101.20000004768372,
+      "inputLatency": {
+        "method": "physical input handler (including pending direction) to animation frame after presentation",
+        "sampleCount": 6,
+        "p95Ms": 45.09999997615523,
+        "maxMs": 45.09999997615523
+      },
+      "faults": {
+        "active": true,
+        "storage": null,
+        "feedback": null,
+        "rendererStartup": false,
+        "audioEnable": false,
+        "records": []
+      },
+      "frameSummary": {
+        "sampleCount": 2330,
+        "medianMs": 8.60000000000582,
+        "p95Ms": 11.200000000011642,
+        "meanMs": 8.757510729613731
+      }
+    }
+  },
+  {
+    "action": "Retry Enter returns ready",
+    "focus": {
+      "dialogOpen": true,
+      "id": "",
+      "label": null,
+      "tag": "BUTTON",
+      "text": "教学 · 15 秒 / Combo 12",
+      "title": "终端挑战",
+      "type": "button"
+    },
+    "snapshot": {
+      "profile": "M5",
+      "schemaVersion": 2,
+      "contentVersion": 4,
+      "ruleVersion": 1,
+      "position": {
+        "space": "world",
+        "areaId": "a",
+        "boardId": "a",
+        "tileId": "a.t.0.-3"
+      },
+      "mode": "challengeReady",
+      "phase": "active",
+      "activeTimeMs": 12.20000009535579,
+      "countdownRemainingMs": 0,
+      "pauseReasons": [],
+      "viewport": {
+        "width": 1512,
+        "height": 771,
+        "devicePixelRatio": 2
+      },
+      "settings": {
+        "masterVolume": 0.2,
+        "muted": true,
+        "reducedFlash": true,
+        "reducedMotion": true,
+        "quality": "standard",
+        "zoom": 1
+      },
+      "audio": {
+        "enabled": true
+      },
+      "completedObjectiveIds": [
+        "hub.amplifier",
+        "hub.tutorial",
+        "a.nexus.route",
+        "a.maze.01",
+        "a.main",
+        "b.line.01",
+        "b.switch.shortcut",
+        "b.main",
+        "c.routing.01",
+        "c.main",
+        "d.reveal.03",
+        "d.permission.03",
+        "d.reveal.04",
+        "d.permission.04",
+        "d.ghost.01",
+        "d.permission.01",
+        "d.ghost.02",
+        "d.ghosts.cleared",
+        "d.permission.02",
+        "d.main",
+        "d.reveal.hidden",
+        "d.hidden.terminal",
+        "a.revisit.nexus",
+        "a.revisit.terminal",
+        "a.maze.03",
+        "a.maze.02",
+        "a.nexus.side",
+        "a.side.terminal",
+        "b.revisit.nexus",
+        "b.revisit.terminal",
+        "b.south.terminal",
+        "b.nexus.north",
+        "b.north.terminal",
+        "b.line.02",
+        "c.side.terminal",
+        "c.theft.01",
+        "c.theft.02",
+        "c.theft.03",
+        "warehouse.complete",
+        "a.firewall.access",
+        "a.firewall.tutorial",
+        "a.firewall.inner",
+        "a.firewall.deep",
+        "a.firewall.core",
+        "b.antivirus.access",
+        "b.antivirus.light",
+        "b.antivirus.medium",
+        "b.antivirus.heavy"
+      ],
+      "completedRoomLayouts": {
+        "a.maze.01": {
+          "objectTileById": {},
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "b.line.01": {
+          "objectTileById": {},
+          "visitedTileIds": [
+            "b.line.01.t.0.0",
+            "b.line.01.t.1.0",
+            "b.line.01.t.2.0",
+            "b.line.01.t.2.1",
+            "b.line.01.t.1.1",
+            "b.line.01.t.0.1",
+            "b.line.01.t.0.2",
+            "b.line.01.t.1.2",
+            "b.line.01.t.2.2",
+            "b.line.01.t.3.2",
+            "b.line.01.t.3.1",
+            "b.line.01.t.3.0"
+          ],
+          "activatedLocalIds": []
+        },
+        "c.routing.01": {
+          "objectTileById": {
+            "c.routing.01.ball.01": "c.routing.01.t.4.1",
+            "c.routing.01.ball.02": "c.routing.01.t.2.1",
+            "c.routing.01.cart.01": "c.routing.01.t.5.3"
+          },
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "a.maze.03": {
+          "objectTileById": {},
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "a.maze.02": {
+          "objectTileById": {},
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "b.line.02": {
+          "objectTileById": {},
+          "visitedTileIds": [
+            "b.line.02.t.0.0",
+            "b.line.02.t.1.0",
+            "b.line.02.t.2.0",
+            "b.line.02.t.3.0",
+            "b.line.02.t.4.0",
+            "b.line.02.t.4.1",
+            "b.line.02.t.4.2",
+            "b.line.02.t.3.2",
+            "b.line.02.t.3.1",
+            "b.line.02.t.2.1",
+            "b.line.02.t.1.1",
+            "b.line.02.t.0.1",
+            "b.line.02.t.0.2",
+            "b.line.02.t.1.2",
+            "b.line.02.t.1.3",
+            "b.line.02.t.0.3",
+            "b.line.02.t.0.4",
+            "b.line.02.t.1.4",
+            "b.line.02.t.2.4",
+            "b.line.02.t.2.3",
+            "b.line.02.t.3.3",
+            "b.line.02.t.3.4",
+            "b.line.02.t.4.4",
+            "b.line.02.t.4.3"
+          ],
+          "activatedLocalIds": []
+        },
+        "c.theft.01": {
+          "objectTileById": {
+            "c.theft.01.object.01": "c.theft.01.t.2.1",
+            "c.theft.01.object.02": "c.theft.01.t.4.1"
+          },
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "c.theft.02": {
+          "objectTileById": {
+            "c.theft.02.object.01": "c.theft.02.t.2.1",
+            "c.theft.02.object.02": "c.theft.02.t.4.1"
+          },
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "c.theft.03": {
+          "objectTileById": {
+            "c.theft.03.object.01": "c.theft.03.t.2.1",
+            "c.theft.03.object.02": "c.theft.03.t.5.1",
+            "c.theft.03.object.03": "c.theft.03.t.5.3"
+          },
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        }
+      },
+      "staticRoom": null,
+      "completedRoom": null,
+      "realtimeRoom": null,
+      "data": {
+        "a": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "b": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "c": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "d": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        }
+      },
+      "claimedRewardIds": [
+        "hub.supply.tutorial",
+        "a.supply.maze01",
+        "b.supply.line01",
+        "d.supply.permission03",
+        "d.supply.permission04",
+        "d.supply.permission01",
+        "d.supply.permission02",
+        "d.supply.ghosts",
+        "d.supply.hidden",
+        "a.supply.revisit",
+        "a.supply.maze03",
+        "b.supply.revisit",
+        "b.supply.line02",
+        "c.supply.route.entry",
+        "c.supply.side",
+        "c.supply.route.exit",
+        "c.supply.theft01",
+        "c.supply.theft02",
+        "c.supply.theft03",
+        "hub.supply.final",
+        "a.supply.firewall.inner",
+        "a.supply.firewall.deep",
+        "a.supply.firewall.core",
+        "b.supply.antivirus.light",
+        "b.supply.antivirus.medium",
+        "b.supply.antivirus.heavy"
+      ],
+      "supply": {
+        "collected": 130,
+        "total": 130,
+        "count": 26
+      },
+      "bestResults": [
+        {
+          "challengeId": "d.ghost.01",
+          "ruleVersion": 1
+        },
+        {
+          "challengeId": "d.ghost.02",
+          "ruleVersion": 1
+        },
+        {
+          "challengeId": "a.firewall.tutorial",
+          "ruleVersion": 1,
+          "bestCombo": 30
+        },
+        {
+          "challengeId": "a.firewall.inner",
+          "ruleVersion": 1,
+          "bestCombo": 88
+        },
+        {
+          "challengeId": "a.firewall.deep",
+          "ruleVersion": 1,
+          "bestCombo": 84
+        },
+        {
+          "challengeId": "a.firewall.core",
+          "ruleVersion": 1,
+          "bestCombo": 89
+        },
+        {
+          "challengeId": "b.antivirus.light",
+          "ruleVersion": 1,
+          "bestScore": 71,
+          "bestStarClear": 0
+        },
+        {
+          "challengeId": "b.antivirus.medium",
+          "ruleVersion": 1,
+          "bestScore": 99,
+          "bestStarClear": 0
+        },
+        {
+          "challengeId": "b.antivirus.heavy",
+          "ruleVersion": 1,
+          "bestScore": 140,
+          "bestStarClear": 1
+        }
+      ],
+      "lastResult": {
+        "code": "accepted",
+        "message": "已继续"
+      },
+      "saveStatus": "已保存 · 10:52:52",
+      "saveGeneration": 882,
+      "session": "held",
+      "render": {
+        "geometries": 10,
+        "textures": 17,
+        "calls": 23,
+        "tileCount": 53,
+        "residentIconCount": 14,
+        "pendingIconCount": 0,
+        "layout": {
+          "canvas": {
+            "width": 1512,
+            "height": 647
+          },
+          "insets": {
+            "left": 248,
+            "right": 202,
+            "top": 8,
+            "bottom": 8
+          },
+          "available": {
+            "left": 248,
+            "top": 8,
+            "width": 1062,
+            "height": 631
+          },
+          "boardBounds": {
+            "minX": -4.495,
+            "maxX": 9.495,
+            "minY": -3.928315154574996,
+            "maxY": 5.6404991457007645,
+            "width": 13.989999999999998,
+            "height": 9.568814300275761
+          },
+          "focus": {
+            "x": 0,
+            "y": -2.6079997309804845
+          },
+          "pixelsPerWorldUnit": 103.69194759345434,
+          "camera": {
+            "left": -7.512637365576642,
+            "right": 7.06901564694182,
+            "top": 3.1198179560514037,
+            "bottom": -3.1198179560514037
+          },
+          "requestedZoom": 1,
+          "effectiveZoom": 1,
+          "zoomLimited": false,
+          "targetCss": {
+            "width": 100.58118916565071,
+            "height": 88.03439791956959,
+            "minimum": 88.03439791956959
+          },
+          "visibleColumns": 10.241875330221301,
+          "visibleRows": 7,
+          "fitsBoard": false,
+          "requiresExpandedViewport": false,
+          "compactViewport": false,
+          "boardBoundsCss": {
+            "minX": 312.9046955674227,
+            "maxX": 1763.5550423998488,
+            "minY": 186.59392228980846,
+            "maxY": 1178.8029132454992,
+            "width": 1450.650346832426,
+            "height": 992.2089909556908
+          },
+          "displayedFocus": {
+            "x": 0,
+            "y": -2.6079997309804845
+          },
+          "devicePixelRatio": 2
+        }
+      },
+      "transition": {
+        "active": false,
+        "lastDurationMs": 24.799999952316284
+      },
+      "firstStartupReadyMs": 9287.100000023842,
+      "firstGamePreparationMs": 101.20000004768372,
+      "inputLatency": {
+        "method": "physical input handler (including pending direction) to animation frame after presentation",
+        "sampleCount": 6,
+        "p95Ms": 45.09999997615523,
+        "maxMs": 45.09999997615523
+      },
+      "faults": {
+        "active": true,
+        "storage": null,
+        "feedback": null,
+        "rendererStartup": false,
+        "audioEnable": false,
+        "records": []
+      },
+      "frameSummary": {
+        "sampleCount": 0,
+        "medianMs": 0,
+        "p95Ms": 0,
+        "meanMs": 0
+      }
+    }
+  },
+  {
+    "action": "Result Tab to Return",
+    "focus": {
+      "dialogOpen": true,
+      "id": "",
+      "label": null,
+      "tag": "BUTTON",
+      "text": "返回地图",
+      "title": "重新尝试",
+      "type": "button"
+    },
+    "snapshot": {
+      "profile": "M5",
+      "schemaVersion": 2,
+      "contentVersion": 4,
+      "ruleVersion": 1,
+      "position": {
+        "space": "room",
+        "areaId": "a",
+        "boardId": "a.firewall.tutorial.board",
+        "tileId": "a.firewall.tutorial.tile.2.2"
+      },
+      "mode": "challengeResult",
+      "phase": "failure",
+      "activeTimeMs": 15000,
+      "countdownRemainingMs": 0,
+      "pauseReasons": [],
+      "viewport": {
+        "width": 1512,
+        "height": 771,
+        "devicePixelRatio": 2
+      },
+      "settings": {
+        "masterVolume": 0.2,
+        "muted": true,
+        "reducedFlash": true,
+        "reducedMotion": true,
+        "quality": "standard",
+        "zoom": 1
+      },
+      "audio": {
+        "enabled": true
+      },
+      "completedObjectiveIds": [
+        "hub.amplifier",
+        "hub.tutorial",
+        "a.nexus.route",
+        "a.maze.01",
+        "a.main",
+        "b.line.01",
+        "b.switch.shortcut",
+        "b.main",
+        "c.routing.01",
+        "c.main",
+        "d.reveal.03",
+        "d.permission.03",
+        "d.reveal.04",
+        "d.permission.04",
+        "d.ghost.01",
+        "d.permission.01",
+        "d.ghost.02",
+        "d.ghosts.cleared",
+        "d.permission.02",
+        "d.main",
+        "d.reveal.hidden",
+        "d.hidden.terminal",
+        "a.revisit.nexus",
+        "a.revisit.terminal",
+        "a.maze.03",
+        "a.maze.02",
+        "a.nexus.side",
+        "a.side.terminal",
+        "b.revisit.nexus",
+        "b.revisit.terminal",
+        "b.south.terminal",
+        "b.nexus.north",
+        "b.north.terminal",
+        "b.line.02",
+        "c.side.terminal",
+        "c.theft.01",
+        "c.theft.02",
+        "c.theft.03",
+        "warehouse.complete",
+        "a.firewall.access",
+        "a.firewall.tutorial",
+        "a.firewall.inner",
+        "a.firewall.deep",
+        "a.firewall.core",
+        "b.antivirus.access",
+        "b.antivirus.light",
+        "b.antivirus.medium",
+        "b.antivirus.heavy"
+      ],
+      "completedRoomLayouts": {
+        "a.maze.01": {
+          "objectTileById": {},
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "b.line.01": {
+          "objectTileById": {},
+          "visitedTileIds": [
+            "b.line.01.t.0.0",
+            "b.line.01.t.1.0",
+            "b.line.01.t.2.0",
+            "b.line.01.t.2.1",
+            "b.line.01.t.1.1",
+            "b.line.01.t.0.1",
+            "b.line.01.t.0.2",
+            "b.line.01.t.1.2",
+            "b.line.01.t.2.2",
+            "b.line.01.t.3.2",
+            "b.line.01.t.3.1",
+            "b.line.01.t.3.0"
+          ],
+          "activatedLocalIds": []
+        },
+        "c.routing.01": {
+          "objectTileById": {
+            "c.routing.01.ball.01": "c.routing.01.t.4.1",
+            "c.routing.01.ball.02": "c.routing.01.t.2.1",
+            "c.routing.01.cart.01": "c.routing.01.t.5.3"
+          },
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "a.maze.03": {
+          "objectTileById": {},
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "a.maze.02": {
+          "objectTileById": {},
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "b.line.02": {
+          "objectTileById": {},
+          "visitedTileIds": [
+            "b.line.02.t.0.0",
+            "b.line.02.t.1.0",
+            "b.line.02.t.2.0",
+            "b.line.02.t.3.0",
+            "b.line.02.t.4.0",
+            "b.line.02.t.4.1",
+            "b.line.02.t.4.2",
+            "b.line.02.t.3.2",
+            "b.line.02.t.3.1",
+            "b.line.02.t.2.1",
+            "b.line.02.t.1.1",
+            "b.line.02.t.0.1",
+            "b.line.02.t.0.2",
+            "b.line.02.t.1.2",
+            "b.line.02.t.1.3",
+            "b.line.02.t.0.3",
+            "b.line.02.t.0.4",
+            "b.line.02.t.1.4",
+            "b.line.02.t.2.4",
+            "b.line.02.t.2.3",
+            "b.line.02.t.3.3",
+            "b.line.02.t.3.4",
+            "b.line.02.t.4.4",
+            "b.line.02.t.4.3"
+          ],
+          "activatedLocalIds": []
+        },
+        "c.theft.01": {
+          "objectTileById": {
+            "c.theft.01.object.01": "c.theft.01.t.2.1",
+            "c.theft.01.object.02": "c.theft.01.t.4.1"
+          },
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "c.theft.02": {
+          "objectTileById": {
+            "c.theft.02.object.01": "c.theft.02.t.2.1",
+            "c.theft.02.object.02": "c.theft.02.t.4.1"
+          },
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "c.theft.03": {
+          "objectTileById": {
+            "c.theft.03.object.01": "c.theft.03.t.2.1",
+            "c.theft.03.object.02": "c.theft.03.t.5.1",
+            "c.theft.03.object.03": "c.theft.03.t.5.3"
+          },
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        }
+      },
+      "staticRoom": null,
+      "completedRoom": null,
+      "realtimeRoom": {
+        "roomId": "a.firewall.tutorial",
+        "returnAnchor": {
+          "space": "world",
+          "areaId": "a",
+          "boardId": "a",
+          "tileId": "a.t.0.-3"
+        },
+        "state": {
+          "challengeId": "a.firewall.tutorial",
+          "activeTimeMs": 15000,
+          "playerTileId": "a.firewall.tutorial.tile.2.2",
+          "status": "failure",
+          "eventSequence": 31,
+          "lastInputSequence": -1,
+          "kind": "firewall",
+          "combo": 0,
+          "bestCombo": 0,
+          "scoredBeatIndices": [],
+          "nextBeatIndex": 30,
+          "maskIndex": 29
+        },
+        "practice": true
+      },
+      "data": {
+        "a": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "b": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "c": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "d": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        }
+      },
+      "claimedRewardIds": [
+        "hub.supply.tutorial",
+        "a.supply.maze01",
+        "b.supply.line01",
+        "d.supply.permission03",
+        "d.supply.permission04",
+        "d.supply.permission01",
+        "d.supply.permission02",
+        "d.supply.ghosts",
+        "d.supply.hidden",
+        "a.supply.revisit",
+        "a.supply.maze03",
+        "b.supply.revisit",
+        "b.supply.line02",
+        "c.supply.route.entry",
+        "c.supply.side",
+        "c.supply.route.exit",
+        "c.supply.theft01",
+        "c.supply.theft02",
+        "c.supply.theft03",
+        "hub.supply.final",
+        "a.supply.firewall.inner",
+        "a.supply.firewall.deep",
+        "a.supply.firewall.core",
+        "b.supply.antivirus.light",
+        "b.supply.antivirus.medium",
+        "b.supply.antivirus.heavy"
+      ],
+      "supply": {
+        "collected": 130,
+        "total": 130,
+        "count": 26
+      },
+      "bestResults": [
+        {
+          "challengeId": "d.ghost.01",
+          "ruleVersion": 1
+        },
+        {
+          "challengeId": "d.ghost.02",
+          "ruleVersion": 1
+        },
+        {
+          "challengeId": "a.firewall.tutorial",
+          "ruleVersion": 1,
+          "bestCombo": 30
+        },
+        {
+          "challengeId": "a.firewall.inner",
+          "ruleVersion": 1,
+          "bestCombo": 88
+        },
+        {
+          "challengeId": "a.firewall.deep",
+          "ruleVersion": 1,
+          "bestCombo": 84
+        },
+        {
+          "challengeId": "a.firewall.core",
+          "ruleVersion": 1,
+          "bestCombo": 89
+        },
+        {
+          "challengeId": "b.antivirus.light",
+          "ruleVersion": 1,
+          "bestScore": 71,
+          "bestStarClear": 0
+        },
+        {
+          "challengeId": "b.antivirus.medium",
+          "ruleVersion": 1,
+          "bestScore": 99,
+          "bestStarClear": 0
+        },
+        {
+          "challengeId": "b.antivirus.heavy",
+          "ruleVersion": 1,
+          "bestScore": 140,
+          "bestStarClear": 1
+        }
+      ],
+      "lastResult": {
+        "code": "failure",
+        "message": "本次未达标 · 可重试"
+      },
+      "saveStatus": "已保存 · 10:53:10",
+      "saveGeneration": 884,
+      "session": "held",
+      "render": {
+        "geometries": 10,
+        "textures": 5,
+        "calls": 11,
+        "tileCount": 25,
+        "residentIconCount": 2,
+        "pendingIconCount": 0,
+        "layout": {
+          "canvas": {
+            "width": 1512,
+            "height": 647
+          },
+          "insets": {
+            "left": 248,
+            "right": 202,
+            "top": 8,
+            "bottom": 8
+          },
+          "available": {
+            "left": 248,
+            "top": 8,
+            "width": 1062,
+            "height": 631
+          },
+          "boardBounds": {
+            "minX": -0.495,
+            "maxX": 4.495,
+            "minY": -0.4509821799343498,
+            "maxY": 3.9018326583804415,
+            "width": 4.99,
+            "height": 4.352814838314791
+          },
+          "focus": {
+            "x": 2,
+            "y": 1.7254252392230458
+          },
+          "pixelsPerWorldUnit": 123.65724016911189,
+          "camera": {
+            "left": -6.299671567428245,
+            "right": 5.927675557028118,
+            "top": 2.6161023774878527,
+            "bottom": -2.6161023774878527
+          },
+          "requestedZoom": 1,
+          "effectiveZoom": 1,
+          "zoomLimited": false,
+          "targetCss": {
+            "width": 119.94752296403853,
+            "height": 104.9849186878478,
+            "minimum": 104.9849186878478
+          },
+          "visibleColumns": 8.58825571836816,
+          "visibleRows": 5.869802950167148,
+          "fitsBoard": true,
+          "requiresExpandedViewport": false,
+          "compactViewport": false,
+          "boardBoundsCss": {
+            "minX": 470.47518577806585,
+            "maxX": 1087.524814221934,
+            "minY": 54.37146506341696,
+            "maxY": 592.628534936583,
+            "width": 617.0496284438682,
+            "height": 538.2570698731661
+          },
+          "displayedFocus": {
+            "x": 2,
+            "y": 1.7254252392230458
+          },
+          "devicePixelRatio": 2
+        }
+      },
+      "transition": {
+        "active": false,
+        "lastDurationMs": 4.5
+      },
+      "firstStartupReadyMs": 9287.100000023842,
+      "firstGamePreparationMs": 101.20000004768372,
+      "inputLatency": {
+        "method": "physical input handler (including pending direction) to animation frame after presentation",
+        "sampleCount": 7,
+        "p95Ms": 45.09999997615523,
+        "maxMs": 45.09999997615523
+      },
+      "faults": {
+        "active": true,
+        "storage": null,
+        "feedback": null,
+        "rendererStartup": false,
+        "audioEnable": false,
+        "records": []
+      },
+      "frameSummary": {
+        "sampleCount": 2082,
+        "medianMs": 8.5,
+        "p95Ms": 11.099999999976717,
+        "meanMs": 8.64726224783862
+      }
+    }
+  },
+  {
+    "action": "Result Return Enter",
+    "focus": {
+      "dialogOpen": false,
+      "id": "game-canvas",
+      "label": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "tag": "CANVAS",
+      "text": "",
+      "title": "重新尝试",
+      "type": null
+    },
+    "snapshot": {
+      "profile": "M5",
+      "schemaVersion": 2,
+      "contentVersion": 4,
+      "ruleVersion": 1,
+      "position": {
+        "space": "world",
+        "areaId": "a",
+        "boardId": "a",
+        "tileId": "a.t.0.-3"
+      },
+      "mode": "explore",
+      "phase": "active",
+      "activeTimeMs": 21.3000000238535,
+      "countdownRemainingMs": 0,
+      "pauseReasons": [],
+      "viewport": {
+        "width": 1512,
+        "height": 771,
+        "devicePixelRatio": 2
+      },
+      "settings": {
+        "masterVolume": 0.2,
+        "muted": true,
+        "reducedFlash": true,
+        "reducedMotion": true,
+        "quality": "standard",
+        "zoom": 1
+      },
+      "audio": {
+        "enabled": true
+      },
+      "completedObjectiveIds": [
+        "hub.amplifier",
+        "hub.tutorial",
+        "a.nexus.route",
+        "a.maze.01",
+        "a.main",
+        "b.line.01",
+        "b.switch.shortcut",
+        "b.main",
+        "c.routing.01",
+        "c.main",
+        "d.reveal.03",
+        "d.permission.03",
+        "d.reveal.04",
+        "d.permission.04",
+        "d.ghost.01",
+        "d.permission.01",
+        "d.ghost.02",
+        "d.ghosts.cleared",
+        "d.permission.02",
+        "d.main",
+        "d.reveal.hidden",
+        "d.hidden.terminal",
+        "a.revisit.nexus",
+        "a.revisit.terminal",
+        "a.maze.03",
+        "a.maze.02",
+        "a.nexus.side",
+        "a.side.terminal",
+        "b.revisit.nexus",
+        "b.revisit.terminal",
+        "b.south.terminal",
+        "b.nexus.north",
+        "b.north.terminal",
+        "b.line.02",
+        "c.side.terminal",
+        "c.theft.01",
+        "c.theft.02",
+        "c.theft.03",
+        "warehouse.complete",
+        "a.firewall.access",
+        "a.firewall.tutorial",
+        "a.firewall.inner",
+        "a.firewall.deep",
+        "a.firewall.core",
+        "b.antivirus.access",
+        "b.antivirus.light",
+        "b.antivirus.medium",
+        "b.antivirus.heavy"
+      ],
+      "completedRoomLayouts": {
+        "a.maze.01": {
+          "objectTileById": {},
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "b.line.01": {
+          "objectTileById": {},
+          "visitedTileIds": [
+            "b.line.01.t.0.0",
+            "b.line.01.t.1.0",
+            "b.line.01.t.2.0",
+            "b.line.01.t.2.1",
+            "b.line.01.t.1.1",
+            "b.line.01.t.0.1",
+            "b.line.01.t.0.2",
+            "b.line.01.t.1.2",
+            "b.line.01.t.2.2",
+            "b.line.01.t.3.2",
+            "b.line.01.t.3.1",
+            "b.line.01.t.3.0"
+          ],
+          "activatedLocalIds": []
+        },
+        "c.routing.01": {
+          "objectTileById": {
+            "c.routing.01.ball.01": "c.routing.01.t.4.1",
+            "c.routing.01.ball.02": "c.routing.01.t.2.1",
+            "c.routing.01.cart.01": "c.routing.01.t.5.3"
+          },
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "a.maze.03": {
+          "objectTileById": {},
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "a.maze.02": {
+          "objectTileById": {},
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "b.line.02": {
+          "objectTileById": {},
+          "visitedTileIds": [
+            "b.line.02.t.0.0",
+            "b.line.02.t.1.0",
+            "b.line.02.t.2.0",
+            "b.line.02.t.3.0",
+            "b.line.02.t.4.0",
+            "b.line.02.t.4.1",
+            "b.line.02.t.4.2",
+            "b.line.02.t.3.2",
+            "b.line.02.t.3.1",
+            "b.line.02.t.2.1",
+            "b.line.02.t.1.1",
+            "b.line.02.t.0.1",
+            "b.line.02.t.0.2",
+            "b.line.02.t.1.2",
+            "b.line.02.t.1.3",
+            "b.line.02.t.0.3",
+            "b.line.02.t.0.4",
+            "b.line.02.t.1.4",
+            "b.line.02.t.2.4",
+            "b.line.02.t.2.3",
+            "b.line.02.t.3.3",
+            "b.line.02.t.3.4",
+            "b.line.02.t.4.4",
+            "b.line.02.t.4.3"
+          ],
+          "activatedLocalIds": []
+        },
+        "c.theft.01": {
+          "objectTileById": {
+            "c.theft.01.object.01": "c.theft.01.t.2.1",
+            "c.theft.01.object.02": "c.theft.01.t.4.1"
+          },
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "c.theft.02": {
+          "objectTileById": {
+            "c.theft.02.object.01": "c.theft.02.t.2.1",
+            "c.theft.02.object.02": "c.theft.02.t.4.1"
+          },
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        },
+        "c.theft.03": {
+          "objectTileById": {
+            "c.theft.03.object.01": "c.theft.03.t.2.1",
+            "c.theft.03.object.02": "c.theft.03.t.5.1",
+            "c.theft.03.object.03": "c.theft.03.t.5.3"
+          },
+          "visitedTileIds": [],
+          "activatedLocalIds": []
+        }
+      },
+      "staticRoom": null,
+      "completedRoom": null,
+      "realtimeRoom": null,
+      "data": {
+        "a": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "b": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "c": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "d": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        }
+      },
+      "claimedRewardIds": [
+        "hub.supply.tutorial",
+        "a.supply.maze01",
+        "b.supply.line01",
+        "d.supply.permission03",
+        "d.supply.permission04",
+        "d.supply.permission01",
+        "d.supply.permission02",
+        "d.supply.ghosts",
+        "d.supply.hidden",
+        "a.supply.revisit",
+        "a.supply.maze03",
+        "b.supply.revisit",
+        "b.supply.line02",
+        "c.supply.route.entry",
+        "c.supply.side",
+        "c.supply.route.exit",
+        "c.supply.theft01",
+        "c.supply.theft02",
+        "c.supply.theft03",
+        "hub.supply.final",
+        "a.supply.firewall.inner",
+        "a.supply.firewall.deep",
+        "a.supply.firewall.core",
+        "b.supply.antivirus.light",
+        "b.supply.antivirus.medium",
+        "b.supply.antivirus.heavy"
+      ],
+      "supply": {
+        "collected": 130,
+        "total": 130,
+        "count": 26
+      },
+      "bestResults": [
+        {
+          "challengeId": "d.ghost.01",
+          "ruleVersion": 1
+        },
+        {
+          "challengeId": "d.ghost.02",
+          "ruleVersion": 1
+        },
+        {
+          "challengeId": "a.firewall.tutorial",
+          "ruleVersion": 1,
+          "bestCombo": 30
+        },
+        {
+          "challengeId": "a.firewall.inner",
+          "ruleVersion": 1,
+          "bestCombo": 88
+        },
+        {
+          "challengeId": "a.firewall.deep",
+          "ruleVersion": 1,
+          "bestCombo": 84
+        },
+        {
+          "challengeId": "a.firewall.core",
+          "ruleVersion": 1,
+          "bestCombo": 89
+        },
+        {
+          "challengeId": "b.antivirus.light",
+          "ruleVersion": 1,
+          "bestScore": 71,
+          "bestStarClear": 0
+        },
+        {
+          "challengeId": "b.antivirus.medium",
+          "ruleVersion": 1,
+          "bestScore": 99,
+          "bestStarClear": 0
+        },
+        {
+          "challengeId": "b.antivirus.heavy",
+          "ruleVersion": 1,
+          "bestScore": 140,
+          "bestStarClear": 1
+        }
+      ],
+      "lastResult": {
+        "code": "accepted",
+        "message": "已继续"
+      },
+      "saveStatus": "已保存 · 10:53:38",
+      "saveGeneration": 885,
+      "session": "held",
+      "render": {
+        "geometries": 10,
+        "textures": 17,
+        "calls": 23,
+        "tileCount": 53,
+        "residentIconCount": 14,
+        "pendingIconCount": 0,
+        "layout": {
+          "canvas": {
+            "width": 1512,
+            "height": 647
+          },
+          "insets": {
+            "left": 248,
+            "right": 202,
+            "top": 8,
+            "bottom": 8
+          },
+          "available": {
+            "left": 248,
+            "top": 8,
+            "width": 1062,
+            "height": 631
+          },
+          "boardBounds": {
+            "minX": -4.495,
+            "maxX": 9.495,
+            "minY": -3.928315154574996,
+            "maxY": 5.6404991457007645,
+            "width": 13.989999999999998,
+            "height": 9.568814300275761
+          },
+          "focus": {
+            "x": 0,
+            "y": -2.6079997309804845
+          },
+          "pixelsPerWorldUnit": 103.69194759345434,
+          "camera": {
+            "left": -7.512637365576642,
+            "right": 7.06901564694182,
+            "top": 3.1198179560514037,
+            "bottom": -3.1198179560514037
+          },
+          "requestedZoom": 1,
+          "effectiveZoom": 1,
+          "zoomLimited": false,
+          "targetCss": {
+            "width": 100.58118916565071,
+            "height": 88.03439791956959,
+            "minimum": 88.03439791956959
+          },
+          "visibleColumns": 10.241875330221301,
+          "visibleRows": 7,
+          "fitsBoard": false,
+          "requiresExpandedViewport": false,
+          "compactViewport": false,
+          "boardBoundsCss": {
+            "minX": 312.9046955674227,
+            "maxX": 1763.5550423998488,
+            "minY": 186.59392228980846,
+            "maxY": 1178.8029132454992,
+            "width": 1450.650346832426,
+            "height": 992.2089909556908
+          },
+          "displayedFocus": {
+            "x": 0,
+            "y": -2.6079997309804845
+          },
+          "devicePixelRatio": 2
+        }
+      },
+      "transition": {
+        "active": false,
+        "lastDurationMs": 22
+      },
+      "firstStartupReadyMs": 9287.100000023842,
+      "firstGamePreparationMs": 101.20000004768372,
+      "inputLatency": {
+        "method": "physical input handler (including pending direction) to animation frame after presentation",
+        "sampleCount": 8,
+        "p95Ms": 45.09999997615523,
+        "maxMs": 45.09999997615523
+      },
+      "faults": {
+        "active": true,
+        "storage": null,
+        "feedback": null,
+        "rendererStartup": false,
+        "audioEnable": false,
+        "records": []
+      },
+      "frameSummary": {
+        "sampleCount": 0,
+        "medianMs": 0,
+        "p95Ms": 0,
+        "meanMs": 0
+      }
+    }
+  }
+]

@@ -12,76 +12,132 @@ export type SessionLockStatus = "idle" | "acquiring" | "held" | "busy" | "unsupp
 export type SessionLockAcquisition = "acquired" | "busy" | "unsupported" | "error" | "cancelled";
 
 export interface SaveSessionLock {
-  acquire(): Promise<SessionLockAcquisition>;
+  acquire(signal?: AbortSignal): Promise<SessionLockAcquisition>;
   release(): void;
   isHeld(): boolean;
   status(): SessionLockStatus;
 }
 
+interface PendingAcquisition {
+  readonly outcome: Promise<SessionLockAcquisition>;
+  cancel(): void;
+  attachSignal(signal: AbortSignal): void;
+}
+
 export function createSessionLock(manager: SessionLockManager | null | undefined): SaveSessionLock {
   let status: SessionLockStatus = manager ? "idle" : "unsupported";
-  let pending: Promise<SessionLockAcquisition> | null = null;
+  let pending: PendingAcquisition | null = null;
   let releaseHeldLock: (() => void) | null = null;
   let requestEpoch = 0;
   return {
-    acquire: () => {
+    acquire: (signal) => {
+      if (signal?.aborted) return Promise.resolve("cancelled");
       if (!manager) return Promise.resolve("unsupported");
+      const availableManager = manager;
       if (status === "held") return Promise.resolve("acquired");
-      if (pending) return pending;
+      if (pending) {
+        // Concurrent callers share one acquisition, including its cancellation.
+        const shared = pending;
+        if (signal) shared.attachSignal(signal);
+        return shared.outcome;
+      }
       status = "acquiring";
       const epoch = ++requestEpoch;
-      let settleAcquisition: (outcome: SessionLockAcquisition) => void = () => {};
+      let resolveOutcome: (outcome: SessionLockAcquisition) => void = () => {};
       const outcome = new Promise<SessionLockAcquisition>((resolve) => {
-        settleAcquisition = resolve;
+        resolveOutcome = resolve;
       });
-      pending = outcome;
-      try {
-        void manager
-          .request(
-            SAVE_WRITER_LOCK_NAME,
-            { mode: "exclusive", ifAvailable: true },
-            async (lock) => {
-              if (epoch !== requestEpoch) {
-                settleAcquisition("cancelled");
-                return;
-              }
-              if (lock === null) {
-                status = "busy";
-                settleAcquisition("busy");
-                return;
-              }
-              status = "held";
-              const released = new Promise<void>((resolve) => {
-                releaseHeldLock = resolve;
-              });
-              settleAcquisition("acquired");
-              await released;
-              if (epoch === requestEpoch) status = "idle";
-            },
-          )
-          .catch(() => {
-            if (epoch === requestEpoch) {
-              status = "error";
-              releaseHeldLock?.();
-              releaseHeldLock = null;
-            }
-            settleAcquisition("error");
-          });
-      } catch {
-        status = "error";
-        settleAcquisition("error");
+      let settled = false;
+      let retryTimer: ReturnType<typeof setTimeout> | null = null;
+      const signals = new Set<AbortSignal>();
+      const operation: PendingAcquisition = {
+        outcome,
+        cancel: () => {
+          if (settled) return;
+          if (epoch === requestEpoch) {
+            requestEpoch += 1;
+            status = "idle";
+          }
+          settle("cancelled");
+        },
+        attachSignal: (nextSignal) => {
+          if (settled) return;
+          if (nextSignal.aborted) {
+            operation.cancel();
+            return;
+          }
+          signals.add(nextSignal);
+          nextSignal.addEventListener("abort", operation.cancel, { once: true });
+        },
+      };
+      function settle(result: SessionLockAcquisition) {
+        if (settled) return;
+        settled = true;
+        if (retryTimer !== null) clearTimeout(retryTimer);
+        retryTimer = null;
+        for (const attached of signals) attached.removeEventListener("abort", operation.cancel);
+        signals.clear();
+        if (pending === operation) pending = null;
+        resolveOutcome(result);
       }
-      void outcome.then(() => {
-        if (pending === outcome) pending = null;
-      });
+      function fail() {
+        if (epoch !== requestEpoch) return;
+        status = "error";
+        releaseHeldLock?.();
+        releaseHeldLock = null;
+        settle("error");
+      }
+      function request(isRetry: boolean) {
+        if (epoch !== requestEpoch) return;
+        try {
+          void availableManager
+            .request(
+              SAVE_WRITER_LOCK_NAME,
+              { mode: "exclusive", ifAvailable: true },
+              async (lock) => {
+                if (epoch !== requestEpoch) return;
+                if (lock === null) {
+                  if (isRetry) {
+                    status = "busy";
+                    settle("busy");
+                  } else {
+                    // Same-origin navigation can overlap the previous page's release.
+                    // One bounded retry also preserves an actual holder's exclusivity.
+                    retryTimer = setTimeout(() => {
+                      retryTimer = null;
+                      request(true);
+                    }, 100);
+                  }
+                  return;
+                }
+                status = "held";
+                const released = new Promise<void>((resolve) => {
+                  releaseHeldLock = resolve;
+                });
+                settle("acquired");
+                await released;
+                if (epoch === requestEpoch) {
+                  status = "idle";
+                  releaseHeldLock = null;
+                }
+              },
+            )
+            .catch(fail);
+        } catch {
+          fail();
+        }
+      }
+      pending = operation;
+      if (signal) operation.attachSignal(signal);
+      request(false);
       return outcome;
     },
     release: () => {
+      pending?.cancel();
       requestEpoch += 1;
       releaseHeldLock?.();
       releaseHeldLock = null;
       status = manager ? "idle" : "unsupported";
-      pending = null;
     },
     isHeld: () => status === "held",
     status: () => status,

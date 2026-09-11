@@ -1110,3 +1110,41 @@ for (const sample of [
     assert.deepEqual(readFileSync(url), sourceBytes);
   });
 }
+
+test("G09/P07 M4 已完成仓库的真实全收集档在 M5 首次访问挑战不重复结算事件", () => {
+  const url = new URL(
+    "../docs/verification/evidence/m4-chrome-browser-full-save.json",
+    import.meta.url,
+  );
+  const bytes = readFileSync(url);
+  const original = (JSON.parse(bytes.toString("utf8")) as { payload: SavePayload }).payload;
+  const payload = valid(original, actualM5, actualRegistry).value;
+  let state = restorePayload(payload, actualM5, 0);
+  const events = [];
+  const commands: GameCommand[] = [
+    { kind: "Teleport", teleportId: "a.teleport" },
+    { kind: "Move", direction: "up" },
+    { kind: "Move", direction: "up" },
+    { kind: "Move", direction: "up" },
+    { kind: "Interact" },
+  ];
+  for (const [index, command] of commands.entries()) {
+    const result = dispatch(actualM5, state, command, (index + 1) * 140, savedAt);
+    assert.equal(result.code, "accepted");
+    state = result.state;
+    events.push(...result.events);
+  }
+  assert.equal(state.mode, "challengeReady");
+  assert.deepEqual(state.scopeCompletionHistory, ["M4", "M5"]);
+  assert.equal(events.filter((event) => event.kind === "success").length, 0);
+  assert.equal(events.filter((event) => event.kind === "pickup").length, 0);
+  assert.deepEqual(state.claimedRewardIds, original.claimedRewardIds);
+  assert.equal(state.campaignCompletedAt, original.campaignCompletedAt);
+  const restored = restorePayload(
+    valid(stablePayload(state), actualM5, actualRegistry).value,
+    actualM5,
+    0,
+  );
+  assert.deepEqual(restored.scopeCompletionHistory, ["M4", "M5"]);
+  assert.deepEqual(readFileSync(url), bytes);
+});

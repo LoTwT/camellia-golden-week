@@ -1,0 +1,40 @@
+{
+  "recordedAt": "2026-09-11T08:46:10.771Z",
+  "method": "After observation server stopped and fixed5174 returned to production, normal reload/Continue, F at completed warehouse terminal, real pause/storage/export, then return and Continue. No import or state injection.",
+  "afterF": "- main:\n  - generic: CGW\n  - text: 沙罗黄金周\n  - generic: CAMELLIA GOLDEN WEEK\n  - generic: 当前目标\n  - strong: 主目标完成 · 可自由回访与补齐物资\n  - status: 已保存 · 2026/9/11 16:44:01\n  - button \"打开暂停菜单\": 菜单 Esc\n  - generic \"电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停\" [active]\n  - generic: CENTRAL WAREHOUSE / FINAL TERMINAL\n  - heading \"中央仓库\" [level=1]\n  - text: M5 / 探索中\n  - complementary:\n    - generic: 区域数据\n    - strong: —\n    - generic: 四区数据全部取得后开启仓库\n    - generic: 沙罗物资\n    - strong: 130 / 130\n    - generic: 阳炎增幅仪 ∞\n    - button \"收集记录 ↗\"\n  - status\n  - generic: 已完成，永久结果保留\n  - generic: WASD / ↑↓←→ 移动\n  - button \"F 交互\"\n  - button \"R 增幅\"\n  - button \"M 区域图\"",
+  "finalDom": {
+    "canvasBusy": "false",
+    "dialogOpen": false,
+    "hasFaultPanel": false,
+    "hasInspection": false,
+    "mission": "主目标完成 · 可自由回访与补齐物资",
+    "saveStatus": "已保存 · 2026/9/11 16:44:01",
+    "scripts": [
+      "http://localhost:5174/assets/index-BpL7y5kK.js"
+    ],
+    "supply": "130 / 130",
+    "transitionHidden": true
+  },
+  "generation": 1109,
+  "position": {
+    "space": "world",
+    "areaId": "warehouse",
+    "boardId": "warehouse",
+    "tileId": "warehouse.t.7.0"
+  },
+  "settings": {
+    "masterVolume": 0.6,
+    "muted": false,
+    "reducedFlash": false,
+    "reducedMotion": false,
+    "quality": "standard",
+    "zoom": 1
+  },
+  "rewards": 26,
+  "objectivesUnchanged": true,
+  "layoutsUnchanged": true,
+  "bestResultsUnchanged": true,
+  "exportFile": "m5-chrome-final-production-restored-save.json",
+  "screenshot": "m5-chrome-final-playable-production.jpg",
+  "retainedLiveTab": "546939540"
+}

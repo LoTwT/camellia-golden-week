@@ -1,0 +1,340 @@
+{
+  "method": "Only fixture storage fault sets future517 A and valid516 B, then one read failure. Explicit temporary new game normal R tutorial earns1, UI export, refresh and raw A/B UI exports compared to original fixtures.",
+  "unavailable": {
+    "profile": "M5",
+    "loaded": false,
+    "session": "held",
+    "saveStatus": "正在读取进度",
+    "saveInspection": {
+      "status": "unavailable",
+      "maxGeneration": 516,
+      "latestId": "b",
+      "backupId": null,
+      "slots": {
+        "a": {
+          "status": "unreadable",
+          "generation": null,
+          "savedAt": null
+        },
+        "b": {
+          "status": "valid",
+          "generation": 516,
+          "savedAt": "2026-09-10T20:01:51.693Z"
+        }
+      }
+    },
+    "faults": {
+      "active": true,
+      "storage": null,
+      "feedback": null,
+      "rendererStartup": false,
+      "audioEnable": false,
+      "records": [
+        {
+          "sequence": 1,
+          "message": "已配置 槽 A 的一次 get 故障：camellia-golden-week.save.a"
+        },
+        {
+          "sequence": 2,
+          "message": "已触发一次读取拒绝：camellia-golden-week.save.a"
+        }
+      ]
+    }
+  },
+  "earned": {
+    "profile": "M5",
+    "schemaVersion": 2,
+    "contentVersion": 4,
+    "ruleVersion": 1,
+    "position": {
+      "space": "world",
+      "areaId": "hub",
+      "boardId": "hub",
+      "tileId": "hub.t.3.2"
+    },
+    "mode": "explore",
+    "phase": "active",
+    "activeTimeMs": 1414.7999999761582,
+    "countdownRemainingMs": 0,
+    "pauseReasons": [],
+    "viewport": {
+      "width": 1366,
+      "height": 768,
+      "devicePixelRatio": 1
+    },
+    "settings": {
+      "masterVolume": 0.6,
+      "muted": false,
+      "reducedFlash": false,
+      "reducedMotion": false,
+      "quality": "standard",
+      "zoom": 1
+    },
+    "audio": {
+      "enabled": true
+    },
+    "completedObjectiveIds": [
+      "hub.amplifier",
+      "hub.tutorial"
+    ],
+    "completedRoomLayouts": {},
+    "staticRoom": null,
+    "completedRoom": null,
+    "realtimeRoom": null,
+    "data": {
+      "a": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 100,
+        "complete": false
+      },
+      "b": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 100,
+        "complete": false
+      },
+      "c": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 100,
+        "complete": false
+      },
+      "d": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 100,
+        "complete": false
+      }
+    },
+    "claimedRewardIds": [
+      "hub.supply.tutorial"
+    ],
+    "supply": {
+      "collected": 1,
+      "total": 130,
+      "count": 1
+    },
+    "bestResults": [],
+    "lastResult": {
+      "code": "accepted",
+      "message": "增幅仪 ∞ · 可无限使用"
+    },
+    "saveStatus": "临时进度 · 可导出",
+    "saveGeneration": 516,
+    "session": "held",
+    "render": {
+      "geometries": 10,
+      "textures": 10,
+      "calls": 17,
+      "tileCount": 11,
+      "residentIconCount": 7,
+      "pendingIconCount": 0,
+      "layout": {
+        "canvas": {
+          "width": 1366,
+          "height": 644
+        },
+        "insets": {
+          "left": 248,
+          "right": 202,
+          "top": 8,
+          "bottom": 8
+        },
+        "available": {
+          "left": 248,
+          "top": 8,
+          "width": 916,
+          "height": 628
+        },
+        "boardBounds": {
+          "minX": -0.495,
+          "maxX": 5.495,
+          "minY": -0.4509821799343498,
+          "maxY": 3.03249941472028,
+          "width": 5.99,
+          "height": 3.48348159465463
+        },
+        "focus": {
+          "x": 3,
+          "y": 1.738666487320323
+        },
+        "pixelsPerWorldUnit": 101.77777777777777,
+        "camera": {
+          "left": -6.936681222707424,
+          "right": 6.4847161572052405,
+          "top": 3.163755458515284,
+          "bottom": -3.163755458515284
+        },
+        "requestedZoom": 1,
+        "effectiveZoom": 1,
+        "zoomLimited": false,
+        "targetCss": {
+          "width": 98.72444444444443,
+          "height": 86.40926895681164,
+          "minimum": 86.40926895681164
+        },
+        "visibleColumns": 9,
+        "visibleRows": 7.097744992331138,
+        "fitsBoard": true,
+        "requiresExpandedViewport": false,
+        "compactViewport": false,
+        "boardBoundsCss": {
+          "minX": 350.2866666666667,
+          "maxX": 959.9355555555555,
+          "minY": 99.14242453274665,
+          "maxY": 453.6834401664845,
+          "width": 609.6488888888889,
+          "height": 354.54101563373786
+        },
+        "displayedFocus": {
+          "x": 3,
+          "y": 1.738666487320323
+        },
+        "devicePixelRatio": 1
+      }
+    },
+    "transition": {
+      "active": false,
+      "lastDurationMs": 45.5
+    },
+    "firstStartupReadyMs": 108.79999995231628,
+    "firstGamePreparationMs": 45.5,
+    "inputLatency": {
+      "method": "physical input handler (including pending direction) to animation frame after presentation",
+      "sampleCount": 4,
+      "p95Ms": 14.400000023841812,
+      "maxMs": 14.400000023841812
+    },
+    "faults": {
+      "active": true,
+      "storage": null,
+      "feedback": null,
+      "rendererStartup": false,
+      "audioEnable": false,
+      "records": [
+        {
+          "sequence": 1,
+          "message": "已配置 槽 A 的一次 get 故障：camellia-golden-week.save.a"
+        },
+        {
+          "sequence": 2,
+          "message": "已触发一次读取拒绝：camellia-golden-week.save.a"
+        }
+      ]
+    },
+    "frameSummary": {
+      "sampleCount": 118,
+      "medianMs": 8.400000000000091,
+      "p95Ms": 12.799999999999955,
+      "meanMs": 8.566101694915254
+    }
+  },
+  "afterReload": {
+    "profile": "M5",
+    "loaded": false,
+    "session": "held",
+    "saveStatus": "正在读取进度",
+    "saveInspection": {
+      "status": "future",
+      "maxGeneration": 517,
+      "latestId": "a",
+      "backupId": "b",
+      "slots": {
+        "a": {
+          "status": "future",
+          "generation": 517,
+          "savedAt": "2026-09-10T20:01:51.693Z"
+        },
+        "b": {
+          "status": "valid",
+          "generation": 516,
+          "savedAt": "2026-09-10T20:01:51.693Z"
+        }
+      }
+    },
+    "faults": {
+      "active": true,
+      "storage": null,
+      "feedback": null,
+      "rendererStartup": false,
+      "audioEnable": false,
+      "records": []
+    }
+  },
+  "originalAUnchanged": true,
+  "originalBUnchanged": true,
+  "exportedSave": {
+    "saveGeneration": 516,
+    "savedAt": "2026-09-11T02:02:20.436Z",
+    "payload": {
+      "gameId": "camellia-golden-week",
+      "schemaVersion": 2,
+      "contentVersion": 4,
+      "ruleVersion": 1,
+      "releaseProfileId": "M5",
+      "completedObjectiveIds": [
+        "hub.amplifier",
+        "hub.tutorial"
+      ],
+      "completedRoomLayouts": {},
+      "claimedRewardIds": [
+        "hub.supply.tutorial"
+      ],
+      "activatedTeleportIds": [
+        "hub.teleport"
+      ],
+      "capabilities": [
+        "amplifier",
+        "unlimitedAmplifier"
+      ],
+      "playerPosition": {
+        "space": "world",
+        "areaId": "hub",
+        "boardId": "hub",
+        "tileId": "hub.t.3.2"
+      },
+      "discoveredTileIds": [
+        "b.t.0.0",
+        "c.t.0.0",
+        "hub.t.0.2",
+        "hub.t.1.2",
+        "hub.t.0.1",
+        "hub.t.0.3",
+        "hub.t.2.2",
+        "hub.t.1.3",
+        "hub.t.3.2",
+        "hub.t.2.3",
+        "hub.t.4.2"
+      ],
+      "visitedTileIds": [
+        "hub.t.0.2",
+        "hub.t.1.2",
+        "hub.t.2.2",
+        "hub.t.3.2"
+      ],
+      "clearedEtherNodeIds": [
+        "hub.nexus"
+      ],
+      "revealedGroupIds": [],
+      "bestResults": [],
+      "scopeCompletionHistory": [],
+      "campaignCompletedAt": null,
+      "settings": {
+        "masterVolume": 0.6,
+        "muted": false,
+        "reducedFlash": false,
+        "reducedMotion": false,
+        "quality": "standard",
+        "zoom": 1
+      },
+      "stateRevision": 4,
+      "room": null,
+      "resumeHint": null
+    }
+  }
+}

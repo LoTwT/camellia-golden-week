@@ -1,0 +1,6 @@
+						7 heading 确认导入进度, Value: 2
+						9 text M5 · 仓储区 A · 1 单位物资 · 已完成 0 区主路径。确认后替换当前世界；写入与回读成功后才生效。
+						10 button 先导出当前进度
+						11 button 确认替换
+						12 button 取消
+The focused UI element is 10 button 先导出当前进度

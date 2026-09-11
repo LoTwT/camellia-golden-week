@@ -1,0 +1,319 @@
+{
+  "method": "Read-only semantic validation of actual production UI exports using current M5 validatePayload and content ledger; this file does not drive any browser or synthesize a playthrough.",
+  "exports": [
+    {
+      "file": "m5-production-iab-save.json",
+      "bytes": 2683,
+      "sha256": "be2b52d9867ce753465b20d845924ecaf0a5b7b342ea19c5f0645c5983979abd",
+      "valid": true,
+      "saveGeneration": 170,
+      "position": {
+        "space": "world",
+        "areaId": "a",
+        "boardId": "a",
+        "tileId": "a.t.1.-2"
+      },
+      "supply": {
+        "collected": 26,
+        "total": 130,
+        "count": 6
+      },
+      "data": {
+        "a": {
+          "collected": 80,
+          "total": 100,
+          "includedCollected": 80,
+          "includedTotal": 100,
+          "complete": false
+        },
+        "b": {
+          "collected": 0,
+          "total": 100,
+          "includedCollected": 0,
+          "includedTotal": 100,
+          "complete": false
+        },
+        "c": {
+          "collected": 0,
+          "total": 100,
+          "includedCollected": 0,
+          "includedTotal": 100,
+          "complete": false
+        },
+        "d": {
+          "collected": 0,
+          "total": 100,
+          "includedCollected": 0,
+          "includedTotal": 100,
+          "complete": false
+        }
+      },
+      "layoutCount": 3
+    },
+    {
+      "file": "m5-production-chrome-before-repeat-save.json",
+      "bytes": 9340,
+      "sha256": "51bae888bf0c8536adb52316150b71b4c1e1322a722e1f43d4065b68e16c741e",
+      "valid": true,
+      "saveGeneration": 947,
+      "position": {
+        "space": "world",
+        "areaId": "warehouse",
+        "boardId": "warehouse",
+        "tileId": "warehouse.t.7.0"
+      },
+      "supply": {
+        "collected": 130,
+        "total": 130,
+        "count": 26
+      },
+      "data": {
+        "a": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "b": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "c": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "d": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        }
+      },
+      "layoutCount": 9
+    },
+    {
+      "file": "m5-production-chrome-full-save.json",
+      "bytes": 9340,
+      "sha256": "45db82c2acdf0149dfba84a96b7e4f772486cc5d1772f4785a81d0b597a042fb",
+      "valid": true,
+      "saveGeneration": 947,
+      "position": {
+        "space": "world",
+        "areaId": "warehouse",
+        "boardId": "warehouse",
+        "tileId": "warehouse.t.7.0"
+      },
+      "supply": {
+        "collected": 130,
+        "total": 130,
+        "count": 26
+      },
+      "data": {
+        "a": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "b": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "c": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "d": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        }
+      },
+      "layoutCount": 9
+    },
+    {
+      "file": "m5-production-chrome-restored-save.json",
+      "bytes": 9340,
+      "sha256": "24a233d793c1a9979cc94b84228450e1a0ef525b240755266b71c6146366f9d7",
+      "valid": true,
+      "saveGeneration": 947,
+      "position": {
+        "space": "world",
+        "areaId": "warehouse",
+        "boardId": "warehouse",
+        "tileId": "warehouse.t.7.0"
+      },
+      "supply": {
+        "collected": 130,
+        "total": 130,
+        "count": 26
+      },
+      "data": {
+        "a": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "b": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "c": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        },
+        "d": {
+          "collected": 100,
+          "total": 100,
+          "includedCollected": 100,
+          "includedTotal": 100,
+          "complete": true
+        }
+      },
+      "layoutCount": 9
+    },
+    {
+      "file": "m5-production-safari-save.json",
+      "bytes": 1860,
+      "sha256": "1c586eefb2bd406f7b87d287fe1aa3a00507a5df769ceec6a56754cf180481a6",
+      "valid": true,
+      "saveGeneration": 234,
+      "position": {
+        "space": "world",
+        "areaId": "a",
+        "boardId": "a",
+        "tileId": "a.t.1.4"
+      },
+      "supply": {
+        "collected": 6,
+        "total": 130,
+        "count": 2
+      },
+      "data": {
+        "a": {
+          "collected": 40,
+          "total": 100,
+          "includedCollected": 40,
+          "includedTotal": 100,
+          "complete": false
+        },
+        "b": {
+          "collected": 0,
+          "total": 100,
+          "includedCollected": 0,
+          "includedTotal": 100,
+          "complete": false
+        },
+        "c": {
+          "collected": 0,
+          "total": 100,
+          "includedCollected": 0,
+          "includedTotal": 100,
+          "complete": false
+        },
+        "d": {
+          "collected": 0,
+          "total": 100,
+          "includedCollected": 0,
+          "includedTotal": 100,
+          "complete": false
+        }
+      },
+      "layoutCount": 3
+    },
+    {
+      "file": "m5-production-safari-restored-save.json",
+      "bytes": 1860,
+      "sha256": "01b7319c3584475222d27e974abbc575136f9818647bab6a91f72eaf2eb5b31b",
+      "valid": true,
+      "saveGeneration": 234,
+      "position": {
+        "space": "world",
+        "areaId": "a",
+        "boardId": "a",
+        "tileId": "a.t.1.4"
+      },
+      "supply": {
+        "collected": 6,
+        "total": 130,
+        "count": 2
+      },
+      "data": {
+        "a": {
+          "collected": 40,
+          "total": 100,
+          "includedCollected": 40,
+          "includedTotal": 100,
+          "complete": false
+        },
+        "b": {
+          "collected": 0,
+          "total": 100,
+          "includedCollected": 0,
+          "includedTotal": 100,
+          "complete": false
+        },
+        "c": {
+          "collected": 0,
+          "total": 100,
+          "includedCollected": 0,
+          "includedTotal": 100,
+          "complete": false
+        },
+        "d": {
+          "collected": 0,
+          "total": 100,
+          "includedCollected": 0,
+          "includedTotal": 100,
+          "complete": false
+        }
+      },
+      "layoutCount": 3
+    }
+  ],
+  "comparisons": [
+    {
+      "before": "m5-production-chrome-before-repeat-save.json",
+      "after": "m5-production-chrome-full-save.json",
+      "generationEqual": true,
+      "entirePayloadEqual": true
+    },
+    {
+      "before": "m5-production-chrome-full-save.json",
+      "after": "m5-production-chrome-restored-save.json",
+      "generationEqual": true,
+      "entirePayloadEqual": true
+    },
+    {
+      "before": "m5-production-safari-save.json",
+      "after": "m5-production-safari-restored-save.json",
+      "generationEqual": true,
+      "entirePayloadEqual": true
+    }
+  ]
+}

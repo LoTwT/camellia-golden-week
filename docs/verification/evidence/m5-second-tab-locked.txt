@@ -1,0 +1,13 @@
+Browser tab: 546939404, Title: "沙罗黄金周 · Camellia Golden Week", URL: "http://localhost:5174/".
+0 AXWebArea 沙罗黄金周 · Camellia Golden Week, URL: localhost:5174/
+	1 container 进度正在另一窗口使用, ID: game-dialog
+		2 text CAMELLIA / TERMINAL
+		3 heading 进度正在另一窗口使用, Value: 2, ID: dialog-title
+			4 text 进度正在另一窗口使用
+		5 text 请在原窗口继续，或关闭原窗口后重试。本窗口不会抢锁或写入进度。
+		6 button 重试获取会话
+		7 button 只读导出原始存档
+		8 button (collapsed) 验收故障控制 · 仅平台, Secondary Actions: Expand
+			9 text 验收故障控制 · 仅平台
+
+The focused UI element is 6 button 重试获取会话

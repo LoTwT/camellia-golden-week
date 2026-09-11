@@ -23,7 +23,7 @@ export interface BoardProjection {
   local: boolean;
 }
 const COLORS = {
-  floor: "#25272a",
+  floor: "#363345",
   unknown: "#17181e",
   ether: "#594648",
   danger: "#ca6684",
@@ -31,7 +31,7 @@ const COLORS = {
   data: "#6bb5c4",
   terminal: "#bccc90",
   portal: "#6986ab",
-  player: "#e5dfcc",
+  player: "#e2e1dc",
 };
 
 export function projectBoard(content: GameContent, state: GameState): BoardProjection {
@@ -277,13 +277,14 @@ export function projectBoard(content: GameContent, state: GameState): BoardProje
         if (definition.kind === "ghosts" && active.kind === "ghosts") {
           const lamp = definition.rules.lamps.find((candidate) => candidate.tileId === tile.id);
           if (lamp) {
-            icon = active.litLampIds.includes(lamp.id) ? "lamp-lit" : "lamp-unlit";
-            color = COLORS.reward;
-            label = "灯";
+            const lit = active.litLampIds.includes(lamp.id);
+            icon = lit ? "lamp-lit" : "lamp-unlit";
+            color = lit ? COLORS.reward : "#302d3d";
+            label = lit ? "已点亮的灯" : "未点亮的灯";
           }
           if (Object.values(ghostTileIds(definition, active)).includes(tile.id)) {
             icon = "ghost";
-            color = COLORS.danger;
+            color = "#242232";
             label = "幽灵";
           }
           if (definition.rules.exitTileId === tile.id) {

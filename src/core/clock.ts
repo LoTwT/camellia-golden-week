@@ -1,4 +1,4 @@
-export type PauseReason = "manual" | "hidden" | "blur" | "clockGap" | "graphicsLost";
+export type PauseReason = "manual" | "hidden" | "blur" | "clockGap" | "graphicsLost" | "transition";
 
 export interface ClockState {
   readonly activeTimeMs: number;
@@ -37,6 +37,7 @@ const PAUSE_ORDER: readonly PauseReason[] = [
   "blur",
   "clockGap",
   "graphicsLost",
+  "transition",
 ];
 
 export function createClock(

@@ -1,0 +1,13 @@
+{
+  "method": "Read-only current M5 payload validation and full comparison of actual UI exports across the native Safari reload; direct localhost asset GET only checks static service, does not control a browser.",
+  "before": "m5-production-safari-final-paused-save.json",
+  "after": "m5-production-safari-delayed-reload-save.json",
+  "saveGeneration": 340,
+  "entirePayloadEqual": true,
+  "payloadValid": true,
+  "localProductionScriptHttpStatus": 200,
+  "localProductionScriptBytes": 916070,
+  "localScriptMatchesDisk": true,
+  "sceneConnectionComplete": false,
+  "playableRecoveryVerified": false
+}

@@ -1,0 +1,144 @@
+
+> camellia-golden-week@0.5.0 build
+> npm run lint && npm run format:check && npm run typecheck && npm run validate:content && vite build
+
+
+> camellia-golden-week@0.5.0 lint
+> oxlint --deny-warnings
+
+
+> camellia-golden-week@0.5.0 format:check
+> oxfmt --check
+
+Checking formatting...
+
+All matched files use the correct format.
+Finished in 561ms on 102 files using 10 threads.
+
+> camellia-golden-week@0.5.0 typecheck
+> tsc --noEmit
+
+
+> camellia-golden-week@0.5.0 validate:content
+> node scripts/generate-assets.ts --check && node scripts/validate-content.ts
+
+Asset check passed: 45 records (prepared-all-profiles); exact profile membership, local checksums and recorded font coverage.
+M1 目录账本：6 个奖励 ID / 26 单位；世界地图已收录，继续校验
+M1 世界结构：2 区 / 61 格 / 7 房 / 80 本版数据，引用闭合通过
+M2 目录账本：11 个奖励 ID / 51 单位；世界地图已收录，继续校验
+M2 世界结构：3 区 / 105 格 / 12 房 / 160 本版数据，引用闭合通过
+M3 目录账本：17 个奖励 ID / 81 单位；世界地图已收录，继续校验
+M3 世界结构：4 区 / 146 格 / 16 房 / 260 本版数据，引用闭合通过
+M4 目录账本：26 个奖励 ID / 130 单位；世界地图已收录，继续校验
+M4 世界结构：6 区 / 214 格 / 18 房 / 400 本版数据，引用闭合通过
+M5 目录账本：26 个奖励 ID / 130 单位；世界地图已收录，继续校验
+M5 世界结构：6 区 / 214 格 / 18 房 / 400 本版数据，引用闭合通过
+静态独立规则：9 个固定定义 / 27 条成功、替代解与恢复见证通过
+实时独立规则：9 个固定定义 / 18 条成功与失败见证通过；尚未收录区域不据此视为世界验收通过
+m1.world.main-path：40 条公开命令，2 次首次领取；6 物资，通过
+m1.world.full-collection-and-return：1309 条公开命令，6 次首次领取；26 物资，通过
+m2.world.main-path：78 条公开命令，3 次首次领取；11 物资，通过
+m2.world.full-collection-and-return：2480 条公开命令，11 次首次领取；51 物资，通过
+m3.world.main-path：131 条公开命令，3 次首次领取；11 物资，通过
+m3.world.full-collection-and-return：2788 条公开命令，17 次首次领取；81 物资，通过
+m4.world.main-path-without-scored-challenges：688 条公开命令，20 次首次领取；100 物资，通过
+m4.world.full-collection-and-return：3135 条公开命令，26 次首次领取；130 物资，通过
+m5.world.main-path-without-scored-challenges：688 条公开命令，20 次首次领取；100 物资，通过
+m5.world.full-collection-and-return：3135 条公开命令，26 次首次领取；130 物资，通过
+内容校验只读完成。浏览器、存档故障与视听验收由各自记录承担。
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 28 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/assets/icons/hazard-safe.svg            0.29 kB │ gzip:   0.20 kB
+dist/assets/icons/hazard-active.svg          0.34 kB │ gzip:   0.22 kB
+dist/assets/icons/target-star.svg            0.34 kB │ gzip:   0.24 kB
+dist/assets/icons/door-open.svg              0.34 kB │ gzip:   0.23 kB
+dist/assets/icons/enrichment-used.svg        0.35 kB │ gzip:   0.22 kB
+dist/assets/icons/lamp-unlit.svg             0.35 kB │ gzip:   0.25 kB
+dist/assets/icons/unknown.svg                0.35 kB │ gzip:   0.25 kB
+dist/assets/icons/portal-ready.svg           0.36 kB │ gzip:   0.24 kB
+dist/assets/icons/checkpoint.svg             0.36 kB │ gzip:   0.23 kB
+dist/assets/icons/socket.svg                 0.37 kB │ gzip:   0.24 kB
+dist/assets/icons/supply-collected.svg       0.37 kB │ gzip:   0.23 kB
+dist/assets/icons/data-collected.svg         0.37 kB │ gzip:   0.22 kB
+dist/assets/icons/target-blue.svg            0.38 kB │ gzip:   0.25 kB
+dist/assets/icons/observation.svg            0.38 kB │ gzip:   0.24 kB
+dist/assets/icons/data-object.svg            0.38 kB │ gzip:   0.26 kB
+dist/assets/icons/door-closed.svg            0.41 kB │ gzip:   0.25 kB
+dist/assets/icons/antivirus.svg              0.41 kB │ gzip:   0.27 kB
+dist/assets/icons/data-ready.svg             0.42 kB │ gzip:   0.24 kB
+dist/assets/icons/terminal-complete.svg      0.42 kB │ gzip:   0.23 kB
+dist/assets/icons/firewall.svg               0.44 kB │ gzip:   0.27 kB
+dist/assets/icons/target-purple.svg          0.44 kB │ gzip:   0.24 kB
+dist/assets/icons/portal-locked.svg          0.45 kB │ gzip:   0.27 kB
+dist/assets/icons/enrichment-ready.svg       0.46 kB │ gzip:   0.25 kB
+dist/assets/icons/signal-ball.svg            0.46 kB │ gzip:   0.27 kB
+dist/index.html                              0.47 kB │ gzip:   0.33 kB
+dist/assets/icons/lamp-lit.svg               0.48 kB │ gzip:   0.30 kB
+dist/assets/icons/terminal-ready.svg         0.49 kB │ gzip:   0.25 kB
+dist/assets/icons/supply-ready.svg           0.49 kB │ gzip:   0.25 kB
+dist/assets/icons/station.svg                0.61 kB │ gzip:   0.29 kB
+dist/assets/icons/ghost.svg                  0.64 kB │ gzip:   0.33 kB
+dist/assets/icons/player-hurt.svg            0.65 kB │ gzip:   0.34 kB
+dist/assets/icons/player-idle.svg            0.74 kB │ gzip:   0.35 kB
+dist/assets/icons/player-move.svg            0.81 kB │ gzip:   0.38 kB
+dist/assets/icons/cart.svg                   0.90 kB │ gzip:   0.33 kB
+dist/assets/icons/data-ready.png             1.96 kB
+dist/assets/icons/supply-ready.png           2.00 kB
+dist/assets/icons/target-blue.png            2.20 kB
+dist/assets/icons/door-closed.png            2.20 kB
+dist/assets/icons/checkpoint.png             2.30 kB
+dist/assets/icons/data-collected.png         2.59 kB
+dist/assets/icons/door-open.png              3.07 kB
+dist/assets/icons/terminal-complete.png      3.09 kB
+dist/assets/icons/unknown.png                3.16 kB
+dist/assets/icons/firewall.png               3.18 kB
+dist/assets/icons/supply-collected.png       3.29 kB
+dist/assets/icons/terminal-ready.png         3.33 kB
+dist/assets/icons/hazard-safe.png            3.34 kB
+dist/assets/icons/data-object.png            3.43 kB
+dist/assets/icons/socket.png                 3.61 kB
+dist/assets/audio/beat.wav                   4.01 kB
+dist/assets/fonts/noto-OFL.txt               4.30 kB │ gzip:   1.93 kB
+dist/assets/fonts/barlow-OFL.txt             4.37 kB │ gzip:   1.97 kB
+dist/assets/icons/antivirus.png              5.74 kB
+dist/assets/icons/observation.png            5.85 kB
+dist/assets/icons/enrichment-used.png        5.87 kB
+dist/assets/icons/lamp-lit.png               6.11 kB
+dist/assets/icons/target-star.png            6.12 kB
+dist/assets/icons/portal-ready.png           6.20 kB
+dist/assets/audio/move.wav                   6.21 kB
+dist/assets/icons/ghost.png                  6.31 kB
+dist/assets/icons/hazard-active.png          6.36 kB
+dist/assets/icons/lamp-unlit.png             6.91 kB
+dist/assets/icons/portal-locked.png          7.35 kB
+dist/assets/icons/target-purple.png          7.60 kB
+dist/assets/icons/cart.png                   8.09 kB
+dist/assets/icons/player-hurt.png            8.58 kB
+dist/assets/audio/invalid.wav                8.86 kB
+dist/assets/icons/player-idle.png            9.15 kB
+dist/assets/icons/player-move.png            9.21 kB
+dist/assets/icons/signal-ball.png            9.86 kB
+dist/assets/icons/station.png               10.90 kB
+dist/assets/icons/enrichment-ready.png      11.22 kB
+dist/assets/audio/reveal.wav                15.92 kB
+dist/assets/audio/door.wav                  16.80 kB
+dist/assets/audio/pickup.wav                21.21 kB
+dist/assets/audio/failure.wav               28.26 kB
+dist/assets/audio/portal.wav                30.03 kB
+dist/assets/audio/amplify.wav               31.79 kB
+dist/assets/fonts/camellia-numerals.woff2   39.38 kB
+dist/assets/audio/success.wav               45.90 kB
+dist/assets/manifest.json                  113.37 kB │ gzip:  17.51 kB
+dist/assets/fonts/camellia-ui.woff2        182.59 kB
+dist/assets/index-XdWH7aHE.css               7.94 kB │ gzip:   2.60 kB
+dist/assets/index-BpL7y5kK.js              917.89 kB │ gzip: 216.96 kB
+
+✓ built in 256ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 650 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.

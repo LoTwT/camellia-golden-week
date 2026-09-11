@@ -1,0 +1,57 @@
+Window: "沙罗黄金周 · Camellia Golden Week", App: Safari.
+0 standard window 沙罗黄金周 · Camellia Golden Week, ID: SafariWindow?IsSecure=false&UUID=071A0516-098B-4EF2-9A5F-FB1E6C6E8E4C, Secondary Actions: Raise
+	1 split group
+		2 tab group
+			3 scroll area
+				4 HTML content Description: 沙罗黄金周 · Camellia Golden Week, URL: localhost:5174/
+					5 container 导出当前进度
+						6 text CAMELLIA / TERMINAL
+						7 heading 导出当前进度, Value: 2
+							8 text 导出当前进度
+						9 text 下载 JSON 文件后妥善保存。若浏览器没有下载文件，也可全选下面的完整文本，保存为 .json 文件后导入。
+						10 button 下载存档文件
+						11 button 返回存档菜单
+						12 container
+							13 text 完整存档文本
+							14 text entry area 完整存档文本, Value: {"saveGeneration":262,"savedAt":"2026-09-11T04:44:11.863Z","payload":{"gameId":"camellia-golden-week","schemaVersion":2,"contentVersion":4,"ruleVersion":1,"releaseProfileId":"M5","completedObjectiveIds":["hub.amplifier","hub.tutorial","a.nexus.route","a.maze.01","a.maze.02","a.maze.03","a.nexus.side","a.side.terminal","a.main"],"completedRoomLayouts":{"a.maze.01":{"objectTileById":{},"visitedTileIds":[],"activatedLocalIds":[]},"a.maze.02":{"objectTileById":{},"visitedTileIds":[],"activatedLocalIds":[]},"a.maze.03":{"objectTileById":{},"visitedTileIds":[],"activatedLocalIds":[]}},"claimedRewardIds":["hub.supply.tutorial","a.supply.maze03","a.supply.maze01"],"activatedTeleportIds":["hub.teleport","a.teleport"],"capabilities":["amplifier","unlimitedAmplifier"],"playerPosition":{"space":"world","areaId":"a","boardId":"a","tileId":"a.t.7.0"},"discoveredTileIds":["b.t.0.0","c.t.0.0","hub.t.0.2","hub.t.1.2","hub.t.0.1","hub.t.0.3","hub.t.2.2","hub.t.1.3","hub.t.3.2","hub.t.2.3","hub.t.4.2","hub.t.5.2","hub.t.6.2","a.t.0.0","a.t.1.0","a.t.0.-1","a.t.0.1","a.t.2.0","a.t.1.-1","a.t.1.1","a.t.3.0","a.t.4.0","a.t.3.-1","a.t.5.0","a.t.6.0","a.t.0.-2","a.t.0.-3","a.t.1.-2","a.t.-1.-2","a.t.2.-2","a.t.1.-3","a.t.1.-4","a.t.0.-4","a.t.2.-4","a.t.0.2","a.t.1.2","a.t.1.3","a.t.2.2","a.t.1.4","a.t.2.4","a.t.3.4","a.t.3.3","a.t.4.4","a.t.3.2","a.t.3.-2","a.t.3.-3","a.t.7.0","a.t.8.0"],"visitedTileIds":["hub.t.0.2","hub.t.1.2","hub.t.2.2","hub.t.3.2","hub.t.4.2","hub.t.5.2","hub.t.6.2","a.t.0.0","a.t.1.0","a.t.2.0","a.t.3.0","a.t.4.0","a.t.5.0","a.t.0.-1","a.t.0.-2","a.t.1.-2","a.t.1.-3","a.t.1.-4","a.t.0.-4","a.t.0.1","a.t.0.2","a.t.1.2","a.t.1.3","a.t.1.4","a.t.2.4","a.t.3.4","a.t.3.3","a.t.3.2","a.t.2.2","a.t.1.1","a.t.3.-1","a.t.3.-2","a.t.6.0","a.t.7.0"],"clearedEtherNodeIds":["hub.nexus","a.nexus.route","a.nexus.side"],"revealedGroupIds":[],"bestResults":[],"scopeCompletionHistory":[],"campaignCompletedAt":null,"settings":{"masterVolume":0.6,"muted":false,"reducedFlash":false,"reducedMotion":false,"quality":"standard","zoom":1},"stateRevision":91,"room":null,"resumeHint":null}}
+								15 text {"saveGeneration":262,"savedAt":"2026-09-11T04:44:11.863Z","payload":{"gameId":"camellia-golden-week","schemaVersion":2,"contentVersion":4,"ruleVersion":1,"releaseProfileId":"M5","completedObjectiveIds":["hub.amplifier","hub.tutorial","a.nexus.route","a.maze.01","a.maze.02","a.maze.03","a.nexus.side","a.side.terminal","a.main"],"completedRoomLayouts":{"a.maze.01":{"objectTileById":{},"visitedTileIds":[],"activatedLocalIds":[]},"a.maze.02":{"objectTileById":{},"visitedTileIds":[],"activatedLocalIds":[]},"a.m
+	16 image WindowControlShadowView._shadowImageView
+	17 toolbar
+		18 container Secondary Actions: Move next, Remove from toolbar
+			19 button Description: show sidebar, Help: Show sidebar, ID: SidebarButton
+			20 menu button Description: Tab Group picker, ID: TabGroupPickerButton?TabGroup=
+		21 container BackForwardSegmentedControl
+			22 button Description: Go back, Help: Show the previous page, ID: BackButton
+			23 button (disabled) Description: Go forward, Help: Show the next page, ID: ForwardButton
+		24 container Secondary Actions: Move previous, Move next, Remove from toolbar
+			25 button Page Menu, ID: AssistantButton
+			26 button Add page to Reading List, ID: OneStepBookmarkingButton
+			27 text field (settable) Description: smart search field, Value: localhost:5174, ID: WEB_BROWSER_ADDRESS_AND_SEARCH_FIELD
+			28 button Translation Available, ID: TranslationButton
+			29 button Reload this page, ID: ReloadButton
+		30 button Description: Downloads, ID: DownloadsButton, Secondary Actions: Move previous, Move next, Remove from toolbar
+		31 button Description: Share, ID: ShareButton, Secondary Actions: Move previous, Move next, Remove from toolbar
+		32 button Description: New Tab, ID: NewTabButton, Secondary Actions: Move previous, Move next, Remove from toolbar
+		33 button Description: Tab Overview, ID: TabOverviewButton, Secondary Actions: Move previous, Remove from toolbar
+	34 tab group Description: Tab bar, 2 tabs, ID: TabBar?isSeparate=false
+		35 tab Start Page, Value: off, ID: TabBarTab?isPinned=false&isNarrow=false&isActive=false, Secondary Actions: close tab
+			36 image Description: favorite, ID: FaviconImageView
+			37 text Value: Start Page, ID: UnifiedTabBarButton._titleTextField
+		38 tab 沙罗黄金周 · Camellia Golden Week, Help: To interact with the items in this button, press Control-Option-Shift-Down Arrow., Value: on, ID: TabBarTab?isPinned=false&isNarrow=false&isActive=true, Secondary Actions: close tab
+			39 image FaviconImageView
+			40 text Value: 沙罗黄金周 · Camellia Golden Week, ID: UnifiedTabBarButton._titleTextField
+	41 close button
+	42 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window
+	43 minimize button
+44 menu bar
+	45 Safari
+	46 File
+	47 Edit
+	48 View, ID: SafariViewMenu
+	49 History
+	50 Bookmarks, ID: SafariBookmarksMenu
+	51 Develop
+	52 Window, ID: SafariWindowMenu
+	53 Help, ID: SafariHelpMenu
+
+The focused UI element is 10 button 下载存档文件

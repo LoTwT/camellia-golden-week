@@ -1,0 +1,241 @@
+{
+  "m4ToM5StartupAX": "- main:\n  - generic: CGW\n  - text: 沙罗黄金周\n  - generic: CAMELLIA GOLDEN WEEK\n  - generic: 当前目标\n  - strong\n  - status\n  - button \"打开暂停菜单\": 菜单 Esc\n  - generic \"电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停\"\n  - heading [level=1]\n  - complementary:\n    - generic: 区域数据\n    - strong\n    - generic: 沙罗物资\n    - strong\n    - button \"收集记录 ↗\"\n  - status\n  - dialog \"继续探索\":\n    - generic: CAMELLIA / TERMINAL\n    - heading \"继续探索\" [level=2]\n    - paragraph: M5 · 仓储区 A · 26 单位物资 · 已完成 1 区主路径。进度需要升级，继续前将保护旧档并完成迁移。\n    - button \"继续游戏\" [active]\n    - button \"新游戏…\"\n    - button \"导入存档\"\n    - button \"导出原始槽 A\"\n    - button \"导出原始槽 B\"\n    - generic \"验收故障控制 · 仅平台\"\n    - option \"槽 A · camellia-golden-week.save.a\" [selected]\n    - option \"槽 B · camellia-golden-week.save.b\"\n    - option \"迁移前原槽备份 · camellia-golden-week.save.pre-migration\"",
+  "restored": {
+    "profile": "M5",
+    "schemaVersion": 2,
+    "contentVersion": 4,
+    "ruleVersion": 1,
+    "position": {
+      "space": "world",
+      "areaId": "a",
+      "boardId": "a",
+      "tileId": "a.t.-3.-4"
+    },
+    "mode": "explore",
+    "phase": "active",
+    "activeTimeMs": 170.79999999999927,
+    "countdownRemainingMs": 0,
+    "pauseReasons": [],
+    "viewport": {
+      "width": 1366,
+      "height": 768,
+      "devicePixelRatio": 1
+    },
+    "settings": {
+      "masterVolume": 0.6,
+      "muted": false,
+      "reducedFlash": false,
+      "reducedMotion": false,
+      "quality": "standard",
+      "zoom": 1
+    },
+    "audio": {
+      "enabled": true
+    },
+    "completedObjectiveIds": [
+      "hub.amplifier",
+      "hub.tutorial",
+      "a.nexus.route",
+      "a.maze.01",
+      "a.main",
+      "a.maze.02",
+      "a.nexus.side",
+      "a.side.terminal",
+      "a.maze.03",
+      "a.firewall.access",
+      "a.firewall.tutorial",
+      "a.firewall.core",
+      "a.firewall.deep",
+      "a.firewall.inner"
+    ],
+    "completedRoomLayouts": {
+      "a.maze.01": {
+        "objectTileById": {},
+        "visitedTileIds": [],
+        "activatedLocalIds": []
+      },
+      "a.maze.02": {
+        "objectTileById": {},
+        "visitedTileIds": [],
+        "activatedLocalIds": []
+      },
+      "a.maze.03": {
+        "objectTileById": {},
+        "visitedTileIds": [],
+        "activatedLocalIds": []
+      }
+    },
+    "staticRoom": null,
+    "completedRoom": null,
+    "realtimeRoom": null,
+    "data": {
+      "a": {
+        "collected": 80,
+        "total": 100,
+        "includedCollected": 80,
+        "includedTotal": 100,
+        "complete": false
+      },
+      "b": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 100,
+        "complete": false
+      },
+      "c": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 100,
+        "complete": false
+      },
+      "d": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 100,
+        "complete": false
+      }
+    },
+    "claimedRewardIds": [
+      "hub.supply.tutorial",
+      "a.supply.maze01",
+      "a.supply.maze03",
+      "a.supply.firewall.core",
+      "a.supply.firewall.inner",
+      "a.supply.firewall.deep"
+    ],
+    "supply": {
+      "collected": 26,
+      "total": 130,
+      "count": 6
+    },
+    "bestResults": [
+      {
+        "challengeId": "a.firewall.tutorial",
+        "ruleVersion": 1,
+        "bestCombo": 30
+      },
+      {
+        "challengeId": "a.firewall.core",
+        "ruleVersion": 1,
+        "bestCombo": 90
+      },
+      {
+        "challengeId": "a.firewall.deep",
+        "ruleVersion": 1,
+        "bestCombo": 90
+      },
+      {
+        "challengeId": "a.firewall.inner",
+        "ruleVersion": 1,
+        "bestCombo": 90
+      }
+    ],
+    "lastResult": {
+      "code": "accepted",
+      "message": "已继续"
+    },
+    "saveStatus": "已保存 · 10:36:07",
+    "saveGeneration": 132,
+    "session": "held",
+    "render": {
+      "geometries": 10,
+      "textures": 17,
+      "calls": 25,
+      "tileCount": 46,
+      "residentIconCount": 14,
+      "pendingIconCount": 0,
+      "layout": {
+        "canvas": {
+          "width": 1366,
+          "height": 644
+        },
+        "insets": {
+          "left": 248,
+          "right": 202,
+          "top": 8,
+          "bottom": 8
+        },
+        "available": {
+          "left": 248,
+          "top": 8,
+          "width": 916,
+          "height": 628
+        },
+        "boardBounds": {
+          "minX": -4.495,
+          "maxX": 8.495,
+          "minY": -3.928315154574996,
+          "maxY": 3.9018326583804415,
+          "width": 12.989999999999998,
+          "height": 7.830147812955437
+        },
+        "focus": {
+          "x": -3,
+          "y": -3.477332974640646
+        },
+        "pixelsPerWorldUnit": 101.77777777777777,
+        "camera": {
+          "left": -6.936681222707424,
+          "right": 6.4847161572052405,
+          "top": 3.163755458515284,
+          "bottom": -3.163755458515284
+        },
+        "requestedZoom": 1,
+        "effectiveZoom": 1,
+        "zoomLimited": false,
+        "targetCss": {
+          "width": 98.72444444444443,
+          "height": 86.40926895681164,
+          "minimum": 86.40926895681164
+        },
+        "visibleColumns": 9,
+        "visibleRows": 7.097744992331138,
+        "fitsBoard": false,
+        "requiresExpandedViewport": false,
+        "compactViewport": false,
+        "boardBoundsCss": {
+          "minX": 553.8422222222223,
+          "maxX": 1875.9355555555553,
+          "minY": 276.1000359089039,
+          "maxY": 1073.035079983035,
+          "width": 1322.093333333333,
+          "height": 796.9350440741312
+        },
+        "displayedFocus": {
+          "x": -3,
+          "y": -3.477332974640646
+        },
+        "devicePixelRatio": 1
+      }
+    },
+    "transition": {
+      "active": false,
+      "lastDurationMs": 50.89999997615814
+    },
+    "firstStartupReadyMs": 127.40000009536743,
+    "firstGamePreparationMs": 50.89999997615814,
+    "inputLatency": {
+      "method": "physical input handler (including pending direction) to animation frame after presentation",
+      "sampleCount": 0,
+      "p95Ms": 0,
+      "maxMs": 0
+    },
+    "faults": {
+      "active": true,
+      "storage": null,
+      "feedback": null,
+      "rendererStartup": false,
+      "audioEnable": false,
+      "records": []
+    },
+    "frameSummary": {
+      "sampleCount": 1,
+      "medianMs": 8.299999999999272,
+      "p95Ms": 8.299999999999272,
+      "meanMs": 8.299999999999272
+    }
+  }
+}

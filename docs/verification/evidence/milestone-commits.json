@@ -1,0 +1,53 @@
+{
+  "createdAt": "2026-09-11T07:54:13.760929+00:00",
+  "commits": [
+    {
+      "stage": "M1",
+      "commit": "3c1c30c62fd8d8700c5f11d6ed118273ea1c84a2",
+      "parent": "bfb924b075aa6a153ed33b95ce4492260e18a8d9",
+      "tree": "7bb7a2622333ad0859f40b4e228ad4a780fdc3f2",
+      "message": "feat(m1): implement hub and area A exploration\n\n建立独立 TypeScript 规则、Three.js 电视棋盘、中心教学与 A 区首访。\n接入三个记忆迷宫、四档防火墙、26 单位物资、音频和双槽存档。\n\nAgent-Model: gpt-6-astra\nAgent-Effort: max\n",
+      "author": "eruoos <github@eruoo.me>",
+      "committer": "eruoos <github@eruoo.me>",
+      "provenanceSource": "user-specified for current Goal",
+      "verified": true,
+      "gitExitCode": 0
+    },
+    {
+      "stage": "M2",
+      "commit": "726317b009efdce20aaca61625c21701f468e3a6",
+      "parent": "3c1c30c62fd8d8700c5f11d6ed118273ea1c84a2",
+      "tree": "27e74cd2aedc19c067fd68a942bc541ee5a99622",
+      "message": "feat(m2): add area B and save upgrades\n\n加入 B 区两个一笔画、三档杀毒和区域往返，收集扩展至 51 单位。\n保留首次完成布局，并迁移 M1 进度与旧 schema 1 存档。\n\nAgent-Model: gpt-6-astra\nAgent-Effort: max\n",
+      "author": "eruoos <github@eruoo.me>",
+      "committer": "eruoos <github@eruoo.me>",
+      "provenanceSource": "user-specified for current Goal",
+      "verified": true,
+      "gitExitCode": 0
+    },
+    {
+      "stage": "M3",
+      "commit": "4068fb981fc6632867ad90319a81fcfba9e766b8",
+      "parent": "726317b009efdce20aaca61625c21701f468e3a6",
+      "tree": "ad33e9b2ede97f708b8b881c58d9d3a36ab004a2",
+      "message": "feat(m3): add area C object puzzles and recovery\n\n加入 C 区信号球与推车组合机关、三组数据盗取和 81 单位收集。\n提供固定地图见证、合法替代解、撤销重置和 M2 续档证据。\n\nAgent-Model: gpt-6-astra\nAgent-Effort: max\n",
+      "author": "eruoos <github@eruoo.me>",
+      "committer": "eruoos <github@eruoo.me>",
+      "provenanceSource": "user-specified for current Goal",
+      "verified": true,
+      "gitExitCode": 0
+    },
+    {
+      "stage": "M4",
+      "commit": "dcc6307326d8aef80e8204ea348769fa8afe07f6",
+      "parent": "4068fb981fc6632867ad90319a81fcfba9e766b8",
+      "tree": "4114202ae8d6dc2a37aa63d054f6422926e1f9da",
+      "message": "feat(m4): complete four-area progression and warehouse\n\n加入 D 区幽灵与灯、四权限、A/B 回访、中央仓库和自由回访。\n闭合 26 个唯一奖励与 130 单位账本，保留主路径与全数据解锁的区别。\n\nAgent-Model: gpt-6-astra\nAgent-Effort: max\n",
+      "author": "eruoos <github@eruoo.me>",
+      "committer": "eruoos <github@eruoo.me>",
+      "provenanceSource": "user-specified for current Goal",
+      "verified": true,
+      "gitExitCode": 0
+    }
+  ]
+}

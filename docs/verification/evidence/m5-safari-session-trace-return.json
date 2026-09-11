@@ -1,0 +1,455 @@
+{
+  "ax": "Window: \"沙罗黄金周 · Camellia Golden Week\", App: Safari.\n0 standard window 沙罗黄金周 · Camellia Golden Week, ID: SafariWindow?IsSecure=false&UUID=071A0516-098B-4EF2-9A5F-FB1E6C6E8E4C, Secondary Actions: Raise\n\t1 split group\n\t\t2 tab group\n\t\t\t3 scroll area\n\t\t\t\t4 HTML content Description: 沙罗黄金周 · Camellia Golden Week, URL: localhost:5174/\n\t\t\t\t\t5 container 继续探索\n\t\t\t\t\t\t6 text CAMELLIA / TERMINAL\n\t\t\t\t\t\t7 heading 继续探索, Value: 2\n\t\t\t\t\t\t\t8 text 继续探索\n\t\t\t\t\t\t9 text M5 · 仓储区 A · 6 单位物资 · 已完成 0 区主路径。关闭浏览器后的进度已就绪。\n\t\t\t\t\t\t10 button 继续游戏\n\t\t\t\t\t\t11 button 新游戏…\n\t\t\t\t\t\t12 button 导入存档\n\t\t\t\t\t\t13 button 导出原始槽 A\n\t\t\t\t\t\t14 button 导出原始槽 B\n\t\t\t\t\t\t15 summary 验收故障控制 · 仅平台, Value: off\n\t\t\t\t\t\t\t16 text 验收故障控制 · 仅平台\n\t17 image WindowControlShadowView._shadowImageView\n\t18 toolbar\n\t\t19 container Secondary Actions: Move next, Remove from toolbar\n\t\t\t20 button Description: show sidebar, Help: Show sidebar, ID: SidebarButton\n\t\t\t21 menu button Description: Tab Group picker, ID: TabGroupPickerButton?TabGroup=\n\t\t22 container BackForwardSegmentedControl\n\t\t\t23 button Description: Go back, Help: Show the previous page, ID: BackButton\n\t\t\t24 button (disabled) Description: Go forward, Help: Show the next page, ID: ForwardButton\n\t\t25 container Secondary Actions: Move previous, Move next, Remove from toolbar\n\t\t\t26 button Page Menu, ID: AssistantButton\n\t\t\t27 button Add page to Reading List, ID: OneStepBookmarkingButton\n\t\t\t28 text field (settable) Description: smart search field, Value: localhost:5174, ID: WEB_BROWSER_ADDRESS_AND_SEARCH_FIELD\n\t\t\t29 button Translation Available, ID: TranslationButton\n\t\t\t30 button Reload this page, ID: ReloadButton\n\t\t31 button Description: Downloads, ID: DownloadsButton, Secondary Actions: Move previous, Move next, Remove from toolbar\n\t\t32 button Description: Share, ID: ShareButton, Secondary Actions: Move previous, Move next, Remove from toolbar\n\t\t33 button Description: New Tab, ID: NewTabButton, Secondary Actions: Move previous, Move next, Remove from toolbar\n\t\t34 button Description: Tab Overview, ID: TabOverviewButton, Secondary Actions: Move previous, Remove from toolbar\n\t35 tab group Description: Tab bar, 2 tabs, ID: TabBar?isSeparate=false\n\t\t36 tab Start Page, Value: off, ID: TabBarTab?isPinned=false&isNarrow=false&isActive=false, Secondary Actions: close tab\n\t\t\t37 image Description: favorite, ID: FaviconImageView\n\t\t\t38 text Value: Start Page, ID: UnifiedTabBarButton._titleTextField\n\t\t39 tab 沙罗黄金周 · Camellia Golden Week, Help: To interact with the items in this button, press Control-Option-Shift-Down Arrow., Value: on, ID: TabBarTab?isPinned=false&isNarrow=false&isActive=true, Secondary Actions: close tab\n\t\t\t40 image FaviconImageView\n\t\t\t41 text Value: 沙罗黄金周 · Camellia Golden Week, ID: UnifiedTabBarButton._titleTextField\n\t42 close button\n\t43 full screen button Help: this button also has an action to zoom the window, Secondary Actions: zoom the window\n\t44 minimize button\n45 menu bar\n\t46 Safari\n\t47 File\n\t48 Edit\n\t49 View, ID: SafariViewMenu\n\t50 History\n\t51 Bookmarks, ID: SafariBookmarksMenu\n\t52 Develop\n\t53 Window, ID: SafariWindowMenu\n\t54 Help, ID: SafariHelpMenu\n\nThe focused UI element is 10 button 继续游戏",
+  "snapshot": {
+    "profile": "M5",
+    "loaded": false,
+    "sessionDiagnostics": {
+      "pageId": "2771719d-c6c0-4012-b59c-c9c0316ed015",
+      "storage": "available",
+      "discardedStoredTraces": 0,
+      "events": [
+        {
+          "sequence": 1,
+          "pageId": "6dded395-dd9b-4bd0-850c-ea97ce081865",
+          "path": "/",
+          "timeOriginMs": 1789097565266,
+          "elapsedMs": 88,
+          "visibility": "visible",
+          "kind": "page-start",
+          "details": {
+            "navigationType": "reload"
+          }
+        },
+        {
+          "sequence": 2,
+          "pageId": "6dded395-dd9b-4bd0-850c-ea97ce081865",
+          "path": "/",
+          "timeOriginMs": 1789097565266,
+          "elapsedMs": 122,
+          "visibility": "visible",
+          "kind": "acquire-start",
+          "details": {
+            "pending": false,
+            "session": "idle",
+            "hidden": false
+          }
+        },
+        {
+          "sequence": 3,
+          "pageId": "6dded395-dd9b-4bd0-850c-ea97ce081865",
+          "path": "/",
+          "timeOriginMs": 1789097565266,
+          "elapsedMs": 122,
+          "visibility": "visible",
+          "kind": "request-start",
+          "details": {
+            "requestId": 1,
+            "name": "camellia-golden-week.save-writer",
+            "mode": "exclusive",
+            "ifAvailable": true
+          }
+        },
+        {
+          "sequence": 4,
+          "pageId": "6dded395-dd9b-4bd0-850c-ea97ce081865",
+          "path": "/",
+          "timeOriginMs": 1789097565266,
+          "elapsedMs": 174.00000000000003,
+          "visibility": "visible",
+          "kind": "request-callback",
+          "details": {
+            "requestId": 1,
+            "result": "acquired"
+          }
+        },
+        {
+          "sequence": 5,
+          "pageId": "6dded395-dd9b-4bd0-850c-ea97ce081865",
+          "path": "/",
+          "timeOriginMs": 1789097565266,
+          "elapsedMs": 174.00000000000003,
+          "visibility": "visible",
+          "kind": "acquire-result",
+          "details": {
+            "outcome": "acquired",
+            "stale": false
+          }
+        },
+        {
+          "sequence": 6,
+          "pageId": "6dded395-dd9b-4bd0-850c-ea97ce081865",
+          "path": "/",
+          "timeOriginMs": 1789097565266,
+          "elapsedMs": 174.00000000000003,
+          "visibility": "visible",
+          "kind": "query-start",
+          "details": {
+            "reason": "acquired"
+          }
+        },
+        {
+          "sequence": 7,
+          "pageId": "6dded395-dd9b-4bd0-850c-ea97ce081865",
+          "path": "/",
+          "timeOriginMs": 1789097565266,
+          "elapsedMs": 183,
+          "visibility": "visible",
+          "kind": "query-result",
+          "details": {
+            "reason": "acquired",
+            "heldCount": 1,
+            "pendingCount": 0
+          },
+          "locks": {
+            "held": [
+              {
+                "name": "camellia-golden-week.save-writer",
+                "mode": "exclusive",
+                "clientId": "0d96c6de-e787-4e90-9fe7-cf3625ab7a8f"
+              }
+            ],
+            "pending": []
+          }
+        },
+        {
+          "sequence": 8,
+          "pageId": "165a7c27-48e3-4da4-afb5-c3e1d958eac0",
+          "path": "/?session-check=1",
+          "timeOriginMs": 1789097581307,
+          "elapsedMs": 45,
+          "visibility": "visible",
+          "kind": "page-start",
+          "details": {
+            "navigationType": "navigate"
+          }
+        },
+        {
+          "sequence": 9,
+          "pageId": "165a7c27-48e3-4da4-afb5-c3e1d958eac0",
+          "path": "/?session-check=1",
+          "timeOriginMs": 1789097581307,
+          "elapsedMs": 69,
+          "visibility": "visible",
+          "kind": "acquire-start",
+          "details": {
+            "pending": false,
+            "session": "idle",
+            "hidden": false
+          }
+        },
+        {
+          "sequence": 10,
+          "pageId": "165a7c27-48e3-4da4-afb5-c3e1d958eac0",
+          "path": "/?session-check=1",
+          "timeOriginMs": 1789097581307,
+          "elapsedMs": 69,
+          "visibility": "visible",
+          "kind": "request-start",
+          "details": {
+            "requestId": 1,
+            "name": "camellia-golden-week.save-writer",
+            "mode": "exclusive",
+            "ifAvailable": true
+          }
+        },
+        {
+          "sequence": 11,
+          "pageId": "165a7c27-48e3-4da4-afb5-c3e1d958eac0",
+          "path": "/?session-check=1",
+          "timeOriginMs": 1789097581307,
+          "elapsedMs": 150,
+          "visibility": "visible",
+          "kind": "request-callback",
+          "details": {
+            "requestId": 1,
+            "result": "busy"
+          }
+        },
+        {
+          "sequence": 12,
+          "pageId": "165a7c27-48e3-4da4-afb5-c3e1d958eac0",
+          "path": "/?session-check=1",
+          "timeOriginMs": 1789097581307,
+          "elapsedMs": 151,
+          "visibility": "visible",
+          "kind": "callback-complete",
+          "details": {
+            "requestId": 1
+          }
+        },
+        {
+          "sequence": 13,
+          "pageId": "165a7c27-48e3-4da4-afb5-c3e1d958eac0",
+          "path": "/?session-check=1",
+          "timeOriginMs": 1789097581307,
+          "elapsedMs": 151,
+          "visibility": "visible",
+          "kind": "request-complete",
+          "details": {
+            "requestId": 1
+          }
+        },
+        {
+          "sequence": 14,
+          "pageId": "165a7c27-48e3-4da4-afb5-c3e1d958eac0",
+          "path": "/?session-check=1",
+          "timeOriginMs": 1789097581307,
+          "elapsedMs": 252,
+          "visibility": "visible",
+          "kind": "request-start",
+          "details": {
+            "requestId": 2,
+            "name": "camellia-golden-week.save-writer",
+            "mode": "exclusive",
+            "ifAvailable": true
+          }
+        },
+        {
+          "sequence": 15,
+          "pageId": "165a7c27-48e3-4da4-afb5-c3e1d958eac0",
+          "path": "/?session-check=1",
+          "timeOriginMs": 1789097581307,
+          "elapsedMs": 255,
+          "visibility": "visible",
+          "kind": "request-callback",
+          "details": {
+            "requestId": 2,
+            "result": "acquired"
+          }
+        },
+        {
+          "sequence": 16,
+          "pageId": "165a7c27-48e3-4da4-afb5-c3e1d958eac0",
+          "path": "/?session-check=1",
+          "timeOriginMs": 1789097581307,
+          "elapsedMs": 255,
+          "visibility": "visible",
+          "kind": "acquire-result",
+          "details": {
+            "outcome": "acquired",
+            "stale": false
+          }
+        },
+        {
+          "sequence": 17,
+          "pageId": "165a7c27-48e3-4da4-afb5-c3e1d958eac0",
+          "path": "/?session-check=1",
+          "timeOriginMs": 1789097581307,
+          "elapsedMs": 255,
+          "visibility": "visible",
+          "kind": "query-start",
+          "details": {
+            "reason": "acquired"
+          }
+        },
+        {
+          "sequence": 18,
+          "pageId": "165a7c27-48e3-4da4-afb5-c3e1d958eac0",
+          "path": "/?session-check=1",
+          "timeOriginMs": 1789097581307,
+          "elapsedMs": 264,
+          "visibility": "visible",
+          "kind": "query-result",
+          "details": {
+            "reason": "acquired",
+            "heldCount": 1,
+            "pendingCount": 0
+          },
+          "locks": {
+            "held": [
+              {
+                "name": "camellia-golden-week.save-writer",
+                "mode": "exclusive",
+                "clientId": "cd4894be-3d16-475a-b6df-27cb8eea5841"
+              }
+            ],
+            "pending": []
+          }
+        },
+        {
+          "sequence": 19,
+          "pageId": "2771719d-c6c0-4012-b59c-c9c0316ed015",
+          "path": "/",
+          "timeOriginMs": 1789097610006,
+          "elapsedMs": 38,
+          "visibility": "visible",
+          "kind": "page-start",
+          "details": {
+            "navigationType": "navigate"
+          }
+        },
+        {
+          "sequence": 20,
+          "pageId": "2771719d-c6c0-4012-b59c-c9c0316ed015",
+          "path": "/",
+          "timeOriginMs": 1789097610006,
+          "elapsedMs": 55,
+          "visibility": "visible",
+          "kind": "acquire-start",
+          "details": {
+            "pending": false,
+            "session": "idle",
+            "hidden": false
+          }
+        },
+        {
+          "sequence": 21,
+          "pageId": "2771719d-c6c0-4012-b59c-c9c0316ed015",
+          "path": "/",
+          "timeOriginMs": 1789097610006,
+          "elapsedMs": 55,
+          "visibility": "visible",
+          "kind": "request-start",
+          "details": {
+            "requestId": 1,
+            "name": "camellia-golden-week.save-writer",
+            "mode": "exclusive",
+            "ifAvailable": true
+          }
+        },
+        {
+          "sequence": 22,
+          "pageId": "2771719d-c6c0-4012-b59c-c9c0316ed015",
+          "path": "/",
+          "timeOriginMs": 1789097610006,
+          "elapsedMs": 183,
+          "visibility": "visible",
+          "kind": "request-callback",
+          "details": {
+            "requestId": 1,
+            "result": "busy"
+          }
+        },
+        {
+          "sequence": 23,
+          "pageId": "2771719d-c6c0-4012-b59c-c9c0316ed015",
+          "path": "/",
+          "timeOriginMs": 1789097610006,
+          "elapsedMs": 183,
+          "visibility": "visible",
+          "kind": "callback-complete",
+          "details": {
+            "requestId": 1
+          }
+        },
+        {
+          "sequence": 24,
+          "pageId": "2771719d-c6c0-4012-b59c-c9c0316ed015",
+          "path": "/",
+          "timeOriginMs": 1789097610006,
+          "elapsedMs": 183,
+          "visibility": "visible",
+          "kind": "request-complete",
+          "details": {
+            "requestId": 1
+          }
+        },
+        {
+          "sequence": 25,
+          "pageId": "2771719d-c6c0-4012-b59c-c9c0316ed015",
+          "path": "/",
+          "timeOriginMs": 1789097610006,
+          "elapsedMs": 284.00000000000006,
+          "visibility": "visible",
+          "kind": "request-start",
+          "details": {
+            "requestId": 2,
+            "name": "camellia-golden-week.save-writer",
+            "mode": "exclusive",
+            "ifAvailable": true
+          }
+        },
+        {
+          "sequence": 26,
+          "pageId": "2771719d-c6c0-4012-b59c-c9c0316ed015",
+          "path": "/",
+          "timeOriginMs": 1789097610006,
+          "elapsedMs": 284.00000000000006,
+          "visibility": "visible",
+          "kind": "request-callback",
+          "details": {
+            "requestId": 2,
+            "result": "acquired"
+          }
+        },
+        {
+          "sequence": 27,
+          "pageId": "2771719d-c6c0-4012-b59c-c9c0316ed015",
+          "path": "/",
+          "timeOriginMs": 1789097610006,
+          "elapsedMs": 284.00000000000006,
+          "visibility": "visible",
+          "kind": "acquire-result",
+          "details": {
+            "outcome": "acquired",
+            "stale": false
+          }
+        },
+        {
+          "sequence": 28,
+          "pageId": "2771719d-c6c0-4012-b59c-c9c0316ed015",
+          "path": "/",
+          "timeOriginMs": 1789097610006,
+          "elapsedMs": 284.00000000000006,
+          "visibility": "visible",
+          "kind": "query-start",
+          "details": {
+            "reason": "acquired"
+          }
+        },
+        {
+          "sequence": 29,
+          "pageId": "2771719d-c6c0-4012-b59c-c9c0316ed015",
+          "path": "/",
+          "timeOriginMs": 1789097610006,
+          "elapsedMs": 308,
+          "visibility": "visible",
+          "kind": "query-result",
+          "details": {
+            "reason": "acquired",
+            "heldCount": 1,
+            "pendingCount": 0
+          },
+          "locks": {
+            "held": [
+              {
+                "name": "camellia-golden-week.save-writer",
+                "mode": "exclusive",
+                "clientId": "0dc8bebb-dd8e-4b2d-9b86-c42a58bc3fe2"
+              }
+            ],
+            "pending": []
+          }
+        }
+      ]
+    },
+    "session": "held",
+    "saveStatus": "正在读取进度",
+    "saveInspection": {
+      "status": "ready",
+      "maxGeneration": 207,
+      "latestId": "a",
+      "backupId": "b",
+      "slots": {
+        "a": {
+          "status": "valid",
+          "generation": 207,
+          "savedAt": "2026-09-11T03:32:28.523Z"
+        },
+        "b": {
+          "status": "valid",
+          "generation": 206,
+          "savedAt": "2026-09-11T03:25:42.644Z"
+        }
+      }
+    },
+    "faults": {
+      "active": true,
+      "storage": null,
+      "feedback": null,
+      "rendererStartup": false,
+      "audioEnable": false,
+      "records": []
+    }
+  }
+}

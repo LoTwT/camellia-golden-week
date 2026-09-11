@@ -118,7 +118,9 @@ UI 正文基线 14 CSS px，主要目标 16 px；正文与背景对比度目标�
 
 ## 3. 浏览器与运行预算
 
-目标矩阵为 Windows Chrome / Edge、macOS Chrome / Safari，在每次发布时验证当前稳定版本并记录完整版本号。运行必需 WebGL2；现代 Three.js WebGLRenderer 不支持 WebGL1。[WebGLRenderer 文档](https://threejs.org/docs/pages/WebGLRenderer.html)
+本次必需浏览器矩阵为 Windows 与 macOS 上的 Google Chrome，在每次发布时验证当前稳定版本并记录完整版本号。2026-09-11 用户明确“不验证 safari 了，验证 chrome 即可”，据此将原 Windows Chrome / Edge、macOS Chrome / Safari 矩阵收窄为 Chrome。Safari / Edge 的既有结果保留为历史记录，本次不再作为必需验收；未通过的历史项不因此改记通过。此次仅调整浏览器范围，以下性能阈值、基准设备、视口与真实断外网要求保持不变。
+
+运行必需 WebGL2；现代 Three.js WebGLRenderer 不支持 WebGL1。[WebGLRenderer 文档](https://threejs.org/docs/pages/WebGLRenderer.html)
 
 | 约束 | 本版合同 |
 | --- | --- |

@@ -1,0 +1,22 @@
+原生 Chrome AX 取证节选。已省略无关用户标签、书签、账号标题和浏览器菜单；本任务游戏内容与任务组行保留原文。
+
+Window: "沙罗黄金周 · Camellia Golden Week", App: Google Chrome.
+0 standard window 沙罗黄金周 · Camellia Golden Week - Part of group 🎮 沙罗验收 - Google Chrome - Lo丶 (Lo), URL: localhost:5174/, Secondary Actions: Raise
+	1 container 沙罗黄金周 · Camellia Golden Week - Part of group 🎮 沙罗验收 - Google Chrome - Lo丶 (Lo), URL: localhost:5174/
+		2 container
+			3 container
+				4 HTML content 沙罗黄金周 · Camellia Golden Week, URL: localhost:5174/
+					5 container 进度正在另一窗口使用
+						6 text CAMELLIA / TERMINAL
+						7 heading 进度正在另一窗口使用, Value: 2
+							8 text 进度正在另一窗口使用
+						9 text 请在原窗口继续，或关闭原窗口后重试。本窗口不会抢锁或写入进度。
+						10 button 重试获取会话
+						11 button 只读导出原始存档
+						12 disclosure triangle 验收故障控制 · 仅平台
+							13 text 验收故障控制 · 仅平台
+
+[省略浏览器工具栏及无关标签]
+					71 tab group  group 🎮 沙罗验收 - 1 Tab, •  沙罗黄金周 · Camellia Golden Week - Expanded
+					72 tab (selected, settable, boolean) Description: 沙罗黄金周 · Camellia Golden Week - Part of group 🎮 沙罗验收, Value: on
+						73 button Close

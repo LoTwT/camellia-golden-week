@@ -11,6 +11,23 @@ import type { ClockState, PauseReason } from "../src/core/clock.ts";
 
 const resumeConditions = { pageVisible: true, canvasOperable: true, graphicsAvailable: true };
 
+test("场景准备冻结倒数与有效时间，图形就绪不能解除同时发生的失焦", () => {
+  let clock = createClock(0, { realtime: true, preparationMs: 3000 });
+  clock = setClockPauseReason(clock, "transition", true, 0).state;
+  clock = advanceClock(clock, 6000).state;
+  assert.equal(clock.activeTimeMs, 0);
+  assert.equal(clock.countdownRemainingMs, 3000);
+  clock = setClockPauseReason(clock, "blur", true, 6000).state;
+  clock = setClockPauseReason(clock, "transition", false, 6010).state;
+  const attempted = resumeClock(clock, 6010, resumeConditions);
+  assert.equal(attempted.feedback[0]?.kind, "resumeBlocked");
+  assert.deepEqual(attempted.state.pauseReasons, ["blur"]);
+  clock = setClockPauseReason(attempted.state, "blur", false, 6020).state;
+  clock = resumeClock(clock, 6020, resumeConditions).state;
+  assert.equal(clock.countdownRemainingMs, 3000);
+  assert.equal(clock.activeTimeMs, 0);
+});
+
 function advanceSmoothly(state: ClockState, untilMs: number, stepMs = 50): ClockState {
   let current = state;
   while (current.lastMonotonicTimeMs < untilMs) {
@@ -84,7 +101,14 @@ test("间隔 250ms 合法，250ms 以上才进入 clockGap", () => {
 });
 
 test("各暂停原因均清输入；系统原因移除不自动恢复", () => {
-  const reasons: readonly PauseReason[] = ["manual", "hidden", "blur", "clockGap", "graphicsLost"];
+  const reasons: readonly PauseReason[] = [
+    "manual",
+    "hidden",
+    "blur",
+    "clockGap",
+    "graphicsLost",
+    "transition",
+  ];
   for (const reason of reasons) {
     const paused = setClockPauseReason(createClock(0), reason, true, 100);
     assert.equal(paused.state.activeTimeMs, 100);
@@ -97,7 +121,7 @@ test("各暂停原因均清输入；系统原因移除不自动恢复", () => {
 });
 
 test("Resume 不能强制清理仍在生效的系统原因或无效画布条件", () => {
-  for (const reason of ["hidden", "blur", "graphicsLost"] as const) {
+  for (const reason of ["hidden", "blur", "graphicsLost", "transition"] as const) {
     const paused = setClockPauseReason(createClock(0, { realtime: true }), reason, true, 50).state;
     const result = resumeClock(paused, 100, resumeConditions);
     assert.equal(result.feedback[0]?.kind, "resumeBlocked");

@@ -1,0 +1,50 @@
+Browser tab: 2, Title: "沙罗黄金周 · Camellia Golden Week", URL: "http://localhost:5174/".
+1 AXWebArea 沙罗黄金周 · Camellia Golden Week, URL: localhost:5174/
+	2 container 进度升级未保存, ID: game-dialog
+		3 text CAMELLIA / TERMINAL
+		4 heading 进度升级未保存, Value: 2, ID: dialog-title
+			5 text 进度升级未保存
+		6 text 未保存，可导出 · 迁移前原槽备份写入失败；已停止持久迁移，可导出原文。
+		7 button 重试
+		8 button 导出原始槽 A
+		9 button 导出原始槽 B
+		10 button 返回
+		11 container
+			12 button (expanded) 验收故障控制 · 仅平台, Secondary Actions: Collapse
+				13 text 验收故障控制 · 仅平台
+			14 text 边界故障证据与正常通关证据分开记录。每个已配置故障只触发一次。
+			15 container 精确存储目标
+				16 text 精确存储目标
+				17 pop up button (collapsed, settable) Description: 故障存储目标键, Value: 迁移前原槽备份 · camellia-golden-week.save.pre-migration, Secondary Actions: Expand
+					18 menu
+						19 槽 A · camellia-golden-week.save.a
+						20 槽 B · camellia-golden-week.save.b
+						21 (selected) 迁移前原槽备份 · camellia-golden-week.save.pre-migration
+				22 button 下次读取抛错
+				23 button 下次写入抛错
+				24 button 下次成功写入后回读不匹配
+			25 container 存储损坏与版本保护夹具
+				26 text 存储损坏与版本保护夹具
+				27 text 先用游戏导出保存备份。此入口只修改上方选中的 A/B 测试槽原文，不能用于制造通关结果。写入后重新读取或刷新验证。
+				28 text entry area (settable) 测试槽原文
+				29 button 写入指定测试槽
+			30 container 下一次成功反馈
+				31 text 下一次成功反馈
+				32 button 下次启用声音被拒绝
+				33 button 成功后音频抛错
+				34 button 成功后渲染抛错
+			35 container 图形与调度
+				36 text 图形与调度
+				37 link Description: 重新载入并模拟启动 WebGL2 不可用, Value: localhost:5174/?acceptanceFault=webgl2-unavailable
+				38 button 请求真实上下文丢失
+				39 button 请求真实上下文恢复
+				40 button 实际阻塞前台 300ms
+			41 button 解除未触发故障
+			42 container 验收故障状态与触发记录
+				43 text 待触发：存储 无；成功反馈 无；启动图形 无；音频启用 正常
+1. 已配置 迁移前原槽备份 的一次 set 故障：camellia-golden-week.save.pre-migration
+2. 已触发一次写入拒绝：camellia-golden-week.save.pre-migration
+			44 button (collapsed) 只读验收快照, Secondary Actions: Expand
+				45 text 只读验收快照
+
+The focused UI element is 7 button 重试

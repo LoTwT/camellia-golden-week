@@ -186,10 +186,12 @@ export function dispatch(
       !state.scopeCompletionHistory.includes(content.profile.id)
     ) {
       state.scopeCompletionHistory.push(content.profile.id);
-      emit(
-        "success",
-        content.profile.fullCampaign ? "主目标完成 · 可自由回访" : "本版本主路径完成，可继续收集",
-      );
+      stable = true;
+      if (!previous.completedObjectiveIds.includes(content.profile.scopeTerminalObjectiveId))
+        emit(
+          "success",
+          content.profile.fullCampaign ? "主目标完成 · 可自由回访" : "本版本主路径完成，可继续收集",
+        );
     }
     if (
       state.completedObjectiveIds.includes("warehouse.complete") &&
@@ -353,6 +355,10 @@ export function dispatch(
     );
   };
 
+  if (command.kind === "CancelAutoPath") {
+    state.autoPath = [];
+    return result();
+  }
   if (command.kind === "Pause") {
     const untilPause = dispatch(
       content,
@@ -760,6 +766,20 @@ export function dispatch(
         tile.x === (from?.x ?? NaN) + dx &&
         tile.y === (from?.y ?? NaN) + dy,
     )?.id;
+  } else if (command.kind === "AdvanceAutoPath") {
+    const next = content.tiles.find((tile) => tile.id === state.autoPath[0]);
+    if (
+      !from ||
+      !next ||
+      next.boardId !== from.boardId ||
+      Math.abs(next.x - from.x) + Math.abs(next.y - from.y) !== 1 ||
+      !isSafeAutoTile(content, state, next.id)
+    ) {
+      state.autoPath = [];
+      return reject("blocked", "自动路径已变化 · 请手动继续");
+    }
+    targetTileId = next.id;
+    state.autoPath = state.autoPath.slice(1);
   } else if (command.kind === "ClickTile") {
     state.autoPath = [];
     const target = content.tiles.find((tile) => tile.id === command.tileId);

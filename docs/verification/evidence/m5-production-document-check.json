@@ -1,0 +1,13 @@
+{
+  "method": "Read-only repository Markdown local inline/image/reference-definition file or directory targets, Markdown heading anchors (outside fenced examples), exact 63 contract-ID sequence, B01–B126 continuity. External URLs and non-Markdown source anchors excluded.",
+  "markdownFiles": 29,
+  "localLinkTargetsChecked": 1055,
+  "directoryLinks": 1,
+  "uniqueResolvedTargets": 478,
+  "markdownAnchorsChecked": 31,
+  "contractIds": 63,
+  "contractOrderMatches": true,
+  "browserEvidenceIds": 126,
+  "browserIdsContinuous": true,
+  "errors": []
+}

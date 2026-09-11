@@ -12,16 +12,28 @@ class TestKeyboardEvent extends Event {
   readonly code: string;
   readonly repeat: boolean;
   readonly isComposing: boolean;
+  readonly ctrlKey: boolean;
+  readonly metaKey: boolean;
+  readonly altKey: boolean;
 
   constructor(
     type: "keydown" | "keyup",
     code: string,
-    options: { repeat?: boolean; isComposing?: boolean } = {},
+    options: {
+      repeat?: boolean;
+      isComposing?: boolean;
+      ctrlKey?: boolean;
+      metaKey?: boolean;
+      altKey?: boolean;
+    } = {},
   ) {
     super(type, { cancelable: true });
     this.code = code;
     this.repeat = options.repeat ?? false;
     this.isComposing = options.isComposing ?? false;
+    this.ctrlKey = options.ctrlKey ?? false;
+    this.metaKey = options.metaKey ?? false;
+    this.altKey = options.altKey ?? false;
   }
 }
 
@@ -78,6 +90,7 @@ function harness(context: TestContext) {
     },
     focusControl() {
       fakeDocument.activeElement = otherControl;
+      canvas.dispatchEvent(new Event("blur"));
     },
     menuCounts() {
       return { mapOpened, pauseOpened };
@@ -86,7 +99,13 @@ function harness(context: TestContext) {
       type: "keydown" | "keyup",
       code: string,
       at: number,
-      options: { repeat?: boolean; isComposing?: boolean } = {},
+      options: {
+        repeat?: boolean;
+        isComposing?: boolean;
+        ctrlKey?: boolean;
+        metaKey?: boolean;
+        altKey?: boolean;
+      } = {},
     ) {
       assert.ok(at >= now, "测试时间必须单调");
       now = at;
@@ -309,4 +328,26 @@ test("dispose 移除监听，后续键盘不会派发或消费按键", (context)
   assert.equal(input.key("keydown", "ArrowRight", 0).defaultPrevented, false);
   input.key("keyup", "ArrowRight", 0);
   assert.deepEqual(input.sent, []);
+});
+
+test("浏览器修饰快捷键不移动、增幅或撤销，保留刷新与常规键盘操作", (context) => {
+  const input = harness(context);
+  for (const modifier of ["ctrlKey", "metaKey", "altKey"] as const)
+    for (const code of ["KeyW", "KeyS", "KeyR", "KeyZ", "ArrowLeft"])
+      assert.equal(input.key("keydown", code, 0, { [modifier]: true }).defaultPrevented, false);
+  assert.deepEqual(input.sent, []);
+});
+
+test("Tab或鼠标移出画布清除等待方向，重新聚焦不会执行旧输入", (context) => {
+  const input = harness(context);
+  input.key("keydown", "KeyW", 0);
+  input.key("keydown", "KeyD", 10);
+  input.focusControl();
+  input.key("keyup", "KeyW", 20);
+  input.key("keyup", "KeyD", 20);
+  input.focusCanvas();
+  input.frame(1000);
+  assert.deepEqual(input.sent, [move("up", 0)]);
+  input.key("keydown", "KeyD", 1001);
+  assert.deepEqual(input.sent, [move("up", 0), move("right", 1001)]);
 });

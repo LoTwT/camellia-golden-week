@@ -1,0 +1,211 @@
+{
+  "profile": "M5",
+  "schemaVersion": 2,
+  "contentVersion": 4,
+  "ruleVersion": 1,
+  "position": {
+    "space": "world",
+    "areaId": "a",
+    "boardId": "a",
+    "tileId": "a.t.1.4"
+  },
+  "mode": "explore",
+  "phase": "active",
+  "activeTimeMs": 430,
+  "countdownRemainingMs": 0,
+  "pauseReasons": [
+    "manual"
+  ],
+  "viewport": {
+    "width": 1455,
+    "height": 854,
+    "devicePixelRatio": 2
+  },
+  "settings": {
+    "masterVolume": 0.6,
+    "muted": false,
+    "reducedFlash": false,
+    "reducedMotion": false,
+    "quality": "standard",
+    "zoom": 1
+  },
+  "audio": {
+    "enabled": false
+  },
+  "completedObjectiveIds": [
+    "hub.amplifier",
+    "hub.tutorial",
+    "a.nexus.route",
+    "a.maze.01",
+    "a.maze.02",
+    "a.maze.03"
+  ],
+  "completedRoomLayouts": {
+    "a.maze.01": {
+      "objectTileById": {},
+      "visitedTileIds": [],
+      "activatedLocalIds": []
+    },
+    "a.maze.02": {
+      "objectTileById": {},
+      "visitedTileIds": [],
+      "activatedLocalIds": []
+    },
+    "a.maze.03": {
+      "objectTileById": {},
+      "visitedTileIds": [],
+      "activatedLocalIds": []
+    }
+  },
+  "staticRoom": null,
+  "completedRoom": null,
+  "realtimeRoom": null,
+  "data": {
+    "a": {
+      "collected": 40,
+      "total": 100,
+      "includedCollected": 40,
+      "includedTotal": 100,
+      "complete": false
+    },
+    "b": {
+      "collected": 0,
+      "total": 100,
+      "includedCollected": 0,
+      "includedTotal": 100,
+      "complete": false
+    },
+    "c": {
+      "collected": 0,
+      "total": 100,
+      "includedCollected": 0,
+      "includedTotal": 100,
+      "complete": false
+    },
+    "d": {
+      "collected": 0,
+      "total": 100,
+      "includedCollected": 0,
+      "includedTotal": 100,
+      "complete": false
+    }
+  },
+  "claimedRewardIds": [
+    "hub.supply.tutorial"
+  ],
+  "supply": {
+    "collected": 1,
+    "total": 130,
+    "count": 1
+  },
+  "bestResults": [],
+  "lastResult": {
+    "code": "paused",
+    "message": "已暂停 · 请点击继续"
+  },
+  "saveStatus": "已保存 · 2026/9/11 09:49:30",
+  "saveGeneration": 60,
+  "session": "held",
+  "render": {
+    "geometries": 10,
+    "textures": 15,
+    "calls": 21,
+    "tileCount": 34,
+    "residentIconCount": 12,
+    "pendingIconCount": 0,
+    "layout": {
+      "canvas": {
+        "width": 1455,
+        "height": 730
+      },
+      "insets": {
+        "left": 248,
+        "right": 202,
+        "top": 8,
+        "bottom": 8
+      },
+      "available": {
+        "left": 248,
+        "top": 8,
+        "width": 1005,
+        "height": 714
+      },
+      "boardBounds": {
+        "minX": -2.495,
+        "maxX": 7.495,
+        "minY": -3.928315154574996,
+        "maxY": 3.9018326583804415,
+        "width": 9.99,
+        "height": 7.830147812955437
+      },
+      "focus": {
+        "x": 1,
+        "y": 3.477332974640646
+      },
+      "pixelsPerWorldUnit": 111.66666666666667,
+      "camera": {
+        "left": -6.7208955223880595,
+        "right": 6.308955223880597,
+        "top": 3.2686567164179103,
+        "bottom": -3.2686567164179103
+      },
+      "requestedZoom": 1,
+      "effectiveZoom": 1,
+      "zoomLimited": false,
+      "targetCss": {
+        "width": 108.31666666666666,
+        "height": 94.80492936855427,
+        "minimum": 94.80492936855427
+      },
+      "visibleColumns": 9,
+      "visibleRows": 7.355096445898501,
+      "fitsBoard": false,
+      "requiresExpandedViewport": false,
+      "compactViewport": false,
+      "boardBoundsCss": {
+        "minX": 360.22499999999997,
+        "maxX": 1475.775,
+        "minY": -461.96404109574667,
+        "maxY": 412.40246468427716,
+        "width": 1115.5500000000002,
+        "height": 874.3665057800238
+      },
+      "displayedFocus": {
+        "x": 1,
+        "y": 3.477332974640646
+      },
+      "devicePixelRatio": 2
+    }
+  },
+  "transition": {
+    "active": false,
+    "lastDurationMs": 46
+  },
+  "firstStartupReadyMs": 105,
+  "firstGamePreparationMs": 46,
+  "inputLatency": {
+    "method": "physical input handler (including pending direction) to animation frame after presentation",
+    "sampleCount": 0,
+    "p95Ms": 0,
+    "maxMs": 0
+  },
+  "faults": {
+    "active": true,
+    "storage": null,
+    "feedback": null,
+    "rendererStartup": false,
+    "audioEnable": false,
+    "records": [
+      {
+        "sequence": 1,
+        "message": "已拒绝一次音频启用，未改变进度或时间。"
+      }
+    ]
+  },
+  "frameSummary": {
+    "sampleCount": 23,
+    "medianMs": 17,
+    "p95Ms": 45,
+    "meanMs": 18
+  }
+}

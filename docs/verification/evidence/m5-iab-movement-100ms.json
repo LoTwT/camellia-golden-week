@@ -1,0 +1,887 @@
+{
+  "method": "100 ms visual target build. Six normal keyboard single steps; read-only actual renderer end-of-final-idle-frame measurement; 190 ms observation wait, no injected state.",
+  "start": {
+    "profile": "M5",
+    "sessionDiagnostics": {
+      "pageId": "dccf703c-9882-4114-be08-60674b911f75",
+      "storage": "available",
+      "discardedStoredTraces": 0,
+      "events": [
+        {
+          "sequence": 1,
+          "pageId": "dccf703c-9882-4114-be08-60674b911f75",
+          "path": "/",
+          "timeOriginMs": 1789097993947.7,
+          "elapsedMs": 65.89999997615814,
+          "visibility": "visible",
+          "kind": "page-start",
+          "details": {
+            "navigationType": "reload"
+          }
+        },
+        {
+          "sequence": 2,
+          "pageId": "dccf703c-9882-4114-be08-60674b911f75",
+          "path": "/",
+          "timeOriginMs": 1789097993947.7,
+          "elapsedMs": 103.60000002384186,
+          "visibility": "visible",
+          "kind": "acquire-start",
+          "details": {
+            "pending": false,
+            "session": "idle",
+            "hidden": false
+          }
+        },
+        {
+          "sequence": 3,
+          "pageId": "dccf703c-9882-4114-be08-60674b911f75",
+          "path": "/",
+          "timeOriginMs": 1789097993947.7,
+          "elapsedMs": 103.79999995231628,
+          "visibility": "visible",
+          "kind": "request-start",
+          "details": {
+            "requestId": 1,
+            "name": "camellia-golden-week.save-writer",
+            "mode": "exclusive",
+            "ifAvailable": true
+          }
+        },
+        {
+          "sequence": 4,
+          "pageId": "dccf703c-9882-4114-be08-60674b911f75",
+          "path": "/",
+          "timeOriginMs": 1789097993947.7,
+          "elapsedMs": 139.79999995231628,
+          "visibility": "visible",
+          "kind": "request-callback",
+          "details": {
+            "requestId": 1,
+            "result": "acquired"
+          }
+        },
+        {
+          "sequence": 5,
+          "pageId": "dccf703c-9882-4114-be08-60674b911f75",
+          "path": "/",
+          "timeOriginMs": 1789097993947.7,
+          "elapsedMs": 140.10000002384186,
+          "visibility": "visible",
+          "kind": "acquire-result",
+          "details": {
+            "outcome": "acquired",
+            "stale": false
+          }
+        },
+        {
+          "sequence": 6,
+          "pageId": "dccf703c-9882-4114-be08-60674b911f75",
+          "path": "/",
+          "timeOriginMs": 1789097993947.7,
+          "elapsedMs": 140.20000004768372,
+          "visibility": "visible",
+          "kind": "query-start",
+          "details": {
+            "reason": "acquired"
+          }
+        },
+        {
+          "sequence": 7,
+          "pageId": "dccf703c-9882-4114-be08-60674b911f75",
+          "path": "/",
+          "timeOriginMs": 1789097993947.7,
+          "elapsedMs": 145.60000002384186,
+          "visibility": "visible",
+          "kind": "query-result",
+          "details": {
+            "reason": "acquired",
+            "heldCount": 1,
+            "pendingCount": 0
+          },
+          "locks": {
+            "held": [
+              {
+                "name": "camellia-golden-week.save-writer",
+                "mode": "exclusive",
+                "clientId": "D9CE1DC28C1AE06B3FE2126D6B5527CC"
+              }
+            ],
+            "pending": []
+          }
+        }
+      ]
+    },
+    "schemaVersion": 2,
+    "contentVersion": 4,
+    "ruleVersion": 1,
+    "position": {
+      "space": "world",
+      "areaId": "a",
+      "boardId": "a",
+      "tileId": "a.t.1.-2"
+    },
+    "mode": "explore",
+    "phase": "active",
+    "activeTimeMs": 379.6000000953675,
+    "countdownRemainingMs": 0,
+    "pauseReasons": [],
+    "viewport": {
+      "width": 1366,
+      "height": 768,
+      "devicePixelRatio": 1
+    },
+    "settings": {
+      "masterVolume": 0.6,
+      "muted": false,
+      "reducedFlash": false,
+      "reducedMotion": false,
+      "quality": "standard",
+      "zoom": 1
+    },
+    "audio": {
+      "enabled": true
+    },
+    "completedObjectiveIds": [
+      "hub.amplifier",
+      "hub.tutorial",
+      "a.nexus.route",
+      "a.maze.01",
+      "a.main",
+      "a.maze.02",
+      "a.nexus.side",
+      "a.side.terminal",
+      "a.maze.03",
+      "a.firewall.access",
+      "a.firewall.tutorial",
+      "a.firewall.core",
+      "a.firewall.deep",
+      "a.firewall.inner"
+    ],
+    "completedRoomLayouts": {
+      "a.maze.01": {
+        "objectTileById": {},
+        "visitedTileIds": [],
+        "activatedLocalIds": []
+      },
+      "a.maze.02": {
+        "objectTileById": {},
+        "visitedTileIds": [],
+        "activatedLocalIds": []
+      },
+      "a.maze.03": {
+        "objectTileById": {},
+        "visitedTileIds": [],
+        "activatedLocalIds": []
+      }
+    },
+    "staticRoom": null,
+    "completedRoom": null,
+    "realtimeRoom": null,
+    "data": {
+      "a": {
+        "collected": 80,
+        "total": 100,
+        "includedCollected": 80,
+        "includedTotal": 100,
+        "complete": false
+      },
+      "b": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 100,
+        "complete": false
+      },
+      "c": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 100,
+        "complete": false
+      },
+      "d": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 100,
+        "complete": false
+      }
+    },
+    "claimedRewardIds": [
+      "hub.supply.tutorial",
+      "a.supply.maze01",
+      "a.supply.maze03",
+      "a.supply.firewall.core",
+      "a.supply.firewall.inner",
+      "a.supply.firewall.deep"
+    ],
+    "supply": {
+      "collected": 26,
+      "total": 130,
+      "count": 6
+    },
+    "bestResults": [
+      {
+        "challengeId": "a.firewall.tutorial",
+        "ruleVersion": 1,
+        "bestCombo": 30
+      },
+      {
+        "challengeId": "a.firewall.core",
+        "ruleVersion": 1,
+        "bestCombo": 90
+      },
+      {
+        "challengeId": "a.firewall.deep",
+        "ruleVersion": 1,
+        "bestCombo": 90
+      },
+      {
+        "challengeId": "a.firewall.inner",
+        "ruleVersion": 1,
+        "bestCombo": 90
+      }
+    ],
+    "lastResult": {
+      "code": "accepted",
+      "message": "已继续"
+    },
+    "saveStatus": "已保存 · 2026/9/11 11:28:10",
+    "saveGeneration": 158,
+    "session": "held",
+    "render": {
+      "geometries": 10,
+      "textures": 17,
+      "calls": 25,
+      "tileCount": 46,
+      "residentIconCount": 14,
+      "pendingIconCount": 0,
+      "lastPlayerMovement": null,
+      "layout": {
+        "canvas": {
+          "width": 1366,
+          "height": 644
+        },
+        "insets": {
+          "left": 248,
+          "right": 202,
+          "top": 8,
+          "bottom": 8
+        },
+        "available": {
+          "left": 248,
+          "top": 8,
+          "width": 916,
+          "height": 628
+        },
+        "boardBounds": {
+          "minX": -4.495,
+          "maxX": 8.495,
+          "minY": -3.928315154574996,
+          "maxY": 3.9018326583804415,
+          "width": 12.989999999999998,
+          "height": 7.830147812955437
+        },
+        "focus": {
+          "x": 1,
+          "y": -1.738666487320323
+        },
+        "pixelsPerWorldUnit": 101.77777777777777,
+        "camera": {
+          "left": -6.936681222707424,
+          "right": 6.4847161572052405,
+          "top": 3.163755458515284,
+          "bottom": -3.163755458515284
+        },
+        "requestedZoom": 1,
+        "effectiveZoom": 1,
+        "zoomLimited": false,
+        "targetCss": {
+          "width": 98.72444444444443,
+          "height": 86.40926895681164,
+          "minimum": 86.40926895681164
+        },
+        "visibleColumns": 9,
+        "visibleRows": 7.097744992331138,
+        "fitsBoard": false,
+        "requiresExpandedViewport": false,
+        "compactViewport": false,
+        "boardBoundsCss": {
+          "minX": 146.7311111111111,
+          "maxX": 1468.8244444444445,
+          "minY": 99.14242453274665,
+          "maxY": 896.0774686068778,
+          "width": 1322.0933333333332,
+          "height": 796.9350440741312
+        },
+        "displayedFocus": {
+          "x": 1,
+          "y": -1.738666487320323
+        },
+        "devicePixelRatio": 1
+      }
+    },
+    "transition": {
+      "active": false,
+      "lastDurationMs": 57.699999928474426
+    },
+    "firstStartupReadyMs": 143.39999997615814,
+    "firstGamePreparationMs": 57.699999928474426,
+    "inputLatency": {
+      "method": "physical input handler (including pending direction) to animation frame after presentation",
+      "sampleCount": 0,
+      "p95Ms": 0,
+      "maxMs": 0
+    },
+    "faults": {
+      "active": true,
+      "storage": null,
+      "feedback": null,
+      "rendererStartup": false,
+      "audioEnable": false,
+      "records": []
+    },
+    "frameSummary": {
+      "sampleCount": 0,
+      "medianMs": 0,
+      "p95Ms": 0,
+      "meanMs": 0
+    }
+  },
+  "samples": [
+    {
+      "key": "Left",
+      "position": {
+        "space": "world",
+        "areaId": "a",
+        "boardId": "a",
+        "tileId": "a.t.0.-2"
+      },
+      "saveGeneration": 159,
+      "measurement": {
+        "boardId": "a",
+        "startedAtMs": 725,
+        "completedAtMs": 832.7999999523163,
+        "durationMs": 107.79999995231628,
+        "from": {
+          "tileId": "a.t.1.-2",
+          "x": 1,
+          "y": -2
+        },
+        "to": {
+          "tileId": "a.t.0.-2",
+          "x": 0,
+          "y": -2
+        },
+        "reducedMotion": false
+      },
+      "pauses": []
+    },
+    {
+      "key": "Right",
+      "position": {
+        "space": "world",
+        "areaId": "a",
+        "boardId": "a",
+        "tileId": "a.t.1.-2"
+      },
+      "saveGeneration": 160,
+      "measurement": {
+        "boardId": "a",
+        "startedAtMs": 933.5,
+        "completedAtMs": 1041.1000000238419,
+        "durationMs": 107.60000002384186,
+        "from": {
+          "tileId": "a.t.0.-2",
+          "x": 0,
+          "y": -2
+        },
+        "to": {
+          "tileId": "a.t.1.-2",
+          "x": 1,
+          "y": -2
+        },
+        "reducedMotion": false
+      },
+      "pauses": []
+    },
+    {
+      "key": "Left",
+      "position": {
+        "space": "world",
+        "areaId": "a",
+        "boardId": "a",
+        "tileId": "a.t.0.-2"
+      },
+      "saveGeneration": 161,
+      "measurement": {
+        "boardId": "a",
+        "startedAtMs": 1140.2999999523163,
+        "completedAtMs": 1249.1000000238419,
+        "durationMs": 108.80000007152557,
+        "from": {
+          "tileId": "a.t.1.-2",
+          "x": 1,
+          "y": -2
+        },
+        "to": {
+          "tileId": "a.t.0.-2",
+          "x": 0,
+          "y": -2
+        },
+        "reducedMotion": false
+      },
+      "pauses": []
+    },
+    {
+      "key": "Right",
+      "position": {
+        "space": "world",
+        "areaId": "a",
+        "boardId": "a",
+        "tileId": "a.t.1.-2"
+      },
+      "saveGeneration": 162,
+      "measurement": {
+        "boardId": "a",
+        "startedAtMs": 1348.2000000476837,
+        "completedAtMs": 1457.7000000476837,
+        "durationMs": 109.5,
+        "from": {
+          "tileId": "a.t.0.-2",
+          "x": 0,
+          "y": -2
+        },
+        "to": {
+          "tileId": "a.t.1.-2",
+          "x": 1,
+          "y": -2
+        },
+        "reducedMotion": false
+      },
+      "pauses": []
+    },
+    {
+      "key": "Left",
+      "position": {
+        "space": "world",
+        "areaId": "a",
+        "boardId": "a",
+        "tileId": "a.t.0.-2"
+      },
+      "saveGeneration": 163,
+      "measurement": {
+        "boardId": "a",
+        "startedAtMs": 1552.8999999761581,
+        "completedAtMs": 1657.7000000476837,
+        "durationMs": 104.80000007152557,
+        "from": {
+          "tileId": "a.t.1.-2",
+          "x": 1,
+          "y": -2
+        },
+        "to": {
+          "tileId": "a.t.0.-2",
+          "x": 0,
+          "y": -2
+        },
+        "reducedMotion": false
+      },
+      "pauses": []
+    },
+    {
+      "key": "Right",
+      "position": {
+        "space": "world",
+        "areaId": "a",
+        "boardId": "a",
+        "tileId": "a.t.1.-2"
+      },
+      "saveGeneration": 164,
+      "measurement": {
+        "boardId": "a",
+        "startedAtMs": 1757.6000000238419,
+        "completedAtMs": 1866.2000000476837,
+        "durationMs": 108.60000002384186,
+        "from": {
+          "tileId": "a.t.0.-2",
+          "x": 0,
+          "y": -2
+        },
+        "to": {
+          "tileId": "a.t.1.-2",
+          "x": 1,
+          "y": -2
+        },
+        "reducedMotion": false
+      },
+      "pauses": []
+    }
+  ],
+  "end": {
+    "profile": "M5",
+    "sessionDiagnostics": {
+      "pageId": "dccf703c-9882-4114-be08-60674b911f75",
+      "storage": "available",
+      "discardedStoredTraces": 0,
+      "events": [
+        {
+          "sequence": 1,
+          "pageId": "dccf703c-9882-4114-be08-60674b911f75",
+          "path": "/",
+          "timeOriginMs": 1789097993947.7,
+          "elapsedMs": 65.89999997615814,
+          "visibility": "visible",
+          "kind": "page-start",
+          "details": {
+            "navigationType": "reload"
+          }
+        },
+        {
+          "sequence": 2,
+          "pageId": "dccf703c-9882-4114-be08-60674b911f75",
+          "path": "/",
+          "timeOriginMs": 1789097993947.7,
+          "elapsedMs": 103.60000002384186,
+          "visibility": "visible",
+          "kind": "acquire-start",
+          "details": {
+            "pending": false,
+            "session": "idle",
+            "hidden": false
+          }
+        },
+        {
+          "sequence": 3,
+          "pageId": "dccf703c-9882-4114-be08-60674b911f75",
+          "path": "/",
+          "timeOriginMs": 1789097993947.7,
+          "elapsedMs": 103.79999995231628,
+          "visibility": "visible",
+          "kind": "request-start",
+          "details": {
+            "requestId": 1,
+            "name": "camellia-golden-week.save-writer",
+            "mode": "exclusive",
+            "ifAvailable": true
+          }
+        },
+        {
+          "sequence": 4,
+          "pageId": "dccf703c-9882-4114-be08-60674b911f75",
+          "path": "/",
+          "timeOriginMs": 1789097993947.7,
+          "elapsedMs": 139.79999995231628,
+          "visibility": "visible",
+          "kind": "request-callback",
+          "details": {
+            "requestId": 1,
+            "result": "acquired"
+          }
+        },
+        {
+          "sequence": 5,
+          "pageId": "dccf703c-9882-4114-be08-60674b911f75",
+          "path": "/",
+          "timeOriginMs": 1789097993947.7,
+          "elapsedMs": 140.10000002384186,
+          "visibility": "visible",
+          "kind": "acquire-result",
+          "details": {
+            "outcome": "acquired",
+            "stale": false
+          }
+        },
+        {
+          "sequence": 6,
+          "pageId": "dccf703c-9882-4114-be08-60674b911f75",
+          "path": "/",
+          "timeOriginMs": 1789097993947.7,
+          "elapsedMs": 140.20000004768372,
+          "visibility": "visible",
+          "kind": "query-start",
+          "details": {
+            "reason": "acquired"
+          }
+        },
+        {
+          "sequence": 7,
+          "pageId": "dccf703c-9882-4114-be08-60674b911f75",
+          "path": "/",
+          "timeOriginMs": 1789097993947.7,
+          "elapsedMs": 145.60000002384186,
+          "visibility": "visible",
+          "kind": "query-result",
+          "details": {
+            "reason": "acquired",
+            "heldCount": 1,
+            "pendingCount": 0
+          },
+          "locks": {
+            "held": [
+              {
+                "name": "camellia-golden-week.save-writer",
+                "mode": "exclusive",
+                "clientId": "D9CE1DC28C1AE06B3FE2126D6B5527CC"
+              }
+            ],
+            "pending": []
+          }
+        }
+      ]
+    },
+    "schemaVersion": 2,
+    "contentVersion": 4,
+    "ruleVersion": 1,
+    "position": {
+      "space": "world",
+      "areaId": "a",
+      "boardId": "a",
+      "tileId": "a.t.1.-2"
+    },
+    "mode": "explore",
+    "phase": "active",
+    "activeTimeMs": 1632.9000000953674,
+    "countdownRemainingMs": 0,
+    "pauseReasons": [],
+    "viewport": {
+      "width": 1366,
+      "height": 768,
+      "devicePixelRatio": 1
+    },
+    "settings": {
+      "masterVolume": 0.6,
+      "muted": false,
+      "reducedFlash": false,
+      "reducedMotion": false,
+      "quality": "standard",
+      "zoom": 1
+    },
+    "audio": {
+      "enabled": true
+    },
+    "completedObjectiveIds": [
+      "hub.amplifier",
+      "hub.tutorial",
+      "a.nexus.route",
+      "a.maze.01",
+      "a.main",
+      "a.maze.02",
+      "a.nexus.side",
+      "a.side.terminal",
+      "a.maze.03",
+      "a.firewall.access",
+      "a.firewall.tutorial",
+      "a.firewall.core",
+      "a.firewall.deep",
+      "a.firewall.inner"
+    ],
+    "completedRoomLayouts": {
+      "a.maze.01": {
+        "objectTileById": {},
+        "visitedTileIds": [],
+        "activatedLocalIds": []
+      },
+      "a.maze.02": {
+        "objectTileById": {},
+        "visitedTileIds": [],
+        "activatedLocalIds": []
+      },
+      "a.maze.03": {
+        "objectTileById": {},
+        "visitedTileIds": [],
+        "activatedLocalIds": []
+      }
+    },
+    "staticRoom": null,
+    "completedRoom": null,
+    "realtimeRoom": null,
+    "data": {
+      "a": {
+        "collected": 80,
+        "total": 100,
+        "includedCollected": 80,
+        "includedTotal": 100,
+        "complete": false
+      },
+      "b": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 100,
+        "complete": false
+      },
+      "c": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 100,
+        "complete": false
+      },
+      "d": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 100,
+        "complete": false
+      }
+    },
+    "claimedRewardIds": [
+      "hub.supply.tutorial",
+      "a.supply.maze01",
+      "a.supply.maze03",
+      "a.supply.firewall.core",
+      "a.supply.firewall.inner",
+      "a.supply.firewall.deep"
+    ],
+    "supply": {
+      "collected": 26,
+      "total": 130,
+      "count": 6
+    },
+    "bestResults": [
+      {
+        "challengeId": "a.firewall.tutorial",
+        "ruleVersion": 1,
+        "bestCombo": 30
+      },
+      {
+        "challengeId": "a.firewall.core",
+        "ruleVersion": 1,
+        "bestCombo": 90
+      },
+      {
+        "challengeId": "a.firewall.deep",
+        "ruleVersion": 1,
+        "bestCombo": 90
+      },
+      {
+        "challengeId": "a.firewall.inner",
+        "ruleVersion": 1,
+        "bestCombo": 90
+      }
+    ],
+    "lastResult": {
+      "code": "accepted",
+      "message": "继续探索"
+    },
+    "saveStatus": "已保存 · 11:39:55",
+    "saveGeneration": 164,
+    "session": "held",
+    "render": {
+      "geometries": 10,
+      "textures": 17,
+      "calls": 25,
+      "tileCount": 46,
+      "residentIconCount": 14,
+      "pendingIconCount": 0,
+      "lastPlayerMovement": {
+        "boardId": "a",
+        "startedAtMs": 1757.6000000238419,
+        "completedAtMs": 1866.2000000476837,
+        "durationMs": 108.60000002384186,
+        "from": {
+          "tileId": "a.t.0.-2",
+          "x": 0,
+          "y": -2
+        },
+        "to": {
+          "tileId": "a.t.1.-2",
+          "x": 1,
+          "y": -2
+        },
+        "reducedMotion": false
+      },
+      "layout": {
+        "canvas": {
+          "width": 1366,
+          "height": 644
+        },
+        "insets": {
+          "left": 248,
+          "right": 202,
+          "top": 8,
+          "bottom": 8
+        },
+        "available": {
+          "left": 248,
+          "top": 8,
+          "width": 916,
+          "height": 628
+        },
+        "boardBounds": {
+          "minX": -4.495,
+          "maxX": 8.495,
+          "minY": -3.928315154574996,
+          "maxY": 3.9018326583804415,
+          "width": 12.989999999999998,
+          "height": 7.830147812955437
+        },
+        "focus": {
+          "x": 1,
+          "y": -1.738666487320323
+        },
+        "pixelsPerWorldUnit": 101.77777777777777,
+        "camera": {
+          "left": -6.936681222707424,
+          "right": 6.4847161572052405,
+          "top": 3.163755458515284,
+          "bottom": -3.163755458515284
+        },
+        "requestedZoom": 1,
+        "effectiveZoom": 1,
+        "zoomLimited": false,
+        "targetCss": {
+          "width": 98.72444444444443,
+          "height": 86.40926895681164,
+          "minimum": 86.40926895681164
+        },
+        "visibleColumns": 9,
+        "visibleRows": 7.097744992331138,
+        "fitsBoard": false,
+        "requiresExpandedViewport": false,
+        "compactViewport": false,
+        "boardBoundsCss": {
+          "minX": 146.7311111111111,
+          "maxX": 1468.8244444444445,
+          "minY": 99.14242453274665,
+          "maxY": 896.0774686068778,
+          "width": 1322.0933333333332,
+          "height": 796.9350440741312
+        },
+        "displayedFocus": {
+          "x": 1,
+          "y": -1.738666487320323
+        },
+        "devicePixelRatio": 1
+      }
+    },
+    "transition": {
+      "active": false,
+      "lastDurationMs": 57.699999928474426
+    },
+    "firstStartupReadyMs": 143.39999997615814,
+    "firstGamePreparationMs": 57.699999928474426,
+    "inputLatency": {
+      "method": "physical input handler (including pending direction) to animation frame after presentation",
+      "sampleCount": 6,
+      "p95Ms": 13.50000004768367,
+      "maxMs": 13.50000004768367
+    },
+    "faults": {
+      "active": true,
+      "storage": null,
+      "feedback": null,
+      "rendererStartup": false,
+      "audioEnable": false,
+      "records": []
+    },
+    "frameSummary": {
+      "sampleCount": 83,
+      "medianMs": 8.300000000000011,
+      "p95Ms": 9.199999999999989,
+      "meanMs": 8.344578313253013
+    }
+  }
+}
