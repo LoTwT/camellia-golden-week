@@ -1,0 +1,2183 @@
+{
+  "gameId": "camellia-golden-week",
+  "contentVersion": 1,
+  "ruleVersion": 1,
+  "areaIds": ["hub", "a", "b", "c", "d", "warehouse"],
+  "entry": {
+    "areaId": "hub",
+    "tileId": "hub.t.0.2"
+  },
+  "objectives": [
+    {
+      "id": "hub.amplifier",
+      "kind": "route",
+      "producer": "hub.amplifier.pickup",
+      "prerequisites": {
+        "kind": "always"
+      },
+      "includedFrom": 1
+    },
+    {
+      "id": "hub.tutorial",
+      "kind": "route",
+      "producer": "hub.nexus",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "hub.amplifier"
+      },
+      "includedFrom": 1
+    },
+    {
+      "id": "a.nexus.route",
+      "kind": "route",
+      "producer": "a.nexus.route",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "hub.tutorial"
+      },
+      "includedFrom": 1
+    },
+    {
+      "id": "a.maze.01",
+      "kind": "puzzle",
+      "producer": "a.maze.01",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "hub.tutorial"
+      },
+      "includedFrom": 1
+    },
+    {
+      "id": "a.maze.02",
+      "kind": "puzzle",
+      "producer": "a.maze.02",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "hub.tutorial"
+      },
+      "includedFrom": 1
+    },
+    {
+      "id": "a.maze.03",
+      "kind": "puzzle",
+      "producer": "a.maze.03",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "hub.tutorial"
+      },
+      "includedFrom": 1
+    },
+    {
+      "id": "a.main",
+      "kind": "route",
+      "producer": "a.main.terminal",
+      "prerequisites": {
+        "kind": "all",
+        "conditions": [
+          {
+            "kind": "objective",
+            "objectiveId": "a.nexus.route"
+          },
+          {
+            "kind": "objective",
+            "objectiveId": "a.maze.01"
+          }
+        ]
+      },
+      "includedFrom": 1
+    },
+    {
+      "id": "a.side.terminal",
+      "kind": "terminal",
+      "producer": "a.side.terminal",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "hub.tutorial"
+      },
+      "includedFrom": 1
+    },
+    {
+      "id": "a.nexus.side",
+      "kind": "route",
+      "producer": "a.nexus.side",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "hub.tutorial"
+      },
+      "includedFrom": 1
+    },
+    {
+      "id": "a.firewall.access",
+      "kind": "terminal",
+      "producer": "a.firewall.access",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "hub.tutorial"
+      },
+      "includedFrom": 1
+    },
+    {
+      "id": "a.firewall.tutorial",
+      "kind": "challenge",
+      "producer": "a.firewall.tutorial",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "a.firewall.access"
+      },
+      "includedFrom": 1
+    },
+    {
+      "id": "a.firewall.inner",
+      "kind": "challenge",
+      "producer": "a.firewall.inner",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "a.firewall.tutorial"
+      },
+      "includedFrom": 1
+    },
+    {
+      "id": "a.firewall.deep",
+      "kind": "challenge",
+      "producer": "a.firewall.deep",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "a.firewall.tutorial"
+      },
+      "includedFrom": 1
+    },
+    {
+      "id": "a.firewall.core",
+      "kind": "challenge",
+      "producer": "a.firewall.core",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "a.firewall.tutorial"
+      },
+      "includedFrom": 1
+    },
+    {
+      "id": "b.line.01",
+      "kind": "puzzle",
+      "producer": "b.line.01",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "a.main"
+      },
+      "includedFrom": 2
+    },
+    {
+      "id": "b.line.02",
+      "kind": "puzzle",
+      "producer": "b.line.02",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "a.main"
+      },
+      "includedFrom": 2
+    },
+    {
+      "id": "b.switch.shortcut",
+      "kind": "terminal",
+      "producer": "b.switch.shortcut",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "b.line.01"
+      },
+      "includedFrom": 2
+    },
+    {
+      "id": "b.main",
+      "kind": "route",
+      "producer": "b.main.terminal",
+      "prerequisites": {
+        "kind": "all",
+        "conditions": [
+          {
+            "kind": "objective",
+            "objectiveId": "b.line.01"
+          },
+          {
+            "kind": "objective",
+            "objectiveId": "b.switch.shortcut"
+          }
+        ]
+      },
+      "includedFrom": 2
+    },
+    {
+      "id": "b.north.terminal",
+      "kind": "terminal",
+      "producer": "b.north.terminal",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "a.main"
+      },
+      "includedFrom": 2
+    },
+    {
+      "id": "b.south.terminal",
+      "kind": "terminal",
+      "producer": "b.south.terminal",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "a.main"
+      },
+      "includedFrom": 2
+    },
+    {
+      "id": "b.antivirus.access",
+      "kind": "terminal",
+      "producer": "b.antivirus.access",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "a.main"
+      },
+      "includedFrom": 2
+    },
+    {
+      "id": "b.antivirus.light",
+      "kind": "challenge",
+      "producer": "b.antivirus.light",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "b.antivirus.access"
+      },
+      "includedFrom": 2
+    },
+    {
+      "id": "b.antivirus.medium",
+      "kind": "challenge",
+      "producer": "b.antivirus.medium",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "b.antivirus.access"
+      },
+      "includedFrom": 2
+    },
+    {
+      "id": "b.antivirus.heavy",
+      "kind": "challenge",
+      "producer": "b.antivirus.heavy",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "b.antivirus.access"
+      },
+      "includedFrom": 2
+    },
+    {
+      "id": "c.routing.01",
+      "kind": "puzzle",
+      "producer": "c.routing.01",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "b.main"
+      },
+      "includedFrom": 3
+    },
+    {
+      "id": "c.main",
+      "kind": "route",
+      "producer": "c.main.terminal",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "c.routing.01"
+      },
+      "includedFrom": 3
+    },
+    {
+      "id": "c.side.terminal",
+      "kind": "terminal",
+      "producer": "c.side.terminal",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "b.main"
+      },
+      "includedFrom": 3
+    },
+    {
+      "id": "c.theft.01",
+      "kind": "puzzle",
+      "producer": "c.theft.01",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "b.main"
+      },
+      "includedFrom": 3
+    },
+    {
+      "id": "c.theft.02",
+      "kind": "puzzle",
+      "producer": "c.theft.02",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "b.main"
+      },
+      "includedFrom": 3
+    },
+    {
+      "id": "c.theft.03",
+      "kind": "puzzle",
+      "producer": "c.theft.03",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "b.main"
+      },
+      "includedFrom": 3
+    },
+    {
+      "id": "d.ghost.01",
+      "kind": "challenge",
+      "producer": "d.ghost.01",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "c.main"
+      },
+      "includedFrom": 4
+    },
+    {
+      "id": "d.ghost.02",
+      "kind": "challenge",
+      "producer": "d.ghost.02",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "c.main"
+      },
+      "includedFrom": 4
+    },
+    {
+      "id": "d.reveal.03",
+      "kind": "terminal",
+      "producer": "d.reveal.03",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "c.main"
+      },
+      "includedFrom": 4
+    },
+    {
+      "id": "d.reveal.04",
+      "kind": "terminal",
+      "producer": "d.reveal.04",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "c.main"
+      },
+      "includedFrom": 4
+    },
+    {
+      "id": "d.reveal.hidden",
+      "kind": "terminal",
+      "producer": "d.reveal.hidden",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "c.main"
+      },
+      "includedFrom": 4
+    },
+    {
+      "id": "d.permission.01",
+      "kind": "terminal",
+      "producer": "d.permission.01",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "d.ghost.01"
+      },
+      "includedFrom": 4
+    },
+    {
+      "id": "d.permission.02",
+      "kind": "terminal",
+      "producer": "d.permission.02",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "d.ghost.02"
+      },
+      "includedFrom": 4
+    },
+    {
+      "id": "d.permission.03",
+      "kind": "terminal",
+      "producer": "d.permission.03",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "d.reveal.03"
+      },
+      "includedFrom": 4
+    },
+    {
+      "id": "d.permission.04",
+      "kind": "terminal",
+      "producer": "d.permission.04",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "d.reveal.04"
+      },
+      "includedFrom": 4
+    },
+    {
+      "id": "d.hidden.terminal",
+      "kind": "terminal",
+      "producer": "d.hidden.terminal",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "d.reveal.hidden"
+      },
+      "includedFrom": 4
+    },
+    {
+      "id": "d.main",
+      "kind": "aggregate",
+      "producer": "d.main",
+      "prerequisites": {
+        "kind": "all",
+        "conditions": [
+          {
+            "kind": "objective",
+            "objectiveId": "d.permission.01"
+          },
+          {
+            "kind": "objective",
+            "objectiveId": "d.permission.02"
+          },
+          {
+            "kind": "objective",
+            "objectiveId": "d.permission.03"
+          },
+          {
+            "kind": "objective",
+            "objectiveId": "d.permission.04"
+          }
+        ]
+      },
+      "includedFrom": 4
+    },
+    {
+      "id": "d.ghosts.cleared",
+      "kind": "aggregate",
+      "producer": "d.ghosts.cleared",
+      "prerequisites": {
+        "kind": "all",
+        "conditions": [
+          {
+            "kind": "objective",
+            "objectiveId": "d.ghost.01"
+          },
+          {
+            "kind": "objective",
+            "objectiveId": "d.ghost.02"
+          }
+        ]
+      },
+      "includedFrom": 4
+    },
+    {
+      "id": "a.revisit.nexus",
+      "kind": "route",
+      "producer": "a.revisit.nexus",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "d.main"
+      },
+      "includedFrom": 4
+    },
+    {
+      "id": "a.revisit.terminal",
+      "kind": "terminal",
+      "producer": "a.revisit.terminal",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "d.main"
+      },
+      "includedFrom": 4
+    },
+    {
+      "id": "b.revisit.nexus",
+      "kind": "route",
+      "producer": "b.revisit.nexus",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "d.main"
+      },
+      "includedFrom": 4
+    },
+    {
+      "id": "b.revisit.terminal",
+      "kind": "terminal",
+      "producer": "b.revisit.terminal",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "d.main"
+      },
+      "includedFrom": 4
+    },
+    {
+      "id": "warehouse.complete",
+      "kind": "ending",
+      "producer": "warehouse.final.terminal",
+      "prerequisites": {
+        "kind": "all",
+        "conditions": [
+          {
+            "kind": "areaDataComplete",
+            "areaId": "a"
+          },
+          {
+            "kind": "areaDataComplete",
+            "areaId": "b"
+          },
+          {
+            "kind": "areaDataComplete",
+            "areaId": "c"
+          },
+          {
+            "kind": "areaDataComplete",
+            "areaId": "d"
+          }
+        ]
+      },
+      "includedFrom": 4
+    }
+  ],
+  "dataNodes": [
+    {
+      "id": "a.data.main",
+      "areaId": "a",
+      "weight": 20,
+      "completionObjectiveId": "a.main",
+      "includedFrom": 1
+    },
+    {
+      "id": "a.data.maze02",
+      "areaId": "a",
+      "weight": 20,
+      "completionObjectiveId": "a.maze.02",
+      "includedFrom": 1
+    },
+    {
+      "id": "a.data.maze03",
+      "areaId": "a",
+      "weight": 20,
+      "completionObjectiveId": "a.maze.03",
+      "includedFrom": 1
+    },
+    {
+      "id": "a.data.side",
+      "areaId": "a",
+      "weight": 20,
+      "completionObjectiveId": "a.side.terminal",
+      "includedFrom": 1
+    },
+    {
+      "id": "a.data.revisit",
+      "areaId": "a",
+      "weight": 20,
+      "completionObjectiveId": "a.revisit.terminal",
+      "includedFrom": 4
+    },
+    {
+      "id": "b.data.main",
+      "areaId": "b",
+      "weight": 20,
+      "completionObjectiveId": "b.main",
+      "includedFrom": 2
+    },
+    {
+      "id": "b.data.line02",
+      "areaId": "b",
+      "weight": 20,
+      "completionObjectiveId": "b.line.02",
+      "includedFrom": 2
+    },
+    {
+      "id": "b.data.north",
+      "areaId": "b",
+      "weight": 20,
+      "completionObjectiveId": "b.north.terminal",
+      "includedFrom": 2
+    },
+    {
+      "id": "b.data.south",
+      "areaId": "b",
+      "weight": 20,
+      "completionObjectiveId": "b.south.terminal",
+      "includedFrom": 2
+    },
+    {
+      "id": "b.data.revisit",
+      "areaId": "b",
+      "weight": 20,
+      "completionObjectiveId": "b.revisit.terminal",
+      "includedFrom": 4
+    },
+    {
+      "id": "c.data.main",
+      "areaId": "c",
+      "weight": 20,
+      "completionObjectiveId": "c.main",
+      "includedFrom": 3
+    },
+    {
+      "id": "c.data.theft01",
+      "areaId": "c",
+      "weight": 20,
+      "completionObjectiveId": "c.theft.01",
+      "includedFrom": 3
+    },
+    {
+      "id": "c.data.theft02",
+      "areaId": "c",
+      "weight": 20,
+      "completionObjectiveId": "c.theft.02",
+      "includedFrom": 3
+    },
+    {
+      "id": "c.data.theft03",
+      "areaId": "c",
+      "weight": 20,
+      "completionObjectiveId": "c.theft.03",
+      "includedFrom": 3
+    },
+    {
+      "id": "c.data.side",
+      "areaId": "c",
+      "weight": 20,
+      "completionObjectiveId": "c.side.terminal",
+      "includedFrom": 3
+    },
+    {
+      "id": "d.data.permission01",
+      "areaId": "d",
+      "weight": 20,
+      "completionObjectiveId": "d.permission.01",
+      "includedFrom": 4
+    },
+    {
+      "id": "d.data.permission02",
+      "areaId": "d",
+      "weight": 20,
+      "completionObjectiveId": "d.permission.02",
+      "includedFrom": 4
+    },
+    {
+      "id": "d.data.permission03",
+      "areaId": "d",
+      "weight": 20,
+      "completionObjectiveId": "d.permission.03",
+      "includedFrom": 4
+    },
+    {
+      "id": "d.data.permission04",
+      "areaId": "d",
+      "weight": 20,
+      "completionObjectiveId": "d.permission.04",
+      "includedFrom": 4
+    },
+    {
+      "id": "d.data.hidden",
+      "areaId": "d",
+      "weight": 20,
+      "completionObjectiveId": "d.hidden.terminal",
+      "includedFrom": 4
+    }
+  ],
+  "rewards": [
+    {
+      "id": "hub.supply.tutorial",
+      "statsAreaId": "hub",
+      "units": 1,
+      "claimMode": "grant",
+      "producerId": "hub.tutorial",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "hub.tutorial"
+      },
+      "includedFrom": 1
+    },
+    {
+      "id": "a.supply.maze01",
+      "statsAreaId": "a",
+      "units": 5,
+      "claimMode": "pickup",
+      "producerId": "a.supply.maze01.pickup",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "a.maze.01"
+      },
+      "includedFrom": 1
+    },
+    {
+      "id": "a.supply.maze03",
+      "statsAreaId": "a",
+      "units": 5,
+      "claimMode": "pickup",
+      "producerId": "a.supply.maze03.pickup",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "a.maze.03"
+      },
+      "includedFrom": 1
+    },
+    {
+      "id": "a.supply.firewall.inner",
+      "statsAreaId": "a",
+      "units": 5,
+      "claimMode": "pickup",
+      "producerId": "a.supply.firewall.inner.pickup",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "a.firewall.inner"
+      },
+      "includedFrom": 1
+    },
+    {
+      "id": "a.supply.firewall.deep",
+      "statsAreaId": "a",
+      "units": 5,
+      "claimMode": "pickup",
+      "producerId": "a.supply.firewall.deep.pickup",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "a.firewall.deep"
+      },
+      "includedFrom": 1
+    },
+    {
+      "id": "a.supply.firewall.core",
+      "statsAreaId": "a",
+      "units": 5,
+      "claimMode": "pickup",
+      "producerId": "a.supply.firewall.core.pickup",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "a.firewall.core"
+      },
+      "includedFrom": 1
+    },
+    {
+      "id": "a.supply.revisit",
+      "statsAreaId": "a",
+      "units": 5,
+      "claimMode": "pickup",
+      "producerId": "a.supply.revisit.pickup",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "a.revisit.terminal"
+      },
+      "includedFrom": 4
+    },
+    {
+      "id": "b.supply.line01",
+      "statsAreaId": "b",
+      "units": 5,
+      "claimMode": "pickup",
+      "producerId": "b.supply.line01.pickup",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "b.line.01"
+      },
+      "includedFrom": 2
+    },
+    {
+      "id": "b.supply.line02",
+      "statsAreaId": "b",
+      "units": 5,
+      "claimMode": "pickup",
+      "producerId": "b.supply.line02.pickup",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "b.line.02"
+      },
+      "includedFrom": 2
+    },
+    {
+      "id": "b.supply.antivirus.light",
+      "statsAreaId": "b",
+      "units": 5,
+      "claimMode": "pickup",
+      "producerId": "b.supply.antivirus.light.pickup",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "b.antivirus.light"
+      },
+      "includedFrom": 2
+    },
+    {
+      "id": "b.supply.antivirus.medium",
+      "statsAreaId": "b",
+      "units": 5,
+      "claimMode": "pickup",
+      "producerId": "b.supply.antivirus.medium.pickup",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "b.antivirus.medium"
+      },
+      "includedFrom": 2
+    },
+    {
+      "id": "b.supply.antivirus.heavy",
+      "statsAreaId": "b",
+      "units": 5,
+      "claimMode": "pickup",
+      "producerId": "b.supply.antivirus.heavy.pickup",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "b.antivirus.heavy"
+      },
+      "includedFrom": 2
+    },
+    {
+      "id": "b.supply.revisit",
+      "statsAreaId": "b",
+      "units": 5,
+      "claimMode": "pickup",
+      "producerId": "b.supply.revisit.pickup",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "b.revisit.terminal"
+      },
+      "includedFrom": 4
+    },
+    {
+      "id": "c.supply.route.entry",
+      "statsAreaId": "c",
+      "units": 5,
+      "claimMode": "pickup",
+      "producerId": "c.supply.route.entry.pickup",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "b.main"
+      },
+      "includedFrom": 3
+    },
+    {
+      "id": "c.supply.route.exit",
+      "statsAreaId": "c",
+      "units": 5,
+      "claimMode": "pickup",
+      "producerId": "c.supply.route.exit.pickup",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "c.routing.01"
+      },
+      "includedFrom": 3
+    },
+    {
+      "id": "c.supply.theft01",
+      "statsAreaId": "c",
+      "units": 5,
+      "claimMode": "pickup",
+      "producerId": "c.supply.theft01.pickup",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "c.theft.01"
+      },
+      "includedFrom": 3
+    },
+    {
+      "id": "c.supply.theft02",
+      "statsAreaId": "c",
+      "units": 5,
+      "claimMode": "pickup",
+      "producerId": "c.supply.theft02.pickup",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "c.theft.02"
+      },
+      "includedFrom": 3
+    },
+    {
+      "id": "c.supply.theft03",
+      "statsAreaId": "c",
+      "units": 5,
+      "claimMode": "pickup",
+      "producerId": "c.supply.theft03.pickup",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "c.theft.03"
+      },
+      "includedFrom": 3
+    },
+    {
+      "id": "c.supply.side",
+      "statsAreaId": "c",
+      "units": 5,
+      "claimMode": "pickup",
+      "producerId": "c.supply.side.pickup",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "c.side.terminal"
+      },
+      "includedFrom": 3
+    },
+    {
+      "id": "d.supply.permission01",
+      "statsAreaId": "d",
+      "units": 5,
+      "claimMode": "pickup",
+      "producerId": "d.supply.permission01.pickup",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "d.permission.01"
+      },
+      "includedFrom": 4
+    },
+    {
+      "id": "d.supply.permission02",
+      "statsAreaId": "d",
+      "units": 5,
+      "claimMode": "pickup",
+      "producerId": "d.supply.permission02.pickup",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "d.permission.02"
+      },
+      "includedFrom": 4
+    },
+    {
+      "id": "d.supply.permission03",
+      "statsAreaId": "d",
+      "units": 5,
+      "claimMode": "pickup",
+      "producerId": "d.supply.permission03.pickup",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "d.permission.03"
+      },
+      "includedFrom": 4
+    },
+    {
+      "id": "d.supply.permission04",
+      "statsAreaId": "d",
+      "units": 5,
+      "claimMode": "pickup",
+      "producerId": "d.supply.permission04.pickup",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "d.permission.04"
+      },
+      "includedFrom": 4
+    },
+    {
+      "id": "d.supply.hidden",
+      "statsAreaId": "d",
+      "units": 5,
+      "claimMode": "pickup",
+      "producerId": "d.supply.hidden.pickup",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "d.hidden.terminal"
+      },
+      "includedFrom": 4
+    },
+    {
+      "id": "d.supply.ghosts",
+      "statsAreaId": "d",
+      "units": 5,
+      "claimMode": "pickup",
+      "producerId": "d.supply.ghosts.pickup",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "d.ghosts.cleared"
+      },
+      "includedFrom": 4
+    },
+    {
+      "id": "hub.supply.final",
+      "statsAreaId": "hub",
+      "units": 9,
+      "claimMode": "grant",
+      "producerId": "warehouse.complete",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "warehouse.complete"
+      },
+      "includedFrom": 4
+    }
+  ],
+  "gates": [
+    {
+      "id": "always",
+      "condition": {
+        "kind": "always"
+      },
+      "reason": ""
+    },
+    {
+      "id": "gate.hub.amplifier",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "hub.amplifier"
+      },
+      "reason": "需要完成「hub.amplifier」"
+    },
+    {
+      "id": "gate.hub.tutorial",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "hub.tutorial"
+      },
+      "reason": "需要完成「hub.tutorial」"
+    },
+    {
+      "id": "gate.a.nexus.route",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "a.nexus.route"
+      },
+      "reason": "需要完成「a.nexus.route」"
+    },
+    {
+      "id": "gate.a.maze.01",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "a.maze.01"
+      },
+      "reason": "需要完成「a.maze.01」"
+    },
+    {
+      "id": "gate.a.maze.02",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "a.maze.02"
+      },
+      "reason": "需要完成「a.maze.02」"
+    },
+    {
+      "id": "gate.a.maze.03",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "a.maze.03"
+      },
+      "reason": "需要完成「a.maze.03」"
+    },
+    {
+      "id": "gate.a.main",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "a.main"
+      },
+      "reason": "需要完成「a.main」"
+    },
+    {
+      "id": "gate.a.side.terminal",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "a.side.terminal"
+      },
+      "reason": "需要完成「a.side.terminal」"
+    },
+    {
+      "id": "gate.a.nexus.side",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "a.nexus.side"
+      },
+      "reason": "需要完成「a.nexus.side」"
+    },
+    {
+      "id": "gate.a.firewall.access",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "a.firewall.access"
+      },
+      "reason": "需要完成「a.firewall.access」"
+    },
+    {
+      "id": "gate.a.firewall.tutorial",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "a.firewall.tutorial"
+      },
+      "reason": "需要完成「a.firewall.tutorial」"
+    },
+    {
+      "id": "gate.a.firewall.inner",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "a.firewall.inner"
+      },
+      "reason": "需要完成「a.firewall.inner」"
+    },
+    {
+      "id": "gate.a.firewall.deep",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "a.firewall.deep"
+      },
+      "reason": "需要完成「a.firewall.deep」"
+    },
+    {
+      "id": "gate.a.firewall.core",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "a.firewall.core"
+      },
+      "reason": "需要完成「a.firewall.core」"
+    },
+    {
+      "id": "gate.b.line.01",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "b.line.01"
+      },
+      "reason": "需要完成「b.line.01」"
+    },
+    {
+      "id": "gate.b.line.02",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "b.line.02"
+      },
+      "reason": "需要完成「b.line.02」"
+    },
+    {
+      "id": "gate.b.switch.shortcut",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "b.switch.shortcut"
+      },
+      "reason": "需要完成「b.switch.shortcut」"
+    },
+    {
+      "id": "gate.b.main",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "b.main"
+      },
+      "reason": "需要完成「b.main」"
+    },
+    {
+      "id": "gate.b.north.terminal",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "b.north.terminal"
+      },
+      "reason": "需要完成「b.north.terminal」"
+    },
+    {
+      "id": "gate.b.south.terminal",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "b.south.terminal"
+      },
+      "reason": "需要完成「b.south.terminal」"
+    },
+    {
+      "id": "gate.b.antivirus.access",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "b.antivirus.access"
+      },
+      "reason": "需要完成「b.antivirus.access」"
+    },
+    {
+      "id": "gate.b.antivirus.light",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "b.antivirus.light"
+      },
+      "reason": "需要完成「b.antivirus.light」"
+    },
+    {
+      "id": "gate.b.antivirus.medium",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "b.antivirus.medium"
+      },
+      "reason": "需要完成「b.antivirus.medium」"
+    },
+    {
+      "id": "gate.b.antivirus.heavy",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "b.antivirus.heavy"
+      },
+      "reason": "需要完成「b.antivirus.heavy」"
+    },
+    {
+      "id": "gate.c.routing.01",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "c.routing.01"
+      },
+      "reason": "需要完成「c.routing.01」"
+    },
+    {
+      "id": "gate.c.main",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "c.main"
+      },
+      "reason": "需要完成「c.main」"
+    },
+    {
+      "id": "gate.c.side.terminal",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "c.side.terminal"
+      },
+      "reason": "需要完成「c.side.terminal」"
+    },
+    {
+      "id": "gate.c.theft.01",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "c.theft.01"
+      },
+      "reason": "需要完成「c.theft.01」"
+    },
+    {
+      "id": "gate.c.theft.02",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "c.theft.02"
+      },
+      "reason": "需要完成「c.theft.02」"
+    },
+    {
+      "id": "gate.c.theft.03",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "c.theft.03"
+      },
+      "reason": "需要完成「c.theft.03」"
+    },
+    {
+      "id": "gate.d.ghost.01",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "d.ghost.01"
+      },
+      "reason": "需要完成「d.ghost.01」"
+    },
+    {
+      "id": "gate.d.ghost.02",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "d.ghost.02"
+      },
+      "reason": "需要完成「d.ghost.02」"
+    },
+    {
+      "id": "gate.d.reveal.03",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "d.reveal.03"
+      },
+      "reason": "需要完成「d.reveal.03」"
+    },
+    {
+      "id": "gate.d.reveal.04",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "d.reveal.04"
+      },
+      "reason": "需要完成「d.reveal.04」"
+    },
+    {
+      "id": "gate.d.reveal.hidden",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "d.reveal.hidden"
+      },
+      "reason": "需要完成「d.reveal.hidden」"
+    },
+    {
+      "id": "gate.d.permission.01",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "d.permission.01"
+      },
+      "reason": "需要完成「d.permission.01」"
+    },
+    {
+      "id": "gate.d.permission.02",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "d.permission.02"
+      },
+      "reason": "需要完成「d.permission.02」"
+    },
+    {
+      "id": "gate.d.permission.03",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "d.permission.03"
+      },
+      "reason": "需要完成「d.permission.03」"
+    },
+    {
+      "id": "gate.d.permission.04",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "d.permission.04"
+      },
+      "reason": "需要完成「d.permission.04」"
+    },
+    {
+      "id": "gate.d.hidden.terminal",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "d.hidden.terminal"
+      },
+      "reason": "需要完成「d.hidden.terminal」"
+    },
+    {
+      "id": "gate.d.main",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "d.main"
+      },
+      "reason": "需要完成「d.main」"
+    },
+    {
+      "id": "gate.d.ghosts.cleared",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "d.ghosts.cleared"
+      },
+      "reason": "需要完成「d.ghosts.cleared」"
+    },
+    {
+      "id": "gate.a.revisit.nexus",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "a.revisit.nexus"
+      },
+      "reason": "需要完成「a.revisit.nexus」"
+    },
+    {
+      "id": "gate.a.revisit.terminal",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "a.revisit.terminal"
+      },
+      "reason": "需要完成「a.revisit.terminal」"
+    },
+    {
+      "id": "gate.b.revisit.nexus",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "b.revisit.nexus"
+      },
+      "reason": "需要完成「b.revisit.nexus」"
+    },
+    {
+      "id": "gate.b.revisit.terminal",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "b.revisit.terminal"
+      },
+      "reason": "需要完成「b.revisit.terminal」"
+    },
+    {
+      "id": "gate.warehouse.complete",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "warehouse.complete"
+      },
+      "reason": "需要完成「warehouse.complete」"
+    },
+    {
+      "id": "gate.warehouse",
+      "condition": {
+        "kind": "all",
+        "conditions": [
+          {
+            "kind": "areaDataComplete",
+            "areaId": "a"
+          },
+          {
+            "kind": "areaDataComplete",
+            "areaId": "b"
+          },
+          {
+            "kind": "areaDataComplete",
+            "areaId": "c"
+          },
+          {
+            "kind": "areaDataComplete",
+            "areaId": "d"
+          }
+        ]
+      },
+      "reason": "取得 A / B / C / D 四区的全部必需数据后开放"
+    },
+    {
+      "id": "gate.a.supply.maze01",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "a.maze.01"
+      },
+      "reason": "完成对应机关后领取物资"
+    },
+    {
+      "id": "gate.a.supply.maze03",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "a.maze.03"
+      },
+      "reason": "完成对应机关后领取物资"
+    },
+    {
+      "id": "gate.a.supply.firewall.inner",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "a.firewall.inner"
+      },
+      "reason": "完成对应机关后领取物资"
+    },
+    {
+      "id": "gate.a.supply.firewall.deep",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "a.firewall.deep"
+      },
+      "reason": "完成对应机关后领取物资"
+    },
+    {
+      "id": "gate.a.supply.firewall.core",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "a.firewall.core"
+      },
+      "reason": "完成对应机关后领取物资"
+    },
+    {
+      "id": "gate.a.supply.revisit",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "a.revisit.terminal"
+      },
+      "reason": "完成对应机关后领取物资"
+    },
+    {
+      "id": "gate.b.supply.line01",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "b.line.01"
+      },
+      "reason": "完成对应机关后领取物资"
+    },
+    {
+      "id": "gate.b.supply.line02",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "b.line.02"
+      },
+      "reason": "完成对应机关后领取物资"
+    },
+    {
+      "id": "gate.b.supply.antivirus.light",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "b.antivirus.light"
+      },
+      "reason": "完成对应机关后领取物资"
+    },
+    {
+      "id": "gate.b.supply.antivirus.medium",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "b.antivirus.medium"
+      },
+      "reason": "完成对应机关后领取物资"
+    },
+    {
+      "id": "gate.b.supply.antivirus.heavy",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "b.antivirus.heavy"
+      },
+      "reason": "完成对应机关后领取物资"
+    },
+    {
+      "id": "gate.b.supply.revisit",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "b.revisit.terminal"
+      },
+      "reason": "完成对应机关后领取物资"
+    },
+    {
+      "id": "gate.c.supply.route.entry",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "b.main"
+      },
+      "reason": "完成对应机关后领取物资"
+    },
+    {
+      "id": "gate.c.supply.route.exit",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "c.routing.01"
+      },
+      "reason": "完成对应机关后领取物资"
+    },
+    {
+      "id": "gate.c.supply.theft01",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "c.theft.01"
+      },
+      "reason": "完成对应机关后领取物资"
+    },
+    {
+      "id": "gate.c.supply.theft02",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "c.theft.02"
+      },
+      "reason": "完成对应机关后领取物资"
+    },
+    {
+      "id": "gate.c.supply.theft03",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "c.theft.03"
+      },
+      "reason": "完成对应机关后领取物资"
+    },
+    {
+      "id": "gate.c.supply.side",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "c.side.terminal"
+      },
+      "reason": "完成对应机关后领取物资"
+    },
+    {
+      "id": "gate.d.supply.permission01",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "d.permission.01"
+      },
+      "reason": "完成对应机关后领取物资"
+    },
+    {
+      "id": "gate.d.supply.permission02",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "d.permission.02"
+      },
+      "reason": "完成对应机关后领取物资"
+    },
+    {
+      "id": "gate.d.supply.permission03",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "d.permission.03"
+      },
+      "reason": "完成对应机关后领取物资"
+    },
+    {
+      "id": "gate.d.supply.permission04",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "d.permission.04"
+      },
+      "reason": "完成对应机关后领取物资"
+    },
+    {
+      "id": "gate.d.supply.hidden",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "d.hidden.terminal"
+      },
+      "reason": "完成对应机关后领取物资"
+    },
+    {
+      "id": "gate.d.supply.ghosts",
+      "condition": {
+        "kind": "objective",
+        "objectiveId": "d.ghosts.cleared"
+      },
+      "reason": "完成对应机关后领取物资"
+    }
+  ],
+  "releaseProfiles": [
+    {
+      "id": "M1",
+      "includedAreaIds": ["hub", "a"],
+      "includedRoomIds": [
+        "a.maze.01",
+        "a.maze.02",
+        "a.maze.03",
+        "a.firewall.tutorial",
+        "a.firewall.inner",
+        "a.firewall.deep",
+        "a.firewall.core"
+      ],
+      "includedObjectiveIds": [
+        "hub.amplifier",
+        "hub.tutorial",
+        "a.nexus.route",
+        "a.maze.01",
+        "a.maze.02",
+        "a.maze.03",
+        "a.main",
+        "a.side.terminal",
+        "a.nexus.side",
+        "a.firewall.access",
+        "a.firewall.tutorial",
+        "a.firewall.inner",
+        "a.firewall.deep",
+        "a.firewall.core"
+      ],
+      "includedRewardIds": [
+        "hub.supply.tutorial",
+        "a.supply.maze01",
+        "a.supply.maze03",
+        "a.supply.firewall.inner",
+        "a.supply.firewall.deep",
+        "a.supply.firewall.core"
+      ],
+      "scopeTerminalObjectiveId": "a.main",
+      "fullCampaign": false
+    },
+    {
+      "id": "M2",
+      "includedAreaIds": ["hub", "a", "b"],
+      "includedRoomIds": [
+        "a.maze.01",
+        "a.maze.02",
+        "a.maze.03",
+        "a.firewall.tutorial",
+        "a.firewall.inner",
+        "a.firewall.deep",
+        "a.firewall.core"
+      ],
+      "includedObjectiveIds": [
+        "hub.amplifier",
+        "hub.tutorial",
+        "a.nexus.route",
+        "a.maze.01",
+        "a.maze.02",
+        "a.maze.03",
+        "a.main",
+        "a.side.terminal",
+        "a.nexus.side",
+        "a.firewall.access",
+        "a.firewall.tutorial",
+        "a.firewall.inner",
+        "a.firewall.deep",
+        "a.firewall.core",
+        "b.line.01",
+        "b.line.02",
+        "b.switch.shortcut",
+        "b.main",
+        "b.north.terminal",
+        "b.south.terminal",
+        "b.antivirus.access",
+        "b.antivirus.light",
+        "b.antivirus.medium",
+        "b.antivirus.heavy"
+      ],
+      "includedRewardIds": [
+        "hub.supply.tutorial",
+        "a.supply.maze01",
+        "a.supply.maze03",
+        "a.supply.firewall.inner",
+        "a.supply.firewall.deep",
+        "a.supply.firewall.core",
+        "b.supply.line01",
+        "b.supply.line02",
+        "b.supply.antivirus.light",
+        "b.supply.antivirus.medium",
+        "b.supply.antivirus.heavy"
+      ],
+      "scopeTerminalObjectiveId": "b.main",
+      "fullCampaign": false
+    },
+    {
+      "id": "M3",
+      "includedAreaIds": ["hub", "a", "b", "c"],
+      "includedRoomIds": [
+        "a.maze.01",
+        "a.maze.02",
+        "a.maze.03",
+        "a.firewall.tutorial",
+        "a.firewall.inner",
+        "a.firewall.deep",
+        "a.firewall.core"
+      ],
+      "includedObjectiveIds": [
+        "hub.amplifier",
+        "hub.tutorial",
+        "a.nexus.route",
+        "a.maze.01",
+        "a.maze.02",
+        "a.maze.03",
+        "a.main",
+        "a.side.terminal",
+        "a.nexus.side",
+        "a.firewall.access",
+        "a.firewall.tutorial",
+        "a.firewall.inner",
+        "a.firewall.deep",
+        "a.firewall.core",
+        "b.line.01",
+        "b.line.02",
+        "b.switch.shortcut",
+        "b.main",
+        "b.north.terminal",
+        "b.south.terminal",
+        "b.antivirus.access",
+        "b.antivirus.light",
+        "b.antivirus.medium",
+        "b.antivirus.heavy",
+        "c.routing.01",
+        "c.main",
+        "c.side.terminal",
+        "c.theft.01",
+        "c.theft.02",
+        "c.theft.03"
+      ],
+      "includedRewardIds": [
+        "hub.supply.tutorial",
+        "a.supply.maze01",
+        "a.supply.maze03",
+        "a.supply.firewall.inner",
+        "a.supply.firewall.deep",
+        "a.supply.firewall.core",
+        "b.supply.line01",
+        "b.supply.line02",
+        "b.supply.antivirus.light",
+        "b.supply.antivirus.medium",
+        "b.supply.antivirus.heavy",
+        "c.supply.route.entry",
+        "c.supply.route.exit",
+        "c.supply.theft01",
+        "c.supply.theft02",
+        "c.supply.theft03",
+        "c.supply.side"
+      ],
+      "scopeTerminalObjectiveId": "c.main",
+      "fullCampaign": false
+    },
+    {
+      "id": "M4",
+      "includedAreaIds": ["hub", "a", "b", "c", "d", "warehouse"],
+      "includedRoomIds": [
+        "a.maze.01",
+        "a.maze.02",
+        "a.maze.03",
+        "a.firewall.tutorial",
+        "a.firewall.inner",
+        "a.firewall.deep",
+        "a.firewall.core"
+      ],
+      "includedObjectiveIds": [
+        "hub.amplifier",
+        "hub.tutorial",
+        "a.nexus.route",
+        "a.maze.01",
+        "a.maze.02",
+        "a.maze.03",
+        "a.main",
+        "a.side.terminal",
+        "a.nexus.side",
+        "a.firewall.access",
+        "a.firewall.tutorial",
+        "a.firewall.inner",
+        "a.firewall.deep",
+        "a.firewall.core",
+        "b.line.01",
+        "b.line.02",
+        "b.switch.shortcut",
+        "b.main",
+        "b.north.terminal",
+        "b.south.terminal",
+        "b.antivirus.access",
+        "b.antivirus.light",
+        "b.antivirus.medium",
+        "b.antivirus.heavy",
+        "c.routing.01",
+        "c.main",
+        "c.side.terminal",
+        "c.theft.01",
+        "c.theft.02",
+        "c.theft.03",
+        "d.ghost.01",
+        "d.ghost.02",
+        "d.reveal.03",
+        "d.reveal.04",
+        "d.reveal.hidden",
+        "d.permission.01",
+        "d.permission.02",
+        "d.permission.03",
+        "d.permission.04",
+        "d.hidden.terminal",
+        "d.main",
+        "d.ghosts.cleared",
+        "a.revisit.nexus",
+        "a.revisit.terminal",
+        "b.revisit.nexus",
+        "b.revisit.terminal",
+        "warehouse.complete"
+      ],
+      "includedRewardIds": [
+        "hub.supply.tutorial",
+        "a.supply.maze01",
+        "a.supply.maze03",
+        "a.supply.firewall.inner",
+        "a.supply.firewall.deep",
+        "a.supply.firewall.core",
+        "a.supply.revisit",
+        "b.supply.line01",
+        "b.supply.line02",
+        "b.supply.antivirus.light",
+        "b.supply.antivirus.medium",
+        "b.supply.antivirus.heavy",
+        "b.supply.revisit",
+        "c.supply.route.entry",
+        "c.supply.route.exit",
+        "c.supply.theft01",
+        "c.supply.theft02",
+        "c.supply.theft03",
+        "c.supply.side",
+        "d.supply.permission01",
+        "d.supply.permission02",
+        "d.supply.permission03",
+        "d.supply.permission04",
+        "d.supply.hidden",
+        "d.supply.ghosts",
+        "hub.supply.final"
+      ],
+      "scopeTerminalObjectiveId": "warehouse.complete",
+      "fullCampaign": true
+    },
+    {
+      "id": "M5",
+      "includedAreaIds": ["hub", "a", "b", "c", "d", "warehouse"],
+      "includedRoomIds": [
+        "a.maze.01",
+        "a.maze.02",
+        "a.maze.03",
+        "a.firewall.tutorial",
+        "a.firewall.inner",
+        "a.firewall.deep",
+        "a.firewall.core"
+      ],
+      "includedObjectiveIds": [
+        "hub.amplifier",
+        "hub.tutorial",
+        "a.nexus.route",
+        "a.maze.01",
+        "a.maze.02",
+        "a.maze.03",
+        "a.main",
+        "a.side.terminal",
+        "a.nexus.side",
+        "a.firewall.access",
+        "a.firewall.tutorial",
+        "a.firewall.inner",
+        "a.firewall.deep",
+        "a.firewall.core",
+        "b.line.01",
+        "b.line.02",
+        "b.switch.shortcut",
+        "b.main",
+        "b.north.terminal",
+        "b.south.terminal",
+        "b.antivirus.access",
+        "b.antivirus.light",
+        "b.antivirus.medium",
+        "b.antivirus.heavy",
+        "c.routing.01",
+        "c.main",
+        "c.side.terminal",
+        "c.theft.01",
+        "c.theft.02",
+        "c.theft.03",
+        "d.ghost.01",
+        "d.ghost.02",
+        "d.reveal.03",
+        "d.reveal.04",
+        "d.reveal.hidden",
+        "d.permission.01",
+        "d.permission.02",
+        "d.permission.03",
+        "d.permission.04",
+        "d.hidden.terminal",
+        "d.main",
+        "d.ghosts.cleared",
+        "a.revisit.nexus",
+        "a.revisit.terminal",
+        "b.revisit.nexus",
+        "b.revisit.terminal",
+        "warehouse.complete"
+      ],
+      "includedRewardIds": [
+        "hub.supply.tutorial",
+        "a.supply.maze01",
+        "a.supply.maze03",
+        "a.supply.firewall.inner",
+        "a.supply.firewall.deep",
+        "a.supply.firewall.core",
+        "a.supply.revisit",
+        "b.supply.line01",
+        "b.supply.line02",
+        "b.supply.antivirus.light",
+        "b.supply.antivirus.medium",
+        "b.supply.antivirus.heavy",
+        "b.supply.revisit",
+        "c.supply.route.entry",
+        "c.supply.route.exit",
+        "c.supply.theft01",
+        "c.supply.theft02",
+        "c.supply.theft03",
+        "c.supply.side",
+        "d.supply.permission01",
+        "d.supply.permission02",
+        "d.supply.permission03",
+        "d.supply.permission04",
+        "d.supply.hidden",
+        "d.supply.ghosts",
+        "hub.supply.final"
+      ],
+      "scopeTerminalObjectiveId": "warehouse.complete",
+      "fullCampaign": true
+    }
+  ],
+  "effects": [
+    {
+      "id": "hub.amplifier.effects",
+      "completeObjectiveIds": ["hub.amplifier"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "hub.nexus.effects",
+      "completeObjectiveIds": ["hub.tutorial"],
+      "grantRewardIds": ["hub.supply.tutorial"],
+      "revealGroupIds": [],
+      "clearEtherTileIds": ["hub.t.4.2", "hub.t.5.2"]
+    },
+    {
+      "id": "a.nexus.route.effects",
+      "completeObjectiveIds": ["a.nexus.route"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": ["a.t.2.0"]
+    },
+    {
+      "id": "a.maze.01.effects",
+      "completeObjectiveIds": ["a.maze.01"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "a.main.terminal.effects",
+      "completeObjectiveIds": ["a.main"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "a.maze.02.effects",
+      "completeObjectiveIds": ["a.maze.02"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "a.maze.03.effects",
+      "completeObjectiveIds": ["a.maze.03"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "a.nexus.side.effects",
+      "completeObjectiveIds": ["a.nexus.side"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": ["a.t.3.-2"]
+    },
+    {
+      "id": "a.side.terminal.effects",
+      "completeObjectiveIds": ["a.side.terminal"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "a.firewall.access.effects",
+      "completeObjectiveIds": ["a.firewall.access"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "a.firewall.tutorial.effects",
+      "completeObjectiveIds": ["a.firewall.tutorial"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "a.firewall.inner.effects",
+      "completeObjectiveIds": ["a.firewall.inner"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "a.firewall.deep.effects",
+      "completeObjectiveIds": ["a.firewall.deep"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "a.firewall.core.effects",
+      "completeObjectiveIds": ["a.firewall.core"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    }
+  ],
+  "sources": [
+    {
+      "id": "map.hub.reconstructed",
+      "urlOrPath": "docs/references/maps/world-m1.md",
+      "locator": "中心教学拓扑",
+      "checkedAt": "2026-09-11",
+      "evidenceLevel": "reconstruction",
+      "supportedClaim": "按规格固定重建地图，保留机关因果和往返关系",
+      "limitation": "未声称原作逐格坐标；原参考可见范围另记",
+      "adaptedElementIds": [
+        "hub.teleport.point",
+        "hub.amplifier.pickup",
+        "hub.nexus",
+        "hub.to.a",
+        "hub.to.warehouse"
+      ]
+    },
+    {
+      "id": "map.a.reconstructed",
+      "urlOrPath": "docs/references/maps/world-m1.md",
+      "locator": "A 首访拓扑",
+      "checkedAt": "2026-09-11",
+      "evidenceLevel": "reconstruction",
+      "supportedClaim": "按规格固定重建地图，保留机关因果和往返关系",
+      "limitation": "未声称原作逐格坐标；原参考可见范围另记",
+      "adaptedElementIds": [
+        "a.teleport.point",
+        "a.to.hub",
+        "a.nexus.route",
+        "a.maze.01.entrance",
+        "a.supply.maze01.pickup",
+        "a.main.terminal",
+        "a.to.b",
+        "a.maze.02.entrance",
+        "a.maze.03.entrance",
+        "a.supply.maze03.pickup",
+        "a.nexus.side",
+        "a.side.terminal",
+        "a.firewall.access",
+        "a.firewall.inner.door",
+        "a.supply.firewall.inner.pickup",
+        "a.firewall.deep.door",
+        "a.supply.firewall.deep.pickup",
+        "a.firewall.core.door",
+        "a.supply.firewall.core.pickup"
+      ]
+    },
+    {
+      "id": "map.static.a.maze.01",
+      "urlOrPath": "docs/references/maps/static-puzzles.md",
+      "locator": "a.maze.01",
+      "checkedAt": "2026-09-11",
+      "evidenceLevel": "reconstruction",
+      "supportedClaim": "本版固定局部机关及正常行动见证",
+      "limitation": "未逐格测绘原作；地图与时序按规格重建",
+      "adaptedElementIds": ["a.maze.01"]
+    },
+    {
+      "id": "map.static.a.maze.02",
+      "urlOrPath": "docs/references/maps/static-puzzles.md",
+      "locator": "a.maze.02",
+      "checkedAt": "2026-09-11",
+      "evidenceLevel": "reconstruction",
+      "supportedClaim": "本版固定局部机关及正常行动见证",
+      "limitation": "未逐格测绘原作；地图与时序按规格重建",
+      "adaptedElementIds": ["a.maze.02"]
+    },
+    {
+      "id": "map.static.a.maze.03",
+      "urlOrPath": "docs/references/maps/static-puzzles.md",
+      "locator": "a.maze.03",
+      "checkedAt": "2026-09-11",
+      "evidenceLevel": "reconstruction",
+      "supportedClaim": "本版固定局部机关及正常行动见证",
+      "limitation": "未逐格测绘原作；地图与时序按规格重建",
+      "adaptedElementIds": ["a.maze.03"]
+    },
+    {
+      "id": "map.static.b.line.01",
+      "urlOrPath": "docs/references/maps/static-puzzles.md",
+      "locator": "b.line.01",
+      "checkedAt": "2026-09-11",
+      "evidenceLevel": "reconstruction",
+      "supportedClaim": "本版固定局部机关及正常行动见证",
+      "limitation": "未逐格测绘原作；地图与时序按规格重建",
+      "adaptedElementIds": ["b.line.01"]
+    },
+    {
+      "id": "map.static.b.line.02",
+      "urlOrPath": "docs/references/maps/static-puzzles.md",
+      "locator": "b.line.02",
+      "checkedAt": "2026-09-11",
+      "evidenceLevel": "reconstruction",
+      "supportedClaim": "本版固定局部机关及正常行动见证",
+      "limitation": "未逐格测绘原作；地图与时序按规格重建",
+      "adaptedElementIds": ["b.line.02"]
+    },
+    {
+      "id": "map.static.c.routing.01",
+      "urlOrPath": "docs/references/maps/static-puzzles.md",
+      "locator": "c.routing.01",
+      "checkedAt": "2026-09-11",
+      "evidenceLevel": "reconstruction",
+      "supportedClaim": "本版固定局部机关及正常行动见证",
+      "limitation": "未逐格测绘原作；地图与时序按规格重建",
+      "adaptedElementIds": ["c.routing.01"]
+    },
+    {
+      "id": "map.static.c.theft.01",
+      "urlOrPath": "docs/references/maps/static-puzzles.md",
+      "locator": "c.theft.01",
+      "checkedAt": "2026-09-11",
+      "evidenceLevel": "reconstruction",
+      "supportedClaim": "本版固定局部机关及正常行动见证",
+      "limitation": "未逐格测绘原作；地图与时序按规格重建",
+      "adaptedElementIds": ["c.theft.01"]
+    },
+    {
+      "id": "map.static.c.theft.02",
+      "urlOrPath": "docs/references/maps/static-puzzles.md",
+      "locator": "c.theft.02",
+      "checkedAt": "2026-09-11",
+      "evidenceLevel": "reconstruction",
+      "supportedClaim": "本版固定局部机关及正常行动见证",
+      "limitation": "未逐格测绘原作；地图与时序按规格重建",
+      "adaptedElementIds": ["c.theft.02"]
+    },
+    {
+      "id": "map.static.c.theft.03",
+      "urlOrPath": "docs/references/maps/static-puzzles.md",
+      "locator": "c.theft.03",
+      "checkedAt": "2026-09-11",
+      "evidenceLevel": "reconstruction",
+      "supportedClaim": "本版固定局部机关及正常行动见证",
+      "limitation": "未逐格测绘原作；地图与时序按规格重建",
+      "adaptedElementIds": ["c.theft.03"]
+    }
+  ]
+}

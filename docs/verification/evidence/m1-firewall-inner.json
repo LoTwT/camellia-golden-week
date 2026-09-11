@@ -1,0 +1,1109 @@
+{
+  "method": "normal browser key presses, live read-only clock used for rhythm; no state writes",
+  "trace": [
+    {
+      "beat": 0,
+      "target": 250,
+      "beforeMs": 252.90000002383022,
+      "afterMs": 263.7000000476837,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 1,
+      "target": 750,
+      "beforeMs": 762.2000000238186,
+      "afterMs": 770.1000000238419,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 2,
+      "target": 1250,
+      "beforeMs": 1262.1000000238419,
+      "afterMs": 1270.5000000238651,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 3,
+      "target": 1750,
+      "beforeMs": 1753.4000000238302,
+      "afterMs": 1769.9000000238302,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 4,
+      "target": 2250,
+      "beforeMs": 2261.8000000238535,
+      "afterMs": 2271.600000023842,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 5,
+      "target": 2750,
+      "beforeMs": 2761.40000002383,
+      "afterMs": 2770.600000023842,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 6,
+      "target": 3250,
+      "beforeMs": 3252.90000002383,
+      "afterMs": 3262.100000023842,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 7,
+      "target": 3750,
+      "beforeMs": 3753.100000023842,
+      "afterMs": 3764.100000023842,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 8,
+      "target": 4250,
+      "beforeMs": 4262.100000023842,
+      "afterMs": 4270.40000002383,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 9,
+      "target": 4750,
+      "beforeMs": 4753.700000023819,
+      "afterMs": 4770.500000023865,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 10,
+      "target": 5250,
+      "beforeMs": 5253.100000023842,
+      "afterMs": 5262.800000071526,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 11,
+      "target": 5750,
+      "beforeMs": 5753.8000000238535,
+      "afterMs": 5770.40000002383,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 12,
+      "target": 6250,
+      "beforeMs": 6261.700000023819,
+      "afterMs": 6270.40000002383,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 13,
+      "target": 6750,
+      "beforeMs": 6753.700000023819,
+      "afterMs": 6769.500000023865,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 14,
+      "target": 7250,
+      "beforeMs": 7253.8000000238535,
+      "afterMs": 7270.100000023842,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 15,
+      "target": 7750,
+      "beforeMs": 7761.40000002383,
+      "afterMs": 7778.700000023819,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 16,
+      "target": 8250,
+      "beforeMs": 8261.800000023853,
+      "afterMs": 8269.700000023819,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 17,
+      "target": 8750,
+      "beforeMs": 8761.200000023819,
+      "afterMs": 8778.200000023819,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 18,
+      "target": 9250,
+      "beforeMs": 9254.200000023819,
+      "afterMs": 9263.5,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 19,
+      "target": 9750,
+      "beforeMs": 9754.40000002383,
+      "afterMs": 9763.900000095367,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 20,
+      "target": 10250,
+      "beforeMs": 10254.500000023865,
+      "afterMs": 10269.800000023853,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 21,
+      "target": 10750,
+      "beforeMs": 10754.40000002383,
+      "afterMs": 10762.700000047684,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 22,
+      "target": 11250,
+      "beforeMs": 11261.700000023819,
+      "afterMs": 11272.200000047684,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 23,
+      "target": 11750,
+      "beforeMs": 11754.40000002383,
+      "afterMs": 11764.300000071526,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 24,
+      "target": 12250,
+      "beforeMs": 12254.700000023819,
+      "afterMs": 12264.800000071526,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 25,
+      "target": 12750,
+      "beforeMs": 12754.500000023865,
+      "afterMs": 12763.400000095367,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 26,
+      "target": 13250,
+      "beforeMs": 13261.90000002383,
+      "afterMs": 13271.100000023842,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 27,
+      "target": 13750,
+      "beforeMs": 13761.200000023819,
+      "afterMs": 13771.40000002383,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 28,
+      "target": 14250,
+      "beforeMs": 14254.40000002383,
+      "afterMs": 14270.200000023819,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 29,
+      "target": 14750,
+      "beforeMs": 14762.800000023853,
+      "afterMs": 14779.600000023842,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 30,
+      "target": 15250,
+      "beforeMs": 15261.800000023853,
+      "afterMs": 15272,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 31,
+      "target": 15750,
+      "beforeMs": 15754.40000002383,
+      "afterMs": 15765.5,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 32,
+      "target": 16250,
+      "beforeMs": 16262.100000023842,
+      "afterMs": 16271.200000023819,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 33,
+      "target": 16750,
+      "beforeMs": 16761.100000023842,
+      "afterMs": 16770.100000023842,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 34,
+      "target": 17250,
+      "beforeMs": 17261.500000023865,
+      "afterMs": 17271.40000002383,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 35,
+      "target": 17750,
+      "beforeMs": 17753.40000002383,
+      "afterMs": 17769.600000023842,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 36,
+      "target": 18250,
+      "beforeMs": 18262.800000023853,
+      "afterMs": 18277.70000002382,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 37,
+      "target": 18750,
+      "beforeMs": 18761.600000023842,
+      "afterMs": 18772.300000071526,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 38,
+      "target": 19250,
+      "beforeMs": 19253.20000002382,
+      "afterMs": 19270.000000023865,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 39,
+      "target": 19750,
+      "beforeMs": 19753.000000023865,
+      "afterMs": 19770.300000023853,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 40,
+      "target": 20250,
+      "beforeMs": 20254.40000002383,
+      "afterMs": 20269.800000023853,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 41,
+      "target": 20750,
+      "beforeMs": 20761.000000023865,
+      "afterMs": 20769.90000002383,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 42,
+      "target": 21250,
+      "beforeMs": 21261.20000002382,
+      "afterMs": 21270.000000023865,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 43,
+      "target": 21750,
+      "beforeMs": 21761.300000023853,
+      "afterMs": 21769.70000002382,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 44,
+      "target": 22250,
+      "beforeMs": 22262.70000002382,
+      "afterMs": 22278.000000023865,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 45,
+      "target": 22750,
+      "beforeMs": 22754.70000002382,
+      "afterMs": 22771.000000023865,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 46,
+      "target": 23250,
+      "beforeMs": 23261.20000002382,
+      "afterMs": 23272,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 47,
+      "target": 23750,
+      "beforeMs": 23762.600000023842,
+      "afterMs": 23777.90000002383,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 48,
+      "target": 24250,
+      "beforeMs": 24262.000000023865,
+      "afterMs": 24277.800000023853,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 49,
+      "target": 24750,
+      "beforeMs": 24761.300000023853,
+      "afterMs": 24769.300000023853,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 50,
+      "target": 25250,
+      "beforeMs": 25252.90000002383,
+      "afterMs": 25264.900000095367,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 51,
+      "target": 25750,
+      "beforeMs": 25754.300000023853,
+      "afterMs": 25770.90000002383,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 52,
+      "target": 26250,
+      "beforeMs": 26252.90000002383,
+      "afterMs": 26263.800000071526,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 53,
+      "target": 26750,
+      "beforeMs": 26752.70000002382,
+      "afterMs": 26769.70000002382,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 54,
+      "target": 27250,
+      "beforeMs": 27262.70000002382,
+      "afterMs": 27270.300000023853,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 55,
+      "target": 27750,
+      "beforeMs": 27752.90000002383,
+      "afterMs": 27763.5,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 56,
+      "target": 28250,
+      "beforeMs": 28253.800000023853,
+      "afterMs": 28262.500000023865,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 57,
+      "target": 28750,
+      "beforeMs": 28761.000000023865,
+      "afterMs": 28770.300000023853,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 58,
+      "target": 29250,
+      "beforeMs": 29262.40000002383,
+      "afterMs": 29271.000000023865,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 59,
+      "target": 29750,
+      "beforeMs": 29754.300000023853,
+      "afterMs": 29765,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 60,
+      "target": 30250,
+      "beforeMs": 30252.90000002383,
+      "afterMs": 30269.90000002383,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 61,
+      "target": 30750,
+      "beforeMs": 30761.100000023842,
+      "afterMs": 30772.900000095367,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 62,
+      "target": 31250,
+      "beforeMs": 31254.20000002382,
+      "afterMs": 31269.20000002382,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 63,
+      "target": 31750,
+      "beforeMs": 31761.40000002383,
+      "afterMs": 31770.90000002383,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 64,
+      "target": 32250,
+      "beforeMs": 32261.800000023853,
+      "afterMs": 32269.600000023842,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 65,
+      "target": 32750,
+      "beforeMs": 32752.600000023842,
+      "afterMs": 32761.90000002383,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 66,
+      "target": 33250,
+      "beforeMs": 33262.30000002385,
+      "afterMs": 33279.20000002382,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 67,
+      "target": 33750,
+      "beforeMs": 33761.70000002382,
+      "afterMs": 33771.10000002384,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 68,
+      "target": 34250,
+      "beforeMs": 34254.10000002384,
+      "afterMs": 34264.90000009537,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 69,
+      "target": 34750,
+      "beforeMs": 34754.20000002382,
+      "afterMs": 34769.20000002382,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 70,
+      "target": 35250,
+      "beforeMs": 35254.10000002384,
+      "afterMs": 35270.40000002383,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 71,
+      "target": 35750,
+      "beforeMs": 35752.500000023865,
+      "afterMs": 35770.80000002385,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 72,
+      "target": 36250,
+      "beforeMs": 36261.20000002382,
+      "afterMs": 36265.60000002384,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 73,
+      "target": 36750,
+      "beforeMs": 36753.90000002383,
+      "afterMs": 36769.60000002384,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 74,
+      "target": 37250,
+      "beforeMs": 37262.500000023865,
+      "afterMs": 37286.000000023865,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 75,
+      "target": 37750,
+      "beforeMs": 37762.500000023865,
+      "afterMs": 37771.10000002384,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 76,
+      "target": 38250,
+      "beforeMs": 38254.20000002382,
+      "afterMs": 38269.40000002383,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 77,
+      "target": 38750,
+      "beforeMs": 38752.500000023865,
+      "afterMs": 38769.500000023865,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 78,
+      "target": 39250,
+      "beforeMs": 39261.10000002384,
+      "afterMs": 39270.60000002384,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 79,
+      "target": 39750,
+      "beforeMs": 39754.30000002385,
+      "afterMs": 39769.20000002382,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 80,
+      "target": 40250,
+      "beforeMs": 40262.500000023865,
+      "afterMs": 40270.000000023865,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 81,
+      "target": 40750,
+      "beforeMs": 40754.10000002384,
+      "afterMs": 40769.60000002384,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 82,
+      "target": 41250,
+      "beforeMs": 41253.70000002382,
+      "afterMs": 41263.800000071526,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 83,
+      "target": 41750,
+      "beforeMs": 41752.60000002384,
+      "afterMs": 41769.70000002382,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 84,
+      "target": 42250,
+      "beforeMs": 42253.70000002382,
+      "afterMs": 42270.20000002382,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 85,
+      "target": 42750,
+      "beforeMs": 42760.90000002383,
+      "afterMs": 42771,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 86,
+      "target": 43250,
+      "beforeMs": 43254.10000002384,
+      "afterMs": 43269.70000002382,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 87,
+      "target": 43750,
+      "beforeMs": 43762.60000002384,
+      "afterMs": 43770.500000023865,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 88,
+      "target": 44250,
+      "beforeMs": 44261.000000023865,
+      "afterMs": 44269.80000002385,
+      "key": "Right",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    },
+    {
+      "beat": 89,
+      "target": 44750,
+      "beforeMs": 44762.500000023865,
+      "afterMs": 44772,
+      "key": "Left",
+      "result": {
+        "code": "accepted",
+        "message": "准备倒数 · 3 秒"
+      }
+    }
+  ],
+  "end": {
+    "profile": "M1",
+    "contentVersion": 1,
+    "ruleVersion": 1,
+    "position": {
+      "space": "room",
+      "areaId": "a",
+      "boardId": "a.firewall.inner.board",
+      "tileId": "a.firewall.inner.tile.2.2"
+    },
+    "mode": "challengeResult",
+    "phase": "success",
+    "activeTimeMs": 45179.10000002384,
+    "countdownRemainingMs": 0,
+    "pauseReasons": [],
+    "completedObjectiveIds": [
+      "hub.amplifier",
+      "hub.tutorial",
+      "a.nexus.route",
+      "a.maze.01",
+      "a.main",
+      "a.maze.02",
+      "a.nexus.side",
+      "a.side.terminal",
+      "a.maze.03",
+      "a.firewall.access",
+      "a.firewall.tutorial",
+      "a.firewall.core",
+      "a.firewall.deep",
+      "a.firewall.inner"
+    ],
+    "data": {
+      "a": {
+        "collected": 80,
+        "total": 100,
+        "includedCollected": 80,
+        "includedTotal": 80,
+        "complete": false
+      },
+      "b": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 0,
+        "complete": false
+      },
+      "c": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 0,
+        "complete": false
+      },
+      "d": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 0,
+        "complete": false
+      }
+    },
+    "claimedRewardIds": [
+      "hub.supply.tutorial",
+      "a.supply.maze01",
+      "a.supply.maze03",
+      "a.supply.firewall.core"
+    ],
+    "supply": {
+      "collected": 16,
+      "total": 26,
+      "count": 4
+    },
+    "bestResults": [
+      {
+        "challengeId": "a.firewall.tutorial",
+        "ruleVersion": 1,
+        "bestCombo": 30
+      },
+      {
+        "challengeId": "a.firewall.core",
+        "ruleVersion": 1,
+        "bestCombo": 90
+      },
+      {
+        "challengeId": "a.firewall.deep",
+        "ruleVersion": 1,
+        "bestCombo": 90
+      },
+      {
+        "challengeId": "a.firewall.inner",
+        "ruleVersion": 1,
+        "bestCombo": 90
+      }
+    ],
+    "lastResult": {
+      "code": "accepted",
+      "message": "准备倒数 · 3 秒"
+    },
+    "saveStatus": "已保存 · 02:11:51",
+    "saveGeneration": 116,
+    "session": "held",
+    "render": {
+      "geometries": 7,
+      "textures": 17,
+      "calls": 6,
+      "tileCount": 25
+    },
+    "frameSummary": {
+      "sampleCount": 7200,
+      "medianMs": 8.299999999988358,
+      "p95Ms": 9.900000000023283,
+      "meanMs": 8.333402777777778
+    }
+  }
+}

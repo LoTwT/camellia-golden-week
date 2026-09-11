@@ -1,0 +1,13 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "ignorePatterns": [
+    "dist/**",
+    "node_modules/**",
+    "public/assets/**",
+    "test-results/**",
+    "tmp/**",
+    "docs/spec/**",
+    "docs/verification/evidence/**",
+    "docs/verification/2026-09-10-spec.md"
+  ]
+}

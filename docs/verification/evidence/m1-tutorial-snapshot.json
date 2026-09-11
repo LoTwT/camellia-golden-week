@@ -1,0 +1,72 @@
+{
+  "profile": "M1",
+  "contentVersion": 1,
+  "ruleVersion": 1,
+  "position": {
+    "space": "world",
+    "areaId": "hub",
+    "boardId": "hub",
+    "tileId": "hub.t.3.2"
+  },
+  "mode": "explore",
+  "phase": "active",
+  "activeTimeMs": 36056.49999992848,
+  "countdownRemainingMs": 0,
+  "pauseReasons": [],
+  "completedObjectiveIds": [
+    "hub.amplifier",
+    "hub.tutorial"
+  ],
+  "data": {
+    "a": {
+      "collected": 0,
+      "total": 100,
+      "includedCollected": 0,
+      "includedTotal": 80,
+      "complete": false
+    },
+    "b": {
+      "collected": 0,
+      "total": 100,
+      "includedCollected": 0,
+      "includedTotal": 0,
+      "complete": false
+    },
+    "c": {
+      "collected": 0,
+      "total": 100,
+      "includedCollected": 0,
+      "includedTotal": 0,
+      "complete": false
+    },
+    "d": {
+      "collected": 0,
+      "total": 100,
+      "includedCollected": 0,
+      "includedTotal": 0,
+      "complete": false
+    }
+  },
+  "claimedRewardIds": [
+    "hub.supply.tutorial"
+  ],
+  "supply": {
+    "collected": 1,
+    "total": 26,
+    "count": 1
+  },
+  "bestResults": [],
+  "lastResult": {
+    "code": "alreadyCompleted",
+    "message": "此处以太覆盖已清除"
+  },
+  "saveStatus": "已保存 · 01:56:57",
+  "saveGeneration": 5,
+  "session": "held",
+  "render": {
+    "geometries": 7,
+    "textures": 6,
+    "calls": 14,
+    "tileCount": 11
+  }
+}

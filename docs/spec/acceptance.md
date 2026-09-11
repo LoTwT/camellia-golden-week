@@ -2,6 +2,8 @@
 
 [文档索引](../index.md) · [主规格](overview.md) · [玩法](gameplay.md) · [内容](content.md) · [工程](architecture.md) · [来源](../references/index.md)
 
+> 当前实施状态：2026-09-11 已批准基线并进入 M1–M5 连续实施。本文尚未实现等表述保留规格交付时的历史语境；当前范围、实际验证与限制统一见[实施进度](../verification/implementation-progress.md)，不由合同文字推定验收通过。
+
 本文定义后续实现的通过条件与验证方法，**不是已运行的游戏测试报告**。已执行的初版文档核对见 [2026-09-10 规格核对记录](../verification/2026-09-10-spec.md)，实际游戏测试结果由后续验收记录维护。
 
 ## 1. 验证分层与证据

@@ -1,0 +1,1017 @@
+{
+  "area": {
+    "id": "a",
+    "label": "仓储区 A",
+    "subtitle": "MEMORY / FIREWALL",
+    "statsAreaId": "a",
+    "tileIds": [
+      "a.t.0.0",
+      "a.t.1.0",
+      "a.t.2.0",
+      "a.t.3.0",
+      "a.t.4.0",
+      "a.t.5.0",
+      "a.t.6.0",
+      "a.t.7.0",
+      "a.t.8.0",
+      "a.t.0.-1",
+      "a.t.0.-2",
+      "a.t.0.-3",
+      "a.t.0.-4",
+      "a.t.1.-2",
+      "a.t.2.-2",
+      "a.t.3.-2",
+      "a.t.1.-1",
+      "a.t.1.-3",
+      "a.t.1.-4",
+      "a.t.2.-4",
+      "a.t.3.-4",
+      "a.t.3.-3",
+      "a.t.3.-1",
+      "a.t.1.1",
+      "a.t.1.2",
+      "a.t.1.3",
+      "a.t.1.4",
+      "a.t.2.4",
+      "a.t.3.4",
+      "a.t.3.3",
+      "a.t.3.2",
+      "a.t.2.2",
+      "a.t.-1.-3",
+      "a.t.-2.-3",
+      "a.t.-3.-3",
+      "a.t.-4.-3",
+      "a.t.-2.-4",
+      "a.t.-3.-4",
+      "a.t.-4.-4",
+      "a.t.0.1",
+      "a.t.0.2",
+      "a.t.-4.-2",
+      "a.t.-3.-2",
+      "a.t.-2.-2",
+      "a.t.-1.-2"
+    ],
+    "roomIds": [
+      "a.maze.01",
+      "a.maze.02",
+      "a.maze.03",
+      "a.firewall.tutorial",
+      "a.firewall.inner",
+      "a.firewall.deep",
+      "a.firewall.core"
+    ],
+    "entryTileId": "a.t.0.0",
+    "teleportId": "a.teleport",
+    "entityIds": [
+      "a.teleport.point",
+      "a.to.hub",
+      "a.nexus.route",
+      "a.maze.01.entrance",
+      "a.supply.maze01.pickup",
+      "a.main.terminal",
+      "a.to.b",
+      "a.maze.02.entrance",
+      "a.maze.03.entrance",
+      "a.supply.maze03.pickup",
+      "a.nexus.side",
+      "a.side.terminal",
+      "a.firewall.access",
+      "a.firewall.inner.door",
+      "a.supply.firewall.inner.pickup",
+      "a.firewall.deep.door",
+      "a.supply.firewall.deep.pickup",
+      "a.firewall.core.door",
+      "a.supply.firewall.core.pickup"
+    ],
+    "revealGroups": [],
+    "sourceRecordIds": ["map.a.reconstructed"],
+    "includedFrom": 1
+  },
+  "tiles": [
+    {
+      "id": "a.t.0.0",
+      "boardId": "a",
+      "x": 0,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.1.0",
+      "boardId": "a",
+      "x": 1,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.2.0",
+      "boardId": "a",
+      "x": 2,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": "a.nexus.route",
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.3.0",
+      "boardId": "a",
+      "x": 3,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.4.0",
+      "boardId": "a",
+      "x": 4,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.5.0",
+      "boardId": "a",
+      "x": 5,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.6.0",
+      "boardId": "a",
+      "x": 6,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.7.0",
+      "boardId": "a",
+      "x": 7,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.8.0",
+      "boardId": "a",
+      "x": 8,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.0.-1",
+      "boardId": "a",
+      "x": 0,
+      "y": -1,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.0.-2",
+      "boardId": "a",
+      "x": 0,
+      "y": -2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.0.-3",
+      "boardId": "a",
+      "x": 0,
+      "y": -3,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.0.-4",
+      "boardId": "a",
+      "x": 0,
+      "y": -4,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.1.-2",
+      "boardId": "a",
+      "x": 1,
+      "y": -2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.2.-2",
+      "boardId": "a",
+      "x": 2,
+      "y": -2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.3.-2",
+      "boardId": "a",
+      "x": 3,
+      "y": -2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": "a.nexus.side",
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.1.-1",
+      "boardId": "a",
+      "x": 1,
+      "y": -1,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.1.-3",
+      "boardId": "a",
+      "x": 1,
+      "y": -3,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.1.-4",
+      "boardId": "a",
+      "x": 1,
+      "y": -4,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.2.-4",
+      "boardId": "a",
+      "x": 2,
+      "y": -4,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.3.-4",
+      "boardId": "a",
+      "x": 3,
+      "y": -4,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.3.-3",
+      "boardId": "a",
+      "x": 3,
+      "y": -3,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.3.-1",
+      "boardId": "a",
+      "x": 3,
+      "y": -1,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.1.1",
+      "boardId": "a",
+      "x": 1,
+      "y": 1,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.1.2",
+      "boardId": "a",
+      "x": 1,
+      "y": 2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.1.3",
+      "boardId": "a",
+      "x": 1,
+      "y": 3,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.1.4",
+      "boardId": "a",
+      "x": 1,
+      "y": 4,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.2.4",
+      "boardId": "a",
+      "x": 2,
+      "y": 4,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.3.4",
+      "boardId": "a",
+      "x": 3,
+      "y": 4,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.3.3",
+      "boardId": "a",
+      "x": 3,
+      "y": 3,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.3.2",
+      "boardId": "a",
+      "x": 3,
+      "y": 2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.2.2",
+      "boardId": "a",
+      "x": 2,
+      "y": 2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.-1.-3",
+      "boardId": "a",
+      "x": -1,
+      "y": -3,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.-2.-3",
+      "boardId": "a",
+      "x": -2,
+      "y": -3,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.-3.-3",
+      "boardId": "a",
+      "x": -3,
+      "y": -3,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.-4.-3",
+      "boardId": "a",
+      "x": -4,
+      "y": -3,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.-2.-4",
+      "boardId": "a",
+      "x": -2,
+      "y": -4,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.-3.-4",
+      "boardId": "a",
+      "x": -3,
+      "y": -4,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.-4.-4",
+      "boardId": "a",
+      "x": -4,
+      "y": -4,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.0.1",
+      "boardId": "a",
+      "x": 0,
+      "y": 1,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.0.2",
+      "boardId": "a",
+      "x": 0,
+      "y": 2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.-4.-2",
+      "boardId": "a",
+      "x": -4,
+      "y": -2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.-3.-2",
+      "boardId": "a",
+      "x": -3,
+      "y": -2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.-2.-2",
+      "boardId": "a",
+      "x": -2,
+      "y": -2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.t.-1.-2",
+      "boardId": "a",
+      "x": -1,
+      "y": -2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    }
+  ],
+  "entities": [
+    {
+      "id": "a.teleport.point",
+      "kind": "checkpoint",
+      "tileId": "a.t.0.0",
+      "label": "A 区传送点",
+      "params": {
+        "teleportId": "a.teleport"
+      },
+      "gateId": "always",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.a.reconstructed"],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.to.hub",
+      "kind": "teleport",
+      "tileId": "a.t.0.2",
+      "label": "返回中心区",
+      "params": {
+        "destinationAreaId": "hub",
+        "destinationTileId": "hub.t.0.2",
+        "activationObjectiveId": null
+      },
+      "gateId": "always",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.a.reconstructed"],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.nexus.route",
+      "kind": "nexus",
+      "tileId": "a.t.1.0",
+      "label": "路线富集节点",
+      "params": {
+        "clearsTileIds": ["a.t.2.0"],
+        "revealsGroupIds": [],
+        "capabilityRequired": "amplifier",
+        "completionObjectiveId": "a.nexus.route"
+      },
+      "gateId": "always",
+      "effectBundleId": "a.nexus.route.effects",
+      "sourceRecordIds": ["map.a.reconstructed"],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.maze.01.entrance",
+      "kind": "roomEntrance",
+      "tileId": "a.t.4.0",
+      "label": "记忆迷宫 01",
+      "params": {
+        "roomId": "a.maze.01",
+        "interactionMode": "enter"
+      },
+      "gateId": "always",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.a.reconstructed"],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.supply.maze01.pickup",
+      "kind": "supply",
+      "tileId": "a.t.6.0",
+      "label": "沙罗物资 · 5",
+      "params": {
+        "rewardId": "a.supply.maze01"
+      },
+      "gateId": "gate.a.supply.maze01",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.a.reconstructed"],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.main.terminal",
+      "kind": "terminal",
+      "tileId": "a.t.7.0",
+      "label": "A 区主路径终端",
+      "params": {
+        "interactionMode": "interact",
+        "prerequisites": {
+          "kind": "always"
+        },
+        "effectBundleId": "a.main.terminal.effects"
+      },
+      "gateId": "always",
+      "effectBundleId": "a.main.terminal.effects",
+      "sourceRecordIds": ["map.a.reconstructed"],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.to.b",
+      "kind": "teleport",
+      "tileId": "a.t.8.0",
+      "label": "进入仓储区 B",
+      "params": {
+        "destinationAreaId": "b",
+        "destinationTileId": "b.t.0.0",
+        "activationObjectiveId": null
+      },
+      "gateId": "gate.a.main",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.a.reconstructed"],
+      "includedFrom": 2
+    },
+    {
+      "id": "a.maze.02.entrance",
+      "kind": "roomEntrance",
+      "tileId": "a.t.1.-3",
+      "label": "记忆迷宫 02",
+      "params": {
+        "roomId": "a.maze.02",
+        "interactionMode": "enter"
+      },
+      "gateId": "always",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.a.reconstructed"],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.maze.03.entrance",
+      "kind": "roomEntrance",
+      "tileId": "a.t.1.3",
+      "label": "记忆迷宫 03",
+      "params": {
+        "roomId": "a.maze.03",
+        "interactionMode": "enter"
+      },
+      "gateId": "always",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.a.reconstructed"],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.supply.maze03.pickup",
+      "kind": "supply",
+      "tileId": "a.t.2.4",
+      "label": "沙罗物资 · 5",
+      "params": {
+        "rewardId": "a.supply.maze03"
+      },
+      "gateId": "gate.a.supply.maze03",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.a.reconstructed"],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.nexus.side",
+      "kind": "nexus",
+      "tileId": "a.t.3.-1",
+      "label": "侧路富集节点",
+      "params": {
+        "clearsTileIds": ["a.t.3.-2"],
+        "revealsGroupIds": [],
+        "capabilityRequired": "amplifier",
+        "completionObjectiveId": "a.nexus.side"
+      },
+      "gateId": "always",
+      "effectBundleId": "a.nexus.side.effects",
+      "sourceRecordIds": ["map.a.reconstructed"],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.side.terminal",
+      "kind": "terminal",
+      "tileId": "a.t.3.-2",
+      "label": "侧路清理终端",
+      "params": {
+        "interactionMode": "interact",
+        "prerequisites": {
+          "kind": "always"
+        },
+        "effectBundleId": "a.side.terminal.effects"
+      },
+      "gateId": "always",
+      "effectBundleId": "a.side.terminal.effects",
+      "sourceRecordIds": ["map.a.reconstructed"],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.firewall.access",
+      "kind": "challengeAccess",
+      "tileId": "a.t.0.-3",
+      "label": "突破防火墙",
+      "params": {
+        "challengeIds": [
+          "a.firewall.tutorial",
+          "a.firewall.inner",
+          "a.firewall.deep",
+          "a.firewall.core"
+        ]
+      },
+      "gateId": "always",
+      "effectBundleId": "a.firewall.access.effects",
+      "sourceRecordIds": ["map.a.reconstructed"],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.firewall.inner.door",
+      "kind": "door",
+      "tileId": "a.t.-2.-3",
+      "label": "内层奖励门",
+      "params": {
+        "closedBlocksMovement": true,
+        "lockedReasonKey": "a.firewall.inner"
+      },
+      "gateId": "gate.a.firewall.inner",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.a.reconstructed"],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.supply.firewall.inner.pickup",
+      "kind": "supply",
+      "tileId": "a.t.-2.-4",
+      "label": "沙罗物资 · 5",
+      "params": {
+        "rewardId": "a.supply.firewall.inner"
+      },
+      "gateId": "gate.a.supply.firewall.inner",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.a.reconstructed"],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.firewall.deep.door",
+      "kind": "door",
+      "tileId": "a.t.-3.-3",
+      "label": "深层奖励门",
+      "params": {
+        "closedBlocksMovement": true,
+        "lockedReasonKey": "a.firewall.deep"
+      },
+      "gateId": "gate.a.firewall.deep",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.a.reconstructed"],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.supply.firewall.deep.pickup",
+      "kind": "supply",
+      "tileId": "a.t.-3.-4",
+      "label": "沙罗物资 · 5",
+      "params": {
+        "rewardId": "a.supply.firewall.deep"
+      },
+      "gateId": "gate.a.supply.firewall.deep",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.a.reconstructed"],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.firewall.core.door",
+      "kind": "door",
+      "tileId": "a.t.-4.-3",
+      "label": "核心奖励门",
+      "params": {
+        "closedBlocksMovement": true,
+        "lockedReasonKey": "a.firewall.core"
+      },
+      "gateId": "gate.a.firewall.core",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.a.reconstructed"],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.supply.firewall.core.pickup",
+      "kind": "supply",
+      "tileId": "a.t.-4.-4",
+      "label": "沙罗物资 · 5",
+      "params": {
+        "rewardId": "a.supply.firewall.core"
+      },
+      "gateId": "gate.a.supply.firewall.core",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.a.reconstructed"],
+      "includedFrom": 1
+    }
+  ],
+  "rooms": [
+    {
+      "id": "a.maze.01",
+      "areaId": "a",
+      "boardId": "a.maze.01",
+      "mode": "staticPuzzle",
+      "worldEntranceTileId": "a.t.4.0",
+      "entryTileId": "a.maze.01.start",
+      "returnTileId": "a.t.3.0",
+      "successExitTileId": "a.t.5.0",
+      "resetState": "a.maze.01",
+      "goal": "a.maze.01",
+      "effectBundleId": "a.maze.01.effects",
+      "witnessIds": ["a.maze.01.success"],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.maze.02",
+      "areaId": "a",
+      "boardId": "a.maze.02",
+      "mode": "staticPuzzle",
+      "worldEntranceTileId": "a.t.1.-3",
+      "entryTileId": "a.maze.02.start",
+      "returnTileId": "a.t.1.-2",
+      "successExitTileId": "a.t.1.-4",
+      "resetState": "a.maze.02",
+      "goal": "a.maze.02",
+      "effectBundleId": "a.maze.02.effects",
+      "witnessIds": ["a.maze.02.success"],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.maze.03",
+      "areaId": "a",
+      "boardId": "a.maze.03",
+      "mode": "staticPuzzle",
+      "worldEntranceTileId": "a.t.1.3",
+      "entryTileId": "a.maze.03.start",
+      "returnTileId": "a.t.1.2",
+      "successExitTileId": "a.t.1.4",
+      "resetState": "a.maze.03",
+      "goal": "a.maze.03",
+      "effectBundleId": "a.maze.03.effects",
+      "witnessIds": ["a.maze.03.success"],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.firewall.tutorial",
+      "areaId": "a",
+      "boardId": "a.firewall.tutorial",
+      "mode": "challengeRunning",
+      "worldEntranceTileId": "a.t.0.-3",
+      "entryTileId": "a.firewall.tutorial.start",
+      "returnTileId": "a.t.0.-3",
+      "successExitTileId": "a.t.0.-3",
+      "resetState": "a.firewall.tutorial",
+      "goal": "a.firewall.tutorial",
+      "effectBundleId": "a.firewall.tutorial.effects",
+      "witnessIds": ["a.firewall.tutorial.success"],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.firewall.inner",
+      "areaId": "a",
+      "boardId": "a.firewall.inner",
+      "mode": "challengeRunning",
+      "worldEntranceTileId": "a.t.0.-3",
+      "entryTileId": "a.firewall.inner.start",
+      "returnTileId": "a.t.0.-3",
+      "successExitTileId": "a.t.0.-3",
+      "resetState": "a.firewall.inner",
+      "goal": "a.firewall.inner",
+      "effectBundleId": "a.firewall.inner.effects",
+      "witnessIds": ["a.firewall.inner.success"],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.firewall.deep",
+      "areaId": "a",
+      "boardId": "a.firewall.deep",
+      "mode": "challengeRunning",
+      "worldEntranceTileId": "a.t.0.-3",
+      "entryTileId": "a.firewall.deep.start",
+      "returnTileId": "a.t.0.-3",
+      "successExitTileId": "a.t.0.-3",
+      "resetState": "a.firewall.deep",
+      "goal": "a.firewall.deep",
+      "effectBundleId": "a.firewall.deep.effects",
+      "witnessIds": ["a.firewall.deep.success"],
+      "includedFrom": 1
+    },
+    {
+      "id": "a.firewall.core",
+      "areaId": "a",
+      "boardId": "a.firewall.core",
+      "mode": "challengeRunning",
+      "worldEntranceTileId": "a.t.0.-3",
+      "entryTileId": "a.firewall.core.start",
+      "returnTileId": "a.t.0.-3",
+      "successExitTileId": "a.t.0.-3",
+      "resetState": "a.firewall.core",
+      "goal": "a.firewall.core",
+      "effectBundleId": "a.firewall.core.effects",
+      "witnessIds": ["a.firewall.core.success"],
+      "includedFrom": 1
+    }
+  ]
+}

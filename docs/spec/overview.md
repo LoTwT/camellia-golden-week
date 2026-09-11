@@ -2,6 +2,8 @@
 
 版本：0.1 · 日期：2026-09-10 · 状态：设计基线建议，待审阅，尚未实现。
 
+> 当前实施状态：2026-09-11 已批准基线并进入 M1–M5 连续实施。本文尚未实现等表述保留规格交付时的历史语境；当前范围、实际验证与限制统一见[实施进度](../verification/implementation-progress.md)，不由合同文字推定验收通过。
+
 [文档索引](../index.md) · [玩法合同](gameplay.md) · [内容合同](content.md) · [工程合同](architecture.md) · [验收](acceptance.md) · [来源](../references/index.md)
 
 ## 1. 目标与约束

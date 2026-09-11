@@ -1,0 +1,1665 @@
+{
+  "assetVersion": "camellia-assets-v1",
+  "phase": "prepared-all-profiles",
+  "assets": [
+    {
+      "id": "player-idle",
+      "kind": "icon",
+      "purpose": "玩家：静止；以双耳与双眼识别当前格",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/player-idle.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "b3aef7463122d587986ca23a330b2d793f33613aa32eff3413c6a4030a4b35d5",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/player-idle.png",
+        "sha256": "1ef5e00775c3e40b8e5c0bbba4de5d843eabf5be65481d9278c463f359eb699c",
+        "sourceSha256": "b3aef7463122d587986ca23a330b2d793f33613aa32eff3413c6a4030a4b35d5",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-A-MAZE",
+      "referenceUrl": "https://img.game8.jp/10416118/7024cc093a8e3f064101bf37e09703db.jpeg/original",
+      "differences": "参考中为白底牌上的深色双耳头像与白色圆眼；本版为透明底、白色外壳与黑色面板，眼形及耳部比例有差异；移动及受损帧是新绘状态"
+    },
+    {
+      "id": "player-move",
+      "kind": "icon",
+      "purpose": "玩家：有效移动的短反馈",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/player-move.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "3aa3f3db7f39735c5f34f4dd11001c529f14c01e7c23f7d836b5f24d8a15ca16",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/player-move.png",
+        "sha256": "60d7bcfc9dfe912153691d9c55e8b77d2988eee4ea906f07ebb8fe42850e1f8e",
+        "sourceSha256": "3aa3f3db7f39735c5f34f4dd11001c529f14c01e7c23f7d836b5f24d8a15ca16",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-A-MAZE",
+      "referenceUrl": "https://img.game8.jp/10416118/7024cc093a8e3f064101bf37e09703db.jpeg/original",
+      "differences": "参考中为白底牌上的深色双耳头像与白色圆眼；本版为透明底、白色外壳与黑色面板，眼形及耳部比例有差异；移动及受损帧是新绘状态"
+    },
+    {
+      "id": "player-hurt",
+      "kind": "icon",
+      "purpose": "玩家：受损的短反馈",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/player-hurt.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "13ba8e9e7a875aa5d62379a493ffa2da6a0df14636fe5349e84b9725288ad8d8",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/player-hurt.png",
+        "sha256": "e6a17d0a6cd2b4cf1414fc66b0f41c156a262137b83bf80309f30628035a0b84",
+        "sourceSha256": "13ba8e9e7a875aa5d62379a493ffa2da6a0df14636fe5349e84b9725288ad8d8",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-A-MAZE",
+      "referenceUrl": "https://img.game8.jp/10416118/7024cc093a8e3f064101bf37e09703db.jpeg/original",
+      "differences": "参考中为白底牌上的深色双耳头像与白色圆眼；本版为透明底、白色外壳与黑色面板，眼形及耳部比例有差异；移动及受损帧是新绘状态"
+    },
+    {
+      "id": "unknown",
+      "kind": "icon",
+      "purpose": "未知电视格；未显露前不泄露机关类型",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/unknown.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "056d54ecf3cc62a5366d65e272eb3690c528decb7a85089be703f985cb6bd11f",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/unknown.png",
+        "sha256": "9aeaa9f3e83b1be6950b7180e98b589822cde4c8ed03c1d8286a682d36e381f8",
+        "sourceSha256": "056d54ecf3cc62a5366d65e272eb3690c528decb7a85089be703f985cb6bd11f",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-CENTER",
+      "referenceUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/zbYtPAbsfCnFwns.jpg!a-3-854x.jpg",
+      "differences": "原参考存在暗屏和反光纹样；本版以问号明确未知，隐藏机关类型，属于可读性差异"
+    },
+    {
+      "id": "enrichment-ready",
+      "kind": "icon",
+      "purpose": "富集节点：可用增幅仪",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/enrichment-ready.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "1d8a6800a9c8bb6a2b808f185e77595a7dbbaf3c5c10cc78e5f260e5de011761",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/enrichment-ready.png",
+        "sha256": "6db61071942b4172dc797ca8df1550b68effa51e22b5f08ef633ad612f0dfd3a",
+        "sourceSha256": "1d8a6800a9c8bb6a2b808f185e77595a7dbbaf3c5c10cc78e5f260e5de011761",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-A-EXPLORATION",
+      "referenceUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/WBRhEPbsfCnFwmw.jpg!a-3-854x.jpg",
+      "differences": "保留圆形富集指示的视觉职责，改用四角星与双环；已用状态加勾；未匹配原图的涡旋纹样"
+    },
+    {
+      "id": "enrichment-used",
+      "kind": "icon",
+      "purpose": "富集节点：已清除，保留空环与勾",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/enrichment-used.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "fa71fe12251dfcfed5aba7a4487bb7dd623bd52dc07b766a2ab97c3553f05fd3",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/enrichment-used.png",
+        "sha256": "51b9ea8602c2d57310358c372a7880880256df6b6c3b3698ba3adec150bc0845",
+        "sourceSha256": "fa71fe12251dfcfed5aba7a4487bb7dd623bd52dc07b766a2ab97c3553f05fd3",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-A-EXPLORATION",
+      "referenceUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/WBRhEPbsfCnFwmw.jpg!a-3-854x.jpg",
+      "differences": "保留圆形富集指示的视觉职责，改用四角星与双环；已用状态加勾；未匹配原图的涡旋纹样"
+    },
+    {
+      "id": "data-ready",
+      "kind": "icon",
+      "purpose": "必需数据：可取得；三格电路芯片",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/data-ready.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "9fd7dc4fd59309334feef483d531adaae77ea36f8907dd97a260b21d578716cd",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/data-ready.png",
+        "sha256": "cff56ba717b6733b3a619b6d3e89c1bfafcaf9b1fc4c21c6b582b78922edb8d3",
+        "sourceSha256": "9fd7dc4fd59309334feef483d531adaae77ea36f8907dd97a260b21d578716cd",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-CENTER",
+      "referenceUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/zbYtPAbsfCnFwns.jpg!a-3-854x.jpg",
+      "differences": "对应本版必需数据账本，采用芯片文档符号；原参考只用于构图与屏幕尺度，未证实原版数据节点的单项图标映射"
+    },
+    {
+      "id": "data-collected",
+      "kind": "icon",
+      "purpose": "必需数据：已取得；保留轮廓与勾",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/data-collected.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "5fa350e50439d5c4adb5cda8dd41c4cd8cd8be5a115759506346535dcc8ddb73",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/data-collected.png",
+        "sha256": "601f3b9862723f252d2da8cef2eab8efaa0e387872ca74dd1147e7374b48ba91",
+        "sourceSha256": "5fa350e50439d5c4adb5cda8dd41c4cd8cd8be5a115759506346535dcc8ddb73",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-CENTER",
+      "referenceUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/zbYtPAbsfCnFwns.jpg!a-3-854x.jpg",
+      "differences": "对应本版必需数据账本，采用芯片文档符号；原参考只用于构图与屏幕尺度，未证实原版数据节点的单项图标映射"
+    },
+    {
+      "id": "supply-ready",
+      "kind": "icon",
+      "purpose": "物资箱：可领取；箱体与锁扣",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/supply-ready.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "f1f461bbdbff189d36aaedbcd569a2aaa3bab731a2848e2d2d3d26b4d4ebc820",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/supply-ready.png",
+        "sha256": "e21a39a4ea029c97156268b251d4de157df32dedbf3a2e2f7336b44f201b078e",
+        "sourceSha256": "f1f461bbdbff189d36aaedbcd569a2aaa3bab731a2848e2d2d3d26b4d4ebc820",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-A-EXPLORATION",
+      "referenceUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/WBRhEPbsfCnFwmw.jpg!a-3-854x.jpg",
+      "differences": "原画面为橙色斜置物资箱；本版使用正立箱体、提手及锁扣；领取后使用空箱轮廓"
+    },
+    {
+      "id": "supply-collected",
+      "kind": "icon",
+      "purpose": "物资箱：已领取；空箱与勾",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/supply-collected.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "82b110d68764d2bbdfb5e162a60cacec65f484ddaefe7474598af44a161a6f46",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/supply-collected.png",
+        "sha256": "9f08472ce89b8600ca118e715ad4fbfb3259a1d349efa4b152f6b3aa3f96d950",
+        "sourceSha256": "82b110d68764d2bbdfb5e162a60cacec65f484ddaefe7474598af44a161a6f46",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-A-EXPLORATION",
+      "referenceUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/WBRhEPbsfCnFwmw.jpg!a-3-854x.jpg",
+      "differences": "原画面为橙色斜置物资箱；本版使用正立箱体、提手及锁扣；领取后使用空箱轮廓"
+    },
+    {
+      "id": "portal-ready",
+      "kind": "icon",
+      "purpose": "区域传送：已开放；双向箭头与圆环",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/portal-ready.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "4208fcdfb50b138e53f52cbf16c20f0992c3b87dc83cd69a9b3ab93c2220f96f",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/portal-ready.png",
+        "sha256": "a8fde719c5d4218f457540e1b8b08ea23c9d5498b772ae4a1d695d838dcf2bcc",
+        "sourceSha256": "4208fcdfb50b138e53f52cbf16c20f0992c3b87dc83cd69a9b3ab93c2220f96f",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-CENTER",
+      "referenceUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/zbYtPAbsfCnFwns.jpg!a-3-854x.jpg",
+      "differences": "本版用双向箭头/锁区分可用与未开；原作区域标牌及返回花形图标未逐像素复现"
+    },
+    {
+      "id": "portal-locked",
+      "kind": "icon",
+      "purpose": "区域传送：尚未开放；圆环与锁",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/portal-locked.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "7ead15e2b9449a844a216e7b3f63f6ab07e9a8d739bec523193a64bad005b69d",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/portal-locked.png",
+        "sha256": "bdc7827a13e1306f674cb98dc4dbc04314d67952d811f5748d4de142ad45f95f",
+        "sourceSha256": "7ead15e2b9449a844a216e7b3f63f6ab07e9a8d739bec523193a64bad005b69d",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-CENTER",
+      "referenceUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/zbYtPAbsfCnFwns.jpg!a-3-854x.jpg",
+      "differences": "本版用双向箭头/锁区分可用与未开；原作区域标牌及返回花形图标未逐像素复现"
+    },
+    {
+      "id": "terminal-ready",
+      "kind": "icon",
+      "purpose": "主路径终端：可交互；键盘与大箭头",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/terminal-ready.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "6e51024a7d7ad42dee10d3a6f70239319a3a1c7c6e84ea8a1c00847e486d511c",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/terminal-ready.png",
+        "sha256": "95f66cd24c989fb3b01f6f6d95eef708523d47759a5f129c734a11297e383bb4",
+        "sourceSha256": "6e51024a7d7ad42dee10d3a6f70239319a3a1c7c6e84ea8a1c00847e486d511c",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-CENTER",
+      "referenceUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/zbYtPAbsfCnFwns.jpg!a-3-854x.jpg",
+      "differences": "主路径终端替代被移除的剧情/战斗节点；设备形状为本版新增，不声称是原作节点图标"
+    },
+    {
+      "id": "terminal-complete",
+      "kind": "icon",
+      "purpose": "主路径终端：已完成；同轮廓与勾",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/terminal-complete.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "a97cb2adca741d9c2a42a9a91f3c935c5d9be0987e085fe38d46dc407bcf86bf",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/terminal-complete.png",
+        "sha256": "8ff1c3f7742c05ff9ac18fae74d7bf8a219fadb675802d757360ccf990277e8b",
+        "sourceSha256": "a97cb2adca741d9c2a42a9a91f3c935c5d9be0987e085fe38d46dc407bcf86bf",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-CENTER",
+      "referenceUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/zbYtPAbsfCnFwns.jpg!a-3-854x.jpg",
+      "differences": "主路径终端替代被移除的剧情/战斗节点；设备形状为本版新增，不声称是原作节点图标"
+    },
+    {
+      "id": "hazard-safe",
+      "kind": "icon",
+      "purpose": "危险格：观察期或当前安全；斜条轮廓",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/hazard-safe.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "20b7884d408e5e2c9d0354daf1368eca4385cb5a674f31403e70e9ff1e255dcd",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/hazard-safe.png",
+        "sha256": "9476f6758a086c83cfd21910c81801a17f4335a2482dcad925b217c4fbec4fe6",
+        "sourceSha256": "20b7884d408e5e2c9d0354daf1368eca4385cb5a674f31403e70e9ff1e255dcd",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-A-MAZE",
+      "referenceUrl": "https://img.game8.jp/10416118/7024cc093a8e3f064101bf37e09703db.jpeg/original",
+      "differences": "原作危险主要是整屏粉红亮屏；本版另加三角警号及斜线辅助辨认，屏幕底色由渲染层控制"
+    },
+    {
+      "id": "hazard-active",
+      "kind": "icon",
+      "purpose": "危险格：生效；三角警号与斜条",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/hazard-active.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "cdf56bfffde0e5cb2990b23876f83fac91db2482e665e295a54eae504ae09438",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/hazard-active.png",
+        "sha256": "2a6732ec561a2521174a2df6eafbdd57909b73447073008930c83487264482ce",
+        "sourceSha256": "cdf56bfffde0e5cb2990b23876f83fac91db2482e665e295a54eae504ae09438",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-A-MAZE",
+      "referenceUrl": "https://img.game8.jp/10416118/7024cc093a8e3f064101bf37e09703db.jpeg/original",
+      "differences": "原作危险主要是整屏粉红亮屏；本版另加三角警号及斜线辅助辨认，屏幕底色由渲染层控制"
+    },
+    {
+      "id": "observation",
+      "kind": "icon",
+      "purpose": "观察：放大镜与圆点；可见状态提示",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/observation.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "2606a26bf45032d86b1367c6db299a1ccf742eb0fe1187a1e7b8b9e1fa15fed1",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/observation.png",
+        "sha256": "90a45105541ffb0667e6aac7cae8933270fb869dcb6ab098d44532cb78e86dde",
+        "sourceSha256": "2606a26bf45032d86b1367c6db299a1ccf742eb0fe1187a1e7b8b9e1fa15fed1",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-A-MAZE",
+      "referenceUrl": "https://img.game8.jp/10416118/7024cc093a8e3f064101bf37e09703db.jpeg/original",
+      "differences": "独立矢量补制与状态辅助符号；未复现原作逐像素图形或原始动画帧"
+    },
+    {
+      "id": "door-closed",
+      "kind": "icon",
+      "purpose": "门：关闭；横杠与锁孔",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/door-closed.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "ac0a16357ad5b14bcb0f8188998fe828689678f9e8221656920d44ad1a81c47e",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/door-closed.png",
+        "sha256": "99cbce2d6ad165c4324e03e6fb643430b3a475f8c831819ac1845d3e5f4baf6d",
+        "sourceSha256": "ac0a16357ad5b14bcb0f8188998fe828689678f9e8221656920d44ad1a81c47e",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-A-EXPLORATION",
+      "referenceUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/WBRhEPbsfCnFwmw.jpg!a-3-854x.jpg",
+      "differences": "独立矢量补制与状态辅助符号；未复现原作逐像素图形或原始动画帧"
+    },
+    {
+      "id": "door-open",
+      "kind": "icon",
+      "purpose": "门：开放；外框与通行箭头",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/door-open.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "cd32ddcc814333246ca9ced8f4332e21ef9fdf48cbf62de939a51cd4a7c14791",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/door-open.png",
+        "sha256": "a327c116ff7487d9515f307d5dcecf5da47da3257fff1765c74e8b472a538095",
+        "sourceSha256": "cd32ddcc814333246ca9ced8f4332e21ef9fdf48cbf62de939a51cd4a7c14791",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-A-EXPLORATION",
+      "referenceUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/WBRhEPbsfCnFwmw.jpg!a-3-854x.jpg",
+      "differences": "独立矢量补制与状态辅助符号；未复现原作逐像素图形或原始动画帧"
+    },
+    {
+      "id": "checkpoint",
+      "kind": "icon",
+      "purpose": "安全检查点；旗杆与菱形",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/checkpoint.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "0908a565c0f22e1c8ea9b233a778ba3c15183b9682d7e0cc84aedd7349edca4e",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/checkpoint.png",
+        "sha256": "70700f650aa17a27d8fbf5ea85ce9647eec3d679c21a49de2fd284e1d4619162",
+        "sourceSha256": "0908a565c0f22e1c8ea9b233a778ba3c15183b9682d7e0cc84aedd7349edca4e",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-A-EXPLORATION",
+      "referenceUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/WBRhEPbsfCnFwmw.jpg!a-3-854x.jpg",
+      "differences": "独立矢量补制与状态辅助符号；未复现原作逐像素图形或原始动画帧"
+    },
+    {
+      "id": "firewall",
+      "kind": "icon",
+      "purpose": "防火墙挑战：音符与方形节拍边框",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/firewall.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "086ec458cc6bc924e17c98c25cce8a007ace9462253d77f8987b505dc24f8308",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/firewall.png",
+        "sha256": "13d2e1c38467c392f36e5a0e55662ab9496634fd7eaa050062616e75ad2d7d17",
+        "sourceSha256": "086ec458cc6bc924e17c98c25cce8a007ace9462253d77f8987b505dc24f8308",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-A-FIREWALL",
+      "referenceUrl": "https://img.game8.jp/10416126/90d0be6152e66b41e8d600a6033fe4ae.jpeg/original",
+      "differences": "独立矢量补制与状态辅助符号；未复现原作逐像素图形或原始动画帧"
+    },
+    {
+      "id": "antivirus",
+      "kind": "icon",
+      "purpose": "杀毒挑战入口：盾牌与像素十字",
+      "profiles": [
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/antivirus.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "494e4b00faba7f8f58a8dbbf2830c116e4de0a00bc6ee2b02a296c681b9f1ebf",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/antivirus.png",
+        "sha256": "b77afaf65dcab267b5ffa6197f051c73509a5aba16be08bfb8219668428d8f36",
+        "sourceSha256": "494e4b00faba7f8f58a8dbbf2830c116e4de0a00bc6ee2b02a296c681b9f1ebf",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-B-ANTIVIRUS",
+      "referenceUrl": "https://img.game8.jp/10419120/602cc237bdd8cf72a9ee0dcaa63dc430.jpeg/original",
+      "differences": "本版盾牌与像素十字表示杀毒入口，原参考只支持局部目标与屏幕风格，未匹配原作入口图标"
+    },
+    {
+      "id": "target-blue",
+      "kind": "icon",
+      "purpose": "蓝色侵蚀目标：四方像素十字；与紫色双菱形区分",
+      "profiles": [
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/target-blue.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "629f596d08878f370c465887d72341db206c7b3bfea5d2773ef6069a68f7e1c2",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/target-blue.png",
+        "sha256": "b2fa4ec95c20612efc13f5d2d5e102286d6c9dedea4a745eecdb4d7f4cb6a814",
+        "sourceSha256": "629f596d08878f370c465887d72341db206c7b3bfea5d2773ef6069a68f7e1c2",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-B-ANTIVIRUS",
+      "referenceUrl": "https://img.game8.jp/10419120/602cc237bdd8cf72a9ee0dcaa63dc430.jpeg/original",
+      "differences": "蓝色目标参考为倾斜像素团；本版蓝目标为单菱形像素十字、紫目标为双菱形与速度线、星为五角星，确保非颜色编码；没有声称紫/星的原版帧已逐项核对"
+    },
+    {
+      "id": "target-purple",
+      "kind": "icon",
+      "purpose": "紫色逃逸目标：双菱形与速度短线；不只用颜色表达",
+      "profiles": [
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/target-purple.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "cc5de612ecbd2d140e303d5c0584ee31d8758dec3e4964ec2c522aa43e3d7ccd",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/target-purple.png",
+        "sha256": "1544eef29da637053585a480343131053197140fbf8fe6eb8fad5c22f5dec426",
+        "sourceSha256": "cc5de612ecbd2d140e303d5c0584ee31d8758dec3e4964ec2c522aa43e3d7ccd",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-B-ANTIVIRUS",
+      "referenceUrl": "https://img.game8.jp/10419120/602cc237bdd8cf72a9ee0dcaa63dc430.jpeg/original",
+      "differences": "蓝色目标参考为倾斜像素团；本版蓝目标为单菱形像素十字、紫目标为双菱形与速度线、星为五角星，确保非颜色编码；没有声称紫/星的原版帧已逐项核对"
+    },
+    {
+      "id": "target-star",
+      "kind": "icon",
+      "purpose": "星星目标：五角星与全清扫光；区别普通数据目标",
+      "profiles": [
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/target-star.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "7ab4b2828590fde81fb08601d6e7b47bde06c2a1d3b48f71ddf1277f7c5e2545",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/target-star.png",
+        "sha256": "21f238dc9846aaa08d527c56dad81df64cb7032cd29541171d550cb7f0c2907b",
+        "sourceSha256": "7ab4b2828590fde81fb08601d6e7b47bde06c2a1d3b48f71ddf1277f7c5e2545",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-B-ANTIVIRUS",
+      "referenceUrl": "https://img.game8.jp/10419120/602cc237bdd8cf72a9ee0dcaa63dc430.jpeg/original",
+      "differences": "蓝色目标参考为倾斜像素团；本版蓝目标为单菱形像素十字、紫目标为双菱形与速度线、星为五角星，确保非颜色编码；没有声称紫/星的原版帧已逐项核对"
+    },
+    {
+      "id": "station",
+      "kind": "icon",
+      "purpose": "信号基站：同心靶环与固定底座；编号由界面叠加",
+      "profiles": [
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/station.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "58d238a820a77b0cfffd17916efc7d5c2b127cd739e59cb27ab7e50b43894fba",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/station.png",
+        "sha256": "0cd83cd97bf43e9b3f2c926ffbea9c5f865b0e70ebf83b62c707d982c36b01f8",
+        "sourceSha256": "58d238a820a77b0cfffd17916efc7d5c2b127cd739e59cb27ab7e50b43894fba",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-C-COMBINED",
+      "referenceUrl": "https://img1.ali213.net/glpic/2024/08/23/584_2024082342229370.png",
+      "differences": "原C参考可见圆形球和车体相关格；本版用经线圆球、双轮方车和同心基站独立补制，强调滑行球/逐格车/固定接收点三者差别"
+    },
+    {
+      "id": "signal-ball",
+      "kind": "icon",
+      "purpose": "信号球：圆球与弧形经线；区别逐格推车",
+      "profiles": [
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/signal-ball.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "33987507a25766638487180b5e66125f135d6675ae383b5840819f250c6b1ada",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/signal-ball.png",
+        "sha256": "c594fc107f7062ba9babb20893011bd73daf85e7c13b106e04d95156a5d72ba2",
+        "sourceSha256": "33987507a25766638487180b5e66125f135d6675ae383b5840819f250c6b1ada",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-C-COMBINED",
+      "referenceUrl": "https://img1.ali213.net/glpic/2024/08/23/584_2024082342229370.png",
+      "differences": "原C参考可见圆形球和车体相关格；本版用经线圆球、双轮方车和同心基站独立补制，强调滑行球/逐格车/固定接收点三者差别"
+    },
+    {
+      "id": "cart",
+      "kind": "icon",
+      "purpose": "推车：方形车箱与双轮；表达逐格推动对象",
+      "profiles": [
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/cart.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "2273b5173a7835157a94621820b302d51d01be292362c4f6600e7a951682c2ff",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/cart.png",
+        "sha256": "37af083c30e932e4fc95a491e7c5dac7ba3493bc47271bc63dd017a2303735d7",
+        "sourceSha256": "2273b5173a7835157a94621820b302d51d01be292362c4f6600e7a951682c2ff",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-C-COMBINED",
+      "referenceUrl": "https://img1.ali213.net/glpic/2024/08/23/584_2024082342229370.png",
+      "differences": "原C参考可见圆形球和车体相关格；本版用经线圆球、双轮方车和同心基站独立补制，强调滑行球/逐格车/固定接收点三者差别"
+    },
+    {
+      "id": "data-object",
+      "kind": "icon",
+      "purpose": "盗取数据对象：实体八边形芯片；颜色与字母由格子叠加",
+      "profiles": [
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/data-object.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "7f3f99ba349f8c149c842e2a16ffe54f8910c21cf66aaa8c50e4b55af233298b",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/data-object.png",
+        "sha256": "d3382e7545fa87c731d5b240cef2c4f59f7e6b947ef288b6763b2d745caf588b",
+        "sourceSha256": "7f3f99ba349f8c149c842e2a16ffe54f8910c21cf66aaa8c50e4b55af233298b",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-C-THEFT",
+      "referenceUrl": "https://img.game8.jp/10422394/1517f985085bd4dd2888455995c57349.jpeg/original",
+      "differences": "原盗取画面中数据对象为圆形核与多边形外框；本版以实体八边芯片/虚线空心槽明确区分，颜色和字母由游戏格子提供，不依赖单一颜色"
+    },
+    {
+      "id": "socket",
+      "kind": "icon",
+      "purpose": "盗取接收槽：空心括角与八边形孔；区别实体对象",
+      "profiles": [
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/socket.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "97ab7ea8dc377cd46cea4210f5a8a0f11a3f9f83d5a664683be50daaa2d1d63b",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/socket.png",
+        "sha256": "a1605cb5f3488e2b5307546bf863243cd28c59f88cfcd83f18e00da71bb97c41",
+        "sourceSha256": "97ab7ea8dc377cd46cea4210f5a8a0f11a3f9f83d5a664683be50daaa2d1d63b",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-C-THEFT",
+      "referenceUrl": "https://img.game8.jp/10422394/1517f985085bd4dd2888455995c57349.jpeg/original",
+      "differences": "原盗取画面中数据对象为圆形核与多边形外框；本版以实体八边芯片/虚线空心槽明确区分，颜色和字母由游戏格子提供，不依赖单一颜色"
+    },
+    {
+      "id": "lamp-lit",
+      "kind": "icon",
+      "purpose": "灯：已点亮；灯泡、实心光源与放射短线",
+      "profiles": [
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/lamp-lit.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "fab059e5bdb8ccac2b7f7040e948be7841565f319fd6616c53e5e4e8e6f84e20",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/lamp-lit.png",
+        "sha256": "05b942ae124eb2ecbe1fc610c388d437bf00274e2acb3d97b8fa2f38128c7a2a",
+        "sourceSha256": "fab059e5bdb8ccac2b7f7040e948be7841565f319fd6616c53e5e4e8e6f84e20",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-D-GHOST",
+      "referenceUrl": "https://img.game8.jp/10425919/85aab7d6be2de4425b7488e92ef92fd5.jpeg/original",
+      "differences": "使用灯泡轮廓，已亮为实心光源和光线，未亮为空心与斜杠；未匹配原作灯的完整状态帧；静态差别在减少动态/闪烁时仍存在"
+    },
+    {
+      "id": "lamp-unlit",
+      "kind": "icon",
+      "purpose": "灯：未点亮；空心灯泡与斜杠，无放射线",
+      "profiles": [
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/lamp-unlit.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "f622c0bb5d3a72271444712ec54595265e77303d441a7a6abe3521e9d0b3ab2d",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/lamp-unlit.png",
+        "sha256": "9a69f611d9cbaf128ee20986327dc62c0ec479a6ad18c6254218cdae6ef37a69",
+        "sourceSha256": "f622c0bb5d3a72271444712ec54595265e77303d441a7a6abe3521e9d0b3ab2d",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-D-GHOST",
+      "referenceUrl": "https://img.game8.jp/10425919/85aab7d6be2de4425b7488e92ef92fd5.jpeg/original",
+      "differences": "使用灯泡轮廓，已亮为实心光源和光线，未亮为空心与斜杠；未匹配原作灯的完整状态帧；静态差别在减少动态/闪烁时仍存在"
+    },
+    {
+      "id": "ghost",
+      "kind": "icon",
+      "purpose": "幽灵：深色悬浮轮廓、粉红圆眼与底部静态杂讯",
+      "profiles": [
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/ghost.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "3c8454ec2b926f619fb6d96d4b7696590b493aafcedfdb7341b07fdccb26e0ae",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/ghost.png",
+        "sha256": "01963c35b33514e3b6bd8d915367e52416baf4d52671a6a8751b8e9cd0d104b8",
+        "sourceSha256": "3c8454ec2b926f619fb6d96d4b7696590b493aafcedfdb7341b07fdccb26e0ae",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-D-GHOST",
+      "referenceUrl": "https://img.game8.jp/10425919/85aab7d6be2de4425b7488e92ef92fd5.jpeg/original",
+      "differences": "匹配原参考的深色本体、粉红双圆眼与下沿杂讯职责；轮廓和静态杂讯为独立补制，未复制原版噪声纹理或动画；不把粉红砖墙当幽灵图形"
+    },
+    {
+      "id": "move",
+      "kind": "audio",
+      "purpose": "有效移动的轻短脉冲",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/audio/move.wav",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "f1bd5b88a0a151a68099deb4077db98ddadd50e2e40513335560c6601072614b",
+      "durationSeconds": 0.07,
+      "sampleRate": 44100,
+      "channels": 1,
+      "bitDepth": 16,
+      "author": "为 camellia-golden-week 合成的项目资源",
+      "rights": "独立加法合成；未采样原游戏录音",
+      "usage": "随本项目本地打包",
+      "transform": "确定性正弦基音与两级谐波；4ms 起音及12ms 收尾；约-12dBFS 峰值；16-bit PCM WAV",
+      "referenceId": null,
+      "referenceUrl": null,
+      "differences": "未取得且未核对可用原版短音效；仅匹配动作反馈职责，不声称原音色、原节奏或原响度还原"
+    },
+    {
+      "id": "invalid",
+      "kind": "audio",
+      "purpose": "无效动作；由音频适配器限频",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/audio/invalid.wav",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "7cba424f718a072fb03f5808ddc7464775f349017ed6a5dca8dd9e85d692a2c9",
+      "durationSeconds": 0.1,
+      "sampleRate": 44100,
+      "channels": 1,
+      "bitDepth": 16,
+      "author": "为 camellia-golden-week 合成的项目资源",
+      "rights": "独立加法合成；未采样原游戏录音",
+      "usage": "随本项目本地打包",
+      "transform": "确定性正弦基音与两级谐波；4ms 起音及12ms 收尾；约-12dBFS 峰值；16-bit PCM WAV",
+      "referenceId": null,
+      "referenceUrl": null,
+      "differences": "未取得且未核对可用原版短音效；仅匹配动作反馈职责，不声称原音色、原节奏或原响度还原"
+    },
+    {
+      "id": "pickup",
+      "kind": "audio",
+      "purpose": "物资或数据领取",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/audio/pickup.wav",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "8920a19c6f191a2c0cbc89882a7696fc579c51c8afc714c5f924489b1f156e90",
+      "durationSeconds": 0.24,
+      "sampleRate": 44100,
+      "channels": 1,
+      "bitDepth": 16,
+      "author": "为 camellia-golden-week 合成的项目资源",
+      "rights": "独立加法合成；未采样原游戏录音",
+      "usage": "随本项目本地打包",
+      "transform": "确定性正弦基音与两级谐波；4ms 起音及12ms 收尾；约-12dBFS 峰值；16-bit PCM WAV",
+      "referenceId": null,
+      "referenceUrl": null,
+      "differences": "未取得且未核对可用原版短音效；仅匹配动作反馈职责，不声称原音色、原节奏或原响度还原"
+    },
+    {
+      "id": "reveal",
+      "kind": "audio",
+      "purpose": "隐藏格显露",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/audio/reveal.wav",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "7aa37724210d97db3ee2530c914133256713ae1803b55d2e603a2a76330969fe",
+      "durationSeconds": 0.18,
+      "sampleRate": 44100,
+      "channels": 1,
+      "bitDepth": 16,
+      "author": "为 camellia-golden-week 合成的项目资源",
+      "rights": "独立加法合成；未采样原游戏录音",
+      "usage": "随本项目本地打包",
+      "transform": "确定性正弦基音与两级谐波；4ms 起音及12ms 收尾；约-12dBFS 峰值；16-bit PCM WAV",
+      "referenceId": null,
+      "referenceUrl": null,
+      "differences": "未取得且未核对可用原版短音效；仅匹配动作反馈职责，不声称原音色、原节奏或原响度还原"
+    },
+    {
+      "id": "amplify",
+      "kind": "audio",
+      "purpose": "增幅仪启动",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/audio/amplify.wav",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "b9511d1d35cf1a932c0d417622467a03c0c9682bec1627d0a6ea8261a5adf148",
+      "durationSeconds": 0.36,
+      "sampleRate": 44100,
+      "channels": 1,
+      "bitDepth": 16,
+      "author": "为 camellia-golden-week 合成的项目资源",
+      "rights": "独立加法合成；未采样原游戏录音",
+      "usage": "随本项目本地打包",
+      "transform": "确定性正弦基音与两级谐波；4ms 起音及12ms 收尾；约-12dBFS 峰值；16-bit PCM WAV",
+      "referenceId": null,
+      "referenceUrl": null,
+      "differences": "未取得且未核对可用原版短音效；仅匹配动作反馈职责，不声称原音色、原节奏或原响度还原"
+    },
+    {
+      "id": "door",
+      "kind": "audio",
+      "purpose": "门或主路径开放",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/audio/door.wav",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "49ec2f0e2280cc369b0f9e7338371676cd14d5665f36fd22de37145e686b7d14",
+      "durationSeconds": 0.19,
+      "sampleRate": 44100,
+      "channels": 1,
+      "bitDepth": 16,
+      "author": "为 camellia-golden-week 合成的项目资源",
+      "rights": "独立加法合成；未采样原游戏录音",
+      "usage": "随本项目本地打包",
+      "transform": "确定性正弦基音与两级谐波；4ms 起音及12ms 收尾；约-12dBFS 峰值；16-bit PCM WAV",
+      "referenceId": null,
+      "referenceUrl": null,
+      "differences": "未取得且未核对可用原版短音效；仅匹配动作反馈职责，不声称原音色、原节奏或原响度还原"
+    },
+    {
+      "id": "success",
+      "kind": "audio",
+      "purpose": "挑战成功或区段完成",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/audio/success.wav",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "92ca1f296bc50631f7430cebbf2f4ace8d31434d9ea686d416b73d5a2f100a74",
+      "durationSeconds": 0.52,
+      "sampleRate": 44100,
+      "channels": 1,
+      "bitDepth": 16,
+      "author": "为 camellia-golden-week 合成的项目资源",
+      "rights": "独立加法合成；未采样原游戏录音",
+      "usage": "随本项目本地打包",
+      "transform": "确定性正弦基音与两级谐波；4ms 起音及12ms 收尾；约-12dBFS 峰值；16-bit PCM WAV",
+      "referenceId": null,
+      "referenceUrl": null,
+      "differences": "未取得且未核对可用原版短音效；仅匹配动作反馈职责，不声称原音色、原节奏或原响度还原"
+    },
+    {
+      "id": "failure",
+      "kind": "audio",
+      "purpose": "挑战失败；可立即重试",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/audio/failure.wav",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "ba8cf995974d5d05e3ff4c867bd5fbf5325180848ce8e4e32b4e332c715ad6a0",
+      "durationSeconds": 0.32,
+      "sampleRate": 44100,
+      "channels": 1,
+      "bitDepth": 16,
+      "author": "为 camellia-golden-week 合成的项目资源",
+      "rights": "独立加法合成；未采样原游戏录音",
+      "usage": "随本项目本地打包",
+      "transform": "确定性正弦基音与两级谐波；4ms 起音及12ms 收尾；约-12dBFS 峰值；16-bit PCM WAV",
+      "referenceId": null,
+      "referenceUrl": null,
+      "differences": "未取得且未核对可用原版短音效；仅匹配动作反馈职责，不声称原音色、原节奏或原响度还原"
+    },
+    {
+      "id": "portal",
+      "kind": "audio",
+      "purpose": "区域或房间切换",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/audio/portal.wav",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "8bdd5ec6b3a9588c7079219f65e65fd1b66a1fafa11e8dea75300c98ed1262a5",
+      "durationSeconds": 0.34,
+      "sampleRate": 44100,
+      "channels": 1,
+      "bitDepth": 16,
+      "author": "为 camellia-golden-week 合成的项目资源",
+      "rights": "独立加法合成；未采样原游戏录音",
+      "usage": "随本项目本地打包",
+      "transform": "确定性正弦基音与两级谐波；4ms 起音及12ms 收尾；约-12dBFS 峰值；16-bit PCM WAV",
+      "referenceId": null,
+      "referenceUrl": null,
+      "differences": "未取得且未核对可用原版短音效；仅匹配动作反馈职责，不声称原音色、原节奏或原响度还原"
+    },
+    {
+      "id": "beat",
+      "kind": "audio",
+      "purpose": "防火墙有效时间拍点；适配器按时钟调度",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/audio/beat.wav",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v1",
+      "sourceSha256": "aa8e31449198b6b7c53cb75de4561cf102c6e7133634103e0d3181f7a6c6eb4a",
+      "sha256": "fe3f0fcf1ce1bf5244bc241d0aae2509a18feca1c1b21db6bbf5ed937710a826",
+      "durationSeconds": 0.04501133786848072,
+      "sampleRate": 44100,
+      "channels": 1,
+      "bitDepth": 16,
+      "author": "为 camellia-golden-week 合成的项目资源",
+      "rights": "独立加法合成；未采样原游戏录音",
+      "usage": "随本项目本地打包",
+      "transform": "确定性正弦基音与两级谐波；4ms 起音及12ms 收尾；约-12dBFS 峰值；16-bit PCM WAV",
+      "referenceId": null,
+      "referenceUrl": null,
+      "differences": "未取得且未核对可用原版短音效；仅匹配动作反馈职责，不声称原音色、原节奏或原响度还原"
+    },
+    {
+      "id": "font-noto",
+      "kind": "font",
+      "purpose": "本地中文正文替代字体",
+      "status": "已核对采用",
+      "localPath": "/assets/fonts/camellia-ui.woff2",
+      "sourcePath": "Sans/SubsetOTF/SC/NotoSansSC-Regular.otf",
+      "sourceUrl": "https://raw.githubusercontent.com/notofonts/noto-cjk/165c01b46ea533872e002e0785ff17e44f6d97d8/Sans/SubsetOTF/SC/NotoSansSC-Regular.otf",
+      "sourceVersion": "165c01b46ea533872e002e0785ff17e44f6d97d8",
+      "sourceSha256": "faa6c9df652116dde789d351359f3d7e5d2285a2b2a1f04a2d7244df706d5ea9",
+      "sha256": "fa7a25a8442093dd51b61aff2efcf43f775f9dfe323fd1631d531f619c53a30f",
+      "family": "Noto Sans SC",
+      "weights": "400",
+      "dimensions": null,
+      "author": "Google / Adobe / Noto contributors",
+      "rights": "SIL Open Font License 1.1",
+      "licenseLocalPath": "/assets/fonts/noto-OFL.txt",
+      "licenseSourceUrl": "https://raw.githubusercontent.com/notofonts/noto-cjk/165c01b46ea533872e002e0785ff17e44f6d97d8/LICENSE",
+      "usage": "字体可按OFL随软件打包、修改与再分发；保留OFL；不单独出售字体",
+      "transform": "fonttools 4.65.0 TTFont flavor=woff2; brotli 1.2.0; preserved full source glyph set; no subsetting or glyph changes",
+      "referenceId": "AR-CENTER",
+      "referenceUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/zbYtPAbsfCnFwns.jpg!a-3-854x.jpg",
+      "differences": "原作字体未确认；使用OFL替代，字宽、笔画、斜体与粗度有差异",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ]
+    },
+    {
+      "id": "font-barlow",
+      "kind": "font",
+      "purpose": "本地数字与英文紧凑标题字体",
+      "status": "已核对采用",
+      "localPath": "/assets/fonts/camellia-numerals.woff2",
+      "sourcePath": "ofl/barlowcondensed/BarlowCondensed-Bold.ttf",
+      "sourceUrl": "https://raw.githubusercontent.com/google/fonts/89f5431ff0db41bd2fe3f7ba21a723a01622428b/ofl/barlowcondensed/BarlowCondensed-Bold.ttf",
+      "sourceVersion": "89f5431ff0db41bd2fe3f7ba21a723a01622428b",
+      "sourceSha256": "e476562ec9c1e16cf16475895b511f08c804f438cc9a9f80a44ea50a0eeb5b65",
+      "sha256": "b8e2a9d1682b07a98f5a7330389dbd30417ee6be449310fd54feff4e6690b608",
+      "family": "Barlow Condensed",
+      "weights": "700",
+      "dimensions": null,
+      "author": "Jeremy Tribby / Barlow Project Authors",
+      "rights": "SIL Open Font License 1.1",
+      "licenseLocalPath": "/assets/fonts/barlow-OFL.txt",
+      "licenseSourceUrl": "https://raw.githubusercontent.com/google/fonts/89f5431ff0db41bd2fe3f7ba21a723a01622428b/ofl/barlowcondensed/OFL.txt",
+      "usage": "字体可按OFL随软件打包、修改与再分发；保留OFL；不单独出售字体",
+      "transform": "fonttools 4.65.0 TTFont flavor=woff2; brotli 1.2.0; preserved full source glyph set; no subsetting or glyph changes",
+      "referenceId": "AR-CENTER",
+      "referenceUrl": "https://i.17173cdn.com/2fhnvk/YWxqaGBf/cms3/zbYtPAbsfCnFwns.jpg!a-3-854x.jpg",
+      "differences": "原作字体未确认；使用OFL替代，字宽、笔画、斜体与粗度有差异",
+      "profiles": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "profile": "M1",
+  "contentVersion": 1,
+  "ruleVersion": 1,
+  "position": {
+    "space": "world",
+    "areaId": "a",
+    "boardId": "a",
+    "tileId": "a.t.-4.-4"
+  },
+  "mode": "explore",
+  "phase": "active",
+  "activeTimeMs": 1255.2999999523163,
+  "countdownRemainingMs": 0,
+  "pauseReasons": [],
+  "completedObjectiveIds": [
+    "hub.amplifier",
+    "hub.tutorial",
+    "a.nexus.route",
+    "a.maze.01",
+    "a.main",
+    "a.maze.02",
+    "a.nexus.side",
+    "a.side.terminal",
+    "a.maze.03",
+    "a.firewall.access",
+    "a.firewall.tutorial",
+    "a.firewall.core"
+  ],
+  "data": {
+    "a": {
+      "collected": 80,
+      "total": 100,
+      "includedCollected": 80,
+      "includedTotal": 80,
+      "complete": false
+    },
+    "b": {
+      "collected": 0,
+      "total": 100,
+      "includedCollected": 0,
+      "includedTotal": 0,
+      "complete": false
+    },
+    "c": {
+      "collected": 0,
+      "total": 100,
+      "includedCollected": 0,
+      "includedTotal": 0,
+      "complete": false
+    },
+    "d": {
+      "collected": 0,
+      "total": 100,
+      "includedCollected": 0,
+      "includedTotal": 0,
+      "complete": false
+    }
+  },
+  "claimedRewardIds": [
+    "hub.supply.tutorial",
+    "a.supply.maze01",
+    "a.supply.maze03",
+    "a.supply.firewall.core"
+  ],
+  "supply": {
+    "collected": 16,
+    "total": 26,
+    "count": 4
+  },
+  "bestResults": [
+    {
+      "challengeId": "a.firewall.tutorial",
+      "ruleVersion": 1,
+      "bestCombo": 30
+    },
+    {
+      "challengeId": "a.firewall.core",
+      "ruleVersion": 1,
+      "bestCombo": 90
+    }
+  ],
+  "lastResult": {
+    "code": "accepted",
+    "message": "沙罗物资 · 5"
+  },
+  "saveStatus": "已保存 · 02:09:44",
+  "saveGeneration": 104,
+  "session": "held",
+  "render": {
+    "geometries": 7,
+    "textures": 17,
+    "calls": 22,
+    "tileCount": 45
+  },
+  "frameSummary": {
+    "sampleCount": 7200,
+    "medianMs": 8.300000000017462,
+    "p95Ms": 9.10000000000582,
+    "meanMs": 8.333388888888889
+  }
+}

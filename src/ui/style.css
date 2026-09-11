@@ -1,0 +1,489 @@
+@font-face {
+  font-family: Camellia UI;
+  src: url("/assets/fonts/camellia-ui.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: Camellia Numbers;
+  src: url("/assets/fonts/camellia-numerals.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+:root {
+  font-family:
+    Camellia UI,
+    sans-serif;
+  color: #f3f0e4;
+  background: #121213;
+  font-synthesis: weight;
+  color-scheme: dark;
+  font-size: 14px;
+  --acid: #eddf9d;
+  --muted: #aaa9ac;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  overflow: hidden;
+}
+button,
+input,
+select {
+  font: inherit;
+}
+button {
+  min-height: 44px;
+  background: #2d2d31;
+  color: #f6f2e6;
+  border: 1px solid #55545a;
+  padding: 10px 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition:
+    background 120ms,
+    transform 120ms;
+}
+button:hover {
+  background: #47464c;
+}
+button:active {
+  transform: translateY(1px);
+}
+button:disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+button:focus-visible,
+canvas:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--acid);
+  outline-offset: 3px;
+}
+button.primary {
+  background: var(--acid);
+  color: #212122;
+  border-color: var(--acid);
+  font-weight: 800;
+}
+.game-shell {
+  height: 100dvh;
+  display: grid;
+  grid-template-rows: 90px minmax(0, 1fr) 72px;
+}
+.hud-top,
+.hud-bottom {
+  position: relative;
+  z-index: 2;
+  background: #18181b;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 14px 32px;
+}
+.hud-top {
+  border-bottom: 4px solid #09090b;
+}
+.hud-bottom {
+  border-top: 4px solid #09090b;
+  justify-content: space-between;
+  gap: 12px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+  font-size: 18px;
+  font-weight: 850;
+}
+.brand small {
+  display: block;
+  font:
+    700 11px Camellia Numbers,
+    sans-serif;
+  letter-spacing: 2px;
+  color: #b9b6ae;
+  margin-top: 3px;
+}
+.brand-mark {
+  font:
+    italic 700 30px Camellia Numbers,
+    sans-serif;
+  background: var(--acid);
+  color: #242329;
+  padding: 5px 8px;
+  border-radius: 6px;
+  transform: skew(-6deg);
+}
+.mission {
+  flex: 1;
+  padding-left: 26px;
+  border-left: 1px solid #454349;
+  min-width: 0;
+}
+.mission strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+.eyebrow {
+  font:
+    700 12px Camellia Numbers,
+    sans-serif;
+  color: #c4c0c8;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 5px;
+}
+.playfield {
+  position: relative;
+  min-height: 0;
+  background: #47454f;
+  overflow: hidden;
+}
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  outline: none;
+}
+.vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 52% 47%, transparent 28%, #19131f44 90%);
+}
+.area-title {
+  position: absolute;
+  top: 28px;
+  left: 34px;
+  pointer-events: none;
+  text-shadow: 0 2px 3px #17121c;
+}
+.area-title h1 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+.area-coordinates {
+  font:
+    700 13px Camellia Numbers,
+    sans-serif;
+  letter-spacing: 1px;
+  color: #dfd8e5;
+}
+.progress-rail {
+  position: absolute;
+  top: 28px;
+  right: 30px;
+  width: 172px;
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  background: #17171fdf;
+  border-radius: 7px;
+  border-left: 3px solid #bdb292;
+  box-shadow: 0 3px 14px #0002;
+}
+.rail-label {
+  font-size: 13px;
+  color: #d3cdd6;
+}
+.progress-rail strong {
+  font:
+    700 37px Camellia Numbers,
+    sans-serif;
+  letter-spacing: 1px;
+  margin: 3px 0;
+  color: #f2eacb;
+}
+.progress-rail > span:not(.rail-label) {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #c5c1c9;
+}
+.rail-divider {
+  height: 1px;
+  background: #676171;
+  margin: 17px 0;
+}
+.progress-rail button {
+  font-size: 12px;
+  padding: 8px;
+  margin-top: 14px;
+}
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+.controls button {
+  background: #2b2b30;
+  border-color: #4f4e53;
+  padding: 8px 13px;
+}
+.key-hint {
+  color: #d9d7d3;
+  padding-right: 10px;
+  font-size: 13px;
+}
+kbd {
+  font: inherit;
+  margin-left: 7px;
+  color: #c7c4b8;
+}
+.save-area {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #c0bdc6;
+  white-space: nowrap;
+}
+.status-dot {
+  width: 6px;
+  height: 6px;
+  background: #cec391;
+  border-radius: 50%;
+}
+.context-tip {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 9px 20px;
+  border-radius: 5px;
+  background: #15141ddc;
+  color: #eee8dc;
+  max-width: 60%;
+  text-align: center;
+  pointer-events: none;
+  line-height: 1.65;
+}
+.mode-banner {
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  transform: translateX(-50%);
+  color: #fff4d1;
+  font-size: 21px;
+  font-weight: 800;
+  text-shadow: 0 2px 4px #000;
+  pointer-events: none;
+}
+.challenge-meter {
+  position: absolute;
+  left: 50%;
+  bottom: 76px;
+  transform: translateX(-50%);
+  font:
+    700 26px Camellia Numbers,
+    Camellia UI,
+    sans-serif;
+  background: #16151edf;
+  padding: 10px 24px;
+  border: 2px solid #71696f;
+  border-radius: 6px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.challenge-meter:empty {
+  display: none;
+}
+.challenge-meter.beat-window {
+  border-color: #ece6ac;
+  background: #34302be8;
+}
+#tile-labels {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.tile-mark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #fff;
+  text-shadow: 1px 1px 3px #000;
+  font-weight: 900;
+}
+dialog {
+  width: min(580px, calc(100vw - 40px));
+  max-height: calc(100dvh - 56px);
+  overflow-y: auto;
+  background: #222228;
+  color: #f6f2e5;
+  border: 2px solid #6b666d;
+  border-top: 6px solid var(--acid);
+  border-radius: 10px;
+  padding: 28px;
+  box-shadow: 0 22px 90px #0009;
+}
+dialog::backdrop {
+  background: #0c0b13a8;
+  backdrop-filter: blur(4px);
+}
+dialog h2 {
+  font-size: 29px;
+  margin: 10px 0 12px;
+  letter-spacing: 1px;
+}
+dialog p {
+  line-height: 1.8;
+}
+dialog > button {
+  width: 100%;
+  margin-top: 10px;
+  text-align: left;
+}
+.dialog-description {
+  color: #d5d0d8;
+}
+.muted {
+  color: #bdb7c2;
+  font-size: 13px;
+}
+.region-map {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: 1fr 1fr;
+}
+.region-map button {
+  text-align: left;
+  font-size: 13px;
+}
+.discovered-map {
+  display: grid;
+  grid-auto-columns: 20px;
+  grid-auto-rows: 20px;
+  justify-content: center;
+  padding: 18px;
+  background: #151419;
+  margin-top: 16px;
+  color: #938c9d;
+}
+.discovered-map .current {
+  color: var(--acid);
+}
+.setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid #48434c;
+}
+input[type="range"] {
+  width: 50%;
+  accent-color: #d7c993;
+}
+input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  accent-color: #d7c993;
+}
+select {
+  width: 100%;
+  margin: 15px 0 4px;
+  min-height: 44px;
+  padding: 8px;
+  background: #37323c;
+}
+.collection-list {
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+}
+.collection-list li {
+  padding: 9px 0;
+  border-bottom: 1px solid #49434b;
+}
+.result-score {
+  font-size: 23px;
+  color: var(--acid);
+}
+.small-window {
+  display: none;
+}
+@media (max-width: 1250px) {
+  .progress-rail {
+    width: 140px;
+    right: 20px;
+    padding: 12px;
+  }
+  .brand small {
+    display: none;
+  }
+  .hud-top {
+    gap: 20px;
+    padding: 12px 22px;
+  }
+  .save-area {
+    max-width: 220px;
+    white-space: normal;
+  }
+  .area-title h1 {
+    font-size: 25px;
+  }
+}
+@media (max-width: 1023px), (max-height: 639px) {
+  .progress-rail {
+    display: none;
+  }
+  .game-shell {
+    grid-template-rows: 80px minmax(0, 1fr) 90px;
+  }
+  .small-window {
+    display: block;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background: #333;
+    font-size: 11px;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+  }
+  .hud-top .brand {
+    display: none;
+  }
+  .mission {
+    padding-left: 0;
+    border: 0;
+  }
+  .hud-bottom {
+    padding: 8px 12px 20px;
+  }
+  .save-area {
+    font-size: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  button {
+    transition: none;
+  }
+}
+.export-text {
+  display: grid;
+  gap: 8px;
+  margin-top: 18px;
+}
+.export-text textarea {
+  width: 100%;
+  min-height: 140px;
+  padding: 12px;
+  color: #f1eee5;
+  background: #151518;
+  border: 1px solid #676773;
+  border-radius: 6px;
+  font: 12px/1.4 monospace;
+  resize: vertical;
+}
