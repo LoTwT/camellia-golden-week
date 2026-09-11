@@ -1,0 +1,236 @@
+{
+  "area": {
+    "id": "warehouse",
+    "label": "中央仓库",
+    "subtitle": "CENTRAL WAREHOUSE / FINAL TERMINAL",
+    "statsAreaId": "hub",
+    "tileIds": [
+      "warehouse.t.0.0",
+      "warehouse.t.0.1",
+      "warehouse.t.1.0",
+      "warehouse.t.2.0",
+      "warehouse.t.2.-1",
+      "warehouse.t.2.-2",
+      "warehouse.t.3.-2",
+      "warehouse.t.4.-2",
+      "warehouse.t.5.-2",
+      "warehouse.t.5.-1",
+      "warehouse.t.5.0",
+      "warehouse.t.6.0",
+      "warehouse.t.7.0"
+    ],
+    "roomIds": [],
+    "entryTileId": "warehouse.t.0.0",
+    "teleportId": "warehouse.teleport",
+    "entityIds": ["warehouse.teleport.point", "warehouse.to.hub", "warehouse.final.terminal"],
+    "revealGroups": [],
+    "sourceRecordIds": ["map.warehouse.reconstructed"],
+    "includedFrom": 4
+  },
+  "tiles": [
+    {
+      "id": "warehouse.t.0.0",
+      "boardId": "warehouse",
+      "x": 0,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 4
+    },
+    {
+      "id": "warehouse.t.0.1",
+      "boardId": "warehouse",
+      "x": 0,
+      "y": 1,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 4
+    },
+    {
+      "id": "warehouse.t.1.0",
+      "boardId": "warehouse",
+      "x": 1,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 4
+    },
+    {
+      "id": "warehouse.t.2.0",
+      "boardId": "warehouse",
+      "x": 2,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 4
+    },
+    {
+      "id": "warehouse.t.2.-1",
+      "boardId": "warehouse",
+      "x": 2,
+      "y": -1,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 4
+    },
+    {
+      "id": "warehouse.t.2.-2",
+      "boardId": "warehouse",
+      "x": 2,
+      "y": -2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 4
+    },
+    {
+      "id": "warehouse.t.3.-2",
+      "boardId": "warehouse",
+      "x": 3,
+      "y": -2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 4
+    },
+    {
+      "id": "warehouse.t.4.-2",
+      "boardId": "warehouse",
+      "x": 4,
+      "y": -2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 4
+    },
+    {
+      "id": "warehouse.t.5.-2",
+      "boardId": "warehouse",
+      "x": 5,
+      "y": -2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 4
+    },
+    {
+      "id": "warehouse.t.5.-1",
+      "boardId": "warehouse",
+      "x": 5,
+      "y": -1,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 4
+    },
+    {
+      "id": "warehouse.t.5.0",
+      "boardId": "warehouse",
+      "x": 5,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 4
+    },
+    {
+      "id": "warehouse.t.6.0",
+      "boardId": "warehouse",
+      "x": 6,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 4
+    },
+    {
+      "id": "warehouse.t.7.0",
+      "boardId": "warehouse",
+      "x": 7,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 4
+    }
+  ],
+  "entities": [
+    {
+      "id": "warehouse.teleport.point",
+      "kind": "checkpoint",
+      "tileId": "warehouse.t.0.0",
+      "label": "中央仓库传送点",
+      "params": {
+        "teleportId": "warehouse.teleport"
+      },
+      "gateId": "always",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.warehouse.reconstructed"],
+      "includedFrom": 4
+    },
+    {
+      "id": "warehouse.to.hub",
+      "kind": "teleport",
+      "tileId": "warehouse.t.0.1",
+      "label": "返回中心区",
+      "params": {
+        "destinationAreaId": "hub",
+        "destinationTileId": "hub.t.0.0",
+        "activationObjectiveId": null
+      },
+      "gateId": "always",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.warehouse.reconstructed"],
+      "includedFrom": 4
+    },
+    {
+      "id": "warehouse.final.terminal",
+      "kind": "terminal",
+      "tileId": "warehouse.t.7.0",
+      "label": "中央仓库最终终端 · 按 F 结算",
+      "params": {
+        "interactionMode": "interact",
+        "prerequisites": {
+          "kind": "always"
+        },
+        "effectBundleId": "warehouse.final.terminal.effects"
+      },
+      "gateId": "gate.warehouse",
+      "effectBundleId": "warehouse.final.terminal.effects",
+      "sourceRecordIds": ["map.warehouse.reconstructed"],
+      "includedFrom": 4
+    }
+  ],
+  "rooms": []
+}

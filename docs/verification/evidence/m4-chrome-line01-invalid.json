@@ -1,0 +1,107 @@
+{
+  "profile": "M4",
+  "schemaVersion": 2,
+  "contentVersion": 4,
+  "ruleVersion": 1,
+  "position": {
+    "space": "room",
+    "areaId": "b",
+    "boardId": "b.line.01",
+    "tileId": "b.line.01.t.2.0"
+  },
+  "mode": "staticPuzzle",
+  "phase": "active",
+  "activeTimeMs": 983.0999999761698,
+  "countdownRemainingMs": 0,
+  "pauseReasons": [],
+  "completedObjectiveIds": [
+    "hub.amplifier",
+    "hub.tutorial",
+    "a.nexus.route",
+    "a.maze.01",
+    "a.main"
+  ],
+  "completedRoomLayouts": {
+    "a.maze.01": {
+      "objectTileById": {},
+      "visitedTileIds": [],
+      "activatedLocalIds": []
+    }
+  },
+  "staticRoom": {
+    "roomId": "b.line.01",
+    "layout": {
+      "objectTileById": {},
+      "visitedTileIds": [
+        "b.line.01.t.0.0",
+        "b.line.01.t.1.0",
+        "b.line.01.t.2.0"
+      ],
+      "activatedLocalIds": [],
+      "pendingObjectiveIds": [],
+      "pendingRewardIds": []
+    },
+    "undoDepth": 2,
+    "practice": false
+  },
+  "completedRoom": null,
+  "data": {
+    "a": {
+      "collected": 20,
+      "total": 100,
+      "includedCollected": 20,
+      "includedTotal": 100,
+      "complete": false
+    },
+    "b": {
+      "collected": 0,
+      "total": 100,
+      "includedCollected": 0,
+      "includedTotal": 100,
+      "complete": false
+    },
+    "c": {
+      "collected": 0,
+      "total": 100,
+      "includedCollected": 0,
+      "includedTotal": 100,
+      "complete": false
+    },
+    "d": {
+      "collected": 0,
+      "total": 100,
+      "includedCollected": 0,
+      "includedTotal": 100,
+      "complete": false
+    }
+  },
+  "claimedRewardIds": [
+    "hub.supply.tutorial",
+    "a.supply.maze01"
+  ],
+  "supply": {
+    "collected": 6,
+    "total": 130,
+    "count": 2
+  },
+  "bestResults": [],
+  "lastResult": {
+    "code": "endTooEarly",
+    "message": "先走完其他必经格，最后到达终点。"
+  },
+  "saveStatus": "已保存 · 03:31:36",
+  "saveGeneration": 38,
+  "session": "held",
+  "render": {
+    "geometries": 7,
+    "textures": 14,
+    "calls": 10,
+    "tileCount": 12
+  },
+  "frameSummary": {
+    "sampleCount": 7200,
+    "medianMs": 8.300000000017462,
+    "p95Ms": 10,
+    "meanMs": 8.335555555555555
+  }
+}

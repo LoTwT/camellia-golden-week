@@ -1,0 +1,201 @@
+{
+  "areaFile": "src/content/areas/d.json",
+  "includedFrom": 4,
+  "effects": [
+    {
+      "id": "d.permission.01.effects",
+      "completeObjectiveIds": ["d.permission.01"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "d.permission.02.effects",
+      "completeObjectiveIds": ["d.permission.02"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "d.reveal.03.effects",
+      "completeObjectiveIds": ["d.reveal.03"],
+      "grantRewardIds": [],
+      "revealGroupIds": ["d.group.permission03"],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "d.permission.03.effects",
+      "completeObjectiveIds": ["d.permission.03"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "d.reveal.04.effects",
+      "completeObjectiveIds": ["d.reveal.04"],
+      "grantRewardIds": [],
+      "revealGroupIds": ["d.group.permission04"],
+      "clearEtherTileIds": ["d.t.0.2", "d.t.0.3"]
+    },
+    {
+      "id": "d.permission.04.effects",
+      "completeObjectiveIds": ["d.permission.04"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "d.reveal.hidden.effects",
+      "completeObjectiveIds": ["d.reveal.hidden"],
+      "grantRewardIds": [],
+      "revealGroupIds": ["d.group.hidden"],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "d.hidden.terminal.effects",
+      "completeObjectiveIds": ["d.hidden.terminal"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "d.ghost.01.effects",
+      "completeObjectiveIds": ["d.ghost.01"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "d.ghost.02.effects",
+      "completeObjectiveIds": ["d.ghost.02"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "a.revisit.nexus.effects",
+      "completeObjectiveIds": ["a.revisit.nexus"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": ["a.t.5.5", "a.t.5.6"]
+    },
+    {
+      "id": "a.revisit.terminal.effects",
+      "completeObjectiveIds": ["a.revisit.terminal"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "b.revisit.nexus.effects",
+      "completeObjectiveIds": ["b.revisit.nexus"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": ["b.t.3.4", "b.t.3.5"]
+    },
+    {
+      "id": "b.revisit.terminal.effects",
+      "completeObjectiveIds": ["b.revisit.terminal"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "warehouse.final.terminal.effects",
+      "completeObjectiveIds": ["warehouse.complete"],
+      "grantRewardIds": ["hub.supply.final"],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    }
+  ],
+  "gates": [],
+  "sources": [
+    {
+      "id": "map.d.reconstructed",
+      "locator": "D 固定四权限、独立隐藏组与双幽灵安全出口",
+      "supportedClaim": "按合同重建四条相互独立权限路线、独立隐藏数据支路、两段幽灵后的安全领取点及返回 C 通路。",
+      "limitation": "S05 正文与 AR-D-GHOST 局部画面只支持幽灵/灯和问答类别；全部世界坐标、揭示组、两段数量、灯归属及权限连接均为本版重建。",
+      "adaptedElementIds": [
+        "d.teleport.point",
+        "d.to.c",
+        "d.ghost.01.entrance",
+        "d.ghost.01.door",
+        "d.permission.01",
+        "d.supply.permission01.pickup",
+        "d.ghost.02.entrance",
+        "d.ghost.02.door",
+        "d.permission.02",
+        "d.supply.permission02.pickup",
+        "d.reveal.03",
+        "d.permission.03",
+        "d.supply.permission03.pickup",
+        "d.reveal.04",
+        "d.permission.04",
+        "d.supply.permission04.pickup",
+        "d.reveal.hidden",
+        "d.hidden.terminal",
+        "d.supply.hidden.pickup",
+        "d.ghosts.door",
+        "d.supply.ghosts.pickup",
+        "d.ghost.01",
+        "d.ghost.02"
+      ],
+      "urlOrPath": "docs/references/maps/world-m4.md",
+      "checkedAt": "2026-09-11",
+      "evidenceLevel": "reconstruction"
+    },
+    {
+      "id": "map.a.revisit.reconstructed",
+      "locator": "A 回访合并连接与富集绕行",
+      "supportedClaim": "在既有普通格旁追加独立回访门、富集绕行、末端数据终端与五单位物资；只引用 D 四权限聚合条件。",
+      "limitation": "S06 仅支持 A/B 后期回访、增幅及交互机制；D 四权限开门、20 数据、固定坐标和无战斗终端属于本版设计。",
+      "adaptedElementIds": [
+        "a.revisit.door",
+        "a.revisit.nexus",
+        "a.revisit.terminal",
+        "a.revisit.supply.door",
+        "a.supply.revisit.pickup"
+      ],
+      "urlOrPath": "docs/references/maps/world-m4.md",
+      "checkedAt": "2026-09-11",
+      "evidenceLevel": "reconstruction"
+    },
+    {
+      "id": "map.b.revisit.reconstructed",
+      "locator": "B 回访合并连接与富集绕行",
+      "supportedClaim": "在既有普通格旁追加独立回访门、富集绕行、末端数据终端与五单位物资；只引用 D 四权限聚合条件。",
+      "limitation": "S06 仅支持 A/B 后期回访、增幅及交互机制；D 四权限开门、20 数据、固定坐标和无战斗终端属于本版设计。",
+      "adaptedElementIds": [
+        "b.revisit.door",
+        "b.revisit.nexus",
+        "b.revisit.terminal",
+        "b.revisit.supply.door",
+        "b.supply.revisit.pickup"
+      ],
+      "urlOrPath": "docs/references/maps/world-m4.md",
+      "checkedAt": "2026-09-11",
+      "evidenceLevel": "reconstruction"
+    },
+    {
+      "id": "map.warehouse.reconstructed",
+      "locator": "中央仓库安全通路与最终终端",
+      "supportedClaim": "独立 warehouse 场景统计归中心；固定安全往返和最终目标/九单位同事务。",
+      "limitation": "S05 中央区域物资表仅支持末端九个的分组；通路坐标、终端替代战斗与立即自由回访均按合同重建。",
+      "adaptedElementIds": [
+        "warehouse.teleport.point",
+        "warehouse.to.hub",
+        "warehouse.final.terminal"
+      ],
+      "urlOrPath": "docs/references/maps/world-m4.md",
+      "checkedAt": "2026-09-11",
+      "evidenceLevel": "reconstruction"
+    }
+  ],
+  "objectiveAdditions": [],
+  "objectiveProducerCorrections": [],
+  "profileAdditions": {
+    "from": "M4",
+    "includedRoomIds": ["d.ghost.01", "d.ghost.02"],
+    "includedObjectiveIds": []
+  }
+}

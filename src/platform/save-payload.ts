@@ -12,7 +12,7 @@ import type {
   StaticSnapshot,
   StaticState,
 } from "../core/static-puzzle.ts";
-import { gateSatisfied } from "../core/progress.ts";
+import { AREA_LABELS, gateSatisfied } from "../core/progress.ts";
 import { applyMigrationStep, resolveMigrationPlan } from "./migrations.ts";
 import type { MigrationRegistry } from "./migrations.ts";
 import type {
@@ -469,6 +469,20 @@ function validateSnapshot(
   for (const id of payload.revealedGroupIds)
     if (!content.areas.some((area) => area.revealGroups.some((group) => group.id === id)))
       return invalid(`未知显露组：${id}`);
+  const expectedRevealedGroups = new Set(
+    content.effects
+      .filter(
+        (effect) =>
+          effect.completeObjectiveIds.length > 0 &&
+          effect.completeObjectiveIds.every((id) => payload.completedObjectiveIds.includes(id)),
+      )
+      .flatMap((effect) => effect.revealGroupIds),
+  );
+  if (
+    payload.revealedGroupIds.length !== expectedRevealedGroups.size ||
+    payload.revealedGroupIds.some((id) => !expectedRevealedGroups.has(id))
+  )
+    return invalid("显露组与已完成的揭示事件不一致");
   for (const area of content.areas.filter((item) => item.includedFrom <= sourceStage)) {
     if (
       payload.activatedTeleportIds.includes(area.teleportId) !==
@@ -722,7 +736,7 @@ export function payloadSummary(payload: SavePayload, content: GameContent): stri
     (sum, reward) => sum + (payload.claimedRewardIds.includes(reward.id) ? reward.units : 0),
     0,
   );
-  return `${payload.releaseProfileId} · ${payload.playerPosition.areaId.toUpperCase()} 区 · ${units} 单位物资 · 已完成 ${payload.completedObjectiveIds.filter((id) => id.endsWith(".main")).length} 区主路径`;
+  return `${payload.releaseProfileId} · ${AREA_LABELS[payload.playerPosition.areaId]} · ${units} 单位物资 · 已完成 ${payload.completedObjectiveIds.filter((id) => id.endsWith(".main")).length} 区主路径`;
 }
 
 export function previousProfile(id: ProfileId): ProfileId | null {

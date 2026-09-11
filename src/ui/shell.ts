@@ -413,6 +413,8 @@ export class GameShell {
     if (state.clock.countdownRemainingMs > 0)
       banner = `准备 · ${Math.ceil(state.clock.countdownRemainingMs / 1000)}`;
     if (state.activeRealtime) {
+      if (state.activeRealtime.practice && state.clock.countdownRemainingMs === 0)
+        banner = "独立练习";
       const active = state.activeRealtime.state;
       const definition = this.content.realtimeChallenges.find(
         (item) => item.id === state.activeRealtime?.roomId,
@@ -542,7 +544,13 @@ export class GameShell {
         this.modal(
           state.phase === "success" ? "挑战完成" : "重新尝试",
           state.phase === "success"
-            ? "已记录本次最好成绩。首次成功会开放对应物资格，前往地图领取。"
+            ? state.activeRealtime?.state.kind === "ghosts"
+              ? state.activeRealtime.practice
+                ? "已通过幽灵通道。独立练习不会改变永久进度。"
+                : "已到达安全出口。对应通道已开放，可返回地图继续探索。"
+              : state.activeRealtime?.practice
+                ? "已记录本次最好成绩。独立练习不会重复发放奖励。"
+                : "已记录本次最好成绩。首次成功会开放对应物资格，前往地图领取。"
             : "本次未达标。永久进度不受影响，可以重新挑战。",
           `result:${state.activeRealtime?.roomId}:${state.phase}`,
         )

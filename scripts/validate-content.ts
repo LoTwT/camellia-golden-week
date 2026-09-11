@@ -21,6 +21,7 @@ import type { RealtimeWitness } from "../src/core/realtime.ts";
 import m1WorldWitnessContent from "../src/content/witnesses/m1.json" with { type: "json" };
 import m2WorldWitnessContent from "../src/content/witnesses/m2.json" with { type: "json" };
 import m3WorldWitnessContent from "../src/content/witnesses/m3.json" with { type: "json" };
+import m4WorldWitnessContent from "../src/content/witnesses/m4.json" with { type: "json" };
 
 assert.deepEqual(validateCatalog(worldCatalog), [], "完整设计目录与分期账本");
 for (const profile of worldCatalog.releaseProfiles) {
@@ -100,6 +101,7 @@ for (const rawWitness of [
   ...m1WorldWitnessContent.witnesses,
   ...m2WorldWitnessContent.witnesses,
   ...m3WorldWitnessContent.witnesses,
+  ...m4WorldWitnessContent.witnesses,
 ]) {
   assert.deepEqual(validateWorldWitness(rawWitness), [], rawWitness.id);
   const witness = rawWitness as WorldWitness;

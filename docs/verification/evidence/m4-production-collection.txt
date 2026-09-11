@@ -1,0 +1,39 @@
+Browser tab: 546939393, Title: "沙罗黄金周 · Camellia Golden Week", URL: "http://localhost:5174/".
+1 AXWebArea 沙罗黄金周 · Camellia Golden Week, URL: localhost:5174/
+	2 container 收集记录, ID: game-dialog
+		3 text CAMELLIA / TERMINAL
+		4 heading 收集记录, Value: 2, ID: dialog-title
+			5 text 收集记录
+		6 text 时间已冻结。返回地图后，实时挑战有 3 秒准备倒数。
+		7 text 本版本物资 130 / 130 · 永久奖励不会重复领取。
+		8 content list
+			9 text ✓ hub.supply.tutorial · 1
+			10 text ✓ a.supply.maze01 · 5
+			11 text ✓ a.supply.maze03 · 5
+			12 text ✓ a.supply.firewall.inner · 5
+			13 text ✓ a.supply.firewall.deep · 5
+			14 text ✓ a.supply.firewall.core · 5
+			15 text ✓ a.supply.revisit · 5
+			16 text ✓ b.supply.line01 · 5
+			17 text ✓ b.supply.line02 · 5
+			18 text ✓ b.supply.antivirus.light · 5
+			19 text ✓ b.supply.antivirus.medium · 5
+			20 text ✓ b.supply.antivirus.heavy · 5
+			21 text ✓ b.supply.revisit · 5
+			22 text ✓ c.supply.route.entry · 5
+			23 text ✓ c.supply.route.exit · 5
+			24 text ✓ c.supply.theft01 · 5
+			25 text ✓ c.supply.theft02 · 5
+			26 text ✓ c.supply.theft03 · 5
+			27 text ✓ c.supply.side · 5
+			28 text ✓ d.supply.permission01 · 5
+			29 text ✓ d.supply.permission02 · 5
+			30 text ✓ d.supply.permission03 · 5
+			31 text ✓ d.supply.permission04 · 5
+			32 text ✓ d.supply.hidden · 5
+			33 text ✓ d.supply.ghosts · 5
+			34 text ✓ hub.supply.final · 9
+		35 button 返回暂停菜单
+		36 button 继续探索
+
+The focused UI element is 35 button 返回暂停菜单

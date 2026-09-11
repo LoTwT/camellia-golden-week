@@ -1,0 +1,1260 @@
+{
+  "method": "Normal physical arrow keys; read-only clock; target 180ms within 100–400ms input window; late observations skipped",
+  "trace": [
+    {
+      "beat": 0,
+      "key": "Right",
+      "targetMs": 180,
+      "beforeMs": 178.59999995236285,
+      "afterMs": 194.79999995231628,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 1"
+      }
+    },
+    {
+      "beat": 1,
+      "key": "Left",
+      "targetMs": 680,
+      "beforeMs": 678.0999999523629,
+      "afterMs": 704.4999999522697,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 2"
+      }
+    },
+    {
+      "beat": 2,
+      "key": "Right",
+      "targetMs": 1180,
+      "beforeMs": 1178.1999999522232,
+      "afterMs": 1194.7999999523163,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 3"
+      }
+    },
+    {
+      "beat": 3,
+      "key": "Left",
+      "targetMs": 1680,
+      "beforeMs": 1671.2999999523163,
+      "afterMs": 1695.4999999522697,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 4"
+      }
+    },
+    {
+      "beat": 4,
+      "key": "Right",
+      "targetMs": 2180,
+      "beforeMs": 2171.2999999523163,
+      "afterMs": 2187.100000023842,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 5"
+      }
+    },
+    {
+      "beat": 5,
+      "key": "Left",
+      "targetMs": 2680,
+      "beforeMs": 2678.199999952223,
+      "afterMs": 2729.699999952223,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 6"
+      }
+    },
+    {
+      "beat": 6,
+      "key": "Right",
+      "targetMs": 3180,
+      "beforeMs": 3187.599999952363,
+      "afterMs": 3203.8999999524094,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 7"
+      }
+    },
+    {
+      "beat": 7,
+      "key": "Left",
+      "targetMs": 3680,
+      "beforeMs": 3679.3999999524094,
+      "afterMs": 3696.4999999522697,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 8"
+      }
+    },
+    {
+      "beat": 8,
+      "key": "Right",
+      "targetMs": 4180,
+      "beforeMs": 4186.49999995227,
+      "afterMs": 4204.799999952316,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 9"
+      }
+    },
+    {
+      "beat": 9,
+      "key": "Left",
+      "targetMs": 4680,
+      "beforeMs": 4687.399999952409,
+      "afterMs": 4721.399999952409,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 10"
+      }
+    },
+    {
+      "beat": 10,
+      "key": "Right",
+      "targetMs": 5180,
+      "beforeMs": 5171.299999952316,
+      "afterMs": 5194.699999952223,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 11"
+      }
+    },
+    {
+      "beat": 11,
+      "key": "Left",
+      "targetMs": 5680,
+      "beforeMs": 5679.49999995227,
+      "afterMs": 5736.49999995227,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 12"
+      }
+    },
+    {
+      "beat": 12,
+      "key": "Right",
+      "targetMs": 6180,
+      "beforeMs": 6170.199999952223,
+      "afterMs": 6186.299999952316,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 13"
+      }
+    },
+    {
+      "beat": 13,
+      "key": "Left",
+      "targetMs": 6680,
+      "beforeMs": 6686.399999952409,
+      "afterMs": 6721.199999952223,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 14"
+      }
+    },
+    {
+      "beat": 14,
+      "key": "Right",
+      "targetMs": 7180,
+      "beforeMs": 7171.299999952316,
+      "afterMs": 7202.99999995227,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 15"
+      }
+    },
+    {
+      "beat": 15,
+      "key": "Left",
+      "targetMs": 7680,
+      "beforeMs": 7694.799999952316,
+      "afterMs": 7711.99999995227,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 16"
+      }
+    },
+    {
+      "beat": 16,
+      "key": "Right",
+      "targetMs": 8180,
+      "beforeMs": 8171.199999952223,
+      "afterMs": 8186.899999952409,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 17"
+      }
+    },
+    {
+      "beat": 17,
+      "key": "Left",
+      "targetMs": 8680,
+      "beforeMs": 8670.299999952316,
+      "afterMs": 8686.299999952316,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 18"
+      }
+    },
+    {
+      "beat": 18,
+      "key": "Right",
+      "targetMs": 9180,
+      "beforeMs": 9204.699999952223,
+      "afterMs": 9228.599999952363,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 19"
+      }
+    },
+    {
+      "beat": 19,
+      "key": "Left",
+      "targetMs": 9680,
+      "beforeMs": 9679.199999952223,
+      "afterMs": 9695.099999952363,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 20"
+      }
+    },
+    {
+      "beat": 20,
+      "key": "Right",
+      "targetMs": 10180,
+      "beforeMs": 10170.299999952316,
+      "afterMs": 10187.89999995241,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 21"
+      }
+    },
+    {
+      "beat": 21,
+      "key": "Left",
+      "targetMs": 10680,
+      "beforeMs": 10687.699999952223,
+      "afterMs": 10720.39999995241,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 22"
+      }
+    },
+    {
+      "beat": 22,
+      "key": "Right",
+      "targetMs": 11180,
+      "beforeMs": 11169.99999995227,
+      "afterMs": 11203.49999995227,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 23"
+      }
+    },
+    {
+      "beat": 23,
+      "key": "Left",
+      "targetMs": 11680,
+      "beforeMs": 11678.799999952316,
+      "afterMs": 11694.99999995227,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 24"
+      }
+    },
+    {
+      "beat": 24,
+      "key": "Right",
+      "targetMs": 12180,
+      "beforeMs": 12178.89999995241,
+      "afterMs": 12212.699999952223,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 25"
+      }
+    },
+    {
+      "beat": 25,
+      "key": "Left",
+      "targetMs": 12680,
+      "beforeMs": 12677.99999995227,
+      "afterMs": 12696.39999995241,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 26"
+      }
+    },
+    {
+      "beat": 26,
+      "key": "Right",
+      "targetMs": 13180,
+      "beforeMs": 13171.199999952223,
+      "afterMs": 13194.599999952363,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 27"
+      }
+    },
+    {
+      "beat": 27,
+      "key": "Left",
+      "targetMs": 13680,
+      "beforeMs": 13679.099999952363,
+      "afterMs": 13694.699999952223,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 28"
+      }
+    },
+    {
+      "beat": 28,
+      "key": "Right",
+      "targetMs": 14180,
+      "beforeMs": 14171.299999952316,
+      "afterMs": 14187.599999952363,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 29"
+      }
+    },
+    {
+      "beat": 29,
+      "key": "Left",
+      "targetMs": 14680,
+      "beforeMs": 14671.599999952363,
+      "afterMs": 14695.89999995241,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 30"
+      }
+    },
+    {
+      "beat": 30,
+      "key": "Right",
+      "targetMs": 15180,
+      "beforeMs": 15186.299999952316,
+      "afterMs": 15212.799999952316,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 31"
+      }
+    },
+    {
+      "beat": 31,
+      "key": "Left",
+      "targetMs": 15680,
+      "beforeMs": 15687.199999952223,
+      "afterMs": 15703.199999952223,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 32"
+      }
+    },
+    {
+      "beat": 32,
+      "key": "Right",
+      "targetMs": 16180,
+      "beforeMs": 16177.89999995241,
+      "afterMs": 16196.49999995227,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 33"
+      }
+    },
+    {
+      "beat": 33,
+      "key": "Left",
+      "targetMs": 16680,
+      "beforeMs": 16686.799999952316,
+      "afterMs": 16721.099999952363,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 34"
+      }
+    },
+    {
+      "beat": 34,
+      "key": "Right",
+      "targetMs": 17180,
+      "beforeMs": 17170.299999952316,
+      "afterMs": 17195.39999995241,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 35"
+      }
+    },
+    {
+      "beat": 35,
+      "key": "Left",
+      "targetMs": 17680,
+      "beforeMs": 17678.699999952223,
+      "afterMs": 17694.99999995227,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 36"
+      }
+    },
+    {
+      "beat": 36,
+      "key": "Right",
+      "targetMs": 18180,
+      "beforeMs": 18186.299999952316,
+      "afterMs": 18212.89999995241,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 37"
+      }
+    },
+    {
+      "beat": 37,
+      "key": "Left",
+      "targetMs": 18680,
+      "beforeMs": 18671.299999952316,
+      "afterMs": 18688.199999952223,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 38"
+      }
+    },
+    {
+      "beat": 38,
+      "key": "Right",
+      "targetMs": 19180,
+      "beforeMs": 19188.199999952223,
+      "afterMs": 19204.49999995227,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 39"
+      }
+    },
+    {
+      "beat": 39,
+      "key": "Left",
+      "targetMs": 19680,
+      "beforeMs": 19678.199999952223,
+      "afterMs": 19695.299999952316,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 40"
+      }
+    },
+    {
+      "beat": 40,
+      "key": "Right",
+      "targetMs": 20180,
+      "beforeMs": 20171.49999995227,
+      "afterMs": 20194.599999952363,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 41"
+      }
+    },
+    {
+      "beat": 41,
+      "key": "Left",
+      "targetMs": 20680,
+      "beforeMs": 20687.799999952316,
+      "afterMs": 20721.099999952363,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 42"
+      }
+    },
+    {
+      "beat": 42,
+      "key": "Right",
+      "targetMs": 21180,
+      "beforeMs": 21187.89999995241,
+      "afterMs": 21202.799999952316,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 43"
+      }
+    },
+    {
+      "beat": 43,
+      "key": "Left",
+      "targetMs": 21680,
+      "beforeMs": 21686.099999952363,
+      "afterMs": 21703.89999995241,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 44"
+      }
+    },
+    {
+      "beat": 44,
+      "key": "Right",
+      "targetMs": 22180,
+      "beforeMs": 22177.99999995227,
+      "afterMs": 22204.39999995241,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 45"
+      }
+    },
+    {
+      "beat": 45,
+      "key": "Left",
+      "targetMs": 22680,
+      "beforeMs": 22670.799999952316,
+      "afterMs": 22704.39999995241,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 46"
+      }
+    },
+    {
+      "beat": 46,
+      "key": "Right",
+      "targetMs": 23180,
+      "beforeMs": 23194.49999995227,
+      "afterMs": 23212.099999952363,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 47"
+      }
+    },
+    {
+      "beat": 47,
+      "key": "Left",
+      "targetMs": 23680,
+      "beforeMs": 23671.099999952363,
+      "afterMs": 23694.599999952363,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 48"
+      }
+    },
+    {
+      "beat": 48,
+      "key": "Right",
+      "targetMs": 24180,
+      "beforeMs": 24177.799999952316,
+      "afterMs": 24195.199999952223,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 49"
+      }
+    },
+    {
+      "beat": 49,
+      "key": "Left",
+      "targetMs": 24680,
+      "beforeMs": 24671.299999952316,
+      "afterMs": 24694.89999995241,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 50"
+      }
+    },
+    {
+      "beat": 50,
+      "key": "Right",
+      "targetMs": 25180,
+      "beforeMs": 25169.49999995227,
+      "afterMs": 25195.799999952316,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 51"
+      }
+    },
+    {
+      "beat": 51,
+      "key": "Left",
+      "targetMs": 25680,
+      "beforeMs": 25678.89999995241,
+      "afterMs": 25694.699999952223,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 52"
+      }
+    },
+    {
+      "beat": 52,
+      "key": "Right",
+      "targetMs": 26180,
+      "beforeMs": 26186.199999952223,
+      "afterMs": 26204.299999952316,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 53"
+      }
+    },
+    {
+      "beat": 53,
+      "key": "Left",
+      "targetMs": 26680,
+      "beforeMs": 26670.89999995241,
+      "afterMs": 26687.299999952316,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 54"
+      }
+    },
+    {
+      "beat": 54,
+      "key": "Right",
+      "targetMs": 27180,
+      "beforeMs": 27170.799999952316,
+      "afterMs": 27187.99999995227,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 55"
+      }
+    },
+    {
+      "beat": 55,
+      "key": "Left",
+      "targetMs": 27680,
+      "beforeMs": 27679.39999995241,
+      "afterMs": 27704.099999952363,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 56"
+      }
+    },
+    {
+      "beat": 56,
+      "key": "Right",
+      "targetMs": 28180,
+      "beforeMs": 28169.799999952316,
+      "afterMs": 28187.99999995227,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 57"
+      }
+    },
+    {
+      "beat": 57,
+      "skipped": true,
+      "targetMs": 28680,
+      "beforeMs": 28795.89999995241
+    },
+    {
+      "beat": 58,
+      "key": "Left",
+      "targetMs": 29180,
+      "beforeMs": 29186.099999952363,
+      "afterMs": 29204.699999952223,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 58"
+      }
+    },
+    {
+      "beat": 59,
+      "key": "Right",
+      "targetMs": 29680,
+      "beforeMs": 29711.099999952363,
+      "afterMs": 29729.299999952316,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 59"
+      }
+    },
+    {
+      "beat": 60,
+      "key": "Left",
+      "targetMs": 30180,
+      "beforeMs": 30186.39999995241,
+      "afterMs": 30204.39999995241,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 60"
+      }
+    },
+    {
+      "beat": 61,
+      "key": "Right",
+      "targetMs": 30680,
+      "beforeMs": 30677.699999952223,
+      "afterMs": 30711.699999952223,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 61"
+      }
+    },
+    {
+      "beat": 62,
+      "key": "Left",
+      "targetMs": 31180,
+      "beforeMs": 31170.99999995227,
+      "afterMs": 31187.699999952223,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 62"
+      }
+    },
+    {
+      "beat": 63,
+      "key": "Right",
+      "targetMs": 31680,
+      "beforeMs": 31694.49999995227,
+      "afterMs": 31728.99999995227,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 63"
+      }
+    },
+    {
+      "beat": 64,
+      "key": "Left",
+      "targetMs": 32180,
+      "beforeMs": 32177.99999995227,
+      "afterMs": 32194.39999995241,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 64"
+      }
+    },
+    {
+      "beat": 65,
+      "key": "Right",
+      "targetMs": 32680,
+      "beforeMs": 32687.299999952316,
+      "afterMs": 32712.99999995227,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 65"
+      }
+    },
+    {
+      "beat": 66,
+      "key": "Left",
+      "targetMs": 33180,
+      "beforeMs": 33186.89999995241,
+      "afterMs": 33203.89999995241,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 66"
+      }
+    },
+    {
+      "beat": 67,
+      "key": "Right",
+      "targetMs": 33680,
+      "beforeMs": 33669.39999995241,
+      "afterMs": 33679.69999995222,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 67"
+      }
+    },
+    {
+      "beat": 68,
+      "key": "Left",
+      "targetMs": 34180,
+      "beforeMs": 34169.39999995241,
+      "afterMs": 34186.09999995236,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 68"
+      }
+    },
+    {
+      "beat": 69,
+      "key": "Right",
+      "targetMs": 34680,
+      "beforeMs": 34687.59999995236,
+      "afterMs": 34719.69999995222,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 69"
+      }
+    },
+    {
+      "beat": 70,
+      "key": "Left",
+      "targetMs": 35180,
+      "beforeMs": 35170.99999995227,
+      "afterMs": 35194.299999952316,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 70"
+      }
+    },
+    {
+      "beat": 71,
+      "key": "Right",
+      "targetMs": 35680,
+      "beforeMs": 35678.49999995227,
+      "afterMs": 35694.299999952316,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 71"
+      }
+    },
+    {
+      "beat": 72,
+      "key": "Left",
+      "targetMs": 36180,
+      "beforeMs": 36169.39999995241,
+      "afterMs": 36187.99999995227,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 72"
+      }
+    },
+    {
+      "beat": 73,
+      "key": "Right",
+      "targetMs": 36680,
+      "beforeMs": 36670.49999995227,
+      "afterMs": 36695.89999995241,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 73"
+      }
+    },
+    {
+      "beat": 74,
+      "key": "Left",
+      "targetMs": 37180,
+      "beforeMs": 37170.99999995227,
+      "afterMs": 37187.99999995227,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 74"
+      }
+    },
+    {
+      "beat": 75,
+      "key": "Right",
+      "targetMs": 37680,
+      "beforeMs": 37686.299999952316,
+      "afterMs": 37712.99999995227,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 75"
+      }
+    },
+    {
+      "beat": 76,
+      "key": "Left",
+      "targetMs": 38180,
+      "beforeMs": 38169.69999995222,
+      "afterMs": 38194.99999995227,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 76"
+      }
+    },
+    {
+      "beat": 77,
+      "key": "Right",
+      "targetMs": 38680,
+      "beforeMs": 38671.09999995236,
+      "afterMs": 38694.49999995227,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 77"
+      }
+    },
+    {
+      "beat": 78,
+      "key": "Left",
+      "targetMs": 39180,
+      "beforeMs": 39185.99999995227,
+      "afterMs": 39210.99999995227,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 78"
+      }
+    },
+    {
+      "beat": 79,
+      "key": "Right",
+      "targetMs": 39680,
+      "beforeMs": 39678.09999995236,
+      "afterMs": 39702.89999995241,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 79"
+      }
+    },
+    {
+      "beat": 80,
+      "key": "Left",
+      "targetMs": 40180,
+      "beforeMs": 40187.49999995227,
+      "afterMs": 40203.799999952316,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 80"
+      }
+    },
+    {
+      "beat": 81,
+      "key": "Right",
+      "targetMs": 40680,
+      "beforeMs": 40669.39999995241,
+      "afterMs": 40695.799999952316,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 81"
+      }
+    },
+    {
+      "beat": 82,
+      "key": "Left",
+      "targetMs": 41180,
+      "beforeMs": 41186.299999952316,
+      "afterMs": 41202.89999995241,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 82"
+      }
+    },
+    {
+      "beat": 83,
+      "key": "Right",
+      "targetMs": 41680,
+      "beforeMs": 41679.299999952316,
+      "afterMs": 41694.299999952316,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 83"
+      }
+    },
+    {
+      "beat": 84,
+      "key": "Left",
+      "targetMs": 42180,
+      "beforeMs": 42177.69999995222,
+      "afterMs": 42204.299999952316,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 84"
+      }
+    },
+    {
+      "beat": 85,
+      "key": "Right",
+      "targetMs": 42680,
+      "beforeMs": 42669.299999952316,
+      "afterMs": 42685.99999995227,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 85"
+      }
+    },
+    {
+      "beat": 86,
+      "key": "Left",
+      "targetMs": 43180,
+      "beforeMs": 43187.19999995222,
+      "afterMs": 43236.39999995241,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 86"
+      }
+    },
+    {
+      "beat": 87,
+      "key": "Right",
+      "targetMs": 43680,
+      "beforeMs": 43670.799999952316,
+      "afterMs": 43686.799999952316,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 87"
+      }
+    },
+    {
+      "beat": 88,
+      "key": "Left",
+      "targetMs": 44180,
+      "beforeMs": 44186.799999952316,
+      "afterMs": 44204.19999995222,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 88"
+      }
+    },
+    {
+      "beat": 89,
+      "key": "Right",
+      "targetMs": 44680,
+      "beforeMs": 44669.799999952316,
+      "afterMs": 44712.49999995227,
+      "result": {
+        "code": "accepted",
+        "message": "拍点命中 · Combo 89"
+      }
+    }
+  ],
+  "result": {
+    "profile": "M4",
+    "schemaVersion": 2,
+    "contentVersion": 4,
+    "ruleVersion": 1,
+    "position": {
+      "space": "room",
+      "areaId": "a",
+      "boardId": "a.firewall.core.board",
+      "tileId": "a.firewall.core.tile.3.2"
+    },
+    "mode": "challengeResult",
+    "phase": "success",
+    "activeTimeMs": 45000,
+    "countdownRemainingMs": 0,
+    "pauseReasons": [],
+    "completedObjectiveIds": [
+      "hub.amplifier",
+      "hub.tutorial",
+      "a.nexus.route",
+      "a.maze.01",
+      "a.main",
+      "b.line.01",
+      "b.switch.shortcut",
+      "b.main",
+      "c.routing.01",
+      "c.main",
+      "d.reveal.03",
+      "d.permission.03",
+      "d.reveal.04",
+      "d.permission.04",
+      "d.ghost.01",
+      "d.permission.01",
+      "d.ghost.02",
+      "d.ghosts.cleared",
+      "d.permission.02",
+      "d.main",
+      "d.reveal.hidden",
+      "d.hidden.terminal",
+      "a.revisit.nexus",
+      "a.revisit.terminal",
+      "a.maze.03",
+      "a.maze.02",
+      "a.nexus.side",
+      "a.side.terminal",
+      "b.revisit.nexus",
+      "b.revisit.terminal",
+      "b.south.terminal",
+      "b.nexus.north",
+      "b.north.terminal",
+      "b.line.02",
+      "c.side.terminal",
+      "c.theft.01",
+      "c.theft.02",
+      "c.theft.03",
+      "warehouse.complete",
+      "a.firewall.access",
+      "a.firewall.tutorial",
+      "a.firewall.inner",
+      "a.firewall.deep",
+      "a.firewall.core"
+    ],
+    "completedRoomLayouts": {
+      "a.maze.01": {
+        "objectTileById": {},
+        "visitedTileIds": [],
+        "activatedLocalIds": []
+      },
+      "b.line.01": {
+        "objectTileById": {},
+        "visitedTileIds": [
+          "b.line.01.t.0.0",
+          "b.line.01.t.1.0",
+          "b.line.01.t.2.0",
+          "b.line.01.t.2.1",
+          "b.line.01.t.1.1",
+          "b.line.01.t.0.1",
+          "b.line.01.t.0.2",
+          "b.line.01.t.1.2",
+          "b.line.01.t.2.2",
+          "b.line.01.t.3.2",
+          "b.line.01.t.3.1",
+          "b.line.01.t.3.0"
+        ],
+        "activatedLocalIds": []
+      },
+      "c.routing.01": {
+        "objectTileById": {
+          "c.routing.01.ball.01": "c.routing.01.t.4.1",
+          "c.routing.01.ball.02": "c.routing.01.t.2.1",
+          "c.routing.01.cart.01": "c.routing.01.t.5.3"
+        },
+        "visitedTileIds": [],
+        "activatedLocalIds": []
+      },
+      "a.maze.03": {
+        "objectTileById": {},
+        "visitedTileIds": [],
+        "activatedLocalIds": []
+      },
+      "a.maze.02": {
+        "objectTileById": {},
+        "visitedTileIds": [],
+        "activatedLocalIds": []
+      },
+      "b.line.02": {
+        "objectTileById": {},
+        "visitedTileIds": [
+          "b.line.02.t.0.0",
+          "b.line.02.t.1.0",
+          "b.line.02.t.2.0",
+          "b.line.02.t.3.0",
+          "b.line.02.t.4.0",
+          "b.line.02.t.4.1",
+          "b.line.02.t.4.2",
+          "b.line.02.t.3.2",
+          "b.line.02.t.3.1",
+          "b.line.02.t.2.1",
+          "b.line.02.t.1.1",
+          "b.line.02.t.0.1",
+          "b.line.02.t.0.2",
+          "b.line.02.t.1.2",
+          "b.line.02.t.1.3",
+          "b.line.02.t.0.3",
+          "b.line.02.t.0.4",
+          "b.line.02.t.1.4",
+          "b.line.02.t.2.4",
+          "b.line.02.t.2.3",
+          "b.line.02.t.3.3",
+          "b.line.02.t.3.4",
+          "b.line.02.t.4.4",
+          "b.line.02.t.4.3"
+        ],
+        "activatedLocalIds": []
+      },
+      "c.theft.01": {
+        "objectTileById": {
+          "c.theft.01.object.01": "c.theft.01.t.2.1",
+          "c.theft.01.object.02": "c.theft.01.t.4.1"
+        },
+        "visitedTileIds": [],
+        "activatedLocalIds": []
+      },
+      "c.theft.02": {
+        "objectTileById": {
+          "c.theft.02.object.01": "c.theft.02.t.2.1",
+          "c.theft.02.object.02": "c.theft.02.t.4.1"
+        },
+        "visitedTileIds": [],
+        "activatedLocalIds": []
+      },
+      "c.theft.03": {
+        "objectTileById": {
+          "c.theft.03.object.01": "c.theft.03.t.2.1",
+          "c.theft.03.object.02": "c.theft.03.t.5.1",
+          "c.theft.03.object.03": "c.theft.03.t.5.3"
+        },
+        "visitedTileIds": [],
+        "activatedLocalIds": []
+      }
+    },
+    "staticRoom": null,
+    "completedRoom": null,
+    "data": {
+      "a": {
+        "collected": 100,
+        "total": 100,
+        "includedCollected": 100,
+        "includedTotal": 100,
+        "complete": true
+      },
+      "b": {
+        "collected": 100,
+        "total": 100,
+        "includedCollected": 100,
+        "includedTotal": 100,
+        "complete": true
+      },
+      "c": {
+        "collected": 100,
+        "total": 100,
+        "includedCollected": 100,
+        "includedTotal": 100,
+        "complete": true
+      },
+      "d": {
+        "collected": 100,
+        "total": 100,
+        "includedCollected": 100,
+        "includedTotal": 100,
+        "complete": true
+      }
+    },
+    "claimedRewardIds": [
+      "hub.supply.tutorial",
+      "a.supply.maze01",
+      "b.supply.line01",
+      "d.supply.permission03",
+      "d.supply.permission04",
+      "d.supply.permission01",
+      "d.supply.permission02",
+      "d.supply.ghosts",
+      "d.supply.hidden",
+      "a.supply.revisit",
+      "a.supply.maze03",
+      "b.supply.revisit",
+      "b.supply.line02",
+      "c.supply.route.entry",
+      "c.supply.side",
+      "c.supply.route.exit",
+      "c.supply.theft01",
+      "c.supply.theft02",
+      "c.supply.theft03",
+      "hub.supply.final"
+    ],
+    "supply": {
+      "collected": 100,
+      "total": 130,
+      "count": 20
+    },
+    "bestResults": [
+      {
+        "challengeId": "d.ghost.01",
+        "ruleVersion": 1
+      },
+      {
+        "challengeId": "d.ghost.02",
+        "ruleVersion": 1
+      },
+      {
+        "challengeId": "a.firewall.tutorial",
+        "ruleVersion": 1,
+        "bestCombo": 30
+      },
+      {
+        "challengeId": "a.firewall.inner",
+        "ruleVersion": 1,
+        "bestCombo": 88
+      },
+      {
+        "challengeId": "a.firewall.deep",
+        "ruleVersion": 1,
+        "bestCombo": 84
+      },
+      {
+        "challengeId": "a.firewall.core",
+        "ruleVersion": 1,
+        "bestCombo": 89
+      }
+    ],
+    "lastResult": {
+      "code": "success",
+      "message": "挑战成功 · 永久结果已提交"
+    },
+    "saveStatus": "已保存 · 03:56:29",
+    "saveGeneration": 469,
+    "session": "held",
+    "render": {
+      "geometries": 7,
+      "textures": 26,
+      "calls": 6,
+      "tileCount": 25
+    },
+    "frameSummary": {
+      "sampleCount": 7200,
+      "medianMs": 8.300000000046566,
+      "p95Ms": 10.100000000093132,
+      "meanMs": 8.333055555555555
+    }
+  }
+}

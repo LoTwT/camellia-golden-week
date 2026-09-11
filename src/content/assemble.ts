@@ -5,6 +5,10 @@ import bJson from "./areas/b.json" with { type: "json" };
 import bRegistration from "./areas/b-registration.json" with { type: "json" };
 import cJson from "./areas/c.json" with { type: "json" };
 import cRegistration from "./areas/c-registration.json" with { type: "json" };
+import dJson from "./areas/d.json" with { type: "json" };
+import dRegistration from "./areas/d-registration.json" with { type: "json" };
+import revisitsJson from "./areas/revisits.json" with { type: "json" };
+import warehouseJson from "./areas/warehouse.json" with { type: "json" };
 import staticJson from "./challenges/static.json" with { type: "json" };
 import realtimeJson from "./challenges/realtime.json" with { type: "json" };
 import type { StaticContent } from "../core/static-puzzle.ts";
@@ -17,14 +21,14 @@ import type {
   EntityDefinition,
 } from "../core/types.ts";
 
-export const AVAILABLE_PROFILE: ProfileId = "M3";
+export const AVAILABLE_PROFILE: ProfileId = "M4";
 export const staticContent = staticJson as unknown as StaticContent;
 export const realtimeContent = realtimeJson as unknown as {
   definitions: RealtimeDefinition[];
   witnesses: unknown[];
 };
 const baseCatalog = worldJson as unknown as WorldDefinition;
-const registrations = [bRegistration, cRegistration];
+const registrations = [bRegistration, cRegistration, dRegistration];
 export const worldCatalog = {
   ...baseCatalog,
   objectives: [
@@ -58,18 +62,40 @@ export const worldCatalog = {
   }),
 } as WorldDefinition;
 
+type AreaFile = Pick<WorldDefinition, "tiles" | "entities" | "rooms"> & {
+  area: WorldDefinition["areas"][number];
+};
+
+const sourceAreas = (
+  [hubJson, aJson, bJson, cJson, dJson, warehouseJson] as unknown as AreaFile[]
+).map((source): AreaFile => {
+  const extension = revisitsJson.areas.find((candidate) => candidate.areaId === source.area.id);
+  if (!extension) return source;
+  const tiles = [...source.tiles, ...extension.tiles] as WorldDefinition["tiles"];
+  const entities = [...source.entities, ...extension.entities] as WorldDefinition["entities"];
+  const rooms = [...source.rooms, ...extension.rooms] as WorldDefinition["rooms"];
+  return {
+    area: {
+      ...source.area,
+      tileIds: tiles.map((tile) => tile.id),
+      entityIds: entities.map((entity) => entity.id),
+      roomIds: rooms.map((room) => room.id),
+      sourceRecordIds: [...source.area.sourceRecordIds, ...extension.sourceRecordIds],
+    },
+    tiles,
+    entities,
+    rooms,
+  };
+});
+
 export function assembleContent(profileId: ProfileId = AVAILABLE_PROFILE): GameContent {
   const stage = Number(profileId.slice(1));
   const profileSource = worldCatalog.releaseProfiles.find(
     (candidate) => candidate.id === profileId,
   );
   if (!profileSource) throw new Error(`未知 profile：${profileId}`);
-  const sourceAreas = [hubJson, aJson, bJson, cJson] as unknown as Pick<
-    WorldDefinition,
-    "areas" | "tiles" | "entities" | "rooms"
-  >[];
   const areas = sourceAreas
-    .map((source) => (source as unknown as { area: WorldDefinition["areas"][number] }).area)
+    .map((source) => source.area)
     .filter((area) => area.includedFrom <= stage);
   const tiles = sourceAreas
     .flatMap((source) => source.tiles)

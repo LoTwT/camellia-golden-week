@@ -333,7 +333,11 @@ export function dispatch(
     state.phase = succeeded ? "success" : "failure";
     state.lastResult = {
       code: succeeded ? "success" : "failure",
-      message: succeeded ? "挑战成功 · 永久结果已提交" : "本次未达标 · 可重试",
+      message: succeeded
+        ? active.practice
+          ? "独立练习完成 · 永久进度保持"
+          : "挑战成功 · 永久结果已提交"
+        : "本次未达标 · 可重试",
     };
     state.resumeHint = null;
     state.autoPath = [];
@@ -341,7 +345,11 @@ export function dispatch(
     stable = true;
     emit(
       succeeded ? "success" : "failure",
-      succeeded ? "挑战成功 · 奖励物资格已开放" : "挑战未完成 · 可重试，无物资损失",
+      succeeded
+        ? active.practice
+          ? "独立练习完成 · 永久进度保持"
+          : "挑战成功 · 奖励物资格已开放"
+        : "挑战未完成 · 可重试，无物资损失",
     );
   };
 
@@ -524,7 +532,7 @@ export function dispatch(
       roomId: room.id,
       returnAnchor: worldPosition(room.areaId, room.returnTileId),
       state: realtimeState,
-      practice: false,
+      practice: state.completedObjectiveIds.includes(room.goal),
     };
     state.playerPosition = {
       space: "room",

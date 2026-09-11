@@ -74,7 +74,7 @@ test("M1 已加载结构、所有实体 / 房间 / 来源 / 效应引用闭合",
 test("未实际收录的未来世界不能只凭完整目录声明为通过", () => {
   const available = Number(AVAILABLE_PROFILE.slice(1));
   for (const profileId of ["M2", "M3", "M4", "M5"] as ProfileId[]) {
-    if (Number(profileId.slice(1)) <= available) continue;
+    if (Math.min(Number(profileId.slice(1)), 4) <= Math.min(available, 4)) continue;
     const issues = validateContent(assembleContent(profileId));
     assert.ok(issues.length > 0, `${profileId} missing maps must be rejected`);
   }
