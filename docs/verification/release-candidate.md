@@ -6,23 +6,23 @@
 
 ## 1. 当前静态交付物
 
-当前包包含[防火墙拍点可读性修复](firewall-visual-cue.md)及[消融 Review 修复](review-fixes.md)：极大修订号、深层坏档、画质类型和异步音频请求的修复，以及清晰的文字 / 节拍条和配套回归校验。版本仍为0.5.0 / M5，地图、奖励、内容 / 规则 / 存档版本和验收范围不变。
+当前包包含[画面周边节拍补修](firewall-visual-cue.md#原版核对后的画面周边节拍补修)、首轮可读拍点与[消融Review修复](review-fixes.md)。防火墙画面周围白光随同一有效时钟亮起，在拍点达到峰值；减少闪烁关闭白光与面板亮暗变化，保留文字提示。版本仍为0.5.0 / M5，地图、奖励、内容 / 规则 / 存档版本和验收范围不变。
 
-- [完整静态 ZIP](evidence/firewall-cue/firewall-cue-dist.zip)：解压后直接包含 `index.html` 和 `assets/`。
-- [ZIP SHA-256](evidence/firewall-cue/firewall-cue-dist.zip.sha256)、[逐文件与归档校验](evidence/firewall-cue/package.json)。
-- [最终验证日志](evidence/firewall-cue/verify.log)、[五分期及Chrome回归](evidence/firewall-cue/browser-results.json)、[本地HTTP审计](evidence/firewall-cue/http-audit.json)。
+- [完整静态ZIP](evidence/firewall-perimeter/firewall-perimeter-dist.zip)：解压后直接包含 `index.html` 和 `assets/`。
+- [ZIP SHA-256](evidence/firewall-perimeter/firewall-perimeter-dist.zip.sha256)、[逐文件与归档校验](evidence/firewall-perimeter/package.json)。
+- [最终验证日志](evidence/firewall-perimeter/verify.log)、[五分期及Chrome回归](evidence/firewall-perimeter/browser-results.json)、[本地HTTP审计](evidence/firewall-perimeter/http-audit.json)。
 
-| 项目         | 实际结果                                                                                                      |
-| ------------ | ------------------------------------------------------------------------------------------------------------- |
-| ZIP          | 847,638字节；SHA-256 `cf14a5a6da9121484abf9e782b9d92243a11a98fe334cc3f15db9538150716f2`                       |
-| 解压内容     | 84文件，1,680,243字节；CRC、当前dist与Chrome验证的production目录逐项字节一致                                  |
-| 文件清单指纹 | `ca2db56aa5ecaeea9acdc01fd8918d6d7d8e1389dbc797a15b791593bf1d342a`；算法与逐项值见机器记录                    |
-| 应用入口     | `assets/index-ZVVjfDTP.js`，920,487字节                                                                       |
-| 本地资源     | 45条记录，78项内容及2项许可哈希匹配；33图标、两字体、十段声音随包提供                                         |
-| 生产排除项   | 无验收故障面板、只读快照或会话诊断入口；正式包隔离经过实际消融验证                                            |
-| 完整验证     | 干净冻结安装通过；`pnpm run verify`退出0，463项原生测试、五分期Chrome流程、七项修复回归及两种拍点正常操作通过 |
+| 项目         | 实际结果                                                                                        |
+| ------------ | ----------------------------------------------------------------------------------------------- |
+| ZIP          | 848,037字节；SHA-256 `8f3e4c324074d694d596d5d7da5db4447a3c1cd1eb89cb646b4464f87c3475df`         |
+| 解压内容     | 84文件，1,681,345字节；CRC、当前dist与Chrome验证的production目录逐项字节一致                    |
+| 文件清单指纹 | `42bbbbb164b92332b4816b3f0e846e5ac5096318e49dc7b76d26d0861ebfd9d7`；算法与逐项值见机器记录      |
+| 应用入口     | `assets/index-BZ9TsFGT.js`，920,931字节                                                         |
+| 本地资源     | 45条记录，78项内容及2项许可哈希匹配；33图标、两字体、十段声音随包提供                           |
+| 生产排除项   | 无验收故障面板、只读快照或会话诊断入口；正式包隔离经过实际消融验证                              |
+| 完整验证     | `pnpm run verify`退出0，464项原生测试、五分期Chrome流程、七项修复回归及两种静音拍点正常操作通过 |
 
-字体按原配方继续补齐新文案的“束”，811个源码字符实际解码覆盖；构建检查保持只读。已有固定5174 preview继续服务新包，85次HTTP字节与Content-Type核对通过。原650kB单JS警告保留。该短流程回归没有重新完成全收集或性能采样；下文原M5全流程与性能记录保留当时含义。
+字体按原配方补齐“白”，812个源码字符实际解码覆盖；构建检查保持只读，184个所选实现输入验证前后哈希相同。依赖和锁文件未改，干净冻结安装沿用相同锁文件的前次验证。已有固定5174 preview继续服务新包，85次回环直连HTTP字节与Content-Type核对通过。原650kB单JS警告保留。该短流程回归没有重新完成全收集或性能采样；下文原M5全流程与性能记录保留当时含义。
 
 ## 2. 安装和启动
 
@@ -46,7 +46,7 @@ pnpm run preview --host localhost --port 5174 --strictPort --outDir /absolute/pa
 
 ## 3. 工程检查
 
-当前463项测试、五分期和新增拍点操作见[拍点修复](firewall-visual-cue.md#验证)。前次458项和消融结果见[Review修复记录](review-fixes.md#4-完整验证与交付)。以下 npm 日志保留 M5 原交付时的实际执行方式；后续[pnpm 迁移记录](pnpm-migration.md)也保留迁移时点的锁文件和构建等价结论。
+当前464项测试、五分期和画面周边拍点操作见[拍点补修](firewall-visual-cue.md#原版核对后的画面周边节拍补修)。前次458项和消融结果见[Review修复记录](review-fixes.md#4-完整验证与交付)。以下 npm 日志保留 M5 原交付时的实际执行方式；后续[pnpm 迁移记录](pnpm-migration.md)也保留迁移时点的锁文件和构建等价结论。
 
 | 命令 / 检查      | 实际结果与原始证据                                                                                                                                                                                                                                                    |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -80,6 +80,8 @@ pnpm run preview --host localhost --port 5174 --strictPort --outDir /absolute/pa
 同源码观察包另完成世界与密集机关各六步，移动完成分别104.7–110.4ms、104.4–110.9ms；世界样本的镜头实际达到目标。64格场景两档各60次正常输入，末7200帧窗口分别为60220.8/60228.8ms，中位均8.3ms、p95均9.3ms，输入p95为15.8/16.6ms。详细原文、方法和测量开销见[性能记录](performance.md)，此前Chrome30次区域往返的稳定资源证据仍有效。
 
 ## 5. 历史候选包
+
+首轮[侧栏拍点修复ZIP](evidence/firewall-cue/firewall-cue-dist.zip)为847,638字节，SHA-256 `cf14a5a6da9121484abf9e782b9d92243a11a98fe334cc3f15db9538150716f2`，84文件 / 1,680,243字节。其463项测试和两种拍点操作保留[原记录](firewall-visual-cue.md#验证)含义；当前包进一步补齐原版已有的周边视觉节拍。
 
 前次[Review修复ZIP](evidence/review-fixes/review-fixes-dist.zip)为847,180字节，SHA-256 `e93b1f3b8e769d7e049c4e5264140b061caab82e2d747dffc6aebc0fa7d9c4b4`，其458项测试、五期和七项回归保留[原修复记录](review-fixes.md)含义；本次仅因新增可读拍点与字体补字而更新当前包。
 

@@ -1,0 +1,16 @@
+{
+  "command": "pnpm run verify",
+  "exitCode": 0,
+  "inputFiles": 184,
+  "inputHashesUnchanged": true,
+  "changedInputs": [],
+  "elapsedSeconds": 112.06,
+  "finishedAtUnix": 1789136490.435777,
+  "nativeTests": 464,
+  "testFiles": 34,
+  "browser": "153.0.8010.36",
+  "profileFlows": 5,
+  "regressions": 7,
+  "firewallCueFlows": 2,
+  "scope": "Normal keyboard-driven new-game firewall tutorials, including screen perimeter light and reduced-flash/muted display; not a repeat of all 63 cases, full collection or performance sampling."
+}

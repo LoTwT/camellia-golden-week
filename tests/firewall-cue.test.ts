@@ -111,3 +111,35 @@ test("时间终点与已结算状态都关闭输入提示，拍数不会越界",
   );
   assert.equal(firewallCue(tutorial, active, clockAt(20000)).beatNumber, 30);
 });
+
+test("画面白光只在有效窗口亮起，拍点达到峰值，命中后仍保持同一节拍", () => {
+  for (const definition of definitions) {
+    const active = createRealtime(definition);
+    const beat = definition.rules.firstBeatMs;
+    const window = definition.rules.windowMs;
+    const lightAt = (time: number) =>
+      firewallCue(definition, active, clockAt(time)).screenLightOpacity;
+    assert.equal(lightAt(beat - window - 1), 0);
+    assert.ok(lightAt(beat - window) >= 0.3);
+    assert.ok(lightAt(beat - window / 2) > lightAt(beat - window));
+    assert.equal(lightAt(beat), 1);
+    assert.equal(lightAt(beat - window / 2), lightAt(beat + window / 2));
+    assert.equal(lightAt(beat + window + 1), 0);
+    assert.equal(
+      firewallCue(definition, { ...active, scoredBeatIndices: [0] }, clockAt(beat))
+        .screenLightOpacity,
+      1,
+    );
+    for (const clock of [
+      { ...clockAt(beat), pauseReasons: ["manual"] as const },
+      { ...clockAt(beat), awaitingResume: true },
+      { ...clockAt(beat), countdownRemainingMs: 1000 },
+      clockAt(definition.rules.durationMs),
+    ])
+      assert.equal(firewallCue(definition, active, clock).screenLightOpacity, 0);
+    assert.equal(
+      firewallCue(definition, { ...active, status: "success" }, clockAt(beat)).screenLightOpacity,
+      0,
+    );
+  }
+});

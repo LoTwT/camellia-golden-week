@@ -1,0 +1,19 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: 挑战画面必须有随拍点亮起的周边白光
+
+0 !== 1
+
+    at verifyFirewallCue (file:///Users/caoyujie/codes/camellia-golden-week/scripts/browser/firewall-cue.ts:66:14)
+    at async file:///Users/caoyujie/codes/camellia-golden-week/test-results/firewall-perimeter/run-cue.ts:5:3 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 0,
+  expected: 1,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.18.0

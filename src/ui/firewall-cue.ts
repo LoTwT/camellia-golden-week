@@ -39,6 +39,10 @@ export function firewallCue(
     label: labels[phase],
     beatNumber: Math.max(1, Math.min(totalBeats, nearestBeat + 1)),
     totalBeats,
+    screenLightOpacity:
+      phase === "ready" || phase === "hit"
+        ? 1 - (Math.abs(timeMs - beatMs) / rules.windowMs) * 0.65
+        : 0,
     cursorPercent: Math.max(0, Math.min(100, 50 + ((timeMs - beatMs) / intervalMs) * 100)),
     windowStartPercent: 50 - (rules.windowMs / intervalMs) * 100,
     windowWidthPercent: (rules.windowMs / intervalMs) * 200,
