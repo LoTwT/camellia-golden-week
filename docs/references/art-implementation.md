@@ -189,13 +189,13 @@ C 图只能证实推车的这些粗轮廓；信号球本体和基站外观仍未
 
 ## 5. 字体与声音
 
-中文采用 **Noto Sans SC Regular**，源提交 `165c01b46ea533872e002e0785ff17e44f6d97d8`。M1–M4 曾完整封装 SC 源字形集，原 WOFF2 为 6,093,424 字节、31,036 个 glyph、30,890 个 cmap 映射。M5 按运行源码制作子集后，当前 `camellia-ui.woff2` 为 **183,808 字节**，较原包减少约 97.0%；本次实际解码核对为 **1,426 个 glyph、1,117 个 cmap 映射**。输出 SHA-256 为 `ba2add796baba8269f938c780cbcab6440cb54c68992b7d61f1dd49b28054484`，与字体清单及总清单一致。原 OTF 只保留于作者工具缓存，未放入 `public/` 或静态包。
+中文采用 **Noto Sans SC Regular**，源提交 `165c01b46ea533872e002e0785ff17e44f6d97d8`。M1–M4 曾完整封装 SC 源字形集，原 WOFF2 为 6,093,424 字节、31,036 个 glyph、30,890 个 cmap 映射。M5 按运行源码制作子集后，当前 `camellia-ui.woff2` 为 **183,160 字节**，较原包减少约 97.0%；本次实际解码核对为 **1,427 个 glyph、1,118 个 cmap 映射**。输出 SHA-256 为 `3c3a7c41994e61fcd42e6a65f69989f0fa0e047aa53d14e479d3175a65cd6c1b`，与字体清单及总清单一致。原 OTF 只保留于作者工具缓存，未放入 `public/` 或静态包。
 
 数字 / 英文标题继续采用完整 **Barlow Condensed Bold**，源提交 `89f5431ff0db41bd2fe3f7ba21a723a01622428b`，`camellia-numerals.woff2` 为 39,384 字节、694 个 glyph、525 个 cmap 映射。二者的内部名称和版权记录仍保留，OFL 放在各自字体旁；许可证校验值也写入字体清单。原游戏字体未确认，因此字体匹配状态为替代。CSS 使用独立 family 名 `Camellia UI`（400）与 `Camellia Numerals`（700），避免依赖本机同名字体；没有复制系统字体。
 
 ### 5.1 可复现中文子集
 
-配方为 `project-runtime-v1`，固定使用 fonttools `4.65.0` 和 brotli `1.2.0`。生成器扫描 `index.html` 与 `src/**/*.{ts,js,json,css,html}` 的全部可打印字符，包含动态文案模板、奖励名称、关卡内容和错误提示；当前清单输入为 **47 个文件、808 个字符，其中687个汉字**。它还保留源字体实际支持的 ASCII、非断行空格、General Punctuation、CJK 标点及全角 / 半角字符范围。字符清单、逐文件 SHA-256、配方 / 工具版本、生成器 SHA-256、实际输出 cmap、字体输出哈希及大小均写入 `font-manifest.json` 的 `subset` 字段，再合并进总清单。
+配方为 `project-runtime-v1`，固定使用 fonttools `4.65.0` 和 brotli `1.2.0`。生成器扫描 `index.html` 与 `src/**/*.{ts,js,json,css,html}` 的全部可打印字符，包含动态文案模板、奖励名称、关卡内容和错误提示；当前清单输入为 **48 个文件、811 个字符，其中688个汉字**。它还保留源字体实际支持的 ASCII、非断行空格、General Punctuation、CJK 标点及全角 / 半角字符范围。字符清单、逐文件 SHA-256、配方 / 工具版本、生成器 SHA-256、实际输出 cmap、字体输出哈希及大小均写入 `font-manifest.json` 的 `subset` 字段，再合并进总清单。
 
 子集保留 hint、名称、版权、layout features 和 `.notdef` 轮廓，设置 `recalcTimestamp=False`；源 OTF 的固定 SHA-256 为 `faa6c9df652116dde789d351359f3d7e5d2285a2b2a1f04a2d7244df706d5ea9`，写入前必须匹配。运行源码需要的每一个字符都必须存在于源字体和生成后的 cmap；任意用户导入文件名所带的额外字符允许使用 CSS 系统 fallback，不在冻结 UI 字符集合中。
 
@@ -213,7 +213,7 @@ node scripts/generate-assets.ts --check
 
 这是显式作者生成命令，只更新中文 WOFF2、字体清单及总清单中的字体项，不加载 Sharp 或重制其他图标。`--check` 与 `--subset-font` 同用会在写入前报错。普通检查重新扫描当前源码，核对它是否为已记录 cmap 的子集；新增缺字会报具体字符和 Unicode 码位，并要求显式再生成。构建保持只读，不按构建机器临时裁切字体。
 
-字体生成时实际使用 FontTools 解码输出 cmap；无 Python 环境的常规检查使用与字体 SHA-256 绑定的已记录 cmap，并检查文件大小、记录哈希与源清单一致性。本次只读解码当前成品，确认清单全部808个输入字符都在实际cmap中，内部版权记录仍保留。
+字体生成时实际使用 FontTools 解码输出 cmap；无 Python 环境的常规检查使用与字体 SHA-256 绑定的已记录 cmap，并检查文件大小、记录哈希与源清单一致性。本次只读解码当前成品，确认清单全部811个输入字符都在实际cmap中，内部版权记录仍保留。
 
 首轮M5历史快照为42个文件、797个字符（678个汉字），输出182,388字节、1,417个glyph、1,108个cmap，SHA-256为 `dffc547352f13f793c58a0a17e7f76e377ec33ca1a0eb2108064f385f64137b5`。当时实际解码确认797字符覆盖、内部版权记录保留；同一清单的固定字符输入再生成到临时目录，输出哈希一致。跨两次不同源码快照的初次比较因文案从793增至797字符而不同，随后按同一输入快照重验通过。这些数字和重复生成结果保留首轮含义，不冒充后续800、802或808字符版本的重复生成实测。
 
@@ -221,7 +221,9 @@ node scripts/generate-assets.ts --check
 
 2026-09-11 发布前检查发现新增UI文案需要 `副 U+526F` 和 `它 U+5B83`，只读构建按约定拒绝缺字。随后显式运行上面的 `--subset-font` 模式，实际源路径为作者缓存 `/tmp/camellia-art-reference/NotoSansSC-Regular.otf`，8,331,336字节，其SHA-256与固定官方源匹配。生成器SHA-256为 `0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251`，工具和配方不变；此次形成45文件 / 802字符的历史子集（182,592字节，1,420个glyph、1,111个cmap，输出SHA-256 `c78799c16975421b3513435fa8a71f031434d8d39840682051f804473c89f217`）。实际FontTools解码核对新增两字、全部必需字符、glyph / cmap数量、版权名称记录及两份清单一致性；cmap清单SHA-256为 `e234a41d01261772dfe24533bb8a38f8c46136871efb7f016d3a0ff7ac8fedcc`，字体清单文件SHA-256为 `6345a59cec2ddbd301d51f8befd07132aa1ca17c24b905812276fcc34155b890`，总资源清单文件SHA-256为 `110af4b866272166414ef79194d7cbfb5273f907413dced997e4c3fa6d0772b8`。此字体维护操作仅生成中文WOFF2及两份清单，没有构建或改写既有静态包；成品构建的字体版本另以对应构建审计为准。
 
-2026-09-11 消融 Review 修复后，完整检查再次正确拒绝六个缺字：`儿 U+513F`、`册 U+518C`、`孤 U+5B64`、`注 U+6CE8`、`言 U+8A00`、`默 U+9ED8`。沿用同一固定 OTF、生成器和工具版本，显式补制当前47文件 / 808字符子集；只更新中文WOFF2和两份清单。实际FontTools解码核对808个必需字符、1,426个glyph、1,117个cmap及版权名称，清单与字体字节一致。[字体复核](../verification/evidence/review-fixes/font-verification.json)记录全部SHA-256，[修复与构建记录](../verification/review-fixes.md)保留失败日志和后续完整验证；没有放宽只读检查。
+2026-09-11 消融 Review 修复后，完整检查再次正确拒绝六个缺字：`儿 U+513F`、`册 U+518C`、`孤 U+5B64`、`注 U+6CE8`、`言 U+8A00`、`默 U+9ED8`。沿用同一固定 OTF、生成器和工具版本，显式补制该次47文件 / 808字符子集；只更新中文WOFF2和两份清单。实际FontTools解码核对808个必需字符、1,426个glyph、1,117个cmap及版权名称，清单与字体字节一致。[字体复核](../verification/evidence/review-fixes/font-verification.json)记录全部SHA-256，[修复与构建记录](../verification/review-fixes.md)保留失败日志和后续完整验证；没有放宽只读检查。
+
+2026-09-11 用户体验反馈防火墙拍点难辨。新增UI文字需要 `束 U+675F`，构建前沿用固定OTF和配方显式补制当前48文件 / 811字符子集。实际FontTools解码确认1,427个glyph、1,118个cmap、全部811字符覆盖，见[字体核对](../verification/evidence/firewall-cue/font-verification.json)。独立节拍条由DOM/CSS绘制，读权威有效时钟；没有新增图片或声音。屏幕和操作对照见[拍点修复](../verification/firewall-visual-cue.md)。
 
 ### 5.2 声音
 

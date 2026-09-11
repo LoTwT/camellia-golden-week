@@ -2,6 +2,7 @@ import { areaData, AREA_LABELS, currentObjective, supplyProgress } from "../core
 import { entitiesAt } from "../core/engine.ts";
 import type { GameCommand, GameContent, GameSettings, GameState } from "../core/types.ts";
 import { REWARD_LABELS } from "./labels.ts";
+import { firewallCue } from "./firewall-cue.ts";
 
 export interface ShellActions {
   send: (command: GameCommand) => void;
@@ -50,7 +51,7 @@ export class GameShell {
   constructor(root: HTMLElement, content: GameContent, actions: ShellActions) {
     this.content = content;
     this.actions = actions;
-    root.innerHTML = `<main class="game-shell"><header class="hud-top"><div class="brand"><span class="brand-mark">CGW</span><span>沙罗黄金周<small>CAMELLIA GOLDEN WEEK</small></span></div><div class="mission"><span class="eyebrow">当前目标</span><strong id="mission-text"></strong></div><div class="save-area"><span class="status-dot"></span><span id="save-status" role="status"></span></div><button id="menu-button" aria-label="打开暂停菜单">菜单 <kbd>Esc</kbd></button></header><section class="playfield"><canvas id="game-canvas" tabindex="0" aria-label="电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停"></canvas><div id="tile-labels" aria-hidden="true"></div><div class="vignette" aria-hidden="true"></div><div class="area-title"><span class="eyebrow" id="area-subtitle"></span><h1 id="area-name"></h1><span class="area-coordinates" id="area-coordinates"></span></div><aside class="progress-rail"><span class="rail-label">区域数据</span><strong id="area-data"></strong><span id="full-data"></span><div class="rail-divider"></div><span class="rail-label">沙罗物资</span><strong id="supplies"></strong><span id="amplifier"></span><button id="collection-button">收集记录 ↗</button></aside><div class="scene-transition" role="status" hidden>正在连接电视…</div><button class="audio-prompt" hidden>启用声音</button><div class="mode-banner" id="mode-banner" role="status"></div><div class="context-tip" id="context-tip"></div><div class="challenge-meter" id="challenge-meter"></div></section><footer class="hud-bottom"><div class="controls" id="controls"></div></footer><dialog id="game-dialog" aria-labelledby="dialog-title"></dialog><p class="small-window">建议将窗口扩大至 1024 × 640 以上；菜单与存档功能仍可使用。</p></main>`;
+    root.innerHTML = `<main class="game-shell"><header class="hud-top"><div class="brand"><span class="brand-mark">CGW</span><span>沙罗黄金周<small>CAMELLIA GOLDEN WEEK</small></span></div><div class="mission"><span class="eyebrow">当前目标</span><strong id="mission-text"></strong></div><div class="save-area"><span class="status-dot"></span><span id="save-status" role="status"></span></div><button id="menu-button" aria-label="打开暂停菜单">菜单 <kbd>Esc</kbd></button></header><section class="playfield"><canvas id="game-canvas" tabindex="0" aria-label="电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停"></canvas><div id="tile-labels" aria-hidden="true"></div><div class="vignette" aria-hidden="true"></div><div class="area-title"><span class="eyebrow" id="area-subtitle"></span><h1 id="area-name"></h1><span class="area-coordinates" id="area-coordinates"></span></div><aside class="progress-rail"><span class="rail-label">区域数据</span><strong id="area-data"></strong><span id="full-data"></span><div class="rail-divider"></div><span class="rail-label">沙罗物资</span><strong id="supplies"></strong><span id="amplifier"></span><button id="collection-button">收集记录 ↗</button></aside><div class="scene-transition" role="status" hidden>正在连接电视…</div><button class="audio-prompt" hidden>启用声音</button><div class="mode-banner" id="mode-banner" role="status"></div><div class="context-tip" id="context-tip"></div><div class="challenge-meter" id="challenge-meter" hidden><div id="challenge-summary"></div><section id="firewall-rhythm" class="firewall-rhythm" aria-label="防火墙拍点" hidden><div class="firewall-count"><span>拍点</span><span id="firewall-beat-count"></span></div><strong id="firewall-beat-status" class="firewall-beat-status"></strong><div class="firewall-track" aria-hidden="true"><span class="firewall-window"></span><span class="firewall-center"></span><span class="firewall-cursor"></span></div><span class="firewall-instruction">亮起时移动，每拍一次</span></section></div></section><footer class="hud-bottom"><div class="controls" id="controls"></div></footer><dialog id="game-dialog" aria-labelledby="dialog-title"></dialog><p class="small-window">建议将窗口扩大至 1024 × 640 以上；菜单与存档功能仍可使用。</p></main>`;
     const canvas = root.querySelector<HTMLCanvasElement>("#game-canvas");
     const labels = root.querySelector<HTMLElement>("#tile-labels");
     const dialog = root.querySelector<HTMLDialogElement>("#game-dialog");
@@ -70,6 +71,10 @@ export class GameShell {
       "mode-banner",
       "context-tip",
       "challenge-meter",
+      "challenge-summary",
+      "firewall-rhythm",
+      "firewall-beat-count",
+      "firewall-beat-status",
       "controls",
       "save-status",
     ]) {
@@ -481,12 +486,19 @@ export class GameShell {
       );
       if (active.kind === "firewall" && definition?.kind === "firewall") {
         meter = `COMBO ${active.combo}   /   最高 ${active.bestCombo} · 目标 ${definition.rules.comboTarget}   /   ${Math.max(0, (definition.rules.durationMs - state.clock.activeTimeMs) / 1000).toFixed(1)} s`;
-        const beat = Math.round((state.clock.activeTimeMs - 250) / 500);
-        const inWindow =
-          Math.abs(state.clock.activeTimeMs - (250 + Math.max(0, beat) * 500)) <= 150;
+        const cue = firewallCue(definition, active, state.clock);
+        this.set("firewall-beat-status", cue.label);
+        this.set("firewall-beat-count", `${cue.beatNumber} / ${cue.totalBeats}`);
+        const rhythm = this.fields["firewall-rhythm"];
+        if (rhythm) {
+          rhythm.dataset.phase = cue.phase;
+          rhythm.style.setProperty("--beat-cursor", `${cue.cursorPercent.toFixed(1)}%`);
+          rhythm.style.setProperty("--beat-window-start", `${cue.windowStartPercent}%`);
+          rhythm.style.setProperty("--beat-window-width", `${cue.windowWidthPercent}%`);
+        }
         this.fields["challenge-meter"]?.classList.toggle(
           "beat-window",
-          inWindow && state.clock.countdownRemainingMs === 0,
+          cue.phase === "ready" || cue.phase === "hit",
         );
       }
       if (active.kind === "antivirus" && definition?.kind === "antivirus")
@@ -497,7 +509,17 @@ export class GameShell {
     this.set("mode-banner", banner);
     if (state.activeRealtime?.state.kind !== "firewall")
       this.fields["challenge-meter"]?.classList.remove("beat-window");
-    this.set("challenge-meter", meter);
+    this.set("challenge-summary", meter);
+    const challengeMeter = this.fields["challenge-meter"];
+    if (challengeMeter) {
+      challengeMeter.hidden = !meter;
+      challengeMeter.classList.toggle(
+        "firewall-meter",
+        state.activeRealtime?.state.kind === "firewall",
+      );
+    }
+    const rhythm = this.fields["firewall-rhythm"];
+    if (rhythm) rhythm.hidden = state.activeRealtime?.state.kind !== "firewall";
     const controlKey = `${state.mode}:${state.activeStatic?.state.phase ?? ""}`;
     const controls = this.fields.controls;
     if (controls && controls.dataset.mode !== controlKey) {
@@ -570,7 +592,7 @@ export class GameShell {
           ? "杀毒：移动到数据格或鼠标点选当前出现的数据。蓝色 +1，紫色 +2；星星清除当前蓝 / 紫数据。目标有时限，移动到空格不会扣分。"
           : kind === "ghosts"
             ? "幽灵：用方向键逐格避开幽灵，点亮灯以清除指定幽灵组。与幽灵碰撞或交换位置会重试；长距离自动寻路已停用。"
-            : "防火墙：跟随拍点移动，每拍最多 +1。鼠标可直接点任意不同格；方向键每次按下只移动一次。";
+            : "防火墙：先选择下方档位开始。看左侧拍点条，“现在移动”亮起时移动一次；“本拍命中”后等待下一拍。鼠标可直接点任意不同格；方向键每次按下只移动一次，不能长按。";
       if (this.modal("终端挑战", description, `ready:${state.playerPosition.tileId}`)) {
         const names: Record<string, string> = {
           tutorial: "教学 · 15 秒 / Combo 12",

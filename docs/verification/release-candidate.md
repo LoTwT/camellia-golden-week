@@ -6,23 +6,23 @@
 
 ## 1. 当前静态交付物
 
-当前包包含[消融 Review 修复](review-fixes.md)：极大修订号、深层坏档、画质类型和异步音频请求的修复，以及配套回归校验。版本仍为0.5.0 / M5，地图、奖励、内容 / 规则 / 存档版本和验收范围不变。
+当前包包含[防火墙拍点可读性修复](firewall-visual-cue.md)及[消融 Review 修复](review-fixes.md)：极大修订号、深层坏档、画质类型和异步音频请求的修复，以及清晰的文字 / 节拍条和配套回归校验。版本仍为0.5.0 / M5，地图、奖励、内容 / 规则 / 存档版本和验收范围不变。
 
-- [完整静态 ZIP](evidence/review-fixes/review-fixes-dist.zip)：解压后直接包含 `index.html` 和 `assets/`。
-- [ZIP SHA-256](evidence/review-fixes/review-fixes-dist.zip.sha256)、[逐文件与归档校验](evidence/review-fixes/package.json)。
-- [最终验证日志](evidence/review-fixes/verify-final.log)、[五分期及七项Chrome回归](evidence/review-fixes/pipeline/browser-results.json)、[本地HTTP审计](evidence/review-fixes/http-audit.json)。
+- [完整静态 ZIP](evidence/firewall-cue/firewall-cue-dist.zip)：解压后直接包含 `index.html` 和 `assets/`。
+- [ZIP SHA-256](evidence/firewall-cue/firewall-cue-dist.zip.sha256)、[逐文件与归档校验](evidence/firewall-cue/package.json)。
+- [最终验证日志](evidence/firewall-cue/verify.log)、[五分期及Chrome回归](evidence/firewall-cue/browser-results.json)、[本地HTTP审计](evidence/firewall-cue/http-audit.json)。
 
-| 项目         | 实际结果                                                                                    |
-| ------------ | ------------------------------------------------------------------------------------------- |
-| ZIP          | 847,180字节；SHA-256 `e93b1f3b8e769d7e049c4e5264140b061caab82e2d747dffc6aebc0fa7d9c4b4`     |
-| 解压内容     | 84文件，1,677,281字节；CRC、当前dist与Chrome验证的production目录逐项字节一致                |
-| 文件清单指纹 | `adb641f8dd769199e57ecbf3c6d982479bb80fe55165559223102b54e1bac07b`；算法与逐项值见机器记录  |
-| 应用入口     | `assets/index-D8BNFoQ2.js`，918,522字节                                                     |
-| 本地资源     | 45条记录，78项内容及2项许可哈希匹配；33图标、两字体、十段声音随包提供                       |
-| 生产排除项   | 无验收故障面板、只读快照或会话诊断入口；正式包隔离经过实际消融验证                          |
-| 完整验证     | 干净冻结安装通过；`pnpm run verify`退出0，458项原生测试、五分期Chrome流程和七项修复回归通过 |
+| 项目         | 实际结果                                                                                                      |
+| ------------ | ------------------------------------------------------------------------------------------------------------- |
+| ZIP          | 847,638字节；SHA-256 `cf14a5a6da9121484abf9e782b9d92243a11a98fe334cc3f15db9538150716f2`                       |
+| 解压内容     | 84文件，1,680,243字节；CRC、当前dist与Chrome验证的production目录逐项字节一致                                  |
+| 文件清单指纹 | `ca2db56aa5ecaeea9acdc01fd8918d6d7d8e1389dbc797a15b791593bf1d342a`；算法与逐项值见机器记录                    |
+| 应用入口     | `assets/index-ZVVjfDTP.js`，920,487字节                                                                       |
+| 本地资源     | 45条记录，78项内容及2项许可哈希匹配；33图标、两字体、十段声音随包提供                                         |
+| 生产排除项   | 无验收故障面板、只读快照或会话诊断入口；正式包隔离经过实际消融验证                                            |
+| 完整验证     | 干净冻结安装通过；`pnpm run verify`退出0，463项原生测试、五分期Chrome流程、七项修复回归及两种拍点正常操作通过 |
 
-字体按原配方补齐六个字符，808个源码字符实际解码覆盖；构建检查保持只读。已有固定5174 preview继续服务新包，85次HTTP字节与Content-Type核对通过。原650kB单JS警告保留。该短流程回归没有重新完成全收集或性能采样；下文原M5全流程与性能记录保留当时含义。
+字体按原配方继续补齐新文案的“束”，811个源码字符实际解码覆盖；构建检查保持只读。已有固定5174 preview继续服务新包，85次HTTP字节与Content-Type核对通过。原650kB单JS警告保留。该短流程回归没有重新完成全收集或性能采样；下文原M5全流程与性能记录保留当时含义。
 
 ## 2. 安装和启动
 
@@ -46,7 +46,7 @@ pnpm run preview --host localhost --port 5174 --strictPort --outDir /absolute/pa
 
 ## 3. 工程检查
 
-当前检查入口与修复后458项测试、五分期和七项Chrome回归见[修复记录](review-fixes.md#4-完整验证与交付)。以下 npm 日志保留 M5 原交付时的实际执行方式；后续[pnpm 迁移记录](pnpm-migration.md)也保留迁移时点的锁文件和构建等价结论。
+当前463项测试、五分期和新增拍点操作见[拍点修复](firewall-visual-cue.md#验证)。前次458项和消融结果见[Review修复记录](review-fixes.md#4-完整验证与交付)。以下 npm 日志保留 M5 原交付时的实际执行方式；后续[pnpm 迁移记录](pnpm-migration.md)也保留迁移时点的锁文件和构建等价结论。
 
 | 命令 / 检查      | 实际结果与原始证据                                                                                                                                                                                                                                                    |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -80,6 +80,8 @@ pnpm run preview --host localhost --port 5174 --strictPort --outDir /absolute/pa
 同源码观察包另完成世界与密集机关各六步，移动完成分别104.7–110.4ms、104.4–110.9ms；世界样本的镜头实际达到目标。64格场景两档各60次正常输入，末7200帧窗口分别为60220.8/60228.8ms，中位均8.3ms、p95均9.3ms，输入p95为15.8/16.6ms。详细原文、方法和测量开销见[性能记录](performance.md)，此前Chrome30次区域往返的稳定资源证据仍有效。
 
 ## 5. 历史候选包
+
+前次[Review修复ZIP](evidence/review-fixes/review-fixes-dist.zip)为847,180字节，SHA-256 `e93b1f3b8e769d7e049c4e5264140b061caab82e2d747dffc6aebc0fa7d9c4b4`，其458项测试、五期和七项回归保留[原修复记录](review-fixes.md)含义；本次仅因新增可读拍点与字体补字而更新当前包。
 
 原M5 Chrome交付包 [m5-chrome-release-dist.zip](evidence/m5-chrome-release-dist.zip) 为845,629字节，SHA-256 `62b119813a7d3269a95f30f4894e3f4efb5996ccabd054d5fe9acf7d1a888175`，84文件 / 1,674,897字节，入口 `index-BpL7y5kK.js` 917,896字节。其[逐文件记录](evidence/m5-chrome-release-package.json)及[构建审计](evidence/m5-chrome-release-build-audit.json)保持原样。该包加入失锁恢复入口和“副”“它”字体补字；pnpm迁移时重建的84个文件曾与它完全相同。本轮运行时修复后由第1节新包替代，不能把原包等价结论套用到当前源码。
 

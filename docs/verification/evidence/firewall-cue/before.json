@@ -1,0 +1,601 @@
+{
+  "browser": "153.0.8010.36",
+  "normalNewGame": true,
+  "samples": [
+    {
+      "at": 6003.599999904633,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   14.9 s",
+      "class": "challenge-meter beat-window",
+      "border": "rgb(236, 230, 172)",
+      "background": "rgba(52, 48, 43, 0.91)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 6041.5,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   14.9 s",
+      "class": "challenge-meter beat-window",
+      "border": "rgb(236, 230, 172)",
+      "background": "rgba(52, 48, 43, 0.91)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 6078,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   14.8 s",
+      "class": "challenge-meter beat-window",
+      "border": "rgb(236, 230, 172)",
+      "background": "rgba(52, 48, 43, 0.91)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 6114.399999976158,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   14.8 s",
+      "class": "challenge-meter beat-window",
+      "border": "rgb(236, 230, 172)",
+      "background": "rgba(52, 48, 43, 0.91)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 6150.5,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   14.7 s",
+      "class": "challenge-meter beat-window",
+      "border": "rgb(236, 230, 172)",
+      "background": "rgba(52, 48, 43, 0.91)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 6187.199999928474,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   14.7 s",
+      "class": "challenge-meter beat-window",
+      "border": "rgb(236, 230, 172)",
+      "background": "rgba(52, 48, 43, 0.91)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 6223.199999928474,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   14.7 s",
+      "class": "challenge-meter beat-window",
+      "border": "rgb(236, 230, 172)",
+      "background": "rgba(52, 48, 43, 0.91)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 6258.799999952316,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   14.6 s",
+      "class": "challenge-meter beat-window",
+      "border": "rgb(236, 230, 172)",
+      "background": "rgba(52, 48, 43, 0.91)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 6295.399999976158,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   14.6 s",
+      "class": "challenge-meter beat-window",
+      "border": "rgb(236, 230, 172)",
+      "background": "rgba(52, 48, 43, 0.91)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 6332.199999928474,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   14.6 s",
+      "class": "challenge-meter",
+      "border": "rgb(113, 105, 111)",
+      "background": "rgba(22, 21, 30, 0.875)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 6368.5,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   14.5 s",
+      "class": "challenge-meter",
+      "border": "rgb(113, 105, 111)",
+      "background": "rgba(22, 21, 30, 0.875)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 6404.699999928474,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   14.5 s",
+      "class": "challenge-meter",
+      "border": "rgb(113, 105, 111)",
+      "background": "rgba(22, 21, 30, 0.875)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 6441.199999928474,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   14.5 s",
+      "class": "challenge-meter",
+      "border": "rgb(113, 105, 111)",
+      "background": "rgba(22, 21, 30, 0.875)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 6477.5,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   14.4 s",
+      "class": "challenge-meter",
+      "border": "rgb(113, 105, 111)",
+      "background": "rgba(22, 21, 30, 0.875)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 6514.199999928474,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   14.4 s",
+      "class": "challenge-meter beat-window",
+      "border": "rgb(236, 230, 172)",
+      "background": "rgba(52, 48, 43, 0.91)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 6550,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   14.3 s",
+      "class": "challenge-meter beat-window",
+      "border": "rgb(236, 230, 172)",
+      "background": "rgba(52, 48, 43, 0.91)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 6585,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   14.3 s",
+      "class": "challenge-meter beat-window",
+      "border": "rgb(236, 230, 172)",
+      "background": "rgba(52, 48, 43, 0.91)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 6621.399999976158,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   14.3 s",
+      "class": "challenge-meter beat-window",
+      "border": "rgb(236, 230, 172)",
+      "background": "rgba(52, 48, 43, 0.91)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 6655.5,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   14.2 s",
+      "class": "challenge-meter beat-window",
+      "border": "rgb(236, 230, 172)",
+      "background": "rgba(52, 48, 43, 0.91)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 6690.399999976158,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   14.2 s",
+      "class": "challenge-meter beat-window",
+      "border": "rgb(236, 230, 172)",
+      "background": "rgba(52, 48, 43, 0.91)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 6725,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   14.2 s",
+      "class": "challenge-meter beat-window",
+      "border": "rgb(236, 230, 172)",
+      "background": "rgba(52, 48, 43, 0.91)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 6761.599999904633,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   14.1 s",
+      "class": "challenge-meter beat-window",
+      "border": "rgb(236, 230, 172)",
+      "background": "rgba(52, 48, 43, 0.91)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 6796.599999904633,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   14.1 s",
+      "class": "challenge-meter beat-window",
+      "border": "rgb(236, 230, 172)",
+      "background": "rgba(52, 48, 43, 0.91)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 6832,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   14.1 s",
+      "class": "challenge-meter",
+      "border": "rgb(113, 105, 111)",
+      "background": "rgba(22, 21, 30, 0.875)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 6867.299999952316,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   14.0 s",
+      "class": "challenge-meter",
+      "border": "rgb(113, 105, 111)",
+      "background": "rgba(22, 21, 30, 0.875)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 6902.5,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   14.0 s",
+      "class": "challenge-meter",
+      "border": "rgb(113, 105, 111)",
+      "background": "rgba(22, 21, 30, 0.875)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 6938.899999976158,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   14.0 s",
+      "class": "challenge-meter",
+      "border": "rgb(113, 105, 111)",
+      "background": "rgba(22, 21, 30, 0.875)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 6974.299999952316,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   13.9 s",
+      "class": "challenge-meter",
+      "border": "rgb(113, 105, 111)",
+      "background": "rgba(22, 21, 30, 0.875)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 7010.199999928474,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   13.9 s",
+      "class": "challenge-meter beat-window",
+      "border": "rgb(236, 230, 172)",
+      "background": "rgba(52, 48, 43, 0.91)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 7046,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   13.9 s",
+      "class": "challenge-meter beat-window",
+      "border": "rgb(236, 230, 172)",
+      "background": "rgba(52, 48, 43, 0.91)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 7082.099999904633,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   13.8 s",
+      "class": "challenge-meter beat-window",
+      "border": "rgb(236, 230, 172)",
+      "background": "rgba(52, 48, 43, 0.91)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 7118.599999904633,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   13.8 s",
+      "class": "challenge-meter beat-window",
+      "border": "rgb(236, 230, 172)",
+      "background": "rgba(52, 48, 43, 0.91)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 7154.599999904633,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   13.7 s",
+      "class": "challenge-meter beat-window",
+      "border": "rgb(236, 230, 172)",
+      "background": "rgba(52, 48, 43, 0.91)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 7190.599999904633,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   13.7 s",
+      "class": "challenge-meter beat-window",
+      "border": "rgb(236, 230, 172)",
+      "background": "rgba(52, 48, 43, 0.91)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    },
+    {
+      "at": 7226.299999952316,
+      "text": "COMBO 0   /   最高 0 · 目标 12   /   13.7 s",
+      "class": "challenge-meter beat-window",
+      "border": "rgb(236, 230, 172)",
+      "background": "rgba(52, 48, 43, 0.91)",
+      "bounds": {
+        "x": 24,
+        "y": 242,
+        "width": 208,
+        "height": 94,
+        "top": 242,
+        "right": 232,
+        "bottom": 336,
+        "left": 24
+      }
+    }
+  ]
+}

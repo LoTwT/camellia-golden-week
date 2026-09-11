@@ -10,7 +10,7 @@
       "sourceUrl": "https://raw.githubusercontent.com/notofonts/noto-cjk/165c01b46ea533872e002e0785ff17e44f6d97d8/Sans/SubsetOTF/SC/NotoSansSC-Regular.otf",
       "sourceVersion": "165c01b46ea533872e002e0785ff17e44f6d97d8",
       "sourceSha256": "faa6c9df652116dde789d351359f3d7e5d2285a2b2a1f04a2d7244df706d5ea9",
-      "sha256": "ba2add796baba8269f938c780cbcab6440cb54c68992b7d61f1dd49b28054484",
+      "sha256": "3c3a7c41994e61fcd42e6a65f69989f0fa0e047aa53d14e479d3175a65cd6c1b",
       "family": "Noto Sans SC",
       "weights": "400",
       "dimensions": null,
@@ -590,6 +590,7 @@
           26426,
           26432,
           26435,
+          26463,
           26465,
           26469,
           26495,
@@ -1146,8 +1147,8 @@
           65517,
           65518
         ],
-        "glyphCount": 1426,
-        "cmapCount": 1117,
+        "glyphCount": 1427,
+        "cmapCount": 1118,
         "fonttoolsVersion": "4.65.0",
         "brotliVersion": "1.2.0",
         "reservedUnicodeRanges": [
@@ -1339,16 +1340,20 @@
             "sha256": "d18fe40e9eeb1f4a57287060ecf472c1e4e54cd3c338e188cdb588dfc87bf054"
           },
           {
+            "path": "src/ui/firewall-cue.ts",
+            "sha256": "28b917997728ac637ad8207eaef3af240663e6da0e522b8ba9bb6d506ebb60ac"
+          },
+          {
             "path": "src/ui/labels.ts",
             "sha256": "84a4dc2595da2ad9d598337af8f599bd48ca6aca9d72cd906eafd5739dc79cd3"
           },
           {
             "path": "src/ui/shell.ts",
-            "sha256": "ca936a6bf4fa0561972f2a3504cec1b970fea024d446394dd667e14c0c801c9d"
+            "sha256": "f7a0ab11b38883090d0312a60b569785fa5c9e29b3596c3be8a42c9dffef689c"
           },
           {
             "path": "src/ui/style.css",
-            "sha256": "739bf3beb20a91cf47dbd37b091b7c418a632b0e428a9ac7a2ef004c77c32f57"
+            "sha256": "207ec412526de8ea761c548b20fcf6a92987279fb6fa04c5a1e378df3a7831e7"
           }
         ],
         "requiredCodepoints": [
@@ -1451,6 +1456,8 @@
           215,
           8211,
           8212,
+          8220,
+          8221,
           8226,
           8230,
           8592,
@@ -1823,6 +1830,7 @@
           26426,
           26432,
           26435,
+          26463,
           26465,
           26469,
           26495,
@@ -2161,9 +2169,9 @@
           65307,
           65311
         ],
-        "coverageSha256": "d94dd608fb53ae7e077a68d8edd131b3891bc6a2736dcea0ce18a230bd5a1d65",
-        "outputSha256": "ba2add796baba8269f938c780cbcab6440cb54c68992b7d61f1dd49b28054484",
-        "byteLength": 183808
+        "coverageSha256": "2f9f46887abd619acc9a6876ae0146146ebacfca7218a1d01ce22ab04633ede2",
+        "outputSha256": "3c3a7c41994e61fcd42e6a65f69989f0fa0e047aa53d14e479d3175a65cd6c1b",
+        "byteLength": 183160
       },
       "licenseSha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2"
     },

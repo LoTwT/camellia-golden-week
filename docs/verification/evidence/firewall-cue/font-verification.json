@@ -1,0 +1,13 @@
+{
+  "bytes": 183160,
+  "sha256": "3c3a7c41994e61fcd42e6a65f69989f0fa0e047aa53d14e479d3175a65cd6c1b",
+  "glyphs": 1427,
+  "cmap": 1118,
+  "required": 811,
+  "inputFiles": 48,
+  "han": 688,
+  "fontSourceSha256": "faa6c9df652116dde789d351359f3d7e5d2285a2b2a1f04a2d7244df706d5ea9",
+  "recipe": "project-runtime-v1",
+  "newGlyph": "束 U+675F",
+  "status": "passed"
+}

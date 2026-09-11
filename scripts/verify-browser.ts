@@ -7,6 +7,7 @@ import type { ProfileId } from "../src/core/types.ts";
 import { verifyArtifacts } from "./verify-artifacts.ts";
 import { verifyProductionProfile } from "./browser/production-profile.ts";
 import { verifyReviewRegressions } from "./browser/review-regressions.ts";
+import { verifyFirewallCue } from "./browser/firewall-cue.ts";
 
 const reviewOnly = process.argv.includes("--review-only");
 if (process.argv.slice(2).some((argument) => argument !== "--review-only"))
@@ -75,6 +76,7 @@ try {
     acceptanceUrl: acceptance.url,
     outputDir,
   });
+  results.firewallCue = await verifyFirewallCue({ browser, url: production.url, outputDir });
   results.success = true;
   console.log(
     reviewOnly
