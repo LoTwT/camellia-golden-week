@@ -1,6 +1,7 @@
 import { entitiesAt, tileCleared } from "./engine.ts";
 import { firewallDangerTileIds, ghostTileIds } from "./realtime.ts";
 import { gateOpen } from "./progress.ts";
+import { completedStaticExitTileId } from "./static-puzzle.ts";
 import type { GameContent, GameState } from "./types.ts";
 
 export interface ScreenTile {
@@ -104,6 +105,8 @@ export function projectBoard(content: GameContent, state: GameState): BoardProje
                 ? "observation"
                 : "terminal-ready";
             color = COLORS.terminal;
+            if (state.completedRoomLayouts[entity.params.roomId])
+              label = `${entity.label} · 已完成布局`;
           }
           if (entity.kind === "unavailable") {
             icon = "portal-locked";
@@ -144,17 +147,22 @@ export function projectBoard(content: GameContent, state: GameState): BoardProje
         visited: false,
       })),
     );
-  } else if (state.activeStatic) {
-    const active = state.activeStatic;
-    const definition = content.staticChallenges.find((candidate) => candidate.id === active.roomId);
-    if (definition)
+  } else if (state.activeStatic || state.activeCompletedRoom) {
+    const roomId = state.activeStatic?.roomId ?? state.activeCompletedRoom!.roomId;
+    const completed = state.activeCompletedRoom !== null;
+    const layout = state.activeStatic?.state.currentLayout ?? state.completedRoomLayouts[roomId];
+    const definition = content.staticChallenges.find((candidate) => candidate.id === roomId);
+    if (definition && layout)
       tiles = definition.tiles.map((tile) => {
         let color = tile.terrain === "wall" ? "#121318" : COLORS.floor;
         let icon: string | null = null;
         let label = tile.terrain === "wall" ? "墙" : "道路";
         let mark = "";
         if (definition.kind === "memory") {
-          if (active.state.phase === "preview" && definition.hazardTileIds.includes(tile.id)) {
+          if (
+            state.activeStatic?.state.phase === "preview" &&
+            definition.hazardTileIds.includes(tile.id)
+          ) {
             color = COLORS.danger;
             icon = "hazard-active";
             label = "危险格";
@@ -166,7 +174,7 @@ export function projectBoard(content: GameContent, state: GameState): BoardProje
           }
         }
         if (definition.kind === "oneStroke") {
-          if (active.state.currentLayout.visitedTileIds.includes(tile.id)) {
+          if (layout.visitedTileIds.includes(tile.id)) {
             color = "#70764b";
             mark = "•";
           }
@@ -185,9 +193,7 @@ export function projectBoard(content: GameContent, state: GameState): BoardProje
             color = COLORS.data;
             label = "基站";
           }
-          const object = Object.entries(active.state.currentLayout.objectTileById).find(
-            ([, id]) => id === tile.id,
-          );
+          const object = Object.entries(layout.objectTileById).find(([, id]) => id === tile.id);
           if (object) {
             icon = definition.ballIds.includes(object[0]) ? "signal-ball" : "cart";
             label = definition.ballIds.includes(object[0]) ? "信号球" : "推车";
@@ -195,9 +201,7 @@ export function projectBoard(content: GameContent, state: GameState): BoardProje
         }
         if (definition.kind === "theft") {
           const slot = Object.entries(definition.socketTileById).find(([, id]) => id === tile.id);
-          const object = Object.entries(active.state.currentLayout.objectTileById).find(
-            ([, id]) => id === tile.id,
-          );
+          const object = Object.entries(layout.objectTileById).find(([, id]) => id === tile.id);
           const colorId = object
             ? definition.colorByObjectId[object[0]]
             : slot
@@ -210,6 +214,15 @@ export function projectBoard(content: GameContent, state: GameState): BoardProje
             label = object ? `对象 ${mark}` : `接收槽 ${mark}`;
           }
         }
+        if (completed && tile.id === completedStaticExitTileId(definition)) {
+          icon = "portal-ready";
+          color = COLORS.portal;
+          label = "已完成房间出口";
+        } else if (completed && tile.terrain === "floor") {
+          label = Object.values(layout.objectTileById).includes(tile.id)
+            ? `${label} · 保留完成位置`
+            : `${label} · 可自由通行`;
+        }
         return {
           id: tile.id,
           x: tile.x,
@@ -220,7 +233,7 @@ export function projectBoard(content: GameContent, state: GameState): BoardProje
           label,
           mark,
           player: tile.id === position.tileId,
-          visited: active.state.currentLayout.visitedTileIds.includes(tile.id),
+          visited: layout.visitedTileIds.includes(tile.id),
         };
       });
   } else if (state.activeRealtime) {

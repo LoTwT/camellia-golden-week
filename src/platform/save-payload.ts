@@ -1,8 +1,20 @@
 import { createGame, worldPosition } from "../core/engine.ts";
 import { createClock } from "../core/clock.ts";
-import { createStatic, validateStaticState } from "../core/static-puzzle.ts";
-import type { StaticLayout, StaticSnapshot, StaticState } from "../core/static-puzzle.ts";
+import {
+  createStatic,
+  isCompletedStaticPosition,
+  validateCompletedStaticLayout,
+  validateStaticState,
+} from "../core/static-puzzle.ts";
+import type {
+  CompletedStaticLayout,
+  StaticLayout,
+  StaticSnapshot,
+  StaticState,
+} from "../core/static-puzzle.ts";
 import { gateSatisfied } from "../core/progress.ts";
+import { applyMigrationStep, resolveMigrationPlan } from "./migrations.ts";
+import type { MigrationRegistry } from "./migrations.ts";
 import type {
   GameContent,
   GameState,
@@ -20,12 +32,17 @@ export interface StableRoom {
   pendingEffects: { objectiveIds: string[]; rewardIds: string[] };
   practice: boolean;
 }
+export interface StableCompletedVisit {
+  roomId: string;
+  status: "completedVisit";
+  returnAnchor: PlayerPosition;
+}
 export interface SavePayload extends ProgressState {
-  room: StableRoom | null;
+  room: StableRoom | StableCompletedVisit | null;
   resumeHint: { kind: "restartChallenge"; challengeId: string } | null;
 }
 export type PayloadValidation =
-  | { ok: true; value: SavePayload; migrated?: boolean }
+  | { ok: true; value: SavePayload; migrated?: boolean; migrationNotes?: string[] }
   | { ok: false; kind: "future" | "invalid"; error: string };
 const PROGRESS_FIELDS = [
   "gameId",
@@ -34,6 +51,7 @@ const PROGRESS_FIELDS = [
   "ruleVersion",
   "releaseProfileId",
   "completedObjectiveIds",
+  "completedRoomLayouts",
   "claimedRewardIds",
   "activatedTeleportIds",
   "capabilities",
@@ -74,7 +92,7 @@ export function stablePayload(state: GameState): SavePayload {
   const progress = Object.fromEntries(
     PROGRESS_FIELDS.map((key) => [key, structuredClone(state[key])]),
   ) as unknown as ProgressState;
-  let room: StableRoom | null = null;
+  let room: SavePayload["room"] = null;
   let resumeHint: SavePayload["resumeHint"] = null;
   if (state.activeStatic) {
     const active = state.activeStatic;
@@ -90,6 +108,12 @@ export function stablePayload(state: GameState): SavePayload {
       },
       practice: active.practice,
     };
+  } else if (state.activeCompletedRoom) {
+    room = {
+      roomId: state.activeCompletedRoom.roomId,
+      status: "completedVisit",
+      returnAnchor: structuredClone(state.activeCompletedRoom.returnAnchor),
+    };
   } else if (state.activeRealtime) {
     progress.playerPosition = structuredClone(state.activeRealtime.returnAnchor);
     if (state.mode === "challengeRunning")
@@ -98,7 +122,11 @@ export function stablePayload(state: GameState): SavePayload {
   return { ...progress, room, resumeHint };
 }
 
-export function validatePayload(raw: unknown, content: GameContent): PayloadValidation {
+export function validatePayload(
+  raw: unknown,
+  content: GameContent,
+  registry?: MigrationRegistry,
+): PayloadValidation {
   const invalid = (error: string): PayloadValidation => ({ ok: false, kind: "invalid", error });
   if (!object(raw)) return invalid("存档载荷必须是对象");
   if (raw.gameId !== content.gameId) return invalid("此文件不属于沙罗黄金周");
@@ -106,7 +134,7 @@ export function validatePayload(raw: unknown, content: GameContent): PayloadVali
     if (!Number.isSafeInteger(raw[field]) || (raw[field] as number) < 1)
       return invalid(`版本字段不合法：${field}`);
   if (
-    (raw.schemaVersion as number) > 1 ||
+    (raw.schemaVersion as number) > 2 ||
     (raw.contentVersion as number) > content.contentVersion ||
     (raw.ruleVersion as number) > content.ruleVersion
   )
@@ -115,8 +143,6 @@ export function validatePayload(raw: unknown, content: GameContent): PayloadVali
       kind: "future",
       error: "此进度来自较新版本，请使用匹配或更新的构建；原档已保护",
     };
-  if (!exactKeys(raw, [...PROGRESS_FIELDS, "room", "resumeHint"]))
-    return invalid("存档缺少必需字段或包含未知字段");
   const profile = content.releaseProfiles.find(
     (candidate) => candidate.id === raw.releaseProfileId,
   );
@@ -124,9 +150,105 @@ export function validatePayload(raw: unknown, content: GameContent): PayloadVali
   const sourceStage = Number(profile.id.slice(1));
   if (sourceStage > Number(content.profile.id.slice(1)))
     return { ok: false, kind: "future", error: "此存档来自较新的内容包，不能在当前包覆盖" };
-  if (raw.contentVersion !== Math.min(sourceStage, 4))
-    return invalid("contentVersion 与来源 profile 不对应，缺少明确迁移");
-  if (raw.schemaVersion !== 1) return invalid("不支持此结构版本");
+  if (raw.schemaVersion !== 1 && raw.schemaVersion !== 2) return invalid("不支持此结构版本");
+  const plan = resolveMigrationPlan(
+    {
+      profileId: profile.id,
+      contentVersion: raw.contentVersion as number,
+      ruleVersion: raw.ruleVersion as number,
+    },
+    content,
+    registry,
+  );
+  if (!plan.ok) return invalid(plan.error);
+  const schema = migrateLegacySchema(raw, plan.source);
+  if (!schema.ok) return invalid(schema.error);
+  const original = validateSnapshot(schema.value, plan.source, plan.releases);
+  if (!original.ok) return original;
+  let payload = original.value;
+  const migrationNotes: string[] = schema.notes;
+  for (const step of plan.steps) {
+    const migrated = applyMigrationStep(payload, step);
+    if (!migrated.ok) return invalid(migrated.error);
+    const validated = validateSnapshot(migrated.value, step.to, plan.releases);
+    if (!validated.ok) return invalid(`迁移后校验失败：${validated.error}`);
+    payload = validated.value;
+    migrationNotes.push(...migrated.notes);
+  }
+  return plan.steps.length || schema.migrated
+    ? { ok: true, value: payload, migrated: true, migrationNotes }
+    : { ok: true, value: payload };
+}
+
+function migrateLegacySchema(
+  raw: Record<string, unknown>,
+  source: GameContent,
+):
+  | { ok: true; value: Record<string, unknown>; notes: string[]; migrated: boolean }
+  | { ok: false; error: string } {
+  if (raw.schemaVersion === 2) return { ok: true, value: raw, notes: [], migrated: false };
+  if (
+    !(
+      (source.profile.id === "M1" && source.contentVersion === 1) ||
+      (source.profile.id === "M2" && source.contentVersion === 2)
+    ) ||
+    source.ruleVersion !== 1
+  )
+    return {
+      ok: false,
+      error: "仅已登记 M1/M2 的 schema 1 有明确升级；缺失的推物完成布局不能猜测恢复",
+    };
+  if (
+    !exactKeys(raw, [
+      ...PROGRESS_FIELDS.filter((field) => field !== "completedRoomLayouts"),
+      "room",
+      "resumeHint",
+    ]) ||
+    !stringArray(raw.completedObjectiveIds)
+  )
+    return { ok: false, error: "旧版结构包含未知字段或非法完成记录" };
+  if (object(raw.room) && raw.room.status === "completedVisit")
+    return { ok: false, error: "旧版结构不存在完成布局访问态" };
+  const completedRoomLayouts: Record<string, CompletedStaticLayout> = {};
+  for (const room of source.rooms) {
+    if (!raw.completedObjectiveIds.includes(room.goal)) continue;
+    const definition = source.staticChallenges.find((candidate) => candidate.id === room.id);
+    if (!definition) continue;
+    if (definition.kind !== "memory" && definition.kind !== "oneStroke")
+      return { ok: false, error: `旧版房间 ${room.id} 的实际完成布局缺失，无法迁移` };
+    completedRoomLayouts[room.id] = {
+      objectTileById: {},
+      visitedTileIds: definition.kind === "oneStroke" ? [...definition.requiredTileIds] : [],
+      activatedLocalIds: [],
+    };
+  }
+  return {
+    ok: true,
+    value: { ...raw, schemaVersion: 2, completedRoomLayouts },
+    migrated: true,
+    notes: ["已升级旧版存档：记忆迷宫与一笔画完成后没有可移动物体，已补齐其确定的完成格集合。"],
+  };
+}
+
+function validateSnapshot(
+  raw: unknown,
+  content: GameContent,
+  releases: readonly GameContent[],
+): PayloadValidation {
+  const invalid = (error: string): PayloadValidation => ({ ok: false, kind: "invalid", error });
+  if (!object(raw)) return invalid("存档载荷必须是对象");
+  if (!exactKeys(raw, [...PROGRESS_FIELDS, "room", "resumeHint"]))
+    return invalid("存档缺少必需字段或包含未知字段");
+  if (
+    raw.gameId !== content.gameId ||
+    raw.schemaVersion !== 2 ||
+    raw.releaseProfileId !== content.profile.id ||
+    raw.contentVersion !== content.contentVersion ||
+    raw.ruleVersion !== content.ruleVersion
+  )
+    return invalid("载荷与已登记来源版本不一致");
+  const profile = content.profile;
+  const sourceStage = Number(profile.id.slice(1));
   if (!Number.isSafeInteger(raw.stateRevision) || (raw.stateRevision as number) < 0)
     return invalid("状态修订号无效");
   for (const field of [
@@ -194,13 +316,29 @@ export function validatePayload(raw: unknown, content: GameContent): PayloadVali
       typeof entry.challengeId !== "string" ||
       !Number.isSafeInteger(entry.ruleVersion) ||
       (entry.ruleVersion as number) < 1 ||
-      (entry.ruleVersion as number) > content.ruleVersion
+      (entry.ruleVersion as number) > (raw.ruleVersion as number)
     )
       return invalid("成绩版本或结构无效");
-    const definition = content.realtimeChallenges.find(
-      (candidate) => candidate.id === entry.challengeId,
-    );
-    if (!definition || !profile.includedObjectiveIds.includes(entry.challengeId))
+    const applicableReleases =
+      entry.ruleVersion === content.ruleVersion
+        ? [content]
+        : releases.filter(
+            (release) =>
+              release.ruleVersion === entry.ruleVersion &&
+              Number(release.profile.id.slice(1)) <= sourceStage,
+          );
+    const definition = applicableReleases
+      .flatMap((release) => release.realtimeChallenges)
+      .find(
+        (candidate) =>
+          candidate.id === entry.challengeId && candidate.ruleVersion === entry.ruleVersion,
+      );
+    if (
+      !definition ||
+      !applicableReleases.some((release) =>
+        release.profile.includedRoomIds.includes(entry.challengeId as string),
+      )
+    )
       return invalid(`未知挑战成绩：${entry.challengeId}`);
     for (const field of ["bestScore", "bestCombo", "bestStarClear"] as const)
       if (
@@ -280,6 +418,24 @@ export function validatePayload(raw: unknown, content: GameContent): PayloadVali
     expectedCapabilities.some((id) => !payload.capabilities.includes(id))
   )
     return invalid("能力与取得目标不一致");
+  if (!object(raw.completedRoomLayouts)) return invalid("完成房间布局必须是对象");
+  for (const [roomId, layout] of Object.entries(raw.completedRoomLayouts)) {
+    const room = content.rooms.find((candidate) => candidate.id === roomId);
+    const definition = content.staticChallenges.find((candidate) => candidate.id === roomId);
+    if (!room || !definition || !payload.completedObjectiveIds.includes(room.goal))
+      return invalid(`完成布局缺少对应已完成静态房间：${roomId}`);
+    const errors = validateCompletedStaticLayout(definition, layout);
+    if (errors.length) return invalid(`完成布局 ${roomId} 不合法：${errors.join("；")}`);
+  }
+  for (const definition of content.staticChallenges) {
+    const room = content.rooms.find((candidate) => candidate.id === definition.id);
+    if (
+      room &&
+      payload.completedObjectiveIds.includes(room.goal) !==
+        Object.hasOwn(raw.completedRoomLayouts, room.id)
+    )
+      return invalid(`静态目标与完成布局不一致：${room.id}`);
+  }
   const sourceTile = (id: string) =>
     content.tiles.find((tile) => tile.id === id && tile.includedFrom <= sourceStage);
   for (const id of payload.discoveredTileIds) {
@@ -371,18 +527,23 @@ export function validatePayload(raw: unknown, content: GameContent): PayloadVali
   if (payload.room !== null) {
     if (
       !object(raw.room) ||
-      !exactKeys(raw.room, [
-        "roomId",
-        "status",
-        "returnAnchor",
-        "currentLayout",
-        "attemptBaseline",
-        "pendingEffects",
-        "practice",
-      ]) ||
+      !exactKeys(
+        raw.room,
+        raw.room.status === "completedVisit"
+          ? ["roomId", "status", "returnAnchor"]
+          : [
+              "roomId",
+              "status",
+              "returnAnchor",
+              "currentLayout",
+              "attemptBaseline",
+              "pendingEffects",
+              "practice",
+            ],
+      ) ||
       typeof raw.room.roomId !== "string" ||
-      !["preview", "active"].includes(String(raw.room.status)) ||
-      typeof raw.room.practice !== "boolean"
+      !["preview", "active", "completedVisit"].includes(String(raw.room.status)) ||
+      (raw.room.status !== "completedVisit" && typeof raw.room.practice !== "boolean")
     )
       return invalid("静态房间结构不合法");
     const definition = content.staticChallenges.find(
@@ -405,37 +566,50 @@ export function validatePayload(raw: unknown, content: GameContent): PayloadVali
       payload.room.returnAnchor.areaId !== room.areaId
     )
       return invalid(anchorError ?? "房间返回锚点不匹配");
-    const staticState: StaticState = {
-      phase: payload.room.status,
-      currentLayout: payload.room.currentLayout,
-      attemptBaseline: payload.room.attemptBaseline,
-      undoStack: [],
-    };
-    const errors = validateStaticState(definition, staticState, payload.playerPosition.tileId);
-    if (errors.length) return invalid(`非法房间布局：${errors.join("；")}`);
-    if (
-      !object(raw.room.pendingEffects) ||
-      !exactKeys(raw.room.pendingEffects, ["objectiveIds", "rewardIds"]) ||
-      !stringArray(raw.room.pendingEffects.objectiveIds) ||
-      !stringArray(raw.room.pendingEffects.rewardIds)
-    )
-      return invalid("待发结果结构无效");
-    const effect = content.effects.find((candidate) => candidate.id === room.effectBundleId);
-    for (const id of payload.room.pendingEffects.objectiveIds)
-      if (!effect?.completeObjectiveIds.includes(id) || payload.completedObjectiveIds.includes(id))
-        return invalid(`待发目标不属于当前尝试：${id}`);
-    for (const id of payload.room.pendingEffects.rewardIds)
-      if (!effect?.grantRewardIds.includes(id) || payload.claimedRewardIds.includes(id))
-        return invalid(`待发奖励不属于当前尝试：${id}`);
-    if (
-      JSON.stringify(payload.room.pendingEffects.objectiveIds) !==
-        JSON.stringify(payload.room.currentLayout.pendingObjectiveIds) ||
-      JSON.stringify(payload.room.pendingEffects.rewardIds) !==
-        JSON.stringify(payload.room.currentLayout.pendingRewardIds)
-    )
-      return invalid("局部布局与待发结果不一致");
-    if (payload.room.practice !== payload.completedObjectiveIds.includes(room.goal))
-      return invalid("练习状态与房间完成记录不一致");
+    if (payload.room.status === "completedVisit") {
+      const completed = payload.completedRoomLayouts[room.id];
+      if (
+        !payload.completedObjectiveIds.includes(room.goal) ||
+        !completed ||
+        !isCompletedStaticPosition(definition, completed, payload.playerPosition.tileId)
+      )
+        return invalid("完成布局访问态缺少永久结果或玩家占格不合法");
+    } else {
+      const staticState: StaticState = {
+        phase: payload.room.status,
+        currentLayout: payload.room.currentLayout,
+        attemptBaseline: payload.room.attemptBaseline,
+        undoStack: [],
+      };
+      const errors = validateStaticState(definition, staticState, payload.playerPosition.tileId);
+      if (errors.length) return invalid(`非法房间布局：${errors.join("；")}`);
+      if (
+        !object(raw.room.pendingEffects) ||
+        !exactKeys(raw.room.pendingEffects, ["objectiveIds", "rewardIds"]) ||
+        !stringArray(raw.room.pendingEffects.objectiveIds) ||
+        !stringArray(raw.room.pendingEffects.rewardIds)
+      )
+        return invalid("待发结果结构无效");
+      const effect = content.effects.find((candidate) => candidate.id === room.effectBundleId);
+      for (const id of payload.room.pendingEffects.objectiveIds)
+        if (
+          !effect?.completeObjectiveIds.includes(id) ||
+          payload.completedObjectiveIds.includes(id)
+        )
+          return invalid(`待发目标不属于当前尝试：${id}`);
+      for (const id of payload.room.pendingEffects.rewardIds)
+        if (!effect?.grantRewardIds.includes(id) || payload.claimedRewardIds.includes(id))
+          return invalid(`待发奖励不属于当前尝试：${id}`);
+      if (
+        JSON.stringify(payload.room.pendingEffects.objectiveIds) !==
+          JSON.stringify(payload.room.currentLayout.pendingObjectiveIds) ||
+        JSON.stringify(payload.room.pendingEffects.rewardIds) !==
+          JSON.stringify(payload.room.currentLayout.pendingRewardIds)
+      )
+        return invalid("局部布局与待发结果不一致");
+      if (payload.room.practice !== payload.completedObjectiveIds.includes(room.goal))
+        return invalid("练习状态与房间完成记录不一致");
+    }
   } else if (payload.playerPosition.space !== "world") return invalid("局部玩家位置缺少活动房间");
   if (payload.resumeHint !== null) {
     if (
@@ -474,16 +648,7 @@ export function validatePayload(raw: unknown, content: GameContent): PayloadVali
     return invalid("最终结算记录与仓库目标不一致");
   payload.settings.masterVolume = Math.min(1, Math.max(0, payload.settings.masterVolume));
   payload.settings.zoom = Math.min(1.5, Math.max(0.75, payload.settings.zoom));
-  const migrated =
-    payload.contentVersion !== content.contentVersion ||
-    payload.releaseProfileId !== content.profile.id ||
-    payload.ruleVersion !== content.ruleVersion;
-  // v1–v4 are additive releases. Existing coordinates and IDs remain unchanged;
-  // any layout/ID rewrite requires a separately registered, reviewed mapping.
-  payload.contentVersion = content.contentVersion;
-  payload.releaseProfileId = content.profile.id;
-  payload.ruleVersion = content.ruleVersion;
-  return migrated ? { ok: true, value: payload, migrated: true } : { ok: true, value: payload };
+  return { ok: true, value: payload };
 }
 
 export function restorePayload(
@@ -501,36 +666,43 @@ export function restorePayload(
     );
     if (!definition) throw new Error("房间定义未找到");
     const room = structuredClone(payload.room);
-    if (room.status === "preview") {
-      const reset = createStatic(definition);
-      state.activeStatic = {
-        roomId: room.roomId,
-        returnAnchor: room.returnAnchor,
-        state: reset.state,
-        practice: room.practice,
+    if (room.status === "completedVisit") {
+      state.activeCompletedRoom = { roomId: room.roomId, returnAnchor: room.returnAnchor };
+      state.mode = "completedRoom";
+      state.phase = "complete";
+      state.lastResult = { code: "accepted", message: "已恢复完成布局 · 可自由回访或另开练习" };
+    } else {
+      if (room.status === "preview") {
+        const reset = createStatic(definition);
+        state.activeStatic = {
+          roomId: room.roomId,
+          returnAnchor: room.returnAnchor,
+          state: reset.state,
+          practice: room.practice,
+        };
+        state.playerPosition = { ...payload.playerPosition, tileId: reset.playerTileId };
+      } else
+        state.activeStatic = {
+          roomId: room.roomId,
+          returnAnchor: room.returnAnchor,
+          state: {
+            phase: "active",
+            currentLayout: room.currentLayout,
+            attemptBaseline: room.attemptBaseline,
+            undoStack: [],
+          },
+          practice: room.practice,
+        };
+      state.mode = "staticPuzzle";
+      state.phase = room.status;
+      state.lastResult = {
+        code: "accepted",
+        message:
+          room.status === "preview"
+            ? "已恢复 · 重新完整观察 4 秒"
+            : "已恢复当前布局 · 撤销历史已清空，可重置房间",
       };
-      state.playerPosition = { ...payload.playerPosition, tileId: reset.playerTileId };
-    } else
-      state.activeStatic = {
-        roomId: room.roomId,
-        returnAnchor: room.returnAnchor,
-        state: {
-          phase: "active",
-          currentLayout: room.currentLayout,
-          attemptBaseline: room.attemptBaseline,
-          undoStack: [],
-        },
-        practice: room.practice,
-      };
-    state.mode = "staticPuzzle";
-    state.phase = room.status;
-    state.lastResult = {
-      code: "accepted",
-      message:
-        room.status === "preview"
-          ? "已恢复 · 重新完整观察 4 秒"
-          : "已恢复当前布局 · 撤销历史已清空，可重置房间",
-    };
+    }
   } else {
     state.playerPosition = worldPosition(
       payload.playerPosition.areaId,

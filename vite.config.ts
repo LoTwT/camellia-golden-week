@@ -20,7 +20,16 @@ export default defineConfig(({ mode }) => {
         },
         load(id) {
           if (id === "\0virtual:camellia-content")
-            return `export default ${JSON.stringify(assembleContent(selected))};`;
+            return `const content = ${JSON.stringify(assembleContent(selected))}; export default content; export const migrationReleases = [${[
+              "M1",
+              "M2",
+              "M3",
+              "M4",
+              "M5",
+            ]
+              .slice(0, Number(selected.slice(1)) - 1)
+              .map((profile) => JSON.stringify(assembleContent(profile as ProfileId)))
+              .join(",")}${selected === "M1" ? "" : ","}content];`;
         },
         generateBundle() {
           const assets = assetManifest.assets.filter((asset) => asset.profiles.includes(selected));

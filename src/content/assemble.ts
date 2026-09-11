@@ -1,6 +1,8 @@
 import worldJson from "./world.json" with { type: "json" };
 import hubJson from "./areas/hub.json" with { type: "json" };
 import aJson from "./areas/a.json" with { type: "json" };
+import bJson from "./areas/b.json" with { type: "json" };
+import bRegistration from "./areas/b-registration.json" with { type: "json" };
 import staticJson from "./challenges/static.json" with { type: "json" };
 import realtimeJson from "./challenges/realtime.json" with { type: "json" };
 import type { StaticContent } from "../core/static-puzzle.ts";
@@ -13,13 +15,35 @@ import type {
   EntityDefinition,
 } from "../core/types.ts";
 
-export const AVAILABLE_PROFILE: ProfileId = "M1";
+export const AVAILABLE_PROFILE: ProfileId = "M2";
 export const staticContent = staticJson as unknown as StaticContent;
 export const realtimeContent = realtimeJson as unknown as {
   definitions: RealtimeDefinition[];
   witnesses: unknown[];
 };
-export const worldCatalog = worldJson as unknown as WorldDefinition;
+const baseCatalog = worldJson as unknown as WorldDefinition;
+export const worldCatalog = {
+  ...baseCatalog,
+  objectives: [...baseCatalog.objectives, ...bRegistration.objectiveAdditions],
+  effects: [...baseCatalog.effects, ...bRegistration.effects],
+  gates: [...baseCatalog.gates, ...bRegistration.gates],
+  sources: [...baseCatalog.sources, ...bRegistration.sources],
+  releaseProfiles: baseCatalog.releaseProfiles.map((profile) =>
+    Number(profile.id.slice(1)) < bRegistration.includedFrom
+      ? profile
+      : {
+          ...profile,
+          includedRoomIds: [
+            ...profile.includedRoomIds,
+            ...bRegistration.profileAdditions.includedRoomIds,
+          ],
+          includedObjectiveIds: [
+            ...profile.includedObjectiveIds,
+            ...bRegistration.profileAdditions.includedObjectiveIds,
+          ],
+        },
+  ),
+} as WorldDefinition;
 
 export function assembleContent(profileId: ProfileId = AVAILABLE_PROFILE): GameContent {
   const stage = Number(profileId.slice(1));
@@ -27,7 +51,7 @@ export function assembleContent(profileId: ProfileId = AVAILABLE_PROFILE): GameC
     (candidate) => candidate.id === profileId,
   );
   if (!profileSource) throw new Error(`未知 profile：${profileId}`);
-  const sourceAreas = [hubJson, aJson] as unknown as Pick<
+  const sourceAreas = [hubJson, aJson, bJson] as unknown as Pick<
     WorldDefinition,
     "areas" | "tiles" | "entities" | "rooms"
   >[];
@@ -95,7 +119,7 @@ export function assembleContent(profileId: ProfileId = AVAILABLE_PROFILE): GameC
   ]);
   return {
     ...worldCatalog,
-    contentVersion: stage,
+    contentVersion: Math.min(stage, 4),
     areaIds: areas.map((area) => area.id),
     profile: { ...profileSource, includedRoomIds: rooms.map((room) => room.id) },
     areas: areas.map((area) => ({

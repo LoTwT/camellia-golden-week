@@ -1,4 +1,5 @@
-import content from "virtual:camellia-content";
+import content, { migrationReleases } from "virtual:camellia-content";
+import { additiveProfileMigrations } from "./platform/migrations.ts";
 import { createGame, dispatch } from "./core/engine.ts";
 import { projectBoard } from "./core/projection.ts";
 import { areaData, supplyProgress } from "./core/progress.ts";
@@ -27,15 +28,17 @@ let input: InputAdapter | null = null;
 let lastProjection = "";
 let lastAutoStep = 0;
 let graphicsAvailable = true;
+let graphicsError = "";
 let temporary = false;
 let inspection: SaveInspection<SavePayload>;
 const session = createSessionLock(navigator.locks);
+const migrationRegistry = additiveProfileMigrations(migrationReleases);
 const store = createSaveStore<SavePayload>(
   {
     getItem: (key) => localStorage.getItem(key),
     setItem: (key, value) => localStorage.setItem(key, value),
   },
-  (payload) => validatePayload(payload, content),
+  (payload) => validatePayload(payload, content, migrationRegistry),
   () => session.isHeld() && !temporary,
 );
 const audio = new GameAudio();
@@ -54,15 +57,7 @@ const shell = new GameShell(root, content, {
     if (state) persist(stablePayload(state), "retry");
     render();
   },
-  enableAudio: () => {
-    void audio.enable().then((enabled) => {
-      if (!enabled && state)
-        state.lastResult = {
-          code: "audioUnavailable",
-          message: "声音尚未启用，可在设置中重试；游戏保持可玩",
-        };
-    });
-  },
+  enableAudio,
 });
 shell.showDecision("正在读取进度", "正在获取当前浏览器的单写会话。", []);
 
@@ -102,7 +97,19 @@ function exportCurrent() {
 }
 function exportSlot(id: "a" | "b") {
   const raw = inspection?.slots[id].raw;
-  if (raw !== null && raw !== undefined) download(raw, `raw-${id}`);
+  if (raw !== null && raw !== undefined)
+    shell.showExport(raw, () => download(raw, `raw-${id}`), showStartup);
+}
+function enableAudio() {
+  void audio.enable().then((enabled) => {
+    if (!enabled && state) {
+      state.lastResult = {
+        code: "audioUnavailable",
+        message: "声音尚未启用，可在设置中重试；游戏保持可玩",
+      };
+      render();
+    }
+  });
 }
 function persist(
   payload: SavePayload,
@@ -135,7 +142,7 @@ function activate(payload: SavePayload) {
   state = restorePayload(payload, content, performance.now());
   input?.clear();
   lastProjection = "";
-  void audio.enable();
+  enableAudio();
   render();
   shell.canvas.focus({ preventScroll: true });
 }
@@ -189,6 +196,10 @@ function continueSlot(backup = false) {
   activate(slot.payload);
 }
 function showStartup() {
+  if (!graphicsAvailable) {
+    showGraphicsFailure();
+    return;
+  }
   const rawChoices = (["a", "b"] as const)
     .filter((id) => inspection.slots[id].raw !== null)
     .map((id) => ({ label: `导出原始槽 ${id.toUpperCase()}`, action: () => exportSlot(id) }));
@@ -385,6 +396,7 @@ function snapshot() {
     state
       ? {
           profile: content.profile.id,
+          schemaVersion: state.schemaVersion,
           contentVersion: content.contentVersion,
           ruleVersion: content.ruleVersion,
           position: state.playerPosition,
@@ -394,6 +406,16 @@ function snapshot() {
           countdownRemainingMs: state.clock.countdownRemainingMs,
           pauseReasons: state.clock.pauseReasons,
           completedObjectiveIds: state.completedObjectiveIds,
+          completedRoomLayouts: state.completedRoomLayouts,
+          staticRoom: state.activeStatic
+            ? {
+                roomId: state.activeStatic.roomId,
+                layout: state.activeStatic.state.currentLayout,
+                undoDepth: state.activeStatic.state.undoStack.length,
+                practice: state.activeStatic.practice,
+              }
+            : null,
+          completedRoom: state.activeCompletedRoom,
           data: Object.fromEntries(
             (["a", "b", "c", "d"] as const).map((area) => [area, areaData(content, state!, area)]),
           ),
@@ -426,27 +448,44 @@ function render() {
   if (!state) return;
   shell.update(state);
   const key = `${state.stateRevision}:${state.playerPosition.tileId}:${state.mode}:${state.phase}:${state.activeRealtime?.state.eventSequence ?? 0}:${Math.floor(state.clock.activeTimeMs / 500)}:${JSON.stringify(state.settings)}`;
-  if (key !== lastProjection) {
-    renderer?.update(projectBoard(content, state), state.settings);
-    lastProjection = key;
+  if (graphicsAvailable && key !== lastProjection) {
+    try {
+      renderer?.update(projectBoard(content, state), state.settings);
+      lastProjection = key;
+    } catch (error) {
+      failGraphics(error);
+    }
   }
   audio.configure(state.settings);
   if (inspectOutput) inspectOutput.textContent = JSON.stringify(snapshot());
 }
 function send(command: GameCommand, now = performance.now()) {
   if (!state) return;
+  if (command.kind === "Resume") command = { ...command, graphicsAvailable };
   const scopeWasComplete = state.scopeCompletionHistory.includes(content.profile.id);
   const update = dispatch(content, state, command, now, new Date().toISOString());
   state = update.state;
   if (update.clearInputs) input?.clear();
   if (
     update.events.some(
-      (event) => event.kind === "move" || event.kind === "success" || event.kind === "pickup",
+      (event) =>
+        event.kind === "move" ||
+        event.kind === "success" ||
+        event.kind === "pickup" ||
+        event.kind === "score",
     )
   )
     renderer?.flash(now);
-  audio.feedback(update.events, now);
   if (update.stable) persist(stablePayload(state), "auto");
+  try {
+    audio.feedback(update.events, now);
+  } catch {
+    audio.enabled = false;
+    state.lastResult = {
+      code: "audioUnavailable",
+      message: "声音播放暂时不可用，当前进度已保留；可在设置中重试",
+    };
+  }
   render();
   if (!scopeWasComplete && state.scopeCompletionHistory.includes(content.profile.id)) {
     const supplies = supplyProgress(content, state);
@@ -474,26 +513,53 @@ function send(command: GameCommand, now = performance.now()) {
     );
   }
 }
+function showGraphicsFailure() {
+  shell.showDecision(
+    "图形暂时不可用",
+    `需要支持 WebGL2 的桌面浏览器。进度已保留，可重试图形或导出。${graphicsError}`,
+    [
+      {
+        label: "重试图形",
+        primary: true,
+        action: () => {
+          initializeRenderer();
+          if (!graphicsAvailable) return;
+          shell.dismissDecision();
+          if (state) {
+            send({ kind: "Pause", reason: "graphicsLost", present: false });
+            shell.openPanel("pause");
+          } else showStartup();
+        },
+      },
+      { label: "导出进度", action: exportCurrent },
+      ...(["a", "b"] as const)
+        .filter(
+          (id) => inspection?.slots[id].raw !== null && inspection?.slots[id].raw !== undefined,
+        )
+        .map((id) => ({ label: `导出原始槽 ${id.toUpperCase()}`, action: () => exportSlot(id) })),
+    ],
+  );
+}
+function failGraphics(error: unknown) {
+  graphicsAvailable = false;
+  graphicsError = error instanceof Error ? error.message : "请重试。";
+  input?.clear();
+  if (state) send({ kind: "Pause", reason: "graphicsLost", present: true });
+  showGraphicsFailure();
+}
 function initializeRenderer() {
   try {
     renderer?.dispose();
+    renderer = null;
     renderer = new BoardRenderer(shell.canvas, shell.labels, (tileId) => {
       if (!shell.dialog.open) send({ kind: "ClickTile", tileId });
     });
     graphicsAvailable = true;
+    graphicsError = "";
     lastProjection = "";
     render();
   } catch (error) {
-    graphicsAvailable = false;
-    shell.showDecision(
-      "图形启动失败",
-      `需要支持 WebGL2 的桌面浏览器。${error instanceof Error ? error.message : "请重试"}`,
-      [
-        { label: "重试图形", action: initializeRenderer, primary: true },
-        { label: "导出进度", action: exportCurrent },
-        { label: "导入存档", action: () => shell.requestImport() },
-      ],
-    );
+    failGraphics(error);
   }
 }
 initializeRenderer();
@@ -504,6 +570,7 @@ input = new InputAdapter(
     firewall: state?.activeRealtime?.state.kind === "firewall",
     canPlay:
       !!state &&
+      graphicsAvailable &&
       !shell.dialog.open &&
       !state.clock.awaitingResume &&
       state.clock.pauseReasons.length === 0 &&
@@ -533,12 +600,17 @@ window.addEventListener("pageshow", (event) => {
 });
 shell.canvas.addEventListener("webglcontextlost", (event) => {
   event.preventDefault();
-  graphicsAvailable = false;
-  send({ kind: "Pause", reason: "graphicsLost", present: true });
+  failGraphics(new Error("图形上下文丢失，时间和输入已暂停。"));
 });
 shell.canvas.addEventListener("webglcontextrestored", () => {
   initializeRenderer();
-  if (graphicsAvailable) send({ kind: "Pause", reason: "graphicsLost", present: false });
+  if (graphicsAvailable) {
+    shell.dismissDecision();
+    if (state) {
+      send({ kind: "Pause", reason: "graphicsLost", present: false });
+      shell.openPanel("pause");
+    } else showStartup();
+  }
 });
 function frame(now: number) {
   if (state && graphicsAvailable) {
@@ -568,7 +640,12 @@ function frame(now: number) {
       lastFrameSummaryAt = now;
     }
   }
-  renderer?.frame(now);
+  if (graphicsAvailable)
+    try {
+      renderer?.frame(now);
+    } catch (error) {
+      failGraphics(error);
+    }
   previousFrame = now;
   requestAnimationFrame(frame);
 }

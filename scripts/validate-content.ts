@@ -18,7 +18,8 @@ import type { ProfileId } from "../src/core/types.ts";
 import { validateStaticContent } from "../src/core/static-puzzle.ts";
 import { replayRealtimeWitness, validateRealtimeDefinition } from "../src/core/realtime.ts";
 import type { RealtimeWitness } from "../src/core/realtime.ts";
-import worldWitnessContent from "../src/content/witnesses/m1.json" with { type: "json" };
+import m1WorldWitnessContent from "../src/content/witnesses/m1.json" with { type: "json" };
+import m2WorldWitnessContent from "../src/content/witnesses/m2.json" with { type: "json" };
 
 assert.deepEqual(validateCatalog(worldCatalog), [], "完整设计目录与分期账本");
 for (const profile of worldCatalog.releaseProfiles) {
@@ -94,11 +95,10 @@ console.log(
   `实时独立规则：${realtimeContent.definitions.length} 个固定定义 / ${realtimeWitnesses.length} 条成功与失败见证通过；尚未收录区域不据此视为世界验收通过`,
 );
 
-const m1 = assembleContent("M1");
-for (const rawWitness of worldWitnessContent.witnesses) {
+for (const rawWitness of [...m1WorldWitnessContent.witnesses, ...m2WorldWitnessContent.witnesses]) {
   assert.deepEqual(validateWorldWitness(rawWitness), [], rawWitness.id);
   const witness = rawWitness as WorldWitness;
-  const result = replayWorldWitness(m1, witness);
+  const result = replayWorldWitness(assembleContent(witness.profileId), witness);
   if (result.issues.length)
     throw new Error(result.issues.map((issue) => `${issue.path}: ${issue.message}`).join("\n"));
   assert.equal(
@@ -107,7 +107,7 @@ for (const rawWitness of worldWitnessContent.witnesses) {
     `${witness.id}: 奖励事务幂等`,
   );
   console.log(
-    `${witness.id}：${result.commandCount} 条公开命令，${result.pickupEventCount} 次首次领取；${witness.expected.supplyUnits} 物资 / A ${witness.expected.aData} 数据，通过`,
+    `${witness.id}：${result.commandCount} 条公开命令，${result.pickupEventCount} 次首次领取；${witness.expected.supplyUnits} 物资，通过`,
   );
 }
 console.log("内容校验只读完成。浏览器、存档故障与视听验收由各自记录承担。");

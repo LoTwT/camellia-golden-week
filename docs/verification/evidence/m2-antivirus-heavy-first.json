@@ -1,0 +1,786 @@
+{
+  "inputMethod": "normal mouse pointer on observed 5×5 canvas; read-only DOM clock; minimum 200ms after fixed spawn",
+  "trace": [
+    {
+      "k": 69,
+      "spawnMs": 24650,
+      "beforeMs": 24950.999999952313,
+      "afterMs": 24967.09999995232,
+      "cell": 8,
+      "result": {
+        "code": "accepted",
+        "message": "星星清除 · 3 个数据"
+      }
+    },
+    {
+      "k": 70,
+      "spawnMs": 25000,
+      "beforeMs": 25209.499999952313,
+      "afterMs": 25225.499999952313,
+      "cell": 15,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 71,
+      "spawnMs": 25350,
+      "beforeMs": 25551.19999995231,
+      "afterMs": 25567.899999952322,
+      "cell": 22,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "k": 72,
+      "spawnMs": 25700,
+      "beforeMs": 25901.999999952313,
+      "afterMs": 25921.399999976158,
+      "cell": 4,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 73,
+      "spawnMs": 26050,
+      "beforeMs": 26251.09999995232,
+      "afterMs": 26275.69999995231,
+      "cell": 11,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 74,
+      "spawnMs": 26400,
+      "beforeMs": 26601.899999952322,
+      "afterMs": 26626.899999952322,
+      "cell": 18,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 75,
+      "spawnMs": 26750,
+      "beforeMs": 26951.999999952313,
+      "afterMs": 26975.59999995232,
+      "cell": 0,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "k": 76,
+      "spawnMs": 27100,
+      "beforeMs": 27301.299999952316,
+      "afterMs": 27326.899999952322,
+      "cell": 7,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 77,
+      "spawnMs": 27450,
+      "beforeMs": 27651.799999952316,
+      "afterMs": 27676.799999952316,
+      "cell": 14,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 78,
+      "spawnMs": 27800,
+      "beforeMs": 28000.999999952313,
+      "afterMs": 28026.899999952322,
+      "cell": 21,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 79,
+      "spawnMs": 28150,
+      "beforeMs": 28351.999999952313,
+      "afterMs": 28376.999999952313,
+      "cell": 3,
+      "result": {
+        "code": "accepted",
+        "message": "星星清除 · 0 个数据"
+      }
+    },
+    {
+      "k": 80,
+      "spawnMs": 28500,
+      "beforeMs": 28701.19999995231,
+      "afterMs": 28725.399999952322,
+      "cell": 10,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 81,
+      "spawnMs": 28850,
+      "beforeMs": 29050.899999952322,
+      "afterMs": 29062.200000047684,
+      "cell": 17,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 82,
+      "spawnMs": 29200,
+      "beforeMs": 29410.09999995232,
+      "afterMs": 29433.69999995231,
+      "cell": 24,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 83,
+      "spawnMs": 29550,
+      "beforeMs": 29760.299999952316,
+      "afterMs": 29775.499999952313,
+      "cell": 6,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "k": 84,
+      "spawnMs": 29900,
+      "beforeMs": 30101.999999952313,
+      "afterMs": 30120.5,
+      "cell": 13,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 85,
+      "spawnMs": 30250,
+      "beforeMs": 30452.299999952316,
+      "afterMs": 30476.09999995232,
+      "cell": 20,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 86,
+      "spawnMs": 30600,
+      "beforeMs": 30802.09999995232,
+      "afterMs": 30826.09999995232,
+      "cell": 2,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 87,
+      "spawnMs": 30950,
+      "beforeMs": 31151.399999952322,
+      "afterMs": 31175.399999952322,
+      "cell": 9,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "k": 88,
+      "spawnMs": 31300,
+      "beforeMs": 31501.899999952322,
+      "afterMs": 31525.59999995232,
+      "cell": 16,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 89,
+      "spawnMs": 31650,
+      "beforeMs": 31850.999999952313,
+      "afterMs": 31876.299999952316,
+      "cell": 23,
+      "result": {
+        "code": "accepted",
+        "message": "星星清除 · 0 个数据"
+      }
+    },
+    {
+      "k": 90,
+      "spawnMs": 32000,
+      "beforeMs": 32201.999999952313,
+      "afterMs": 32226.299999952316,
+      "cell": 5,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 91,
+      "spawnMs": 32350,
+      "beforeMs": 32550.19999995231,
+      "afterMs": 32576.899999952322,
+      "cell": 12,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "k": 92,
+      "spawnMs": 32700,
+      "beforeMs": 32901.89999995232,
+      "afterMs": 32925.799999952316,
+      "cell": 19,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 93,
+      "spawnMs": 33050,
+      "beforeMs": 33258.799999952316,
+      "afterMs": 33283.69999995231,
+      "cell": 1,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 94,
+      "spawnMs": 33400,
+      "beforeMs": 33610.19999995231,
+      "afterMs": 33634.19999995231,
+      "cell": 8,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 95,
+      "spawnMs": 33750,
+      "beforeMs": 33959.39999995232,
+      "afterMs": 33983.89999995232,
+      "cell": 15,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "k": 96,
+      "spawnMs": 34100,
+      "beforeMs": 34309.299999952316,
+      "afterMs": 34325.19999995231,
+      "cell": 22,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 97,
+      "spawnMs": 34450,
+      "beforeMs": 34650.299999952316,
+      "afterMs": 34675.39999995232,
+      "cell": 4,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 98,
+      "spawnMs": 34800,
+      "beforeMs": 35001.89999995232,
+      "afterMs": 35026.09999995232,
+      "cell": 11,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 99,
+      "spawnMs": 35150,
+      "beforeMs": 35351.59999995232,
+      "afterMs": 35375.299999952316,
+      "cell": 18,
+      "result": {
+        "code": "accepted",
+        "message": "星星清除 · 0 个数据"
+      }
+    },
+    {
+      "k": 100,
+      "spawnMs": 35500,
+      "beforeMs": 35708.59999995232,
+      "afterMs": 35726.09999995232,
+      "cell": 0,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 101,
+      "spawnMs": 35850,
+      "beforeMs": 36051.99999995231,
+      "afterMs": 36075.39999995232,
+      "cell": 7,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 102,
+      "spawnMs": 36200,
+      "beforeMs": 36400.19999995231,
+      "afterMs": 36420.200000047684,
+      "cell": 14,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 103,
+      "spawnMs": 36550,
+      "beforeMs": 36751.89999995232,
+      "afterMs": 36769.299999952316,
+      "cell": 21,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "k": 104,
+      "spawnMs": 36900,
+      "beforeMs": 37100.69999995231,
+      "afterMs": 37116.99999995231,
+      "cell": 3,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 105,
+      "spawnMs": 37250,
+      "beforeMs": 37451.799999952316,
+      "afterMs": 37467.49999995231,
+      "cell": 10,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 106,
+      "spawnMs": 37600,
+      "beforeMs": 37809.299999952316,
+      "afterMs": 37829.10000002384,
+      "cell": 17,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 107,
+      "spawnMs": 37950,
+      "beforeMs": 38158.49999995231,
+      "afterMs": 38175.99999995231,
+      "cell": 24,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "k": 108,
+      "spawnMs": 38300,
+      "beforeMs": 38500.39999995232,
+      "afterMs": 38526.799999952316,
+      "cell": 6,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 109,
+      "spawnMs": 38650,
+      "beforeMs": 38851.09999995232,
+      "afterMs": 38862.60000002384,
+      "cell": 13,
+      "result": {
+        "code": "accepted",
+        "message": "星星清除 · 0 个数据"
+      }
+    },
+    {
+      "k": 110,
+      "spawnMs": 39000,
+      "beforeMs": 39208.59999995232,
+      "afterMs": 39234.09999995232,
+      "cell": 20,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 111,
+      "spawnMs": 39350,
+      "beforeMs": 39559.09999995232,
+      "afterMs": 39570.299999952316,
+      "cell": 2,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "k": 112,
+      "spawnMs": 39700,
+      "beforeMs": 39908.69999995231,
+      "afterMs": 39925.299999952316,
+      "cell": 9,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 113,
+      "spawnMs": 40050,
+      "beforeMs": 40252.19999995231,
+      "afterMs": 40275.89999995232,
+      "cell": 16,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 114,
+      "spawnMs": 40400,
+      "beforeMs": 40601.39999995232,
+      "afterMs": 40626.89999995232,
+      "cell": 23,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 115,
+      "spawnMs": 40750,
+      "beforeMs": 40950.09999995232,
+      "afterMs": 40969.200000047684,
+      "cell": 5,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "k": 116,
+      "spawnMs": 41100,
+      "beforeMs": 41301.799999952316,
+      "afterMs": 41325.19999995231,
+      "cell": 12,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 117,
+      "spawnMs": 41450,
+      "beforeMs": 41651.49999995231,
+      "afterMs": 41670.5,
+      "cell": 19,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 118,
+      "spawnMs": 41800,
+      "beforeMs": 42000.09999995232,
+      "afterMs": 42018.09999995232,
+      "cell": 1,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 119,
+      "spawnMs": 42150,
+      "beforeMs": 42359.19999995231,
+      "afterMs": 42375.19999995231,
+      "cell": 8,
+      "result": {
+        "code": "accepted",
+        "message": "星星清除 · 0 个数据"
+      }
+    },
+    {
+      "k": 120,
+      "spawnMs": 42500,
+      "beforeMs": 42700.799999952316,
+      "afterMs": 42718.39999995232,
+      "cell": 15,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 121,
+      "spawnMs": 42850,
+      "beforeMs": 43060.09999995232,
+      "afterMs": 43078.89999997616,
+      "cell": 22,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 122,
+      "spawnMs": 43200,
+      "beforeMs": 43409.799999952316,
+      "afterMs": 43428.299999952316,
+      "cell": 4,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 123,
+      "spawnMs": 43550,
+      "beforeMs": 43759.09999995232,
+      "afterMs": 43777.299999952316,
+      "cell": 11,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +2"
+      }
+    },
+    {
+      "k": 124,
+      "spawnMs": 43900,
+      "beforeMs": 44109.69999995231,
+      "afterMs": 44134.99999995231,
+      "cell": 18,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 125,
+      "spawnMs": 44250,
+      "beforeMs": 44458.49999995231,
+      "afterMs": 44477,
+      "cell": 0,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 126,
+      "spawnMs": 44600,
+      "beforeMs": 44809.99999995231,
+      "afterMs": 44833.99999995231,
+      "cell": 7,
+      "result": {
+        "code": "accepted",
+        "message": "清除数据 · +1"
+      }
+    },
+    {
+      "k": 127,
+      "spawnMs": 44950,
+      "beforeMs": 45158.69999995231,
+      "afterMs": 45168.69999995231,
+      "cell": 14,
+      "result": {
+        "code": "failure",
+        "message": "本次未达标 · 可重试"
+      }
+    }
+  ],
+  "final": {
+    "profile": "M2",
+    "contentVersion": 2,
+    "ruleVersion": 1,
+    "position": {
+      "space": "room",
+      "areaId": "b",
+      "boardId": "b.antivirus.heavy.board",
+      "tileId": "b.antivirus.heavy.tile.2.1"
+    },
+    "mode": "challengeResult",
+    "phase": "failure",
+    "activeTimeMs": 45175.39999995232,
+    "countdownRemainingMs": 0,
+    "pauseReasons": [],
+    "completedObjectiveIds": [
+      "hub.amplifier",
+      "hub.tutorial",
+      "a.nexus.route",
+      "a.maze.01",
+      "a.main",
+      "a.maze.02",
+      "a.nexus.side",
+      "a.side.terminal",
+      "a.maze.03",
+      "a.firewall.access",
+      "a.firewall.tutorial",
+      "a.firewall.core",
+      "a.firewall.deep",
+      "a.firewall.inner",
+      "b.line.01",
+      "b.switch.shortcut",
+      "b.main",
+      "b.line.02",
+      "b.nexus.north",
+      "b.north.terminal",
+      "b.south.terminal",
+      "b.antivirus.access"
+    ],
+    "data": {
+      "a": {
+        "collected": 80,
+        "total": 100,
+        "includedCollected": 80,
+        "includedTotal": 80,
+        "complete": false
+      },
+      "b": {
+        "collected": 80,
+        "total": 100,
+        "includedCollected": 80,
+        "includedTotal": 80,
+        "complete": false
+      },
+      "c": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 0,
+        "complete": false
+      },
+      "d": {
+        "collected": 0,
+        "total": 100,
+        "includedCollected": 0,
+        "includedTotal": 0,
+        "complete": false
+      }
+    },
+    "claimedRewardIds": [
+      "hub.supply.tutorial",
+      "a.supply.maze01",
+      "a.supply.maze03",
+      "a.supply.firewall.core",
+      "a.supply.firewall.inner",
+      "a.supply.firewall.deep",
+      "b.supply.line01",
+      "b.supply.line02"
+    ],
+    "supply": {
+      "collected": 36,
+      "total": 51,
+      "count": 8
+    },
+    "bestResults": [
+      {
+        "challengeId": "a.firewall.tutorial",
+        "ruleVersion": 1,
+        "bestCombo": 30
+      },
+      {
+        "challengeId": "a.firewall.core",
+        "ruleVersion": 1,
+        "bestCombo": 90
+      },
+      {
+        "challengeId": "a.firewall.deep",
+        "ruleVersion": 1,
+        "bestCombo": 90
+      },
+      {
+        "challengeId": "a.firewall.inner",
+        "ruleVersion": 1,
+        "bestCombo": 90
+      },
+      {
+        "challengeId": "b.antivirus.heavy",
+        "ruleVersion": 1,
+        "bestScore": 66,
+        "bestStarClear": 3
+      }
+    ],
+    "lastResult": {
+      "code": "failure",
+      "message": "本次未达标 · 可重试"
+    },
+    "saveStatus": "已保存 · 02:43:18",
+    "saveGeneration": 254,
+    "session": "held",
+    "render": {
+      "geometries": 7,
+      "textures": 18,
+      "calls": 6,
+      "tileCount": 25
+    },
+    "frameSummary": {
+      "sampleCount": 7200,
+      "medianMs": 8.30000000000291,
+      "p95Ms": 10.099999999991269,
+      "meanMs": 8.333194444444445
+    }
+  }
+}

@@ -791,8 +791,7 @@
         {
           "atMs": 8480,
           "command": {
-            "kind": "Move",
-            "direction": "left"
+            "kind": "ExitRoom"
           },
           "expectedCode": "accepted"
         },
@@ -1039,8 +1038,7 @@
         {
           "atMs": 14860,
           "command": {
-            "kind": "Move",
-            "direction": "down"
+            "kind": "ExitRoom"
           },
           "expectedCode": "accepted"
         },
@@ -1319,8 +1317,7 @@
         {
           "atMs": 21800,
           "command": {
-            "kind": "Move",
-            "direction": "up"
+            "kind": "ExitRoom"
           },
           "expectedCode": "accepted"
         },
@@ -1406,7 +1403,7 @@
           "atMs": 23340,
           "command": {
             "kind": "Move",
-            "direction": "up"
+            "direction": "left"
           },
           "expectedCode": "accepted"
         },
@@ -1414,7 +1411,7 @@
           "atMs": 23480,
           "command": {
             "kind": "Move",
-            "direction": "left"
+            "direction": "up"
           },
           "expectedCode": "accepted"
         },
@@ -8229,7 +8226,7 @@
           "atMs": 200400,
           "command": {
             "kind": "Move",
-            "direction": "right"
+            "direction": "up"
           },
           "expectedCode": "accepted"
         },
@@ -8237,7 +8234,7 @@
           "atMs": 200540,
           "command": {
             "kind": "Move",
-            "direction": "right"
+            "direction": "up"
           },
           "expectedCode": "accepted"
         },
@@ -8245,22 +8242,23 @@
           "atMs": 200680,
           "command": {
             "kind": "Move",
-            "direction": "right"
+            "direction": "up"
           },
           "expectedCode": "accepted"
         },
         {
           "atMs": 200820,
           "command": {
-            "kind": "Interact"
+            "kind": "Move",
+            "direction": "up"
           },
-          "expectedCode": "alreadyCompleted"
+          "expectedCode": "accepted"
         },
         {
           "atMs": 200960,
           "command": {
             "kind": "Move",
-            "direction": "left"
+            "direction": "right"
           },
           "expectedCode": "accepted"
         },
@@ -8268,7 +8266,7 @@
           "atMs": 201100,
           "command": {
             "kind": "Move",
-            "direction": "left"
+            "direction": "right"
           },
           "expectedCode": "accepted"
         },
@@ -8276,7 +8274,7 @@
           "atMs": 201240,
           "command": {
             "kind": "Move",
-            "direction": "left"
+            "direction": "right"
           },
           "expectedCode": "accepted"
         },
@@ -8284,7 +8282,7 @@
           "atMs": 201380,
           "command": {
             "kind": "Move",
-            "direction": "left"
+            "direction": "right"
           },
           "expectedCode": "accepted"
         },
@@ -8292,7 +8290,7 @@
           "atMs": 201520,
           "command": {
             "kind": "Move",
-            "direction": "up"
+            "direction": "right"
           },
           "expectedCode": "accepted"
         },
@@ -8300,17 +8298,16 @@
           "atMs": 201660,
           "command": {
             "kind": "Move",
-            "direction": "up"
+            "direction": "right"
           },
           "expectedCode": "accepted"
         },
         {
           "atMs": 201800,
           "command": {
-            "kind": "Move",
-            "direction": "left"
+            "kind": "Interact"
           },
-          "expectedCode": "accepted"
+          "expectedCode": "alreadyCompleted"
         },
         {
           "atMs": 201940,
@@ -8324,7 +8321,7 @@
           "atMs": 202080,
           "command": {
             "kind": "Move",
-            "direction": "up"
+            "direction": "left"
           },
           "expectedCode": "accepted"
         },
@@ -8339,12 +8336,67 @@
         {
           "atMs": 202360,
           "command": {
-            "kind": "Interact"
+            "kind": "ExitRoom"
           },
           "expectedCode": "accepted"
         },
         {
           "atMs": 202500,
+          "command": {
+            "kind": "Move",
+            "direction": "up"
+          },
+          "expectedCode": "accepted"
+        },
+        {
+          "atMs": 202640,
+          "command": {
+            "kind": "Move",
+            "direction": "up"
+          },
+          "expectedCode": "accepted"
+        },
+        {
+          "atMs": 202780,
+          "command": {
+            "kind": "Move",
+            "direction": "left"
+          },
+          "expectedCode": "accepted"
+        },
+        {
+          "atMs": 202920,
+          "command": {
+            "kind": "Move",
+            "direction": "left"
+          },
+          "expectedCode": "accepted"
+        },
+        {
+          "atMs": 203060,
+          "command": {
+            "kind": "Move",
+            "direction": "left"
+          },
+          "expectedCode": "accepted"
+        },
+        {
+          "atMs": 203200,
+          "command": {
+            "kind": "Move",
+            "direction": "up"
+          },
+          "expectedCode": "accepted"
+        },
+        {
+          "atMs": 203340,
+          "command": {
+            "kind": "Interact"
+          },
+          "expectedCode": "accepted"
+        },
+        {
+          "atMs": 203480,
           "command": {
             "kind": "StartChallenge",
             "challengeId": "a.firewall.inner"
@@ -8352,142 +8404,98 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 202750,
+          "atMs": 203730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 203000,
+          "atMs": 203980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 203250,
+          "atMs": 204230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 203500,
+          "atMs": 204480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 203750,
+          "atMs": 204730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 204000,
+          "atMs": 204980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 204250,
+          "atMs": 205230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 204500,
+          "atMs": 205480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 204750,
+          "atMs": 205730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 205000,
+          "atMs": 205980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 205250,
+          "atMs": 206230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 205500,
+          "atMs": 206480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 205750,
+          "atMs": 206730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 205750,
-          "command": {
-            "kind": "Move",
-            "direction": "right"
-          },
-          "expectedCode": "accepted"
-        },
-        {
-          "atMs": 206000,
-          "command": {
-            "kind": "Tick"
-          },
-          "expectedCode": "accepted"
-        },
-        {
-          "atMs": 206250,
-          "command": {
-            "kind": "Tick"
-          },
-          "expectedCode": "accepted"
-        },
-        {
-          "atMs": 206250,
-          "command": {
-            "kind": "Move",
-            "direction": "left"
-          },
-          "expectedCode": "accepted"
-        },
-        {
-          "atMs": 206500,
-          "command": {
-            "kind": "Tick"
-          },
-          "expectedCode": "accepted"
-        },
-        {
-          "atMs": 206750,
-          "command": {
-            "kind": "Tick"
-          },
-          "expectedCode": "accepted"
-        },
-        {
-          "atMs": 206750,
+          "atMs": 206730,
           "command": {
             "kind": "Move",
             "direction": "right"
@@ -8495,21 +8503,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 207000,
+          "atMs": 206980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 207250,
+          "atMs": 207230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 207250,
+          "atMs": 207230,
           "command": {
             "kind": "Move",
             "direction": "left"
@@ -8517,21 +8525,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 207500,
+          "atMs": 207480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 207750,
+          "atMs": 207730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 207750,
+          "atMs": 207730,
           "command": {
             "kind": "Move",
             "direction": "right"
@@ -8539,21 +8547,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 208000,
+          "atMs": 207980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 208250,
+          "atMs": 208230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 208250,
+          "atMs": 208230,
           "command": {
             "kind": "Move",
             "direction": "left"
@@ -8561,21 +8569,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 208500,
+          "atMs": 208480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 208750,
+          "atMs": 208730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 208750,
+          "atMs": 208730,
           "command": {
             "kind": "Move",
             "direction": "right"
@@ -8583,21 +8591,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 209000,
+          "atMs": 208980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 209250,
+          "atMs": 209230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 209250,
+          "atMs": 209230,
           "command": {
             "kind": "Move",
             "direction": "left"
@@ -8605,21 +8613,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 209500,
+          "atMs": 209480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 209750,
+          "atMs": 209730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 209750,
+          "atMs": 209730,
           "command": {
             "kind": "Move",
             "direction": "right"
@@ -8627,21 +8635,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 210000,
+          "atMs": 209980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 210250,
+          "atMs": 210230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 210250,
+          "atMs": 210230,
           "command": {
             "kind": "Move",
             "direction": "left"
@@ -8649,21 +8657,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 210500,
+          "atMs": 210480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 210750,
+          "atMs": 210730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 210750,
+          "atMs": 210730,
           "command": {
             "kind": "Move",
             "direction": "right"
@@ -8671,21 +8679,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 211000,
+          "atMs": 210980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 211250,
+          "atMs": 211230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 211250,
+          "atMs": 211230,
           "command": {
             "kind": "Move",
             "direction": "left"
@@ -8693,21 +8701,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 211500,
+          "atMs": 211480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 211750,
+          "atMs": 211730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 211750,
+          "atMs": 211730,
           "command": {
             "kind": "Move",
             "direction": "right"
@@ -8715,21 +8723,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 212000,
+          "atMs": 211980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 212250,
+          "atMs": 212230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 212250,
+          "atMs": 212230,
           "command": {
             "kind": "Move",
             "direction": "left"
@@ -8737,21 +8745,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 212500,
+          "atMs": 212480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 212750,
+          "atMs": 212730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 212750,
+          "atMs": 212730,
           "command": {
             "kind": "Move",
             "direction": "right"
@@ -8759,21 +8767,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 213000,
+          "atMs": 212980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 213250,
+          "atMs": 213230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 213250,
+          "atMs": 213230,
           "command": {
             "kind": "Move",
             "direction": "left"
@@ -8781,21 +8789,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 213500,
+          "atMs": 213480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 213750,
+          "atMs": 213730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 213750,
+          "atMs": 213730,
           "command": {
             "kind": "Move",
             "direction": "right"
@@ -8803,21 +8811,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 214000,
+          "atMs": 213980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 214250,
+          "atMs": 214230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 214250,
+          "atMs": 214230,
           "command": {
             "kind": "Move",
             "direction": "left"
@@ -8825,21 +8833,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 214500,
+          "atMs": 214480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 214750,
+          "atMs": 214730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 214750,
+          "atMs": 214730,
           "command": {
             "kind": "Move",
             "direction": "right"
@@ -8847,21 +8855,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 215000,
+          "atMs": 214980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 215250,
+          "atMs": 215230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 215250,
+          "atMs": 215230,
           "command": {
             "kind": "Move",
             "direction": "left"
@@ -8869,21 +8877,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 215500,
+          "atMs": 215480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 215750,
+          "atMs": 215730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 215750,
+          "atMs": 215730,
           "command": {
             "kind": "Move",
             "direction": "right"
@@ -8891,21 +8899,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 216000,
+          "atMs": 215980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 216250,
+          "atMs": 216230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 216250,
+          "atMs": 216230,
           "command": {
             "kind": "Move",
             "direction": "left"
@@ -8913,21 +8921,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 216500,
+          "atMs": 216480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 216750,
+          "atMs": 216730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 216750,
+          "atMs": 216730,
           "command": {
             "kind": "Move",
             "direction": "right"
@@ -8935,21 +8943,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 217000,
+          "atMs": 216980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 217250,
+          "atMs": 217230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 217250,
+          "atMs": 217230,
           "command": {
             "kind": "Move",
             "direction": "left"
@@ -8957,21 +8965,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 217500,
+          "atMs": 217480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 217750,
+          "atMs": 217730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 217750,
+          "atMs": 217730,
           "command": {
             "kind": "Move",
             "direction": "right"
@@ -8979,21 +8987,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 218000,
+          "atMs": 217980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 218250,
+          "atMs": 218230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 218250,
+          "atMs": 218230,
           "command": {
             "kind": "Move",
             "direction": "left"
@@ -9001,21 +9009,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 218500,
+          "atMs": 218480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 218750,
+          "atMs": 218730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 218750,
+          "atMs": 218730,
           "command": {
             "kind": "Move",
             "direction": "right"
@@ -9023,21 +9031,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 219000,
+          "atMs": 218980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 219250,
+          "atMs": 219230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 219250,
+          "atMs": 219230,
           "command": {
             "kind": "Move",
             "direction": "left"
@@ -9045,21 +9053,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 219500,
+          "atMs": 219480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 219750,
+          "atMs": 219730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 219750,
+          "atMs": 219730,
           "command": {
             "kind": "Move",
             "direction": "right"
@@ -9067,21 +9075,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 220000,
+          "atMs": 219980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 220250,
+          "atMs": 220230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 220250,
+          "atMs": 220230,
           "command": {
             "kind": "Move",
             "direction": "left"
@@ -9089,21 +9097,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 220500,
+          "atMs": 220480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 220750,
+          "atMs": 220730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 220750,
+          "atMs": 220730,
           "command": {
             "kind": "Move",
             "direction": "right"
@@ -9111,21 +9119,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 221000,
+          "atMs": 220980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 221250,
+          "atMs": 221230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 221250,
+          "atMs": 221230,
           "command": {
             "kind": "Move",
             "direction": "left"
@@ -9133,21 +9141,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 221500,
+          "atMs": 221480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 221750,
+          "atMs": 221730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 221750,
+          "atMs": 221730,
           "command": {
             "kind": "Move",
             "direction": "right"
@@ -9155,21 +9163,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 222000,
+          "atMs": 221980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 222250,
+          "atMs": 222230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 222250,
+          "atMs": 222230,
           "command": {
             "kind": "Move",
             "direction": "left"
@@ -9177,21 +9185,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 222500,
+          "atMs": 222480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 222750,
+          "atMs": 222730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 222750,
+          "atMs": 222730,
           "command": {
             "kind": "Move",
             "direction": "right"
@@ -9199,21 +9207,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 223000,
+          "atMs": 222980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 223250,
+          "atMs": 223230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 223250,
+          "atMs": 223230,
           "command": {
             "kind": "Move",
             "direction": "left"
@@ -9221,21 +9229,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 223500,
+          "atMs": 223480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 223750,
+          "atMs": 223730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 223750,
+          "atMs": 223730,
           "command": {
             "kind": "Move",
             "direction": "right"
@@ -9243,21 +9251,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 224000,
+          "atMs": 223980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 224250,
+          "atMs": 224230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 224250,
+          "atMs": 224230,
           "command": {
             "kind": "Move",
             "direction": "left"
@@ -9265,21 +9273,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 224500,
+          "atMs": 224480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 224750,
+          "atMs": 224730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 224750,
+          "atMs": 224730,
           "command": {
             "kind": "Move",
             "direction": "right"
@@ -9287,21 +9295,21 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 225000,
+          "atMs": 224980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 225250,
+          "atMs": 225230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 225250,
+          "atMs": 225230,
           "command": {
             "kind": "Move",
             "direction": "left"
@@ -9309,721 +9317,765 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 225500,
+          "atMs": 225480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 225750,
+          "atMs": 225730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 226000,
+          "atMs": 225730,
           "command": {
+            "kind": "Move",
+            "direction": "right"
+          },
+          "expectedCode": "accepted"
+        },
+        {
+          "atMs": 225980,
+          "command": {
+            "kind": "Tick"
+          },
+          "expectedCode": "accepted"
+        },
+        {
+          "atMs": 226230,
+          "command": {
+            "kind": "Tick"
+          },
+          "expectedCode": "accepted"
+        },
+        {
+          "atMs": 226230,
+          "command": {
+            "kind": "Move",
+            "direction": "left"
+          },
+          "expectedCode": "accepted"
+        },
+        {
+          "atMs": 226480,
+          "command": {
+            "kind": "Tick"
+          },
+          "expectedCode": "accepted"
+        },
+        {
+          "atMs": 226730,
+          "command": {
+            "kind": "Tick"
+          },
+          "expectedCode": "accepted"
+        },
+        {
+          "atMs": 226980,
+          "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 226250,
+          "atMs": 227230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 226500,
+          "atMs": 227480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 226750,
+          "atMs": 227730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 227000,
+          "atMs": 227980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 227250,
+          "atMs": 228230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 227500,
+          "atMs": 228480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 227750,
+          "atMs": 228730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 228000,
+          "atMs": 228980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 228250,
+          "atMs": 229230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 228500,
+          "atMs": 229480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 228750,
+          "atMs": 229730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 229000,
+          "atMs": 229980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 229250,
+          "atMs": 230230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 229500,
+          "atMs": 230480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 229750,
+          "atMs": 230730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 230000,
+          "atMs": 230980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 230250,
+          "atMs": 231230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 230500,
+          "atMs": 231480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 230750,
+          "atMs": 231730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 231000,
+          "atMs": 231980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 231250,
+          "atMs": 232230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 231500,
+          "atMs": 232480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 231750,
+          "atMs": 232730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 232000,
+          "atMs": 232980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 232250,
+          "atMs": 233230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 232500,
+          "atMs": 233480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 232750,
+          "atMs": 233730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 233000,
+          "atMs": 233980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 233250,
+          "atMs": 234230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 233500,
+          "atMs": 234480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 233750,
+          "atMs": 234730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 234000,
+          "atMs": 234980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 234250,
+          "atMs": 235230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 234500,
+          "atMs": 235480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 234750,
+          "atMs": 235730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 235000,
+          "atMs": 235980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 235250,
+          "atMs": 236230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 235500,
+          "atMs": 236480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 235750,
+          "atMs": 236730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 236000,
+          "atMs": 236980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 236250,
+          "atMs": 237230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 236500,
+          "atMs": 237480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 236750,
+          "atMs": 237730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 237000,
+          "atMs": 237980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 237250,
+          "atMs": 238230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 237500,
+          "atMs": 238480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 237750,
+          "atMs": 238730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 238000,
+          "atMs": 238980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 238250,
+          "atMs": 239230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 238500,
+          "atMs": 239480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 238750,
+          "atMs": 239730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 239000,
+          "atMs": 239980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 239250,
+          "atMs": 240230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 239500,
+          "atMs": 240480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 239750,
+          "atMs": 240730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 240000,
+          "atMs": 240980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 240250,
+          "atMs": 241230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 240500,
+          "atMs": 241480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 240750,
+          "atMs": 241730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 241000,
+          "atMs": 241980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 241250,
+          "atMs": 242230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 241500,
+          "atMs": 242480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 241750,
+          "atMs": 242730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 242000,
+          "atMs": 242980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 242250,
+          "atMs": 243230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 242500,
+          "atMs": 243480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 242750,
+          "atMs": 243730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 243000,
+          "atMs": 243980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 243250,
+          "atMs": 244230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 243500,
+          "atMs": 244480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 243750,
+          "atMs": 244730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 244000,
+          "atMs": 244980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 244250,
+          "atMs": 245230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 244500,
+          "atMs": 245480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 244750,
+          "atMs": 245730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 245000,
+          "atMs": 245980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 245250,
+          "atMs": 246230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 245500,
+          "atMs": 246480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 245750,
+          "atMs": 246730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 246000,
+          "atMs": 246980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 246250,
+          "atMs": 247230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 246500,
+          "atMs": 247480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 246750,
+          "atMs": 247730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 247000,
+          "atMs": 247980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 247250,
+          "atMs": 248230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 247500,
+          "atMs": 248480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 247750,
+          "atMs": 248730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 248000,
+          "atMs": 248980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 248250,
+          "atMs": 249230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 248500,
+          "atMs": 249480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 248750,
+          "atMs": 249730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 249000,
+          "atMs": 249980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 249250,
+          "atMs": 250230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 249500,
+          "atMs": 250480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 249750,
+          "atMs": 250730,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 250000,
+          "atMs": 250980,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 250250,
+          "atMs": 251230,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 250500,
+          "atMs": 251480,
           "command": {
             "kind": "Tick"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 250640,
+          "atMs": 251620,
           "command": {
             "kind": "ExitRoom"
           },
           "expectedCode": "accepted"
         },
         {
-          "atMs": 250780,
+          "atMs": 251760,
           "command": {
             "kind": "Move",
             "direction": "left"
@@ -10031,7 +10083,7 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 250920,
+          "atMs": 251900,
           "command": {
             "kind": "Move",
             "direction": "left"
@@ -10039,7 +10091,7 @@
           "expectedCode": "accepted"
         },
         {
-          "atMs": 251060,
+          "atMs": 252040,
           "command": {
             "kind": "Move",
             "direction": "up"
@@ -10082,7 +10134,7 @@
           }
         },
         {
-          "atMs": 251200,
+          "atMs": 252180,
           "command": {
             "kind": "Teleport",
             "teleportId": "hub.teleport"
@@ -10125,7 +10177,7 @@
           }
         },
         {
-          "atMs": 251340,
+          "atMs": 252320,
           "command": {
             "kind": "Teleport",
             "teleportId": "a.teleport"

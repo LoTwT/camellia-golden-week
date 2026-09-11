@@ -151,6 +151,7 @@ A / B 回访区块在 M4 加入；M1–M3 不加载其坐标、奖励实体或�
 | 进度 | `completedObjectiveIds, claimedRewardIds, activatedTeleportIds, capabilities` | 是；后两者须与生产目标一致，可重算核对 |
 | 探索 | `playerPosition, discoveredTileIds, visitedTileIds, clearedEtherNodeIds` | 是；playerPosition 含 space / areaId / boardId / tileId，space 为 world 或 room；只能在有效已发现格 |
 | 房间 | `roomId, status, returnAnchor, currentLayout, attemptBaseline, pendingEffects` | 静态活动房间是；status 为 preview / active；returnAnchor 含外层 areaId / boardId / tileId；已完成状态由目标派生 |
+| 完成布局 | `completedRoomLayouts` | schema 2 起按 roomId 保存首次成功时的物体占格、访问集合和局部激活；不重复存完成布尔值、当前玩家、撤销或待发结果 |
 | 挑战成绩 | `challengeId, ruleVersion, bestScore, bestCombo, bestStarClear` | 仅已结算结果；不适用的成绩字段缺省 |
 | 完成记录 | `scopeCompletionHistory, campaignCompletedAt` | 时间只作显示；是否完成由目标集合核对 |
 | 设置 | `masterVolume, muted, reducedFlash, reducedMotion, quality, zoom` | 是；装载时限制在合法范围 |
@@ -161,6 +162,8 @@ A / B 回访区块在 M4 加入；M1–M3 不加载其坐标、奖励实体或�
 `playerPosition` 是当前玩家位置的唯一权威字段，进入局部终端时改为 room 空间，外层位置仅保存在 returnAnchor；currentLayout 只存物体 / 路径 / 局部机关，不再存第二份当前玩家位置。attemptBaseline 包含重置所需的玩家位置与布局；撤销快照同样包含两者。完成 / 放弃时恢复对应的 world 出口 / returnAnchor。
 
 静态房间的 `pendingEffects` 是局部尝试的结果集合，不可提前加入永久领取 / 完成集合；存档恢复后仍待成功整体提交。`attemptBaseline` 与 `currentLayout` 都必须通过房间合法性校验；重置不能依赖未保存的页面内闭包。preview 状态加载时整房重新观察，active 状态加载时从 playerPosition 继续。
+
+实施补充（2026-09-11）：完成房间回访时，`room.status=completedVisit` 仅携带 `roomId / returnAnchor`，布局引用上述已提交集合，当前玩家仍只存在 `playerPosition`。完成的一笔画访问记录按集合校验为全部必经格；活动尝试的访问顺序仍须是合法相邻路径。独立练习从固定初态开始，不覆盖首次成功布局。
 
 实时模式开始前保存安全返回点；刷新恢复到该点并显示“上次挑战未结算，可重新开始”，分数和灯态清零。挑战成功后立即保存已提交的全局结果；如果结果已提交但画面尚未播完，重新载入仍视为已完成。
 

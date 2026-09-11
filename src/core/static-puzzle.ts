@@ -69,6 +69,22 @@ export interface StaticLayout {
   readonly pendingRewardIds: readonly string[];
 }
 
+/** The first successful layout is permanent; practice never replaces this record. */
+export interface CompletedStaticLayout {
+  readonly objectTileById: Readonly<Record<string, string>>;
+  /** Completion keeps the fully visited set; it is not an active ordered path. */
+  readonly visitedTileIds: readonly string[];
+  readonly activatedLocalIds: readonly string[];
+}
+
+export interface CompletedStaticMove {
+  readonly playerTileId: string;
+  readonly legal: boolean;
+  readonly exited: boolean;
+  readonly code: "accepted" | "blocked" | "invalidTarget";
+  readonly message: string;
+}
+
 export interface StaticSnapshot {
   readonly playerTileId: string;
   readonly layout: StaticLayout;
@@ -414,6 +430,118 @@ export function resetStatic(
   );
 }
 
+/** Object rooms use their safe entry pad as the return-to-world exit after a visit. */
+export function completedStaticExitTileId(definition: StaticDefinition): string {
+  return definition.kind === "memory"
+    ? definition.exitTileId
+    : definition.kind === "oneStroke"
+      ? definition.endTileId
+      : definition.startTileId;
+}
+
+export function isCompletedStaticPosition(
+  definition: StaticDefinition,
+  layout: CompletedStaticLayout,
+  playerTileId: string,
+): boolean {
+  return (
+    definition.tiles.some((tile) => tile.id === playerTileId && tile.terrain === "floor") &&
+    !Object.values(layout.objectTileById).includes(playerTileId)
+  );
+}
+
+/** Completed traversal has ordinary adjacency and frozen objects, with no puzzle effects. */
+export function moveCompletedStatic(
+  definition: StaticDefinition,
+  layout: CompletedStaticLayout,
+  playerTileId: string,
+  direction: StaticDirection,
+): CompletedStaticMove {
+  const rejected = (code: "blocked" | "invalidTarget", message: string): CompletedStaticMove => ({
+    playerTileId,
+    legal: false,
+    exited: false,
+    code,
+    message,
+  });
+  if (
+    !isCompletedStaticPosition(definition, layout, playerTileId) ||
+    !Object.hasOwn(directionOffsets, direction)
+  )
+    return rejected("invalidTarget", "已完成房间的位置或方向不合法。");
+  const from = definition.tiles.find((tile) => tile.id === playerTileId)!;
+  const [dx, dy] = directionOffsets[direction];
+  const target = definition.tiles.find((tile) => tile.x === from.x + dx && tile.y === from.y + dy);
+  if (!target || target.terrain !== "floor") return rejected("blocked", "此处没有可通行道路。");
+  if (!isCompletedStaticPosition(definition, layout, target.id))
+    return rejected("blocked", "已完成的物体保持原位；按 F 可开始独立练习。");
+  return {
+    playerTileId: target.id,
+    legal: true,
+    exited: target.id === completedStaticExitTileId(definition),
+    code: "accepted",
+    message: "已完成房间 · 自由通行，不再触发机关。",
+  };
+}
+
+/** Snapshot only a successful authoritative attempt; never manufacture a solved answer. */
+export function createCompletedStaticLayout(
+  definition: StaticDefinition,
+  state: StaticState,
+  playerTileId: string,
+): CompletedStaticLayout {
+  if (state.phase !== "complete" || !isStaticSolved(definition, state.currentLayout, playerTileId))
+    throw new Error(`${definition.id}: 只有真实成功布局可以提交`);
+  const layout: CompletedStaticLayout = {
+    objectTileById: { ...state.currentLayout.objectTileById },
+    visitedTileIds: [...state.currentLayout.visitedTileIds],
+    activatedLocalIds: [...state.currentLayout.activatedLocalIds],
+  };
+  const errors = validateCompletedStaticLayout(definition, layout);
+  if (errors.length > 0) throw new Error(errors.join("\n"));
+  return layout;
+}
+
+/** Proves entry safety for every solution, using a conservative cart movement envelope. */
+export function validateCompletedStaticEntrySafety(definition: StaticDefinition): string[] {
+  if (definition.kind === "memory" || definition.kind === "oneStroke") return [];
+  if (definition.kind === "theft")
+    return Object.values(definition.socketTileById).includes(definition.startTileId)
+      ? [`${definition.id}: 完成态接收槽不能覆盖安全访问入口`]
+      : [];
+  if (
+    Object.values(definition.targetStationByBallId).some(
+      (id) => definition.stationTileById[id] === definition.startTileId,
+    )
+  )
+    return [`${definition.id}: 完成态基站不能覆盖安全访问入口`];
+  const floors = definition.tiles.filter((tile) => tile.terrain === "floor");
+  for (const cartId of definition.cartIds) {
+    const initialTileId = definition.initialObjectTileById[cartId];
+    if (!initialTileId) continue;
+    const seen = new Set([initialTileId]);
+    const queue = [initialTileId];
+    for (let index = 0; index < queue.length; index += 1) {
+      const tile = floors.find((candidate) => candidate.id === queue[index]);
+      if (!tile) continue;
+      for (const [dx, dy] of Object.values(directionOffsets)) {
+        const behind = floors.find(
+          (candidate) => candidate.x === tile.x - dx && candidate.y === tile.y - dy,
+        );
+        const ahead = floors.find(
+          (candidate) => candidate.x === tile.x + dx && candidate.y === tile.y + dy,
+        );
+        if (!behind || !ahead || seen.has(ahead.id)) continue;
+        seen.add(ahead.id);
+        queue.push(ahead.id);
+      }
+    }
+    if (seen.has(definition.startTileId))
+      return [`${definition.id}: 推车可能覆盖完成态安全入口；内容须提供不会堵入口的固定结构`];
+  }
+  return [];
+}
+
 type UnknownRecord = Record<string, unknown>;
 
 function isRecord(value: unknown): value is UnknownRecord {
@@ -718,6 +846,8 @@ export function validateStaticDefinition(raw: unknown): string[] {
       }
     }
   }
+  if (errors.length === 0)
+    errors.push(...validateCompletedStaticEntrySafety(raw as unknown as StaticDefinition));
   return errors;
 }
 
@@ -800,6 +930,44 @@ function validateLayoutSnapshot(
   } else if (visited.length > 0) errors.push(`${path}: 只有一笔画保存必经路径`);
   if (definition.kind === "memory" && !definition.safeTileIds.includes(playerTileId))
     errors.push(`${path}: 迷宫稳定状态不能留在危险格`);
+  return errors;
+}
+
+/** A committed layout has no live player, pending effects, undo stack, or completion boolean. */
+export function validateCompletedStaticLayout(
+  definition: StaticDefinition,
+  raw: unknown,
+): string[] {
+  const path = `${definition.id}.completedLayout`;
+  if (!isRecord(raw)) return [`${path}: 缺少已提交布局`];
+  const errors: string[] = [];
+  checkKeys(raw, ["objectTileById", "visitedTileIds", "activatedLocalIds"], path, errors);
+  if (definition.kind === "oneStroke") {
+    readIdMap(raw.objectTileById, [], `${path}.objectTileById`, errors);
+    const visited = readIds(raw.visitedTileIds, `${path}.visitedTileIds`, errors);
+    const local = readIds(raw.activatedLocalIds, `${path}.activatedLocalIds`, errors);
+    if (local.length > 0) errors.push(`${path}: 当前房间没有可逆开关定义`);
+    if (
+      visited.length !== definition.requiredTileIds.length ||
+      definition.requiredTileIds.some((id) => !visited.includes(id))
+    )
+      errors.push(`${path}: 一笔画完成布局必须包含全部且仅有必经格`);
+    return errors;
+  }
+  const completionTileId =
+    definition.kind === "memory" ? definition.exitTileId : definition.startTileId;
+  const layout = { ...raw, pendingObjectiveIds: [], pendingRewardIds: [] };
+  errors.push(
+    ...validateLayoutSnapshot(definition, { playerTileId: completionTileId, layout }, path),
+  );
+  if (errors.length > 0) return errors;
+  const completed = raw as unknown as CompletedStaticLayout;
+  if (!isStaticSolved(definition, layout as unknown as StaticLayout, completionTileId))
+    errors.push(`${path}: 提交的布局不满足房间成功条件`);
+  if (!isCompletedStaticPosition(definition, completed, definition.startTileId))
+    errors.push(`${path}: 已完成布局覆盖安全访问入口`);
+  if (!isCompletedStaticPosition(definition, completed, completedStaticExitTileId(definition)))
+    errors.push(`${path}: 已完成布局覆盖访问出口`);
   return errors;
 }
 

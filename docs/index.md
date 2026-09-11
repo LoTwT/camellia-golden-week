@@ -24,6 +24,7 @@
 | [游戏实施验收结果](verification/acceptance-results.md)      | 全部 63 项 G / I / S / T / P / V 的实现位置、方法、结果与证据；区分规则测试、正常浏览器流程和未验证环境 |
 | [美术实施与原参考定位](references/art-implementation.md)    | 原资源实际辨认、单项来源 / 哈希 / 转换、本地补制、六类原参考与首轮代表画面对照                          |
 | [M1 世界地图重建与见证](references/maps/world-m1.md)        | 中心 / A 固定世界坐标、来源盲区、主路径和全收集规则命令；不冒充原版逐格测绘或浏览器通关                 |
+| [M2 世界地图重建与见证](references/maps/world-m2.md)        | B 固定坐标、两个一笔画、三档杀毒和独立奖励路线、M1续玩与51单位账本见证                                  |
 | [固定静态谜题重建与见证](references/maps/static-puzzles.md) | 三迷宫、两一笔画、球 / 车与三盗取的局部布局、替代解及失败 / 死角恢复                                    |
 | [实时挑战重建与见证](references/maps/realtime.md)           | 防火墙、杀毒与幽灵的固定脚本、时间 / 碰撞边界与纯规则证据；未收录世界仍待阶段整合                       |
 

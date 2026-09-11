@@ -72,7 +72,7 @@ export class GameAudio {
         this.lastInvalid = now;
       }
       if (event.kind === "reveal" && events.some((item) => item.kind === "move")) continue;
-      this.play(event.kind);
+      this.play(event.kind === "score" ? "pickup" : event.kind);
     }
   }
   syncFirewall(state: GameState, definition: FirewallDefinition | undefined, now: number) {

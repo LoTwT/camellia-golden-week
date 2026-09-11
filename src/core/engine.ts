@@ -1,9 +1,12 @@
 import {
   activateStatic,
+  createCompletedStaticLayout,
   createStatic,
+  moveCompletedStatic,
   moveStatic,
   resetStatic,
   undoStatic,
+  validateCompletedStaticLayout,
 } from "./static-puzzle.ts";
 import { advanceRealtime, createRealtime } from "./realtime.ts";
 import type { RealtimeInput } from "./realtime.ts";
@@ -79,11 +82,12 @@ function discover(content: GameContent, state: GameState, tileId: string): numbe
 export function createGame(content: GameContent, monotonicTimeMs = 0): GameState {
   const state: GameState = {
     gameId: content.gameId,
-    schemaVersion: 1,
+    schemaVersion: 2,
     contentVersion: content.contentVersion,
     ruleVersion: content.ruleVersion,
     releaseProfileId: content.profile.id,
     completedObjectiveIds: [],
+    completedRoomLayouts: {},
     claimedRewardIds: [],
     activatedTeleportIds: [],
     capabilities: [],
@@ -108,6 +112,7 @@ export function createGame(content: GameContent, monotonicTimeMs = 0): GameState
     phase: "active",
     clock: createClock(monotonicTimeMs),
     activeStatic: null,
+    activeCompletedRoom: null,
     activeRealtime: null,
     autoPath: [],
     feedbackSequence: 0,
@@ -229,6 +234,7 @@ export function dispatch(
     state.mode = "explore";
     state.phase = "active";
     state.activeStatic = null;
+    state.activeCompletedRoom = null;
     state.activeRealtime = null;
     state.clock = createClock(monotonicTimeMs);
     state.autoPath = [];
@@ -241,6 +247,7 @@ export function dispatch(
     const definition = content.staticChallenges.find((candidate) => candidate.id === roomId);
     if (!room || !definition) return false;
     const instance = createStatic(definition);
+    state.activeCompletedRoom = null;
     state.activeStatic = {
       roomId,
       returnAnchor: worldPosition(room.areaId, room.returnTileId),
@@ -267,6 +274,40 @@ export function dispatch(
     );
     return true;
   };
+  const enterCompletedRoom = (roomId: string): boolean => {
+    const room = content.rooms.find((candidate) => candidate.id === roomId);
+    const definition = content.staticChallenges.find((candidate) => candidate.id === roomId);
+    const layout = state.completedRoomLayouts[roomId];
+    if (
+      !room ||
+      !definition ||
+      !layout ||
+      !state.completedObjectiveIds.includes(room.goal) ||
+      validateCompletedStaticLayout(definition, layout).length > 0
+    )
+      return false;
+    state.activeCompletedRoom = {
+      roomId,
+      returnAnchor: worldPosition(room.areaId, room.returnTileId),
+    };
+    state.activeStatic = null;
+    state.activeRealtime = null;
+    state.playerPosition = {
+      space: "room",
+      areaId: room.areaId,
+      boardId: room.boardId,
+      tileId: definition.startTileId,
+    };
+    state.mode = "completedRoom";
+    state.phase = "complete";
+    state.clock = createClock(monotonicTimeMs);
+    state.autoPath = [];
+    state.resumeHint = null;
+    clearInputs = true;
+    stable = true;
+    emit("portal", "已完成布局 · 可自由行走，F 开始独立练习");
+    return true;
+  };
   const settleRealtime = (active: ActiveRealtimeRoom, succeeded: boolean) => {
     const room = content.rooms.find((candidate) => candidate.id === active.roomId);
     if (!room) return;
@@ -283,7 +324,17 @@ export function dispatch(
     }
     if (!state.bestResults.includes(record)) state.bestResults.push(record);
     state.mode = "challengeResult";
+    state.clock = {
+      ...state.clock,
+      activeTimeMs: challenge.activeTimeMs,
+      realtime: false,
+      countdownRemainingMs: 0,
+    };
     state.phase = succeeded ? "success" : "failure";
+    state.lastResult = {
+      code: succeeded ? "success" : "failure",
+      message: succeeded ? "挑战成功 · 永久结果已提交" : "本次未达标 · 可重试",
+    };
     state.resumeHint = null;
     state.autoPath = [];
     clearInputs = true;
@@ -295,6 +346,16 @@ export function dispatch(
   };
 
   if (command.kind === "Pause") {
+    const untilPause = dispatch(
+      content,
+      previous,
+      { kind: "Tick" },
+      monotonicTimeMs,
+      displayTimeIso,
+    );
+    Object.assign(state, untilPause.state);
+    events.push(...untilPause.events);
+    stable = untilPause.stable;
     const advanced = setClockPauseReason(
       state.clock,
       command.reason,
@@ -303,7 +364,7 @@ export function dispatch(
     );
     state.clock = advanced.state;
     state.autoPath = [];
-    clearInputs = advanced.clearInputs;
+    clearInputs = advanced.clearInputs || untilPause.clearInputs;
     return result("paused", "已暂停 · 返回后请点击继续");
   }
   if (command.kind === "Resume") {
@@ -331,6 +392,12 @@ export function dispatch(
     return result("accepted", "设置已更新");
   }
 
+  if (
+    state.mode === "challengeResult" &&
+    Number.isFinite(monotonicTimeMs) &&
+    monotonicTimeMs >= state.clock.lastMonotonicTimeMs
+  )
+    state.clock = { ...state.clock, lastMonotonicTimeMs: monotonicTimeMs };
   const advanced = advanceClock(state.clock, monotonicTimeMs);
   state.clock = advanced.state;
   clearInputs = advanced.clearInputs;
@@ -377,6 +444,31 @@ export function dispatch(
       state.playerPosition = { ...state.playerPosition, tileId: update.state.playerTileId };
       if (input && update.state.playerTileId !== previous.playerPosition.tileId)
         emit("move", "移动");
+      const hit = update.feedback.find((event) => event.kind === "hit");
+      const star = update.feedback.find((event) => event.kind === "starCleared");
+      const cleared = update.feedback.filter((event) => event.kind === "targetCleared");
+      const lamp = update.feedback.find((event) => event.kind === "lampLit");
+      const error = update.feedback.findLast((event) =>
+        ["blocked", "invalidInput", "miss"].includes(event.kind),
+      );
+      if (hit || star || cleared.length) {
+        const message = hit
+          ? `拍点命中 · Combo ${update.state.kind === "firewall" ? update.state.combo : ""}`
+          : star
+            ? `星星清除 · ${star.value ?? cleared.length} 个数据`
+            : `清除数据 · +${cleared.reduce((sum, event) => sum + (event.value ?? 0), 0)}`;
+        emit("score", message);
+        state.lastResult = { code: "accepted", message };
+      }
+      if (lamp) {
+        emit("reveal", "灯已点亮 · 指定幽灵组消散");
+        state.lastResult = { code: "accepted", message: "灯已点亮" };
+      }
+      if (error) {
+        code = error.kind;
+        emit("invalid", error.reason ?? "未命中拍点");
+        state.lastResult = { code, message: error.reason ?? "未命中拍点 · Combo 已重算" };
+      }
       if (update.result !== "running") {
         // Timed reducers return fresh state, so commits always mutate a private progress copy.
         state.completedObjectiveIds = [...state.completedObjectiveIds];
@@ -390,7 +482,7 @@ export function dispatch(
   }
   if (command.kind === "Tick") return result();
   if (command.kind === "ExitRoom") {
-    const active = state.activeStatic ?? state.activeRealtime;
+    const active = state.activeStatic ?? state.activeRealtime ?? state.activeCompletedRoom;
     if (active) {
       arrive(active.returnAnchor.areaId, active.returnAnchor.tileId);
       return result("accepted", "已返回安全入口");
@@ -458,6 +550,44 @@ export function dispatch(
     emit("portal", `已传送至${area.label}`);
     return result();
   }
+  if (state.mode === "completedRoom" && state.activeCompletedRoom) {
+    const active = state.activeCompletedRoom;
+    const room = content.rooms.find((candidate) => candidate.id === active.roomId);
+    const definition = content.staticChallenges.find((candidate) => candidate.id === active.roomId);
+    const layout = state.completedRoomLayouts[active.roomId];
+    if (!room || !definition || !layout || !state.completedObjectiveIds.includes(room.goal))
+      return reject("invalidTarget", "已完成房间内容缺失");
+    if (command.kind === "Interact" || command.kind === "PracticeRoom") {
+      if (enterStatic(room.id, true)) return result("accepted", "独立练习 · 永久完成布局保留");
+      return reject("invalidTarget", "练习房间内容缺失");
+    }
+    if (command.kind === "Undo" || command.kind === "ResetRoom")
+      return reject("alreadyCompleted", "已完成布局不能撤销或重置；按 F 开始独立练习");
+    let direction: Direction | undefined;
+    if (command.kind === "Move") direction = command.direction;
+    if (command.kind === "ClickTile") {
+      const from = definition.tiles.find((tile) => tile.id === state.playerPosition.tileId);
+      const target = definition.tiles.find((tile) => tile.id === command.tileId);
+      if (!from || !target) return reject("invalidTarget", "目标不在当前房间");
+      direction = DIRECTIONS.find(
+        (candidate) =>
+          from.x + DIRECTION_OFFSETS[candidate][0] === target.x &&
+          from.y + DIRECTION_OFFSETS[candidate][1] === target.y,
+      );
+      if (!direction) return reject("invalidTarget", "房间内只允许相邻移动");
+    }
+    if (!direction) return reject("wrongMode", "已完成房间可行走、返回或开始独立练习");
+    const update = moveCompletedStatic(definition, layout, state.playerPosition.tileId, direction);
+    if (!update.legal) return reject(update.code, update.message);
+    state.playerPosition = { ...state.playerPosition, tileId: update.playerTileId };
+    stable = true;
+    emit("move", update.message);
+    if (update.exited) {
+      arrive(room.areaId, room.successExitTileId);
+      emit("portal", "已穿过完成布局，返回安全出口");
+    }
+    return result("accepted", update.exited ? "已返回安全出口" : update.message);
+  }
   if (state.mode === "staticPuzzle" && state.activeStatic) {
     const active = state.activeStatic;
     const definition = content.staticChallenges.find((candidate) => candidate.id === active.roomId);
@@ -486,6 +616,21 @@ export function dispatch(
           : null;
     if (!update) return reject("wrongMode", "当前机关不支持此操作");
     if (!update.legal) return reject(update.code, update.message);
+    const completedLayout =
+      update.success && !active.practice
+        ? createCompletedStaticLayout(definition, update.state, update.playerTileId)
+        : null;
+    if (completedLayout) {
+      const effect = content.effects.find((candidate) => candidate.id === room.effectBundleId);
+      if (
+        !effect?.completeObjectiveIds.includes(room.goal) ||
+        effect.completeObjectiveIds.some((id) => {
+          const objective = content.objectives.find((candidate) => candidate.id === id);
+          return !objective || !gateSatisfied(content, state, objective.prerequisites);
+        })
+      )
+        return reject("unmetCondition", "成功布局的前置目标不满足，未提交永久结果");
+    }
     state.activeStatic = { ...active, state: update.state };
     state.playerPosition = { ...state.playerPosition, tileId: update.playerTileId };
     state.phase = update.state.phase;
@@ -497,7 +642,10 @@ export function dispatch(
       emit(update.failed ? "failure" : "reveal", update.message);
     } else emit("move", update.message);
     if (update.success) {
-      if (!active.practice) applyEffect(room.effectBundleId);
+      if (completedLayout) {
+        applyEffect(room.effectBundleId);
+        state.completedRoomLayouts = { ...state.completedRoomLayouts, [room.id]: completedLayout };
+      }
       arrive(room.areaId, active.practice ? room.returnTileId : room.successExitTileId);
       emit("success", "机关完成 · 已抵达安全出口");
     }
@@ -544,6 +692,15 @@ export function dispatch(
       return result();
     }
     if (entity.kind === "roomEntrance") {
+      const room = content.rooms.find((candidate) => candidate.id === entity.params.roomId);
+      if (
+        room &&
+        state.completedObjectiveIds.includes(room.goal) &&
+        content.staticChallenges.some((candidate) => candidate.id === room.id)
+      ) {
+        if (enterCompletedRoom(room.id)) return result();
+        return reject("invalidTarget", "已完成房间缺少可恢复的提交布局");
+      }
       if (
         enterStatic(
           entity.params.roomId,
@@ -641,12 +798,12 @@ export function dispatch(
     }
     if (entity.kind === "checkpoint")
       addUnique(state.activatedTeleportIds, entity.params.teleportId);
-    if (
-      entity.kind === "roomEntrance" &&
-      entity.params.interactionMode === "enter" &&
-      !state.completedObjectiveIds.includes(entity.params.roomId)
-    ) {
-      enterStatic(entity.params.roomId);
+    if (entity.kind === "roomEntrance" && entity.params.interactionMode === "enter") {
+      const room = content.rooms.find((candidate) => candidate.id === entity.params.roomId);
+      if (room && state.completedObjectiveIds.includes(room.goal)) {
+        if (!enterCompletedRoom(room.id))
+          return reject("invalidTarget", "已完成房间缺少可恢复的提交布局");
+      } else enterStatic(entity.params.roomId);
       break;
     }
   }

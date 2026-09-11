@@ -60,7 +60,7 @@ test("G01/G02/G10：新档经真实命令完成 M1 主路径，不要求数据�
 
 test("G09/G10：M1 完整收集、重玩和往返后仍只有六个奖励 ID 与 26 单位", () => {
   assert.deepEqual(full.issues, []);
-  assert.equal(full.commandCount, 1302);
+  assert.equal(full.commandCount, 1309);
   assert.equal(full.pickupEventCount, 6);
   assert.deepEqual(
     new Set(full.state.claimedRewardIds),

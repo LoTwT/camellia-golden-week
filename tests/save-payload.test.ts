@@ -324,26 +324,26 @@ test("P06 静态存档拒绝危险或墙占格、重复对象、坏基线、错�
     fault.playerPosition.tileId = "a.maze.01.t.2.2";
   });
   expectInvalid(payload, (fault) => {
-    assert.ok(fault.room);
+    assert.ok(fault.room && fault.room.status !== "completedVisit");
     fault.room.currentLayout = {
       ...fault.room.currentLayout,
       objectTileById: { "unknown.object": fault.playerPosition.tileId },
     };
   });
   expectInvalid(payload, (fault) => {
-    assert.ok(fault.room);
+    assert.ok(fault.room && fault.room.status !== "completedVisit");
     fault.room.attemptBaseline = { ...fault.room.attemptBaseline, playerTileId: "a.maze.01.t.1.3" };
   });
   expectInvalid(payload, (fault) => {
-    assert.ok(fault.room);
+    assert.ok(fault.room && fault.room.status !== "completedVisit");
     fault.room.returnAnchor = worldPosition("a", "a.t.0.0");
   });
   expectInvalid(payload, (fault) => {
-    assert.ok(fault.room);
+    assert.ok(fault.room && fault.room.status !== "completedVisit");
     fault.room.pendingEffects.objectiveIds.push("a.main");
   });
   expectInvalid(payload, (fault) => {
-    assert.ok(fault.room);
+    assert.ok(fault.room && fault.room.status !== "completedVisit");
     fault.room.pendingEffects.objectiveIds.push("a.main");
     fault.room.currentLayout = {
       ...fault.room.currentLayout,
@@ -356,7 +356,7 @@ test("P06 未完成房间不能仅篡改 practice 标记冒充独立练习", () 
   const session = new PlaySession();
   session.enterMaze();
   expectInvalid(stablePayload(session.state), (fault) => {
-    assert.ok(fault.room);
+    assert.ok(fault.room && fault.room.status !== "completedVisit");
     fault.room.practice = true;
   });
 });
@@ -374,7 +374,7 @@ test("P01 / S09 已完成迷宫重新进入的练习载荷可恢复，不能伪�
   assert.deepEqual(restored.completedObjectiveIds, session.state.completedObjectiveIds);
   assert.deepEqual(restored.claimedRewardIds, session.state.claimedRewardIds);
   expectInvalid(payload, (fault) => {
-    assert.ok(fault.room);
+    assert.ok(fault.room && fault.room.status !== "completedVisit");
     fault.room.practice = false;
   });
 });
@@ -393,6 +393,75 @@ test("P01 / S09 正常完成迷宫、拾取物资与 M1 终端后的稳定记录
   assert.equal(payload.campaignCompletedAt, null);
   const restored = restorePayload(payload, content, 50000);
   assert.deepEqual(stablePayload(restored), payload);
+});
+
+test("P01 / S09 完成布局访问态保存唯一玩家位置，恢复后危险失效且永久布局保持", () => {
+  const session = new PlaySession();
+  session.enterMaze();
+  session.completeMaze();
+  session.move("left");
+  assert.equal(session.state.mode, "completedRoom");
+  session.move("right");
+  const payload = requireValid(stablePayload(session.state));
+  assert.equal(payload.schemaVersion, 2);
+  assert.equal(payload.room?.status, "completedVisit");
+  assert.deepEqual(Object.keys(payload.room ?? {}).sort(), ["returnAnchor", "roomId", "status"]);
+  assert.deepEqual(payload.completedRoomLayouts["a.maze.01"], {
+    objectTileById: {},
+    visitedTileIds: [],
+    activatedLocalIds: [],
+  });
+  const restored = new PlaySession(restorePayload(payload, content, 65000), 65000);
+  assert.equal(restored.state.mode, "completedRoom");
+  assert.equal(restored.state.activeStatic, null);
+  assert.deepEqual(restored.state.playerPosition, payload.playerPosition);
+  restored.move("up");
+  assert.equal(restored.state.mode, "completedRoom");
+  assert.equal(restored.state.playerPosition.tileId, "a.maze.01.t.1.3");
+  assert.deepEqual(restored.state.completedRoomLayouts, payload.completedRoomLayouts);
+  assert.deepEqual(restored.state.claimedRewardIds, payload.claimedRewardIds);
+  assert.notEqual(restored.state.completedRoomLayouts, payload.completedRoomLayouts);
+  assert.equal(restored.send({ kind: "ExitRoom" }).code, "accepted");
+  assert.deepEqual(restored.state.playerPosition, payload.room?.returnAnchor);
+});
+
+test("P06 schema2 必须完整保存已完成静态布局，拒绝漏记、假布局、未知房间及非法访问占格", () => {
+  const session = new PlaySession();
+  session.enterMaze();
+  session.completeMaze();
+  const payload = requireValid(stablePayload(session.state));
+  expectInvalid(payload, (fault) => {
+    delete fault.completedRoomLayouts["a.maze.01"];
+  });
+  expectInvalid(payload, (fault) => {
+    fault.completedRoomLayouts["unknown.room"] = {
+      objectTileById: {},
+      visitedTileIds: [],
+      activatedLocalIds: [],
+    };
+  });
+  expectInvalid(payload, (fault) => {
+    fault.completedRoomLayouts["a.maze.02"] = {
+      objectTileById: {},
+      visitedTileIds: [],
+      activatedLocalIds: [],
+    };
+  });
+  expectInvalid(payload, (fault) => {
+    fault.completedRoomLayouts["a.maze.01"] = {
+      objectTileById: { "unknown.object": "a.maze.01.t.0.0" },
+      visitedTileIds: [],
+      activatedLocalIds: [],
+    };
+  });
+  session.move("left");
+  const visit = requireValid(stablePayload(session.state));
+  expectInvalid(visit, (fault) => {
+    fault.playerPosition.tileId = "a.maze.01.t.2.2";
+  });
+  const extraFields = structuredClone(visit) as unknown as { room: Record<string, unknown> };
+  extraFields.room.practice = false;
+  assert.equal(validatePayload(extraFields, content).ok, false);
 });
 
 test("P02 实时准备及运行中只保存外层安全入口，分数与倒数不会进入载荷", () => {
@@ -530,7 +599,7 @@ test("稳定载荷与源世界互不别名，恢复的活动房间与输入载�
   payload.settings.muted = true;
   assert.equal(session.state.settings.muted, false);
   const restored = restorePayload(before, content, 120000);
-  assert.ok(restored.activeStatic && before.room);
+  assert.ok(restored.activeStatic && before.room && before.room.status !== "completedVisit");
   assert.notEqual(restored.activeStatic.returnAnchor, before.room.returnAnchor);
   assert.notEqual(restored.activeStatic.state.currentLayout, before.room.currentLayout);
   assert.notEqual(restored.activeStatic.state.attemptBaseline, before.room.attemptBaseline);

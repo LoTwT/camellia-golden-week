@@ -1,4 +1,4 @@
-import type { StaticDefinition, StaticState } from "./static-puzzle.ts";
+import type { CompletedStaticLayout, StaticDefinition, StaticState } from "./static-puzzle.ts";
 import type { RealtimeDefinition, RealtimeState } from "./realtime.ts";
 import type { ClockState } from "./clock.ts";
 
@@ -200,6 +200,7 @@ export interface ProgressState {
   ruleVersion: number;
   releaseProfileId: ProfileId;
   completedObjectiveIds: string[];
+  completedRoomLayouts: Record<string, CompletedStaticLayout>;
   claimedRewardIds: string[];
   activatedTeleportIds: string[];
   capabilities: ("amplifier" | "unlimitedAmplifier")[];
@@ -226,9 +227,14 @@ export interface ActiveRealtimeRoom {
   state: RealtimeState;
   practice: boolean;
 }
+export interface ActiveCompletedRoom {
+  roomId: string;
+  returnAnchor: PlayerPosition;
+}
 export type GameMode =
   | "explore"
   | "staticPuzzle"
+  | "completedRoom"
   | "challengeReady"
   | "challengeRunning"
   | "challengeResult"
@@ -238,6 +244,7 @@ export interface GameState extends ProgressState {
   phase: string;
   clock: ClockState;
   activeStatic: ActiveStaticRoom | null;
+  activeCompletedRoom: ActiveCompletedRoom | null;
   activeRealtime: ActiveRealtimeRoom | null;
   autoPath: string[];
   feedbackSequence: number;
@@ -247,7 +254,16 @@ export interface GameState extends ProgressState {
 export type GameCommand =
   | { kind: "Move"; direction: Direction }
   | { kind: "ClickTile"; tileId: string }
-  | { kind: "Interact" | "Amplify" | "Undo" | "ResetRoom" | "RetryChallenge" | "ExitRoom" }
+  | {
+      kind:
+        | "Interact"
+        | "Amplify"
+        | "Undo"
+        | "ResetRoom"
+        | "RetryChallenge"
+        | "ExitRoom"
+        | "PracticeRoom";
+    }
   | { kind: "StartChallenge"; challengeId: string }
   | { kind: "Teleport"; teleportId: string }
   | {
@@ -264,6 +280,7 @@ export interface FeedbackEvent {
     | "move"
     | "invalid"
     | "pickup"
+    | "score"
     | "reveal"
     | "amplify"
     | "door"

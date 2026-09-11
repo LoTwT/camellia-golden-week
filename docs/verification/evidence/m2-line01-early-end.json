@@ -1,0 +1,116 @@
+{
+  "profile": "M2",
+  "contentVersion": 2,
+  "ruleVersion": 1,
+  "position": {
+    "space": "room",
+    "areaId": "b",
+    "boardId": "b.line.01",
+    "tileId": "b.line.01.t.2.0"
+  },
+  "mode": "staticPuzzle",
+  "phase": "active",
+  "activeTimeMs": 6580.099999928476,
+  "countdownRemainingMs": 0,
+  "pauseReasons": [],
+  "completedObjectiveIds": [
+    "hub.amplifier",
+    "hub.tutorial",
+    "a.nexus.route",
+    "a.maze.01",
+    "a.main",
+    "a.maze.02",
+    "a.nexus.side",
+    "a.side.terminal",
+    "a.maze.03",
+    "a.firewall.access",
+    "a.firewall.tutorial",
+    "a.firewall.core",
+    "a.firewall.deep",
+    "a.firewall.inner"
+  ],
+  "data": {
+    "a": {
+      "collected": 80,
+      "total": 100,
+      "includedCollected": 80,
+      "includedTotal": 80,
+      "complete": false
+    },
+    "b": {
+      "collected": 0,
+      "total": 100,
+      "includedCollected": 0,
+      "includedTotal": 80,
+      "complete": false
+    },
+    "c": {
+      "collected": 0,
+      "total": 100,
+      "includedCollected": 0,
+      "includedTotal": 0,
+      "complete": false
+    },
+    "d": {
+      "collected": 0,
+      "total": 100,
+      "includedCollected": 0,
+      "includedTotal": 0,
+      "complete": false
+    }
+  },
+  "claimedRewardIds": [
+    "hub.supply.tutorial",
+    "a.supply.maze01",
+    "a.supply.maze03",
+    "a.supply.firewall.core",
+    "a.supply.firewall.inner",
+    "a.supply.firewall.deep"
+  ],
+  "supply": {
+    "collected": 26,
+    "total": 51,
+    "count": 6
+  },
+  "bestResults": [
+    {
+      "challengeId": "a.firewall.tutorial",
+      "ruleVersion": 1,
+      "bestCombo": 30
+    },
+    {
+      "challengeId": "a.firewall.core",
+      "ruleVersion": 1,
+      "bestCombo": 90
+    },
+    {
+      "challengeId": "a.firewall.deep",
+      "ruleVersion": 1,
+      "bestCombo": 90
+    },
+    {
+      "challengeId": "a.firewall.inner",
+      "ruleVersion": 1,
+      "bestCombo": 90
+    }
+  ],
+  "lastResult": {
+    "code": "endTooEarly",
+    "message": "先走完其他必经格，最后到达终点。"
+  },
+  "saveStatus": "已保存 · 02:41:06",
+  "saveGeneration": 177,
+  "session": "held",
+  "render": {
+    "geometries": 7,
+    "textures": 11,
+    "calls": 10,
+    "tileCount": 12
+  },
+  "frameSummary": {
+    "sampleCount": 2769,
+    "medianMs": 8.300000000000182,
+    "p95Ms": 10.200000000000728,
+    "meanMs": 8.336258577103646
+  }
+}

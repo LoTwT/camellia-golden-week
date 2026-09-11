@@ -1210,6 +1210,7 @@ function validateExpectation(value: unknown, path: string, issues: ContentValida
     !oneOf(value.mode, [
       "explore",
       "staticPuzzle",
+      "completedRoom",
       "challengeReady",
       "challengeRunning",
       "challengeResult",
@@ -1290,6 +1291,7 @@ export function validateWorldWitness(raw: unknown): ContentValidationIssue[] {
         case "Undo":
         case "ResetRoom":
         case "RetryChallenge":
+        case "PracticeRoom":
         case "ExitRoom":
         case "Tick":
           keys(command, ["kind"], path, issues);

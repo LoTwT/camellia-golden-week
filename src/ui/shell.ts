@@ -38,6 +38,7 @@ export class GameShell {
   private readonly fields: Record<string, HTMLElement> = {};
   private restoreFocus = true;
   private externalModal = false;
+  private externalCancel: (() => void) | null = null;
   saveLabel = "临时进度 · 存档模块接入中";
 
   constructor(root: HTMLElement, content: GameContent, actions: ShellActions) {
@@ -75,6 +76,10 @@ export class GameShell {
       ?.addEventListener("click", () => this.openPanel("collection"));
     dialog.addEventListener("cancel", (event) => {
       event.preventDefault();
+      if (this.externalModal) {
+        this.externalCancel?.();
+        return;
+      }
       if (this.panel !== "none") this.resume();
       else if (this.state?.mode === "challengeReady" || this.state?.mode === "challengeResult")
         this.actions.send({ kind: "ExitRoom" });
@@ -100,6 +105,9 @@ export class GameShell {
     const heading = this.dialog.querySelector("h2");
     if (heading) heading.id = "dialog-title";
     if (!this.dialog.open) this.dialog.showModal();
+    queueMicrotask(() =>
+      this.dialog.querySelector<HTMLButtonElement>("button:not(:disabled)")?.focus(),
+    );
     return true;
   }
   private close() {
@@ -168,12 +176,19 @@ export class GameShell {
       collection: "收集记录",
       storage: "进度与存档",
     };
+    const pauseReason = state.clock.pauseReasons.includes("clockGap")
+      ? "检测到前台调度中断，时间已冻结且未补跑。"
+      : state.clock.pauseReasons.includes("graphicsLost")
+        ? "图形上下文暂时不可用，等待重建后继续。"
+        : state.clock.pauseReasons.some((reason) => reason === "hidden" || reason === "blur")
+          ? "窗口失去焦点，时间与输入已冻结。"
+          : "时间已冻结。";
     if (
       !this.modal(
         titles[panel],
         panel === "map"
           ? "只显示已发现的位置；仅可传送至已激活的入口。"
-          : "时间已冻结。返回地图后，实时挑战有 3 秒准备倒数。",
+          : `${pauseReason}返回地图后，实时挑战有 3 秒准备倒数。`,
         `panel:${panel}:${state.clock.pauseReasons.join(",")}`,
       )
     )
@@ -186,9 +201,14 @@ export class GameShell {
         button("收集记录", () => this.openPanel("collection")),
         button("进度与存档", () => this.openPanel("storage")),
       );
-      if (state.activeStatic || state.activeRealtime || state.mode === "challengeReady")
+      if (
+        state.activeStatic ||
+        state.activeRealtime ||
+        state.activeCompletedRoom ||
+        state.mode === "challengeReady"
+      )
         this.dialog.append(
-          button("放弃本次尝试，返回入口", () => {
+          button(state.activeCompletedRoom ? "返回外层入口" : "放弃本次尝试，返回入口", () => {
             this.resume();
             this.actions.send({ kind: "ExitRoom" });
           }),
@@ -377,6 +397,19 @@ export class GameShell {
       meter = "";
     if (state.activeStatic?.state.phase === "preview")
       banner = `记住安全路线 · ${Math.max(0, (4000 - state.clock.activeTimeMs) / 1000).toFixed(1)} 秒`;
+    if (state.activeStatic) {
+      const definition = this.content.staticChallenges.find(
+        (room) => room.id === state.activeStatic?.roomId,
+      );
+      const layout = state.activeStatic.state.currentLayout;
+      if (definition?.kind === "oneStroke")
+        meter = `已走 ${layout.visitedTileIds.length} / ${definition.requiredTileIds.length} 格 · 覆盖全部格子后，最后进入出口`;
+      if (definition?.kind === "routing")
+        meter = `入站 ${definition.ballIds.filter((id) => layout.objectTileById[id] === definition.stationTileById[definition.targetStationByBallId[id]!]).length} / ${definition.ballIds.length} · 球滑行，车移动一格；Z 可撤销`;
+      if (definition?.kind === "theft")
+        meter = `匹配 ${definition.socketIds.filter((socket) => definition.objectIds.some((object) => layout.objectTileById[object] === definition.socketTileById[socket] && definition.colorByObjectId[object] === definition.colorBySocketId[socket])).length} / ${definition.socketIds.length} · 将对象推入相同字母的槽`;
+    }
+    if (state.activeCompletedRoom) meter = "完成布局 · 可自由行走，物体保持原位；F 开始独立练习";
     if (state.clock.countdownRemainingMs > 0)
       banner = `准备 · ${Math.ceil(state.clock.countdownRemainingMs / 1000)}`;
     if (state.activeRealtime) {
@@ -418,17 +451,35 @@ export class GameShell {
           action("R 增幅", { kind: "Amplify" }),
           button("M 区域图", () => this.openPanel("map")),
         );
-      if (state.mode === "staticPuzzle")
+      if (state.mode === "staticPuzzle") {
+        const undo = action("Z 撤销", { kind: "Undo" });
+        undo.dataset.action = "undo";
         controls.append(
-          action("Z 撤销", { kind: "Undo" }),
+          undo,
           action("重置房间", { kind: "ResetRoom" }),
           action("返回入口", { kind: "ExitRoom" }),
+        );
+      }
+      if (state.mode === "completedRoom")
+        controls.append(
+          action("F 独立练习", { kind: "Interact" }),
+          action("返回外层入口", { kind: "ExitRoom" }),
         );
       if (state.mode === "challengeRunning")
         controls.append(
           text("span", "实时挑战不支持撤销", "muted"),
           button("暂停", () => this.openPanel("pause")),
         );
+    }
+    const undoButton = controls?.querySelector<HTMLButtonElement>('[data-action="undo"]');
+    if (undoButton) {
+      undoButton.disabled =
+        !state.activeStatic ||
+        state.activeStatic.state.phase !== "active" ||
+        state.activeStatic.state.undoStack.length === 0;
+      undoButton.title = undoButton.disabled
+        ? "没有可撤销的行动，仍可重置房间"
+        : "撤销最近一次行动";
     }
     if (this.externalModal) return;
     if (state.clock.awaitingResume || state.clock.pauseReasons.length) {
@@ -533,8 +584,10 @@ export class GameShell {
     title: string,
     description: string,
     choices: { label: string; action: () => void; primary?: boolean }[],
+    onCancel?: () => void,
   ) {
     this.externalModal = true;
+    this.externalCancel = onCancel ?? null;
     this.dialogKey = "";
     this.modal(title, description, `decision:${title}`);
     for (const choice of choices)
@@ -542,6 +595,7 @@ export class GameShell {
   }
   dismissDecision() {
     this.externalModal = false;
+    this.externalCancel = null;
     this.panel = "none";
     this.close();
   }
@@ -558,6 +612,7 @@ export class GameShell {
       ],
     );
     const label = document.createElement("label");
+    this.externalCancel = close;
     label.className = "export-text";
     label.append(text("span", "完整存档文本"));
     const textarea = document.createElement("textarea");
