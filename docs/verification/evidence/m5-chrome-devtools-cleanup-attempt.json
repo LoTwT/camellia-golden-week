@@ -1,0 +1,60 @@
+{
+  "recordedAt": "2026-09-11T09:24:07.291Z",
+  "purpose": "Only remove this task’s prior DevTools residue; offline gameplay acceptance is no longer requested.",
+  "target": {
+    "browser": "Chrome",
+    "tabId": "546939601",
+    "url": "http://localhost:5174/?devtools-cleanup=20260911-final",
+    "sessionGroup": "🧹 DevTools 清理"
+  },
+  "startingUi": {
+    "heading": "继续探索",
+    "summary": "M5 · 中央仓库 · 130 单位物资 · 已完成 4 区主路径。关闭浏览器后的进度已就绪。",
+    "continueAvailable": true
+  },
+  "actions": [
+    {
+      "action": "create dedicated task tab",
+      "result": "success"
+    },
+    {
+      "action": "verify exact native foreground URL before opening DevTools",
+      "result": "guard stopped shortcut because foreground was an unrelated user tab",
+      "shortcutSent": false
+    },
+    {
+      "action": "select only the unique fresh AX tab in the task group",
+      "result": "native tool failed",
+      "error": {
+        "domain": "com.apple.ScreenCaptureKit.SCStreamErrorDomain",
+        "code": -3811,
+        "message": "Failed to start stream due to audio/video capture failure",
+        "reportedToolWallTimeSeconds": 27.025
+      }
+    },
+    {
+      "action": "close only owned temporary tab with documented tab.close()",
+      "result": "success"
+    },
+    {
+      "action": "read fresh browser inventory",
+      "result": "target absent",
+      "targetAbsent": true
+    }
+  ],
+  "cleanup": {
+    "status": "not completed; no second attempt",
+    "devtoolsOpened": false,
+    "deleteControlReached": false,
+    "ruleRemoved": false,
+    "filterRestored": false,
+    "settingsChanged": false,
+    "offlineTestRun": false,
+    "gameplayCommandsSent": 0,
+    "storageClearedOrModified": false,
+    "originalVerifiedSave": "m5-chrome-final-production-restored-save.json",
+    "originalVerifiedSaveGeneration": 1109,
+    "note": "Prior target546939540 was already closed. The saved default rule/filter residue remains unverified. No unrelated tab was operated or closed; no screenshot was available because native capture failed."
+  },
+  "privacy": "Only task metadata and tool-error text are included. No unrelated tab title/URL, page content, or full-window AX is delivered."
+}

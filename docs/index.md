@@ -16,24 +16,25 @@
 
 ## 实施与实际验证
 
-2026-09-11 起进入用户授权的 M1–M5 连续实施。规格中的“本轮仅文档”“尚未实现”描述此前交付状态；当前实现和验证以以下记录为准，具体行为与通过条件仍由主合同定义。
+2026-09-11 起进入用户授权的 M1–M5 连续实施。规格中的“本轮仅文档”“尚未实现”描述此前交付状态；当前实现和验证以以下记录为准，具体行为与通过条件由主合同及用户明确的[验收范围调整](verification/acceptance-scope-2026-09-11.md)定义。
 
 | 记录                                                               | 当前职责与边界                                                                                          |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------- |
+| [本轮验收范围调整](verification/acceptance-scope-2026-09-11.md)    | 用户确认的本机 Chrome 基准与断网门槛取消；保留 63 ID，区分 62 通过与 V06 不再要求                       |
 | [全量实施进度](verification/implementation-progress.md)            | 当前阶段、维护决定、实际命令、问题与恢复起点；是否完成阶段由此记录和对应证据共同确认                    |
 | [游戏实施验收结果](verification/acceptance-results.md)             | 全部 63 项 G / I / S / T / P / V 的实现位置、方法、结果与证据；区分规则测试、正常浏览器流程和未验证环境 |
-| [M5 正式构建候选包](verification/release-candidate.md)             | 静态 ZIP、校验值、实际工程检查和正式包续玩证据；剩余验收与 Git 交付条件                                 |
+| [M5 静态交付包](verification/release-candidate.md)                 | 静态 ZIP、校验值、实际工程检查和正式包续玩证据；范围、限制与 Git 交付状态                               |
 | [Safari 正式包正常续玩](verification/safari-production-journey.md) | 历史记录：自身新档链到 A/B 首访、导出与中断；用户已取消 Safari 必需验收                                 |
 | [美术实施与原参考定位](references/art-implementation.md)           | 原资源实际辨认、单项来源 / 哈希 / 转换、本地补制、六类原参考与首轮代表画面对照                          |
 | [M5 六类视觉对照](references/visual-comparison-m5.md)              | 原参考定位、本版截图、外壳与格距测量、图标状态和明确保留的重建差异                                      |
 | [视口与点选矩阵](verification/viewport-matrix.md)                  | 指定尺寸、DPR、缩放端点的布局与正常点选证据；逐项区分已测与未测                                         |
-| [性能与资源稳定性](verification/performance.md)                    | 本机 64 格场景持续采样、输入反馈和 30 次区域往返；不替代指定基准设备                                    |
+| [性能与资源稳定性](verification/performance.md)                    | 用户接受的本机 Chrome 基准、64 格持续采样、输入反馈和 30 次区域往返；其他设备单列                       |
 | [浏览器与设备矩阵](verification/browser-matrix.md)                 | 实际版本、官方发布来源、浏览器覆盖和缺少的设备条件                                                      |
-| [本地静态资源与离线核查](verification/offline-build-audit.md)      | 构建资源、哈希和本地 HTTP 实测；真实外网断开仍单独验收                                                  |
+| [本地静态资源与离线核查](verification/offline-build-audit.md)      | 构建资源、哈希和本地 HTTP 实测；V06 本次不再要求，保留隔离失败与设置清理限制                            |
 | [M1 世界地图重建与见证](references/maps/world-m1.md)               | 中心 / A 固定世界坐标、来源盲区、主路径和全收集规则命令；不冒充原版逐格测绘或浏览器通关                 |
 | [M2 世界地图重建与见证](references/maps/world-m2.md)               | B 固定坐标、两个一笔画、三档杀毒和独立奖励路线、M1续玩与51单位账本见证                                  |
 | [固定静态谜题重建与见证](references/maps/static-puzzles.md)        | 三迷宫、两一笔画、球 / 车与三盗取的局部布局、替代解及失败 / 死角恢复                                    |
-| [实时挑战重建与见证](references/maps/realtime.md)                  | 防火墙、杀毒与幽灵的固定脚本、时间 / 碰撞边界与纯规则证据；未收录世界仍待阶段整合                       |
+| [实时挑战重建与见证](references/maps/realtime.md)                  | 防火墙、杀毒与幽灵的固定脚本、时间 / 碰撞边界与纯规则证据；世界整合与浏览器结果见阶段记录               |
 
 M3新增：[C世界地图重建](references/maps/world-m3.md)，记录球车主线、三组盗取、侧路、六处物资和来源盲区；固定坐标为重建，正常浏览器结果见验收页。
 

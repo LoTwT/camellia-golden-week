@@ -2,7 +2,7 @@
 
 [文档索引](../index.md) · [工程合同](../spec/architecture.md#3-浏览器与运行预算) · [V06验收合同](../spec/acceptance.md#7-表现与浏览器) · [验收总表](acceptance-results.md) · [美术资源记录](../references/art-implementation.md)
 
-核对日期：2026-09-11。**当前Chrome候选production构建为84个文件、1,674,897字节；连同根页面的85次本地GET均为200且逐字节匹配。45项资源清单、78个内容哈希、2个许可哈希及新ZIP的CRC / 解压字节核对通过。真实外网断开后的V06仍未验证。** 当前[机器证据](evidence/m5-chrome-release-build-audit.json)、[独立ZIP](evidence/m5-chrome-release-dist.zip)及[归档清单](evidence/m5-chrome-release-package.json)见第8节。第1–3节的86文件acceptance和第7节的旧production包保留历史含义，均不代表当前交付包。三次资源审计没有浏览器操作、断网、系统网络设置变更、重新构建或游戏状态修改；本次另按授权创建新归档，没有覆盖旧证据。
+核对日期：2026-09-11。**真实断外网仍未验证；按[用户本轮范围调整](acceptance-scope-2026-09-11.md)，V06 不再要求，不计为测试通过。** 当前 production 构建为 84 个文件、1,674,897 字节；连同根页面的 85 次本地 GET 均为 200 且逐字节匹配。45 项资源清单、78 个内容哈希、2 个许可哈希及 ZIP 的 CRC / 解压字节核对通过。[机器证据](evidence/m5-chrome-release-build-audit.json)、[静态 ZIP](evidence/m5-chrome-release-dist.zip)及[归档清单](evidence/m5-chrome-release-package.json)见第 8 节。早期 acceptance、旧 production 和隔离尝试保留当时事实；第 5 节只作为可选的后续步骤，不再是发布待办。第 9.3 节明确记录 DevTools 清理未完成的工具限制，未声称环境完全恢复。
 
 ## 1. 早期acceptance被审计对象与证据边界
 
@@ -188,6 +188,8 @@ image/png 33; image/svg+xml 33; audio/wav 10; font/woff2 2; text/plain 2
 
 ## 5. 真实断网验收步骤（待执行）
 
+**历史步骤保留，本次不再要求执行。** 用户已取消 V06 发布门槛；以下为最初拟定的验证方法与当时环境限制，不是当前阻塞清单。
+
 当前可用CUA没有提供外网断开控制能力。本页三次资源审计均没有操作网络设置，也没有外网不可达证明。因此验收总表中的 **V06继续保留未验证**；不能把早期acceptance的87次GET、两份production各自的85次GET、资源本地打包或其他在线浏览器通关结果替代它。
 
 后续执行者可按下面顺序验收并留证，所有游戏操作经正常键鼠完成：
@@ -220,7 +222,7 @@ curl --noproxy '*' --connect-timeout 5 --max-time 10 -I http://localhost:5174/
 | 当前Chrome候选ZIP                          | 84项CRC与解压字节匹配；845629字节，归档及SHA-256文件见第8节                        |
 | 本机真实外网断开及缓存冷启动               | 未执行、未验证                                                                     |
 | 断网状态正常键鼠刷新、进区、重试、保存恢复 | 未执行、未验证                                                                     |
-| 最终production构建V06                      | 资源和本地HTTP前置审计通过；真实断网人工操作仍待证，本页不将V06标为通过            |
+| 最终production构建V06                      | 资源和本地 HTTP 前置审计通过；真实断网未验证，V06 本次不再要求，不计为通过         |
 
 ## 7. 历史production构建追加审计
 
@@ -434,3 +436,13 @@ PY
 随后按主任务授权，通过本任务标签自身的公开`close()`接口关闭仅由本agent拥有的Chrome标签546939540及其附属DevTools；[关闭记录](evidence/m5-chrome-offline-target-closed.json)和紧接的只读浏览器清单确认该ID已不存在，未关闭其他标签、未新建页面。依据官方行为，该目标的请求阻断随DevTools关闭停用；**持久规则的删除及过滤文字恢复仍待可安全操作的窗口，不将目标关闭等同于规则清除。**
 
 本次没有执行游戏命令，没有修改或清除存档。[此前正常UI导出的1109代真实存档](evidence/m5-chrome-final-production-restored-save.json)继续保留：中央仓库`warehouse.t.7.0`、26个奖励、130单位物资、默认设置。这里是对已有导出文件的保护记录，不是隔离后的保存恢复证据。外部请求失败、localhost隔离刷新、进区、静态/实时重试和隔离下保存恢复均未验证。
+
+### 9.3 取消离线验收后的有界清理尝试
+
+用户随后表达不要求断网游玩，本次后续操作仅清理第9.2节残留，不再执行离线验收。[清理尝试记录](evidence/m5-chrome-devtools-cleanup-attempt.json)保存了脱敏目标、工具错误和关闭确认。
+
+新建专用localhost标签546939601后，正常启动页显示中央仓库、130单位物资及继续按钮。发送DevTools快捷键前，同次调用先核对原生窗口的精确URL；当前前台为非任务标签，保护检查阻止了快捷键。随后依据新鲜AX仅选择唯一的“🧹 DevTools 清理”任务标签时，原生工具在27.025秒返回ScreenCaptureKit `-3811`：音视频捕获失败。没有取得可用截图，没有打开DevTools或接近删除控件，也没有修改规则、过滤文本或其他设置。
+
+遵循一次有界尝试的限制，没有重试；通过该临时标签自己的`close()`关闭它，紧接的只读浏览器清单确认546939601已不存在。没有操作或关闭其他标签，没有执行游戏命令、清除存储或覆盖1109代导出。**清理未完成：原默认`*://*`规则的删除及过滤文字恢复仍未验证；原任务与本次临时标签均已关闭。** 此工具故障不作为游戏缺陷，也不将未完成清理写成环境完全恢复。
+
+人工清理仅针对本任务新增项：在自己选定的页面打开 DevTools，使用命令菜单显示 Request conditions；若仍有本次新增的唯一 `*://*` / Block 规则，删除它并关闭请求阻断。将 Network 过滤文字恢复为 `Request conditions`。原设备仿真开启、1920×1080、Disable cache 开启、Keep log 关闭，无需因本任务更改这些值。若看到其他既有规则，保留它们，不按本记录清空全部设置。以上为尚未执行的恢复说明，关闭 DevTools 已停止此前任务目标的运行中拦截。

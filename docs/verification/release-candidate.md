@@ -1,8 +1,8 @@
-# M5 正式构建候选包
+# M5 静态交付包
 
 [文档索引](../index.md) · [操作与存档说明](../../README.md) · [验收结果](acceptance-results.md) · [实施进度](implementation-progress.md)
 
-2026-09-11：当前交付物为 **0.5.0 / M5 / content4 / rule1 / schema2** 的 production 构建，包含全部游戏内容。63 项合同当前有 61 项按规定层通过；V05 的原指定基准设备、V06 的真实断外网尚待完成，不能将候选包称为全量验收通过。用户已将本次必需浏览器限制为 Chrome。实现分支 `codex/full-implementation` 从 `bfb924b075aa6a153ed33b95ce4492260e18a8d9` 建立，M1–M4 已提交，M5 实现候选已提交为 `811da5a1eb6ac175aa380418c2d84cf079469713`；M5 验收及最终推送 / PR 尚待收尾。
+2026-09-11：当前交付物为 **0.5.0 / M5 / content4 / rule1 / schema2** 的 production 构建，包含全部游戏内容。按[用户本轮范围调整](acceptance-scope-2026-09-11.md)，本机 Chrome 为验收环境，V05 达到原预算；63 个原始用例中 **62 项通过、V06 不再要求**。真实断外网、其他硬件与历史 Safari 结果不冒充已通过。实现分支 `codex/full-implementation` 从 `bfb924b075aa6a153ed33b95ce4492260e18a8d9` 建立；M1–M5 已按里程碑提交，M5 实现为 `811da5a1eb6ac175aa380418c2d84cf079469713`。游戏验收已按当前范围收口，最终推送与 PR 正在收尾。
 
 ## 1. 当前静态交付物
 
@@ -31,7 +31,7 @@ npm run build
 npm run preview -- --host localhost --port 5174 --strictPort
 ```
 
-打开 [localhost:5174](http://localhost:5174)。不要同时启动另一个占用 5174 的 dev 或 preview。游戏使用本地 HTTP 服务，不直接双击 HTML；外网断开时仍需保持本地服务运行。首次安装依赖需要网络，真实断外网运行尚待 V06 实测。
+打开 [localhost:5174](http://localhost:5174)。不要同时启动另一个占用 5174 的 dev 或 preview。游戏使用本地 HTTP 服务，不直接双击 HTML；外网断开时仍需保持本地服务运行。首次安装依赖需要网络；V06 本次不再要求，离线可玩不作交付保证。
 
 已有依赖时可预览归档包。先核对 ZIP 的 SHA-256，解压到新的目录，再将目录的绝对路径作为 `--outDir`：
 
@@ -80,10 +80,12 @@ npm run preview -- --host localhost --port 5174 --strictPort --outDir /absolute/
 
 旧 Chrome 正式包重复结算和刷新保持 947 / 130，内嵌浏览器真实升级链保持 170 / 26。Safari 自身新档正常续玩到 B 首访 340 / 21，后因原生窗口不可用中断；后续导出确认载荷未变。详细结果见[历史 Safari 记录](safari-production-journey.md)。用户取消其必需验收后，不继续补齐，也不把历史未验证项改为通过。
 
-## 6. 剩余交付条件
+## 6. 验收范围、限制与交付状态
 
-1. **V05：设备与性能。** Chrome 当前设备上的生产继续与刷新预算已通过；同源码观察包两档各60秒帧率、60输入，以及普通移动 / 跟随镜头预算也已通过。原 Apple M1 / 8 GB、Windows i5-1135G7 / Iris Xe / 16 GB 仍缺设备证据，已询问用户是否以本机 M1 Pro / 32 GB 为本次基准，尚未收到答复。见[性能记录](performance.md)和[浏览器矩阵](browser-matrix.md)。
-2. **V06：真实断外网。** 当前静态包与本地 HTTP 前置审计通过；断网后的正常刷新、进区、重试、保存恢复仍待实测。本次浏览器请求隔离未建立，已关闭任务标签及其DevTools；新默认规则清除、网络过滤文字恢复仍待稳定窗口，见[尝试与恢复边界](offline-build-audit.md#9-chrome-请求隔离尝试未建立任务标签已关闭)。见[离线验收步骤](offline-build-audit.md#5-真实断网验收步骤待执行)。
-3. **Git 交付。** 本 Goal 使用用户指定的 `Agent-Model: gpt-6-astra`、`Agent-Effort: max`。M1–M5 实现提交的精确树、父提交、身份和消息见[回读证据](evidence/milestone-commits.json)。M5 实现候选已本地提交；用户已授权的最终推送 / PR 尚待收尾，未将缺少环境的必需项标为通过。
+- **本机基准通过。** 当前 Apple M1 Pro / 32 GB / macOS / Chrome 的生产继续、刷新，同源码观察包两档持续帧率、输入和移动 / 镜头，以及 30 次区域往返达到原预算。用户接受这台机器作为本次基准，V05 通过。原 M1 / 8 GB 与 Windows 基线仍未实测，其他机器出现实际问题后再修复；[性能记录](performance.md)保留方法与设备边界。
+- **离线不再作为发布门槛。** V06 仍未真实验证，记为“不再要求”。静态资源与本地 HTTP 审计通过，不能据此宣称断网全流程通过。原步骤作为可选的后续方法保留于[离线核查](offline-build-audit.md#5-真实断网验收步骤待执行)。
+- **美术与地图为明确记录的重建。** 无法确认原资产的适用发布条件，实际采用 33 个补制图标、10 段补制声音和两份本地许可字体；没有把候选库发现当作原资产授权。六类原参考、本版截图及差异见[视觉对照](../references/visual-comparison-m5.md)，固定坐标与可解见证由[来源索引](../references/index.md)串联。
+- **DevTools 清理有环境限制。** 请求隔离未建立，任务标签及附属 DevTools 均已关闭；依据 Chrome 官方行为，该目标运行中的拦截已停止。持久默认规则删除及 Network 过滤文字恢复因 ScreenCaptureKit `-3811` 未完成，人工恢复方法与实际边界见[清理记录](offline-build-audit.md#93-取消离线验收后的有界清理尝试)。这不作为游戏故障，也不写成全部浏览器设置已恢复。
+- **Git 交付正在收尾。** 本 Goal 的提交使用用户指定的 `Agent-Model: gpt-6-astra`、`Agent-Effort: max`，作者与提交者均为 `eruoos <github@eruoo.me>`。M1–M5 的精确树、父提交、身份和消息见[回读证据](evidence/milestone-commits.json)；最终分支与 PR 在实际发布后记录，不推定已推送或已创建。
 
-2026-09-11 17:06 后的实际界面状态：为停止请求隔离尝试，已关闭本任务Chrome标签及附属DevTools；此前可玩截图对应关闭前时刻。正式preview仍在固定5174运行，真实1109代存档与导出未改写。没有把目标关闭当作已删除浏览器保存的临时规则。
+2026-09-11 的最终 Chrome 正常游玩导出为 1109 代，位置 `warehouse.t.7.0`，26 奖励 / 130 物资和默认设置保持。随后仅进行离线配置与清理尝试，没有发出游戏命令或覆盖进度；本任务的两个测试标签均已关闭，可玩截图对应关闭前时刻。正式 preview 继续在固定 5174 运行，重新打开本地入口即可选择继续。
