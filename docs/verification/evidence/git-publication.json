@@ -1,0 +1,54 @@
+{
+  "purpose": "Immutable snapshot of the first implementation-branch publication and PR creation. Later documentation-only updates use the same branch and PR; query the PR for the current head.",
+  "recordedAt": "2026-09-11T09:45:40.925462+00:00",
+  "repository": "LoTwT/camellia-golden-week",
+  "repositoryId": 1364258532,
+  "branch": "codex/full-implementation",
+  "initialPublishedHead": "005239b1621e1790f7e64d63a8945c4e13af37e4",
+  "baseHeadAtPublication": "bfb924b075aa6a153ed33b95ce4492260e18a8d9",
+  "initialPublicationVerifiedAt": "2026-09-11T09:41:48.353306+00:00",
+  "pushActor": "eruoos",
+  "readActor": "LoTwT",
+  "mainUnchangedAtPublication": true,
+  "otherRefsOrTagsPushed": false,
+  "commitsPublished": [
+    "005239b1621e1790f7e64d63a8945c4e13af37e4 docs: finalize acceptance scope for M5 delivery",
+    "a676d80060a559ace9463547b090d61c73f3a000 docs: record M5 candidate and outstanding environment checks",
+    "811da5a1eb6ac175aa380418c2d84cf079469713 feat(m5): refine presentation and recover browser sessions",
+    "dcc6307326d8aef80e8204ea348769fa8afe07f6 feat(m4): complete four-area progression and warehouse",
+    "4068fb981fc6632867ad90319a81fcfba9e766b8 feat(m3): add area C object puzzles and recovery",
+    "726317b009efdce20aaca61625c21701f468e3a6 feat(m2): add area B and save upgrades",
+    "3c1c30c62fd8d8700c5f11d6ed118273ea1c84a2 feat(m1): implement hub and area A exploration"
+  ],
+  "pullRequest": {
+    "number": 1,
+    "url": "https://github.com/LoTwT/camellia-golden-week/pull/1",
+    "author": "eruoos",
+    "title": "feat: complete M1–M5 exploration and local progress recovery",
+    "stateAtReadback": "open",
+    "draftAtReadback": false,
+    "headAtCreation": {
+      "ref": "codex/full-implementation",
+      "sha": "005239b1621e1790f7e64d63a8945c4e13af37e4",
+      "repositoryId": 1364258532
+    },
+    "baseAtCreation": {
+      "ref": "main",
+      "sha": "bfb924b075aa6a153ed33b95ce4492260e18a8d9",
+      "repositoryId": 1364258532
+    },
+    "bodyReadbackMatched": true,
+    "creationVerifiedAt": "2026-09-11T09:43:30.274372+00:00",
+    "mergedAtReadback": false
+  },
+  "acceptance": {
+    "originalIdCount": 63,
+    "passedCount": 62,
+    "notRequired": [
+      "V06"
+    ],
+    "reference": "../acceptance-scope-2026-09-11.md"
+  },
+  "staticArtifact": "m5-chrome-release-dist.zip",
+  "staticArtifactSha256": "62b119813a7d3269a95f30f4894e3f4efb5996ccabd054d5fe9acf7d1a888175"
+}

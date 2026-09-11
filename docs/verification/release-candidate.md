@@ -2,7 +2,7 @@
 
 [文档索引](../index.md) · [操作与存档说明](../../README.md) · [验收结果](acceptance-results.md) · [实施进度](implementation-progress.md)
 
-2026-09-11：当前交付物为 **0.5.0 / M5 / content4 / rule1 / schema2** 的 production 构建，包含全部游戏内容。按[用户本轮范围调整](acceptance-scope-2026-09-11.md)，本机 Chrome 为验收环境，V05 达到原预算；63 个原始用例中 **62 项通过、V06 不再要求**。真实断外网、其他硬件与历史 Safari 结果不冒充已通过。实现分支 `codex/full-implementation` 从 `bfb924b075aa6a153ed33b95ce4492260e18a8d9` 建立；M1–M5 已按里程碑提交，M5 实现为 `811da5a1eb6ac175aa380418c2d84cf079469713`。游戏验收已按当前范围收口，最终推送与 PR 正在收尾。
+2026-09-11：当前交付物为 **0.5.0 / M5 / content4 / rule1 / schema2** 的 production 构建，包含全部游戏内容。按[用户本轮范围调整](acceptance-scope-2026-09-11.md)，本机 Chrome 为验收环境，V05 达到原预算；63 个原始用例中 **62 项通过、V06 不再要求**。真实断外网、其他硬件与历史 Safari 结果不冒充已通过。实现分支 `codex/full-implementation` 从 `bfb924b075aa6a153ed33b95ce4492260e18a8d9` 建立；M1–M5 已按里程碑提交，M5 实现为 `811da5a1eb6ac175aa380418c2d84cf079469713`。游戏验收已按当前范围收口，实现分支已推送，[PR #1](https://github.com/LoTwT/camellia-golden-week/pull/1) 已创建，供用户审阅；main 尚未合并。
 
 ## 1. 当前静态交付物
 
@@ -86,6 +86,22 @@ npm run preview -- --host localhost --port 5174 --strictPort --outDir /absolute/
 - **离线不再作为发布门槛。** V06 仍未真实验证，记为“不再要求”。静态资源与本地 HTTP 审计通过，不能据此宣称断网全流程通过。原步骤作为可选的后续方法保留于[离线核查](offline-build-audit.md#5-真实断网验收步骤待执行)。
 - **美术与地图为明确记录的重建。** 无法确认原资产的适用发布条件，实际采用 33 个补制图标、10 段补制声音和两份本地许可字体；没有把候选库发现当作原资产授权。六类原参考、本版截图及差异见[视觉对照](../references/visual-comparison-m5.md)，固定坐标与可解见证由[来源索引](../references/index.md)串联。
 - **DevTools 清理有环境限制。** 请求隔离未建立，任务标签及附属 DevTools 均已关闭；依据 Chrome 官方行为，该目标运行中的拦截已停止。持久默认规则删除及 Network 过滤文字恢复因 ScreenCaptureKit `-3811` 未完成，人工恢复方法与实际边界见[清理记录](offline-build-audit.md#93-取消离线验收后的有界清理尝试)。这不作为游戏故障，也不写成全部浏览器设置已恢复。
-- **Git 交付正在收尾。** 本 Goal 的提交使用用户指定的 `Agent-Model: gpt-6-astra`、`Agent-Effort: max`，作者与提交者均为 `eruoos <github@eruoo.me>`。M1–M5 的精确树、父提交、身份和消息见[回读证据](evidence/milestone-commits.json)；最终分支与 PR 在实际发布后记录，不推定已推送或已创建。
+- **Git 交付已发布。** 本 Goal 的提交使用用户指定的 `Agent-Model: gpt-6-astra`、`Agent-Effort: max`，作者与提交者均为 `eruoos <github@eruoo.me>`。M1–M5 的精确树、父提交、身份和消息见[里程碑回读](evidence/milestone-commits.json)，实际发布与 PR 见下节；未合并 main。
 
 2026-09-11 的最终 Chrome 正常游玩导出为 1109 代，位置 `warehouse.t.7.0`，26 奖励 / 130 物资和默认设置保持。随后仅进行离线配置与清理尝试，没有发出游戏命令或覆盖进度；本任务的两个测试标签均已关闭，可玩截图对应关闭前时刻。正式 preview 继续在固定 5174 运行，重新打开本地入口即可选择继续。
+
+## 7. 实际 Git 交付
+
+[PR #1：feat: complete M1–M5 exploration and local progress recovery](https://github.com/LoTwT/camellia-golden-week/pull/1) 已由 `eruoos` 创建，状态为 open、非 draft，目标为 `LoTwT/camellia-golden-week:main`，来源为同仓库的 `codex/full-implementation`。读取与结果回查使用 `LoTwT`；没有切换持久登录、覆盖 main、推送标签或执行合并。
+
+首次实现分支发布至 [005239b](https://github.com/LoTwT/camellia-golden-week/commit/005239b1621e1790f7e64d63a8945c4e13af37e4)，包含 M1–M5 五个实现提交与两次验收记录提交；创建 PR 后另将本节发布回读和链接补入同一分支，不改变游戏源码或静态包。精确首次发布、PR 作者 / 目标 / 来源和时间见[发布回读快照](evidence/git-publication.json)，最新提交以 [PR 当前 head](https://github.com/LoTwT/camellia-golden-week/pull/1/commits) 为准。
+
+| 里程碑 | 实现提交                                                                                                 | 对应内容                                |
+| ------ | -------------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| M1     | [3c1c30c](https://github.com/LoTwT/camellia-golden-week/commit/3c1c30c62fd8d8700c5f11d6ed118273ea1c84a2) | 中心 / A、核心架构、26 物资与双槽存档   |
+| M2     | [726317b](https://github.com/LoTwT/camellia-golden-week/commit/726317b009efdce20aaca61625c21701f468e3a6) | B、一笔画 / 杀毒、51 物资与 M1 升级     |
+| M3     | [4068fb9](https://github.com/LoTwT/camellia-golden-week/commit/4068fb981fc6632867ad90319a81fcfba9e766b8) | C、球车 / 盗取、81 物资与恢复           |
+| M4     | [dcc6307](https://github.com/LoTwT/camellia-golden-week/commit/dcc6307326d8aef80e8204ea348769fa8afe07f6) | D、回访、仓库、26 奖励 / 130 物资       |
+| M5     | [811da5a](https://github.com/LoTwT/camellia-golden-week/commit/811da5a1eb6ac175aa380418c2d84cf079469713) | 视觉 / 交互精修、性能、浏览器与故障恢复 |
+
+本次交付按[用户调整后的范围](acceptance-scope-2026-09-11.md)完成。第 6 节列出的未测设备、离线保证、美术重建与 DevTools 工具残留继续保留，不推定已消除。

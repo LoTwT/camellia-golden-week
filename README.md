@@ -6,7 +6,7 @@
 
 当前交付状态见[实施进度](docs/verification/implementation-progress.md)和[验收记录](docs/verification/acceptance-results.md)。按用户本轮确认，仅以本机 Chrome 验收，性能达到原预算即通过，断网游玩不再作为发布门槛。**63 个原始用例中 62 项通过、V06 不再要求**；其他设备与 Safari / Edge 的未验证、历史失败保留，具体依据见[范围调整](docs/verification/acceptance-scope-2026-09-11.md)。
 
-[M5 静态交付包](docs/verification/release-candidate.md)提供 ZIP、校验值、411/411 测试与构建日志。Chrome 正式包正常续玩与刷新保持 130/130；真实历史返回与双标签验证了旧内存不能覆盖新存档。M1–M5 已按里程碑提交，最终推送和 PR 状态由交付记录维护。
+[M5 静态交付包](docs/verification/release-candidate.md)提供 ZIP、校验值、411/411 测试与构建日志。Chrome 正式包正常续玩与刷新保持 130/130；真实历史返回与双标签验证了旧内存不能覆盖新存档。M1–M5 已按里程碑提交并推送至 `codex/full-implementation`，[PR #1](https://github.com/LoTwT/camellia-golden-week/pull/1) 已创建，供审阅；main 尚未合并。
 
 项目文档统一从 [文档索引](docs/index.md) 进入，按任务查阅主规格、玩法、内容数据、工程、验收与来源记录。
 
