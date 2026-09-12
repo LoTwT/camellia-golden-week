@@ -1,0 +1,46 @@
+{
+  "frozenAt": "2026-09-12T06:40:48.706Z",
+  "baseCommit": "10941be",
+  "sourceHashes": {
+    "src/ui/menu-navigation.ts": "4807ddbf4e3b2081595ce1e9357154cfc82dbcd635039a3de119a893b0c2f13b",
+    "src/ui/shell.ts": "efc0cf8961d0f1fee013678c6637769c9d4dc6127bd52019d32325fff6969d09",
+    "src/ui/style.css": "d92aea67808345156a2a083bbf5a25a4e2e729ca53db18a01664433facb9ec84",
+    "tests/menu-navigation.test.ts": "8d3f8d929d3e7b777fd41842c3b562efa7c3be9a5f59577042cdef614a2a17d7",
+    "scripts/browser/menu-keyboard.ts": "3b5b9901fc95dd41b5521e2cd72af5d9660a4d59f25023f6c1851b7a09bdcd85",
+    "scripts/verify-browser.ts": "46f7e2e36857b3f51dc402f725806154e900c91b6ff3eca4b479cd756f37919c"
+  },
+  "baseline": "baseline-menu-results.json",
+  "final": "menu-final/menu-keyboard-results.json",
+  "failures": {
+    "baseline-menu-results.json": "Direction navigation absent; Settings Escape bypassed parent; parent selection lost. Readonly textarea selection assumption subsequently reproduced in native-only Chrome and not treated as a game defect.",
+    "menu-current-1/menu-keyboard-results.json": "New contrast regression caught during primary background transition. Resolved by keeping primary bright background and dark text.",
+    "menu-current-2/menu-keyboard-results.json": "Native SELECT keyboard value assertion failed. Same behavior in native-only headed/headless Chrome and CDP; native selection remains explicitly unverified.",
+    "menu-current-4/menu-keyboard-results.json": "All menu and DOM tests passed; optional newPage/bringToFront did not produce headless blur, so a late pause expectation timed out. Invalid lifecycle trigger removed; no runtime threshold or synthetic state change."
+  },
+  "scopeSweep": {
+    "modalEntryPoints": 6,
+    "mainDecisionBranches": 19,
+    "sharedFixes": [
+      "startup",
+      "pause and five panel branches",
+      "firewall/antivirus/ghost terminal choices",
+      "success/failure result",
+      "showError",
+      "external decisions/export"
+    ],
+    "unchangedByDesign": [
+      "Decisions without onCancel retain explicit-choice requirement; Escape never confirms import/replacement/recovery.",
+      "Native form editing remains browser-owned.",
+      "showError has no current call sites; it inherits shared keyboard behavior."
+    ],
+    "browserCompatibility": "Existing firewall-cue setup relied on one Escape leaving settings; parent changed it to explicit Continue. Other Escape sites enter pause from canvas and remain applicable."
+  },
+  "verification": {
+    "lint": true,
+    "format": true,
+    "typecheck": true,
+    "nodeTests": 5,
+    "chrome": "menu-final success; 1366x768, 140 keys, 415 observed events, 9 screenshots",
+    "nativeSelectValue": "unverified automation boundary"
+  }
+}

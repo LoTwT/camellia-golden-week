@@ -4,6 +4,7 @@ import type { GameCommand, GameContent, GameSettings, GameState } from "../core/
 import { REWARD_LABELS } from "./labels.ts";
 import { firewallCue } from "./firewall-cue.ts";
 import { firewallFeedback } from "../core/firewall-feedback.ts";
+import { canReceiveMenuFocus, DialogNavigation } from "./menu-navigation.ts";
 
 export interface ShellActions {
   send: (command: GameCommand) => void;
@@ -39,6 +40,8 @@ export class GameShell {
   private state: GameState | null = null;
   private dialogKey = "";
   private panel: "none" | "pause" | "map" | "settings" | "collection" | "storage" = "none";
+  private panelParent: "none" | "pause" = "none";
+  private readonly navigation: DialogNavigation;
   private previousFocus: HTMLElement | null = null;
   private readonly fields: Record<string, HTMLElement> = {};
   private restoreFocus = true;
@@ -61,6 +64,7 @@ export class GameShell {
     this.canvas = canvas;
     this.labels = labels;
     this.dialog = dialog;
+    this.navigation = new DialogNavigation(dialog);
     this.element = root.querySelector<HTMLElement>(".game-shell")!;
     const firewallOverlay = document.createElement("section");
     firewallOverlay.id = "firewall-overlay";
@@ -108,15 +112,14 @@ export class GameShell {
         this.externalCancel?.();
         return;
       }
-      if (this.panel !== "none") this.resume();
-      else if (this.state?.mode === "challengeReady" || this.state?.mode === "challengeResult")
+      if (this.panel !== "none" || this.dialogKey.startsWith("panel:")) {
+        if (this.panelParent === "pause") this.openPanel("pause");
+        else this.resume();
+      } else if (this.state?.mode === "challengeReady" || this.state?.mode === "challengeResult")
         this.actions.send({ kind: "ExitRoom" });
     };
     dialog.addEventListener("keydown", (event) => {
-      if (event.key !== "Escape") return;
-      event.preventDefault();
-      event.stopPropagation();
-      if (!event.repeat) cancelDialog();
+      this.navigation.handleKey(event, cancelDialog);
     });
     dialog.addEventListener("cancel", (event) => {
       event.preventDefault();
@@ -131,6 +134,7 @@ export class GameShell {
   }
   private modal(title: string, description: string, key: string) {
     if (this.dialogKey === key) return false;
+    this.navigation.begin(key.startsWith("panel:") ? `panel:${key.split(":")[1]}` : key);
     this.dialogKey = key;
     if (!this.dialog.open) {
       this.restoreFocus = true;
@@ -142,22 +146,23 @@ export class GameShell {
       text("span", "CAMELLIA / TERMINAL", "eyebrow"),
       text("h2", title),
       text("p", description, "dialog-description"),
+      text(
+        "p",
+        "↑ ↓ / W S 选择 · Enter / 空格确认 · Esc 返回 · Tab 切换控件",
+        "menu-keyboard-hint",
+      ),
     );
     const heading = this.dialog.querySelector("h2");
     if (heading) heading.id = "dialog-title";
     if (!this.dialog.open) this.dialog.showModal();
-    queueMicrotask(() =>
-      this.dialog
-        .querySelector<HTMLElement>("button:not(:disabled), input, select, textarea")
-        ?.focus(),
-    );
     return true;
   }
   private close() {
+    this.navigation.close();
     if (this.dialog.open) this.dialog.close();
     this.dialogKey = "";
     if (this.restoreFocus) {
-      (this.previousFocus?.isConnected && this.previousFocus.getClientRects().length
+      (this.previousFocus && canReceiveMenuFocus(this.previousFocus)
         ? this.previousFocus
         : this.canvas
       )?.focus({
@@ -183,6 +188,7 @@ export class GameShell {
     );
   }
   private pickImport() {
+    const opener = document.activeElement;
     const input = document.createElement("input");
     input.type = "file";
     input.accept = ".json,application/json";
@@ -192,12 +198,25 @@ export class GameShell {
       input.remove();
       if (file) this.actions.import(file);
     });
-    input.addEventListener("cancel", () => input.remove(), { once: true });
+    input.addEventListener(
+      "cancel",
+      () => {
+        input.remove();
+        if (opener instanceof HTMLElement && canReceiveMenuFocus(opener)) opener.focus();
+      },
+      { once: true },
+    );
     document.body.append(input);
     input.click();
   }
   openPanel(panel: typeof this.panel = "pause") {
     if (!this.state) return;
+    this.panelParent =
+      panel === "settings" ||
+      panel === "storage" ||
+      (panel !== "pause" && (this.panel === "pause" || this.dialogKey.startsWith("panel:pause:")))
+        ? "pause"
+        : "none";
     this.panel = panel;
     this.dialogKey = "";
     this.restoreFocus = true;
@@ -206,6 +225,7 @@ export class GameShell {
   }
   private resume() {
     this.panel = "none";
+    this.panelParent = "none";
     this.close();
     this.actions.send({
       kind: "Resume",

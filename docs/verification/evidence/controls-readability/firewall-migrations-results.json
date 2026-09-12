@@ -1,0 +1,1997 @@
+[
+  {
+    "id": "v1-full-collection",
+    "method": "Normal file chooser, reviewed import, export, reload/continue and export; v2 case earns v3 result through visible-ready direction keys and natural settlement.",
+    "source": "/Users/caoyujie/codes/camellia-golden-week/docs/verification/evidence/m5-chrome-final-production-complete-save.json",
+    "sourceSha256": "ba433e4a96624a73719fbab49185c435c8078f98bf57cb9208d5cf7cff96133f",
+    "from": {
+      "contentVersion": 4,
+      "ruleVersion": 1
+    },
+    "to": {
+      "contentVersion": 5,
+      "ruleVersion": 3
+    },
+    "preview": "M5 · 中央仓库 · 130 单位物资 · 已完成 4 区主路径。确认后替换当前世界；写入与回读成功后才生效。",
+    "preservedRewards": 26,
+    "preservedBestResults": [
+      {
+        "challengeId": "d.ghost.01",
+        "ruleVersion": 1
+      },
+      {
+        "challengeId": "d.ghost.02",
+        "ruleVersion": 1
+      },
+      {
+        "challengeId": "a.firewall.tutorial",
+        "ruleVersion": 1,
+        "bestCombo": 30
+      },
+      {
+        "challengeId": "a.firewall.inner",
+        "ruleVersion": 1,
+        "bestCombo": 88
+      },
+      {
+        "challengeId": "a.firewall.deep",
+        "ruleVersion": 1,
+        "bestCombo": 84
+      },
+      {
+        "challengeId": "a.firewall.core",
+        "ruleVersion": 1,
+        "bestCombo": 89
+      },
+      {
+        "challengeId": "b.antivirus.light",
+        "ruleVersion": 1,
+        "bestScore": 71,
+        "bestStarClear": 0
+      },
+      {
+        "challengeId": "b.antivirus.medium",
+        "ruleVersion": 1,
+        "bestScore": 99,
+        "bestStarClear": 0
+      },
+      {
+        "challengeId": "b.antivirus.heavy",
+        "ruleVersion": 1,
+        "bestScore": 140,
+        "bestStarClear": 1
+      }
+    ],
+    "restoredIdentically": true,
+    "coexistence": null,
+    "errors": []
+  },
+  {
+    "id": "v2-earned-result",
+    "method": "Normal file chooser, reviewed import, export, reload/continue and export; v2 case earns v3 result through visible-ready direction keys and natural settlement.",
+    "source": "/Users/caoyujie/codes/camellia-golden-week/docs/verification/evidence/firewall-hazards/legacy-v2/legacy-v2-earned-save.json",
+    "sourceSha256": "67454e6631ca6619720cddbaa824aea0584225feb6431a4e8cc48164582ae2ac",
+    "from": {
+      "contentVersion": 5,
+      "ruleVersion": 2
+    },
+    "to": {
+      "contentVersion": 5,
+      "ruleVersion": 3
+    },
+    "preview": "M5 · 仓储区 A · 1 单位物资 · 已完成 0 区主路径。确认后替换当前世界；写入与回读成功后才生效。",
+    "preservedRewards": 1,
+    "preservedBestResults": [
+      {
+        "challengeId": "a.firewall.tutorial",
+        "ruleVersion": 2,
+        "bestCombo": 14
+      }
+    ],
+    "restoredIdentically": true,
+    "coexistence": {
+      "hits": {
+        "hitCounts": [
+          "1 / 27",
+          "2 / 27",
+          "3 / 27",
+          "4 / 27",
+          "5 / 27",
+          "6 / 27",
+          "7 / 27",
+          "8 / 27",
+          "9 / 27",
+          "10 / 27",
+          "11 / 27",
+          "12 / 27",
+          "13 / 27",
+          "14 / 27",
+          "15 / 27",
+          "16 / 27",
+          "17 / 27",
+          "18 / 27"
+        ],
+        "comboSequence": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18
+        ],
+        "screenLightSamples": [
+          {
+            "phase": "ready",
+            "opacity": 0.602948,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "ready",
+            "opacity": 0.622645,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "ready",
+            "opacity": 0.642342,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "ready",
+            "opacity": 0.662039,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "ready",
+            "opacity": 0.60937,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "ready",
+            "opacity": 0.629067,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "ready",
+            "opacity": 0.64833,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "ready",
+            "opacity": 0.668027,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "ready",
+            "opacity": 0.615358,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "ready",
+            "opacity": 0.635055,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "ready",
+            "opacity": 0.654752,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "ready",
+            "opacity": 0.601649,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "ready",
+            "opacity": 0.621345,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "ready",
+            "opacity": 0.641042,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "ready",
+            "opacity": 0.660739,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "ready",
+            "opacity": 0.60807,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "ready",
+            "opacity": 0.627767,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "ready",
+            "opacity": 0.647464,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          }
+        ],
+        "waitingLightSamples": [
+          {
+            "phase": "waiting",
+            "opacity": 0,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "waiting",
+            "opacity": 0,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "waiting",
+            "opacity": 0,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "waiting",
+            "opacity": 0,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "waiting",
+            "opacity": 0,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "waiting",
+            "opacity": 0,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "waiting",
+            "opacity": 0,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "waiting",
+            "opacity": 0,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "waiting",
+            "opacity": 0,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "waiting",
+            "opacity": 0,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "waiting",
+            "opacity": 0,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "waiting",
+            "opacity": 0,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "waiting",
+            "opacity": 0,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "waiting",
+            "opacity": 0,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "waiting",
+            "opacity": 0,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "waiting",
+            "opacity": 0,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "waiting",
+            "opacity": 0,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          },
+          {
+            "phase": "waiting",
+            "opacity": 0,
+            "borderWidth": 5,
+            "borderColor": "rgb(255, 255, 255)",
+            "pointerEvents": "none",
+            "animation": "none",
+            "bounds": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            },
+            "field": {
+              "x": 0,
+              "y": 0,
+              "width": 1512,
+              "height": 771,
+              "top": 0,
+              "right": 1512,
+              "bottom": 771,
+              "left": 0
+            }
+          }
+        ],
+        "inputResponses": [
+          {
+            "matched": true,
+            "keydownAtMs": 3865.100000023842,
+            "visibleAfterPaintAtMs": 3888.2000000476837,
+            "latencyMs": 23.100000023841858,
+            "direction": "up",
+            "from": "a.firewall.tutorial.tile.2.2",
+            "destination": "a.firewall.tutorial.tile.2.1",
+            "plannedCrossing": false,
+            "before": {
+              "combo": 0,
+              "beat": "1 / 27",
+              "status": "现在移动",
+              "feedback": "",
+              "kind": "none",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": []
+            },
+            "after": {
+              "combo": 1,
+              "beat": "1 / 27",
+              "status": "本拍命中",
+              "feedback": "PERFECT",
+              "kind": "perfect",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": []
+            }
+          },
+          {
+            "matched": true,
+            "keydownAtMs": 4414.200000047684,
+            "visibleAfterPaintAtMs": 4438,
+            "latencyMs": 23.799999952316284,
+            "direction": "down",
+            "from": "a.firewall.tutorial.tile.2.1",
+            "destination": "a.firewall.tutorial.tile.2.2",
+            "plannedCrossing": false,
+            "before": {
+              "combo": 1,
+              "beat": "2 / 27",
+              "status": "现在移动",
+              "feedback": "",
+              "kind": "none",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": []
+            },
+            "after": {
+              "combo": 2,
+              "beat": "2 / 27",
+              "status": "本拍命中",
+              "feedback": "PERFECT",
+              "kind": "perfect",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": []
+            }
+          },
+          {
+            "matched": true,
+            "keydownAtMs": 4966.600000023842,
+            "visibleAfterPaintAtMs": 4988,
+            "latencyMs": 21.399999976158142,
+            "direction": "up",
+            "from": "a.firewall.tutorial.tile.2.2",
+            "destination": "a.firewall.tutorial.tile.2.1",
+            "plannedCrossing": false,
+            "before": {
+              "combo": 2,
+              "beat": "3 / 27",
+              "status": "现在移动",
+              "feedback": "",
+              "kind": "none",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": []
+            },
+            "after": {
+              "combo": 3,
+              "beat": "3 / 27",
+              "status": "本拍命中",
+              "feedback": "PERFECT",
+              "kind": "perfect",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": []
+            }
+          },
+          {
+            "matched": true,
+            "keydownAtMs": 5515.300000071526,
+            "visibleAfterPaintAtMs": 5537.900000095367,
+            "latencyMs": 22.600000023841858,
+            "direction": "down",
+            "from": "a.firewall.tutorial.tile.2.1",
+            "destination": "a.firewall.tutorial.tile.2.2",
+            "plannedCrossing": false,
+            "before": {
+              "combo": 3,
+              "beat": "4 / 27",
+              "status": "现在移动",
+              "feedback": "",
+              "kind": "none",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": []
+            },
+            "after": {
+              "combo": 4,
+              "beat": "4 / 27",
+              "status": "本拍命中",
+              "feedback": "PERFECT",
+              "kind": "perfect",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": []
+            }
+          },
+          {
+            "matched": true,
+            "keydownAtMs": 6049.100000023842,
+            "visibleAfterPaintAtMs": 6071.300000071526,
+            "latencyMs": 22.200000047683716,
+            "direction": "up",
+            "from": "a.firewall.tutorial.tile.2.2",
+            "destination": "a.firewall.tutorial.tile.2.1",
+            "plannedCrossing": false,
+            "before": {
+              "combo": 4,
+              "beat": "5 / 27",
+              "status": "现在移动",
+              "feedback": "",
+              "kind": "none",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": []
+            },
+            "after": {
+              "combo": 5,
+              "beat": "5 / 27",
+              "status": "本拍命中",
+              "feedback": "PERFECT",
+              "kind": "perfect",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": []
+            }
+          },
+          {
+            "matched": true,
+            "keydownAtMs": 6597.700000047684,
+            "visibleAfterPaintAtMs": 6621.200000047684,
+            "latencyMs": 23.5,
+            "direction": "down",
+            "from": "a.firewall.tutorial.tile.2.1",
+            "destination": "a.firewall.tutorial.tile.2.2",
+            "plannedCrossing": false,
+            "before": {
+              "combo": 5,
+              "beat": "6 / 27",
+              "status": "现在移动",
+              "feedback": "",
+              "kind": "none",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": []
+            },
+            "after": {
+              "combo": 6,
+              "beat": "6 / 27",
+              "status": "本拍命中",
+              "feedback": "PERFECT",
+              "kind": "perfect",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": []
+            }
+          },
+          {
+            "matched": true,
+            "keydownAtMs": 7155.300000071526,
+            "visibleAfterPaintAtMs": 7187.900000095367,
+            "latencyMs": 32.60000002384186,
+            "direction": "up",
+            "from": "a.firewall.tutorial.tile.2.2",
+            "destination": "a.firewall.tutorial.tile.2.1",
+            "plannedCrossing": false,
+            "before": {
+              "combo": 6,
+              "beat": "7 / 27",
+              "status": "现在移动",
+              "feedback": "",
+              "kind": "none",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": []
+            },
+            "after": {
+              "combo": 7,
+              "beat": "7 / 27",
+              "status": "本拍命中",
+              "feedback": "PERFECT",
+              "kind": "perfect",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": []
+            }
+          },
+          {
+            "matched": true,
+            "keydownAtMs": 7699.400000095367,
+            "visibleAfterPaintAtMs": 7721.200000047684,
+            "latencyMs": 21.799999952316284,
+            "direction": "down",
+            "from": "a.firewall.tutorial.tile.2.1",
+            "destination": "a.firewall.tutorial.tile.2.2",
+            "plannedCrossing": false,
+            "before": {
+              "combo": 7,
+              "beat": "8 / 27",
+              "status": "现在移动",
+              "feedback": "",
+              "kind": "none",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": []
+            },
+            "after": {
+              "combo": 8,
+              "beat": "8 / 27",
+              "status": "本拍命中",
+              "feedback": "PERFECT",
+              "kind": "perfect",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": []
+            }
+          },
+          {
+            "matched": true,
+            "keydownAtMs": 8231.300000071526,
+            "visibleAfterPaintAtMs": 8254.5,
+            "latencyMs": 23.199999928474426,
+            "direction": "up",
+            "from": "a.firewall.tutorial.tile.2.2",
+            "destination": "a.firewall.tutorial.tile.2.1",
+            "plannedCrossing": false,
+            "before": {
+              "combo": 8,
+              "beat": "9 / 27",
+              "status": "现在移动",
+              "feedback": "",
+              "kind": "none",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": []
+            },
+            "after": {
+              "combo": 9,
+              "beat": "9 / 27",
+              "status": "本拍命中",
+              "feedback": "PERFECT",
+              "kind": "perfect",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": []
+            }
+          },
+          {
+            "matched": true,
+            "keydownAtMs": 8783,
+            "visibleAfterPaintAtMs": 8804.400000095367,
+            "latencyMs": 21.40000009536743,
+            "direction": "down",
+            "from": "a.firewall.tutorial.tile.2.1",
+            "destination": "a.firewall.tutorial.tile.2.2",
+            "plannedCrossing": false,
+            "before": {
+              "combo": 9,
+              "beat": "10 / 27",
+              "status": "现在移动",
+              "feedback": "",
+              "kind": "none",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": []
+            },
+            "after": {
+              "combo": 10,
+              "beat": "10 / 27",
+              "status": "本拍命中",
+              "feedback": "PERFECT",
+              "kind": "perfect",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": []
+            }
+          },
+          {
+            "matched": true,
+            "keydownAtMs": 9329.5,
+            "visibleAfterPaintAtMs": 9353.400000095367,
+            "latencyMs": 23.90000009536743,
+            "direction": "up",
+            "from": "a.firewall.tutorial.tile.2.2",
+            "destination": "a.firewall.tutorial.tile.2.1",
+            "plannedCrossing": false,
+            "before": {
+              "combo": 10,
+              "beat": "11 / 27",
+              "status": "现在移动",
+              "feedback": "",
+              "kind": "none",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": []
+            },
+            "after": {
+              "combo": 11,
+              "beat": "11 / 27",
+              "status": "本拍命中",
+              "feedback": "PERFECT",
+              "kind": "perfect",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": []
+            }
+          },
+          {
+            "matched": true,
+            "keydownAtMs": 9864.600000023842,
+            "visibleAfterPaintAtMs": 9886.800000071526,
+            "latencyMs": 22.200000047683716,
+            "direction": "down",
+            "from": "a.firewall.tutorial.tile.2.1",
+            "destination": "a.firewall.tutorial.tile.2.2",
+            "plannedCrossing": false,
+            "before": {
+              "combo": 11,
+              "beat": "12 / 27",
+              "status": "现在移动",
+              "feedback": "",
+              "kind": "none",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": []
+            },
+            "after": {
+              "combo": 12,
+              "beat": "12 / 27",
+              "status": "本拍命中",
+              "feedback": "PERFECT",
+              "kind": "perfect",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": []
+            }
+          },
+          {
+            "matched": true,
+            "keydownAtMs": 10414,
+            "visibleAfterPaintAtMs": 10437,
+            "latencyMs": 23,
+            "direction": "up",
+            "from": "a.firewall.tutorial.tile.2.2",
+            "destination": "a.firewall.tutorial.tile.2.1",
+            "plannedCrossing": false,
+            "before": {
+              "combo": 12,
+              "beat": "13 / 27",
+              "status": "现在移动",
+              "feedback": "",
+              "kind": "none",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": []
+            },
+            "after": {
+              "combo": 13,
+              "beat": "13 / 27",
+              "status": "本拍命中",
+              "feedback": "PERFECT",
+              "kind": "perfect",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": []
+            }
+          },
+          {
+            "matched": true,
+            "keydownAtMs": 10965.700000047684,
+            "visibleAfterPaintAtMs": 10987.800000071526,
+            "latencyMs": 22.100000023841858,
+            "direction": "down",
+            "from": "a.firewall.tutorial.tile.2.1",
+            "destination": "a.firewall.tutorial.tile.2.2",
+            "plannedCrossing": false,
+            "before": {
+              "combo": 13,
+              "beat": "14 / 27",
+              "status": "现在移动",
+              "feedback": "",
+              "kind": "none",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": [
+                {
+                  "tileId": "a.firewall.tutorial.tile.4.0",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.4.1",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.4.2",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.4.3",
+                  "mark": "→",
+                  "phase": "active"
+                }
+              ]
+            },
+            "after": {
+              "combo": 14,
+              "beat": "14 / 27",
+              "status": "本拍命中",
+              "feedback": "PERFECT",
+              "kind": "perfect",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": [
+                {
+                  "tileId": "a.firewall.tutorial.tile.3.0",
+                  "mark": "→",
+                  "phase": "warning"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.4.0",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.3.1",
+                  "mark": "→",
+                  "phase": "warning"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.4.1",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.3.2",
+                  "mark": "→",
+                  "phase": "warning"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.4.2",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.3.3",
+                  "mark": "→",
+                  "phase": "warning"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.4.3",
+                  "mark": "→",
+                  "phase": "active"
+                }
+              ]
+            }
+          },
+          {
+            "matched": true,
+            "keydownAtMs": 11515.600000023842,
+            "visibleAfterPaintAtMs": 11537.900000095367,
+            "latencyMs": 22.300000071525574,
+            "direction": "right",
+            "from": "a.firewall.tutorial.tile.2.2",
+            "destination": "a.firewall.tutorial.tile.3.2",
+            "plannedCrossing": true,
+            "before": {
+              "combo": 14,
+              "beat": "15 / 27",
+              "status": "现在移动",
+              "feedback": "",
+              "kind": "none",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": [
+                {
+                  "tileId": "a.firewall.tutorial.tile.3.0",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.3.1",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.3.2",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.3.3",
+                  "mark": "→",
+                  "phase": "active"
+                }
+              ]
+            },
+            "after": {
+              "combo": 15,
+              "beat": "15 / 27",
+              "status": "本拍命中",
+              "feedback": "完美闪避",
+              "kind": "dodged",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": [
+                {
+                  "tileId": "a.firewall.tutorial.tile.2.0",
+                  "mark": "→",
+                  "phase": "warning"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.3.0",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.2.1",
+                  "mark": "→",
+                  "phase": "warning"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.3.1",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.2.2",
+                  "mark": "→",
+                  "phase": "warning"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.3.2",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.2.3",
+                  "mark": "→",
+                  "phase": "warning"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.3.3",
+                  "mark": "→",
+                  "phase": "active"
+                }
+              ]
+            }
+          },
+          {
+            "matched": true,
+            "keydownAtMs": 12049.200000047684,
+            "visibleAfterPaintAtMs": 12070.600000023842,
+            "latencyMs": 21.399999976158142,
+            "direction": "up",
+            "from": "a.firewall.tutorial.tile.3.2",
+            "destination": "a.firewall.tutorial.tile.3.1",
+            "plannedCrossing": false,
+            "before": {
+              "combo": 15,
+              "beat": "16 / 27",
+              "status": "现在移动",
+              "feedback": "",
+              "kind": "none",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": [
+                {
+                  "tileId": "a.firewall.tutorial.tile.2.0",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.2.1",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.2.2",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.2.3",
+                  "mark": "→",
+                  "phase": "active"
+                }
+              ]
+            },
+            "after": {
+              "combo": 16,
+              "beat": "16 / 27",
+              "status": "本拍命中",
+              "feedback": "PERFECT",
+              "kind": "perfect",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": [
+                {
+                  "tileId": "a.firewall.tutorial.tile.2.0",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.2.1",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.2.2",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.2.3",
+                  "mark": "→",
+                  "phase": "active"
+                }
+              ]
+            }
+          },
+          {
+            "matched": true,
+            "keydownAtMs": 12596.900000095367,
+            "visibleAfterPaintAtMs": 12620.600000023842,
+            "latencyMs": 23.699999928474426,
+            "direction": "left",
+            "from": "a.firewall.tutorial.tile.3.1",
+            "destination": "a.firewall.tutorial.tile.2.1",
+            "plannedCrossing": false,
+            "before": {
+              "combo": 16,
+              "beat": "17 / 27",
+              "status": "现在移动",
+              "feedback": "",
+              "kind": "none",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": [
+                {
+                  "tileId": "a.firewall.tutorial.tile.1.0",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.1.1",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.1.2",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.1.3",
+                  "mark": "→",
+                  "phase": "active"
+                }
+              ]
+            },
+            "after": {
+              "combo": 17,
+              "beat": "17 / 27",
+              "status": "本拍命中",
+              "feedback": "PERFECT",
+              "kind": "perfect",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": [
+                {
+                  "tileId": "a.firewall.tutorial.tile.1.0",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.1.1",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.1.2",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.1.3",
+                  "mark": "→",
+                  "phase": "active"
+                }
+              ]
+            }
+          },
+          {
+            "matched": true,
+            "keydownAtMs": 13148,
+            "visibleAfterPaintAtMs": 13170.600000023842,
+            "latencyMs": 22.600000023841858,
+            "direction": "down",
+            "from": "a.firewall.tutorial.tile.2.1",
+            "destination": "a.firewall.tutorial.tile.2.2",
+            "plannedCrossing": false,
+            "before": {
+              "combo": 17,
+              "beat": "18 / 27",
+              "status": "现在移动",
+              "feedback": "",
+              "kind": "none",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": [
+                {
+                  "tileId": "a.firewall.tutorial.tile.0.0",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.0.1",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.0.2",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.0.3",
+                  "mark": "→",
+                  "phase": "active"
+                }
+              ]
+            },
+            "after": {
+              "combo": 18,
+              "beat": "18 / 27",
+              "status": "本拍命中",
+              "feedback": "PERFECT",
+              "kind": "perfect",
+              "impactOpacity": 0,
+              "impactDisplay": "block",
+              "impactVisible": false,
+              "marks": [
+                {
+                  "tileId": "a.firewall.tutorial.tile.0.0",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.0.1",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.0.2",
+                  "mark": "→",
+                  "phase": "active"
+                },
+                {
+                  "tileId": "a.firewall.tutorial.tile.0.3",
+                  "mark": "→",
+                  "phase": "active"
+                }
+              ]
+            }
+          }
+        ],
+        "inputLatency": {
+          "samples": 18,
+          "medianMs": 22.600000023841858,
+          "p95Ms": 32.60000002384186,
+          "maxMs": 32.60000002384186
+        }
+      },
+      "bestResults": [
+        {
+          "challengeId": "a.firewall.tutorial",
+          "ruleVersion": 2,
+          "bestCombo": 14
+        },
+        {
+          "challengeId": "a.firewall.tutorial",
+          "ruleVersion": 3,
+          "bestCombo": 18
+        }
+      ],
+      "restoredIdentically": true
+    },
+    "errors": []
+  }
+]

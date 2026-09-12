@@ -10,7 +10,7 @@
       "sourceUrl": "https://raw.githubusercontent.com/notofonts/noto-cjk/165c01b46ea533872e002e0785ff17e44f6d97d8/Sans/SubsetOTF/SC/NotoSansSC-Regular.otf",
       "sourceVersion": "165c01b46ea533872e002e0785ff17e44f6d97d8",
       "sourceSha256": "faa6c9df652116dde789d351359f3d7e5d2285a2b2a1f04a2d7244df706d5ea9",
-      "sha256": "340762aafc27b1d7eb724fa9a5fca8f9af9594fd370f13dbdc9b5bb4ccf3d1c5",
+      "sha256": "fca0c88ef7f274be9e85cbe7ebe2a4fcfc779f119be180c871d6aa94a7e5f167",
       "family": "Noto Sans SC",
       "weights": "400",
       "dimensions": null,
@@ -333,6 +333,7 @@
           20986,
           20987,
           20998,
+          20999,
           21015,
           21017,
           21021,
@@ -1164,8 +1165,8 @@
           65517,
           65518
         ],
-        "glyphCount": 1444,
-        "cmapCount": 1135,
+        "glyphCount": 1445,
+        "cmapCount": 1136,
         "fonttoolsVersion": "4.65.0",
         "brotliVersion": "1.2.0",
         "reservedUnicodeRanges": [
@@ -1314,7 +1315,7 @@
           },
           {
             "path": "src/core/projection.ts",
-            "sha256": "921bc2ac25d84cd21418e826d81ffd3b7d07c2776a061eee56bbef0b026d1014"
+            "sha256": "badaca80c7cfb6df253e5664637d1b6274a58bf4b82a3778f28313492e4933a1"
           },
           {
             "path": "src/core/realtime.ts",
@@ -1374,7 +1375,7 @@
           },
           {
             "path": "src/render/board.ts",
-            "sha256": "542e8edffc9925bed0e031d9ba3a8910ce00fad2bf73633ccd5e0013ef065c49"
+            "sha256": "69514e95beccebfc663bede657c5da1e71fc40eea887127481b8a472d4660d14"
           },
           {
             "path": "src/render/firewall-stage.ts",
@@ -1394,19 +1395,23 @@
           },
           {
             "path": "src/ui/firewall.css",
-            "sha256": "86f9ef5735659bd27fa37dd83dc2b043bd30e38def4aba4b51d0036c8710d3c5"
+            "sha256": "5f57342cd1751ba11bd93c717ece8a548ea4a0be01ad64b25e3a92f210e15391"
           },
           {
             "path": "src/ui/labels.ts",
             "sha256": "84a4dc2595da2ad9d598337af8f599bd48ca6aca9d72cd906eafd5739dc79cd3"
           },
           {
+            "path": "src/ui/menu-navigation.ts",
+            "sha256": "4807ddbf4e3b2081595ce1e9357154cfc82dbcd635039a3de119a893b0c2f13b"
+          },
+          {
             "path": "src/ui/shell.ts",
-            "sha256": "6e788332cac4863f1fa40647b5a4044a166e46a98d45bdeacf4eef9eb5681833"
+            "sha256": "efc0cf8961d0f1fee013678c6637769c9d4dc6127bd52019d32325fff6969d09"
           },
           {
             "path": "src/ui/style.css",
-            "sha256": "ab77806d09fa3cb08dfdc286adab99355ca4569909ad439d10198198d68edb3b"
+            "sha256": "d92aea67808345156a2a083bbf5a25a4e2e729ca53db18a01664433facb9ec84"
           }
         ],
         "requiredCodepoints": [
@@ -1626,6 +1631,7 @@
           20986,
           20987,
           20998,
+          20999,
           21015,
           21017,
           21021,
@@ -2239,9 +2245,9 @@
           65307,
           65311
         ],
-        "coverageSha256": "1a26914b8c7ad7f92d513bf2fdab26658858f36dcd7966ad1b75312917133a71",
-        "outputSha256": "340762aafc27b1d7eb724fa9a5fca8f9af9594fd370f13dbdc9b5bb4ccf3d1c5",
-        "byteLength": 186432
+        "coverageSha256": "f5a13155252ff409935903ca9fae643951c2f4660ee26266f987b7486d706bee",
+        "outputSha256": "fca0c88ef7f274be9e85cbe7ebe2a4fcfc779f119be180c871d6aa94a7e5f167",
+        "byteLength": 186748
       },
       "licenseSha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2"
     },

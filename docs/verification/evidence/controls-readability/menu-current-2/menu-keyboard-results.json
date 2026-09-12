@@ -1,0 +1,1522 @@
+{
+  "startedAt": "2026-09-12T06:30:22.364Z",
+  "browser": "153.0.8010.36",
+  "headless": true,
+  "method": "独立生产构建、新 context；游戏菜单仅真实键盘，文件由原生 filechooser 入口选择。只读 DOM、正常 UI 导出与事件观察；不修改游戏状态，不自动恢复运行期暂停。",
+  "screenshots": [
+    "menu-startup-focus.png"
+  ],
+  "focusAppearance": {
+    "primary": {
+      "id": "",
+      "tag": "BUTTON",
+      "label": "新游戏",
+      "enabled": true,
+      "visible": true,
+      "focusVisible": true,
+      "outlineWidth": "3px",
+      "color": "rgb(33, 33, 34)",
+      "background": "rgb(237, 223, 157)"
+    },
+    "primaryContrast": 11.984023410599043,
+    "hintSize": 14
+  },
+  "success": false,
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n'standard' !== 'low'\n\n    at verifyMenuKeyboard (file:///Users/caoyujie/codes/camellia-golden-week/scripts/browser/menu-keyboard.ts:247:12)\n    at async file:///Users/caoyujie/codes/camellia-golden-week/test-results/controls-readability/run-menu.ts:14:18",
+  "steps": [
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "沙罗黄金周",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "导入存档",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(47, 48, 50)"
+      }
+    },
+    {
+      "key": "ArrowUp",
+      "open": true,
+      "title": "沙罗黄金周",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "新游戏",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(33, 33, 34)",
+        "background": "rgb(237, 223, 157)"
+      }
+    },
+    {
+      "key": "ArrowLeft",
+      "open": true,
+      "title": "沙罗黄金周",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "导入存档",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(45, 45, 49)"
+      }
+    },
+    {
+      "key": "ArrowRight",
+      "open": true,
+      "title": "沙罗黄金周",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "新游戏",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(33, 33, 34)",
+        "background": "rgb(237, 223, 157)"
+      }
+    },
+    {
+      "key": "s",
+      "open": true,
+      "title": "沙罗黄金周",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "导入存档",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(45, 45, 49)"
+      }
+    },
+    {
+      "key": "w",
+      "open": true,
+      "title": "沙罗黄金周",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "新游戏",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(33, 33, 34)",
+        "background": "rgb(237, 223, 157)"
+      }
+    },
+    {
+      "key": "Tab",
+      "open": true,
+      "title": "沙罗黄金周",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "导入存档",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(45, 45, 49)"
+      }
+    },
+    {
+      "key": "Shift+Tab",
+      "open": true,
+      "title": "沙罗黄金周",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "新游戏",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(33, 33, 34)",
+        "background": "rgb(237, 223, 157)"
+      }
+    },
+    {
+      "key": "Escape",
+      "open": true,
+      "title": "沙罗黄金周",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "新游戏",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(33, 33, 34)",
+        "background": "rgb(237, 223, 157)"
+      }
+    },
+    {
+      "key": "Enter",
+      "open": false,
+      "title": "沙罗黄金周",
+      "focused": {
+        "id": "game-canvas",
+        "tag": "CANVAS",
+        "label": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "key": "Escape",
+      "open": true,
+      "title": "探索已暂停",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "继续探索",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(33, 33, 34)",
+        "background": "rgb(237, 223, 157)"
+      }
+    },
+    {
+      "key": "ArrowUp",
+      "open": true,
+      "title": "探索已暂停",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "进度与存档",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(45, 45, 49)"
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "探索已暂停",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "继续探索",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(33, 33, 34)",
+        "background": "rgb(237, 223, 157)"
+      }
+    },
+    {
+      "key": "s",
+      "open": true,
+      "title": "探索已暂停",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "区域图与传送 · M",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(45, 45, 49)"
+      }
+    },
+    {
+      "key": "s",
+      "open": true,
+      "title": "探索已暂停",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "声音与显示",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(45, 45, 49)"
+      }
+    },
+    {
+      "key": " ",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "主音量",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(59, 59, 59)"
+      }
+    },
+    {
+      "key": "ArrowRight",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "主音量",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(59, 59, 59)"
+      }
+    },
+    {
+      "key": "ArrowLeft",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "主音量",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(59, 59, 59)"
+      }
+    },
+    {
+      "key": "w",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "主音量",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(59, 59, 59)"
+      }
+    },
+    {
+      "key": "s",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "主音量",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(59, 59, 59)"
+      }
+    },
+    {
+      "key": "Tab",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "棋盘缩放",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(59, 59, 59)"
+      }
+    },
+    {
+      "key": "ArrowRight",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "棋盘缩放",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(59, 59, 59)"
+      }
+    },
+    {
+      "key": "ArrowLeft",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "棋盘缩放",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(59, 59, 59)"
+      }
+    },
+    {
+      "key": "w",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "棋盘缩放",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(59, 59, 59)"
+      }
+    },
+    {
+      "key": "s",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "棋盘缩放",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(59, 59, 59)"
+      }
+    },
+    {
+      "key": "Tab",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "静音",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "key": " ",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "静音",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "key": " ",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "静音",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "key": "Tab",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "减少闪烁",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "key": " ",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "减少闪烁",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "key": "Tab",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "减少动态效果",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "key": " ",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "减少动态效果",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)"
+      }
+    },
+    {
+      "key": "Tab",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "SELECT",
+        "label": "画质",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(55, 50, 60)"
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "SELECT",
+        "label": "画质",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(55, 50, 60)"
+      }
+    },
+    {
+      "key": "Enter",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "SELECT",
+        "label": "画质",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(55, 50, 60)"
+      }
+    }
+  ],
+  "events": [
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 197.5
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "沙罗黄金周",
+      "time": 197.89999997615814
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "沙罗黄金周",
+      "time": 198.19999992847443
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowUp",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "沙罗黄金周",
+      "time": 245.79999995231628
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 246
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowUp",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 246.19999992847443
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowLeft",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 278.39999997615814
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "沙罗黄金周",
+      "time": 278.6999999284744
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowLeft",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "沙罗黄金周",
+      "time": 279.5
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowRight",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "沙罗黄金周",
+      "time": 311.6999999284744
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 311.89999997615814
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowRight",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 312
+    },
+    {
+      "type": "keydown",
+      "key": "s",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 344.09999990463257
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "沙罗黄金周",
+      "time": 344.2999999523163
+    },
+    {
+      "type": "keyup",
+      "key": "s",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "沙罗黄金周",
+      "time": 344.5
+    },
+    {
+      "type": "keydown",
+      "key": "w",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "沙罗黄金周",
+      "time": 376.59999990463257
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 376.89999997615814
+    },
+    {
+      "type": "keyup",
+      "key": "w",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 377.09999990463257
+    },
+    {
+      "type": "keydown",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 408.2999999523163
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "沙罗黄金周",
+      "time": 408.59999990463257
+    },
+    {
+      "type": "keyup",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "沙罗黄金周",
+      "time": 408.89999997615814
+    },
+    {
+      "type": "keydown",
+      "key": "Shift",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "沙罗黄金周",
+      "time": 439.89999997615814
+    },
+    {
+      "type": "keydown",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "沙罗黄金周",
+      "time": 440.09999990463257
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 440.2999999523163
+    },
+    {
+      "type": "keyup",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 440.5
+    },
+    {
+      "type": "keyup",
+      "key": "Shift",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 440.59999990463257
+    },
+    {
+      "type": "keydown",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 474.09999990463257
+    },
+    {
+      "type": "keyup",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 474.39999997615814
+    },
+    {
+      "type": "keydown",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 638.0999999046326
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "沙罗黄金周",
+      "time": 849.5
+    },
+    {
+      "type": "keyup",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "沙罗黄金周",
+      "time": 876.6999999284744
+    },
+    {
+      "type": "keydown",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "沙罗黄金周",
+      "time": 960.0999999046326
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "DIALOG",
+      "targetLabel": "CAMELLIA / TERMINAL探索已暂停时间已冻结。返回地图后，实时挑战有 3 秒准备倒数。↑ ↓ / W S 选择 · Enter / 空格确认 · Esc 返回 · Tab 切换控件继续探索区域图与传送 · M声音与显示收集记录进度与存档",
+      "title": "探索已暂停",
+      "time": 962
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "继续探索",
+      "title": "探索已暂停",
+      "time": 962
+    },
+    {
+      "type": "keyup",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "继续探索",
+      "title": "探索已暂停",
+      "time": 962.0999999046326
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowUp",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "继续探索",
+      "title": "探索已暂停",
+      "time": 997.7999999523163
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "进度与存档",
+      "title": "探索已暂停",
+      "time": 998
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowUp",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "进度与存档",
+      "title": "探索已暂停",
+      "time": 998.0999999046326
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "进度与存档",
+      "title": "探索已暂停",
+      "time": 1029.3999999761581
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "继续探索",
+      "title": "探索已暂停",
+      "time": 1029.5
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "继续探索",
+      "title": "探索已暂停",
+      "time": 1029.6999999284744
+    },
+    {
+      "type": "keydown",
+      "key": "s",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "继续探索",
+      "title": "探索已暂停",
+      "time": 1062.8999999761581
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "区域图与传送 · M",
+      "title": "探索已暂停",
+      "time": 1063.1999999284744
+    },
+    {
+      "type": "keyup",
+      "key": "s",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "区域图与传送 · M",
+      "title": "探索已暂停",
+      "time": 1063.5
+    },
+    {
+      "type": "keydown",
+      "key": "s",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "区域图与传送 · M",
+      "title": "探索已暂停",
+      "time": 1095
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "声音与显示",
+      "title": "探索已暂停",
+      "time": 1095.2999999523163
+    },
+    {
+      "type": "keyup",
+      "key": "s",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "声音与显示",
+      "title": "探索已暂停",
+      "time": 1095.5
+    },
+    {
+      "type": "keydown",
+      "key": " ",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "声音与显示",
+      "title": "探索已暂停",
+      "time": 1127.6999999284744
+    },
+    {
+      "type": "keyup",
+      "key": " ",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "声音与显示",
+      "title": "探索已暂停",
+      "time": 1128.6999999284744
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1132.5999999046326
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowRight",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1178.7999999523163
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowRight",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1180.5
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowLeft",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1213.5999999046326
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowLeft",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1214.7999999523163
+    },
+    {
+      "type": "keydown",
+      "key": "w",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1245.7999999523163
+    },
+    {
+      "type": "keyup",
+      "key": "w",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1246.1999999284744
+    },
+    {
+      "type": "keydown",
+      "key": "s",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1276.8999999761581
+    },
+    {
+      "type": "keyup",
+      "key": "s",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1277.1999999284744
+    },
+    {
+      "type": "keydown",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1312.2999999523163
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1312.2999999523163
+    },
+    {
+      "type": "keyup",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1312.5999999046326
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowRight",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1347.1999999284744
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowRight",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1348.3999999761581
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowLeft",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1381.2999999523163
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowLeft",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1382.3999999761581
+    },
+    {
+      "type": "keydown",
+      "key": "w",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1414.5999999046326
+    },
+    {
+      "type": "keyup",
+      "key": "w",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1414.7999999523163
+    },
+    {
+      "type": "keydown",
+      "key": "s",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1446.0999999046326
+    },
+    {
+      "type": "keyup",
+      "key": "s",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1446.2999999523163
+    },
+    {
+      "type": "keydown",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1479.5999999046326
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1479.7999999523163
+    },
+    {
+      "type": "keyup",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1480.0999999046326
+    },
+    {
+      "type": "keydown",
+      "key": " ",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1514.2999999523163
+    },
+    {
+      "type": "keyup",
+      "key": " ",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1514.5
+    },
+    {
+      "type": "keydown",
+      "key": " ",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1548.5999999046326
+    },
+    {
+      "type": "keyup",
+      "key": " ",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1548.8999999761581
+    },
+    {
+      "type": "keydown",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1578.7999999523163
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1578.8999999761581
+    },
+    {
+      "type": "keyup",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1579
+    },
+    {
+      "type": "keydown",
+      "key": " ",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1612.7999999523163
+    },
+    {
+      "type": "keyup",
+      "key": " ",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1612.8999999761581
+    },
+    {
+      "type": "keydown",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1644.5
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1644.5999999046326
+    },
+    {
+      "type": "keyup",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1644.7999999523163
+    },
+    {
+      "type": "keydown",
+      "key": " ",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1678.5
+    },
+    {
+      "type": "keyup",
+      "key": " ",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1678.6999999284744
+    },
+    {
+      "type": "keydown",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1711.1999999284744
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "SELECT",
+      "targetLabel": "画质",
+      "title": "声音与显示",
+      "time": 1711.7999999523163
+    },
+    {
+      "type": "keyup",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "SELECT",
+      "targetLabel": "画质",
+      "title": "声音与显示",
+      "time": 1712.0999999046326
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "SELECT",
+      "targetLabel": "画质",
+      "title": "声音与显示",
+      "time": 1743.0999999046326
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "SELECT",
+      "targetLabel": "画质",
+      "title": "声音与显示",
+      "time": 1745.1999999284744
+    },
+    {
+      "type": "keydown",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "SELECT",
+      "targetLabel": "画质",
+      "title": "声音与显示",
+      "time": 1775.3999999761581
+    },
+    {
+      "type": "keyup",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "SELECT",
+      "targetLabel": "画质",
+      "title": "声音与显示",
+      "time": 1775.5
+    }
+  ],
+  "errors": [],
+  "finishedAt": "2026-09-12T06:30:24.258Z"
+}

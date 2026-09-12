@@ -2,7 +2,9 @@
 
 [文档索引](../index.md) · [工程预算](../spec/architecture.md#3-浏览器与运行预算) · [验收总表](acceptance-results.md) · [浏览器与设备](browser-matrix.md) · [视口矩阵](viewport-matrix.md)
 
-2026-09-12 当前[防火墙v3专项](firewall-hazards.md#验证与交付)：本机 Chrome 153.0.8010.36 / headless / 标准画质 / 1920×1080 / DPR1，正式47/57/72 Combo各约42.23秒有效采样，帧间隔中位均约16.7ms、p95为16.7 / 16.7 / 16.7ms；按键至可见反馈p95为26.6 / 27.9 / 28.0ms，所有样本≤33.8ms。具体资源计数、退出释放及原始逐帧记录见[性能摘要](evidence/firewall-hazards/performance-summary.json)。测量使用同源码acceptance包；不替代原M5的60秒与30次往返实测。
+2026-09-12 当前[箭头与菜单修复专项](controls-readability.md#验证与交付)：本机Chrome 153.0.8010.36 / headless / 标准画质 / 1920×1080 / DPR1，三档正常47 / 57 / 72 Combo各约42.23秒有效采样，帧间隔p95 16.7 / 16.7 / 16.7ms；按键至可见反馈p95 26.5 / 27.1 / 27.3ms，全部≤33.3ms。原始帧数组、资源与退出回收见[当前摘要](evidence/controls-readability/performance-summary.json)。这是同源码acceptance包的防火墙专项，没有重跑原V05的60秒密集机关和30次区域往返。
+
+2026-09-12 前次[防火墙v3专项](firewall-hazards.md#验证与交付)：本机 Chrome 153.0.8010.36 / headless / 标准画质 / 1920×1080 / DPR1，正式47/57/72 Combo各约42.23秒有效采样，帧间隔中位均约16.7ms、p95为16.7 / 16.7 / 16.7ms；按键至可见反馈p95为26.6 / 27.9 / 28.0ms，所有样本≤33.8ms。具体资源计数、退出释放及原始逐帧记录见[性能摘要](evidence/firewall-hazards/performance-summary.json)。测量使用同源码acceptance包；不替代原M5的60秒与30次往返实测。
 
 2026-09-12 前次[防火墙 v2 专项](firewall-restoration.md#4-验证与交付)：本机 Chrome 153 / headless / 标准画质 / 1920×1080 / DPR1，三档正常游玩各约 42.23 秒有效采样。帧间隔中位数均约16.7ms、p95最高16.8ms；按键至可见命中反馈p95最高31.1ms、所有样本≤32.4ms。活动态58 draw calls /18几何/9纹理，退出侧屏释放。原始帧数组、方法与条件见[性能摘要](evidence/firewall-restoration/performance-summary.json)及关联浏览器记录；不替代下面原M5的60秒/30次往返实测。
 

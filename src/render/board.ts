@@ -494,6 +494,10 @@ export class BoardRenderer {
           ? { insets: this.viewportInsets }
           : {}),
     });
+    this.labelLayer.style.setProperty(
+      "--firewall-direction-size",
+      `${Math.max(36, Math.min(48, this.layout.targetCss.minimum * 0.3))}px`,
+    );
     if (snapFocus || this.settings?.reducedMotion) {
       this.focus = this.layout.focus;
       this.focusFrom = this.focus;
@@ -675,7 +679,24 @@ export class BoardRenderer {
         .map((tile) => {
           const element = document.createElement("span");
           element.className = board.firewall ? "tile-mark firewall-tile-mark" : "tile-mark";
-          element.textContent = tile.mark;
+          if (board.firewall && tile.hazardDirections?.length) {
+            element.classList.add("firewall-direction-mark");
+            const text = document.createElement("span");
+            text.className = "visually-hidden";
+            text.textContent = tile.mark;
+            element.append(text);
+            for (const direction of tile.hazardDirections) {
+              const arrow = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+              arrow.setAttribute("viewBox", "0 0 24 24");
+              arrow.setAttribute("aria-hidden", "true");
+              arrow.dataset.direction = direction;
+              const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+              path.setAttribute("d", "M3 9H13V4L22 12L13 20V15H3Z");
+              path.setAttribute("fill", "currentColor");
+              arrow.append(path);
+              element.append(arrow);
+            }
+          } else element.textContent = tile.mark;
           element.dataset.tileId = tile.id;
           if (tile.hazardPhase) element.dataset.hazardPhase = tile.hazardPhase;
           this.labelLayer.append(element);
@@ -747,11 +768,18 @@ export class BoardRenderer {
     this.displayedFocus = this.focus;
     this.hasPresented = true;
     for (const { element, tile } of this.labels) {
+      const directionMark = this.board.firewall && tile.hazardDirections?.length;
       this.labelPosition
         .set(
-          tile.x * TELEVISION.stepX + (this.board.firewall ? 0 : 0.27),
+          tile.x * TELEVISION.stepX +
+            (directionMark ? TELEVISION.screenWidth / 2 - 0.015 : this.board.firewall ? 0 : 0.27),
           0.2,
-          tile.y * TELEVISION.stepZ + (this.board.firewall ? -0.02 : 0.2),
+          tile.y * TELEVISION.stepZ +
+            (directionMark
+              ? TELEVISION.screenOffsetZ - TELEVISION.screenDepth / 2 + 0.015
+              : this.board.firewall
+                ? -0.02
+                : 0.2),
         )
         .project(this.camera);
       const x = ((this.labelPosition.x + 1) / 2) * this.layout.canvas.width;

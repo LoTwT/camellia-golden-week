@@ -6,6 +6,15 @@
 
 ## 1. 当前静态交付物
 
+当前包增加[危险格箭头与菜单键盘修复](controls-readability.md)：36–48px实心SVG、预告与活动线型；四方向 / W/S、Enter / 空格、Esc分层返回与焦点恢复。规则仍为v3，26奖励 / 130物资与旧档协议未变。当前专项的原生画质下拉框键盘改值未验证；其余菜单按正常键盘验证，历史62项通过统计不冒充全部新版交互重新通过。
+
+- [完整静态ZIP](evidence/controls-readability/controls-readability-dist.zip)：5,003,888字节；SHA-256 `952a4ca47ceecec450a18ac37c5e625b686b3f10cf60aa684d16d090716f372b`。
+- [产物与逐文件清单](evidence/controls-readability/package.json)：87文件 / 6,379,044字节；48条资源记录，CRC、dist与Chrome验证production字节一致。
+- [固定5174 HTTP复核](evidence/controls-readability/http-audit.json)：共88次200、字节一致。
+- [最终工程检查](evidence/controls-readability/verification.json)：40文件 / 516项、五分期、七项故障回归、防火墙三档47 / 57 / 72、v1/v2旧档迁移和140键菜单流程通过；606个所选实现及测试输入哈希不变。原生select、失败过程及覆盖边界见[专项记录](controls-readability.md#保留的失败与验证边界)。
+
+### 前一轮警报、闪避与v3迁移包（历史）
+
 当前包已完成[警报扣分、方向闪避与v3迁移](firewall-hazards.md)：普通错拍−1、警报接触−5，具名移动警报、有限迎向闪避、受击与减少效果反馈；v1/v2历史成绩和永久进度保留。
 
 - [完整静态ZIP](evidence/firewall-hazards/firewall-hazards-dist.zip)：5,002,112字节；SHA-256 `482f4bba7b8ac33fdcf9dd4dc57cadb88beece79d18256f01afba1308d2531e6`。
@@ -68,7 +77,7 @@ pnpm run preview --host localhost --port 5174 --strictPort --outDir /absolute/pa
 
 ## 3. 工程检查
 
-当前510项及v3实际浏览器结果见[警报修复记录](firewall-hazards.md#验证与交付)。前次484项及v2结果见[防火墙还原记录](firewall-restoration.md)。前次464项测试、五分期和画面周边拍点操作见[拍点补修](firewall-visual-cue.md#原版核对后的画面周边节拍补修)。前次458项和消融结果见[Review修复记录](review-fixes.md#4-完整验证与交付)。以下 npm 日志保留 M5 原交付时的实际执行方式；后续[pnpm 迁移记录](pnpm-migration.md)也保留迁移时点的锁文件和构建等价结论。
+当前516项、菜单与箭头实测见[交互修复记录](controls-readability.md#验证与交付)。前次510项及v3实际浏览器结果见[警报修复记录](firewall-hazards.md#验证与交付)。前次484项及v2结果见[防火墙还原记录](firewall-restoration.md)。前次464项测试、五分期和画面周边拍点操作见[拍点补修](firewall-visual-cue.md#原版核对后的画面周边节拍补修)。前次458项和消融结果见[Review修复记录](review-fixes.md#4-完整验证与交付)。以下 npm 日志保留 M5 原交付时的实际执行方式；后续[pnpm 迁移记录](pnpm-migration.md)也保留迁移时点的锁文件和构建等价结论。
 
 | 命令 / 检查      | 实际结果与原始证据                                                                                                                                                                                                                                                    |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

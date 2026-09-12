@@ -87,6 +87,8 @@ M5 六类外壳在这些样本中约1.18–1.19，已接近原图的横向厚壳
 
 当前防火墙沿用 v2 的 5×4 / 四块 COMBO 电视、连续配乐与同步白光；v3 再补方向警报、独立 −5 受击和 DODGE 反馈，减少闪烁保留文字并关闭红晕。原版扣分、迎向闪避的逐帧依据见[S12](firewall-hazards.md)，本版普通 / 减少效果 / 正式三档画面见[v3修复记录](../verification/firewall-hazards.md)。[v2构图还原](../verification/firewall-restoration.md)以及以下原 M5 帧保留各自时点含义，不代表当前版本仍使用左侧计数框。
 
+后续用户反馈箭头难辨，方向标记已改为电视边缘的粗实心矢量箭头和独立底色，预告 / 活动态同时用虚线 / 实线区分。该可读性补制不是原版已有的同款资产；前后画面、最小尺寸、交汇方向与减少效果的实际检查统一见[箭头与菜单修复](../verification/controls-readability.md)，不回写以上旧帧的视觉结论。
+
 原参考 `AR-A-FIREWALL`：S05 [区域攻略](https://game8.jp/zenless/634710)「防火壁突破」，图片ID `10416126`；[1920×1080原图片](https://img.game8.jp/10416126/90d0be6152e66b41e8d600a6033fe4ae.jpeg/original)，本机调查缓存 `/tmp/camellia-art-reference/s05-12-original.jpg`。原图中央5×4，两侧共四块大型COMBO屏；原时序未证实，本版规则来源见[实时重建记录](maps/realtime.md)。
 
 **主图：[M5核心防火墙活动态](../verification/evidence/m5-firewall-1366-dpr1.jpg)**。画面本次COMBO0、最高0、目标70、余44.2秒；这些是所拍810.6ms活动帧的值，不是失败或通关结论。左侧计数框在该帧有浅黄描边，静态单帧不能证明拍点整个周期和同步音效。

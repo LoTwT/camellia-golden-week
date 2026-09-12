@@ -453,6 +453,24 @@ dialog > button {
   margin-top: 10px;
   text-align: left;
 }
+
+.menu-keyboard-hint {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 12px 0 16px;
+}
+
+dialog button:focus-visible {
+  outline: 3px solid var(--acid);
+  outline-offset: 3px;
+  background: #394138;
+  color: #f3f0e4;
+}
+dialog button.primary:focus-visible {
+  background: var(--acid);
+  color: #212122;
+}
 .dialog-description {
   color: #d5d0d8;
 }

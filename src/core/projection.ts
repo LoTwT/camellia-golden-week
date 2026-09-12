@@ -7,6 +7,7 @@ import {
 } from "./realtime.ts";
 import { firewallFeedback } from "./firewall-feedback.ts";
 import type { FirewallJudgment } from "./firewall-feedback.ts";
+import type { RealtimeDirection } from "./realtime.ts";
 import { gateOpen } from "./progress.ts";
 import { completedStaticExitTileId } from "./static-puzzle.ts";
 import type { GameContent, GameState } from "./types.ts";
@@ -23,6 +24,7 @@ export interface ScreenTile {
   player: boolean;
   visited: boolean;
   hazardPhase?: "active" | "warning";
+  hazardDirections?: readonly RealtimeDirection[];
 }
 export interface BoardProjection {
   id: string;
@@ -352,7 +354,7 @@ export function projectBoard(content: GameContent, state: GameState): BoardProje
               : "",
           player: tile.id === position.tileId,
           visited: false,
-          ...(hazardPhase ? { hazardPhase } : {}),
+          ...(hazardPhase ? { hazardPhase, hazardDirections: approaches } : {}),
         };
       });
   }

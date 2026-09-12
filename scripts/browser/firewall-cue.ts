@@ -156,6 +156,96 @@ async function readVisibleFeedback(page: Page) {
   });
 }
 
+async function assertReadableAlarmDirections(page: Page) {
+  const marks = await page
+    .locator(".firewall-tile-mark[data-hazard-phase]")
+    .evaluateAll((elements) =>
+      elements.map((element) => {
+        const style = getComputedStyle(element);
+        const box = element.getBoundingClientRect();
+        return {
+          tileId: (element as HTMLElement).dataset.tileId,
+          phase: (element as HTMLElement).dataset.hazardPhase,
+          text: element.textContent,
+          background: style.backgroundColor,
+          color: style.color,
+          borderStyle: style.borderStyle,
+          visibility: style.visibility,
+          viewport: { width: innerWidth, height: innerHeight },
+          box: { x: box.x, y: box.y, width: box.width, height: box.height },
+          arrows: [...element.querySelectorAll<SVGSVGElement>("svg")].map((arrow) => {
+            const bounds = arrow.getBoundingClientRect();
+            return {
+              direction: arrow.dataset.direction,
+              rotation: getComputedStyle(arrow).rotate,
+              width: bounds.width,
+              height: bounds.height,
+              path: arrow.querySelector("path")?.getAttribute("d"),
+            };
+          }),
+        };
+      }),
+    );
+  const visible = marks.filter((mark) => mark.visibility === "visible");
+  assert.ok(visible.length > 0, "必须在实际警报出现时检查方向标记");
+  for (const mark of visible) {
+    const directions = { "↑": "up", "→": "right", "↓": "down", "←": "left" } as const;
+    const expectedDirections = [...(mark.text ?? "")]
+      .filter((value): value is keyof typeof directions => value in directions)
+      .map((value) => directions[value]);
+    assert.ok(expectedDirections.length > 0);
+    assert.equal(
+      mark.arrows.length,
+      expectedDirections.length,
+      "方向必须使用粗实心图形，不能依赖细字体箭头",
+    );
+    assert.ok(mark.box.height >= 36, "最小视口中的方向标记至少36 CSS px高");
+    assert.deepEqual(
+      mark.arrows.map((arrow) => arrow.direction),
+      expectedDirections,
+    );
+    assert.ok(
+      mark.box.x >= 0 &&
+        mark.box.y >= 0 &&
+        mark.box.x + mark.box.width <= mark.viewport.width &&
+        mark.box.y + mark.box.height <= mark.viewport.height,
+      "屏幕边缘的方向标记也须完整可见",
+    );
+    for (const arrow of mark.arrows) {
+      assert.ok(arrow.width >= 24 && arrow.height >= 24, "每个方向图形至少24 CSS px");
+      assert.ok(arrow.path, "方向图形必须包含实际路径");
+      assert.equal(
+        arrow.rotation,
+        { up: "-90deg", right: "none", down: "90deg", left: "180deg" }[
+          arrow.direction as RealtimeDirection
+        ],
+      );
+    }
+    assert.notEqual(
+      mark.background,
+      "rgba(0, 0, 0, 0)",
+      "方向须有独立底色，不与玩家或粉红屏混在一起",
+    );
+    const luminance = (color: string) => {
+      const rgb = color
+        .match(/[\d.]+/g)!
+        .slice(0, 3)
+        .map(Number);
+      return rgb.reduce((sum, value, index) => {
+        const channel = value / 255;
+        const linear = channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4;
+        return sum + linear * [0.2126, 0.7152, 0.0722][index]!;
+      }, 0);
+    };
+    const light = luminance(mark.background);
+    const dark = luminance(mark.color);
+    const contrast = (Math.max(light, dark) + 0.05) / (Math.min(light, dark) + 0.05);
+    assert.ok(contrast >= 7, `箭头与独立底色对比度须至少7:1，实测${contrast}`);
+    assert.equal(mark.borderStyle, mark.phase === "warning" ? "dashed" : "solid");
+  }
+  return visible;
+}
+
 async function inspect(page: Page): Promise<FirewallInspection> {
   return page.evaluate(() => {
     const observer = Reflect.get(window, "__CAMELLIA_INSPECT__") as {
@@ -373,7 +463,7 @@ async function openFirewallFromNewGame(page: Page, reduced: boolean): Promise<vo
   await page.getByRole("checkbox", { name: "静音", exact: true }).setChecked(reduced);
   for (const name of ["减少闪烁", "减少动态效果"])
     await page.getByRole("checkbox", { name, exact: true }).setChecked(reduced);
-  await page.keyboard.press("Escape");
+  await page.getByRole("button", { name: "继续探索", exact: true }).click();
   await waitForGameReady(page);
   for (const key of [
     "ArrowRight",
@@ -663,6 +753,7 @@ async function observeAlarmRecovery(
       Number(document.querySelector("#firewall-combo-value")?.textContent) === 1,
   );
   const hit = await readVisibleFeedback(page);
+  const directionCues = await assertReadableAlarmDirections(page);
   assert.match(hit.feedback, /警报命中.*−5/);
   assert.equal(hit.combo, before.combo - 5);
   assert.ok(
@@ -775,6 +866,7 @@ async function observeAlarmRecovery(
     warmup,
     before,
     hit,
+    directionCues,
     inspectedHit,
     stationary,
     pause,
@@ -821,6 +913,38 @@ async function readAndAssertLayout(page: Page) {
   assert.equal(layout.field.height, layout.viewport.height);
   assert.deepEqual(layout.canvas, layout.field, "电视舞台使用完整画布");
   return layout;
+}
+
+async function observeAlarmDirectionLayout(page: Page, outputDir: string, id: string) {
+  await pressGameKey(page, "f");
+  await startFirewall(page, "core");
+  await page.waitForFunction(() =>
+    [...document.querySelectorAll<HTMLElement>(".firewall-tile-mark")].some(
+      (element) => element.dataset.hazardPhase === "warning",
+    ),
+  );
+  const warning = await assertReadableAlarmDirections(page);
+  assert.ok(warning.some((mark) => mark.phase === "warning"));
+  await page.waitForFunction(() =>
+    [...document.querySelectorAll<HTMLElement>(".firewall-tile-mark")].some(
+      (element) => element.querySelectorAll("svg").length > 1,
+    ),
+  );
+  const intersection = await assertReadableAlarmDirections(page);
+  assert.ok(
+    intersection.some((mark) => mark.arrows.length > 1),
+    "交汇警报不得丢失第二个方向",
+  );
+  await page.screenshot({ path: join(outputDir, `${id}-alarm-directions.png`), fullPage: true });
+  await page.keyboard.press("Escape");
+  await page.getByRole("button", { name: "放弃本次尝试，返回入口", exact: true }).click();
+  await waitForGameReady(page);
+  return {
+    method:
+      "正常进入核心挑战，仅观察自然出现的预告和交汇警报，再经暂停菜单退出；没有改写游戏状态。",
+    warning,
+    intersection,
+  };
 }
 
 async function verifyCompletedFirewallPersistence(page: Page, outputDir: string, id: string) {
@@ -1117,6 +1241,7 @@ export async function verifyFirewallCue(options: {
         reduced,
         acceptance,
       });
+      const alarmDirections = await observeAlarmDirectionLayout(page, options.outputDir, id);
       const formal = [];
       if (acceptance) {
         assert.equal((await inspect(page)).audio.music, null, "离开挑战后停止配乐");
@@ -1261,6 +1386,7 @@ export async function verifyFirewallCue(options: {
         ...tutorial,
         tutorialMiss,
         hazards,
+        alarmDirections,
         pause,
         layout,
         stage,

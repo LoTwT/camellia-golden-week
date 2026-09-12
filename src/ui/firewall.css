@@ -241,6 +241,43 @@
   -webkit-text-stroke: 0.5px #21182a;
   text-shadow: 1px 2px #181220;
 }
+.firewall-direction-mark {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  height: var(--firewall-direction-size, 36px);
+  padding: 3px;
+  margin: 0;
+  translate: -100% -30%;
+  border: 2px solid #201425;
+  border-radius: 5px;
+  color: #201425;
+  background: #fff0ca;
+  box-shadow: 0 2px 0 #201425;
+  -webkit-text-stroke: 0;
+  text-shadow: none;
+}
+.firewall-direction-mark[data-hazard-phase="warning"] {
+  border-style: dashed;
+  border-color: #fff0ca;
+  color: #fff0ca;
+  background: #201425;
+}
+.firewall-direction-mark svg {
+  display: block;
+  flex: none;
+  width: calc(var(--firewall-direction-size, 36px) - 10px);
+  height: calc(var(--firewall-direction-size, 36px) - 10px);
+}
+.firewall-direction-mark [data-direction="up"] {
+  rotate: -90deg;
+}
+.firewall-direction-mark [data-direction="down"] {
+  rotate: 90deg;
+}
+.firewall-direction-mark [data-direction="left"] {
+  rotate: 180deg;
+}
 .game-shell[data-challenge="firewall"] .audio-prompt {
   bottom: 11%;
   left: 3%;

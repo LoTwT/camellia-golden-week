@@ -44,6 +44,52 @@ const definition: DirectionalFirewallDefinition = {
   },
 };
 
+test("交汇警报投影保留每个来向且同向去重，减少效果不移除方向", () => {
+  const crossing: DirectionalFirewallDefinition = {
+    ...definition,
+    rules: {
+      ...definition.rules,
+      alarms: [
+        definition.rules.alarms[0]!,
+        { ...definition.rules.alarms[0]!, id: "second-from-above" },
+        { ...definition.rules.alarms[0]!, id: "from-right", approachFrom: "right" },
+      ],
+    },
+  };
+  const content = { ...assembleContent("M1"), realtimeChallenges: [crossing] };
+  for (const reduced of [false, true]) {
+    const state = createGame(content, 0);
+    state.settings = { ...state.settings, reducedFlash: reduced, reducedMotion: reduced };
+    state.activeRealtime = {
+      roomId: crossing.id,
+      returnAnchor: state.playerPosition,
+      practice: true,
+      state: createRealtime(crossing),
+    };
+    state.playerPosition = {
+      space: "room",
+      areaId: "a",
+      boardId: crossing.boardId,
+      tileId: "below",
+    };
+    for (const [time, phase] of [
+      [0, "warning"],
+      [101, "active"],
+    ] as const) {
+      state.clock = { ...state.clock, activeTimeMs: time };
+      const tiles = projectBoard(content, state).tiles;
+      const alarm = tiles.find((tile) => tile.id === "below")!;
+      assert.equal(alarm.hazardPhase, phase);
+      assert.deepEqual(alarm.hazardDirections, ["up", "right"]);
+      assert.equal(alarm.mark, "↑→");
+      assert.match(alarm.label, /来自上 \/ 右/);
+      assert.equal(tiles.find((tile) => tile.id === "above")?.hazardDirections, undefined);
+    }
+    state.clock = { ...state.clock, activeTimeMs: 1200 };
+    assert.ok(projectBoard(content, state).tiles.every((tile) => !tile.hazardDirections));
+  }
+});
+
 test("受击有独立扣分反馈，不被上一拍PERFECT掩盖，显示函数不改变规则状态", () => {
   const active: FirewallState = {
     ...createRealtime(definition),
@@ -132,6 +178,7 @@ test("警报时间推进的受击接入世界事件和四屏投影，永久进�
   };
   const warning = projectBoard(content, state).tiles.find((tile) => tile.id === "below")!;
   assert.equal(warning.mark, "↑");
+  assert.deepEqual(warning.hazardDirections, ["up"]);
   assert.equal(warning.hazardPhase, "warning");
   assert.match(warning.label, /来自上/);
   const result = dispatch(content, state, { kind: "Tick" }, 101);

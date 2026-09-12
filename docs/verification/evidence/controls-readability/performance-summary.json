@@ -1,0 +1,152 @@
+{
+  "scope": "Chrome headless on the accepted local Mac. About 42s of the 45s firewall rounds; not a new 60s dense-board or 30-region-return run.",
+  "build": "acceptance, same runtime sources as production; visible inspection used only to read timing and rendering; all play via normal keyboard/mouse.",
+  "verification": "verification.json",
+  "browserResults": "browser-results.json",
+  "rounds": [
+    {
+      "difficulty": "inner",
+      "bestCombo": 47,
+      "environment": {
+        "browser": "153.0.8010.36",
+        "engine": "chromium",
+        "headless": true,
+        "launchModeSource": "verify-browser.ts uses CAMELLIA_HEADED",
+        "platform": "darwin",
+        "architecture": "arm64",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "devicePixelRatio": 1,
+        "width": 1920,
+        "height": 1080
+      },
+      "frameTiming": {
+        "method": "相邻rAF仅在waiting/ready/hit/judged、无菜单且页面可见并聚焦时纳入；暂停/倒数/菜单/焦点边界重置前帧。",
+        "samples": 2534,
+        "medianMs": 16.69999999999709,
+        "p95Ms": 16.700000000004366,
+        "maxMs": 16.80000000000291,
+        "coverageSeconds": 42.2317,
+        "firstEligibleFrameMs": 18036.5,
+        "lastEligibleFrameMs": 60268.2,
+        "excludedFrames": 0,
+        "stopReason": "natural-settlement"
+      },
+      "inputLatency": {
+        "samples": 47,
+        "medianMs": 23.40000009536743,
+        "p95Ms": 26.5,
+        "maxMs": 27.5
+      },
+      "render": {
+        "calls": 58,
+        "geometries": 18,
+        "textures": 8,
+        "firewallScoreboards": 4
+      },
+      "afterExit": {
+        "calls": 19,
+        "geometries": 10,
+        "textures": 12,
+        "firewallScoreboards": 0
+      },
+      "preparationClockGapRecoveries": 0,
+      "rawEvidence": "firewall-cue-results.json"
+    },
+    {
+      "difficulty": "deep",
+      "bestCombo": 57,
+      "environment": {
+        "browser": "153.0.8010.36",
+        "engine": "chromium",
+        "headless": true,
+        "launchModeSource": "verify-browser.ts uses CAMELLIA_HEADED",
+        "platform": "darwin",
+        "architecture": "arm64",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "devicePixelRatio": 1,
+        "width": 1920,
+        "height": 1080
+      },
+      "frameTiming": {
+        "method": "相邻rAF仅在waiting/ready/hit/judged、无菜单且页面可见并聚焦时纳入；暂停/倒数/菜单/焦点边界重置前帧。",
+        "samples": 2534,
+        "medianMs": 16.69999999999709,
+        "p95Ms": 16.70000000001164,
+        "maxMs": 16.80000000000291,
+        "coverageSeconds": 42.2317,
+        "firstEligibleFrameMs": 70151,
+        "lastEligibleFrameMs": 112382.7,
+        "excludedFrames": 0,
+        "stopReason": "natural-settlement"
+      },
+      "inputLatency": {
+        "samples": 57,
+        "medianMs": 24.199999928474426,
+        "p95Ms": 27.100000023841858,
+        "maxMs": 33.299999952316284
+      },
+      "render": {
+        "calls": 58,
+        "geometries": 18,
+        "textures": 8,
+        "firewallScoreboards": 4
+      },
+      "afterExit": {
+        "calls": 19,
+        "geometries": 10,
+        "textures": 12,
+        "firewallScoreboards": 0
+      },
+      "preparationClockGapRecoveries": 0,
+      "rawEvidence": "firewall-cue-results.json"
+    },
+    {
+      "difficulty": "core",
+      "bestCombo": 72,
+      "environment": {
+        "browser": "153.0.8010.36",
+        "engine": "chromium",
+        "headless": true,
+        "launchModeSource": "verify-browser.ts uses CAMELLIA_HEADED",
+        "platform": "darwin",
+        "architecture": "arm64",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36",
+        "devicePixelRatio": 1,
+        "width": 1920,
+        "height": 1080
+      },
+      "frameTiming": {
+        "method": "相邻rAF仅在waiting/ready/hit/judged、无菜单且页面可见并聚焦时纳入；暂停/倒数/菜单/焦点边界重置前帧。",
+        "samples": 2534,
+        "medianMs": 16.699999999982538,
+        "p95Ms": 16.70000000001164,
+        "maxMs": 16.800000000017462,
+        "coverageSeconds": 42.23170000000001,
+        "firstEligibleFrameMs": 122149,
+        "lastEligibleFrameMs": 164380.7,
+        "excludedFrames": 0,
+        "stopReason": "natural-settlement"
+      },
+      "inputLatency": {
+        "samples": 72,
+        "medianMs": 23.69999998807907,
+        "p95Ms": 27.300000071525574,
+        "maxMs": 32.89999997615814
+      },
+      "render": {
+        "calls": 58,
+        "geometries": 18,
+        "textures": 8,
+        "firewallScoreboards": 4
+      },
+      "afterExit": {
+        "calls": 19,
+        "geometries": 10,
+        "textures": 12,
+        "firewallScoreboards": 0
+      },
+      "preparationClockGapRecoveries": 0,
+      "rawEvidence": "firewall-cue-results.json"
+    }
+  ]
+}

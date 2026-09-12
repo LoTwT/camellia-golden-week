@@ -4,7 +4,7 @@ import { join } from "node:path";
 import { writeFile } from "node:fs/promises";
 import type { Browser, Page } from "playwright";
 import type { ProfileId } from "../../src/core/types.ts";
-import { exportThroughUi, pressGameKey, startNewGame, waitForGameReady } from "./support.ts";
+import { exportThroughUi, pressGameKey, waitForGameReady } from "./support.ts";
 
 const supplyTotals: Record<ProfileId, number> = { M1: 26, M2: 51, M3: 81, M4: 130, M5: 130 };
 
@@ -34,7 +34,9 @@ async function captureBoardPixels(page: Page): Promise<Buffer> {
 
 async function captureSettledBoard(
   page: Page,
-  recoverStartupPause?: (stage: "before-capture" | "after-capture") => Promise<boolean>,
+  recoverStartupPause?: (
+    stage: "after-start" | "before-capture" | "after-capture",
+  ) => Promise<boolean>,
 ): Promise<Buffer> {
   let previous: Buffer | null = null;
   for (let attempt = 0; attempt < 11; attempt += 1) {
@@ -89,7 +91,7 @@ export async function verifyProductionProfile(options: {
     beforeMoveSha256: string | null;
   } = {
     scope:
-      "仅首个方向键之前的启动截图准备允许一次可见 clockGap 正常继续；后续运行不自动恢复。恢复后弃用暂停前后样本，重新取得连续相同的可玩棋盘。",
+      "仅首个方向键之前的新游戏与启动截图准备允许一次可见 clockGap 正常继续；后续运行不自动恢复。恢复后弃用暂停前后样本，重新取得连续相同的可玩棋盘。",
     recoveries: [],
     playableBeforeMove: false,
     beforeMoveSha256: null,
@@ -107,10 +109,9 @@ export async function verifyProductionProfile(options: {
     await page.getByRole("button", { name: "新游戏", exact: true }).waitFor({ state: "visible" });
     assert.match(await page.locator("#game-dialog").innerText(), new RegExp(`${profile} ·`));
     await assertProductionBoundaries(page);
-    await startNewGame(page);
-    assert.equal(await page.locator("#supplies").innerText(), `0 / ${supplyTotals[profile]}`);
-    assert.equal(await page.locator("#amplifier").innerText(), "增幅仪待领取");
-    const beforeMove = await captureSettledBoard(page, async (stage) => {
+    const recoverStartupPause = async (
+      stage: "after-start" | "before-capture" | "after-capture",
+    ) => {
       const observed = await page.evaluate(() => ({
         open: document.querySelector<HTMLDialogElement>("#game-dialog")?.open ?? false,
         heading: document.querySelector("#dialog-title")?.textContent ?? "",
@@ -136,7 +137,17 @@ export async function verifyProductionProfile(options: {
       assert.equal(await page.locator("#supplies").innerText(), `0 / ${supplyTotals[profile]}`);
       assert.equal(await page.locator("#amplifier").innerText(), "增幅仪待领取");
       return true;
-    });
+    };
+    await page.getByRole("button", { name: "新游戏", exact: true }).click();
+    await page.locator("#game-canvas[aria-busy='false']").waitFor({ state: "visible" });
+    await page.evaluate(
+      () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve())),
+    );
+    await recoverStartupPause("after-start");
+    await waitForGameReady(page);
+    assert.equal(await page.locator("#supplies").innerText(), `0 / ${supplyTotals[profile]}`);
+    assert.equal(await page.locator("#amplifier").innerText(), "增幅仪待领取");
+    const beforeMove = await captureSettledBoard(page, recoverStartupPause);
     assert.equal(
       await page.locator("#game-dialog").evaluate((element) => (element as HTMLDialogElement).open),
       false,

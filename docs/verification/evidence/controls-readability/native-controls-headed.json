@@ -1,0 +1,48 @@
+[
+  {
+    "key": "ArrowDown",
+    "focused": true,
+    "active": "SELECT",
+    "value": "standard"
+  },
+  {
+    "key": "Enter",
+    "focused": true,
+    "active": "SELECT",
+    "value": "standard"
+  },
+  {
+    "key": "Space",
+    "focused": true,
+    "active": "SELECT",
+    "value": "standard"
+  },
+  {
+    "key": "ArrowDown",
+    "focused": true,
+    "active": "SELECT",
+    "value": "standard"
+  },
+  {
+    "key": "Enter",
+    "focused": true,
+    "active": "SELECT",
+    "value": "standard"
+  },
+  {
+    "key": "End",
+    "focused": true,
+    "active": "SELECT",
+    "value": "standard"
+  },
+  {
+    "key": "Home",
+    "focused": true,
+    "active": "SELECT",
+    "value": "standard"
+  },
+  {
+    "start": 0,
+    "end": 6
+  }
+]

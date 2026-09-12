@@ -1,0 +1,6592 @@
+{
+  "startedAt": "2026-09-12T06:37:31.285Z",
+  "browser": "153.0.8010.36",
+  "headless": true,
+  "method": "独立生产构建、新 context；游戏菜单仅真实键盘，文件由原生 filechooser 入口选择。只读 DOM、正常 UI 导出与事件观察；不修改游戏状态，不自动恢复运行期暂停。",
+  "screenshots": [
+    "menu-startup-focus.png",
+    "menu-settings-native-controls.png",
+    "menu-map-disabled-skipped.png",
+    "menu-export-text-focus.png",
+    "menu-storage-restored-focus.png",
+    "menu-import-failure-keyboard.png",
+    "menu-import-confirm-focus.png",
+    "menu-challenge-selection.png",
+    "menu-result-selection.png"
+  ],
+  "domBoundaries": {
+    "skipped": [
+      "disabled",
+      "hidden",
+      "display:none",
+      "visibility:hidden",
+      "inert ancestor",
+      "aria-disabled",
+      "tabindex=-1"
+    ],
+    "nativeText": "wasdrz",
+    "nativeTextarea": "first\nwasdrz",
+    "staleFocus": "同一事件内重建两次，仅最终菜单取得焦点；关闭后回到外部入口",
+    "scope": "独立空白页中的真实菜单导航模块 DOM 边界夹具，不含游戏状态或游戏通关证据。"
+  },
+  "focusAppearance": {
+    "primary": {
+      "id": "",
+      "tag": "BUTTON",
+      "label": "新游戏",
+      "enabled": true,
+      "visible": true,
+      "focusVisible": true,
+      "outlineWidth": "3px",
+      "color": "rgb(33, 33, 34)",
+      "background": "rgb(237, 223, 157)",
+      "inViewport": true
+    },
+    "primaryContrast": 11.984023410599043,
+    "hintSize": 14
+  },
+  "nativeSelect": {
+    "afterDown": "standard",
+    "afterUp": "standard",
+    "verified": "Tab 可进入/离开，方向键与 Enter 未被菜单接管；保持原生 SELECT 焦点。",
+    "limitation": "macOS Chrome 153 的 Playwright 原生弹出选单未通过键盘改变选值；在空白原生 HTML、有头/无头与直接 CDP 中同样复现。本项不宣称原生弹出选单选值验证通过。"
+  },
+  "success": false,
+  "error": "locator.waitFor: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('heading', { name: '探索已暂停', exact: true }) to be visible\u001b[22m\n\n    at assertTitle (/Users/caoyujie/codes/camellia-golden-week/scripts/browser/menu-keyboard.ts:162:67)\n    at verifyMenuKeyboard (/Users/caoyujie/codes/camellia-golden-week/scripts/browser/menu-keyboard.ts:494:11)\n    at async file:///Users/caoyujie/codes/camellia-golden-week/test-results/controls-readability/run-menu.ts:14:18",
+  "steps": [
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "沙罗黄金周",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "导入存档",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(45, 45, 49)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowUp",
+      "open": true,
+      "title": "沙罗黄金周",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "新游戏",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(33, 33, 34)",
+        "background": "rgb(237, 223, 157)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowLeft",
+      "open": true,
+      "title": "沙罗黄金周",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "导入存档",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(45, 45, 49)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowRight",
+      "open": true,
+      "title": "沙罗黄金周",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "新游戏",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(33, 33, 34)",
+        "background": "rgb(237, 223, 157)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "s",
+      "open": true,
+      "title": "沙罗黄金周",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "导入存档",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(45, 45, 49)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "w",
+      "open": true,
+      "title": "沙罗黄金周",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "新游戏",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(33, 33, 34)",
+        "background": "rgb(237, 223, 157)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Tab",
+      "open": true,
+      "title": "沙罗黄金周",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "导入存档",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(45, 45, 49)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Shift+Tab",
+      "open": true,
+      "title": "沙罗黄金周",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "新游戏",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(33, 33, 34)",
+        "background": "rgb(237, 223, 157)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Escape",
+      "open": true,
+      "title": "沙罗黄金周",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "新游戏",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(33, 33, 34)",
+        "background": "rgb(237, 223, 157)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Enter",
+      "open": false,
+      "title": "沙罗黄金周",
+      "focused": {
+        "id": "game-canvas",
+        "tag": "CANVAS",
+        "label": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgba(0, 0, 0, 0)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Escape",
+      "open": true,
+      "title": "探索已暂停",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "继续探索",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(33, 33, 34)",
+        "background": "rgb(237, 223, 157)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowUp",
+      "open": true,
+      "title": "探索已暂停",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "进度与存档",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(45, 45, 49)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "探索已暂停",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "继续探索",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(33, 33, 34)",
+        "background": "rgb(237, 223, 157)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "s",
+      "open": true,
+      "title": "探索已暂停",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "区域图与传送 · M",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(45, 45, 49)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "s",
+      "open": true,
+      "title": "探索已暂停",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "声音与显示",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(45, 45, 49)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": " ",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "主音量",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(59, 59, 59)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowRight",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "主音量",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(59, 59, 59)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowLeft",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "主音量",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(59, 59, 59)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "w",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "主音量",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(59, 59, 59)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "s",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "主音量",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(59, 59, 59)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Tab",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "棋盘缩放",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(59, 59, 59)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowRight",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "棋盘缩放",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(59, 59, 59)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowLeft",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "棋盘缩放",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(59, 59, 59)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "w",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "棋盘缩放",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(59, 59, 59)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "s",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "棋盘缩放",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(59, 59, 59)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Tab",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "静音",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": " ",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "静音",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": " ",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "静音",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Tab",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "减少闪烁",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": " ",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "减少闪烁",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Tab",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "减少动态效果",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": " ",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "INPUT",
+        "label": "减少动态效果",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgba(0, 0, 0, 0)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Tab",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "SELECT",
+        "label": "画质",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(55, 50, 60)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "SELECT",
+        "label": "画质",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(55, 50, 60)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Enter",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "SELECT",
+        "label": "画质",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(55, 50, 60)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowUp",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "SELECT",
+        "label": "画质",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(55, 50, 60)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Enter",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "SELECT",
+        "label": "画质",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(255, 255, 255)",
+        "background": "rgb(55, 50, 60)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Tab",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "启用声音",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Control+ArrowDown",
+      "open": true,
+      "title": "声音与显示",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "启用声音",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Escape",
+      "open": false,
+      "title": "探索已暂停",
+      "focused": {
+        "id": "game-canvas",
+        "tag": "CANVAS",
+        "label": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgba(0, 0, 0, 0)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "m",
+      "open": true,
+      "title": "区域图与传送",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "中心区 · 已激活",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "区域图与传送",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "返回暂停菜单",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowUp",
+      "open": true,
+      "title": "区域图与传送",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "中心区 · 已激活",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Escape",
+      "open": false,
+      "title": "区域图与传送",
+      "focused": {
+        "id": "game-canvas",
+        "tag": "CANVAS",
+        "label": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgba(0, 0, 0, 0)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Tab",
+      "open": false,
+      "title": "区域图与传送",
+      "focused": {
+        "id": "collection-button",
+        "tag": "BUTTON",
+        "label": "收集记录 ↗",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(246, 242, 230)",
+        "background": "rgb(45, 45, 49)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Enter",
+      "open": true,
+      "title": "收集记录",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "返回暂停菜单",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Escape",
+      "open": false,
+      "title": "收集记录",
+      "focused": {
+        "id": "collection-button",
+        "tag": "BUTTON",
+        "label": "收集记录 ↗",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(246, 242, 230)",
+        "background": "rgb(45, 45, 49)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Shift+Tab",
+      "open": false,
+      "title": "收集记录",
+      "focused": {
+        "id": "game-canvas",
+        "tag": "CANVAS",
+        "label": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgba(0, 0, 0, 0)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowRight",
+      "open": false,
+      "title": "收集记录",
+      "focused": {
+        "id": "game-canvas",
+        "tag": "CANVAS",
+        "label": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgba(0, 0, 0, 0)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Escape",
+      "open": true,
+      "title": "探索已暂停",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "声音与显示",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "探索已暂停",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "收集记录",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "探索已暂停",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "进度与存档",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "探索已暂停",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "继续探索",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(33, 33, 34)",
+        "background": "rgb(237, 223, 157)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "探索已暂停",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "区域图与传送 · M",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Enter",
+      "open": true,
+      "title": "区域图与传送",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "中心区 · 已激活",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Escape",
+      "open": true,
+      "title": "探索已暂停",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "区域图与传送 · M",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "探索已暂停",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "声音与显示",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "探索已暂停",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "收集记录",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Enter",
+      "open": true,
+      "title": "收集记录",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "返回暂停菜单",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "收集记录",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "继续探索",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(33, 33, 34)",
+        "background": "rgb(237, 223, 157)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Escape",
+      "open": true,
+      "title": "探索已暂停",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "收集记录",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "探索已暂停",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "进度与存档",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Enter",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "导出当前进度",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Enter",
+      "open": true,
+      "title": "导出当前进度",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "下载存档文件",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(33, 33, 34)",
+        "background": "rgb(237, 223, 157)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Tab",
+      "open": true,
+      "title": "导出当前进度",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "返回存档菜单",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Tab",
+      "open": true,
+      "title": "导出当前进度",
+      "focused": {
+        "id": "",
+        "tag": "TEXTAREA",
+        "label": "完整存档文本",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(241, 238, 229)",
+        "background": "rgb(21, 21, 24)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowRight",
+      "open": true,
+      "title": "导出当前进度",
+      "focused": {
+        "id": "",
+        "tag": "TEXTAREA",
+        "label": "完整存档文本",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(241, 238, 229)",
+        "background": "rgb(21, 21, 24)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "导出当前进度",
+      "focused": {
+        "id": "",
+        "tag": "TEXTAREA",
+        "label": "完整存档文本",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(241, 238, 229)",
+        "background": "rgb(21, 21, 24)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "w",
+      "open": true,
+      "title": "导出当前进度",
+      "focused": {
+        "id": "",
+        "tag": "TEXTAREA",
+        "label": "完整存档文本",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(241, 238, 229)",
+        "background": "rgb(21, 21, 24)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "a",
+      "open": true,
+      "title": "导出当前进度",
+      "focused": {
+        "id": "",
+        "tag": "TEXTAREA",
+        "label": "完整存档文本",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(241, 238, 229)",
+        "background": "rgb(21, 21, 24)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "s",
+      "open": true,
+      "title": "导出当前进度",
+      "focused": {
+        "id": "",
+        "tag": "TEXTAREA",
+        "label": "完整存档文本",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(241, 238, 229)",
+        "background": "rgb(21, 21, 24)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "d",
+      "open": true,
+      "title": "导出当前进度",
+      "focused": {
+        "id": "",
+        "tag": "TEXTAREA",
+        "label": "完整存档文本",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(241, 238, 229)",
+        "background": "rgb(21, 21, 24)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "r",
+      "open": true,
+      "title": "导出当前进度",
+      "focused": {
+        "id": "",
+        "tag": "TEXTAREA",
+        "label": "完整存档文本",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(241, 238, 229)",
+        "background": "rgb(21, 21, 24)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "z",
+      "open": true,
+      "title": "导出当前进度",
+      "focused": {
+        "id": "",
+        "tag": "TEXTAREA",
+        "label": "完整存档文本",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(241, 238, 229)",
+        "background": "rgb(21, 21, 24)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Escape",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "导出当前进度",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "导入存档",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "重试保存",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "重新读取本地进度…",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Enter",
+      "open": true,
+      "title": "重新读取本地进度？",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "先导出当前进度",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "重新读取本地进度？",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "确认重新读取",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(33, 33, 34)",
+        "background": "rgb(237, 223, 157)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Escape",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "重新读取本地进度…",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "开始新游戏…",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Enter",
+      "open": true,
+      "title": "替换当前进度？",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "先导出",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Escape",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "开始新游戏…",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "返回暂停菜单",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "继续探索",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(33, 33, 34)",
+        "background": "rgb(237, 223, 157)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "导出当前进度",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "导入存档",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Enter",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "导入存档",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "导入失败",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "返回",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Escape",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "导入存档",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Enter",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "导入存档",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "确认导入进度",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "确认替换",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(33, 33, 34)",
+        "background": "rgb(237, 223, 157)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Escape",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "导入存档",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "重试保存",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "重新读取本地进度…",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "开始新游戏…",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "返回暂停菜单",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "继续探索",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(33, 33, 34)",
+        "background": "rgb(237, 223, 157)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "导出当前进度",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Enter",
+      "open": true,
+      "title": "导出当前进度",
+      "focused": {
+        "id": "",
+        "tag": "TEXTAREA",
+        "label": "完整存档文本",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(241, 238, 229)",
+        "background": "rgb(21, 21, 24)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Escape",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "导出当前进度",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "导入存档",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Enter",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "导入存档",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": " ",
+      "open": false,
+      "title": "确认导入进度",
+      "focused": {
+        "id": "game-canvas",
+        "tag": "CANVAS",
+        "label": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgba(0, 0, 0, 0)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowRight",
+      "open": false,
+      "title": "确认导入进度",
+      "focused": {
+        "id": "game-canvas",
+        "tag": "CANVAS",
+        "label": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgba(0, 0, 0, 0)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowRight",
+      "open": false,
+      "title": "确认导入进度",
+      "focused": {
+        "id": "game-canvas",
+        "tag": "CANVAS",
+        "label": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgba(0, 0, 0, 0)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "r",
+      "open": false,
+      "title": "确认导入进度",
+      "focused": {
+        "id": "game-canvas",
+        "tag": "CANVAS",
+        "label": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgba(0, 0, 0, 0)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowRight",
+      "open": false,
+      "title": "确认导入进度",
+      "focused": {
+        "id": "game-canvas",
+        "tag": "CANVAS",
+        "label": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgba(0, 0, 0, 0)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowRight",
+      "open": false,
+      "title": "确认导入进度",
+      "focused": {
+        "id": "game-canvas",
+        "tag": "CANVAS",
+        "label": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgba(0, 0, 0, 0)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowRight",
+      "open": false,
+      "title": "确认导入进度",
+      "focused": {
+        "id": "game-canvas",
+        "tag": "CANVAS",
+        "label": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgba(0, 0, 0, 0)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "f",
+      "open": false,
+      "title": "确认导入进度",
+      "focused": {
+        "id": "game-canvas",
+        "tag": "CANVAS",
+        "label": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgba(0, 0, 0, 0)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowUp",
+      "open": false,
+      "title": "确认导入进度",
+      "focused": {
+        "id": "game-canvas",
+        "tag": "CANVAS",
+        "label": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgba(0, 0, 0, 0)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowUp",
+      "open": false,
+      "title": "确认导入进度",
+      "focused": {
+        "id": "game-canvas",
+        "tag": "CANVAS",
+        "label": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgba(0, 0, 0, 0)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowUp",
+      "open": false,
+      "title": "确认导入进度",
+      "focused": {
+        "id": "game-canvas",
+        "tag": "CANVAS",
+        "label": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgba(0, 0, 0, 0)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "f",
+      "open": true,
+      "title": "终端挑战",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "教学 · 15 秒 / Combo 12",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "终端挑战",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "内层 · 45 秒 / Combo 40",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowRight",
+      "open": true,
+      "title": "终端挑战",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "深层 · 45 秒 / Combo 55",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "s",
+      "open": true,
+      "title": "终端挑战",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "核心 · 45 秒 / Combo 70",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowLeft",
+      "open": true,
+      "title": "终端挑战",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "深层 · 45 秒 / Combo 55",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "w",
+      "open": true,
+      "title": "终端挑战",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "内层 · 45 秒 / Combo 40",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowUp",
+      "open": true,
+      "title": "终端挑战",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "教学 · 15 秒 / Combo 12",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Escape",
+      "open": false,
+      "title": "终端挑战",
+      "focused": {
+        "id": "game-canvas",
+        "tag": "CANVAS",
+        "label": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgba(0, 0, 0, 0)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "f",
+      "open": true,
+      "title": "终端挑战",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "教学 · 15 秒 / Combo 12",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": " ",
+      "open": false,
+      "title": "终端挑战",
+      "focused": {
+        "id": "game-canvas",
+        "tag": "CANVAS",
+        "label": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgba(0, 0, 0, 0)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "重新尝试",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "返回地图",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowUp",
+      "open": true,
+      "title": "重新尝试",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "再挑战一次",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(33, 33, 34)",
+        "background": "rgb(237, 223, 157)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Escape",
+      "open": false,
+      "title": "重新尝试",
+      "focused": {
+        "id": "game-canvas",
+        "tag": "CANVAS",
+        "label": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgba(0, 0, 0, 0)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Escape",
+      "open": true,
+      "title": "探索已暂停",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "进度与存档",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Enter",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "导入存档",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "重试保存",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "重新读取本地进度…",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "开始新游戏…",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "返回暂停菜单",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "继续探索",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(33, 33, 34)",
+        "background": "rgb(237, 223, 157)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "ArrowDown",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "导出当前进度",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Enter",
+      "open": true,
+      "title": "导出当前进度",
+      "focused": {
+        "id": "",
+        "tag": "TEXTAREA",
+        "label": "完整存档文本",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(241, 238, 229)",
+        "background": "rgb(21, 21, 24)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Escape",
+      "open": true,
+      "title": "进度与存档",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "导出当前进度",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Escape",
+      "open": true,
+      "title": "探索已暂停",
+      "focused": {
+        "id": "",
+        "tag": "BUTTON",
+        "label": "进度与存档",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgb(57, 65, 56)",
+        "inViewport": true
+      }
+    },
+    {
+      "key": "Escape",
+      "open": false,
+      "title": "探索已暂停",
+      "focused": {
+        "id": "game-canvas",
+        "tag": "CANVAS",
+        "label": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+        "enabled": true,
+        "visible": true,
+        "focusVisible": true,
+        "outlineWidth": "3px",
+        "color": "rgb(243, 240, 228)",
+        "background": "rgba(0, 0, 0, 0)",
+        "inViewport": true
+      }
+    }
+  ],
+  "events": [
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 303.7999999523163
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "沙罗黄金周",
+      "time": 304.1999999284744
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "沙罗黄金周",
+      "time": 304.39999997615814
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowUp",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "沙罗黄金周",
+      "time": 339.60000002384186
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 339.89999997615814
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowUp",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 340
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowLeft",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 374.39999997615814
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "沙罗黄金周",
+      "time": 374.6999999284744
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowLeft",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "沙罗黄金周",
+      "time": 374.7999999523163
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowRight",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "沙罗黄金周",
+      "time": 408.89999997615814
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 409.10000002384186
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowRight",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 409.39999997615814
+    },
+    {
+      "type": "keydown",
+      "key": "s",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 442.1999999284744
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "沙罗黄金周",
+      "time": 442.5
+    },
+    {
+      "type": "keyup",
+      "key": "s",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "沙罗黄金周",
+      "time": 442.6999999284744
+    },
+    {
+      "type": "keydown",
+      "key": "w",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "沙罗黄金周",
+      "time": 474.7999999523163
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 475.10000002384186
+    },
+    {
+      "type": "keyup",
+      "key": "w",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 475.1999999284744
+    },
+    {
+      "type": "keydown",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 508.1999999284744
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "沙罗黄金周",
+      "time": 508.60000002384186
+    },
+    {
+      "type": "keyup",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "沙罗黄金周",
+      "time": 508.7999999523163
+    },
+    {
+      "type": "keydown",
+      "key": "Shift",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "沙罗黄金周",
+      "time": 541.6999999284744
+    },
+    {
+      "type": "keydown",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "沙罗黄金周",
+      "time": 542
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 542.1000000238419
+    },
+    {
+      "type": "keyup",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 542.3999999761581
+    },
+    {
+      "type": "keyup",
+      "key": "Shift",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 542.5
+    },
+    {
+      "type": "keydown",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 575.3999999761581
+    },
+    {
+      "type": "keyup",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 575.6999999284744
+    },
+    {
+      "type": "keydown",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "新游戏",
+      "title": "沙罗黄金周",
+      "time": 716.1999999284744
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "沙罗黄金周",
+      "time": 975.1999999284744
+    },
+    {
+      "type": "keyup",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "沙罗黄金周",
+      "time": 1002.1999999284744
+    },
+    {
+      "type": "keydown",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "沙罗黄金周",
+      "time": 1113.6000000238419
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "DIALOG",
+      "targetLabel": "CAMELLIA / TERMINAL探索已暂停时间已冻结。返回地图后，实时挑战有 3 秒准备倒数。↑ ↓ / W S 选择 · Enter / 空格确认 · Esc 返回 · Tab 切换控件继续探索区域图与传送 · M声音与显示收集记录进度与存档",
+      "title": "探索已暂停",
+      "time": 1116.2999999523163
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "继续探索",
+      "title": "探索已暂停",
+      "time": 1116.2999999523163
+    },
+    {
+      "type": "keyup",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "继续探索",
+      "title": "探索已暂停",
+      "time": 1116.7999999523163
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowUp",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "继续探索",
+      "title": "探索已暂停",
+      "time": 1159.5
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "进度与存档",
+      "title": "探索已暂停",
+      "time": 1159.7999999523163
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowUp",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "进度与存档",
+      "title": "探索已暂停",
+      "time": 1160.1000000238419
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "进度与存档",
+      "title": "探索已暂停",
+      "time": 1194.5
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "继续探索",
+      "title": "探索已暂停",
+      "time": 1194.6999999284744
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "继续探索",
+      "title": "探索已暂停",
+      "time": 1195
+    },
+    {
+      "type": "keydown",
+      "key": "s",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "继续探索",
+      "title": "探索已暂停",
+      "time": 1231.6999999284744
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "区域图与传送 · M",
+      "title": "探索已暂停",
+      "time": 1232.1000000238419
+    },
+    {
+      "type": "keyup",
+      "key": "s",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "区域图与传送 · M",
+      "title": "探索已暂停",
+      "time": 1232.6000000238419
+    },
+    {
+      "type": "keydown",
+      "key": "s",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "区域图与传送 · M",
+      "title": "探索已暂停",
+      "time": 1268.7999999523163
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "声音与显示",
+      "title": "探索已暂停",
+      "time": 1269.1000000238419
+    },
+    {
+      "type": "keyup",
+      "key": "s",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "声音与显示",
+      "title": "探索已暂停",
+      "time": 1269.2999999523163
+    },
+    {
+      "type": "keydown",
+      "key": " ",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "声音与显示",
+      "title": "探索已暂停",
+      "time": 1306.8999999761581
+    },
+    {
+      "type": "keyup",
+      "key": " ",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "声音与显示",
+      "title": "探索已暂停",
+      "time": 1307.5
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1311.1999999284744
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowRight",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1360.6999999284744
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowRight",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1363.3999999761581
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowLeft",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1400.1000000238419
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowLeft",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1402.3999999761581
+    },
+    {
+      "type": "keydown",
+      "key": "w",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1436.3999999761581
+    },
+    {
+      "type": "keyup",
+      "key": "w",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1436.6000000238419
+    },
+    {
+      "type": "keydown",
+      "key": "s",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1467.7999999523163
+    },
+    {
+      "type": "keyup",
+      "key": "s",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1468.1999999284744
+    },
+    {
+      "type": "keydown",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1504.6999999284744
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1504.7999999523163
+    },
+    {
+      "type": "keyup",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1505.1000000238419
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowRight",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1542.1999999284744
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowRight",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1543.6000000238419
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowLeft",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1576.5
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowLeft",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1577.6999999284744
+    },
+    {
+      "type": "keydown",
+      "key": "w",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1611.5
+    },
+    {
+      "type": "keyup",
+      "key": "w",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1611.6000000238419
+    },
+    {
+      "type": "keydown",
+      "key": "s",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1641.6999999284744
+    },
+    {
+      "type": "keyup",
+      "key": "s",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1641.8999999761581
+    },
+    {
+      "type": "keydown",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1675.7999999523163
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1676
+    },
+    {
+      "type": "keyup",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1676.1999999284744
+    },
+    {
+      "type": "keydown",
+      "key": " ",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1710.1000000238419
+    },
+    {
+      "type": "keyup",
+      "key": " ",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1710.2999999523163
+    },
+    {
+      "type": "keydown",
+      "key": " ",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1744
+    },
+    {
+      "type": "keyup",
+      "key": " ",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1744.1999999284744
+    },
+    {
+      "type": "keydown",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1776.6999999284744
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1776.7999999523163
+    },
+    {
+      "type": "keyup",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1777
+    },
+    {
+      "type": "keydown",
+      "key": " ",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1812.6000000238419
+    },
+    {
+      "type": "keyup",
+      "key": " ",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1812.7999999523163
+    },
+    {
+      "type": "keydown",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1845.1999999284744
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1845.2999999523163
+    },
+    {
+      "type": "keyup",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1845.6000000238419
+    },
+    {
+      "type": "keydown",
+      "key": " ",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1884.6999999284744
+    },
+    {
+      "type": "keyup",
+      "key": " ",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1885.1999999284744
+    },
+    {
+      "type": "keydown",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "INPUT",
+      "targetLabel": "",
+      "title": "声音与显示",
+      "time": 1918.3999999761581
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "SELECT",
+      "targetLabel": "画质",
+      "title": "声音与显示",
+      "time": 1919.1000000238419
+    },
+    {
+      "type": "keyup",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "SELECT",
+      "targetLabel": "画质",
+      "title": "声音与显示",
+      "time": 1919.6000000238419
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "SELECT",
+      "targetLabel": "画质",
+      "title": "声音与显示",
+      "time": 1956.7999999523163
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "SELECT",
+      "targetLabel": "画质",
+      "title": "声音与显示",
+      "time": 1959
+    },
+    {
+      "type": "keydown",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "SELECT",
+      "targetLabel": "画质",
+      "title": "声音与显示",
+      "time": 1992
+    },
+    {
+      "type": "keyup",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "SELECT",
+      "targetLabel": "画质",
+      "title": "声音与显示",
+      "time": 1992.1000000238419
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowUp",
+      "repeat": false,
+      "prevented": false,
+      "target": "SELECT",
+      "targetLabel": "画质",
+      "title": "声音与显示",
+      "time": 2045.3999999761581
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowUp",
+      "repeat": false,
+      "prevented": false,
+      "target": "SELECT",
+      "targetLabel": "画质",
+      "title": "声音与显示",
+      "time": 2053.100000023842
+    },
+    {
+      "type": "keydown",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "SELECT",
+      "targetLabel": "画质",
+      "title": "声音与显示",
+      "time": 2087.1999999284744
+    },
+    {
+      "type": "keyup",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "SELECT",
+      "targetLabel": "画质",
+      "title": "声音与显示",
+      "time": 2087.899999976158
+    },
+    {
+      "type": "keydown",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "SELECT",
+      "targetLabel": "画质",
+      "title": "声音与显示",
+      "time": 2124.100000023842
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "启用声音",
+      "title": "声音与显示",
+      "time": 2124.2999999523163
+    },
+    {
+      "type": "keyup",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "启用声音",
+      "title": "声音与显示",
+      "time": 2124.5
+    },
+    {
+      "type": "keydown",
+      "key": "Control",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "启用声音",
+      "title": "声音与显示",
+      "time": 2160
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "启用声音",
+      "title": "声音与显示",
+      "time": 2160.2999999523163
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "启用声音",
+      "title": "声音与显示",
+      "time": 2160.5
+    },
+    {
+      "type": "keyup",
+      "key": "Control",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "启用声音",
+      "title": "声音与显示",
+      "time": 2160.6999999284744
+    },
+    {
+      "type": "keydown",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "启用声音",
+      "title": "声音与显示",
+      "time": 2265.2999999523163
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "声音与显示",
+      "title": "探索已暂停",
+      "time": 2266
+    },
+    {
+      "type": "keydown",
+      "key": "Escape",
+      "repeat": true,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "声音与显示",
+      "title": "探索已暂停",
+      "time": 2274.100000023842
+    },
+    {
+      "type": "keyup",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "声音与显示",
+      "title": "探索已暂停",
+      "time": 2278.899999976158
+    },
+    {
+      "type": "keydown",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "声音与显示",
+      "title": "探索已暂停",
+      "time": 2279.899999976158
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "探索已暂停",
+      "time": 2280.899999976158
+    },
+    {
+      "type": "keyup",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "探索已暂停",
+      "time": 2281.2999999523163
+    },
+    {
+      "type": "keydown",
+      "key": "m",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "探索已暂停",
+      "time": 2313.6999999284744
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "DIALOG",
+      "targetLabel": "CAMELLIA / TERMINAL区域图与传送只显示已发现的位置；仅可传送至已激活的入口。↑ ↓ / W S 选择 · Enter / 空格确认 · Esc 返回 · Tab 切换控件中心区 · 已激活仓储区 A · 尚未到达仓储区 B · 尚未到达仓储区 C · 尚未到达仓储区 D · 尚未到达中央仓库 · 尚未到达◎▪▪▪返回暂停菜单继续探索",
+      "title": "区域图与传送",
+      "time": 2315.6999999284744
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "中心区 · 已激活",
+      "title": "区域图与传送",
+      "time": 2315.6999999284744
+    },
+    {
+      "type": "keyup",
+      "key": "m",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "中心区 · 已激活",
+      "title": "区域图与传送",
+      "time": 2316
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "中心区 · 已激活",
+      "title": "区域图与传送",
+      "time": 2512.5
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "返回暂停菜单",
+      "title": "区域图与传送",
+      "time": 2512.600000023842
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "返回暂停菜单",
+      "title": "区域图与传送",
+      "time": 2512.7999999523163
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowUp",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "返回暂停菜单",
+      "title": "区域图与传送",
+      "time": 2544.6999999284744
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "中心区 · 已激活",
+      "title": "区域图与传送",
+      "time": 2544.7999999523163
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowUp",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "中心区 · 已激活",
+      "title": "区域图与传送",
+      "time": 2545
+    },
+    {
+      "type": "keydown",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "中心区 · 已激活",
+      "title": "区域图与传送",
+      "time": 2653.7999999523163
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "区域图与传送",
+      "time": 2654.399999976158
+    },
+    {
+      "type": "keyup",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "区域图与传送",
+      "time": 2654.5
+    },
+    {
+      "type": "keydown",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "区域图与传送",
+      "time": 2690.100000023842
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "收集记录 ↗",
+      "title": "区域图与传送",
+      "time": 2690.399999976158
+    },
+    {
+      "type": "keyup",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "收集记录 ↗",
+      "title": "区域图与传送",
+      "time": 2690.5
+    },
+    {
+      "type": "keydown",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "收集记录 ↗",
+      "title": "区域图与传送",
+      "time": 2724.100000023842
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "DIALOG",
+      "targetLabel": "CAMELLIA / TERMINAL收集记录时间已冻结。返回地图后，实时挑战有 3 秒准备倒数。↑ ↓ / W S 选择 · Enter / 空格确认 · Esc 返回 · Tab 切换控件本版本物资 0 / 130 · 永久奖励不会重复领取。A 区数据 0 / 100 · B 区数据 0 / 100 · C 区数据 0 / 100 · D 区数据 0 / 100○ 未领取 中心 · 增幅仪教学 · 1○ 未领取 A 区 · 记忆迷宫 01 · 5○ 未领取 A 区 · 记忆迷宫 03 · 5○ 未领取 A 区 · 防火墙内层 · 5○ 未领取 A 区 · 防火墙深层 · 5○ 未领取 A 区 · 防火墙核心 · 5○ 未领取 A 区 · 权限回访 · 5○ 未领取 B 区 · 一笔画 01 · 5○ 未领取 B 区 · 一笔画 02 · 5○ 未领取 B 区 · 轻度杀毒 · 5○ 未领取 B 区 · 中度杀毒 · 5○ 未领取 B 区 · 重度杀毒 · 5○ 未领取 B 区 · 权限回访 · 5○ 未领取 C 区 · 组合机关入口支路 · 5○ 未领取 C 区 · 组合机关出口支路 · 5○ 未领取 C 区 · 数据盗取 01 · 5○ 未领取 C 区 · 数据盗取 02 · 5○ 未领取 C 区 · 数据盗取 03 · 5○ 未领取 C 区 · 侧路终端 · 5○ 未领取 D 区 · 权限 01 · 5○ 未领取 D 区 · 权限 02 · 5○ 未领取 D 区 · 权限 03 · 5○ 未领取 D 区 · 权限 04 · 5○ 未领取 D 区 · 隐藏数据支路 · 5○ 未领取 D 区 · 两段幽灵通道 · 5○ 未领取 中央仓库 · 最终结算 · 9返回暂停菜单继续探索",
+      "title": "收集记录",
+      "time": 2727.6999999284744
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "返回暂停菜单",
+      "title": "收集记录",
+      "time": 2727.6999999284744
+    },
+    {
+      "type": "keyup",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "返回暂停菜单",
+      "title": "收集记录",
+      "time": 2727.899999976158
+    },
+    {
+      "type": "keydown",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "返回暂停菜单",
+      "title": "收集记录",
+      "time": 2765.100000023842
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "收集记录 ↗",
+      "title": "收集记录",
+      "time": 2766.1999999284744
+    },
+    {
+      "type": "keyup",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "收集记录 ↗",
+      "title": "收集记录",
+      "time": 2766.399999976158
+    },
+    {
+      "type": "keydown",
+      "key": "Shift",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "收集记录 ↗",
+      "title": "收集记录",
+      "time": 2800
+    },
+    {
+      "type": "keydown",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "收集记录 ↗",
+      "title": "收集记录",
+      "time": 2800.2999999523163
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "收集记录",
+      "time": 2800.399999976158
+    },
+    {
+      "type": "keyup",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "收集记录",
+      "time": 2801.600000023842
+    },
+    {
+      "type": "keyup",
+      "key": "Shift",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "收集记录",
+      "time": 2802.100000023842
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowRight",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "收集记录",
+      "time": 2839.6999999284744
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowRight",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "收集记录",
+      "time": 2842.600000023842
+    },
+    {
+      "type": "keydown",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "收集记录",
+      "time": 3036.7999999523163
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "DIALOG",
+      "targetLabel": "CAMELLIA / TERMINAL探索已暂停时间已冻结。返回地图后，实时挑战有 3 秒准备倒数。↑ ↓ / W S 选择 · Enter / 空格确认 · Esc 返回 · Tab 切换控件继续探索区域图与传送 · M声音与显示收集记录进度与存档",
+      "title": "探索已暂停",
+      "time": 3038.100000023842
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "声音与显示",
+      "title": "探索已暂停",
+      "time": 3038.100000023842
+    },
+    {
+      "type": "keyup",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "声音与显示",
+      "title": "探索已暂停",
+      "time": 3038.399999976158
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "声音与显示",
+      "title": "探索已暂停",
+      "time": 3074.2999999523163
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "收集记录",
+      "title": "探索已暂停",
+      "time": 3074.5
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "收集记录",
+      "title": "探索已暂停",
+      "time": 3074.6999999284744
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "收集记录",
+      "title": "探索已暂停",
+      "time": 3109.7999999523163
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "进度与存档",
+      "title": "探索已暂停",
+      "time": 3110.100000023842
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "进度与存档",
+      "title": "探索已暂停",
+      "time": 3110.2999999523163
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "进度与存档",
+      "title": "探索已暂停",
+      "time": 3144.399999976158
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "继续探索",
+      "title": "探索已暂停",
+      "time": 3144.600000023842
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "继续探索",
+      "title": "探索已暂停",
+      "time": 3144.7999999523163
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "继续探索",
+      "title": "探索已暂停",
+      "time": 3177.600000023842
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "区域图与传送 · M",
+      "title": "探索已暂停",
+      "time": 3177.7999999523163
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "区域图与传送 · M",
+      "title": "探索已暂停",
+      "time": 3178
+    },
+    {
+      "type": "keydown",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "区域图与传送 · M",
+      "title": "探索已暂停",
+      "time": 3210.6999999284744
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "中心区 · 已激活",
+      "title": "区域图与传送",
+      "time": 3211.6999999284744
+    },
+    {
+      "type": "keyup",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "中心区 · 已激活",
+      "title": "区域图与传送",
+      "time": 3212
+    },
+    {
+      "type": "keydown",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "中心区 · 已激活",
+      "title": "区域图与传送",
+      "time": 3249.100000023842
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "区域图与传送 · M",
+      "title": "探索已暂停",
+      "time": 3249.6999999284744
+    },
+    {
+      "type": "keyup",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "区域图与传送 · M",
+      "title": "探索已暂停",
+      "time": 3249.899999976158
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "区域图与传送 · M",
+      "title": "探索已暂停",
+      "time": 3290
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "声音与显示",
+      "title": "探索已暂停",
+      "time": 3290.1999999284744
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "声音与显示",
+      "title": "探索已暂停",
+      "time": 3290.5
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "声音与显示",
+      "title": "探索已暂停",
+      "time": 3323.399999976158
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "收集记录",
+      "title": "探索已暂停",
+      "time": 3323.6999999284744
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "收集记录",
+      "title": "探索已暂停",
+      "time": 3324
+    },
+    {
+      "type": "keydown",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "收集记录",
+      "title": "探索已暂停",
+      "time": 3356.7999999523163
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "返回暂停菜单",
+      "title": "收集记录",
+      "time": 3358
+    },
+    {
+      "type": "keyup",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "返回暂停菜单",
+      "title": "收集记录",
+      "time": 3358.399999976158
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "返回暂停菜单",
+      "title": "收集记录",
+      "time": 3394.1999999284744
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "继续探索",
+      "title": "收集记录",
+      "time": 3394.399999976158
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "继续探索",
+      "title": "收集记录",
+      "time": 3394.5
+    },
+    {
+      "type": "keydown",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "继续探索",
+      "title": "收集记录",
+      "time": 3426.5
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "收集记录",
+      "title": "探索已暂停",
+      "time": 3427.100000023842
+    },
+    {
+      "type": "keyup",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "收集记录",
+      "title": "探索已暂停",
+      "time": 3427.399999976158
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "收集记录",
+      "title": "探索已暂停",
+      "time": 3465.6999999284744
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "进度与存档",
+      "title": "探索已暂停",
+      "time": 3466
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "进度与存档",
+      "title": "探索已暂停",
+      "time": 3466.1999999284744
+    },
+    {
+      "type": "keydown",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "进度与存档",
+      "title": "探索已暂停",
+      "time": 3498.100000023842
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导出当前进度",
+      "title": "进度与存档",
+      "time": 3499.399999976158
+    },
+    {
+      "type": "keyup",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导出当前进度",
+      "title": "进度与存档",
+      "time": 3499.6999999284744
+    },
+    {
+      "type": "keydown",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导出当前进度",
+      "title": "进度与存档",
+      "time": 3543.7999999523163
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "下载存档文件",
+      "title": "导出当前进度",
+      "time": 3547.7999999523163
+    },
+    {
+      "type": "keyup",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "下载存档文件",
+      "title": "导出当前进度",
+      "time": 3548.1999999284744
+    },
+    {
+      "type": "keydown",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "下载存档文件",
+      "title": "导出当前进度",
+      "time": 3587.5
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "返回存档菜单",
+      "title": "导出当前进度",
+      "time": 3587.5
+    },
+    {
+      "type": "keyup",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "返回存档菜单",
+      "title": "导出当前进度",
+      "time": 3587.7999999523163
+    },
+    {
+      "type": "keydown",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "返回存档菜单",
+      "title": "导出当前进度",
+      "time": 3618.5
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "TEXTAREA",
+      "targetLabel": "",
+      "title": "导出当前进度",
+      "time": 3618.899999976158
+    },
+    {
+      "type": "keyup",
+      "key": "Tab",
+      "repeat": false,
+      "prevented": false,
+      "target": "TEXTAREA",
+      "targetLabel": "",
+      "title": "导出当前进度",
+      "time": 3619.399999976158
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowRight",
+      "repeat": false,
+      "prevented": false,
+      "target": "TEXTAREA",
+      "targetLabel": "",
+      "title": "导出当前进度",
+      "time": 3650.5
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowRight",
+      "repeat": false,
+      "prevented": false,
+      "target": "TEXTAREA",
+      "targetLabel": "",
+      "title": "导出当前进度",
+      "time": 3651.899999976158
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "TEXTAREA",
+      "targetLabel": "",
+      "title": "导出当前进度",
+      "time": 3684
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "TEXTAREA",
+      "targetLabel": "",
+      "title": "导出当前进度",
+      "time": 3684.399999976158
+    },
+    {
+      "type": "keydown",
+      "key": "w",
+      "repeat": false,
+      "prevented": false,
+      "target": "TEXTAREA",
+      "targetLabel": "",
+      "title": "导出当前进度",
+      "time": 3715.100000023842
+    },
+    {
+      "type": "keyup",
+      "key": "w",
+      "repeat": false,
+      "prevented": false,
+      "target": "TEXTAREA",
+      "targetLabel": "",
+      "title": "导出当前进度",
+      "time": 3715.2999999523163
+    },
+    {
+      "type": "keydown",
+      "key": "a",
+      "repeat": false,
+      "prevented": false,
+      "target": "TEXTAREA",
+      "targetLabel": "",
+      "title": "导出当前进度",
+      "time": 3744.6999999284744
+    },
+    {
+      "type": "keyup",
+      "key": "a",
+      "repeat": false,
+      "prevented": false,
+      "target": "TEXTAREA",
+      "targetLabel": "",
+      "title": "导出当前进度",
+      "time": 3745
+    },
+    {
+      "type": "keydown",
+      "key": "s",
+      "repeat": false,
+      "prevented": false,
+      "target": "TEXTAREA",
+      "targetLabel": "",
+      "title": "导出当前进度",
+      "time": 3775.6999999284744
+    },
+    {
+      "type": "keyup",
+      "key": "s",
+      "repeat": false,
+      "prevented": false,
+      "target": "TEXTAREA",
+      "targetLabel": "",
+      "title": "导出当前进度",
+      "time": 3776
+    },
+    {
+      "type": "keydown",
+      "key": "d",
+      "repeat": false,
+      "prevented": false,
+      "target": "TEXTAREA",
+      "targetLabel": "",
+      "title": "导出当前进度",
+      "time": 3806.5
+    },
+    {
+      "type": "keyup",
+      "key": "d",
+      "repeat": false,
+      "prevented": false,
+      "target": "TEXTAREA",
+      "targetLabel": "",
+      "title": "导出当前进度",
+      "time": 3806.6999999284744
+    },
+    {
+      "type": "keydown",
+      "key": "r",
+      "repeat": false,
+      "prevented": false,
+      "target": "TEXTAREA",
+      "targetLabel": "",
+      "title": "导出当前进度",
+      "time": 3837.600000023842
+    },
+    {
+      "type": "keyup",
+      "key": "r",
+      "repeat": false,
+      "prevented": false,
+      "target": "TEXTAREA",
+      "targetLabel": "",
+      "title": "导出当前进度",
+      "time": 3837.899999976158
+    },
+    {
+      "type": "keydown",
+      "key": "z",
+      "repeat": false,
+      "prevented": false,
+      "target": "TEXTAREA",
+      "targetLabel": "",
+      "title": "导出当前进度",
+      "time": 3869.600000023842
+    },
+    {
+      "type": "keyup",
+      "key": "z",
+      "repeat": false,
+      "prevented": false,
+      "target": "TEXTAREA",
+      "targetLabel": "",
+      "title": "导出当前进度",
+      "time": 3869.899999976158
+    },
+    {
+      "type": "keydown",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "TEXTAREA",
+      "targetLabel": "",
+      "title": "导出当前进度",
+      "time": 4012.5
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "进度与存档",
+      "time": 4013.600000023842
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "DIALOG",
+      "targetLabel": "CAMELLIA / TERMINAL进度与存档时间已冻结。返回地图后，实时挑战有 3 秒准备倒数。↑ ↓ / W S 选择 · Enter / 空格确认 · Esc 返回 · Tab 切换控件已保存 · 14:37:34存档属于当前浏览器来源 http://127.0.0.1:51558。更换协议、主机或端口会使用另一份存储，可通过导入迁移。导出当前进度导入存档重试保存重新读取本地进度…开始新游戏…返回暂停菜单继续探索",
+      "title": "进度与存档",
+      "time": 4013.6999999284744
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导出当前进度",
+      "title": "进度与存档",
+      "time": 4013.6999999284744
+    },
+    {
+      "type": "keyup",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导出当前进度",
+      "title": "进度与存档",
+      "time": 4014.2999999523163
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导出当前进度",
+      "title": "进度与存档",
+      "time": 4056.5
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "进度与存档",
+      "time": 4056.6999999284744
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "进度与存档",
+      "time": 4056.899999976158
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "进度与存档",
+      "time": 4088.399999976158
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "重试保存",
+      "title": "进度与存档",
+      "time": 4088.6999999284744
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "重试保存",
+      "title": "进度与存档",
+      "time": 4089.399999976158
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "重试保存",
+      "title": "进度与存档",
+      "time": 4121.5
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "重新读取本地进度…",
+      "title": "进度与存档",
+      "time": 4121.600000023842
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "重新读取本地进度…",
+      "title": "进度与存档",
+      "time": 4122
+    },
+    {
+      "type": "keydown",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "重新读取本地进度…",
+      "title": "进度与存档",
+      "time": 4154.399999976158
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "先导出当前进度",
+      "title": "重新读取本地进度？",
+      "time": 4155.299999952316
+    },
+    {
+      "type": "keyup",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "先导出当前进度",
+      "title": "重新读取本地进度？",
+      "time": 4156.100000023842
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "先导出当前进度",
+      "title": "重新读取本地进度？",
+      "time": 4192.699999928474
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "确认重新读取",
+      "title": "重新读取本地进度？",
+      "time": 4192.899999976158
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "确认重新读取",
+      "title": "重新读取本地进度？",
+      "time": 4193.100000023842
+    },
+    {
+      "type": "keydown",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "确认重新读取",
+      "title": "重新读取本地进度？",
+      "time": 4226.5
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "进度与存档",
+      "time": 4227.5
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "DIALOG",
+      "targetLabel": "CAMELLIA / TERMINAL进度与存档时间已冻结。返回地图后，实时挑战有 3 秒准备倒数。↑ ↓ / W S 选择 · Enter / 空格确认 · Esc 返回 · Tab 切换控件已保存 · 14:37:34存档属于当前浏览器来源 http://127.0.0.1:51558。更换协议、主机或端口会使用另一份存储，可通过导入迁移。导出当前进度导入存档重试保存重新读取本地进度…开始新游戏…返回暂停菜单继续探索",
+      "title": "进度与存档",
+      "time": 4227.699999928474
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "重新读取本地进度…",
+      "title": "进度与存档",
+      "time": 4227.699999928474
+    },
+    {
+      "type": "keyup",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "重新读取本地进度…",
+      "title": "进度与存档",
+      "time": 4227.899999976158
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "重新读取本地进度…",
+      "title": "进度与存档",
+      "time": 4265.5
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "开始新游戏…",
+      "title": "进度与存档",
+      "time": 4265.699999928474
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "开始新游戏…",
+      "title": "进度与存档",
+      "time": 4266
+    },
+    {
+      "type": "keydown",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "开始新游戏…",
+      "title": "进度与存档",
+      "time": 4298.5
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "先导出",
+      "title": "替换当前进度？",
+      "time": 4299.5
+    },
+    {
+      "type": "keyup",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "先导出",
+      "title": "替换当前进度？",
+      "time": 4299.799999952316
+    },
+    {
+      "type": "keydown",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "先导出",
+      "title": "替换当前进度？",
+      "time": 4338.299999952316
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "进度与存档",
+      "time": 4339.5
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "DIALOG",
+      "targetLabel": "CAMELLIA / TERMINAL进度与存档时间已冻结。返回地图后，实时挑战有 3 秒准备倒数。↑ ↓ / W S 选择 · Enter / 空格确认 · Esc 返回 · Tab 切换控件已保存 · 14:37:34存档属于当前浏览器来源 http://127.0.0.1:51558。更换协议、主机或端口会使用另一份存储，可通过导入迁移。导出当前进度导入存档重试保存重新读取本地进度…开始新游戏…返回暂停菜单继续探索",
+      "title": "进度与存档",
+      "time": 4339.699999928474
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "开始新游戏…",
+      "title": "进度与存档",
+      "time": 4339.699999928474
+    },
+    {
+      "type": "keyup",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "开始新游戏…",
+      "title": "进度与存档",
+      "time": 4340.299999952316
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "开始新游戏…",
+      "title": "进度与存档",
+      "time": 4510.100000023842
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "返回暂停菜单",
+      "title": "进度与存档",
+      "time": 4510.399999976158
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "返回暂停菜单",
+      "title": "进度与存档",
+      "time": 4510.699999928474
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "返回暂停菜单",
+      "title": "进度与存档",
+      "time": 4543.5
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "继续探索",
+      "title": "进度与存档",
+      "time": 4543.699999928474
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "继续探索",
+      "title": "进度与存档",
+      "time": 4543.799999952316
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "继续探索",
+      "title": "进度与存档",
+      "time": 4582.600000023842
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导出当前进度",
+      "title": "进度与存档",
+      "time": 4582.699999928474
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导出当前进度",
+      "title": "进度与存档",
+      "time": 4582.899999976158
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导出当前进度",
+      "title": "进度与存档",
+      "time": 4614.5
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "进度与存档",
+      "time": 4614.699999928474
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "进度与存档",
+      "time": 4614.899999976158
+    },
+    {
+      "type": "keydown",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "进度与存档",
+      "time": 4647.199999928474
+    },
+    {
+      "type": "keyup",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "进度与存档",
+      "time": 4649.299999952316
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "返回",
+      "title": "导入失败",
+      "time": 4689.299999952316
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "返回",
+      "title": "导入失败",
+      "time": 4695.5
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "返回",
+      "title": "导入失败",
+      "time": 4695.799999952316
+    },
+    {
+      "type": "keydown",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "返回",
+      "title": "导入失败",
+      "time": 4809.699999928474
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "进度与存档",
+      "time": 4810.699999928474
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "DIALOG",
+      "targetLabel": "CAMELLIA / TERMINAL进度与存档时间已冻结。返回地图后，实时挑战有 3 秒准备倒数。↑ ↓ / W S 选择 · Enter / 空格确认 · Esc 返回 · Tab 切换控件已保存 · 14:37:34存档属于当前浏览器来源 http://127.0.0.1:51558。更换协议、主机或端口会使用另一份存储，可通过导入迁移。导出当前进度导入存档重试保存重新读取本地进度…开始新游戏…返回暂停菜单继续探索",
+      "title": "进度与存档",
+      "time": 4810.799999952316
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "进度与存档",
+      "time": 4810.799999952316
+    },
+    {
+      "type": "keyup",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "进度与存档",
+      "time": 4811
+    },
+    {
+      "type": "keydown",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "进度与存档",
+      "time": 4851.600000023842
+    },
+    {
+      "type": "keyup",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "进度与存档",
+      "time": 4851.899999976158
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "先导出当前进度",
+      "title": "确认导入进度",
+      "time": 4891.799999952316
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "先导出当前进度",
+      "title": "确认导入进度",
+      "time": 4897.199999928474
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "确认替换",
+      "title": "确认导入进度",
+      "time": 4897.5
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "确认替换",
+      "title": "确认导入进度",
+      "time": 4897.699999928474
+    },
+    {
+      "type": "keydown",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "确认替换",
+      "title": "确认导入进度",
+      "time": 4928.699999928474
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "进度与存档",
+      "time": 4929.600000023842
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "DIALOG",
+      "targetLabel": "CAMELLIA / TERMINAL进度与存档时间已冻结。返回地图后，实时挑战有 3 秒准备倒数。↑ ↓ / W S 选择 · Enter / 空格确认 · Esc 返回 · Tab 切换控件已保存 · 14:37:34存档属于当前浏览器来源 http://127.0.0.1:51558。更换协议、主机或端口会使用另一份存储，可通过导入迁移。导出当前进度导入存档重试保存重新读取本地进度…开始新游戏…返回暂停菜单继续探索",
+      "title": "进度与存档",
+      "time": 4929.799999952316
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "进度与存档",
+      "time": 4929.799999952316
+    },
+    {
+      "type": "keyup",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "进度与存档",
+      "time": 4930
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "进度与存档",
+      "time": 4967.600000023842
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "重试保存",
+      "title": "进度与存档",
+      "time": 4967.799999952316
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "重试保存",
+      "title": "进度与存档",
+      "time": 4968.299999952316
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "重试保存",
+      "title": "进度与存档",
+      "time": 5001.600000023842
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "重新读取本地进度…",
+      "title": "进度与存档",
+      "time": 5001.899999976158
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "重新读取本地进度…",
+      "title": "进度与存档",
+      "time": 5002
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "重新读取本地进度…",
+      "title": "进度与存档",
+      "time": 5044.899999976158
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "开始新游戏…",
+      "title": "进度与存档",
+      "time": 5045.100000023842
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "开始新游戏…",
+      "title": "进度与存档",
+      "time": 5045.299999952316
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "开始新游戏…",
+      "title": "进度与存档",
+      "time": 5078.299999952316
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "返回暂停菜单",
+      "title": "进度与存档",
+      "time": 5078.5
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "返回暂停菜单",
+      "title": "进度与存档",
+      "time": 5078.600000023842
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "返回暂停菜单",
+      "title": "进度与存档",
+      "time": 5109.899999976158
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "继续探索",
+      "title": "进度与存档",
+      "time": 5110.199999928474
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "继续探索",
+      "title": "进度与存档",
+      "time": 5110.299999952316
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "继续探索",
+      "title": "进度与存档",
+      "time": 5141.399999976158
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导出当前进度",
+      "title": "进度与存档",
+      "time": 5141.600000023842
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导出当前进度",
+      "title": "进度与存档",
+      "time": 5141.699999928474
+    },
+    {
+      "type": "keydown",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导出当前进度",
+      "title": "进度与存档",
+      "time": 5175.199999928474
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "TEXTAREA",
+      "targetLabel": "",
+      "title": "导出当前进度",
+      "time": 5176.399999976158
+    },
+    {
+      "type": "keyup",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "TEXTAREA",
+      "targetLabel": "",
+      "title": "导出当前进度",
+      "time": 5176.699999928474
+    },
+    {
+      "type": "keydown",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "TEXTAREA",
+      "targetLabel": "",
+      "title": "导出当前进度",
+      "time": 5214.600000023842
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "进度与存档",
+      "time": 5215.699999928474
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "DIALOG",
+      "targetLabel": "CAMELLIA / TERMINAL进度与存档时间已冻结。返回地图后，实时挑战有 3 秒准备倒数。↑ ↓ / W S 选择 · Enter / 空格确认 · Esc 返回 · Tab 切换控件已保存 · 14:37:34存档属于当前浏览器来源 http://127.0.0.1:51558。更换协议、主机或端口会使用另一份存储，可通过导入迁移。导出当前进度导入存档重试保存重新读取本地进度…开始新游戏…返回暂停菜单继续探索",
+      "title": "进度与存档",
+      "time": 5215.899999976158
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导出当前进度",
+      "title": "进度与存档",
+      "time": 5215.899999976158
+    },
+    {
+      "type": "keyup",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导出当前进度",
+      "title": "进度与存档",
+      "time": 5216.100000023842
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导出当前进度",
+      "title": "进度与存档",
+      "time": 5248
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "进度与存档",
+      "time": 5248.199999928474
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "进度与存档",
+      "time": 5248.399999976158
+    },
+    {
+      "type": "keydown",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "进度与存档",
+      "time": 5278.199999928474
+    },
+    {
+      "type": "keyup",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "进度与存档",
+      "time": 5278.600000023842
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "确认替换",
+      "title": "确认导入进度",
+      "time": 5314.5
+    },
+    {
+      "type": "keydown",
+      "key": " ",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "确认替换",
+      "title": "确认导入进度",
+      "time": 5404.699999928474
+    },
+    {
+      "type": "keyup",
+      "key": " ",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "确认替换",
+      "title": "确认导入进度",
+      "time": 5406.299999952316
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "确认导入进度",
+      "time": 5408.899999976158
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowRight",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "确认导入进度",
+      "time": 5444.899999976158
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowRight",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "确认导入进度",
+      "time": 5446.799999952316
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowRight",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "确认导入进度",
+      "time": 5637.600000023842
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowRight",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "确认导入进度",
+      "time": 5639.699999928474
+    },
+    {
+      "type": "keydown",
+      "key": "r",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "确认导入进度",
+      "time": 5828.799999952316
+    },
+    {
+      "type": "keyup",
+      "key": "r",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "确认导入进度",
+      "time": 5831.100000023842
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowRight",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "确认导入进度",
+      "time": 6021.299999952316
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowRight",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "确认导入进度",
+      "time": 6023.199999928474
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowRight",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "确认导入进度",
+      "time": 6210.799999952316
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowRight",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "确认导入进度",
+      "time": 6211.899999976158
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowRight",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "确认导入进度",
+      "time": 6402.100000023842
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowRight",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "确认导入进度",
+      "time": 6404.5
+    },
+    {
+      "type": "keydown",
+      "key": "f",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "确认导入进度",
+      "time": 6593
+    },
+    {
+      "type": "keyup",
+      "key": "f",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "确认导入进度",
+      "time": 6595.299999952316
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowUp",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "确认导入进度",
+      "time": 6787.399999976158
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowUp",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "确认导入进度",
+      "time": 6788.899999976158
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowUp",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "确认导入进度",
+      "time": 6979.600000023842
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowUp",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "确认导入进度",
+      "time": 6981.100000023842
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowUp",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "确认导入进度",
+      "time": 7172.5
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowUp",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "确认导入进度",
+      "time": 7174.799999952316
+    },
+    {
+      "type": "keydown",
+      "key": "f",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "确认导入进度",
+      "time": 7366.399999976158
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "DIALOG",
+      "targetLabel": "CAMELLIA / TERMINAL终端挑战跟随音乐与画面周围白光，在拍点移动。普通错拍减 1 连击，触碰警报减 5；朝箭头方向踩拍，迎向警报可完美闪避。警报会移动，停在红格也会受击。两侧电视显示连击，底部文字提示拍点，减少闪烁时可依文字操作。鼠标可点不同格；方向键每次按下移动一次，每拍最多加 1。↑ ↓ / W S 选择 · Enter / 空格确认 · Esc 返回 · Tab 切换控件教学 · 15 秒 / Combo 12内层 · 45 秒 / Combo 40深层 · 45 秒 / Combo 55核心 · 45 秒 / Combo 70返回地图",
+      "title": "终端挑战",
+      "time": 7369.199999928474
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "教学 · 15 秒 / Combo 12",
+      "title": "终端挑战",
+      "time": 7369.199999928474
+    },
+    {
+      "type": "keyup",
+      "key": "f",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "教学 · 15 秒 / Combo 12",
+      "title": "终端挑战",
+      "time": 7370.299999952316
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "教学 · 15 秒 / Combo 12",
+      "title": "终端挑战",
+      "time": 7576.299999952316
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "内层 · 45 秒 / Combo 40",
+      "title": "终端挑战",
+      "time": 7576.299999952316
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "内层 · 45 秒 / Combo 40",
+      "title": "终端挑战",
+      "time": 7576.5
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowRight",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "内层 · 45 秒 / Combo 40",
+      "title": "终端挑战",
+      "time": 7608.199999928474
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "深层 · 45 秒 / Combo 55",
+      "title": "终端挑战",
+      "time": 7608.399999976158
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowRight",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "深层 · 45 秒 / Combo 55",
+      "title": "终端挑战",
+      "time": 7608.600000023842
+    },
+    {
+      "type": "keydown",
+      "key": "s",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "深层 · 45 秒 / Combo 55",
+      "title": "终端挑战",
+      "time": 7640.199999928474
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "核心 · 45 秒 / Combo 70",
+      "title": "终端挑战",
+      "time": 7640.399999976158
+    },
+    {
+      "type": "keyup",
+      "key": "s",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "核心 · 45 秒 / Combo 70",
+      "title": "终端挑战",
+      "time": 7640.5
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowLeft",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "核心 · 45 秒 / Combo 70",
+      "title": "终端挑战",
+      "time": 7671.100000023842
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "深层 · 45 秒 / Combo 55",
+      "title": "终端挑战",
+      "time": 7671.199999928474
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowLeft",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "深层 · 45 秒 / Combo 55",
+      "title": "终端挑战",
+      "time": 7671.399999976158
+    },
+    {
+      "type": "keydown",
+      "key": "w",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "深层 · 45 秒 / Combo 55",
+      "title": "终端挑战",
+      "time": 7703
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "内层 · 45 秒 / Combo 40",
+      "title": "终端挑战",
+      "time": 7703.100000023842
+    },
+    {
+      "type": "keyup",
+      "key": "w",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "内层 · 45 秒 / Combo 40",
+      "title": "终端挑战",
+      "time": 7703.299999952316
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowUp",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "内层 · 45 秒 / Combo 40",
+      "title": "终端挑战",
+      "time": 7735
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "教学 · 15 秒 / Combo 12",
+      "title": "终端挑战",
+      "time": 7735.199999928474
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowUp",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "教学 · 15 秒 / Combo 12",
+      "title": "终端挑战",
+      "time": 7735.399999976158
+    },
+    {
+      "type": "keydown",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "教学 · 15 秒 / Combo 12",
+      "title": "终端挑战",
+      "time": 7858.600000023842
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "终端挑战",
+      "time": 7859.600000023842
+    },
+    {
+      "type": "keyup",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "终端挑战",
+      "time": 7860.100000023842
+    },
+    {
+      "type": "keydown",
+      "key": "f",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "终端挑战",
+      "time": 7900.699999928474
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "DIALOG",
+      "targetLabel": "CAMELLIA / TERMINAL终端挑战跟随音乐与画面周围白光，在拍点移动。普通错拍减 1 连击，触碰警报减 5；朝箭头方向踩拍，迎向警报可完美闪避。警报会移动，停在红格也会受击。两侧电视显示连击，底部文字提示拍点，减少闪烁时可依文字操作。鼠标可点不同格；方向键每次按下移动一次，每拍最多加 1。↑ ↓ / W S 选择 · Enter / 空格确认 · Esc 返回 · Tab 切换控件教学 · 15 秒 / Combo 12内层 · 45 秒 / Combo 40深层 · 45 秒 / Combo 55核心 · 45 秒 / Combo 70返回地图",
+      "title": "终端挑战",
+      "time": 7901.899999976158
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "教学 · 15 秒 / Combo 12",
+      "title": "终端挑战",
+      "time": 7901.899999976158
+    },
+    {
+      "type": "keyup",
+      "key": "f",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "教学 · 15 秒 / Combo 12",
+      "title": "终端挑战",
+      "time": 7902.399999976158
+    },
+    {
+      "type": "keydown",
+      "key": " ",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "教学 · 15 秒 / Combo 12",
+      "title": "终端挑战",
+      "time": 8099.299999952316
+    },
+    {
+      "type": "keyup",
+      "key": " ",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "教学 · 15 秒 / Combo 12",
+      "title": "终端挑战",
+      "time": 8099.600000023842
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "终端挑战",
+      "time": 8128.600000023842
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "DIALOG",
+      "targetLabel": "CAMELLIA / TERMINAL重新尝试本次未达标。永久进度不受影响，可以重新挑战。↑ ↓ / W S 选择 · Enter / 空格确认 · Esc 返回 · Tab 切换控件COMBO 0   /   最高 0 · 目标 12   /   0.0 s再挑战一次返回地图",
+      "title": "重新尝试",
+      "time": 26169.699999928474
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "再挑战一次",
+      "title": "重新尝试",
+      "time": 26169.699999928474
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "再挑战一次",
+      "title": "重新尝试",
+      "time": 26541.299999952316
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "返回地图",
+      "title": "重新尝试",
+      "time": 26541.5
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "返回地图",
+      "title": "重新尝试",
+      "time": 26541.799999952316
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowUp",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "返回地图",
+      "title": "重新尝试",
+      "time": 26575.899999976158
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "再挑战一次",
+      "title": "重新尝试",
+      "time": 26576.100000023842
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowUp",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "再挑战一次",
+      "title": "重新尝试",
+      "time": 26576.199999928474
+    },
+    {
+      "type": "keydown",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "再挑战一次",
+      "title": "重新尝试",
+      "time": 26723.100000023842
+    },
+    {
+      "type": "keyup",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "再挑战一次",
+      "title": "重新尝试",
+      "time": 26729.600000023842
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "重新尝试",
+      "time": 26750.899999976158
+    },
+    {
+      "type": "keydown",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "重新尝试",
+      "time": 26769.100000023842
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "DIALOG",
+      "targetLabel": "CAMELLIA / TERMINAL探索已暂停时间已冻结。返回地图后，实时挑战有 3 秒准备倒数。↑ ↓ / W S 选择 · Enter / 空格确认 · Esc 返回 · Tab 切换控件继续探索区域图与传送 · M声音与显示收集记录进度与存档",
+      "title": "探索已暂停",
+      "time": 26770.699999928474
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "进度与存档",
+      "title": "探索已暂停",
+      "time": 26770.699999928474
+    },
+    {
+      "type": "keyup",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "进度与存档",
+      "title": "探索已暂停",
+      "time": 26771.199999928474
+    },
+    {
+      "type": "keydown",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "进度与存档",
+      "title": "探索已暂停",
+      "time": 26803.799999952316
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "进度与存档",
+      "time": 26804.899999976158
+    },
+    {
+      "type": "keyup",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "进度与存档",
+      "time": 26805.100000023842
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导入存档",
+      "title": "进度与存档",
+      "time": 26837.799999952316
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "重试保存",
+      "title": "进度与存档",
+      "time": 26838
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "重试保存",
+      "title": "进度与存档",
+      "time": 26838.199999928474
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "重试保存",
+      "title": "进度与存档",
+      "time": 26870.699999928474
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "重新读取本地进度…",
+      "title": "进度与存档",
+      "time": 26870.899999976158
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "重新读取本地进度…",
+      "title": "进度与存档",
+      "time": 26871.100000023842
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "重新读取本地进度…",
+      "title": "进度与存档",
+      "time": 26903
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "开始新游戏…",
+      "title": "进度与存档",
+      "time": 26903.199999928474
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "开始新游戏…",
+      "title": "进度与存档",
+      "time": 26903.399999976158
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "开始新游戏…",
+      "title": "进度与存档",
+      "time": 26932.600000023842
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "返回暂停菜单",
+      "title": "进度与存档",
+      "time": 26932.799999952316
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "返回暂停菜单",
+      "title": "进度与存档",
+      "time": 26933.600000023842
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "返回暂停菜单",
+      "title": "进度与存档",
+      "time": 26964.600000023842
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "继续探索",
+      "title": "进度与存档",
+      "time": 26964.699999928474
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "继续探索",
+      "title": "进度与存档",
+      "time": 26964.899999976158
+    },
+    {
+      "type": "keydown",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "继续探索",
+      "title": "进度与存档",
+      "time": 26996.199999928474
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导出当前进度",
+      "title": "进度与存档",
+      "time": 26996.5
+    },
+    {
+      "type": "keyup",
+      "key": "ArrowDown",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导出当前进度",
+      "title": "进度与存档",
+      "time": 26996.600000023842
+    },
+    {
+      "type": "keydown",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导出当前进度",
+      "title": "进度与存档",
+      "time": 27025.899999976158
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "TEXTAREA",
+      "targetLabel": "",
+      "title": "导出当前进度",
+      "time": 27028.199999928474
+    },
+    {
+      "type": "keyup",
+      "key": "Enter",
+      "repeat": false,
+      "prevented": false,
+      "target": "TEXTAREA",
+      "targetLabel": "",
+      "title": "导出当前进度",
+      "time": 27028.5
+    },
+    {
+      "type": "keydown",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "TEXTAREA",
+      "targetLabel": "",
+      "title": "导出当前进度",
+      "time": 27065.600000023842
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "进度与存档",
+      "time": 27066.600000023842
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "DIALOG",
+      "targetLabel": "CAMELLIA / TERMINAL进度与存档时间已冻结。返回地图后，实时挑战有 3 秒准备倒数。↑ ↓ / W S 选择 · Enter / 空格确认 · Esc 返回 · Tab 切换控件已保存 · 14:37:58存档属于当前浏览器来源 http://127.0.0.1:51558。更换协议、主机或端口会使用另一份存储，可通过导入迁移。导出当前进度导入存档重试保存重新读取本地进度…开始新游戏…返回暂停菜单继续探索",
+      "title": "进度与存档",
+      "time": 27066.799999952316
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导出当前进度",
+      "title": "进度与存档",
+      "time": 27066.799999952316
+    },
+    {
+      "type": "keyup",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导出当前进度",
+      "title": "进度与存档",
+      "time": 27067.899999976158
+    },
+    {
+      "type": "keydown",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "导出当前进度",
+      "title": "进度与存档",
+      "time": 27096.799999952316
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "进度与存档",
+      "title": "探索已暂停",
+      "time": 27097.600000023842
+    },
+    {
+      "type": "keyup",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "进度与存档",
+      "title": "探索已暂停",
+      "time": 27097.699999928474
+    },
+    {
+      "type": "keydown",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "BUTTON",
+      "targetLabel": "进度与存档",
+      "title": "探索已暂停",
+      "time": 27130.100000023842
+    },
+    {
+      "type": "focusin",
+      "key": null,
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "探索已暂停",
+      "time": 27130.899999976158
+    },
+    {
+      "type": "keyup",
+      "key": "Escape",
+      "repeat": false,
+      "prevented": false,
+      "target": "CANVAS",
+      "targetLabel": "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+      "title": "探索已暂停",
+      "time": 27131.100000023842
+    }
+  ],
+  "errors": [],
+  "finishedAt": "2026-09-12T06:38:14.178Z"
+}
