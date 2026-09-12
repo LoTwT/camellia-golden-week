@@ -1,6 +1,6 @@
 # M5 静态交付包
 
-R1完整原始证据与静态ZIP改由[Release归档](r1-evidence-archive.md)分发；以下原发布提交与测量记录保留原时点含义，清理后的最新提交见PR提交列表；[清理完整复验](evidence/r1-cleanup-verification.json)确认游戏源码、资源与93文件正式产物字节不变。
+R1完整原始证据与静态ZIP改由[Release归档](r1-evidence-archive.md)分发；以下原发布提交与测量记录保留原时点含义，清理后的最新提交见PR提交列表；[清理完整复验](evidence/r1-cleanup-verification.json)确认游戏源码、资源与93文件正式产物字节不变。 [归档发布回读](evidence/r1-cleanup-publication.json)确认6附件重新下载一致，以及新克隆的冻结安装、682测试与构建通过。
 
 2026-09-12 R1 连续实施已生成并验证当前交付包。当前结果见下节；更早的 M5 / 防火墙 / 菜单包与验证记录保留历史含义，不作为 R1 通过依据。
 
