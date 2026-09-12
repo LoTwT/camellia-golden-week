@@ -1,6 +1,8 @@
 # M3 C 区地图重建与接入验证
 
-[文档索引](../../index.md) · [内容合同](../../spec/content.md) · [C 区规则](../../spec/gameplay.md#8-c-区滑球推车与数据盗取) · [固定静态谜题](static-puzzles.md)
+> 范围注记（2026-09-12）：本文保留已交付重建地图 / 规则的制作与验证历史，不代表 R1 原版还原完成。新目标与待核准项见 [S13](../restoration-audit-2026-09-12.md)及[当前玩法合同](../../spec/gameplay.md)，不得用本文旧见证替代新规则验收。
+
+[文档索引](../../index.md) · [内容合同](../../spec/content.md) · [C 区规则](../../spec/gameplay.md#8-c-区推车捕获与数据盗取) · [固定静态谜题](static-puzzles.md)
 
 本文件记录 C 首访世界地图的制作和接入检查。运行地图以 [c.json](../../../src/content/areas/c.json) 为唯一事实来源，新增效应、来源和 profile 房间登记在 [c-registration.json](../../../src/content/areas/c-registration.json)。全部世界坐标为**本版重建**，不是原活动逐格测绘。四个局部谜题继续使用已有固定定义，没有在本次地图制作中改变球、推车、同色交换或撤销规则。
 

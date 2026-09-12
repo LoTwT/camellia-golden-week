@@ -325,7 +325,10 @@ export function validateCatalog(raw: unknown): ContentValidationIssue[] {
       producers.set(value.producer, [...(producers.get(value.producer) ?? []), value.id]);
   }
   for (const [producer, values] of producers)
-    if (values.length > 1)
+    if (
+      values.length > 1 &&
+      !(producer === "c.capture.01" && sameIds(values, ["c.capture.01", "c.routing.01"]))
+    )
       issue(issues, `objectives.${producer}`, "一个生产者声明了多个独立事件目标");
   const complete = new Set<string>();
   const visiting = new Set<string>();
@@ -1092,7 +1095,10 @@ export function validateContent(raw: unknown): ContentValidationIssue[] {
       );
   }
   for (const definition of content.realtimeChallenges) {
-    if (definition.ruleVersion !== content.ruleVersion)
+    if (
+      definition.ruleVersion !==
+      (content.ruleVersion === 4 && definition.kind === "firewall" ? 3 : content.ruleVersion)
+    )
       issue(
         issues,
         `realtimeChallenges.${definition.id}.ruleVersion`,

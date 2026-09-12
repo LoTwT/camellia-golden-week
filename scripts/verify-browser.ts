@@ -9,11 +9,16 @@ import { verifyProductionProfile } from "./browser/production-profile.ts";
 import { verifyReviewRegressions } from "./browser/review-regressions.ts";
 import { verifyFirewallCue } from "./browser/firewall-cue.ts";
 import { verifyMenuKeyboard } from "./browser/menu-keyboard.ts";
+import { verifyR1Journey } from "./browser/r1-journey.ts";
+import { verifyR1StaticBoundaries } from "./browser/r1-static-boundaries.ts";
+import { verifyR1ProfileUpgrades } from "./browser/r1-profile-upgrades.ts";
+import { verifyR1PlatformBoundaries } from "./browser/r1-platform-boundaries.ts";
+import { verifyR1InputRealtimeBoundaries } from "./browser/r1-input-realtime-boundaries.ts";
 
 const reviewOnly = process.argv.includes("--review-only");
 if (process.argv.slice(2).some((argument) => argument !== "--review-only"))
   throw new Error("唯一可选参数为 --review-only；发布前必须运行不带参数的完整验证。");
-const outputDir = resolve("test-results/review-fixes/pipeline");
+const outputDir = resolve("test-results/r1/pipeline");
 await mkdir(outputDir, { recursive: true });
 const servers: PreviewServer[] = [];
 const browser = await chromium.launch({
@@ -31,9 +36,16 @@ const results: Record<string, unknown> = {
   profileChecks: [],
 };
 
-async function serveBuiltMode(mode: string): Promise<{ url: string; directory: string }> {
-  const directory = join(outputDir, "builds", mode);
-  await build({ mode, build: { outDir: directory, emptyOutDir: true } });
+async function serveBuiltMode(
+  mode: string,
+  inspection = false,
+): Promise<{ url: string; directory: string }> {
+  const directory = join(outputDir, "builds", inspection ? `${mode}-inspection` : mode);
+  await build({
+    mode,
+    ...(inspection ? { define: { "import.meta.env.MODE": JSON.stringify("acceptance") } } : {}),
+    build: { outDir: directory, emptyOutDir: true },
+  });
   const server = await preview({
     mode,
     build: { outDir: directory },
@@ -81,12 +93,65 @@ try {
     acceptanceUrl: acceptance.url,
     outputDir,
   });
+  if (!reviewOnly)
+    results.r1PlatformBoundaries = await verifyR1PlatformBoundaries({
+      browser,
+      url: acceptance.url,
+      alternateUrl: production.url,
+      outputDir,
+    });
+  if (!reviewOnly)
+    results.r1InputRealtimeBoundaries = await verifyR1InputRealtimeBoundaries({
+      browser,
+      url: acceptance.url,
+      outputDir,
+    });
   results.firewallCue = await verifyFirewallCue({
     browser,
     url: production.url,
     acceptanceUrl: acceptance.url,
     outputDir,
   });
+  if (!reviewOnly) {
+    const journeys: unknown[] = [];
+    const observationArtifacts = new Map<string, { url: string; directory: string }>();
+    for (const profile of ["M5", "M1", "M2", "M3"] as const) {
+      // Production clipping is checked above. A separately built observation variant exposes only read-only snapshots.
+      const artifact =
+        profile === "M5" ? acceptance : await serveBuiltMode(profile.toLowerCase(), true);
+      observationArtifacts.set(profile, artifact);
+      journeys.push(
+        await verifyR1Journey({ browser, url: artifact.url, profile, route: "full", outputDir }),
+      );
+    }
+    results.r1Journeys = journeys;
+    results.r1StaticBoundaries = await verifyR1StaticBoundaries({
+      browser,
+      url: acceptance.url,
+      outputDir,
+      sourceSavePath: join(outputDir, "m5-full", "earned-save.json"),
+    });
+    const m4Observation = await serveBuiltMode("m4", true);
+    observationArtifacts.set("M4", m4Observation);
+    results.r1ProfileUpgrades = await verifyR1ProfileUpgrades({
+      browser,
+      urls: {
+        M2: observationArtifacts.get("M2")!.url,
+        M3: observationArtifacts.get("M3")!.url,
+        M4: m4Observation.url,
+      },
+      sourceSavePath: join(outputDir, "m1-full", "earned-save.json"),
+      outputDir,
+    });
+    results.r1M3ToM4Journey = await verifyR1Journey({
+      browser,
+      url: m4Observation.url,
+      profile: "M4",
+      route: "full",
+      outputDir,
+      sourceSavePath: join(outputDir, "m3-full", "earned-save.json"),
+    });
+  }
   results.success = true;
   console.log(
     reviewOnly

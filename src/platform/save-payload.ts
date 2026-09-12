@@ -1,6 +1,7 @@
+import * as historicalStatic from "../content/history/pre-r1/static-puzzle.ts";
 import { createGame, worldPosition } from "../core/engine.ts";
 import { createClock } from "../core/clock.ts";
-import { firewallBeatCount } from "../core/realtime.ts";
+import { firewallBeatCount, antivirusSpawns } from "../core/realtime.ts";
 import {
   createStatic,
   isCompletedStaticPosition,
@@ -14,8 +15,14 @@ import type {
   StaticState,
 } from "../core/static-puzzle.ts";
 import { AREA_LABELS, gateSatisfied } from "../core/progress.ts";
-import { applyMigrationStep, resolveMigrationPlan } from "./migrations.ts";
-import type { MigrationRegistry } from "./migrations.ts";
+import {
+  applyMigrationStep,
+  resolveMigrationPlan,
+  migrationMappingId,
+  mapCompletedLayout,
+  hasCompatibleLayoutMapping,
+} from "./migrations.ts";
+import type { MigrationRegistry, MigrationStep } from "./migrations.ts";
 import type { GameContent, GameState, PlayerPosition, ProgressState } from "../core/types.ts";
 
 export interface StableRoom {
@@ -47,6 +54,7 @@ const PROGRESS_FIELDS = [
   "releaseProfileId",
   "completedObjectiveIds",
   "completedRoomLayouts",
+  "archivedCompletedRoomLayouts",
   "claimedRewardIds",
   "activatedTeleportIds",
   "capabilities",
@@ -129,7 +137,7 @@ export function validatePayload(
     if (!Number.isSafeInteger(raw[field]) || (raw[field] as number) < 1)
       return invalid(`版本字段不合法：${field}`);
   if (
-    (raw.schemaVersion as number) > 2 ||
+    (raw.schemaVersion as number) > 3 ||
     (raw.contentVersion as number) > content.contentVersion ||
     (raw.ruleVersion as number) > content.ruleVersion
   )
@@ -145,7 +153,7 @@ export function validatePayload(
   const sourceStage = Number(profile.id.slice(1));
   if (sourceStage > Number(content.profile.id.slice(1)))
     return { ok: false, kind: "future", error: "此存档来自较新的内容包，不能在当前包覆盖" };
-  if (raw.schemaVersion !== 1 && raw.schemaVersion !== 2) return invalid("不支持此结构版本");
+  if (![1, 2, 3].includes(raw.schemaVersion as number)) return invalid("不支持此结构版本");
   const plan = resolveMigrationPlan(
     {
       profileId: profile.id,
@@ -158,14 +166,24 @@ export function validatePayload(
   if (!plan.ok) return invalid(plan.error);
   const schema = migrateLegacySchema(raw, plan.source);
   if (!schema.ok) return invalid(schema.error);
-  const original = validateSnapshot(schema.value, plan.source, plan.releases);
+  const original = validateSnapshot(
+    schema.value,
+    plan.source,
+    plan.releases,
+    registry?.steps ?? [],
+  );
   if (!original.ok) return original;
   let payload = original.value;
   const migrationNotes: string[] = schema.notes;
   for (const step of plan.steps) {
     const migrated = applyMigrationStep(payload, step);
     if (!migrated.ok) return invalid(migrated.error);
-    const validated = validateSnapshot(migrated.value, step.to, plan.releases);
+    const validated = validateSnapshot(
+      migrated.value,
+      step.to,
+      plan.releases,
+      registry?.steps ?? [],
+    );
     if (!validated.ok) return invalid(`迁移后校验失败：${validated.error}`);
     payload = validated.value;
     migrationNotes.push(...migrated.notes);
@@ -181,7 +199,40 @@ function migrateLegacySchema(
 ):
   | { ok: true; value: Record<string, unknown>; notes: string[]; migrated: boolean }
   | { ok: false; error: string } {
-  if (raw.schemaVersion === 2) return { ok: true, value: raw, notes: [], migrated: false };
+  if (raw.schemaVersion === 3) return { ok: true, value: raw, notes: [], migrated: false };
+  if (source.ruleVersion >= 4)
+    return { ok: false, error: "新版玩法不接受缺少版本化完成记录的旧结构" };
+  if (
+    !exactKeys(raw, [
+      ...PROGRESS_FIELDS.filter(
+        (field) =>
+          field !== "archivedCompletedRoomLayouts" &&
+          (raw.schemaVersion !== 1 || field !== "completedRoomLayouts"),
+      ),
+      "room",
+      "resumeHint",
+    ])
+  )
+    return { ok: false, error: "旧版结构包含未知字段或缺少必需字段" };
+  if (raw.schemaVersion === 2) {
+    if (!object(raw.completedRoomLayouts)) return { ok: false, error: "旧完成布局结构无效" };
+    return {
+      ok: true,
+      value: {
+        ...raw,
+        schemaVersion: 3,
+        completedRoomLayouts: Object.fromEntries(
+          Object.entries(raw.completedRoomLayouts).map(([id, layout]) => [
+            id,
+            { contentVersion: source.contentVersion, ruleVersion: source.ruleVersion, layout },
+          ]),
+        ),
+        archivedCompletedRoomLayouts: [],
+      },
+      notes: ["已为原始完成布局登记来源版本，尚未将旧布局解释为新版玩法。"],
+      migrated: true,
+    };
+  }
   if (
     !(
       (source.profile.id === "M1" && source.contentVersion === 1) ||
@@ -195,7 +246,9 @@ function migrateLegacySchema(
     };
   if (
     !exactKeys(raw, [
-      ...PROGRESS_FIELDS.filter((field) => field !== "completedRoomLayouts"),
+      ...PROGRESS_FIELDS.filter(
+        (field) => field !== "completedRoomLayouts" && field !== "archivedCompletedRoomLayouts",
+      ),
       "room",
       "resumeHint",
     ]) ||
@@ -219,7 +272,17 @@ function migrateLegacySchema(
   }
   return {
     ok: true,
-    value: { ...raw, schemaVersion: 2, completedRoomLayouts },
+    value: {
+      ...raw,
+      schemaVersion: 3,
+      completedRoomLayouts: Object.fromEntries(
+        Object.entries(completedRoomLayouts).map(([id, layout]) => [
+          id,
+          { contentVersion: source.contentVersion, ruleVersion: source.ruleVersion, layout },
+        ]),
+      ),
+      archivedCompletedRoomLayouts: [],
+    },
     migrated: true,
     notes: ["已升级旧版存档：记忆迷宫与一笔画完成后没有可移动物体，已补齐其确定的完成格集合。"],
   };
@@ -229,6 +292,7 @@ function validateSnapshot(
   raw: unknown,
   content: GameContent,
   releases: readonly GameContent[],
+  migrationSteps: readonly MigrationStep[],
 ): PayloadValidation {
   const invalid = (error: string): PayloadValidation => ({ ok: false, kind: "invalid", error });
   if (!object(raw)) return invalid("存档载荷必须是对象");
@@ -236,7 +300,7 @@ function validateSnapshot(
     return invalid("存档缺少必需字段或包含未知字段");
   if (
     raw.gameId !== content.gameId ||
-    raw.schemaVersion !== 2 ||
+    raw.schemaVersion !== 3 ||
     raw.releaseProfileId !== content.profile.id ||
     raw.contentVersion !== content.contentVersion ||
     raw.ruleVersion !== content.ruleVersion
@@ -314,14 +378,16 @@ function validateSnapshot(
       (entry.ruleVersion as number) > (raw.ruleVersion as number)
     )
       return invalid("成绩版本或结构无效");
-    const applicableReleases =
-      entry.ruleVersion === content.ruleVersion
-        ? [content]
-        : releases.filter(
-            (release) =>
-              release.ruleVersion === entry.ruleVersion &&
-              Number(release.profile.id.slice(1)) <= sourceStage,
-          );
+    const applicableReleases = content.realtimeChallenges.some(
+      (definition) =>
+        definition.id === entry.challengeId && definition.ruleVersion === entry.ruleVersion,
+    )
+      ? [content]
+      : releases.filter(
+          (release) =>
+            release.ruleVersion === entry.ruleVersion &&
+            Number(release.profile.id.slice(1)) <= sourceStage,
+        );
     const definition = applicableReleases
       .flatMap((release) => release.realtimeChallenges)
       .find(
@@ -354,12 +420,22 @@ function validateSnapshot(
       (entry.bestCombo !== undefined ||
         typeof entry.bestScore !== "number" ||
         entry.bestScore >
-          definition.rules.spawns.reduce(
-            (sum, spawn) => sum + (spawn.kind === "blue" ? 1 : spawn.kind === "purple" ? 2 : 0),
-            0,
+          Math.min(
+            antivirusSpawns(definition).reduce(
+              (sum, spawn) => sum + (spawn.kind === "blue" ? 1 : spawn.kind === "purple" ? 2 : 0),
+              0,
+            ),
+            definition.ruleVersion === 4
+              ? definition.rules.completionRules.targetScore -
+                  1 +
+                  definition.rules.maxActiveCorruption * 2
+              : Infinity,
           ) ||
         typeof entry.bestStarClear !== "number" ||
-        entry.bestStarClear > definition.rules.spawns.length)
+        entry.bestStarClear >
+          (definition.ruleVersion === 4
+            ? definition.rules.maxActiveCorruption
+            : antivirusSpawns(definition).length))
     )
       return invalid("杀毒成绩超出理论范围");
   }
@@ -414,22 +490,144 @@ function validateSnapshot(
   )
     return invalid("能力与取得目标不一致");
   if (!object(raw.completedRoomLayouts)) return invalid("完成房间布局必须是对象");
-  for (const [roomId, layout] of Object.entries(raw.completedRoomLayouts)) {
+  const validateCompleted = (
+    definition: GameContent["staticChallenges"][number],
+    layout: unknown,
+    ruleVersion: number,
+  ) =>
+    ruleVersion < 4
+      ? historicalStatic.validateCompletedStaticLayout(
+          definition as unknown as historicalStatic.StaticDefinition,
+          layout,
+        )
+      : validateCompletedStaticLayout(definition, layout);
+  if (!Array.isArray(raw.archivedCompletedRoomLayouts)) return invalid("历史完成布局必须是数组");
+  const archiveKeys = new Set<string>();
+  for (const record of raw.archivedCompletedRoomLayouts) {
+    if (
+      !object(record) ||
+      !exactKeys(record, ["roomId", "contentVersion", "ruleVersion", "layout"]) ||
+      typeof record.roomId !== "string" ||
+      !Number.isSafeInteger(record.contentVersion) ||
+      !Number.isSafeInteger(record.ruleVersion) ||
+      (record.ruleVersion as number) > content.ruleVersion ||
+      (record.contentVersion as number) > content.contentVersion
+    )
+      return invalid("历史完成布局版本或结构无效");
+    const archiveKey = `${record.roomId}:${record.contentVersion}:${record.ruleVersion}`;
+    if (archiveKeys.has(archiveKey)) return invalid(`重复或冲突的历史完成布局：${archiveKey}`);
+    archiveKeys.add(archiveKey);
+    const source = releases.find(
+      (release) =>
+        release.contentVersion === record.contentVersion &&
+        release.ruleVersion === record.ruleVersion &&
+        Number(release.profile.id.slice(1)) <= sourceStage &&
+        release.staticChallenges.some((definition) => definition.id === record.roomId),
+    );
+    const room = source?.rooms.find((candidate) => candidate.id === record.roomId);
+    const definition = source?.staticChallenges.find((candidate) => candidate.id === record.roomId);
+    if (!source || !room || !definition || !payload.completedObjectiveIds.includes(room.goal))
+      return invalid(`历史布局缺少已登记来源房间或永久目标：${record.roomId}`);
+    const errors = validateCompleted(definition, record.layout, source.ruleVersion);
+    if (errors.length) return invalid(`历史完成布局 ${record.roomId} 不合法：${errors.join("；")}`);
+  }
+  // Retired room IDs still require a completion proof when their permanent
+  // passage objective survives. Removing a board must not weaken save validation.
+  if (content.ruleVersion >= 4) {
+    for (const release of releases.filter(
+      (item) => item.ruleVersion < 4 && Number(item.profile.id.slice(1)) <= sourceStage,
+    )) {
+      for (const retired of release.rooms.filter((room) =>
+        release.staticChallenges.some((definition) => definition.id === room.id),
+      )) {
+        if (
+          payload.completedObjectiveIds.includes(retired.goal) &&
+          !content.staticChallenges.some((room) => room.id === retired.id) &&
+          !payload.archivedCompletedRoomLayouts.some((archive) => archive.roomId === retired.id) &&
+          !content.rooms.some(
+            (room) =>
+              Object.hasOwn(payload.completedRoomLayouts, room.id) &&
+              content.effects.some(
+                (effect) =>
+                  effect.id === room.effectBundleId &&
+                  effect.completeObjectiveIds.includes(retired.goal),
+              ),
+          )
+        )
+          return invalid(`旧永久完成房间缺少合法归档证明：${retired.id}`);
+      }
+    }
+  }
+  for (const [roomId, record] of Object.entries(raw.completedRoomLayouts)) {
     const room = content.rooms.find((candidate) => candidate.id === roomId);
     const definition = content.staticChallenges.find((candidate) => candidate.id === roomId);
     if (!room || !definition || !payload.completedObjectiveIds.includes(room.goal))
       return invalid(`完成布局缺少对应已完成静态房间：${roomId}`);
-    const errors = validateCompletedStaticLayout(definition, layout);
+    if (
+      !object(record) ||
+      !exactKeys(record, ["contentVersion", "ruleVersion", "layout"], ["source"]) ||
+      record.contentVersion !== content.contentVersion ||
+      record.ruleVersion !== content.ruleVersion
+    )
+      return invalid(`当前完成布局版本不匹配：${roomId}`);
+    if (record.source !== undefined) {
+      if (
+        !object(record.source) ||
+        !exactKeys(record.source, ["contentVersion", "ruleVersion", "mappingId"]) ||
+        typeof record.source.mappingId !== "string" ||
+        !identifier.test(record.source.mappingId) ||
+        !Number.isSafeInteger(record.source.contentVersion) ||
+        !Number.isSafeInteger(record.source.ruleVersion)
+      )
+        return invalid(`完成布局映射来源不合法：${roomId}`);
+      // A mapped record must remain tied to its validated original archive.
+      const mappingSource = record.source;
+      const archive = payload.archivedCompletedRoomLayouts.find(
+        (item) =>
+          item.roomId === roomId &&
+          item.contentVersion === mappingSource.contentVersion &&
+          item.ruleVersion === mappingSource.ruleVersion,
+      );
+      if (!archive) return invalid(`映射完成布局缺少来源归档：${roomId}`);
+      const registered = migrationSteps.find(
+        (step) =>
+          step.from.contentVersion === mappingSource.contentVersion &&
+          step.from.ruleVersion === mappingSource.ruleVersion &&
+          step.to.contentVersion === content.contentVersion &&
+          step.to.ruleVersion === content.ruleVersion &&
+          hasCompatibleLayoutMapping(step, roomId, releases) &&
+          (migrationMappingId(step) === mappingSource.mappingId ||
+            (step.kind === "mapped" &&
+              Object.values(step.mapping.roomLayouts ?? {}).some(
+                (operation) =>
+                  operation.kind === "compatible" &&
+                  operation.targetRoomId === roomId &&
+                  operation.mappingId === mappingSource.mappingId,
+              ))),
+      );
+      if (
+        !registered ||
+        JSON.stringify(
+          mapCompletedLayout(
+            archive.layout as CompletedStaticLayout,
+            registered.kind === "mapped" ? registered.mapping : {},
+          ),
+        ) !== JSON.stringify(record.layout)
+      )
+        return invalid(`完成布局缺少已登记的一一语义映射或与来源不符：${roomId}`);
+    }
+    const errors = validateCompleted(definition, record.layout, content.ruleVersion);
     if (errors.length) return invalid(`完成布局 ${roomId} 不合法：${errors.join("；")}`);
   }
   for (const definition of content.staticChallenges) {
     const room = content.rooms.find((candidate) => candidate.id === definition.id);
     if (
       room &&
-      payload.completedObjectiveIds.includes(room.goal) !==
-        Object.hasOwn(raw.completedRoomLayouts, room.id)
+      payload.completedObjectiveIds.includes(room.goal) &&
+      !Object.hasOwn(raw.completedRoomLayouts, room.id) &&
+      !payload.archivedCompletedRoomLayouts.some((record) => record.roomId === room.id)
     )
-      return invalid(`静态目标与完成布局不一致：${room.id}`);
+      return invalid(`静态目标缺少当前完成布局或合法来源归档：${room.id}`);
   }
   const sourceTile = (id: string) =>
     content.tiles.find((tile) => tile.id === id && tile.includedFrom <= sourceStage);
@@ -580,7 +778,13 @@ function validateSnapshot(
       if (
         !payload.completedObjectiveIds.includes(room.goal) ||
         !completed ||
-        !isCompletedStaticPosition(definition, completed, payload.playerPosition.tileId)
+        !(content.ruleVersion < 4
+          ? historicalStatic.isCompletedStaticPosition(
+              definition as unknown as historicalStatic.StaticDefinition,
+              completed.layout as unknown as historicalStatic.CompletedStaticLayout,
+              payload.playerPosition.tileId,
+            )
+          : isCompletedStaticPosition(definition, completed.layout, payload.playerPosition.tileId))
       )
         return invalid("完成布局访问态缺少永久结果或玩家占格不合法");
     } else {
@@ -590,7 +794,14 @@ function validateSnapshot(
         attemptBaseline: payload.room.attemptBaseline,
         undoStack: [],
       };
-      const errors = validateStaticState(definition, staticState, payload.playerPosition.tileId);
+      const errors =
+        content.ruleVersion < 4
+          ? historicalStatic.validateStaticState(
+              definition as unknown as historicalStatic.StaticDefinition,
+              staticState as unknown as historicalStatic.StaticState,
+              payload.playerPosition.tileId,
+            )
+          : validateStaticState(definition, staticState, payload.playerPosition.tileId);
       if (errors.length) return invalid(`非法房间布局：${errors.join("；")}`);
       if (
         !object(raw.room.pendingEffects) ||

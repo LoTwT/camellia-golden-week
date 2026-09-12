@@ -7,7 +7,9 @@ import {
   realtimeContent,
 } from "../src/content/assemble.ts";
 import { v2WorldWitnesses } from "../src/content/witnesses/index.ts";
-import { replayWorldWitness } from "../src/content/validate.ts";
+import { replayWorldWitness } from "../src/content/history/pre-r1/validate.ts";
+import type { GameContent as HistoricalContent } from "../src/content/history/pre-r1/types.ts";
+import { stablePayload as historicalPayload } from "../src/content/history/pre-r1/save-payload.ts";
 import {
   advanceRealtime,
   createRealtime,
@@ -28,11 +30,15 @@ import type {
 } from "../src/core/realtime.ts";
 import { gateOpen, supplyProgress } from "../src/core/progress.ts";
 import {
+  gateOpen as historicalGateOpen,
+  supplyProgress as historicalSupplyProgress,
+} from "../src/content/history/pre-r1/progress.ts";
+import {
   publishedProfileMigrations,
   releaseVersion,
   resolveMigrationPlan,
 } from "../src/platform/migrations.ts";
-import { stablePayload, validatePayload } from "../src/platform/save-payload.ts";
+import { validatePayload } from "../src/platform/save-payload.ts";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 
@@ -381,28 +387,32 @@ test("v2 原发布 JSON 按校验值冻结，v2 五个完整 profile 通过唯�
     const witness = v2WorldWitnesses.find(
       (item) => item.profileId === profile && item.id.endsWith("full-collection-and-return"),
     )!;
-    const played = replayWorldWitness(source, witness);
+    const played = replayWorldWitness(source as unknown as HistoricalContent, witness);
     assert.deepEqual(played.issues, []);
-    const payload = stablePayload(played.state);
+    const payload = historicalPayload(played.state);
     for (const targetProfile of profiles.slice(index)) {
       const target = assembleContent(targetProfile);
       const registry = publishedProfileMigrations(migrationContentReleases(targetProfile));
       const plan = resolveMigrationPlan(releaseVersion(source), target, registry);
       assert.ok(plan.ok, plan.ok ? "" : plan.error);
       assert.equal(plan.steps[0]?.definition.kind, "rules");
-      assert.ok(plan.steps.slice(1).every((step) => step.definition.kind === "additive"));
+      assert.equal(plan.steps[1]?.definition.kind, "mapped");
+      assert.ok(plan.steps.slice(2).every((step) => step.definition.kind === "additive"));
       const migrated = validatePayload(payload, target, registry);
       assert.ok(migrated.ok, migrated.ok ? "" : migrated.error);
-      assert.equal(migrated.value.ruleVersion, 3);
+      assert.equal(migrated.value.ruleVersion, 4);
       assert.deepEqual(migrated.value.bestResults, payload.bestResults);
       assert.deepEqual(migrated.value.completedObjectiveIds, payload.completedObjectiveIds);
       assert.deepEqual(migrated.value.claimedRewardIds, payload.claimedRewardIds);
       assert.equal(
         supplyProgress(target, migrated.value).collected,
-        supplyProgress(source, payload).collected,
+        historicalSupplyProgress(source as unknown as HistoricalContent, payload).collected,
       );
       for (const gate of source.gates)
-        assert.equal(gateOpen(target, migrated.value, gate.id), gateOpen(source, payload, gate.id));
+        assert.equal(
+          gateOpen(target, migrated.value, gate.id),
+          historicalGateOpen(source as unknown as HistoricalContent, payload, gate.id),
+        );
       const repeated = validatePayload(migrated.value, target, registry);
       assert.ok(repeated.ok);
       assert.deepEqual(repeated.value, migrated.value);

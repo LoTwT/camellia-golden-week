@@ -10,7 +10,7 @@
       "sourceUrl": "https://raw.githubusercontent.com/notofonts/noto-cjk/165c01b46ea533872e002e0785ff17e44f6d97d8/Sans/SubsetOTF/SC/NotoSansSC-Regular.otf",
       "sourceVersion": "165c01b46ea533872e002e0785ff17e44f6d97d8",
       "sourceSha256": "faa6c9df652116dde789d351359f3d7e5d2285a2b2a1f04a2d7244df706d5ea9",
-      "sha256": "fca0c88ef7f274be9e85cbe7ebe2a4fcfc779f119be180c871d6aa94a7e5f167",
+      "sha256": "f06550686aa5fe49140197cb9e5680c8cb851c74331e21323d44af01261fd5bd",
       "family": "Noto Sans SC",
       "weights": "400",
       "dimensions": null,
@@ -26,7 +26,7 @@
       "subset": {
         "recipeVersion": "project-runtime-v1",
         "generatorPath": "scripts/generate-assets.ts",
-        "generatorSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+        "generatorSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
         "coverageCodepoints": [
           32,
           33,
@@ -170,6 +170,7 @@
           9642,
           9675,
           9678,
+          9733,
           9834,
           10003,
           12288,
@@ -263,6 +264,7 @@
           20064,
           20102,
           20107,
+          20108,
           20110,
           20114,
           20116,
@@ -304,6 +306,7 @@
           20462,
           20493,
           20498,
+          20505,
           20540,
           20551,
           20570,
@@ -321,6 +324,7 @@
           20851,
           20854,
           20855,
+          20860,
           20869,
           20876,
           20877,
@@ -345,6 +349,7 @@
           21047,
           21051,
           21069,
+          21097,
           21103,
           21147,
           21151,
@@ -366,6 +371,7 @@
           21361,
           21363,
           21382,
+          21387,
           21407,
           21435,
           21442,
@@ -416,6 +422,7 @@
           22411,
           22495,
           22522,
+          22534,
           22581,
           22622,
           22681,
@@ -443,6 +450,7 @@
           23396,
           23398,
           23427,
+          23432,
           23433,
           23436,
           23450,
@@ -458,6 +466,7 @@
           23547,
           23548,
           23551,
+          23553,
           23556,
           23558,
           23567,
@@ -471,6 +480,7 @@
           23614,
           23616,
           23618,
+          23631,
           23637,
           23646,
           24038,
@@ -487,6 +497,7 @@
           24212,
           24213,
           24230,
+          24275,
           24314,
           24320,
           24322,
@@ -510,6 +521,7 @@
           24573,
           24577,
           24635,
+          24658,
           24674,
           24688,
           25103,
@@ -546,6 +558,7 @@
           25353,
           25361,
           25377,
+          25429,
           25439,
           25442,
           25454,
@@ -572,6 +585,7 @@
           25972,
           25991,
           26007,
+          26012,
           26029,
           26032,
           26041,
@@ -601,6 +615,7 @@
           26426,
           26432,
           26435,
+          26448,
           26463,
           26465,
           26469,
@@ -642,6 +657,7 @@
           27809,
           27839,
           27861,
+          27874,
           27880,
           27934,
           27963,
@@ -704,14 +720,17 @@
           30697,
           30701,
           30721,
+          30742,
           30772,
           30830,
+          30861,
           30896,
           31034,
           31105,
           31163,
           31181,
           31186,
+          31215,
           31216,
           31227,
           31243,
@@ -733,6 +752,7 @@
           31867,
           31934,
           31995,
+          32032,
           32034,
           32043,
           32047,
@@ -754,6 +774,7 @@
           32489,
           32490,
           32493,
+          32531,
           32553,
           32570,
           32599,
@@ -770,6 +791,7 @@
           33258,
           33267,
           33268,
+          33322,
           33394,
           33410,
           33509,
@@ -781,6 +803,7 @@
           34013,
           34255,
           34432,
+          34503,
           34892,
           34917,
           34920,
@@ -829,6 +852,7 @@
           36164,
           36182,
           36208,
+          36214,
           36215,
           36229,
           36234,
@@ -845,6 +869,7 @@
           36523,
           36710,
           36716,
+          36718,
           36724,
           36731,
           36733,
@@ -855,6 +880,7 @@
           36801,
           36807,
           36814,
+          36816,
           36817,
           36820,
           36825,
@@ -866,6 +892,8 @@
           36861,
           36864,
           36865,
+          36866,
+          36867,
           36870,
           36873,
           36880,
@@ -873,8 +901,10 @@
           36890,
           36895,
           36896,
+          36935,
           36947,
           36991,
+          37030,
           37051,
           37096,
           37117,
@@ -908,6 +938,7 @@
           38480,
           38500,
           38505,
+          38519,
           38543,
           38544,
           38548,
@@ -1165,8 +1196,8 @@
           65517,
           65518
         ],
-        "glyphCount": 1445,
-        "cmapCount": 1136,
+        "glyphCount": 1476,
+        "cmapCount": 1167,
         "fonttoolsVersion": "4.65.0",
         "brotliVersion": "1.2.0",
         "reservedUnicodeRanges": [
@@ -1207,11 +1238,11 @@
           },
           {
             "path": "src/content/areas/c-registration.json",
-            "sha256": "01ab36c7feff0d9e1549738cd4ac7da94245aaa0b335816933b84585fe0059b9"
+            "sha256": "5e9a24d34b3e1379e408f39ae8e61cc3e936d5710a26cfc29805ced2582895ac"
           },
           {
             "path": "src/content/areas/c.json",
-            "sha256": "296973c17b3853117197458970b8ece8e9b78d7cc21f5b8ba0adc2d32fd3d28a"
+            "sha256": "73bcce057a53e986704004bc81c0569e2556f05f5259378f082b8cbfdfc8b989"
           },
           {
             "path": "src/content/areas/d-registration.json",
@@ -1235,15 +1266,99 @@
           },
           {
             "path": "src/content/assemble.ts",
-            "sha256": "ae474e09cb4365a663e7c6c7a9ee12827dc591e756bd61076b2ce176203c6c9c"
+            "sha256": "a6b7272db04f264265452ec2a6527c4b2da95c5ac9c14a9fcc4f4950d5797d1a"
+          },
+          {
+            "path": "src/content/challenges/antivirus-r1.json",
+            "sha256": "20014b8e741d9621c696bbe89ad89bd3270ed784b0a02c7e9facedd24e116dbe"
+          },
+          {
+            "path": "src/content/challenges/capture-r1.json",
+            "sha256": "5fe0c674ab5bb124595622dd2fa7b9dabd4d40da63c0b0904d5862814ec3a467"
           },
           {
             "path": "src/content/challenges/realtime.json",
-            "sha256": "7ac766389ec4e9a5de8bbf2638369df48372a2a6b030848e79dc5744f6e9fae7"
+            "sha256": "a5ef46d75357051789f03a261a4df6f3b228d9c8c6f0608ef6f72b9c7b3b9c00"
           },
           {
             "path": "src/content/challenges/static.json",
+            "sha256": "2b69792e977f979446e7486f4b5d8a35cac173570fdc4981927f280673d65fe6"
+          },
+          {
+            "path": "src/content/challenges/theft-r1.json",
+            "sha256": "7ce10367d16f6702182f113bce397435edb9efa6bdc4b53bacd3598059215126"
+          },
+          {
+            "path": "src/content/history/frozen-releases.ts",
+            "sha256": "9cd38776b2a3cd157eaba45df6cc60c1d6e00c34d9cf853800be2ca5890fce67"
+          },
+          {
+            "path": "src/content/history/pre-r1/assemble.ts",
+            "sha256": "89ba7580864f6f4d5c3589dfd582adf39713a27a30dd95da504bb17db3d40bfd"
+          },
+          {
+            "path": "src/content/history/pre-r1/clock.ts",
+            "sha256": "67f409a5e4947fda1d01f00a1c1064cbe901ec931aebc4cc1d87211e57b6d1c7"
+          },
+          {
+            "path": "src/content/history/pre-r1/engine.ts",
+            "sha256": "9aad72e0992d547b8a6bf9b33c34f2c57a0876c8e6ca82c1bd9c9c514d279149"
+          },
+          {
+            "path": "src/content/history/pre-r1/firewall-feedback.ts",
+            "sha256": "f0301c09e954e2d4dc45dfc8397c50a95b0243bd2753e6b40a2ad111fc95c74f"
+          },
+          {
+            "path": "src/content/history/pre-r1/migrations.ts",
+            "sha256": "2a6cfcaa7ab7f6b99ee5ed7ad24e9af18aa37e143e4abe31dcfbafcf27b11a4b"
+          },
+          {
+            "path": "src/content/history/pre-r1/progress.ts",
+            "sha256": "7d2cedb5f833067e4a7af7896659884e58e3687a41d37628699a70791bb5e454"
+          },
+          {
+            "path": "src/content/history/pre-r1/projection.ts",
+            "sha256": "badaca80c7cfb6df253e5664637d1b6274a58bf4b82a3778f28313492e4933a1"
+          },
+          {
+            "path": "src/content/history/pre-r1/provenance.json",
+            "sha256": "41a4ca42a35975cd193c2649bc3dab3209ae782f4b15d6f6f6b09234df65eae5"
+          },
+          {
+            "path": "src/content/history/pre-r1/realtime.json",
+            "sha256": "7ac766389ec4e9a5de8bbf2638369df48372a2a6b030848e79dc5744f6e9fae7"
+          },
+          {
+            "path": "src/content/history/pre-r1/realtime.ts",
+            "sha256": "10174fb620488fe173784188571c713435712cb25fdc71f3191c9cb53a8c015a"
+          },
+          {
+            "path": "src/content/history/pre-r1/releases.json",
+            "sha256": "270b610d5775260750a5bb9965cce00c1a5e91a3215a0d659869c6f83e6d68d6"
+          },
+          {
+            "path": "src/content/history/pre-r1/save-payload.ts",
+            "sha256": "4f68716affb84bf5000b2d74cbc5d0383ff350097a0356a47180059d39e7256a"
+          },
+          {
+            "path": "src/content/history/pre-r1/static-puzzle.ts",
+            "sha256": "2fec34a4d23428f36adfc94903ea908316be5f94ba630ab4d3f940a9f054ffae"
+          },
+          {
+            "path": "src/content/history/pre-r1/static.json",
             "sha256": "890512a795e5556e5fdc9fc026c85f46b193bfc57ad3db996529718321efbdb7"
+          },
+          {
+            "path": "src/content/history/pre-r1/types.ts",
+            "sha256": "c864a47f8c4650bda017ad52145c1b2db0bf300ed76c54490acf4c7647f43e2a"
+          },
+          {
+            "path": "src/content/history/pre-r1/validate.ts",
+            "sha256": "5cd3099dad3cdde57bd991bc0e40dbb3bb87aeb0f8ebbb3b6d9166b4953cc001"
+          },
+          {
+            "path": "src/content/history/r1-room-map.ts",
+            "sha256": "54c4739071c92a3862fc176bef2199e2c328894cb868f30b3c1b1061e44eccb8"
           },
           {
             "path": "src/content/history/realtime-v1.json",
@@ -1259,11 +1374,11 @@
           },
           {
             "path": "src/content/validate.ts",
-            "sha256": "5afd2cbda02c348c1c7238a3f73dd40448ac044f7a39a9f5933787b737dfdc00"
+            "sha256": "54e2d0afc5e65dd12bba0b1c02473622beeb53bd4f4b7eaa5dcfb657455ce80d"
           },
           {
             "path": "src/content/witnesses/current.ts",
-            "sha256": "e9898a980fa20079f98d17fe5e59d5b4457e1b0108f833e6abbbd62723b0240c"
+            "sha256": "0369e94715568a1b059cf57bbc36e11731b1831ad5087e0c6f92a52a70748af0"
           },
           {
             "path": "src/content/witnesses/index.ts",
@@ -1290,20 +1405,40 @@
             "sha256": "f0bc6ba7ce3d4219c3b6e16eb3ad0bf362f9de76076a8158db64f8b12ad84075"
           },
           {
+            "path": "src/content/witnesses/r1-world.json",
+            "sha256": "133ee2755d96aa2e7ad49b0780ca41beb7dd0a9ae32c5c606da9ddc8f2288b52"
+          },
+          {
             "path": "src/content/witnesses/v2.ts",
             "sha256": "efdc72e8a643e5175fd0a248068b57e645b9a905fcf9c3bc18368ecbad0f42bd"
           },
           {
+            "path": "src/content/witnesses/v3.ts",
+            "sha256": "c7657cd9446dff974f195fcdfd1f76797fffefef7e1f4e9166db43a7a08b2983"
+          },
+          {
             "path": "src/content/world.json",
-            "sha256": "c72ed9f3e4aaec22e606fb2bcec1089cfc1fdf6674b88fcd6e8900ee5c95f20f"
+            "sha256": "1295a02fd6b0f4a08cbe753028036adb94e1223acb3480c8f6bf84c53cb22785"
+          },
+          {
+            "path": "src/core/antivirus.ts",
+            "sha256": "1c2ae8feb8a0a9f45dc58487e3b7244a34c2c34391ae6bbb0d0dae73a200421a"
+          },
+          {
+            "path": "src/core/capture.ts",
+            "sha256": "ac51fc70f67e34fb4cf7b5739952f1fe1e81139bb67f87e18f0e136a24893545"
           },
           {
             "path": "src/core/clock.ts",
             "sha256": "67f409a5e4947fda1d01f00a1c1064cbe901ec931aebc4cc1d87211e57b6d1c7"
           },
           {
+            "path": "src/core/data-theft.ts",
+            "sha256": "28a4357e4d494baa469e994e5d589296f8d86d49eb55d8283c2ab81e84a17c83"
+          },
+          {
             "path": "src/core/engine.ts",
-            "sha256": "9aad72e0992d547b8a6bf9b33c34f2c57a0876c8e6ca82c1bd9c9c514d279149"
+            "sha256": "9e397b28ea69db7ae913801bbc54e651e90627beff17c5a366ed2102d5e3dfe0"
           },
           {
             "path": "src/core/firewall-feedback.ts",
@@ -1315,19 +1450,19 @@
           },
           {
             "path": "src/core/projection.ts",
-            "sha256": "badaca80c7cfb6df253e5664637d1b6274a58bf4b82a3778f28313492e4933a1"
+            "sha256": "ec5806dd2fd0a1ad262d561233fda7736487070dfd6f8d2edebdc1d81dbc212c"
           },
           {
             "path": "src/core/realtime.ts",
-            "sha256": "10174fb620488fe173784188571c713435712cb25fdc71f3191c9cb53a8c015a"
+            "sha256": "a078326e0bf63d844715be1a42dfc9d479682456710c1e4bd683d304d838aa48"
           },
           {
             "path": "src/core/static-puzzle.ts",
-            "sha256": "2fec34a4d23428f36adfc94903ea908316be5f94ba630ab4d3f940a9f054ffae"
+            "sha256": "0e3dee1f07566d282f17f15a809f455d533e79f1c1abf4c86eec7785be34339a"
           },
           {
             "path": "src/core/types.ts",
-            "sha256": "c864a47f8c4650bda017ad52145c1b2db0bf300ed76c54490acf4c7647f43e2a"
+            "sha256": "98be8b1d6ee4b63a40fe1d0fbfc5a3e282fdfd49a258f93d3b03c2d4f52563f1"
           },
           {
             "path": "src/env.d.ts",
@@ -1335,7 +1470,7 @@
           },
           {
             "path": "src/main.ts",
-            "sha256": "950a4d8c040e342b91186d02ee751dfba7249c0f873c8ca919265b261f23305a"
+            "sha256": "91abea13b17c4e91d8fa1fe67f51ccdc31ab98597996d83ee5ff337a598e4aca"
           },
           {
             "path": "src/platform/acceptance-faults.ts",
@@ -1347,15 +1482,15 @@
           },
           {
             "path": "src/platform/migrations.ts",
-            "sha256": "f4a1b26535c2be734909ccbe99df781e674bb75a2fa0c49f7cb9c1a3a11f16ee"
+            "sha256": "8f1b516d470d3cce658974b40564ac224d1d8e0d5cca702f4165882872352818"
           },
           {
             "path": "src/platform/save-payload.ts",
-            "sha256": "f1137563e92c9e7c82eddf5e13f86d6fe3cc85190fd1e6332bfbdc3a5302a952"
+            "sha256": "8cfe01fe5177a4a55e16e52a5d84239f75ce0801dfdf7a6343c8aa28beab9407"
           },
           {
             "path": "src/platform/save-store.ts",
-            "sha256": "dccd98231d15ffe8eec3df9d8b59e7234b051625f089dae26a42ccc18ab531bc"
+            "sha256": "d75badb6f24c4e968d696faf71ba2d941a9af2f83327ea2484e867f0b5846dfd"
           },
           {
             "path": "src/platform/session-diagnostics.ts",
@@ -1374,8 +1509,12 @@
             "sha256": "6dfb3deccbd66ded4ef066bfb577e74670246b396aee0b000e9a601c53fd7f49"
           },
           {
+            "path": "src/render/antivirus-stage.ts",
+            "sha256": "6f6a37ed8b6380fa5eaa8ee27114522ec52171ff97a22331b9ada43b34c27d7e"
+          },
+          {
             "path": "src/render/board.ts",
-            "sha256": "69514e95beccebfc663bede657c5da1e71fc40eea887127481b8a472d4660d14"
+            "sha256": "84c99fe441c9b75fe88f5aee25b1550fd706d2d6e5e9398c53895dc6170c4bd8"
           },
           {
             "path": "src/render/firewall-stage.ts",
@@ -1388,6 +1527,10 @@
           {
             "path": "src/render/projection-key.ts",
             "sha256": "2b7e29b5074ea1ff70f1d1045ae8b9df19272798c0b6c99b4d57dbcac3f0bf24"
+          },
+          {
+            "path": "src/render/theft-panel.ts",
+            "sha256": "553a793918581980c9bb55bc33e615cb40f7c140e8befd03a769c317093a0482"
           },
           {
             "path": "src/ui/firewall-cue.ts",
@@ -1406,8 +1549,12 @@
             "sha256": "4807ddbf4e3b2081595ce1e9357154cfc82dbcd635039a3de119a893b0c2f13b"
           },
           {
+            "path": "src/ui/r1-challenges.css",
+            "sha256": "e6e0bca5b266b3062b2591fac5af87e2c6779066a34548bf5bd783a956f7d83b"
+          },
+          {
             "path": "src/ui/shell.ts",
-            "sha256": "efc0cf8961d0f1fee013678c6637769c9d4dc6127bd52019d32325fff6969d09"
+            "sha256": "7c6f4ad1bd75958b28a2a9fc5559a3339c36a4ab5a8edf8086c894531e4f2c7e"
           },
           {
             "path": "src/ui/style.css",
@@ -1528,6 +1675,7 @@
           9642,
           9675,
           9678,
+          9733,
           9834,
           10003,
           12289,
@@ -1561,6 +1709,7 @@
           20064,
           20102,
           20107,
+          20108,
           20110,
           20114,
           20116,
@@ -1602,6 +1751,7 @@
           20462,
           20493,
           20498,
+          20505,
           20540,
           20551,
           20570,
@@ -1619,6 +1769,7 @@
           20851,
           20854,
           20855,
+          20860,
           20869,
           20876,
           20877,
@@ -1643,6 +1794,7 @@
           21047,
           21051,
           21069,
+          21097,
           21103,
           21147,
           21151,
@@ -1664,6 +1816,7 @@
           21361,
           21363,
           21382,
+          21387,
           21407,
           21435,
           21442,
@@ -1714,6 +1867,7 @@
           22411,
           22495,
           22522,
+          22534,
           22581,
           22622,
           22681,
@@ -1741,6 +1895,7 @@
           23396,
           23398,
           23427,
+          23432,
           23433,
           23436,
           23450,
@@ -1756,6 +1911,7 @@
           23547,
           23548,
           23551,
+          23553,
           23556,
           23558,
           23567,
@@ -1769,6 +1925,7 @@
           23614,
           23616,
           23618,
+          23631,
           23637,
           23646,
           24038,
@@ -1785,6 +1942,7 @@
           24212,
           24213,
           24230,
+          24275,
           24314,
           24320,
           24322,
@@ -1808,6 +1966,7 @@
           24573,
           24577,
           24635,
+          24658,
           24674,
           24688,
           25103,
@@ -1844,6 +2003,7 @@
           25353,
           25361,
           25377,
+          25429,
           25439,
           25442,
           25454,
@@ -1870,6 +2030,7 @@
           25972,
           25991,
           26007,
+          26012,
           26029,
           26032,
           26041,
@@ -1899,6 +2060,7 @@
           26426,
           26432,
           26435,
+          26448,
           26463,
           26465,
           26469,
@@ -1940,6 +2102,7 @@
           27809,
           27839,
           27861,
+          27874,
           27880,
           27934,
           27963,
@@ -2002,14 +2165,17 @@
           30697,
           30701,
           30721,
+          30742,
           30772,
           30830,
+          30861,
           30896,
           31034,
           31105,
           31163,
           31181,
           31186,
+          31215,
           31216,
           31227,
           31243,
@@ -2031,6 +2197,7 @@
           31867,
           31934,
           31995,
+          32032,
           32034,
           32043,
           32047,
@@ -2052,6 +2219,7 @@
           32489,
           32490,
           32493,
+          32531,
           32553,
           32570,
           32599,
@@ -2068,6 +2236,7 @@
           33258,
           33267,
           33268,
+          33322,
           33394,
           33410,
           33509,
@@ -2079,6 +2248,7 @@
           34013,
           34255,
           34432,
+          34503,
           34892,
           34917,
           34920,
@@ -2127,6 +2297,7 @@
           36164,
           36182,
           36208,
+          36214,
           36215,
           36229,
           36234,
@@ -2143,6 +2314,7 @@
           36523,
           36710,
           36716,
+          36718,
           36724,
           36731,
           36733,
@@ -2153,6 +2325,7 @@
           36801,
           36807,
           36814,
+          36816,
           36817,
           36820,
           36825,
@@ -2164,6 +2337,8 @@
           36861,
           36864,
           36865,
+          36866,
+          36867,
           36870,
           36873,
           36880,
@@ -2171,8 +2346,10 @@
           36890,
           36895,
           36896,
+          36935,
           36947,
           36991,
+          37030,
           37051,
           37096,
           37117,
@@ -2206,6 +2383,7 @@
           38480,
           38500,
           38505,
+          38519,
           38543,
           38544,
           38548,
@@ -2245,9 +2423,9 @@
           65307,
           65311
         ],
-        "coverageSha256": "f5a13155252ff409935903ca9fae643951c2f4660ee26266f987b7486d706bee",
-        "outputSha256": "fca0c88ef7f274be9e85cbe7ebe2a4fcfc779f119be180c871d6aa94a7e5f167",
-        "byteLength": 186748
+        "coverageSha256": "c474a5533298272e1e66cf9ecd7d3bcb3dc4301e93bd7d74a04d3555927985b2",
+        "outputSha256": "f06550686aa5fe49140197cb9e5680c8cb851c74331e21323d44af01261fd5bd",
+        "byteLength": 192248
       },
       "licenseSha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2"
     },

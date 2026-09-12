@@ -3,6 +3,8 @@ import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.j
 import type { BoardProjection, ScreenTile } from "../core/projection.ts";
 import type { GameSettings } from "../core/types.ts";
 import { FirewallStage } from "./firewall-stage.ts";
+import { AntivirusStage } from "./antivirus-stage.ts";
+import { TheftPanel } from "./theft-panel.ts";
 import {
   boardBoundsCss,
   cameraFocusAt,
@@ -46,6 +48,7 @@ interface PlayerMovementMeasurement {
 }
 
 function requiredIcons(board: BoardProjection): Set<string> {
+  if (board.theft) return new Set();
   const ids = new Set(
     board.tiles
       .flatMap((tile) => [tile.icon, tile.player ? "player-idle" : null])
@@ -227,6 +230,8 @@ export class BoardRenderer {
   private readonly glassTextures: ReturnType<typeof makeGlassTextures>;
   private firewallGlassTextures: ReturnType<typeof makeGlassTextures> | null = null;
   private firewallStage: FirewallStage | null = null;
+  private antivirusStage: AntivirusStage | null = null;
+  private readonly theftPanel: TheftPanel;
   private readonly backdrop = makeBackdrop();
   private readonly icons = new Map<string, IconResource>();
   private readonly textureLoader = new THREE.TextureLoader();
@@ -270,6 +275,7 @@ export class BoardRenderer {
   constructor(canvas: HTMLCanvasElement, labels: HTMLElement, onHit: (tileId: string) => void) {
     this.onHit = onHit;
     this.labelLayer = labels;
+    this.theftPanel = new TheftPanel(canvas, onHit);
     this.renderer = new THREE.WebGLRenderer({
       canvas,
       antialias: true,
@@ -441,6 +447,7 @@ export class BoardRenderer {
   };
 
   pick(clientX: number, clientY: number): string | null {
+    if (this.board.theft) return this.theftPanel.pick(clientX, clientY);
     if (!this.hasPresented || !this.displayedLayout || this.disposed) return null;
     const rect = this.renderer.domElement.getBoundingClientRect();
     if (!rect.width || !rect.height) return null;
@@ -487,8 +494,8 @@ export class BoardRenderer {
       tiles: this.board.tiles,
       focus: this.board.focus,
       local: this.board.local,
-      zoom: this.board.firewall ? 1 : (this.settings?.zoom ?? 1),
-      ...(this.board.firewall
+      zoom: this.board.firewall || this.board.antivirus ? 1 : (this.settings?.zoom ?? 1),
+      ...(this.board.firewall || this.board.antivirus
         ? { insets: firewallViewportInsets(width, height), fitPadding: 0.03 }
         : this.viewportInsets
           ? { insets: this.viewportInsets }
@@ -522,15 +529,24 @@ export class BoardRenderer {
     if (board.firewall && !this.firewallStage) {
       this.firewallStage = new FirewallStage();
       this.scene.add(this.firewallStage.group);
+    } else if (!board.firewall && this.firewallStage) {
+      this.firewallStage.dispose();
+      this.firewallStage = null;
+    }
+    if (board.antivirus && !this.antivirusStage) {
+      this.antivirusStage = new AntivirusStage();
+      this.scene.add(this.antivirusStage.group);
+    } else if (!board.antivirus && this.antivirusStage) {
+      this.antivirusStage.dispose();
+      this.antivirusStage = null;
+    }
+    if ((board.firewall || board.antivirus) && !this.firewallGlassTextures) {
       this.firewallGlassTextures = makeGlassTextures(true);
       this.screenMaterial.map = this.firewallGlassTextures.shading;
       this.reflectionMaterial.map = this.firewallGlassTextures.reflection;
       this.bodyMaterial.color.set("#3c3849");
       this.backdrop.material.color.set("#cbc7d4");
-    } else if (!board.firewall && this.firewallStage) {
-      this.scene.remove(this.firewallStage.group);
-      this.firewallStage.dispose();
-      this.firewallStage = null;
+    } else if (!board.firewall && !board.antivirus && this.firewallGlassTextures) {
       this.firewallGlassTextures?.shading.dispose();
       this.firewallGlassTextures?.reflection.dispose();
       this.firewallGlassTextures = null;
@@ -540,6 +556,18 @@ export class BoardRenderer {
       this.backdrop.material.color.set("#ffffff");
     }
     if (board.firewall) this.firewallStage?.update(board.firewall.combo, board.firewall.judgment);
+    if (board.antivirus)
+      this.antivirusStage?.update(board.antivirus, settings.reducedMotion || settings.reducedFlash);
+    this.theftPanel.update(board);
+    this.renderer.domElement.style.opacity = board.theft ? "0" : "";
+    this.labelLayer.hidden = !!board.theft;
+    if (board.theft) {
+      this.settings = settings;
+      this.board = board;
+      this.releaseUnusedIcons(new Set());
+      this.resize(newBoard);
+      return;
+    }
     const previousPlayer = this.board.tiles.find((tile) => tile.player);
     const player = board.tiles.find((tile) => tile.player);
     if (!newBoard && player?.id !== previousPlayer?.id) {
@@ -592,7 +620,9 @@ export class BoardRenderer {
         this.body.setMatrixAt(index, this.dummy.matrix);
         this.body.setColorAt(
           index,
-          this.color.set(board.firewall ? "#85818d" : tile.known ? "#98939f" : "#55505a"),
+          this.color.set(
+            board.firewall || board.antivirus ? "#85818d" : tile.known ? "#98939f" : "#55505a",
+          ),
         );
         this.dummy.position.set(x, TELEVISION.screenY, z + TELEVISION.screenOffsetZ);
         this.dummy.updateMatrix();
@@ -600,8 +630,9 @@ export class BoardRenderer {
         this.screens.setColorAt(index, this.color.set(tile.player ? "#e2e1dc" : tile.color));
         this.dummy.position.y = 0.164;
         this.dummy.rotation.x = -Math.PI / 2;
-        this.dummy.rotation.z = board.firewall && (tile.x + tile.y * 3) % 3 === 0 ? Math.PI : 0;
-        if (board.firewall && (tile.player || tile.hazardPhase === "active"))
+        this.dummy.rotation.z =
+          (board.firewall || board.antivirus) && (tile.x + tile.y * 3) % 3 === 0 ? Math.PI : 0;
+        if ((board.firewall || board.antivirus) && (tile.player || tile.hazardPhase === "active"))
           this.dummy.scale.setScalar(0);
         this.dummy.updateMatrix();
         this.reflections.setMatrixAt(index, this.dummy.matrix);
@@ -630,7 +661,7 @@ export class BoardRenderer {
           this.controls.setMatrixAt(index * 2 + control, this.dummy.matrix);
         }
         const ids = tile.player
-          ? ["player-idle", "player-move"]
+          ? ["player-idle", "player-move", ...(board.antivirus && tile.icon ? [tile.icon] : [])]
           : tile.icon && !(board.firewall && tile.icon === "hazard-active")
             ? [tile.icon]
             : [];
@@ -660,13 +691,17 @@ export class BoardRenderer {
           mesh = resource.mesh;
         mesh.count = group.length;
         group.forEach((tile, index) => {
+          const overlapPlayer =
+            !!board.antivirus && tile.player && tile.icon !== null && id.startsWith("player-");
           this.dummy.position.set(
-            tile.x * TELEVISION.stepX,
-            0.178,
-            tile.y * TELEVISION.stepZ + TELEVISION.screenOffsetZ,
+            tile.x * TELEVISION.stepX + (overlapPlayer ? 0.22 : 0),
+            overlapPlayer ? 0.194 : 0.178,
+            tile.y * TELEVISION.stepZ + TELEVISION.screenOffsetZ + (overlapPlayer ? 0.13 : 0),
           );
           this.dummy.rotation.set(-Math.PI / 2, 0, 0);
-          this.dummy.scale.setScalar(tile.player ? 0.68 : 0.64);
+          this.dummy.scale.setScalar(
+            overlapPlayer ? 0.34 : tile.player && id.startsWith("player-") ? 0.68 : 0.64,
+          );
           this.dummy.updateMatrix();
           mesh.setMatrixAt(index, this.dummy.matrix);
         });
@@ -719,6 +754,13 @@ export class BoardRenderer {
 
   frame(now: number): void {
     if (this.disposed || !this.layout) return;
+    if (this.board.theft) {
+      this.renderer.info.reset();
+      this.displayedLayout = this.layout;
+      this.displayedFocus = this.layout.focus;
+      return;
+    }
+    this.antivirusStage?.frame(now);
     this.focus = cameraFocusAt(
       this.focusFrom,
       this.targetFocus,
@@ -743,7 +785,7 @@ export class BoardRenderer {
     this.renderer.render(this.backgroundScene, this.camera);
     this.renderer.clearDepth();
     const available = this.layout.available;
-    if (this.board.firewall)
+    if (this.board.firewall || this.board.antivirus)
       this.renderer.setScissor(0, 0, this.layout.canvas.width, this.layout.canvas.height);
     else
       this.renderer.setScissor(
@@ -819,6 +861,8 @@ export class BoardRenderer {
       calls: this.renderer.info.render.calls,
       tileCount: this.board.tiles.length,
       firewallScoreboards: this.firewallStage?.group.children.length ?? 0,
+      antivirusWaveforms: this.antivirusStage?.group.children.length ?? 0,
+      theftPanel: this.theftPanel.metrics(),
       residentIconCount: this.icons.size,
       pendingIconCount: [...this.icons.values()].filter(
         (resource) => !resource.texture && !resource.error,
@@ -876,6 +920,8 @@ export class BoardRenderer {
     this.glassTextures.shading.dispose();
     this.glassTextures.reflection.dispose();
     this.firewallStage?.dispose();
+    this.antivirusStage?.dispose();
+    this.theftPanel.dispose();
     this.firewallGlassTextures?.shading.dispose();
     this.firewallGlassTextures?.reflection.dispose();
     for (const mesh of [

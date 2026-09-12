@@ -1,11 +1,11 @@
-// These tests replay the original v1 recordings/exports against their published content view.
+// Authentic v1 exports upgrade through the registered R1 content and layout migration.
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
-import { assembleLegacyContent as assembleContent } from "../src/content/assemble.ts";
+import { assembleContent, migrationContentReleases } from "../src/content/assemble.ts";
 import { areaData, gateOpen, supplyProgress } from "../src/core/progress.ts";
 import type { GameContent, ProfileId } from "../src/core/types.ts";
-import { additiveProfileMigrations } from "../src/platform/migrations.ts";
+import { publishedProfileMigrations } from "../src/platform/migrations.ts";
 import { restorePayload, validatePayload } from "../src/platform/save-payload.ts";
 import type { SavePayload } from "../src/platform/save-payload.ts";
 import { createSaveStore, SAVE_KEYS } from "../src/platform/save-store.ts";
@@ -13,7 +13,7 @@ import type { SaveEnvelope, SaveStorage } from "../src/platform/save-store.ts";
 import { contentUpgradeSummary } from "../src/platform/upgrade-summary.ts";
 
 const releases = (["M1", "M2", "M3", "M4", "M5"] as const).map(assembleContent);
-const migrations = additiveProfileMigrations(releases);
+const migrations = publishedProfileMigrations(migrationContentReleases("M5"));
 const partialExports = [
   { profileId: "M1", file: "m1-browser-save.json", supply: 26, rewardCount: 6 },
   { profileId: "M2", file: "m2-browser-save.json", supply: 51, rewardCount: 11 },
@@ -118,7 +118,7 @@ for (const targetId of ["M4", "M5"] as const) {
         const opened = openExport(source.file, target, entry);
         assert.equal(opened.migrationRequired, true);
         assert.equal(opened.payload.releaseProfileId, targetId);
-        assert.equal(opened.payload.contentVersion, 4);
+        assert.equal(opened.payload.contentVersion, 6);
         assert.match(opened.summary, new RegExp(`^${targetId} 新增仓储区 A、仓储区 B回访`));
         assert.equal(opened.summary.match(/完成 D 区四处权限后开放/g)?.length, 1);
         assert.match(opened.summary, /已有首访数据与已领取物资保留/);
@@ -165,7 +165,7 @@ for (const source of fullExports) {
     for (const entry of ["continue", "import"] as const) {
       const target = release(source.profileId);
       const opened = openExport(source.file, target, entry);
-      assert.equal(opened.migrationRequired, false);
+      assert.equal(opened.migrationRequired, true);
       assert.equal(opened.summary, "");
       assert.deepEqual(supplyProgress(target, opened.state), {
         collected: 130,
@@ -185,7 +185,7 @@ test("G11 真实M4→M5仅profile升级：两种入口不把已有回访或130�
     const opened = openExport(fullExports[0].file, target, entry);
     assert.equal(opened.migrationRequired, true);
     assert.equal(opened.payload.releaseProfileId, "M5");
-    assert.equal(opened.payload.contentVersion, 4);
+    assert.equal(opened.payload.contentVersion, 6);
     assert.equal(opened.summary, "");
     assert.deepEqual(supplyProgress(target, opened.state), {
       collected: 130,
@@ -196,13 +196,13 @@ test("G11 真实M4→M5仅profile升级：两种入口不把已有回访或130�
   }
 });
 
-test("G11 真实M1同profile仅schema1→2：需要迁移但没有新增回访提示", () => {
+test("G11 真实M1同profile升级至 R1 schema3：需要迁移但没有新增回访提示", () => {
   const target = release("M1");
   for (const entry of ["continue", "import"] as const) {
     const opened = openExport(partialExports[0].file, target, entry);
     assert.equal(opened.migrationRequired, true);
     assert.equal(opened.payload.releaseProfileId, "M1");
-    assert.equal(opened.payload.schemaVersion, 2);
+    assert.equal(opened.payload.schemaVersion, 3);
     assert.equal(opened.summary, "");
     assert.deepEqual(supplyProgress(target, opened.state), { collected: 26, total: 26, count: 6 });
   }

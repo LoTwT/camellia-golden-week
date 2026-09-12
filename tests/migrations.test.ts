@@ -2,11 +2,22 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
-import {
-  assembleLegacyContent as assembleContent,
-  staticContent,
-} from "../src/content/assemble.ts";
-import { replayWorldWitness, validateContent } from "../src/content/validate.ts";
+import { frozenContentRelease } from "../src/content/history/frozen-releases.ts";
+const assembleContent = (profileId: import("../src/core/types.ts").ProfileId) =>
+  frozenContentRelease(profileId, 1);
+import frozenStaticJson from "../src/content/history/pre-r1/static.json" with { type: "json" };
+import type {
+  StaticContent as HistoricalStaticContent,
+  StaticDirection as HistoricalDirection,
+} from "../src/content/history/pre-r1/static-puzzle.ts";
+const staticContent = frozenStaticJson as unknown as HistoricalStaticContent;
+import { replayWorldWitness } from "../src/content/validate.ts";
+import { validateContent as validateHistoricalContent } from "../src/content/history/pre-r1/validate.ts";
+import type { GameContent as HistoricalGameContent } from "../src/content/history/pre-r1/types.ts";
+import { moveCompletedStatic as moveHistoricalCompletedStatic } from "../src/content/history/pre-r1/static-puzzle.ts";
+import type { StaticDefinition as HistoricalStaticDefinition } from "../src/content/history/pre-r1/static-puzzle.ts";
+const validateContent = (content: GameContent) =>
+  validateHistoricalContent(content as unknown as HistoricalGameContent);
 import type { WorldWitness } from "../src/content/validate.ts";
 import witnessJson from "../src/content/witnesses/m1.json" with { type: "json" };
 import { createGame, dispatch } from "../src/core/engine.ts";
@@ -63,10 +74,51 @@ const browserM2 = JSON.parse(browserM2Raw) as {
   payload: SavePayload;
 };
 
+/** Boundary fixture advanced only by the independently frozen published movement rule. */
+function historicalVisit(
+  payload: SavePayload,
+  content: GameContent,
+  roomId: string,
+  directions: HistoricalDirection[],
+): SavePayload {
+  const room = content.rooms.find((candidate) => candidate.id === roomId)!;
+  const definition = content.staticChallenges.find(
+    (candidate) => candidate.id === roomId,
+  )! as unknown as HistoricalStaticDefinition;
+  const layout = payload.completedRoomLayouts[roomId]!.layout;
+  let tileId = room.entryTileId;
+  for (const direction of directions) {
+    const step = moveHistoricalCompletedStatic(definition, layout, tileId, direction);
+    assert.ok(step.legal && !step.exited);
+    tileId = step.playerTileId;
+  }
+  return {
+    ...structuredClone(payload),
+    room: {
+      roomId,
+      status: "completedVisit",
+      returnAnchor: {
+        space: "world",
+        areaId: room.areaId,
+        boardId: room.areaId,
+        tileId: room.returnTileId,
+      },
+    },
+    playerPosition: { space: "room", areaId: room.areaId, boardId: room.boardId, tileId },
+  };
+}
+
+function plainLayouts(payload: SavePayload) {
+  return Object.fromEntries(
+    Object.entries(payload.completedRoomLayouts).map(([id, record]) => [id, record.layout]),
+  );
+}
+
 function schema1Payload(payload: SavePayload): Record<string, unknown> {
   const legacy = structuredClone(payload) as unknown as Record<string, unknown>;
   legacy.schemaVersion = 1;
   delete legacy.completedRoomLayouts;
+  delete legacy.archivedCompletedRoomLayouts;
   return legacy;
 }
 
@@ -308,8 +360,11 @@ test("P09 真实 M1→M2 的迁移备份额度不足时停止，两个原槽逐�
 test("P08 合成规则 v2 的较低上限不误拒真实 v1 成绩；旧奖励保留，新成绩独立结算", () => {
   const target = structuredClone(m1);
   target.ruleVersion = 2;
-  target.realtimeChallenges = target.realtimeChallenges.map((definition) =>
-    definition.kind === "firewall"
+  target.realtimeChallenges = target.realtimeChallenges.map((definition) => {
+    if (definition.ruleVersion >= 3) throw new Error("此历史夹具只能来自原 v1 定义");
+    if (definition.kind === "antivirus" && definition.ruleVersion === 4)
+      throw new Error("不能将 R1 规则标为 v2");
+    return definition.kind === "firewall"
       ? {
           ...definition,
           ruleVersion: 2,
@@ -320,8 +375,8 @@ test("P08 合成规则 v2 的较低上限不误拒真实 v1 成绩；旧奖励�
             beatMasks: [[], [], [], [], []],
           },
         }
-      : { ...definition, ruleVersion: 2 },
-  );
+      : { ...definition, ruleVersion: 2 };
+  });
   const rulesRegistry = pair(m1, target, { kind: "rules" });
   const migrated = valid(realM1, target, rulesRegistry);
   assert.deepEqual(migrated.value.bestResults, realM1.bestResults);
@@ -425,6 +480,8 @@ test("P08 合成静态初态的路径访问集合与物体占格、基线布局�
     const definition = staticContent.definitions.find((room) => room.id === fixtureId)!;
     const source = structuredClone(m1);
     source.contentVersion = 10;
+    if (definition.kind !== "oneStroke" && definition.kind !== "routing")
+      throw new Error("历史坐标夹具类型不匹配");
     const synthetic = { ...definition, id: "a.maze.01", includedFrom: "M1" as const };
     source.staticChallenges = source.staticChallenges.map((room) =>
       room.id === "a.maze.01" ? synthetic : room,
@@ -488,12 +545,13 @@ test("P08 仅已登记的无法映射房间可退回安全入口并说明；原�
   const payload = firstRoomPayload("active");
   const target = structuredClone(m1);
   target.contentVersion = 2;
+  target.ruleVersion = 2;
   target.staticChallenges = target.staticChallenges.map((room) =>
     room.id === "a.maze.01"
       ? { ...room, tiles: room.tiles.filter((tile) => tile.id !== payload.playerPosition.tileId) }
       : room,
   );
-  rejected(payload, target, pair(m1, target, { kind: "mapped" }), /迁移后校验失败/);
+  rejected(payload, target, pair(m1, target, { kind: "mapped" }), /不兼容/);
   const fallback = pair(m1, target, { kind: "mapped", mapping: { exitRoomIds: ["a.maze.01"] } });
   const result = valid(payload, target, fallback);
   assert.equal(result.value.room, null);
@@ -574,7 +632,7 @@ test("迁移拒绝伪装为 additive 的坐标或规则改动、降级路径及�
 test("P07 合成 M4→M5 只更新发布 profile，内容与规则版本、游戏进度均保持", () => {
   const m5 = syntheticProfileView("M5", 4);
   const upgraded = valid(realM1, m4, registry).value;
-  const result = valid(upgraded, m5, additiveProfileMigrations([m4, m5])).value;
+  const result = valid(upgraded, m5, additiveProfileMigrations([...releases, m5])).value;
   assert.deepEqual(result, { ...upgraded, releaseProfileId: "M5" });
   assert.deepEqual(supplyProgress(m5, result), { collected: 26, total: 130, count: 6 });
 });
@@ -594,6 +652,8 @@ test("P08 坐标步骤不能暗改实时规则，规则步骤不能暗改局部�
   const boardChanged = structuredClone(m1);
   boardChanged.ruleVersion = 2;
   boardChanged.realtimeChallenges = boardChanged.realtimeChallenges.map((challenge) => {
+    if (challenge.kind === "antivirus" && challenge.ruleVersion === 4)
+      throw new Error("不能将 R1 规则标为 v2");
     if (challenge.kind === "firewall") {
       assert.notEqual(challenge.ruleVersion, 3);
       if (challenge.ruleVersion === 3) throw new Error("历史夹具不能含 v3 规则");
@@ -620,7 +680,7 @@ test("P07 历史 M1 schema1 只回填记忆迷宫确定的空布局，重复迁�
   const legacy = schema1Payload(realM1);
   const result = valid(legacy, m1);
   assert.equal(result.migrated, true);
-  assert.equal(result.value.schemaVersion, 2);
+  assert.equal(result.value.schemaVersion, 3);
   assert.deepEqual(result.value.completedRoomLayouts, realM1.completedRoomLayouts);
   assert.deepEqual(result.value.claimedRewardIds, realM1.claimedRewardIds);
   assert.equal(valid(result.value, m1).migrated, undefined);
@@ -641,7 +701,7 @@ test("P07 真实浏览器 M2 schema1 全收集文件升级 schema2，51物资与
   assert.equal(browserM2.payload.releaseProfileId, "M2");
   const result = valid(browserM2.payload, m2, registry);
   assert.equal(result.migrated, true);
-  assert.equal(result.value.schemaVersion, 2);
+  assert.equal(result.value.schemaVersion, 3);
   assert.deepEqual(supplyProgress(m2, result.value), { collected: 51, total: 51, count: 11 });
   assert.deepEqual(result.value.bestResults, browserM2.payload.bestResults);
   assert.deepEqual(result.value.completedObjectiveIds, browserM2.payload.completedObjectiveIds);
@@ -649,20 +709,17 @@ test("P07 真实浏览器 M2 schema1 全收集文件升级 schema2，51物资与
   for (const definition of m2.staticChallenges) {
     const layout = result.value.completedRoomLayouts[definition.id];
     assert.ok(layout);
-    assert.deepEqual(layout.objectTileById, {});
+    assert.deepEqual(layout.layout.objectTileById, {});
     assert.deepEqual(
-      new Set(layout.visitedTileIds),
+      new Set(layout.layout.visitedTileIds),
       new Set(definition.kind === "oneStroke" ? definition.requiredTileIds : []),
     );
   }
-  const playing = new Session(m2, restorePayload(result.value, m2, 0));
-  playing.send({ kind: "Teleport", teleportId: "b.teleport" });
-  playing.send({ kind: "Move", direction: "right" });
-  playing.send({ kind: "Move", direction: "right" });
-  assert.equal(playing.state.mode, "completedRoom");
-  playing.send({ kind: "Move", direction: "right" });
-  playing.send({ kind: "Move", direction: "left" });
-  const visit = valid(stablePayload(playing.state), m2, registry).value;
+  const visit = valid(
+    historicalVisit(result.value, m2, "b.line.01", ["right", "left"]),
+    m2,
+    registry,
+  ).value;
   assert.equal(visit.room?.status, "completedVisit");
   assert.deepEqual(visit.completedRoomLayouts, result.value.completedRoomLayouts);
   assert.deepEqual(stablePayload(restorePayload(visit, m2, 50000)), visit);
@@ -699,12 +756,7 @@ test("P07 真实 schema1 M2 文件持久升级前保存两槽原文，恢复当�
 
 test("P08 永久完成的一笔画集合与回访玩家坐标同步映射，不重算或替换提交结果", () => {
   const source = valid(browserM2.payload, m2, registry).value;
-  const playing = new Session(m2, restorePayload(source, m2, 0));
-  playing.send({ kind: "Teleport", teleportId: "b.teleport" });
-  playing.send({ kind: "Move", direction: "right" });
-  playing.send({ kind: "Move", direction: "right" });
-  playing.send({ kind: "Move", direction: "right" });
-  const visit = valid(stablePayload(playing.state), m2, registry).value;
+  const visit = valid(historicalVisit(source, m2, "b.line.01", ["right"]), m2, registry).value;
   const definition = m2.staticChallenges.find((room) => room.id === "b.line.01")!;
   const tileIds = Object.fromEntries(definition.tiles.map((tile) => [tile.id, `${tile.id}.moved`]));
   const target = replaceContentIds(m2, tileIds, 3);
@@ -715,8 +767,8 @@ test("P08 永久完成的一笔画集合与回访玩家坐标同步映射，不�
   ).value;
   assert.equal(result.playerPosition.tileId, tileIds[visit.playerPosition.tileId]);
   assert.deepEqual(
-    result.completedRoomLayouts[definition.id]?.visitedTileIds,
-    visit.completedRoomLayouts[definition.id]?.visitedTileIds.map((id) => tileIds[id]),
+    result.completedRoomLayouts[definition.id]?.layout.visitedTileIds,
+    visit.completedRoomLayouts[definition.id]?.layout.visitedTileIds.map((id) => tileIds[id]),
   );
   assert.deepEqual(result.claimedRewardIds, source.claimedRewardIds);
   assert.equal(restorePayload(result, target, 0).mode, "completedRoom");
@@ -763,7 +815,20 @@ for (const sample of browserM3Samples) {
     assert.equal(source.bestResults.length, 7);
     const migrated = valid(source, actualM4, actualRegistry);
     assert.equal(migrated.migrated, true);
-    assert.deepEqual(migrated.value, { ...source, contentVersion: 4, releaseProfileId: "M4" });
+    assert.deepEqual(
+      {
+        ...migrated.value,
+        schemaVersion: source.schemaVersion,
+        completedRoomLayouts: plainLayouts(migrated.value),
+        archivedCompletedRoomLayouts: undefined,
+      },
+      {
+        ...source,
+        contentVersion: 4,
+        releaseProfileId: "M4",
+        archivedCompletedRoomLayouts: undefined,
+      },
+    );
     assert.deepEqual(supplyProgress(actualM4, migrated.value), {
       collected: sample.supplyUnits,
       total: 130,
@@ -800,7 +865,7 @@ test("P07 真实 M1 全收集按实际 M1→M2→M3→M4 与直接 M1→M4 迁�
     sequential = valid(sequential, target, actualRegistry).value;
   }
   assert.deepEqual(valid(realM1, actualM4, actualRegistry).value, sequential);
-  assert.deepEqual(sequential.completedRoomLayouts, realM1.completedRoomLayouts);
+  assert.deepEqual(plainLayouts(sequential), plainLayouts(realM1));
   assert.deepEqual(sequential.bestResults, realM1.bestResults);
   assert.deepEqual(sequential.scopeCompletionHistory, ["M1"]);
   assert.deepEqual(supplyProgress(actualM4, sequential), { collected: 26, total: 130, count: 6 });
@@ -822,31 +887,47 @@ test("G04/P07 实际 C 主线档升级 M4 后只用移动和 F 即进入 D，三
   assert.deepEqual(playing.state.claimedRewardIds, payload.claimedRewardIds);
   for (const id of ["c.theft.01", "c.theft.02", "c.theft.03", "d.main"])
     assert.equal(playing.state.completedObjectiveIds.includes(id), false);
-  valid(stablePayload(playing.state), actualM4);
+  valid(stablePayload(playing.state), actualM4, actualRegistry);
 });
 
-test("P01/P07 真实 C 完成态访问在 M4→M5 保留九个首次布局，载入后仍可正常离开", () => {
+test("P01/P07 旧 C 完成访问在历史 M4→M5 保留九个首次布局，旧规则仍可正常离开", () => {
   const migrated = valid(browserM3Full.envelope.payload, actualM4, actualRegistry).value;
-  const playing = new Session(actualM4, restorePayload(migrated, actualM4, 0));
-  assert.equal(playing.state.playerPosition.tileId, "c.t.-4.-2");
-  playing.send({ kind: "Interact" });
-  assert.equal(playing.state.activeCompletedRoom?.roomId, "c.theft.02");
-  playing.send({ kind: "Move", direction: "left" });
-  const current = stablePayload(playing.state);
-  assert.equal(current.room?.status, "completedVisit");
+  const room = actualM4.rooms.find((candidate) => candidate.id === "c.theft.02")!;
+  const definition = actualM4.staticChallenges.find(
+    (candidate) => candidate.id === room.id,
+  )! as unknown as HistoricalStaticDefinition;
+  const layout = migrated.completedRoomLayouts[room.id]!.layout;
+  // Construct this boundary state with the frozen movement rule; current R1 gameplay
+  // intentionally does not execute a retired same-colour theft board.
+  const entered = moveHistoricalCompletedStatic(definition, layout, room.entryTileId, "left");
+  assert.ok(entered.legal && !entered.exited);
+  const current: SavePayload = {
+    ...structuredClone(migrated),
+    room: {
+      roomId: room.id,
+      status: "completedVisit",
+      returnAnchor: structuredClone(migrated.playerPosition),
+    },
+    playerPosition: {
+      space: "room",
+      areaId: room.areaId,
+      boardId: room.boardId,
+      tileId: entered.playerTileId,
+    },
+  };
   const upgraded = valid(current, actualM5, actualRegistry).value;
-  assert.deepEqual(
-    upgraded.completedRoomLayouts,
-    browserM3Full.envelope.payload.completedRoomLayouts,
-  );
+  assert.deepEqual(plainLayouts(upgraded), browserM3Full.envelope.payload.completedRoomLayouts);
   assert.deepEqual(upgraded.room, current.room);
   assert.deepEqual(upgraded.playerPosition, current.playerPosition);
-  const continued = new Session(actualM5, restorePayload(upgraded, actualM5, 0));
-  continued.send({ kind: "Move", direction: "right" });
-  assert.equal(continued.state.mode, "explore");
-  assert.equal(continued.state.playerPosition.tileId, "c.t.-4.-2");
-  assert.deepEqual(continued.state.completedRoomLayouts, migrated.completedRoomLayouts);
-  assert.deepEqual(continued.state.claimedRewardIds, migrated.claimedRewardIds);
+  const exited = moveHistoricalCompletedStatic(
+    definition,
+    upgraded.completedRoomLayouts[room.id]!.layout,
+    upgraded.playerPosition.tileId,
+    "right",
+  );
+  assert.ok(exited.legal && exited.exited);
+  assert.deepEqual(upgraded.completedRoomLayouts, migrated.completedRoomLayouts);
+  assert.deepEqual(upgraded.claimedRewardIds, migrated.claimedRewardIds);
 });
 
 test("P07 实际 M3 双槽升级 M4 / M5 前保留 content3 原文，代数增加且九完成布局不变", () => {
@@ -878,7 +959,7 @@ test("P07 实际 M3 双槽升级 M4 / M5 前保留 content3 原文，代数增�
     for (const original of Object.values(backup.saves))
       valid((JSON.parse(original) as { payload: unknown }).payload, actualM3);
     assert.deepEqual(
-      written.envelope.payload.completedRoomLayouts,
+      plainLayouts(written.envelope.payload),
       browserM3Full.envelope.payload.completedRoomLayouts,
     );
     assert.deepEqual(
@@ -896,7 +977,7 @@ test("P07 实际 M3 双槽升级 M4 / M5 前保留 content3 原文，代数增�
 test("P05 实际 M3 旧槽旁的较新 schema / content / rule / profile 均受保护，不能静默退回旧档", () => {
   const source = valid(browserM3Full.envelope.payload, actualM4, actualRegistry).value;
   for (const change of [
-    { schemaVersion: 3 },
+    { schemaVersion: 4 },
     { contentVersion: 5 },
     { ruleVersion: 2 },
     { releaseProfileId: "M5" },
@@ -951,7 +1032,7 @@ test("P06 实际 M4 显露集合须与观察和增幅事件双向闭合，多组
   playing.send({ kind: "Move", direction: "right" });
   playing.send({ kind: "Move", direction: "down" });
   playing.send({ kind: "Amplify" });
-  const revealed = valid(stablePayload(playing.state), actualM4).value;
+  const revealed = valid(stablePayload(playing.state), actualM4, actualRegistry).value;
   assert.deepEqual(
     new Set(revealed.revealedGroupIds),
     new Set(["d.group.permission03", "d.group.permission04"]),
@@ -1005,7 +1086,7 @@ test("P06/P07 真实 M4 全收集浏览器导出含三组合法揭示，升同 c
   const raw = readFileSync(url, "utf8");
   const original = (JSON.parse(raw) as { payload: SavePayload }).payload;
   const source = valid(original, actualM4, actualRegistry);
-  assert.equal(source.migrated, undefined);
+  assert.equal(source.migrated, true);
   assert.deepEqual(
     new Set(source.value.revealedGroupIds),
     new Set(["d.group.permission03", "d.group.permission04", "d.group.hidden"]),
@@ -1023,7 +1104,7 @@ test("P06/P07 真实 M4 全收集浏览器导出含三组合法揭示，升同 c
   assert.equal(target.migrated, true);
   assert.equal(target.value.contentVersion, 4);
   assert.equal(target.value.ruleVersion, 1);
-  assert.deepEqual(target.value, { ...original, releaseProfileId: "M5" });
+  assert.deepEqual(target.value, { ...source.value, releaseProfileId: "M5" });
   assert.deepEqual(stablePayload(restorePayload(target.value, actualM5, 0)), target.value);
   assert.equal(valid(target.value, actualM5, actualRegistry).migrated, undefined);
   assert.equal(readFileSync(url, "utf8"), raw);
@@ -1058,7 +1139,7 @@ for (const sample of [
     const unchanged = structuredClone(original);
     assert.equal(envelope.saveGeneration, sample.generation);
     const compatible = valid(original, actualM4, actualRegistry);
-    assert.equal(compatible.migrated, undefined);
+    assert.equal(compatible.migrated, true);
     assert.equal(original.schemaVersion, 2);
     assert.equal(original.contentVersion, 4);
     assert.equal(original.ruleVersion, 1);
@@ -1078,7 +1159,7 @@ for (const sample of [
 
     const upgraded = valid(original, actualM5, actualRegistry);
     assert.equal(upgraded.migrated, true);
-    assert.deepEqual(upgraded.value, { ...original, releaseProfileId: "M5" });
+    assert.deepEqual(upgraded.value, { ...compatible.value, releaseProfileId: "M5" });
     for (const payload of [original, upgraded.value]) {
       assert.deepEqual(supplyProgress(actualM5, payload), {
         collected: sample.supplyUnits,
@@ -1108,7 +1189,7 @@ for (const sample of [
     }
     const restored = restorePayload(upgraded.value, actualM5, 123456);
     assert.deepEqual(stablePayload(restored), upgraded.value);
-    assert.deepEqual(restored.completedRoomLayouts, original.completedRoomLayouts);
+    assert.deepEqual(plainLayouts(stablePayload(restored)), original.completedRoomLayouts);
     assert.deepEqual(restored.bestResults, original.bestResults);
     assert.deepEqual(restored.revealedGroupIds, original.revealedGroupIds);
     assert.deepEqual(restored.playerPosition, original.playerPosition);
@@ -1118,7 +1199,7 @@ for (const sample of [
     continued.send({ kind: "Teleport", teleportId: "hub.teleport" });
     assert.equal(continued.state.playerPosition.tileId, "hub.t.0.2");
     assert.deepEqual(continued.state.claimedRewardIds, original.claimedRewardIds);
-    assert.deepEqual(continued.state.completedRoomLayouts, original.completedRoomLayouts);
+    assert.deepEqual(plainLayouts(stablePayload(continued.state)), original.completedRoomLayouts);
     assert.deepEqual(continued.state.bestResults, original.bestResults);
     valid(stablePayload(continued.state), actualM5, actualRegistry);
     assert.deepEqual(original, unchanged);

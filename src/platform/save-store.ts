@@ -88,6 +88,8 @@ export type SaveFailureCode =
   | "writeFailed"
   | "readbackFailed";
 
+export type SaveFailurePhase = "beforeWrite" | "writeRejected" | "afterWrite";
+
 export type SaveWriteResult<T> =
   | {
       readonly ok: true;
@@ -100,6 +102,8 @@ export type SaveWriteResult<T> =
   | {
       readonly ok: false;
       readonly code: SaveFailureCode;
+      readonly phase: SaveFailurePhase;
+      readonly migrationBackupVerified: boolean;
       readonly message: string;
       readonly inspection: SaveInspection<T>;
       readonly retryInspection: SaveInspection<T>;
@@ -535,9 +539,13 @@ export function createSaveStore<T>(
   const write = (payload: T, options: SaveWriteOptions<T>): SaveWriteResult<T> => {
     let current = inspect();
     let retryInspection = options.expected;
+    let phase: SaveFailurePhase = "beforeWrite";
+    let migrationBackupVerified = false;
     const failure = (code: SaveFailureCode, message: string): SaveWriteResult<T> => ({
       ok: false,
       code,
+      phase,
+      migrationBackupVerified,
       message,
       inspection: current,
       retryInspection,
@@ -612,14 +620,53 @@ export function createSaveStore<T>(
       validated.migrated === true ||
       options.migrationRequired === true;
     if (migration && hasExistingData) {
-      const backupRaw = JSON.stringify({
+      const originalSaves = { a: current.slots.a.raw, b: current.slots.b.raw };
+      let backupRaw = JSON.stringify({
         backedUpAt: options.savedAt,
-        saves: { a: current.slots.a.raw, b: current.slots.b.raw },
+        saves: originalSaves,
+        savesSha256: saveRawSha256(JSON.stringify(originalSaves)),
+        intendedWriteSha256: saveRawSha256(serialized.raw),
       });
       try {
-        storage.setItem(SAVE_KEYS.preMigration, backupRaw);
+        // A failed write may already be present in a slot. Its retry must retain the
+        // verified originals rather than replacing the backup with the migrated candidate.
+        const previousRaw = storage.getItem(SAVE_KEYS.preMigration);
+        let previous: unknown = null;
+        try {
+          previous = previousRaw === null ? null : JSON.parse(previousRaw);
+        } catch {
+          previous = null;
+        }
+        const previousWrite =
+          isRecord(previous) && typeof previous.intendedWriteSha256 === "string"
+            ? SLOT_IDS.map((id) => current.slots[id]).find(
+                (slot) =>
+                  slot.raw !== null && saveRawSha256(slot.raw) === previous.intendedWriteSha256,
+              )?.envelope
+            : null;
+        const repeatsVerifiedCandidate =
+          previousWrite &&
+          isRecord(previous) &&
+          sameJsonValue(previousWrite.payload, roundTripValidation.value);
+        if (repeatsVerifiedCandidate && previousRaw !== null && isRecord(previous)) {
+          if (
+            !isRecord(previous.saves) ||
+            !SLOT_IDS.every(
+              (id) =>
+                (previous.saves as Record<string, unknown>)[id] === null ||
+                typeof (previous.saves as Record<string, unknown>)[id] === "string",
+            ) ||
+            previous.savesSha256 !== saveRawSha256(JSON.stringify(previous.saves))
+          )
+            return failure(
+              "backupFailed",
+              "上次迁移备份已损坏；本次未写新槽，请导出原文并检查有效槽。",
+            );
+          backupRaw = previousRaw;
+        } else storage.setItem(SAVE_KEYS.preMigration, backupRaw);
         if (storage.getItem(SAVE_KEYS.preMigration) !== backupRaw)
-          return failure("backupFailed", "迁移前原槽备份回读失败；两槽未改写，可导出原文。");
+          return failure("backupFailed", "迁移前原槽备份回读失败；本次未写新槽，可导出原文。");
+        migrationBackupVerified = true;
       } catch {
         return failure("backupFailed", "迁移前原槽备份写入失败；已停止持久迁移，可导出原文。");
       }
@@ -641,7 +688,9 @@ export function createSaveStore<T>(
     };
     try {
       storage.setItem(SAVE_KEYS[targetSlot], serialized.raw);
+      phase = "afterWrite";
     } catch {
+      phase = "writeRejected";
       return failure("writeFailed", "浏览器拒绝写入；当前游戏仍在内存中，可导出或重试保存。");
     }
     try {

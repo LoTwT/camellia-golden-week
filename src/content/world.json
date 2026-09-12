@@ -1,7 +1,7 @@
 {
   "gameId": "camellia-golden-week",
-  "contentVersion": 2,
-  "ruleVersion": 3,
+  "contentVersion": 3,
+  "ruleVersion": 4,
   "areaIds": ["hub", "a", "b", "c", "d", "warehouse"],
   "entry": {
     "areaId": "hub",
@@ -268,7 +268,7 @@
     {
       "id": "c.routing.01",
       "kind": "puzzle",
-      "producer": "c.routing.01",
+      "producer": "c.capture.01",
       "prerequisites": {
         "kind": "objective",
         "objectiveId": "b.main"

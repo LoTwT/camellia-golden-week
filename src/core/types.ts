@@ -193,6 +193,18 @@ export interface BestResult {
   bestCombo?: number;
   bestStarClear?: number;
 }
+export interface CompletedRoomLayoutRecord {
+  contentVersion: number;
+  ruleVersion: number;
+  layout: CompletedStaticLayout;
+  source?: { contentVersion: number; ruleVersion: number; mappingId: string };
+}
+export interface ArchivedCompletedRoomLayout {
+  roomId: string;
+  contentVersion: number;
+  ruleVersion: number;
+  layout: unknown;
+}
 export interface ProgressState {
   gameId: "camellia-golden-week";
   schemaVersion: number;
@@ -200,7 +212,8 @@ export interface ProgressState {
   ruleVersion: number;
   releaseProfileId: ProfileId;
   completedObjectiveIds: string[];
-  completedRoomLayouts: Record<string, CompletedStaticLayout>;
+  completedRoomLayouts: Record<string, CompletedRoomLayoutRecord>;
+  archivedCompletedRoomLayouts: ArchivedCompletedRoomLayout[];
   claimedRewardIds: string[];
   activatedTeleportIds: string[];
   capabilities: ("amplifier" | "unlimitedAmplifier")[];

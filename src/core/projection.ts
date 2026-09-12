@@ -1,15 +1,18 @@
+import { theftPowerActive, theftPortSatisfied } from "./data-theft.ts";
 import { entitiesAt, tileCleared } from "./engine.ts";
 import {
   firewallAlarmContacts,
   firewallDangerTileIds,
   firewallWarningTileIds,
   ghostTileIds,
+  antivirusActiveTargets,
+  antivirusRequiredScore,
 } from "./realtime.ts";
 import { firewallFeedback } from "./firewall-feedback.ts";
 import type { FirewallJudgment } from "./firewall-feedback.ts";
 import type { RealtimeDirection } from "./realtime.ts";
 import { gateOpen } from "./progress.ts";
-import { completedStaticExitTileId } from "./static-puzzle.ts";
+import { completedStaticExitTileId, staticOccupiedTiles } from "./static-puzzle.ts";
 import type { GameContent, GameState } from "./types.ts";
 
 export interface ScreenTile {
@@ -32,6 +35,13 @@ export interface BoardProjection {
   focus: { x: number; y: number };
   local: boolean;
   firewall?: { combo: number; judgment: FirewallJudgment };
+  antivirus?: {
+    score: number;
+    targetScore: number;
+    activeCount: number;
+    maxActiveCorruption: number;
+  };
+  theft?: { phase: "assembly" | "power" | "completed"; satisfiedPorts: number; totalPorts: number };
 }
 const COLORS = {
   floor: "#363345",
@@ -48,6 +58,8 @@ const COLORS = {
 export function projectBoard(content: GameContent, state: GameState): BoardProjection {
   const position = state.playerPosition;
   let tiles: ScreenTile[] = [];
+  let theft: BoardProjection["theft"];
+  let antivirus: BoardProjection["antivirus"];
   if (position.space === "world") {
     tiles = content.tiles
       .filter(
@@ -161,8 +173,21 @@ export function projectBoard(content: GameContent, state: GameState): BoardProje
   } else if (state.activeStatic || state.activeCompletedRoom) {
     const roomId = state.activeStatic?.roomId ?? state.activeCompletedRoom!.roomId;
     const completed = state.activeCompletedRoom !== null;
-    const layout = state.activeStatic?.state.currentLayout ?? state.completedRoomLayouts[roomId];
+    const layout =
+      state.activeStatic?.state.currentLayout ?? state.completedRoomLayouts[roomId]?.layout;
     const definition = content.staticChallenges.find((candidate) => candidate.id === roomId);
+    if (definition?.kind === "theft" && layout?.theft)
+      theft = {
+        phase: completed
+          ? "completed"
+          : theftPowerActive(definition, layout.theft)
+            ? "power"
+            : "assembly",
+        satisfiedPorts: definition.powerPortIds.filter((id) =>
+          theftPortSatisfied(definition, layout.theft!, id),
+        ).length,
+        totalPorts: definition.powerPortIds.length,
+      };
     if (definition && layout)
       tiles = definition.tiles.map((tile) => {
         let color = tile.terrain === "wall" ? "#121318" : COLORS.floor;
@@ -185,9 +210,17 @@ export function projectBoard(content: GameContent, state: GameState): BoardProje
           }
         }
         if (definition.kind === "oneStroke") {
+          if (definition.requiredTileIds.includes(tile.id)) {
+            icon = "data-ready";
+            label = "待经过数据格";
+          }
           if (layout.visitedTileIds.includes(tile.id)) {
             color = "#70764b";
             mark = "•";
+            if (definition.requiredTileIds.includes(tile.id)) {
+              icon = "data-collected";
+              label = "已取得数据格";
+            }
           }
           if (definition.endTileId === tile.id) {
             icon = "portal-ready";
@@ -215,19 +248,68 @@ export function projectBoard(content: GameContent, state: GameState): BoardProje
             } else label = "推车";
           }
         }
-        if (definition.kind === "theft") {
-          const slot = Object.entries(definition.socketTileById).find(([, id]) => id === tile.id);
-          const object = Object.entries(layout.objectTileById).find(([, id]) => id === tile.id);
-          const colorId = object
-            ? definition.colorByObjectId[object[0]]
-            : slot
-              ? definition.colorBySocketId[slot[0]]
-              : undefined;
+        if (definition.kind === "theft" && layout.theft) {
+          const components = layout.theft;
+          if (tile.terrain === "buffer") {
+            icon = "theft-buffer";
+            label = "缓冲区 · 仅玩家可走";
+            color = "#62676a";
+          }
+          const ballId = definition.ballIds.find((id) => components.ballTileById[id] === tile.id);
+          const stationId = definition.baseStationIds.find(
+            (id) => components.stationTileById[id] === tile.id,
+          );
+          const amplifierId = definition.amplifierIds.find(
+            (id) => components.amplifierTileById[id] === tile.id,
+          );
+          const portId = theftPowerActive(definition, components)
+            ? definition.powerPortIds.find((id) => definition.portTileById[id] === tile.id)
+            : undefined;
+          const pair = amplifierId ? components.assemblyByAmplifierId[amplifierId] : undefined;
+          const colorId = ballId
+            ? definition.componentCompatibility.colorByBallId[ballId]
+            : stationId
+              ? definition.componentCompatibility.colorByStationId[stationId]
+              : pair
+                ? definition.componentCompatibility.colorByStationId[pair.stationId]
+                : portId
+                  ? definition.portCompatibility[portId]
+                  : undefined;
           if (colorId) {
             mark = { cyan: "A", magenta: "B", amber: "C" }[colorId];
-            color = { cyan: "#6ab7cb", magenta: "#c887ab", amber: "#d0b473" }[colorId];
-            icon = object ? "data-object" : "socket";
-            label = object ? `对象 ${mark}` : `接收槽 ${mark}`;
+            color = { cyan: "#6ab7cb", magenta: "#c887ab", amber: "#e89839" }[colorId];
+            icon = ballId
+              ? "theft-ball"
+              : stationId
+                ? "theft-base"
+                : amplifierId
+                  ? "theft-combined"
+                  : "theft-socket";
+            label =
+              (ballId
+                ? "滑行球 "
+                : stationId
+                  ? "不可单推基站 "
+                  : amplifierId
+                    ? "逐格组合体 "
+                    : "电源接口 ") + mark;
+            if (portId && theftPortSatisfied(definition, components, portId)) label += " · 已接入";
+          }
+        }
+        if (definition.kind === "capture" && layout.capture) {
+          if (Object.values(layout.capture.cartTileById).includes(tile.id)) {
+            icon = "cart";
+            label = "推车 · 堵住逃路";
+          }
+          if (Object.values(layout.capture.bangbooTileById).includes(tile.id)) {
+            icon = "bangboo";
+            label = "逃跑邦布 · 封路后追赶";
+            mark = "逃";
+            color = "#e8a569";
+          }
+          if (tile.id === definition.completedEntryTileId) {
+            label = "安全入口 · 仅玩家可走";
+            mark = "入";
           }
         }
         if (completed && tile.id === completedStaticExitTileId(definition)) {
@@ -235,7 +317,7 @@ export function projectBoard(content: GameContent, state: GameState): BoardProje
           color = COLORS.portal;
           label = "已完成房间出口";
         } else if (completed && tile.terrain === "floor") {
-          label = Object.values(layout.objectTileById).includes(tile.id)
+          label = staticOccupiedTiles(layout).includes(tile.id)
             ? `${label} · 保留完成位置`
             : `${label} · 可自由通行`;
         }
@@ -271,11 +353,22 @@ export function projectBoard(content: GameContent, state: GameState): BoardProje
         ? firewallWarningTileIds(definition, state.clock.activeTimeMs)
         : [],
     );
+    if (definition?.kind === "antivirus" && active.kind === "antivirus")
+      antivirus = {
+        score: active.score,
+        targetScore: antivirusRequiredScore(definition),
+        activeCount: antivirusActiveTargets(definition, active).filter(
+          (target) => target.kind !== "star",
+        ).length,
+        maxActiveCorruption:
+          definition.ruleVersion === 4 ? definition.rules.maxActiveCorruption : 20,
+      };
     if (definition)
       tiles = definition.tiles.map((tile) => {
         let color = COLORS.floor;
         let icon: string | null = null;
         let label = "挑战格";
+        let targetMark = "";
         let hazardPhase: "active" | "warning" | null = null;
         if (definition.kind === "firewall" && dangerIds.has(tile.id)) {
           color = COLORS.danger;
@@ -288,8 +381,8 @@ export function projectBoard(content: GameContent, state: GameState): BoardProje
           hazardPhase = "warning";
         }
         if (definition.kind === "antivirus" && active.kind === "antivirus") {
-          const target = definition.rules.spawns.find(
-            (spawn) => spawn.tileId === tile.id && active.activeTargetIds.includes(spawn.id),
+          const target = antivirusActiveTargets(definition, active).find(
+            (spawn) => spawn.tileId === tile.id,
           );
           if (target) {
             icon = `target-${target.kind}`;
@@ -299,7 +392,13 @@ export function projectBoard(content: GameContent, state: GameState): BoardProje
                 : target.kind === "purple"
                   ? COLORS.danger
                   : COLORS.reward;
-            label = target.kind === "star" ? "星星 · 清除所有活跃普通目标" : "待清除数据";
+            label =
+              target.kind === "star"
+                ? "星星 · 清除所有活跃普通目标"
+                : target.kind === "blue"
+                  ? "蓝色数据 · 清除 +1"
+                  : "紫色数据 · 清除 +2";
+            targetMark = target.kind === "star" ? "★" : target.kind === "blue" ? "1" : "2";
           }
         }
         if (definition.kind === "ghosts" && active.kind === "ghosts") {
@@ -351,12 +450,27 @@ export function projectBoard(content: GameContent, state: GameState): BoardProje
                   : state.settings.reducedFlash && icon === "hazard-active"
                     ? "×"
                     : ""
-              : "",
+              : targetMark,
           player: tile.id === position.tileId,
           visited: false,
           ...(hazardPhase ? { hazardPhase, hazardDirections: approaches } : {}),
         };
       });
+    if (definition?.kind === "ghosts")
+      tiles.push(
+        ...(definition.walls ?? []).map((tile) => ({
+          id: tile.id,
+          x: tile.x,
+          y: tile.y,
+          known: true,
+          color: "#4b4650",
+          icon: "brick-wall",
+          label: "砖墙 · 不可通行",
+          mark: "",
+          player: false,
+          visited: false,
+        })),
+      );
   }
   const player = tiles.find((tile) => tile.player);
   return {
@@ -364,6 +478,8 @@ export function projectBoard(content: GameContent, state: GameState): BoardProje
     tiles,
     focus: { x: player?.x ?? 0, y: player?.y ?? 0 },
     local: position.space === "room",
+    ...(theft ? { theft } : {}),
+    ...(antivirus ? { antivirus } : {}),
     ...(state.activeRealtime?.state.kind === "firewall"
       ? {
           firewall: {

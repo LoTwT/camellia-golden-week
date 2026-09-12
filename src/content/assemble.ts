@@ -10,6 +10,9 @@ import dRegistration from "./areas/d-registration.json" with { type: "json" };
 import revisitsJson from "./areas/revisits.json" with { type: "json" };
 import warehouseJson from "./areas/warehouse.json" with { type: "json" };
 import staticJson from "./challenges/static.json" with { type: "json" };
+import theftJson from "./challenges/theft-r1.json" with { type: "json" };
+import captureJson from "./challenges/capture-r1.json" with { type: "json" };
+import { frozenContentRelease, frozenContentReleases } from "./history/frozen-releases.ts";
 import realtimeJson from "./challenges/realtime.json" with { type: "json" };
 import legacyRealtimeJson from "./history/realtime-v1.json" with { type: "json" };
 import v2RealtimeJson from "./history/realtime-v2.json" with { type: "json" };
@@ -26,7 +29,14 @@ import type {
 } from "../core/types.ts";
 
 export const AVAILABLE_PROFILE: ProfileId = "M5";
-export const staticContent = staticJson as unknown as StaticContent;
+export const staticContent = {
+  get definitions() {
+    return [...staticJson.definitions, ...theftJson.definitions, ...captureJson.definitions];
+  },
+  get witnesses() {
+    return [...staticJson.witnesses, ...theftJson.witnesses, ...captureJson.witnesses];
+  },
+} as unknown as StaticContent;
 export const realtimeContent = realtimeJson as unknown as {
   contentVersion: number;
   ruleVersion: number;
@@ -84,11 +94,15 @@ export function assembleContent(profileId: ProfileId = AVAILABLE_PROFILE): GameC
 }
 
 export function assembleLegacyContent(profileId: ProfileId = AVAILABLE_PROFILE): GameContent {
-  return assembleRelease(profileId, legacyRealtimeContent, 1, 1);
+  return frozenContentRelease(profileId, 1);
 }
 
 export function assembleV2Content(profileId: ProfileId = AVAILABLE_PROFILE): GameContent {
-  return assembleRelease(profileId, v2RealtimeContent, 2, 2);
+  return frozenContentRelease(profileId, 2);
+}
+
+export function assembleV3Content(profileId: ProfileId = AVAILABLE_PROFILE): GameContent {
+  return frozenContentRelease(profileId, 3);
 }
 
 /** Current release is last; a partial build never includes a later stage's playable maps. */
@@ -96,11 +110,7 @@ export function migrationContentReleases(profileId: ProfileId = AVAILABLE_PROFIL
   const profiles = worldCatalog.releaseProfiles
     .filter((profile) => Number(profile.id.slice(1)) <= Number(profileId.slice(1)))
     .map((profile) => profile.id);
-  return [
-    ...profiles.map(assembleLegacyContent),
-    ...profiles.map(assembleV2Content),
-    ...profiles.map(assembleContent),
-  ];
+  return [...frozenContentReleases(profileId), ...profiles.map(assembleContent)];
 }
 
 function assembleRelease(
@@ -112,8 +122,13 @@ function assembleRelease(
   if (
     realtimeSource.contentVersion !== firstContentVersion ||
     realtimeSource.ruleVersion !== ruleVersion ||
-    realtimeSource.definitions.some((definition) => definition.ruleVersion !== ruleVersion) ||
-    realtimeSource.witnesses.some((witness) => witness.ruleVersion !== ruleVersion)
+    realtimeSource.definitions.some((definition) => definition.ruleVersion > ruleVersion) ||
+    realtimeSource.witnesses.some(
+      (witness) =>
+        witness.ruleVersion !==
+        realtimeSource.definitions.find((definition) => definition.id === witness.challengeId)
+          ?.ruleVersion,
+    )
   )
     throw new Error("实时内容版本与发布、定义或见证不一致");
   assertSourceIntegrity(

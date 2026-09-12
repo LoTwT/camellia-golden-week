@@ -2,19 +2,19 @@
 
 [来源索引](index.md) · [美术合同](../spec/art.md) · [验收合同](../spec/acceptance.md)
 
-本记录始于 2026-09-11。先交付中心 / A 区代表画面的 7 种透明图标，实际查看可交互代表截图并完成下述首轮对比后，补齐 M1 的 21 种图标 / 状态，并预制 B / C / D 所需的 12 种图标。现有 33 个 SVG 及同名 PNG、2 个本地字体与 10 种短音效。首轮校准足以继续批量制作；**它不表示 M1 全部玩法或 M5 六类画面验收已经通过**。后续可交互截图、实测视口和 contentVersion 由阶段验收记录承接。
+本记录始于 2026-09-11。先交付中心 / A 区代表画面的 7 种透明图标，实际查看可交互代表截图并完成下述首轮对比后，补齐 M1 的 21 种图标 / 状态，并预制 B / C / D 所需的 12 种图标。当时有33个SVG及同名PNG、2个本地字体与10种短音效；R1新增后的当前资源与验证见[本轮资源补齐](#7-r1-捕获砖墙与中文字体补齐)。首轮校准足以继续批量制作；**它不表示 M1 全部玩法或 M5 六类画面验收已经通过**。后续可交互截图、实测视口和 contentVersion 由阶段验收记录承接。
 
 ## 1. 权威清单与采用情况
 
 实际随包资源的权威清单是 [`public/assets/manifest.json`](../../public/assets/manifest.json)，逐项记录稳定 ID、用途 / 状态、本地路径、源路径 / URL、源版本、源文件和输出文件 SHA-256、尺寸 / 时长、作者 / 权利说明、使用条件、变换及参考定位。SVG 的 `raster` 字段记录同名 PNG 的源 SVG 校验值、输出校验值和光栅化工具。
 
-| 类别              | 本次采用                     | 状态 / 依据                                                                                                   |
-| ----------------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| 原版提取图标 / UI | 0                            | 实际查看 A01 的 84 个文件；未确认活动电视格子对应的完整状态素材及本项目再分发适用条件，不将候选库整体当作依赖 |
-| 图标补制          | 33 个 SVG + 同名 256×256 PNG | M1 的 21 项，以及 B / C / D 的 12 项预备资源；逐项 `profiles` 定义适用阶段；参考核对后以独立几何补制          |
-| 字体              | 2 个 WOFF2                   | Noto Sans SC Regular 与 Barlow Condensed Bold；源字体使用 SIL OFL 1.1，许可证随包                             |
-| 原版声音          | 0                            | 本次候选库未提供已匹配的活动短反馈声；没有将视频录音切片当作可再分发音效                                      |
-| 声音补制          | 13 个 PCM WAV                | 原 10 个独立合成短反馈，加防火墙内层 / 深层 / 核心三首原创连续配乐；新增来源与差异见 [S11](firewall-audio.md) |
+| 类别              | 本次采用                  | 状态 / 依据                                                                                                   |
+| ----------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| 原版提取图标 / UI | 0                         | 实际查看 A01 的 84 个文件；未确认活动电视格子对应的完整状态素材及本项目再分发适用条件，不将候选库整体当作依赖 |
+| 图标补制          | 36个SVG + 同名256×256 PNG | 历史33项及R1邦布两状态 / 砖墙3项；逐项 `profiles` 定义阶段，原图定位与补制差异分开记录                        |
+| 字体              | 2 个 WOFF2                | Noto Sans SC Regular 与 Barlow Condensed Bold；源字体使用 SIL OFL 1.1，许可证随包                             |
+| 原版声音          | 0                         | 本次候选库未提供已匹配的活动短反馈声；没有将视频录音切片当作可再分发音效                                      |
+| 声音补制          | 13 个 PCM WAV             | 原 10 个独立合成短反馈，加防火墙内层 / 深层 / 核心三首原创连续配乐；新增来源与差异见 [S11](firewall-audio.md) |
 
 [`font-manifest.json`](../../public/assets/font-manifest.json) 是字体的固定来源输入；总清单由生成器合并它与本项目制作资源。运行时加载总清单中的本地路径，无需连接这些来源网站。
 
@@ -24,6 +24,9 @@
 | B 杀毒             | 4    | M2–M5        | `antivirus`、`target-blue`、`target-purple`、`target-star` |
 | C 球 / 推车 / 盗取 | 5    | M3–M5        | `station`、`signal-ball`、`cart`、`data-object`、`socket`  |
 | D 灯 / 幽灵        | 3    | M4–M5        | `lamp-lit`、`lamp-unlit`、`ghost`                          |
+| R1 世界捕获邦布    | 2    | M3–M5        | `bangboo`、`bangboo-captured`；区别玩家、球与幽灵          |
+| R1 D砖墙           | 1    | M4–M5        | `brick-wall`；真实墙格专用，不填原图无格                   |
+| 防火墙循环配乐     | 3    | M1–M5        | 三首原创本地循环，见S11                                    |
 | 字体与短声音       | 12   | M1–M5        | 共享项，M1 已需本地提供                                    |
 
 当前总清单的 `phase` 是 `prepared-all-profiles`，只表示作者资源已预制，不表示完整游戏已达到这些阶段。每项 `profiles` 是可用于发布过滤的元数据；主构建仍需按当前发布 profile 选择文件，不能仅凭资源已存在就开放未完成的玩法。
@@ -183,13 +186,15 @@ B 普通蓝目标为单菱形像素十字，紫目标为双菱形与速度短线
 
 C 图只能证实推车的这些粗轮廓；信号球本体和基站外观仍未证实。其清单差异字段已明确改为独立补制，球 / 基站编号由投影层提供。CRT 暗角、紫灰反光、屏幕尺寸和背景多边形均由渲染层生成，本次资产生成器没有引入重复 CRT 贴图。游戏内六类场景的最终比例、遮挡、动态与声音效果仍须使用阶段截图和实际操作验收；上述单图核对不代表 V01–V03 已通过。
 
-当前[相机布局](../../src/render/layout.ts)与[玩家渲染](../../src/render/board.ts)共用 `MOVEMENT_TRANSITION_MS=100` 视觉过渡目标，为合同“镜头120ms内、普通移动总时长≤140ms”预留实际帧完成余量；[普通输入间隔](../../src/platform/input.ts)仍为140ms，规则时钟未改。100ms是源码目标，不是实际渲染耗时。主任务已用正常键鼠完成该版本的[IAB世界六步](../verification/evidence/m5-iab-movement-100ms.json)104.8–109.5ms及[Safari64格六步](../verification/evidence/m5-safari-dense-movement-100ms.json)101–116ms的实际渲染完成复验，两组普通移动≤140ms子项通过，后者包含新场景首次热身。准确环境、逐步代数、进度恢复与计量边界见[性能记录](../verification/performance.md#100ms视觉目标复验)。
+此前[相机布局](../../src/render/layout.ts)与[玩家渲染](../../src/render/board.ts)共用 `MOVEMENT_TRANSITION_MS=100` 视觉过渡目标，为合同“镜头120ms内、普通移动总时长≤140ms”预留实际帧完成余量；[普通输入间隔](../../src/platform/input.ts)仍为140ms，规则时钟未改。100ms是源码目标，不是实际渲染耗时。主任务已用正常键鼠完成该版本的[IAB世界六步](../verification/evidence/m5-iab-movement-100ms.json)104.8–109.5ms及[Safari64格六步](../verification/evidence/m5-safari-dense-movement-100ms.json)101–116ms的实际渲染完成复验，两组普通移动≤140ms子项通过，后者包含新场景首次热身。准确环境、逐步代数、进度恢复与计量边界见[性能记录](../verification/performance.md#100ms视觉目标复验)。
 
 旧120ms目标下Safari159ms热身超限保留为促成本次缩短过渡的失败记录，不与新版本样本混用。该修改不是FPS修复，Safari两档median17ms的帧率失败、指定基准硬件缺口及原版动态/声音未核对仍保留；六类静图也不替代动态测量。
 
+R1 当前表现过渡已缩短为90ms：100ms版本的独立Chrome镜头端点有6/10超过120ms，修复后10次正常移动全部达标。实际前后数字和历史保留见[R1视口与性能](../verification/r1-visual-performance.md#普通世界端点修复后通过失败保留)，不把上面的历史样本当作当前验证。
+
 ## 5. 字体与声音
 
-中文采用 **Noto Sans SC Regular**，源提交 `165c01b46ea533872e002e0785ff17e44f6d97d8`。M1–M4 曾完整封装 SC 源字形集，原 WOFF2 为 6,093,424 字节、31,036 个 glyph、30,890 个 cmap 映射。M5 按运行源码制作子集，菜单键盘修复后当前 `camellia-ui.woff2` 为 **186,748 字节**，较原包减少约 96.9%；本次实际解码核对为 **1,445 个 glyph、1,136 个 cmap 映射**。输出 SHA-256 为 `fca0c88ef7f274be9e85cbe7ebe2a4fcfc779f119be180c871d6aa94a7e5f167`，与字体清单及总清单一致。原 OTF 只保留于作者工具缓存，未放入 `public/` 或静态包。
+中文采用 **Noto Sans SC Regular**，源提交 `165c01b46ea533872e002e0785ff17e44f6d97d8`。M1–M4 曾完整封装 SC 源字形集，原 WOFF2 为 6,093,424 字节、31,036 个 glyph、30,890 个 cmap 映射。M5 按运行源码制作子集，菜单键盘修复快照中的 `camellia-ui.woff2` 为 **186,748 字节**，较原包减少约 96.9%；本次实际解码核对为 **1,445 个 glyph、1,136 个 cmap 映射**。输出 SHA-256 为 `fca0c88ef7f274be9e85cbe7ebe2a4fcfc779f119be180c871d6aa94a7e5f167`，与字体清单及总清单一致。原 OTF 只保留于作者工具缓存，未放入 `public/` 或静态包。
 
 数字 / 英文标题继续采用完整 **Barlow Condensed Bold**，源提交 `89f5431ff0db41bd2fe3f7ba21a723a01622428b`，`camellia-numerals.woff2` 为 39,384 字节、694 个 glyph、525 个 cmap 映射。二者的内部名称和版权记录仍保留，OFL 放在各自字体旁；许可证校验值也写入字体清单。原游戏字体未确认，因此字体匹配状态为替代。CSS 使用独立 family 名 `Camellia UI`（400）与 `Camellia Numerals`（700），避免依赖本机同名字体；没有复制系统字体。
 
@@ -241,7 +246,7 @@ node scripts/generate-assets.ts --check
 
 2026-09-11 用户进一步要求尽可能还原原版后，另完成三首防火墙原创循环配乐；上面的 10 种短音效记录保留此前交付含义。正式参考曲 Red! / Red!! / Red!!!、公开试听的约 110 BPM 分析、三首 32 拍补制配乐及使用差异统一见 [S11 音乐核对](firewall-audio.md)。没有把原录音加入项目，也没有将音乐周期分析当成原游戏完整谱面或判定测绘。
 
-## 6. 生成、检查与后续交接
+## 6. 历史生成、检查与后续交接
 
 [`scripts/generate-assets.ts`](../../scripts/generate-assets.ts) 用 Node 原生功能确定性生成 SVG、WAV 及总清单。默认只生成代表画面的 7 个图标；`--m1` 选择完整 M1 的 21 项状态集；`--all-profiles` 选择已预制的 33 项图标，并在每个条目输出 `profiles`。`--png` 同步生成 PNG，作者工具依赖 Sharp `0.35.4` / librsvg `2.62.91`；可用 `CAMELLIA_ASSET_SHARP_MODULE` 指定该作者工具的模块入口。Sharp 只用于离线资源生成，游戏运行和只读构建不依赖它。
 
@@ -260,3 +265,43 @@ M5首轮精修的797字符快照曾再次执行 `--check`，45项完整集合、
 2026-09-11 的802字符子集生成后，再实际执行 `node scripts/generate-assets.ts --check` 通过45项记录、各profile精确范围、本地哈希和当前源码字符覆盖。只读检查前后，82个资产文件、84个既有静态构建文件、原ZIP和生成器共168个文件的字节及修改时间全部不变；与生成前比较，只有中文WOFF2、字体清单和总清单三份资产发生变化。另核对两份JSON与生成器的序列化格式一致，文档及生成器的Oxfmt检查通过；没有运行构建。
 
 M5 的玩家 / 推车和字体精修已落盘；本页不根据资源制作结果判定游戏验收。静态状态显示时机、投影层的非颜色编码、发布过滤结果、六类场景的剩余视觉差异与动态 / 声音反馈，继续由[实际验收记录](../verification/acceptance-results.md)承接。本次资源子任务没有重拍游戏截图，不声称完成六类游戏画面的最终对照。
+
+## 7. R1 捕获、砖墙与中文字体补齐
+
+2026-09-12 为本轮集成新增 `bangboo`、`bangboo-captured` 与 `brick-wall`，当前清单版本为 `camellia-assets-v3-r1`，共36图标、13声音和2字体，即51条。按profile过滤为M1 36、M2 40、M3 47、M4/M5 51条；这是资源数，不改变奖励或内容分母。旧33组SVG/PNG与13音频逐字节不变，Barlow和两份OFL也未改；更新的是新图标、Noto子集及两份清单。资源准备完毕不表示新场景验收通过。
+
+原素材采用仍按美术合同顺序：已查A01候选的84项没有已匹配本活动捕获邦布 / 粉砖墙并确认适用再分发条件的源文件；本次目视重看S09-9与S05-50完整原图，使用截图作为形态依据，没有裁图或提取像素进入产品。原图URL、SHA-256与精确位置见[来源清单](../verification/r1-evidence-files.md#e-5f0453294aa3d760)，新资源清单另含 `referenceSha256 / referenceLocation`。使用条件为项目独立几何补制，不把原游戏素材的可下载性当授权。
+
+| 新资源             | 已核对形态与用途                                            | 本版差异 / 状态边界                                                                |
+| ------------------ | ----------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `bangboo`          | S09-9左上捕获目标的浅色头罩、黑面罩及双耳；M3开始的世界捕获 | 独立几何简化面部与四肢，小图不足以证实精细机械结构；与黑色玩家、经线信号球明显区分 |
+| `bangboo-captured` | 沿用同一对象轮廓，供捕获完成反馈                            | 微笑与固定勾为本版辅助状态，未取得原版完成动画；不靠颜色单独区别，不作为新奖励图标 |
+| `brick-wall`       | S05-50的六块粉红错缝砖墙；D01专用实心阻挡                   | 砖缝与高光为独立矢量；D02三处空缺仍是无格，不能拿砖图补齐；不复用幽灵或信号基站图  |
+
+三项均为128×128透明SVG，使用固定Sharp 0.35.4 / librsvg 2.62.91生成256×256 RGBA PNG，已逐张实际显示检查透明边界、黑白轮廓、完成勾与砖缝。没有添加声音、外部请求或原录像素材。每项源脚本版本 / SHA、SVG SHA、PNG SHA和SVG→PNG变换由总清单维护，检查同时验证引用身份、原图URL及新项的精确定位 / 原图SHA。游戏投影和正常画面由主任务接入，本次单图检查不能替代游戏内比例、缩放和键鼠验收。
+
+字体补齐先执行只读检查，实际拒绝30缺字，包括“邦、捕、逃、砖、堆、积”等，[失败原文](../verification/r1-evidence-files.md#e-19a82c6475262a4b)保留。随后沿用固定Noto OTF、`project-runtime-v1`配方和FontTools 4.65.0 / brotli 1.2.0显式补制，不改变构建流程。首次R1补齐时扫描88个源码文件，859个字符（734汉字）；输出192,540字节、1,475 glyph、1,166 cmap，SHA-256为 `ca71699f799a77eb8df187e4daca27bd7ec59b371ddd7bfa61f086a2dbb3c8a8`。实际FontTools解码确认全部所需字符、完整记录cmap及内部版权名称，两份清单一致。后续文案新增仍须通过只读缺字检查，未覆盖的未来文字不由本记录提前担保。
+
+复现作者命令如下；Sharp、Python与原OTF仍只在隔离作者工具缓存，不进入运行或build依赖：
+
+```sh
+CAMELLIA_ASSET_SHARP_MODULE=/tmp/camellia-asset-node/node_modules/sharp/dist/index.mjs \
+  node scripts/generate-assets.ts --all-profiles --png
+CAMELLIA_ASSET_FONT_PYTHON=/tmp/camellia-art-tools/bin/python \
+  node scripts/generate-assets.ts --subset-font --font-source /tmp/camellia-art-reference/NotoSansSC-Regular.otf
+node scripts/generate-assets.ts --check
+```
+
+[实际生成日志](../verification/r1-evidence-files.md#e-9b5d9bce8c7188c1)、[字体生成日志](../verification/r1-evidence-files.md#e-e897abf834af899b)、[资源 / 字体复核](../verification/r1-evidence-files.md#e-69fa2c22c2223e3d)和[只读检查](../verification/r1-evidence-files.md#e-5790a5f628b1f545)记录当前结果。检查51条、精确profile范围、全部文件SHA与字体覆盖通过；检查前后91个资产文件的字节及修改时间完全不变。生成器独立strict / noUncheckedIndexedAccess / exactOptionalPropertyTypes类型检查、Oxlint和Oxfmt检查通过。上述首次资源作者检查只完成资源与工程验证，当时没有生成新正式包或代表场景验收；后续当前场景结果见下节引用，保留首次记录的范围。
+
+### 7.1 实际星目标标记的显式补字
+
+后续杀毒实际投影使用 `★ U+2605`，只读内容检查正确拒绝该缺字，[失败日志](../verification/r1-evidence-files.md#e-a5e95f2a5d0172ab)保留。沿用上节固定OTF、FontTools4.65.0 / brotli1.2.0及显式 `--subset-font` 命令补制。当前源码输入87文件、860字符（734汉字），字体192,248字节、1,476glyph / 1,167cmap，SHA-256 `f06550686aa5fe49140197cb9e5680c8cb851c74331e21323d44af01261fd5bd`。FontTools重新解码确认★、全部必需字符、完整cmap及内部版权记录；当前数字由清单与[补字复核](../verification/r1-evidence-files.md#e-93d5213684633dea)维护，上节859字符是首次补制时点，不改其原始证据。
+
+[显式生成](../verification/r1-evidence-files.md#e-6fae585a5b022d94)仅改变中文WOFF2、字体清单、总清单三文件，图标与声音未改；[只读检查](../verification/r1-evidence-files.md#e-1226608c8006d78f)再次通过51项，前后91资产文件的字节和mtime全部相同。未将字体生成加入build。当前专用界面、正常杀毒 / M5 main与已完成56组的[实际视觉矩阵](../verification/r1-visual-performance.md)统一映射于[R1验收记录](../verification/r1-acceptance-results.md)。
+
+### 7.2 当前场景与声画补证
+
+资源集成后的[R1六类对照](r1-visual-comparison.md)已逐类实际查看原参考及当前关键帧；正常操作的[跨轮补证](../verification/r1-evidence-files.md#e-b8f92d5eb44ff4a8)保存中心R、迷宫观察 / 隐藏 / 行走、盗取组装 / 推动 / 接入、世界邦布逃跑 / 捕获、杀毒星清、幽灵巡逻 / 碰撞 / 点灯状态。其失败和后续补录分开记录，run5补齐D成功音频尾部，不宣称整份补证为单轮无失败。最终完整verify4的[归档清单](../verification/r1-evidence-files.md#e-d78d2288e7de2cfb)与[日志](../verification/r1-evidence-files.md#e-f7e86a485d3b122e)另提供当前防火墙和静态失败恢复证据。
+
+当前声音已按实际数字混音核对输入 / 状态与起音观察、持续段、峰值及窗口RMS，具体数字只在六类对照维护；混音可能重叠，未测物理扬声器声压与延迟，也未取得可比的原活动短音录音。原素材使用条件、独立补制属性与本版适配差异不因当前操作验收而改变。

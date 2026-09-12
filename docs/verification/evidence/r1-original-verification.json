@@ -1,0 +1,35 @@
+{
+  "scope": "Final R1 implementation verification; documentation and publication receipts are finalized afterward without altering verified runtime inputs.",
+  "browserFinishedAt": "2026-09-12T13:11:37.139Z",
+  "verifyExitCode": 0,
+  "nativeTests": {
+    "tests": 682,
+    "passed": 682,
+    "failed": 0,
+    "skipped": 0
+  },
+  "browserSuccess": true,
+  "browserVersion": "153.0.8010.36",
+  "profiles": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5"
+  ],
+  "staticRooms": 12,
+  "platformCases": 28,
+  "inputRealtimeCases": 8,
+  "m3ToM4ActualCommands": 392,
+  "readOnlyInputs": "verification-inputs-after.json",
+  "readonlyUnchanged": true,
+  "browserResults": "../r1-pipeline/browser-results.json",
+  "productionResult": "../r1-release/production-5174-result.json",
+  "finalPackageRecheck": "../r1-release/final-package-recheck.json",
+  "retainedLimitations": [
+    "V06 is no longer required and is not counted as passed.",
+    "Native quality select keyboard value change remains unverified; focus and uncaptured key events verified.",
+    "Original sound recording equality, exact original timings and other hardware are not claimed."
+  ],
+  "verifyLogSha256": "a717df4eb90164a7e8d57ab1d08de15dce4b317bdb74876d47dc1c7b59fbe3a9"
+}

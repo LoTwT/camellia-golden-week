@@ -16,33 +16,49 @@
 
 ## 实施与实际验证
 
+完整R1原始证据已改为独立归档分发，使用方法、原路径与校验值见[R1证据归档](verification/r1-evidence-archive.md)。正常安装、测试与游戏不需要下载大型归档。
+
 2026-09-11 起进入用户授权的 M1–M5 连续实施。规格中的“本轮仅文档”“尚未实现”描述此前交付状态；当前实现和验证以以下记录为准，具体行为与通过条件由主合同及用户明确的[验收范围调整](verification/acceptance-scope-2026-09-11.md)定义。
 
-| 记录                                                               | 当前职责与边界                                                                                          |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------- |
-| [危险格箭头与菜单键盘修复](verification/controls-readability.md)   | 本轮方向标记可读性、公共菜单导航与返回焦点；实际红绿回归和当前进展                                      |
-| [防火墙警报修复与 v3 迁移](verification/firewall-hazards.md)       | 当前错拍 / 受击扣分、迎向闪避、方向警报、存档迁移、Chrome 实测与重建边界                                |
-| [防火墙原版还原与 v2 迁移](verification/firewall-restoration.md)   | 历史电视墙构图、110 BPM 配乐同步、三档挑战、旧成绩迁移及对应验收                                        |
-| [原版音乐核对 S11](references/firewall-audio.md)                   | Red! 系列曲名、约 110 BPM 实测、使用条件与三首原创替代配乐                                              |
-| [原版警报规则核对 S12](references/firewall-hazards.md)             | 原版错拍与受击扣分、迎向闪避条件、逐帧证据及重建边界                                                    |
-| [防火墙拍点可读性修复](verification/firewall-visual-cue.md)        | 历史两轮周边白光、独立节拍条和教学补修，保留原始版本和验收含义                                          |
-| [消融 Review 修复](verification/review-fixes.md)                   | 四项运行时修复、内容与工程校验、真实 Chrome 回归、消融复验和更新静态包；不重写历史验收含义              |
-| [pnpm 迁移与验证](verification/pnpm-migration.md)                  | 当前包管理、冻结锁文件、依赖版本 / 完整性等价及安装 / 检查 / 构建证据；旧 npm 日志保留历史含义          |
-| [本轮验收范围调整](verification/acceptance-scope-2026-09-11.md)    | 用户确认的本机 Chrome 基准与断网门槛取消；保留 63 ID，区分 62 通过与 V06 不再要求                       |
-| [全量实施进度](verification/implementation-progress.md)            | 当前阶段、维护决定、实际命令、问题与恢复起点；是否完成阶段由此记录和对应证据共同确认                    |
-| [游戏实施验收结果](verification/acceptance-results.md)             | 全部 63 项 G / I / S / T / P / V 的实现位置、方法、结果与证据；区分规则测试、正常浏览器流程和未验证环境 |
-| [M5 静态交付包](verification/release-candidate.md)                 | 静态 ZIP、校验值、实际工程检查和正式包续玩证据；范围、限制与 Git 交付状态                               |
-| [Safari 正式包正常续玩](verification/safari-production-journey.md) | 历史记录：自身新档链到 A/B 首访、导出与中断；用户已取消 Safari 必需验收                                 |
-| [美术实施与原参考定位](references/art-implementation.md)           | 原资源实际辨认、单项来源 / 哈希 / 转换、本地补制、六类原参考与首轮代表画面对照                          |
-| [M5 六类视觉对照](references/visual-comparison-m5.md)              | 原参考定位、本版截图、外壳与格距测量、图标状态和明确保留的重建差异                                      |
-| [视口与点选矩阵](verification/viewport-matrix.md)                  | 指定尺寸、DPR、缩放端点的布局与正常点选证据；逐项区分已测与未测                                         |
-| [性能与资源稳定性](verification/performance.md)                    | 用户接受的本机 Chrome 基准、64 格持续采样、输入反馈和 30 次区域往返；其他设备单列                       |
-| [浏览器与设备矩阵](verification/browser-matrix.md)                 | 实际版本、官方发布来源、浏览器覆盖和缺少的设备条件                                                      |
-| [本地静态资源与离线核查](verification/offline-build-audit.md)      | 构建资源、哈希和本地 HTTP 实测；V06 本次不再要求，保留隔离失败与设置清理限制                            |
-| [M1 世界地图重建与见证](references/maps/world-m1.md)               | 中心 / A 固定世界坐标、来源盲区、主路径和全收集规则命令；不冒充原版逐格测绘或浏览器通关                 |
-| [M2 世界地图重建与见证](references/maps/world-m2.md)               | B 固定坐标、两个一笔画、三档杀毒和独立奖励路线、M1续玩与51单位账本见证                                  |
-| [固定静态谜题重建与见证](references/maps/static-puzzles.md)        | 三迷宫、两一笔画、球 / 车与三盗取的局部布局、替代解及失败 / 死角恢复                                    |
-| [实时挑战重建与见证](references/maps/realtime.md)                  | 防火墙、杀毒与幽灵的固定脚本、时间 / 碰撞边界与纯规则证据；世界整合与浏览器结果见阶段记录               |
+2026-09-12 主合同已修订为 R1，用户已授权连续实施。当前游戏规则、固定地图、专用表现、资源和迁移已实现接入，完整工程与本轮必需验收已通过，Git 发布状态见静态交付记录。S13 保留原核对范围，本轮补充证据与具名决定见下列 R1 记录；目标由主合同维护，实际通过状态由验收记录维护，历史通过数字不继承为 R1 通过。
+
+同日[规格 review 修复](verification/implementation-progress.md#2026-09-12-r1-规格-review-修复)补齐旧完成房间的版本化回访、待核准关闭路径及分阶段存档失败保护；相关实现已接入，具体规则测试和正常浏览器验收分别记录，不能以合同修订代替通过。
+
+| 记录                                                               | 当前职责与边界                                                                                                     |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| [R1 逐项验收结果](verification/r1-acceptance-results.md)           | 63个ID逐项新证据：62通过、V06不再要求；正常全收集、五profile、升级、静态恢复与失败记录                             |
+| [R1 地图与机关证据冻结](references/r1-map-mechanism-evidence.md)   | A/B/C/D 原图与三盗取视频定位、具名机制 / 时序 / 入口适配、七图公开规则证明；完整世界拼接与正常浏览器验收边界仍单列 |
+| [R1 杀毒逐档规则冻结](references/r1-antivirus-rules.md)            | 三档规则4的持续目标、生成 / 占格、数量超限、星清与结束顺序；原依据、本版参数和实际纯规则验证分开                   |
+| [R1 版本迁移实施记录](verification/r1-migration.md)                | 历史内容 / 实际旧档冻结、schema3归档与安全退场；两条真实旧完成访问经新版练习首成、重复练习与未领奖连续验证         |
+| [R1 杀毒浏览器验收](verification/r1-antivirus-browser.md)          | 三档正常鼠标成功、持续堆积失败、星清与重试，反应时间和四侧屏实测                                                   |
+| [R1 视口与本机性能](verification/r1-visual-performance.md)         | 七场景56组合、两档连续60秒、30次区域往返及镜头端点修复前后证据                                                     |
+| [R1 平台浏览器边界](verification/r1-platform-browser.md)           | 分阶段存储失败、导入、双标签、实时刷新与图形故障的当前执行状态                                                     |
+| [R1 输入与实时边界](verification/r1-input-realtime-boundaries.md)  | 真实重复按键、方向覆盖、单次点击去重、D失败重试与30秒后台恢复、杀毒键鼠切换                                        |
+| [S13 非防火墙还原核对](references/restoration-audit-2026-09-12.md) | C 两类机关、B 堆积与盘面、A / D 地图、一笔画失败及视听差异；原证据、现实现和待核准边界                             |
+| [危险格箭头与菜单键盘修复](verification/controls-readability.md)   | 本轮方向标记可读性、公共菜单导航与返回焦点；实际红绿回归和当前进展                                                 |
+| [防火墙警报修复与 v3 迁移](verification/firewall-hazards.md)       | 当前错拍 / 受击扣分、迎向闪避、方向警报、存档迁移、Chrome 实测与重建边界                                           |
+| [防火墙原版还原与 v2 迁移](verification/firewall-restoration.md)   | 历史电视墙构图、110 BPM 配乐同步、三档挑战、旧成绩迁移及对应验收                                                   |
+| [原版音乐核对 S11](references/firewall-audio.md)                   | Red! 系列曲名、约 110 BPM 实测、使用条件与三首原创替代配乐                                                         |
+| [原版警报规则核对 S12](references/firewall-hazards.md)             | 原版错拍与受击扣分、迎向闪避条件、逐帧证据及重建边界                                                               |
+| [防火墙拍点可读性修复](verification/firewall-visual-cue.md)        | 历史两轮周边白光、独立节拍条和教学补修，保留原始版本和验收含义                                                     |
+| [消融 Review 修复](verification/review-fixes.md)                   | 四项运行时修复、内容与工程校验、真实 Chrome 回归、消融复验和更新静态包；不重写历史验收含义                         |
+| [pnpm 迁移与验证](verification/pnpm-migration.md)                  | 当前包管理、冻结锁文件、依赖版本 / 完整性等价及安装 / 检查 / 构建证据；旧 npm 日志保留历史含义                     |
+| [本轮验收范围调整](verification/acceptance-scope-2026-09-11.md)    | 用户确认的本机 Chrome 基准与断网门槛取消；保留 63 ID，区分 62 通过与 V06 不再要求                                  |
+| [全量实施进度](verification/implementation-progress.md)            | 当前阶段、维护决定、实际命令、问题与恢复起点；是否完成阶段由此记录和对应证据共同确认                               |
+| [游戏实施验收结果](verification/acceptance-results.md)             | 全部 63 项 G / I / S / T / P / V 的实现位置、方法、结果与证据；区分规则测试、正常浏览器流程和未验证环境            |
+| [M5 静态交付包](verification/release-candidate.md)                 | 静态 ZIP、校验值、实际工程检查和正式包续玩证据；范围、限制与 Git 交付状态                                          |
+| [Safari 正式包正常续玩](verification/safari-production-journey.md) | 历史记录：自身新档链到 A/B 首访、导出与中断；用户已取消 Safari 必需验收                                            |
+| [美术实施与原参考定位](references/art-implementation.md)           | 原资源实际辨认、单项来源 / 哈希 / 转换、本地补制、六类原参考与首轮代表画面对照                                     |
+| [R1 六类视觉与状态对照](references/r1-visual-comparison.md)        | 当前六类及C两种机关的原图/正常画面/夹具边界、HUD与对象、声音与状态补证及具名差异                                   |
+| [M5 六类视觉对照](references/visual-comparison-m5.md)              | 原参考定位、本版截图、外壳与格距测量、图标状态和明确保留的重建差异                                                 |
+| [视口与点选矩阵](verification/viewport-matrix.md)                  | 指定尺寸、DPR、缩放端点的布局与正常点选证据；逐项区分已测与未测                                                    |
+| [性能与资源稳定性](verification/performance.md)                    | 用户接受的本机 Chrome 基准、64 格持续采样、输入反馈和 30 次区域往返；其他设备单列                                  |
+| [浏览器与设备矩阵](verification/browser-matrix.md)                 | 实际版本、官方发布来源、浏览器覆盖和缺少的设备条件                                                                 |
+| [本地静态资源与离线核查](verification/offline-build-audit.md)      | 构建资源、哈希和本地 HTTP 实测；V06 本次不再要求，保留隔离失败与设置清理限制                                       |
+| [M1 世界地图重建与见证](references/maps/world-m1.md)               | 中心 / A 固定世界坐标、来源盲区、主路径和全收集规则命令；不冒充原版逐格测绘或浏览器通关                            |
+| [M2 世界地图重建与见证](references/maps/world-m2.md)               | B 固定坐标、两个一笔画、三档杀毒和独立奖励路线、M1续玩与51单位账本见证                                             |
+| [固定静态谜题重建与见证](references/maps/static-puzzles.md)        | 三迷宫、两一笔画、球 / 车与三盗取的局部布局、替代解及失败 / 死角恢复                                               |
+| [实时挑战重建与见证](references/maps/realtime.md)                  | 防火墙、杀毒与幽灵的固定脚本、时间 / 碰撞边界与纯规则证据；世界整合与浏览器结果见阶段记录                          |
 
 M3新增：[C世界地图重建](references/maps/world-m3.md)，记录球车主线、三组盗取、侧路、六处物资和来源盲区；固定坐标为重建，正常浏览器结果见验收页。
 

@@ -1,12 +1,22 @@
 // These tests replay the original v1 recordings/exports against their published content view.
 import assert from "node:assert/strict";
 import test from "node:test";
-import { assembleLegacyContent as assembleContent } from "../src/content/assemble.ts";
-import { replayWorldWitness } from "../src/content/validate.ts";
-import type { WorldWitness } from "../src/content/validate.ts";
-import { createGame, dispatch, safePath, tileCleared } from "../src/core/engine.ts";
-import { areaData, currentObjective, gateOpen, supplyProgress } from "../src/core/progress.ts";
-import type { GameState } from "../src/core/types.ts";
+import { assembleLegacyContent as assembleContent } from "../src/content/history/pre-r1/assemble.ts";
+import { replayWorldWitness } from "../src/content/history/pre-r1/validate.ts";
+import type { WorldWitness } from "../src/content/history/pre-r1/validate.ts";
+import {
+  createGame,
+  dispatch,
+  safePath,
+  tileCleared,
+} from "../src/content/history/pre-r1/engine.ts";
+import {
+  areaData,
+  currentObjective,
+  gateOpen,
+  supplyProgress,
+} from "../src/content/history/pre-r1/progress.ts";
+import type { GameState } from "../src/content/history/pre-r1/types.ts";
 import witnessContent from "../src/content/witnesses/m1.json" with { type: "json" };
 
 const content = assembleContent("M1");

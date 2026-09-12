@@ -1,3 +1,10 @@
+import { r1RoomLayoutMappings } from "../content/history/r1-room-map.ts";
+import * as historicalStatic from "../content/history/pre-r1/static-puzzle.ts";
+import {
+  validateCompletedStaticLayout,
+  isCompletedStaticPosition,
+  validateStaticState,
+} from "../core/static-puzzle.ts";
 import { gateSatisfied } from "../core/progress.ts";
 import type { GameContent, PlayerPosition, ProfileId } from "../core/types.ts";
 import type { CompletedStaticLayout, StaticLayout } from "../core/static-puzzle.ts";
@@ -9,7 +16,18 @@ export interface ReleaseVersion {
   readonly ruleVersion: number;
 }
 
+export type RoomLayoutMigration =
+  | {
+      readonly kind: "archive";
+      readonly targetRoomId: string | null;
+      readonly safeEntrance: PlayerPosition;
+      readonly successExit: PlayerPosition;
+      readonly objectiveId: string;
+    }
+  | { readonly kind: "compatible"; readonly mappingId: string; readonly targetRoomId: string };
+
 export interface ContentMapping {
+  readonly roomLayouts?: Readonly<Record<string, RoomLayoutMigration>>;
   readonly tileIds?: Readonly<Record<string, string>>;
   readonly boardIds?: Readonly<Record<string, string>>;
   readonly objectiveIds?: Readonly<Record<string, string>>;
@@ -85,7 +103,45 @@ export function additiveProfileMigrations(releases: readonly GameContent[]): Mig
 }
 
 /** Published releases upgrade in place before adding later profile content. */
-export function publishedProfileMigrations(releases: readonly GameContent[]): MigrationRegistry {
+export function publishedProfileMigrations(
+  releases: readonly GameContent[],
+  r1RoomLayouts: Readonly<Record<string, RoomLayoutMigration>> = r1RoomLayoutMappings,
+): MigrationRegistry {
+  const r1 = releases.filter((release) => release.ruleVersion === 4);
+  if (r1.length) {
+    const previous = publishedProfileMigrations(
+      releases.filter((release) => release.ruleVersion < 4),
+    );
+    const additive = additiveProfileMigrations(r1);
+    const steps = additive.releases.map((to): MigrationStep => {
+      const from = previous.releases.find(
+        (release) => release.profile.id === to.profile.id && release.ruleVersion === 3,
+      );
+      if (!from || to.contentVersion !== from.contentVersion + 1)
+        throw new Error(`缺少 ${to.profile.id} 从 v3 到 R1 的明确版本提升`);
+      const roomLayouts = Object.fromEntries(
+        from.staticChallenges.map((room) => {
+          const mapping = r1RoomLayouts[room.id];
+          if (!mapping) throw new Error(`R1 迁移未登记静态房间 ${room.id}`);
+          return [room.id, mapping];
+        }),
+      );
+      return {
+        from: releaseVersion(from),
+        to: releaseVersion(to),
+        kind: "mapped",
+        mapping: { roomLayouts },
+      };
+    });
+    return {
+      releases: [...previous.releases, ...r1],
+      steps: [
+        ...previous.steps.filter((step) => step.kind !== "additive"),
+        ...steps,
+        ...additive.steps,
+      ],
+    };
+  }
   const current = releases.filter((release) => release.ruleVersion === 3);
   const second = releases.filter((release) => release.ruleVersion === 2);
   const legacy = releases.filter((release) => release.ruleVersion === 1);
@@ -219,8 +275,18 @@ function mapPosition(position: PlayerPosition, mapping: ContentMapping): PlayerP
   };
 }
 
+function mapLayoutCoordinates<T extends StaticLayout | CompletedStaticLayout>(
+  layout: T,
+  mapping: ContentMapping,
+): T {
+  return JSON.parse(JSON.stringify(layout), (_key, value: unknown) =>
+    typeof value === "string" ? mapped(value, mapping.tileIds) : value,
+  ) as T;
+}
+
 function mapLayout(layout: StaticLayout, mapping: ContentMapping): StaticLayout {
   return {
+    ...mapLayoutCoordinates(layout, mapping),
     objectTileById: Object.fromEntries(
       Object.entries(layout.objectTileById).map(([id, tileId]) => [
         id,
@@ -234,11 +300,12 @@ function mapLayout(layout: StaticLayout, mapping: ContentMapping): StaticLayout 
   };
 }
 
-function mapCompletedLayout(
+export function mapCompletedLayout(
   layout: CompletedStaticLayout,
   mapping: ContentMapping,
 ): CompletedStaticLayout {
   return {
+    ...mapLayoutCoordinates(layout, mapping),
     objectTileById: Object.fromEntries(
       Object.entries(layout.objectTileById).map(([id, tileId]) => [
         id,
@@ -306,6 +373,14 @@ function checkContentPreservation(
   if (definition.kind === "rules" && rulesOnlyTopology(from) !== rulesOnlyTopology(to))
     return "规则升级同时改变地图或目标，必须另行登记 contentVersion 迁移";
   if (from.ruleVersion === to.ruleVersion) {
+    for (const challenge of from.staticChallenges) {
+      const destination = to.staticChallenges.find((candidate) => candidate.id === challenge.id);
+      if (
+        !destination ||
+        JSON.stringify(mapDefinition(challenge, mapping)) !== JSON.stringify(destination)
+      )
+        return `静态机关 ${challenge.id} 的定义改变但没有提升 ruleVersion`;
+    }
     for (const challenge of from.realtimeChallenges) {
       const destination = to.realtimeChallenges.find((candidate) => candidate.id === challenge.id);
       const mappedRules = JSON.parse(JSON.stringify(challenge.rules), (_key, value: unknown) =>
@@ -365,7 +440,76 @@ function checkContentPreservation(
   for (const id of mapping.exitRoomIds ?? [])
     if (!from.staticChallenges.some((room) => room.id === id))
       return `退出映射引用未知静态房间：${id}`;
+  for (const [roomId, operation] of Object.entries(mapping.roomLayouts ?? {})) {
+    const oldRoom = from.rooms.find((room) => room.id === roomId);
+    const newRoom = to.rooms.find((room) => room.id === operation.targetRoomId);
+    if (!oldRoom || !from.staticChallenges.some((room) => room.id === roomId))
+      return `布局映射引用未知旧静态房间：${roomId}`;
+    if (operation.targetRoomId !== null && !newRoom) return `布局映射引用未知新房间：${roomId}`;
+    if (operation.kind === "archive") {
+      if (
+        operation.objectiveId !== mapped(oldRoom.goal, mapping.objectiveIds) ||
+        !to.objectives.some((objective) => objective.id === operation.objectiveId)
+      )
+        return `归档房间缺少合法通行目标：${roomId}`;
+      for (const [position, oldId, newId] of [
+        [operation.safeEntrance, oldRoom.returnTileId, newRoom?.returnTileId],
+        [operation.successExit, oldRoom.successExitTileId, newRoom?.successExitTileId],
+      ] as const) {
+        const tile = to.tiles.find((candidate) => candidate.id === position.tileId);
+        if (
+          position.space !== "world" ||
+          !tile ||
+          tile.terrain !== "floor" ||
+          tile.boardId !== position.boardId ||
+          position.boardId !== position.areaId ||
+          position.tileId !== (newId ?? mapped(oldId, mapping.tileIds))
+        )
+          return `归档房间缺少明确合法安全入口或成功出口：${roomId}`;
+      }
+    } else {
+      const oldDefinition = from.staticChallenges.find((room) => room.id === roomId)!;
+      const newDefinition = to.staticChallenges.find((room) => room.id === operation.targetRoomId);
+      if (
+        !operation.mappingId ||
+        !newDefinition ||
+        JSON.stringify(mapDefinition(oldDefinition, mapping)) !== JSON.stringify(newDefinition)
+      )
+        return `兼容布局缺少一一语义证明：${roomId}`;
+    }
+  }
   return null;
+}
+
+function mapDefinition(definition: unknown, mapping: ContentMapping): unknown {
+  return JSON.parse(JSON.stringify(definition), (_key, value: unknown) =>
+    typeof value === "string"
+      ? mapped(value, _key === "boardId" ? mapping.boardIds : mapping.tileIds)
+      : value,
+  ) as unknown;
+}
+
+export function hasCompatibleLayoutMapping(
+  step: MigrationStep,
+  roomId: string,
+  releases: readonly GameContent[],
+): boolean {
+  const mapping = step.kind === "mapped" ? step.mapping : {};
+  const explicit = Object.entries(mapping.roomLayouts ?? {}).find(
+    ([id, operation]) => id === roomId || operation.targetRoomId === roomId,
+  );
+  if (explicit?.[1].kind === "archive") return false;
+  const source = releases.find((release) => key(releaseVersion(release)) === key(step.from));
+  const target = releases.find((release) => key(releaseVersion(release)) === key(step.to));
+  const before = source?.staticChallenges.find((room) => room.id === (explicit?.[0] ?? roomId));
+  const after = target?.staticChallenges.find((room) => room.id === roomId);
+  return (
+    !!before && !!after && JSON.stringify(mapDefinition(before, mapping)) === JSON.stringify(after)
+  );
+}
+
+export function migrationMappingId(step: MigrationStep): string {
+  return `migration.${step.kind}.${key(step.from).replaceAll(":", ".").toLowerCase()}-to-${key(step.to).replaceAll(":", ".").toLowerCase()}`;
 }
 
 export function applyMigrationStep(
@@ -384,20 +528,70 @@ export function applyMigrationStep(
     mapped(id, mapping.objectiveIds),
   );
   next.claimedRewardIds = next.claimedRewardIds.map((id) => mapped(id, mapping.rewardIds));
-  next.completedRoomLayouts = Object.fromEntries(
-    Object.entries(next.completedRoomLayouts).map(([roomId, layout]) => [
-      roomId,
-      mapCompletedLayout(layout, mapping),
-    ]),
-  );
   const notes: string[] = [];
+  next.completedRoomLayouts = {};
+  for (const [roomId, record] of Object.entries(payload.completedRoomLayouts)) {
+    if (from.contentVersion === to.contentVersion && from.ruleVersion === to.ruleVersion) {
+      next.completedRoomLayouts[roomId] = structuredClone(record);
+      continue;
+    }
+    const operation = mapping.roomLayouts?.[roomId];
+    const definitionFrom = from.staticChallenges.find((room) => room.id === roomId);
+    const definitionTo = to.staticChallenges.find(
+      (room) => room.id === (operation?.targetRoomId ?? roomId),
+    );
+    if (!definitionFrom) return { ok: false, error: `缺少旧布局来源房间：${roomId}` };
+    const changed =
+      !definitionTo ||
+      JSON.stringify(mapDefinition(definitionFrom, mapping)) !== JSON.stringify(definitionTo);
+    if (changed && operation?.kind !== "archive")
+      return { ok: false, error: `旧完成布局没有明确归档或兼容映射：${roomId}` };
+    const archive = {
+      roomId,
+      contentVersion: record.contentVersion,
+      ruleVersion: record.ruleVersion,
+      layout: structuredClone(record.layout),
+    };
+    const existing = next.archivedCompletedRoomLayouts.find(
+      (item) =>
+        item.roomId === archive.roomId &&
+        item.contentVersion === archive.contentVersion &&
+        item.ruleVersion === archive.ruleVersion,
+    );
+    if (existing && JSON.stringify(existing.layout) !== JSON.stringify(archive.layout))
+      return { ok: false, error: `历史完成布局键冲突：${roomId}` };
+    if (!existing) next.archivedCompletedRoomLayouts.push(archive);
+    if (operation?.kind !== "archive") {
+      const mappedLayout = mapCompletedLayout(record.layout, mapping);
+      next.completedRoomLayouts[operation?.targetRoomId ?? roomId] = {
+        contentVersion: to.contentVersion,
+        ruleVersion: to.ruleVersion,
+        layout: mappedLayout,
+        source: {
+          contentVersion: record.contentVersion,
+          ruleVersion: record.ruleVersion,
+          mappingId:
+            operation?.kind === "compatible" ? operation.mappingId : migrationMappingId(definition),
+        },
+      };
+    } else
+      notes.push(`房间 ${roomId} 已更新；旧完成布局已归档，原通行及奖励保留，可主动重新体验。`);
+  }
   if (next.room) {
     next.room.returnAnchor = mapPosition(next.room.returnAnchor, mapping);
-    if (mapping.exitRoomIds?.includes(next.room.roomId)) {
+    const roomOperation = mapping.roomLayouts?.[next.room.roomId];
+    const archivedVisit = roomOperation?.kind === "archive";
+    if (mapping.exitRoomIds?.includes(next.room.roomId) || archivedVisit) {
       notes.push(
         `房间 ${next.room.roomId} 的旧布局无法映射，已回到安全入口；已完成目标与物资保留。`,
       );
-      next.playerPosition = structuredClone(next.room.returnAnchor);
+      next.playerPosition = structuredClone(
+        archivedVisit ? roomOperation.safeEntrance : next.room.returnAnchor,
+      );
+      if (!next.discoveredTileIds.includes(next.playerPosition.tileId))
+        next.discoveredTileIds.push(next.playerPosition.tileId);
+      if (!next.visitedTileIds.includes(next.playerPosition.tileId))
+        next.visitedTileIds.push(next.playerPosition.tileId);
       next.room = null;
     } else if (next.room.status !== "completedVisit") {
       next.room.currentLayout = mapLayout(next.room.currentLayout, mapping);
@@ -412,6 +606,40 @@ export function applyMigrationStep(
         rewardIds: next.room.pendingEffects.rewardIds.map((id) => mapped(id, mapping.rewardIds)),
       };
     }
+  }
+  if (next.room) {
+    const roomOperation = mapping.roomLayouts?.[next.room.roomId];
+    if (roomOperation?.kind === "compatible") next.room.roomId = roomOperation.targetRoomId;
+    const definitionTo = to.staticChallenges.find((room) => room.id === next.room?.roomId);
+    if (!definitionTo) return { ok: false, error: "迁移缺少当前活动房间定义" };
+    const compatible =
+      next.room.status === "completedVisit"
+        ? (() => {
+            const layout = next.completedRoomLayouts[next.room!.roomId]?.layout;
+            return (
+              layout &&
+              (to.ruleVersion < 4
+                ? historicalStatic.isCompletedStaticPosition(
+                    definitionTo as unknown as historicalStatic.StaticDefinition,
+                    layout as unknown as historicalStatic.CompletedStaticLayout,
+                    next.playerPosition.tileId,
+                  )
+                : validateCompletedStaticLayout(definitionTo, layout).length === 0 &&
+                  isCompletedStaticPosition(definitionTo, layout, next.playerPosition.tileId))
+            );
+          })()
+        : (to.ruleVersion < 4 ? historicalStatic.validateStaticState : validateStaticState)(
+            definitionTo as never,
+            {
+              phase: next.room.status,
+              currentLayout: next.room.currentLayout,
+              attemptBaseline: next.room.attemptBaseline,
+              undoStack: [],
+            } as never,
+            next.playerPosition.tileId,
+          ).length === 0;
+    if (!compatible)
+      return { ok: false, error: "旧活动或完成访问布局/玩家坐标不兼容，缺少明确安全退出映射" };
   }
   next.contentVersion = to.contentVersion;
   next.ruleVersion = to.ruleVersion;
@@ -434,7 +662,7 @@ export function applyMigrationStep(
   }
   if (from.ruleVersion !== to.ruleVersion)
     notes.push(
-      `规则已升级至 v${to.ruleVersion}；v${from.ruleVersion} 成绩保留为历史记录，已领取物资不变。`,
+      `规则集已升级至 v${to.ruleVersion}；成绩按各挑战规则版本保留，规则变更的旧成绩为历史记录，已领取物资不变。`,
     );
   if (from.profile.id !== to.profile.id)
     notes.push(`新增 ${to.profile.id} 内容；既有进度保留，新增区域从初始状态开始。`);

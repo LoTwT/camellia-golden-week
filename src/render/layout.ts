@@ -16,7 +16,7 @@ export const TELEVISION = Object.freeze({
 });
 
 export const MINIMUM_TILE_TARGET_CSS = 44;
-export const MOVEMENT_TRANSITION_MS = 100;
+export const MOVEMENT_TRANSITION_MS = 90;
 export const COMPACT_BOARD_WIDTH_CSS = 1251;
 const FIT_PADDING = 0.75;
 const SIN_ANGLE = Math.sin(TELEVISION.cameraAngleRadians);

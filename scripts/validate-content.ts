@@ -82,11 +82,11 @@ const realtimeWitnesses = realtimeContent.witnesses as RealtimeWitness[];
 for (const witness of realtimeWitnesses) {
   const release = assembleContent(witness.profileId as ProfileId);
   assert.equal(witness.contentVersion, release.contentVersion, `${witness.id}: 内容版本`);
-  assert.equal(witness.ruleVersion, release.ruleVersion, `${witness.id}: 计分规则版本`);
   const definition = realtimeContent.definitions.find(
     (candidate) => candidate.id === witness.challengeId,
   );
   assert.ok(definition, `${witness.id}: 定义存在`);
+  assert.equal(witness.ruleVersion, definition.ruleVersion, `${witness.id}: 计分规则版本`);
   const result = replayRealtimeWitness(definition, witness);
   assert.equal(result.result, witness.expectedResult, witness.id);
   for (const [field, expected] of Object.entries(witness.expectedFinalState))

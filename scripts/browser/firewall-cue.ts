@@ -439,21 +439,51 @@ async function pressAndMeasureVisibleHit(page: Page, key: string, expectedCombo:
   }
 }
 
-async function readScreenLight(page: Page) {
-  return page.locator("#firewall-screen-light").evaluate((element) => {
-    const style = getComputedStyle(element);
-    const field = document.querySelector(".playfield")!.getBoundingClientRect();
-    return {
-      phase: element.getAttribute("data-phase"),
-      opacity: Number(style.opacity),
-      borderWidth: parseFloat(style.borderBottomWidth),
-      borderColor: style.borderBottomColor,
-      pointerEvents: style.pointerEvents,
-      animation: style.animationName,
-      bounds: element.getBoundingClientRect().toJSON(),
-      field: field.toJSON(),
-    };
-  });
+async function readScreenLight(
+  page: Page,
+  expectedPhase?: "waiting" | "ready",
+  minimumOpacity = 0,
+) {
+  // Capture the light in the same browser evaluation that observes its required phase.
+  // A second protocol read can cross a beat boundary even when the first check passed.
+  const sample = await page.waitForFunction(
+    ({ expectedPhase, minimumOpacity }) => {
+      const element = document.querySelector("#firewall-screen-light");
+      if (!element) return null;
+      const phase = element.getAttribute("data-phase");
+      const style = getComputedStyle(element);
+      const opacity = Number(style.opacity);
+      if (
+        expectedPhase &&
+        (phase !== expectedPhase ||
+          document.querySelector("#firewall-rhythm")?.getAttribute("data-phase") !==
+            expectedPhase ||
+          (expectedPhase === "ready" &&
+            document.querySelector("#firewall-beat-status")?.textContent !== "现在移动") ||
+          opacity < minimumOpacity)
+      )
+        return null;
+      const field = document.querySelector(".playfield")!.getBoundingClientRect();
+      return {
+        phase,
+        opacity,
+        borderWidth: parseFloat(style.borderBottomWidth),
+        borderColor: style.borderBottomColor,
+        pointerEvents: style.pointerEvents,
+        animation: style.animationName,
+        bounds: element.getBoundingClientRect().toJSON(),
+        field: field.toJSON(),
+      };
+    },
+    { expectedPhase, minimumOpacity },
+  );
+  try {
+    const reading = await sample.jsonValue();
+    assert.ok(reading, "阶段条件通过时必须保留同次灯光采样");
+    return reading;
+  } finally {
+    await sample.dispose();
+  }
 }
 
 async function openFirewallFromNewGame(page: Page, reduced: boolean): Promise<void> {
@@ -609,22 +639,11 @@ async function playVisibleBeats(
   for (let input = 0; input < count; input += 1) {
     // The displayed cue alone schedules physical keys. Fixed content is read only to plan
     // directions, never to replace the observed browser clock, score, or completion.
-    await page.waitForFunction(
-      () => document.querySelector("#firewall-rhythm")?.getAttribute("data-phase") === "waiting",
-    );
-    const waitingLight = await readScreenLight(page);
+    const waitingLight = await readScreenLight(page, "waiting");
     assert.equal(waitingLight.phase, "waiting");
     assert.equal(waitingLight.opacity, 0, "两拍之间白光必须熄灭");
     waitingLightSamples.push(waitingLight);
-    await page.waitForFunction(
-      () => document.querySelector("#firewall-beat-status")?.textContent === "现在移动",
-    );
-    if (!reduced)
-      await page.waitForFunction(() => {
-        const light = document.querySelector("#firewall-screen-light");
-        return light && Number(getComputedStyle(light).opacity) >= 0.6;
-      });
-    const light = await readScreenLight(page);
+    const light = await readScreenLight(page, "ready", reduced ? 0 : 0.6);
     assert.equal(light.phase, "ready");
     assert.equal(light.pointerEvents, "none", "白光不能遮住正常棋盘点选");
     assert.equal(light.animation, "none", "白光必须读取有效时钟，不能用独立 CSS 计时");
@@ -829,7 +848,7 @@ async function observeAlarmRecovery(
   assert.equal(afterDodge.combo, dodge.combo, "有限闪避结束后安全落点不能延迟受击");
 
   const interrupted = await exportThroughUi(page);
-  assert.equal(interrupted.payload.ruleVersion, 3);
+  assert.equal(interrupted.payload.ruleVersion, 4);
   assert.deepEqual(interrupted.payload.resumeHint, {
     kind: "restartChallenge",
     challengeId: "a.firewall.inner",
@@ -949,7 +968,7 @@ async function observeAlarmDirectionLayout(page: Page, outputDir: string, id: st
 
 async function verifyCompletedFirewallPersistence(page: Page, outputDir: string, id: string) {
   const saved = await exportThroughUi(page);
-  assert.equal(saved.payload.ruleVersion, 3);
+  assert.equal(saved.payload.ruleVersion, 4);
   for (const [difficulty, target] of [
     ["inner", 40],
     ["deep", 55],
@@ -1022,12 +1041,11 @@ export async function verifyFirewallMigrations(options: {
       await page.getByRole("button", { name: "确认替换", exact: true }).click();
       await waitForGameReady(page);
       const imported = await exportThroughUi(page);
-      assert.equal(imported.payload.ruleVersion, 3);
+      assert.equal(imported.payload.ruleVersion, 4);
       assert.equal(imported.payload.contentVersion, expectedContent.contentVersion);
       for (const key of [
         "claimedRewardIds",
         "completedObjectiveIds",
-        "completedRoomLayouts",
         "playerPosition",
         "bestResults",
         "capabilities",
@@ -1035,6 +1053,38 @@ export async function verifyFirewallMigrations(options: {
         "campaignCompletedAt",
       ] as const)
         assert.deepEqual(imported.payload[key], original.payload[key], `旧档迁移保留 ${key}`);
+      assert.deepEqual(
+        imported.payload.completedRoomLayouts,
+        {},
+        "旧地图完成布局只归档，不伪造当前解",
+      );
+      assert.deepEqual(
+        imported.payload.archivedCompletedRoomLayouts.map((entry) => ({
+          roomId: entry.roomId,
+          contentVersion: entry.contentVersion,
+          ruleVersion: entry.ruleVersion,
+          layout: entry.layout,
+        })),
+        (id === "v1-full-collection"
+          ? [
+              [4, 1],
+              [5, 2],
+              [5, 3],
+            ]
+          : [
+              [5, 2],
+              [5, 3],
+            ]
+        ).flatMap(([contentVersion, ruleVersion]) =>
+          Object.entries(original.payload.completedRoomLayouts).map(([roomId, layout]) => ({
+            roomId,
+            contentVersion,
+            ruleVersion,
+            layout,
+          })),
+        ),
+        "原布局及旧版兼容映射的布局分别按明确版本归档，内容不被新解替换",
+      );
       if (id === "v1-full-collection") assert.equal(imported.payload.claimedRewardIds.length, 26);
       else
         assert.ok(

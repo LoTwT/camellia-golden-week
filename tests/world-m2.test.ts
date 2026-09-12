@@ -4,18 +4,30 @@ import test from "node:test";
 import {
   assembleLegacyContent as assembleContent,
   staticContent,
-} from "../src/content/assemble.ts";
+} from "../src/content/history/pre-r1/assemble.ts";
 import {
   replayWorldWitness,
   validateContent,
   validateWorldWitness,
-} from "../src/content/validate.ts";
-import type { WorldWitness, WorldWitnessExpectation } from "../src/content/validate.ts";
-import { createGame, dispatch, tileCleared } from "../src/core/engine.ts";
-import { areaData, currentObjective, gateOpen, supplyProgress } from "../src/core/progress.ts";
-import type { GameCommand, GameState } from "../src/core/types.ts";
-import { restorePayload, stablePayload, validatePayload } from "../src/platform/save-payload.ts";
-import { additiveProfileMigrations } from "../src/platform/migrations.ts";
+} from "../src/content/history/pre-r1/validate.ts";
+import type {
+  WorldWitness,
+  WorldWitnessExpectation,
+} from "../src/content/history/pre-r1/validate.ts";
+import { createGame, dispatch, tileCleared } from "../src/content/history/pre-r1/engine.ts";
+import {
+  areaData,
+  currentObjective,
+  gateOpen,
+  supplyProgress,
+} from "../src/content/history/pre-r1/progress.ts";
+import type { GameCommand, GameState } from "../src/content/history/pre-r1/types.ts";
+import {
+  restorePayload,
+  stablePayload,
+  validatePayload,
+} from "../src/content/history/pre-r1/save-payload.ts";
+import { additiveProfileMigrations } from "../src/content/history/pre-r1/migrations.ts";
 import m1Json from "../src/content/witnesses/m1.json" with { type: "json" };
 import m2Json from "../src/content/witnesses/m2.json" with { type: "json" };
 

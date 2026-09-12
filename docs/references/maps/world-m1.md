@@ -1,5 +1,7 @@
 # M1 世界地图重建与规则操作见证
 
+> 范围注记（2026-09-12）：本文保留已交付重建地图 / 规则的制作与验证历史，不代表 R1 原版还原完成。新目标与待核准项见 [S13](../restoration-audit-2026-09-12.md)及[当前玩法合同](../../spec/gameplay.md)，不得用本文旧见证替代新规则验收。
+
 [文档索引](../../index.md) · [来源记录](../index.md) · [素材与原参考定位](../art-implementation.md) · [静态谜题图](static-puzzles.md) · [玩法合同](../../spec/gameplay.md) · [内容合同](../../spec/content.md)
 
 本记录对应 `profile=M1 / contentVersion=1 / ruleVersion=1`，制作和 Node 规则重放日期为 2026-09-11。中心与 A 首访地图均为**本版重建**。固定坐标以 [hub.json](../../../src/content/areas/hub.json) 和 [a.json](../../../src/content/areas/a.json) 为准；本页只解释布局与验证，不维护第二份运行地图。

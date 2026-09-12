@@ -1,5 +1,7 @@
 # 固定静态谜题：重建图与通关见证
 
+> 范围注记（2026-09-12）：本文保留已交付重建地图 / 规则的制作与验证历史，不代表 R1 原版还原完成。新目标与待核准项见 [S13](../restoration-audit-2026-09-12.md)及[当前玩法合同](../../spec/gameplay.md)，不得用本文旧见证替代新规则验收。
+
 [文档索引](../../index.md) · [来源记录](../index.md) · [玩法合同](../../spec/gameplay.md) · [内容合同](../../spec/content.md) · [验收合同](../../spec/acceptance.md)
 
 本记录对应 `contentVersion=1 / ruleVersion=1`，制作与规则验证日期为 2026-09-11。固定内容的唯一事实来源为 [static.json](../../../src/content/challenges/static.json)，规则为 [static-puzzle.ts](../../../src/core/static-puzzle.ts)，实际测试为 [static-puzzle.test.ts](../../../tests/static-puzzle.test.ts)。下列图用于审阅，不是运行时另外维护的一套地图。

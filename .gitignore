@@ -1,5 +1,15 @@
-node_modules/
+node_modules
 dist/
 .DS_Store
 test-results/
 tmp/
+
+# Raw R1 evidence is distributed as Release assets; summaries and representatives are selected separately.
+/docs/verification/evidence/r1/
+/docs/verification/evidence/r1-antivirus/
+/docs/verification/evidence/r1-browser/
+/docs/verification/evidence/r1-migration/
+/docs/verification/evidence/r1-pipeline/
+/docs/verification/evidence/r1-release/
+/docs/verification/evidence/r1-source/
+/docs/verification/evidence/r1-ui/

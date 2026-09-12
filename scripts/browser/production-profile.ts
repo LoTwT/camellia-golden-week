@@ -4,6 +4,7 @@ import { join } from "node:path";
 import { writeFile } from "node:fs/promises";
 import type { Browser, Page } from "playwright";
 import type { ProfileId } from "../../src/core/types.ts";
+import { staticContent } from "../../src/content/assemble.ts";
 import { exportThroughUi, pressGameKey, waitForGameReady } from "./support.ts";
 
 const supplyTotals: Record<ProfileId, number> = { M1: 26, M2: 51, M3: 81, M4: 130, M5: 130 };
@@ -184,17 +185,17 @@ export async function verifyProductionProfile(options: {
       await waitForGameReady(page);
       assert.match(await page.locator("#area-coordinates").innerText(), /机关内/);
       await page.waitForFunction(() => document.querySelector("#mode-banner")?.textContent === "");
-      for (const key of [
-        "ArrowUp",
-        "ArrowUp",
-        "ArrowUp",
-        "ArrowUp",
-        "ArrowRight",
-        "ArrowRight",
-        "ArrowRight",
-        "ArrowRight",
-      ])
-        await pressGameKey(page, key);
+      const solution = staticContent.witnesses.find(
+        (item) => item.definitionId === "a.maze.01" && item.kind === "success",
+      )!;
+      for (const action of solution.actions) {
+        if (action === "activate") continue;
+        assert.ok(action === "up" || action === "right" || action === "down" || action === "left");
+        await pressGameKey(
+          page,
+          { up: "ArrowUp", right: "ArrowRight", down: "ArrowDown", left: "ArrowLeft" }[action],
+        );
+      }
       await waitForGameReady(page);
       await pressGameKey(page, "ArrowRight");
       assert.equal(await page.locator("#supplies").innerText(), `6 / ${supplyTotals[profile]}`);
@@ -215,8 +216,11 @@ export async function verifyProductionProfile(options: {
       ]);
     }
     await page.reload();
+    const continueStarted = performance.now();
     await page.getByRole("button", { name: "继续游戏", exact: true }).click();
     await waitForGameReady(page);
+    const cachedContinueMs = performance.now() - continueStarted;
+    assert.ok(cachedContinueMs <= 3000, "正式包缓存继续到可操作必须≤3秒");
     assert.equal(
       await page.locator("#supplies").innerText(),
       `${completeJourney ? 6 : 0} / ${supplyTotals[profile]}`,
@@ -233,6 +237,7 @@ export async function verifyProductionProfile(options: {
     return {
       profile,
       completeJourney,
+      cachedContinueMs,
       actions: completeJourney
         ? "新游戏→增幅仪→中心教学→A迷宫01→首物资→导出→刷新继续"
         : "新游戏→增幅仪→导出→刷新继续",

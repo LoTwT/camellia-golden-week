@@ -1,7 +1,126 @@
 {
-  "assetVersion": "camellia-assets-v2",
+  "assetVersion": "camellia-assets-v3-r1",
   "phase": "prepared-all-profiles",
   "assets": [
+    {
+      "id": "bangboo",
+      "kind": "icon",
+      "purpose": "世界捕获：未捕获邦布；浅色双耳头罩与黑面罩，区别玩家和信号球",
+      "profiles": [
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/bangboo.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
+      "sha256": "1c97b376bb28401ac7dfbaebc83abee081ac35beb6acd7c746bb7b2ad038235e",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/bangboo.png",
+        "sha256": "9037b4187c8a8cbb54a8d42684644a5ae2873f779c27ceca1257105deecd9593",
+        "sourceSha256": "1c97b376bb28401ac7dfbaebc83abee081ac35beb6acd7c746bb7b2ad038235e",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-C-CAPTURE-R1",
+      "referenceUrl": "https://img1.ali213.net/glpic/2024/08/23/2024082342226461.png",
+      "referenceSha256": "d152f1083f00ef6c1b9f20c0132eb5329dce9600d5f6d59d9a0f0189e592b5da",
+      "referenceLocation": "S09 第三日第一组捕获，图9左上格；r1-map-mechanism-evidence.md §4.3",
+      "differences": "R1按捕获原图的浅色头罩、黑面罩及双耳轮廓补制；小图不能证实精细机械结构，未复制原图像素或动画；捕获后的微笑与勾为本版静态反馈，不冒充原版完成帧"
+    },
+    {
+      "id": "bangboo-captured",
+      "kind": "icon",
+      "purpose": "世界捕获：已捕获反馈；浅色邦布轮廓与静态勾，不只靠颜色区分",
+      "profiles": [
+        "M3",
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/bangboo-captured.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
+      "sha256": "7f93ea237e19cafa32af875aaf331afae964dbc5ca5664f5b8869642caa71312",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/bangboo-captured.png",
+        "sha256": "4e7b03412f1d7d4f4c9408f32c98b99aaec427741f8cf08cd2d7b86eeca72157",
+        "sourceSha256": "7f93ea237e19cafa32af875aaf331afae964dbc5ca5664f5b8869642caa71312",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-C-CAPTURE-R1",
+      "referenceUrl": "https://img1.ali213.net/glpic/2024/08/23/2024082342226461.png",
+      "referenceSha256": "d152f1083f00ef6c1b9f20c0132eb5329dce9600d5f6d59d9a0f0189e592b5da",
+      "referenceLocation": "S09 图9可见邦布轮廓；捕获后勾为本版辅助态，非原版已见帧",
+      "differences": "R1按捕获原图的浅色头罩、黑面罩及双耳轮廓补制；小图不能证实精细机械结构，未复制原图像素或动画；捕获后的微笑与勾为本版静态反馈，不冒充原版完成帧"
+    },
+    {
+      "id": "brick-wall",
+      "kind": "icon",
+      "purpose": "D幽灵房砖墙：粉色错缝砖面；固定不可走地形，区别无格与幽灵",
+      "profiles": [
+        "M4",
+        "M5"
+      ],
+      "status": "补制",
+      "localPath": "/assets/icons/brick-wall.svg",
+      "sourcePath": "scripts/generate-assets.ts",
+      "sourceUrl": null,
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
+      "sha256": "6b7979099920f534365ffc654d8fd98c15d0aa7f21b640eb16e0755f3a4c74db",
+      "dimensions": [
+        128,
+        128
+      ],
+      "raster": {
+        "localPath": "/assets/icons/brick-wall.png",
+        "sha256": "34cdaf4f99ece046c3bc07efbbb9c0d57adc5920b6610a67f8ada4c80c5824b1",
+        "sourceSha256": "6b7979099920f534365ffc654d8fd98c15d0aa7f21b640eb16e0755f3a4c74db",
+        "dimensions": [
+          256,
+          256
+        ],
+        "transform": "SVG rasterized by Sharp 0.35.4 / librsvg 2.62.91; transparent RGBA PNG; 2× logical resolution"
+      },
+      "author": "为 camellia-golden-week 制作的项目资源",
+      "rights": "独立矢量补制；不含候选库提取像素；游戏角色与名称权利仍属原权利人",
+      "usage": "随本项目本地打包；不是已确认的原版资源",
+      "transform": "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
+      "referenceId": "AR-D-GHOST",
+      "referenceUrl": "https://img.game8.jp/10425919/85aab7d6be2de4425b7488e92ef92fd5.jpeg/original",
+      "referenceSha256": "96430f8c38b0b59414de77d74c20c1dfd2cb7f271fe48a07c4798a9245438904",
+      "referenceLocation": "S05-50 图10425919，5×5核心六块粉砖墙；r1-map-mechanism-evidence.md §7.1",
+      "differences": "R1按D原图六块粉砖墙补制错缝砖面，保留实心阻挡的形态职责；砖缝、描边和明暗为独立几何，透明外缘由电视屏承接；不是幽灵图标，也不填补原图无格"
+    },
     {
       "id": "player-idle",
       "kind": "icon",
@@ -17,8 +136,8 @@
       "localPath": "/assets/icons/player-idle.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "4d716487c73b8ce86ca5746575d14270f1854bb2c7f43047ff318b7f0421e2a9",
       "dimensions": [
         128,
@@ -57,8 +176,8 @@
       "localPath": "/assets/icons/player-move.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "65d56830a749d0d86c5e421bdb6f5bf45351a14496f87f9f14960b9ecac8c8c3",
       "dimensions": [
         128,
@@ -97,8 +216,8 @@
       "localPath": "/assets/icons/player-hurt.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "939119163f39b3a094582ef624ff75ae575d23579f95f1d504374e0dd9bbb97f",
       "dimensions": [
         128,
@@ -137,8 +256,8 @@
       "localPath": "/assets/icons/unknown.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "056d54ecf3cc62a5366d65e272eb3690c528decb7a85089be703f985cb6bd11f",
       "dimensions": [
         128,
@@ -177,8 +296,8 @@
       "localPath": "/assets/icons/enrichment-ready.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "1d8a6800a9c8bb6a2b808f185e77595a7dbbaf3c5c10cc78e5f260e5de011761",
       "dimensions": [
         128,
@@ -217,8 +336,8 @@
       "localPath": "/assets/icons/enrichment-used.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "fa71fe12251dfcfed5aba7a4487bb7dd623bd52dc07b766a2ab97c3553f05fd3",
       "dimensions": [
         128,
@@ -257,8 +376,8 @@
       "localPath": "/assets/icons/data-ready.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "9fd7dc4fd59309334feef483d531adaae77ea36f8907dd97a260b21d578716cd",
       "dimensions": [
         128,
@@ -297,8 +416,8 @@
       "localPath": "/assets/icons/data-collected.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "5fa350e50439d5c4adb5cda8dd41c4cd8cd8be5a115759506346535dcc8ddb73",
       "dimensions": [
         128,
@@ -337,8 +456,8 @@
       "localPath": "/assets/icons/supply-ready.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "f1f461bbdbff189d36aaedbcd569a2aaa3bab731a2848e2d2d3d26b4d4ebc820",
       "dimensions": [
         128,
@@ -377,8 +496,8 @@
       "localPath": "/assets/icons/supply-collected.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "82b110d68764d2bbdfb5e162a60cacec65f484ddaefe7474598af44a161a6f46",
       "dimensions": [
         128,
@@ -417,8 +536,8 @@
       "localPath": "/assets/icons/portal-ready.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "4208fcdfb50b138e53f52cbf16c20f0992c3b87dc83cd69a9b3ab93c2220f96f",
       "dimensions": [
         128,
@@ -457,8 +576,8 @@
       "localPath": "/assets/icons/portal-locked.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "7ead15e2b9449a844a216e7b3f63f6ab07e9a8d739bec523193a64bad005b69d",
       "dimensions": [
         128,
@@ -497,8 +616,8 @@
       "localPath": "/assets/icons/terminal-ready.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "6e51024a7d7ad42dee10d3a6f70239319a3a1c7c6e84ea8a1c00847e486d511c",
       "dimensions": [
         128,
@@ -537,8 +656,8 @@
       "localPath": "/assets/icons/terminal-complete.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "a97cb2adca741d9c2a42a9a91f3c935c5d9be0987e085fe38d46dc407bcf86bf",
       "dimensions": [
         128,
@@ -577,8 +696,8 @@
       "localPath": "/assets/icons/hazard-safe.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "20b7884d408e5e2c9d0354daf1368eca4385cb5a674f31403e70e9ff1e255dcd",
       "dimensions": [
         128,
@@ -617,8 +736,8 @@
       "localPath": "/assets/icons/hazard-active.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "cdf56bfffde0e5cb2990b23876f83fac91db2482e665e295a54eae504ae09438",
       "dimensions": [
         128,
@@ -657,8 +776,8 @@
       "localPath": "/assets/icons/observation.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "2606a26bf45032d86b1367c6db299a1ccf742eb0fe1187a1e7b8b9e1fa15fed1",
       "dimensions": [
         128,
@@ -697,8 +816,8 @@
       "localPath": "/assets/icons/door-closed.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "ac0a16357ad5b14bcb0f8188998fe828689678f9e8221656920d44ad1a81c47e",
       "dimensions": [
         128,
@@ -737,8 +856,8 @@
       "localPath": "/assets/icons/door-open.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "cd32ddcc814333246ca9ced8f4332e21ef9fdf48cbf62de939a51cd4a7c14791",
       "dimensions": [
         128,
@@ -777,8 +896,8 @@
       "localPath": "/assets/icons/checkpoint.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "0908a565c0f22e1c8ea9b233a778ba3c15183b9682d7e0cc84aedd7349edca4e",
       "dimensions": [
         128,
@@ -817,8 +936,8 @@
       "localPath": "/assets/icons/firewall.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "086ec458cc6bc924e17c98c25cce8a007ace9462253d77f8987b505dc24f8308",
       "dimensions": [
         128,
@@ -856,8 +975,8 @@
       "localPath": "/assets/icons/antivirus.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "494e4b00faba7f8f58a8dbbf2830c116e4de0a00bc6ee2b02a296c681b9f1ebf",
       "dimensions": [
         128,
@@ -895,8 +1014,8 @@
       "localPath": "/assets/icons/target-blue.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "629f596d08878f370c465887d72341db206c7b3bfea5d2773ef6069a68f7e1c2",
       "dimensions": [
         128,
@@ -934,8 +1053,8 @@
       "localPath": "/assets/icons/target-purple.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "cc5de612ecbd2d140e303d5c0584ee31d8758dec3e4964ec2c522aa43e3d7ccd",
       "dimensions": [
         128,
@@ -973,8 +1092,8 @@
       "localPath": "/assets/icons/target-star.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "7ab4b2828590fde81fb08601d6e7b47bde06c2a1d3b48f71ddf1277f7c5e2545",
       "dimensions": [
         128,
@@ -1011,8 +1130,8 @@
       "localPath": "/assets/icons/station.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "58d238a820a77b0cfffd17916efc7d5c2b127cd739e59cb27ab7e50b43894fba",
       "dimensions": [
         128,
@@ -1049,8 +1168,8 @@
       "localPath": "/assets/icons/signal-ball.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "33987507a25766638487180b5e66125f135d6675ae383b5840819f250c6b1ada",
       "dimensions": [
         128,
@@ -1087,8 +1206,8 @@
       "localPath": "/assets/icons/cart.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "e213428418072122e69b0c44f50d9291066c2cff49a44f85c1a7eb2ad6a53402",
       "dimensions": [
         128,
@@ -1125,8 +1244,8 @@
       "localPath": "/assets/icons/data-object.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "7f3f99ba349f8c149c842e2a16ffe54f8910c21cf66aaa8c50e4b55af233298b",
       "dimensions": [
         128,
@@ -1163,8 +1282,8 @@
       "localPath": "/assets/icons/socket.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "97ab7ea8dc377cd46cea4210f5a8a0f11a3f9f83d5a664683be50daaa2d1d63b",
       "dimensions": [
         128,
@@ -1200,8 +1319,8 @@
       "localPath": "/assets/icons/lamp-lit.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "fab059e5bdb8ccac2b7f7040e948be7841565f319fd6616c53e5e4e8e6f84e20",
       "dimensions": [
         128,
@@ -1237,8 +1356,8 @@
       "localPath": "/assets/icons/lamp-unlit.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "f622c0bb5d3a72271444712ec54595265e77303d441a7a6abe3521e9d0b3ab2d",
       "dimensions": [
         128,
@@ -1274,8 +1393,8 @@
       "localPath": "/assets/icons/ghost.svg",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "3c8454ec2b926f619fb6d96d4b7696590b493aafcedfdb7341b07fdccb26e0ae",
       "dimensions": [
         128,
@@ -1314,8 +1433,8 @@
       "localPath": "/assets/audio/move.wav",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "f1bd5b88a0a151a68099deb4077db98ddadd50e2e40513335560c6601072614b",
       "durationSeconds": 0.07,
       "sampleRate": 44100,
@@ -1344,8 +1463,8 @@
       "localPath": "/assets/audio/invalid.wav",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "7cba424f718a072fb03f5808ddc7464775f349017ed6a5dca8dd9e85d692a2c9",
       "durationSeconds": 0.1,
       "sampleRate": 44100,
@@ -1374,8 +1493,8 @@
       "localPath": "/assets/audio/pickup.wav",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "8920a19c6f191a2c0cbc89882a7696fc579c51c8afc714c5f924489b1f156e90",
       "durationSeconds": 0.24,
       "sampleRate": 44100,
@@ -1404,8 +1523,8 @@
       "localPath": "/assets/audio/reveal.wav",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "7aa37724210d97db3ee2530c914133256713ae1803b55d2e603a2a76330969fe",
       "durationSeconds": 0.18,
       "sampleRate": 44100,
@@ -1434,8 +1553,8 @@
       "localPath": "/assets/audio/amplify.wav",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "b9511d1d35cf1a932c0d417622467a03c0c9682bec1627d0a6ea8261a5adf148",
       "durationSeconds": 0.36,
       "sampleRate": 44100,
@@ -1464,8 +1583,8 @@
       "localPath": "/assets/audio/door.wav",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "49ec2f0e2280cc369b0f9e7338371676cd14d5665f36fd22de37145e686b7d14",
       "durationSeconds": 0.19,
       "sampleRate": 44100,
@@ -1494,8 +1613,8 @@
       "localPath": "/assets/audio/success.wav",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "92ca1f296bc50631f7430cebbf2f4ace8d31434d9ea686d416b73d5a2f100a74",
       "durationSeconds": 0.52,
       "sampleRate": 44100,
@@ -1524,8 +1643,8 @@
       "localPath": "/assets/audio/failure.wav",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "ba8cf995974d5d05e3ff4c867bd5fbf5325180848ce8e4e32b4e332c715ad6a0",
       "durationSeconds": 0.32,
       "sampleRate": 44100,
@@ -1554,8 +1673,8 @@
       "localPath": "/assets/audio/portal.wav",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "8bdd5ec6b3a9588c7079219f65e65fd1b66a1fafa11e8dea75300c98ed1262a5",
       "durationSeconds": 0.34,
       "sampleRate": 44100,
@@ -1584,8 +1703,8 @@
       "localPath": "/assets/audio/beat.wav",
       "sourcePath": "scripts/generate-assets.ts",
       "sourceUrl": null,
-      "sourceVersion": "camellia-assets-v2",
-      "sourceSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+      "sourceVersion": "camellia-assets-v3-r1",
+      "sourceSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
       "sha256": "fe3f0fcf1ce1bf5244bc241d0aae2509a18feca1c1b21db6bbf5ed937710a826",
       "durationSeconds": 0.04501133786848072,
       "sampleRate": 44100,
@@ -1705,7 +1824,7 @@
       "sourceUrl": "https://raw.githubusercontent.com/notofonts/noto-cjk/165c01b46ea533872e002e0785ff17e44f6d97d8/Sans/SubsetOTF/SC/NotoSansSC-Regular.otf",
       "sourceVersion": "165c01b46ea533872e002e0785ff17e44f6d97d8",
       "sourceSha256": "faa6c9df652116dde789d351359f3d7e5d2285a2b2a1f04a2d7244df706d5ea9",
-      "sha256": "fca0c88ef7f274be9e85cbe7ebe2a4fcfc779f119be180c871d6aa94a7e5f167",
+      "sha256": "f06550686aa5fe49140197cb9e5680c8cb851c74331e21323d44af01261fd5bd",
       "family": "Noto Sans SC",
       "weights": "400",
       "dimensions": null,
@@ -1721,7 +1840,7 @@
       "subset": {
         "recipeVersion": "project-runtime-v1",
         "generatorPath": "scripts/generate-assets.ts",
-        "generatorSha256": "4354591a5c2052c6fd082b0daef213f085eeca74dbb38ff30b1b6de6030af26f",
+        "generatorSha256": "8ef058f3671b1ef86afdb0953ef72847e0ae1b3357107bc89577c66227c3e041",
         "coverageCodepoints": [
           32,
           33,
@@ -1865,6 +1984,7 @@
           9642,
           9675,
           9678,
+          9733,
           9834,
           10003,
           12288,
@@ -1958,6 +2078,7 @@
           20064,
           20102,
           20107,
+          20108,
           20110,
           20114,
           20116,
@@ -1999,6 +2120,7 @@
           20462,
           20493,
           20498,
+          20505,
           20540,
           20551,
           20570,
@@ -2016,6 +2138,7 @@
           20851,
           20854,
           20855,
+          20860,
           20869,
           20876,
           20877,
@@ -2040,6 +2163,7 @@
           21047,
           21051,
           21069,
+          21097,
           21103,
           21147,
           21151,
@@ -2061,6 +2185,7 @@
           21361,
           21363,
           21382,
+          21387,
           21407,
           21435,
           21442,
@@ -2111,6 +2236,7 @@
           22411,
           22495,
           22522,
+          22534,
           22581,
           22622,
           22681,
@@ -2138,6 +2264,7 @@
           23396,
           23398,
           23427,
+          23432,
           23433,
           23436,
           23450,
@@ -2153,6 +2280,7 @@
           23547,
           23548,
           23551,
+          23553,
           23556,
           23558,
           23567,
@@ -2166,6 +2294,7 @@
           23614,
           23616,
           23618,
+          23631,
           23637,
           23646,
           24038,
@@ -2182,6 +2311,7 @@
           24212,
           24213,
           24230,
+          24275,
           24314,
           24320,
           24322,
@@ -2205,6 +2335,7 @@
           24573,
           24577,
           24635,
+          24658,
           24674,
           24688,
           25103,
@@ -2241,6 +2372,7 @@
           25353,
           25361,
           25377,
+          25429,
           25439,
           25442,
           25454,
@@ -2267,6 +2399,7 @@
           25972,
           25991,
           26007,
+          26012,
           26029,
           26032,
           26041,
@@ -2296,6 +2429,7 @@
           26426,
           26432,
           26435,
+          26448,
           26463,
           26465,
           26469,
@@ -2337,6 +2471,7 @@
           27809,
           27839,
           27861,
+          27874,
           27880,
           27934,
           27963,
@@ -2399,14 +2534,17 @@
           30697,
           30701,
           30721,
+          30742,
           30772,
           30830,
+          30861,
           30896,
           31034,
           31105,
           31163,
           31181,
           31186,
+          31215,
           31216,
           31227,
           31243,
@@ -2428,6 +2566,7 @@
           31867,
           31934,
           31995,
+          32032,
           32034,
           32043,
           32047,
@@ -2449,6 +2588,7 @@
           32489,
           32490,
           32493,
+          32531,
           32553,
           32570,
           32599,
@@ -2465,6 +2605,7 @@
           33258,
           33267,
           33268,
+          33322,
           33394,
           33410,
           33509,
@@ -2476,6 +2617,7 @@
           34013,
           34255,
           34432,
+          34503,
           34892,
           34917,
           34920,
@@ -2524,6 +2666,7 @@
           36164,
           36182,
           36208,
+          36214,
           36215,
           36229,
           36234,
@@ -2540,6 +2683,7 @@
           36523,
           36710,
           36716,
+          36718,
           36724,
           36731,
           36733,
@@ -2550,6 +2694,7 @@
           36801,
           36807,
           36814,
+          36816,
           36817,
           36820,
           36825,
@@ -2561,6 +2706,8 @@
           36861,
           36864,
           36865,
+          36866,
+          36867,
           36870,
           36873,
           36880,
@@ -2568,8 +2715,10 @@
           36890,
           36895,
           36896,
+          36935,
           36947,
           36991,
+          37030,
           37051,
           37096,
           37117,
@@ -2603,6 +2752,7 @@
           38480,
           38500,
           38505,
+          38519,
           38543,
           38544,
           38548,
@@ -2860,8 +3010,8 @@
           65517,
           65518
         ],
-        "glyphCount": 1445,
-        "cmapCount": 1136,
+        "glyphCount": 1476,
+        "cmapCount": 1167,
         "fonttoolsVersion": "4.65.0",
         "brotliVersion": "1.2.0",
         "reservedUnicodeRanges": [
@@ -2902,11 +3052,11 @@
           },
           {
             "path": "src/content/areas/c-registration.json",
-            "sha256": "01ab36c7feff0d9e1549738cd4ac7da94245aaa0b335816933b84585fe0059b9"
+            "sha256": "5e9a24d34b3e1379e408f39ae8e61cc3e936d5710a26cfc29805ced2582895ac"
           },
           {
             "path": "src/content/areas/c.json",
-            "sha256": "296973c17b3853117197458970b8ece8e9b78d7cc21f5b8ba0adc2d32fd3d28a"
+            "sha256": "73bcce057a53e986704004bc81c0569e2556f05f5259378f082b8cbfdfc8b989"
           },
           {
             "path": "src/content/areas/d-registration.json",
@@ -2930,15 +3080,99 @@
           },
           {
             "path": "src/content/assemble.ts",
-            "sha256": "ae474e09cb4365a663e7c6c7a9ee12827dc591e756bd61076b2ce176203c6c9c"
+            "sha256": "a6b7272db04f264265452ec2a6527c4b2da95c5ac9c14a9fcc4f4950d5797d1a"
+          },
+          {
+            "path": "src/content/challenges/antivirus-r1.json",
+            "sha256": "20014b8e741d9621c696bbe89ad89bd3270ed784b0a02c7e9facedd24e116dbe"
+          },
+          {
+            "path": "src/content/challenges/capture-r1.json",
+            "sha256": "5fe0c674ab5bb124595622dd2fa7b9dabd4d40da63c0b0904d5862814ec3a467"
           },
           {
             "path": "src/content/challenges/realtime.json",
-            "sha256": "7ac766389ec4e9a5de8bbf2638369df48372a2a6b030848e79dc5744f6e9fae7"
+            "sha256": "a5ef46d75357051789f03a261a4df6f3b228d9c8c6f0608ef6f72b9c7b3b9c00"
           },
           {
             "path": "src/content/challenges/static.json",
+            "sha256": "2b69792e977f979446e7486f4b5d8a35cac173570fdc4981927f280673d65fe6"
+          },
+          {
+            "path": "src/content/challenges/theft-r1.json",
+            "sha256": "7ce10367d16f6702182f113bce397435edb9efa6bdc4b53bacd3598059215126"
+          },
+          {
+            "path": "src/content/history/frozen-releases.ts",
+            "sha256": "9cd38776b2a3cd157eaba45df6cc60c1d6e00c34d9cf853800be2ca5890fce67"
+          },
+          {
+            "path": "src/content/history/pre-r1/assemble.ts",
+            "sha256": "89ba7580864f6f4d5c3589dfd582adf39713a27a30dd95da504bb17db3d40bfd"
+          },
+          {
+            "path": "src/content/history/pre-r1/clock.ts",
+            "sha256": "67f409a5e4947fda1d01f00a1c1064cbe901ec931aebc4cc1d87211e57b6d1c7"
+          },
+          {
+            "path": "src/content/history/pre-r1/engine.ts",
+            "sha256": "9aad72e0992d547b8a6bf9b33c34f2c57a0876c8e6ca82c1bd9c9c514d279149"
+          },
+          {
+            "path": "src/content/history/pre-r1/firewall-feedback.ts",
+            "sha256": "f0301c09e954e2d4dc45dfc8397c50a95b0243bd2753e6b40a2ad111fc95c74f"
+          },
+          {
+            "path": "src/content/history/pre-r1/migrations.ts",
+            "sha256": "2a6cfcaa7ab7f6b99ee5ed7ad24e9af18aa37e143e4abe31dcfbafcf27b11a4b"
+          },
+          {
+            "path": "src/content/history/pre-r1/progress.ts",
+            "sha256": "7d2cedb5f833067e4a7af7896659884e58e3687a41d37628699a70791bb5e454"
+          },
+          {
+            "path": "src/content/history/pre-r1/projection.ts",
+            "sha256": "badaca80c7cfb6df253e5664637d1b6274a58bf4b82a3778f28313492e4933a1"
+          },
+          {
+            "path": "src/content/history/pre-r1/provenance.json",
+            "sha256": "41a4ca42a35975cd193c2649bc3dab3209ae782f4b15d6f6f6b09234df65eae5"
+          },
+          {
+            "path": "src/content/history/pre-r1/realtime.json",
+            "sha256": "7ac766389ec4e9a5de8bbf2638369df48372a2a6b030848e79dc5744f6e9fae7"
+          },
+          {
+            "path": "src/content/history/pre-r1/realtime.ts",
+            "sha256": "10174fb620488fe173784188571c713435712cb25fdc71f3191c9cb53a8c015a"
+          },
+          {
+            "path": "src/content/history/pre-r1/releases.json",
+            "sha256": "270b610d5775260750a5bb9965cce00c1a5e91a3215a0d659869c6f83e6d68d6"
+          },
+          {
+            "path": "src/content/history/pre-r1/save-payload.ts",
+            "sha256": "4f68716affb84bf5000b2d74cbc5d0383ff350097a0356a47180059d39e7256a"
+          },
+          {
+            "path": "src/content/history/pre-r1/static-puzzle.ts",
+            "sha256": "2fec34a4d23428f36adfc94903ea908316be5f94ba630ab4d3f940a9f054ffae"
+          },
+          {
+            "path": "src/content/history/pre-r1/static.json",
             "sha256": "890512a795e5556e5fdc9fc026c85f46b193bfc57ad3db996529718321efbdb7"
+          },
+          {
+            "path": "src/content/history/pre-r1/types.ts",
+            "sha256": "c864a47f8c4650bda017ad52145c1b2db0bf300ed76c54490acf4c7647f43e2a"
+          },
+          {
+            "path": "src/content/history/pre-r1/validate.ts",
+            "sha256": "5cd3099dad3cdde57bd991bc0e40dbb3bb87aeb0f8ebbb3b6d9166b4953cc001"
+          },
+          {
+            "path": "src/content/history/r1-room-map.ts",
+            "sha256": "54c4739071c92a3862fc176bef2199e2c328894cb868f30b3c1b1061e44eccb8"
           },
           {
             "path": "src/content/history/realtime-v1.json",
@@ -2954,11 +3188,11 @@
           },
           {
             "path": "src/content/validate.ts",
-            "sha256": "5afd2cbda02c348c1c7238a3f73dd40448ac044f7a39a9f5933787b737dfdc00"
+            "sha256": "54e2d0afc5e65dd12bba0b1c02473622beeb53bd4f4b7eaa5dcfb657455ce80d"
           },
           {
             "path": "src/content/witnesses/current.ts",
-            "sha256": "e9898a980fa20079f98d17fe5e59d5b4457e1b0108f833e6abbbd62723b0240c"
+            "sha256": "0369e94715568a1b059cf57bbc36e11731b1831ad5087e0c6f92a52a70748af0"
           },
           {
             "path": "src/content/witnesses/index.ts",
@@ -2985,20 +3219,40 @@
             "sha256": "f0bc6ba7ce3d4219c3b6e16eb3ad0bf362f9de76076a8158db64f8b12ad84075"
           },
           {
+            "path": "src/content/witnesses/r1-world.json",
+            "sha256": "133ee2755d96aa2e7ad49b0780ca41beb7dd0a9ae32c5c606da9ddc8f2288b52"
+          },
+          {
             "path": "src/content/witnesses/v2.ts",
             "sha256": "efdc72e8a643e5175fd0a248068b57e645b9a905fcf9c3bc18368ecbad0f42bd"
           },
           {
+            "path": "src/content/witnesses/v3.ts",
+            "sha256": "c7657cd9446dff974f195fcdfd1f76797fffefef7e1f4e9166db43a7a08b2983"
+          },
+          {
             "path": "src/content/world.json",
-            "sha256": "c72ed9f3e4aaec22e606fb2bcec1089cfc1fdf6674b88fcd6e8900ee5c95f20f"
+            "sha256": "1295a02fd6b0f4a08cbe753028036adb94e1223acb3480c8f6bf84c53cb22785"
+          },
+          {
+            "path": "src/core/antivirus.ts",
+            "sha256": "1c2ae8feb8a0a9f45dc58487e3b7244a34c2c34391ae6bbb0d0dae73a200421a"
+          },
+          {
+            "path": "src/core/capture.ts",
+            "sha256": "ac51fc70f67e34fb4cf7b5739952f1fe1e81139bb67f87e18f0e136a24893545"
           },
           {
             "path": "src/core/clock.ts",
             "sha256": "67f409a5e4947fda1d01f00a1c1064cbe901ec931aebc4cc1d87211e57b6d1c7"
           },
           {
+            "path": "src/core/data-theft.ts",
+            "sha256": "28a4357e4d494baa469e994e5d589296f8d86d49eb55d8283c2ab81e84a17c83"
+          },
+          {
             "path": "src/core/engine.ts",
-            "sha256": "9aad72e0992d547b8a6bf9b33c34f2c57a0876c8e6ca82c1bd9c9c514d279149"
+            "sha256": "9e397b28ea69db7ae913801bbc54e651e90627beff17c5a366ed2102d5e3dfe0"
           },
           {
             "path": "src/core/firewall-feedback.ts",
@@ -3010,19 +3264,19 @@
           },
           {
             "path": "src/core/projection.ts",
-            "sha256": "badaca80c7cfb6df253e5664637d1b6274a58bf4b82a3778f28313492e4933a1"
+            "sha256": "ec5806dd2fd0a1ad262d561233fda7736487070dfd6f8d2edebdc1d81dbc212c"
           },
           {
             "path": "src/core/realtime.ts",
-            "sha256": "10174fb620488fe173784188571c713435712cb25fdc71f3191c9cb53a8c015a"
+            "sha256": "a078326e0bf63d844715be1a42dfc9d479682456710c1e4bd683d304d838aa48"
           },
           {
             "path": "src/core/static-puzzle.ts",
-            "sha256": "2fec34a4d23428f36adfc94903ea908316be5f94ba630ab4d3f940a9f054ffae"
+            "sha256": "0e3dee1f07566d282f17f15a809f455d533e79f1c1abf4c86eec7785be34339a"
           },
           {
             "path": "src/core/types.ts",
-            "sha256": "c864a47f8c4650bda017ad52145c1b2db0bf300ed76c54490acf4c7647f43e2a"
+            "sha256": "98be8b1d6ee4b63a40fe1d0fbfc5a3e282fdfd49a258f93d3b03c2d4f52563f1"
           },
           {
             "path": "src/env.d.ts",
@@ -3030,7 +3284,7 @@
           },
           {
             "path": "src/main.ts",
-            "sha256": "950a4d8c040e342b91186d02ee751dfba7249c0f873c8ca919265b261f23305a"
+            "sha256": "91abea13b17c4e91d8fa1fe67f51ccdc31ab98597996d83ee5ff337a598e4aca"
           },
           {
             "path": "src/platform/acceptance-faults.ts",
@@ -3042,15 +3296,15 @@
           },
           {
             "path": "src/platform/migrations.ts",
-            "sha256": "f4a1b26535c2be734909ccbe99df781e674bb75a2fa0c49f7cb9c1a3a11f16ee"
+            "sha256": "8f1b516d470d3cce658974b40564ac224d1d8e0d5cca702f4165882872352818"
           },
           {
             "path": "src/platform/save-payload.ts",
-            "sha256": "f1137563e92c9e7c82eddf5e13f86d6fe3cc85190fd1e6332bfbdc3a5302a952"
+            "sha256": "8cfe01fe5177a4a55e16e52a5d84239f75ce0801dfdf7a6343c8aa28beab9407"
           },
           {
             "path": "src/platform/save-store.ts",
-            "sha256": "dccd98231d15ffe8eec3df9d8b59e7234b051625f089dae26a42ccc18ab531bc"
+            "sha256": "d75badb6f24c4e968d696faf71ba2d941a9af2f83327ea2484e867f0b5846dfd"
           },
           {
             "path": "src/platform/session-diagnostics.ts",
@@ -3069,8 +3323,12 @@
             "sha256": "6dfb3deccbd66ded4ef066bfb577e74670246b396aee0b000e9a601c53fd7f49"
           },
           {
+            "path": "src/render/antivirus-stage.ts",
+            "sha256": "6f6a37ed8b6380fa5eaa8ee27114522ec52171ff97a22331b9ada43b34c27d7e"
+          },
+          {
             "path": "src/render/board.ts",
-            "sha256": "69514e95beccebfc663bede657c5da1e71fc40eea887127481b8a472d4660d14"
+            "sha256": "84c99fe441c9b75fe88f5aee25b1550fd706d2d6e5e9398c53895dc6170c4bd8"
           },
           {
             "path": "src/render/firewall-stage.ts",
@@ -3083,6 +3341,10 @@
           {
             "path": "src/render/projection-key.ts",
             "sha256": "2b7e29b5074ea1ff70f1d1045ae8b9df19272798c0b6c99b4d57dbcac3f0bf24"
+          },
+          {
+            "path": "src/render/theft-panel.ts",
+            "sha256": "553a793918581980c9bb55bc33e615cb40f7c140e8befd03a769c317093a0482"
           },
           {
             "path": "src/ui/firewall-cue.ts",
@@ -3101,8 +3363,12 @@
             "sha256": "4807ddbf4e3b2081595ce1e9357154cfc82dbcd635039a3de119a893b0c2f13b"
           },
           {
+            "path": "src/ui/r1-challenges.css",
+            "sha256": "e6e0bca5b266b3062b2591fac5af87e2c6779066a34548bf5bd783a956f7d83b"
+          },
+          {
             "path": "src/ui/shell.ts",
-            "sha256": "efc0cf8961d0f1fee013678c6637769c9d4dc6127bd52019d32325fff6969d09"
+            "sha256": "7c6f4ad1bd75958b28a2a9fc5559a3339c36a4ab5a8edf8086c894531e4f2c7e"
           },
           {
             "path": "src/ui/style.css",
@@ -3223,6 +3489,7 @@
           9642,
           9675,
           9678,
+          9733,
           9834,
           10003,
           12289,
@@ -3256,6 +3523,7 @@
           20064,
           20102,
           20107,
+          20108,
           20110,
           20114,
           20116,
@@ -3297,6 +3565,7 @@
           20462,
           20493,
           20498,
+          20505,
           20540,
           20551,
           20570,
@@ -3314,6 +3583,7 @@
           20851,
           20854,
           20855,
+          20860,
           20869,
           20876,
           20877,
@@ -3338,6 +3608,7 @@
           21047,
           21051,
           21069,
+          21097,
           21103,
           21147,
           21151,
@@ -3359,6 +3630,7 @@
           21361,
           21363,
           21382,
+          21387,
           21407,
           21435,
           21442,
@@ -3409,6 +3681,7 @@
           22411,
           22495,
           22522,
+          22534,
           22581,
           22622,
           22681,
@@ -3436,6 +3709,7 @@
           23396,
           23398,
           23427,
+          23432,
           23433,
           23436,
           23450,
@@ -3451,6 +3725,7 @@
           23547,
           23548,
           23551,
+          23553,
           23556,
           23558,
           23567,
@@ -3464,6 +3739,7 @@
           23614,
           23616,
           23618,
+          23631,
           23637,
           23646,
           24038,
@@ -3480,6 +3756,7 @@
           24212,
           24213,
           24230,
+          24275,
           24314,
           24320,
           24322,
@@ -3503,6 +3780,7 @@
           24573,
           24577,
           24635,
+          24658,
           24674,
           24688,
           25103,
@@ -3539,6 +3817,7 @@
           25353,
           25361,
           25377,
+          25429,
           25439,
           25442,
           25454,
@@ -3565,6 +3844,7 @@
           25972,
           25991,
           26007,
+          26012,
           26029,
           26032,
           26041,
@@ -3594,6 +3874,7 @@
           26426,
           26432,
           26435,
+          26448,
           26463,
           26465,
           26469,
@@ -3635,6 +3916,7 @@
           27809,
           27839,
           27861,
+          27874,
           27880,
           27934,
           27963,
@@ -3697,14 +3979,17 @@
           30697,
           30701,
           30721,
+          30742,
           30772,
           30830,
+          30861,
           30896,
           31034,
           31105,
           31163,
           31181,
           31186,
+          31215,
           31216,
           31227,
           31243,
@@ -3726,6 +4011,7 @@
           31867,
           31934,
           31995,
+          32032,
           32034,
           32043,
           32047,
@@ -3747,6 +4033,7 @@
           32489,
           32490,
           32493,
+          32531,
           32553,
           32570,
           32599,
@@ -3763,6 +4050,7 @@
           33258,
           33267,
           33268,
+          33322,
           33394,
           33410,
           33509,
@@ -3774,6 +4062,7 @@
           34013,
           34255,
           34432,
+          34503,
           34892,
           34917,
           34920,
@@ -3822,6 +4111,7 @@
           36164,
           36182,
           36208,
+          36214,
           36215,
           36229,
           36234,
@@ -3838,6 +4128,7 @@
           36523,
           36710,
           36716,
+          36718,
           36724,
           36731,
           36733,
@@ -3848,6 +4139,7 @@
           36801,
           36807,
           36814,
+          36816,
           36817,
           36820,
           36825,
@@ -3859,6 +4151,8 @@
           36861,
           36864,
           36865,
+          36866,
+          36867,
           36870,
           36873,
           36880,
@@ -3866,8 +4160,10 @@
           36890,
           36895,
           36896,
+          36935,
           36947,
           36991,
+          37030,
           37051,
           37096,
           37117,
@@ -3901,6 +4197,7 @@
           38480,
           38500,
           38505,
+          38519,
           38543,
           38544,
           38548,
@@ -3940,9 +4237,9 @@
           65307,
           65311
         ],
-        "coverageSha256": "f5a13155252ff409935903ca9fae643951c2f4660ee26266f987b7486d706bee",
-        "outputSha256": "fca0c88ef7f274be9e85cbe7ebe2a4fcfc779f119be180c871d6aa94a7e5f167",
-        "byteLength": 186748
+        "coverageSha256": "c474a5533298272e1e66cf9ecd7d3bcb3dc4301e93bd7d74a04d3555927985b2",
+        "outputSha256": "f06550686aa5fe49140197cb9e5680c8cb851c74331e21323d44af01261fd5bd",
+        "byteLength": 192248
       },
       "licenseSha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
       "profiles": [

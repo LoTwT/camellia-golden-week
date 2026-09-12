@@ -1,5 +1,6 @@
 import {
   activateStatic,
+  completedStaticEntryTileId,
   createCompletedStaticLayout,
   createStatic,
   moveCompletedStatic,
@@ -82,12 +83,13 @@ function discover(content: GameContent, state: GameState, tileId: string): numbe
 export function createGame(content: GameContent, monotonicTimeMs = 0): GameState {
   const state: GameState = {
     gameId: content.gameId,
-    schemaVersion: 2,
+    schemaVersion: 3,
     contentVersion: content.contentVersion,
     ruleVersion: content.ruleVersion,
     releaseProfileId: content.profile.id,
     completedObjectiveIds: [],
     completedRoomLayouts: {},
+    archivedCompletedRoomLayouts: [],
     claimedRewardIds: [],
     activatedTeleportIds: [],
     capabilities: [],
@@ -279,11 +281,14 @@ export function dispatch(
   const enterCompletedRoom = (roomId: string): boolean => {
     const room = content.rooms.find((candidate) => candidate.id === roomId);
     const definition = content.staticChallenges.find((candidate) => candidate.id === roomId);
-    const layout = state.completedRoomLayouts[roomId];
+    const record = state.completedRoomLayouts[roomId];
+    const layout = record?.layout;
     if (
       !room ||
       !definition ||
       !layout ||
+      record?.contentVersion !== content.contentVersion ||
+      record.ruleVersion !== content.ruleVersion ||
       !state.completedObjectiveIds.includes(room.goal) ||
       validateCompletedStaticLayout(definition, layout).length > 0
     )
@@ -298,7 +303,7 @@ export function dispatch(
       space: "room",
       areaId: room.areaId,
       boardId: room.boardId,
-      tileId: definition.startTileId,
+      tileId: completedStaticEntryTileId(definition),
     };
     state.mode = "completedRoom";
     state.phase = "complete";
@@ -315,9 +320,12 @@ export function dispatch(
     if (!room) return;
     if (succeeded && !active.practice) applyEffect(room.effectBundleId);
     const challenge = active.state;
+    const ruleVersion = content.realtimeChallenges.find(
+      (definition) => definition.id === active.roomId,
+    )!.ruleVersion;
     const record = state.bestResults.find(
-      (item) => item.challengeId === active.roomId && item.ruleVersion === content.ruleVersion,
-    ) ?? { challengeId: active.roomId, ruleVersion: content.ruleVersion };
+      (item) => item.challengeId === active.roomId && item.ruleVersion === ruleVersion,
+    ) ?? { challengeId: active.roomId, ruleVersion };
     if (challenge.kind === "firewall")
       record.bestCombo = Math.max(record.bestCombo ?? 0, challenge.bestCombo);
     if (challenge.kind === "antivirus") {
@@ -580,7 +588,7 @@ export function dispatch(
     const active = state.activeCompletedRoom;
     const room = content.rooms.find((candidate) => candidate.id === active.roomId);
     const definition = content.staticChallenges.find((candidate) => candidate.id === active.roomId);
-    const layout = state.completedRoomLayouts[active.roomId];
+    const layout = state.completedRoomLayouts[active.roomId]?.layout;
     if (!room || !definition || !layout || !state.completedObjectiveIds.includes(room.goal))
       return reject("invalidTarget", "已完成房间内容缺失");
     if (command.kind === "Interact" || command.kind === "PracticeRoom") {
@@ -643,7 +651,7 @@ export function dispatch(
     if (!update) return reject("wrongMode", "当前机关不支持此操作");
     if (!update.legal) return reject(update.code, update.message);
     const completedLayout =
-      update.success && !active.practice
+      update.success && !state.completedRoomLayouts[room.id]
         ? createCompletedStaticLayout(definition, update.state, update.playerTileId)
         : null;
     if (completedLayout) {
@@ -669,8 +677,15 @@ export function dispatch(
     } else emit("move", update.message);
     if (update.success) {
       if (completedLayout) {
-        applyEffect(room.effectBundleId);
-        state.completedRoomLayouts = { ...state.completedRoomLayouts, [room.id]: completedLayout };
+        if (!active.practice) applyEffect(room.effectBundleId);
+        state.completedRoomLayouts = {
+          ...state.completedRoomLayouts,
+          [room.id]: {
+            contentVersion: content.contentVersion,
+            ruleVersion: content.ruleVersion,
+            layout: completedLayout,
+          },
+        };
       }
       arrive(room.areaId, active.practice ? room.returnTileId : room.successExitTileId);
       emit("success", "机关完成 · 已抵达安全出口");
@@ -725,6 +740,10 @@ export function dispatch(
         content.staticChallenges.some((candidate) => candidate.id === room.id)
       ) {
         if (enterCompletedRoom(room.id)) return result();
+        if (state.archivedCompletedRoomLayouts.some((record) => record.roomId === room.id)) {
+          if (enterStatic(room.id, true))
+            return result("accepted", "重新体验新版机关 · 原完成、通行与领取保留");
+        }
         return reject("invalidTarget", "已完成房间缺少可恢复的提交布局");
       }
       if (
@@ -841,8 +860,13 @@ export function dispatch(
     if (entity.kind === "roomEntrance" && entity.params.interactionMode === "enter") {
       const room = content.rooms.find((candidate) => candidate.id === entity.params.roomId);
       if (room && state.completedObjectiveIds.includes(room.goal)) {
-        if (!enterCompletedRoom(room.id))
+        if (
+          !enterCompletedRoom(room.id) &&
+          !state.archivedCompletedRoomLayouts.some((record) => record.roomId === room.id)
+        )
           return reject("invalidTarget", "已完成房间缺少可恢复的提交布局");
+        if (state.mode === "explore")
+          return result("accepted", "机关已更新 · 原通行保留，可继续前行；按 F 重新体验");
       } else enterStatic(entity.params.roomId);
       break;
     }

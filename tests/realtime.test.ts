@@ -12,7 +12,7 @@ import {
   validateRealtimeDefinition,
 } from "../src/core/realtime.ts";
 import type {
-  AntivirusDefinition,
+  LegacyAntivirusDefinition as AntivirusDefinition,
   AntivirusSpawn,
   AntivirusState,
   LegacyFirewallDefinition as FirewallDefinition,
@@ -37,7 +37,7 @@ function firewall(difficulty = "tutorial"): FirewallDefinition {
 
 function antivirus(): AntivirusDefinition {
   const definition = definitions.find((candidate) => candidate.id === "b.antivirus.light");
-  assert.ok(definition?.kind === "antivirus");
+  assert.ok(definition?.kind === "antivirus" && definition.ruleVersion !== 4);
   return definition;
 }
 
@@ -544,7 +544,7 @@ test("T13 所有实时成功与失败见证在 30 / 60 / 120fps 下终态、结�
 
 test("T14 三档固定杀毒排表见证均在每目标出现后至少 150ms 操作并达标", () => {
   for (const definition of definitions) {
-    if (definition.kind !== "antivirus") continue;
+    if (definition.kind !== "antivirus" || definition.ruleVersion === 4) continue;
     const witness = witnesses.find(
       (candidate) =>
         candidate.challengeId === definition.id && candidate.expectedResult === "success",

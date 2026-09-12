@@ -1,12 +1,13 @@
-// These tests replay the original v1 recordings/exports against their published content view.
+// Session locking uses authentic historical bytes and the actual R1 migration boundary.
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
-import { assembleLegacyContent as assembleContent } from "../src/content/assemble.ts";
+import { assembleContent, migrationContentReleases } from "../src/content/assemble.ts";
 import { createGame, dispatch } from "../src/core/engine.ts";
 import type { GameCommand } from "../src/core/types.ts";
 import { restorePayload, stablePayload, validatePayload } from "../src/platform/save-payload.ts";
 import type { SavePayload } from "../src/platform/save-payload.ts";
+import { publishedProfileMigrations } from "../src/platform/migrations.ts";
 import { createSaveStore, SAVE_KEYS } from "../src/platform/save-store.ts";
 import type { SaveEnvelope, SaveStorage } from "../src/platform/save-store.ts";
 import {
@@ -15,6 +16,7 @@ import {
 } from "../src/platform/session-progress.ts";
 
 const content = assembleContent("M5");
+const migrations = publishedProfileMigrations(migrationContentReleases("M5"));
 const savedAt = "2026-09-11T08:00:00.000Z";
 const retainedRaw = readFileSync(
   new URL("../docs/verification/evidence/m5-production-iab-save.json", import.meta.url),
@@ -53,13 +55,15 @@ function sessionHarness() {
   let temporary = false;
   const store = createSaveStore(
     storage,
-    (payload) => validatePayload(payload, content),
+    (payload) => validatePayload(payload, content, migrations),
     () => held && !temporary,
   );
   let inspection = store.inspect();
   const access = new LoadedProgressAccess();
   access.activate(retained.saveGeneration);
-  let state = restorePayload(retained.payload, content, 1000);
+  const restored = validatePayload(retained.payload, content, migrations);
+  assert.ok(restored.ok);
+  let state = restorePayload(restored.value, content, 1000);
   let now = 1000;
   return {
     storage,
@@ -100,7 +104,7 @@ function sessionHarness() {
       if (!access.canPlay(held, temporary)) return null;
       const result = store.write(stablePayload(state), {
         expected: inspection,
-        intent: "retry",
+        intent: inspection.latest?.migrationRequired ? "migration" : "retry",
         savedAt,
       });
       inspection = result.retryInspection;
@@ -157,7 +161,9 @@ test("P10 恢复页 busy：原槽导出使用新磁盘原文，旧内存保留�
   assert.equal(memory.ok, true);
   const memoryEnvelope = JSON.parse(memory.raw) as SaveEnvelope<SavePayload>;
   assert.equal(memoryEnvelope.saveGeneration, retained.saveGeneration);
-  assert.deepEqual(memoryEnvelope.payload, retained.payload);
+  const validated = validatePayload(retained.payload, content, migrations);
+  assert.ok(validated.ok);
+  assert.deepEqual(memoryEnvelope.payload, validated.value);
   assert.notDeepEqual(memoryEnvelope.payload, latest.payload);
   assert.equal(game.storage.writes, 0);
   assert.equal(game.storage.values.get(SAVE_KEYS.a), latestRaw);
@@ -219,13 +225,13 @@ test("P04/P10 只读原槽包含损坏和较新版本字节，每次关闭都回
   const storage = new MemoryStorage();
   const corrupt = "{\n  broken json\n";
   const future = JSON.parse(latestRaw) as SaveEnvelope<SavePayload>;
-  future.payload.schemaVersion += 1;
+  future.payload.schemaVersion = 4;
   const futureRaw = JSON.stringify(future, null, 3) + "\n";
   storage.values.set(SAVE_KEYS.a, corrupt);
   storage.values.set(SAVE_KEYS.b, futureRaw);
   const store = createSaveStore(
     storage,
-    (payload) => validatePayload(payload, content),
+    (payload) => validatePayload(payload, content, migrations),
     () => false,
   );
   const inspection = store.inspect();
@@ -258,7 +264,7 @@ test("P09/P10 读取失败不把旧内存伪装为可读取原槽", () => {
         throw new Error("只读会话不能写入");
       },
     },
-    (payload) => validatePayload(payload, content),
+    (payload) => validatePayload(payload, content, migrations),
     () => false,
   );
   const inspection = store.inspect();

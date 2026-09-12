@@ -295,15 +295,15 @@ export async function verifyReviewRegressions(options: {
           .phase === "active",
     );
     await pressGameKey(page, "ArrowRight");
-    await waitForPosition(page, "a.maze.01.t.1.4");
-    await page.keyboard.down("ArrowUp");
+    await waitForPosition(page, "a.maze.01.t.0.2");
+    await page.keyboard.down("ArrowRight");
     try {
       await page.waitForFunction(
         () =>
           (Reflect.get(window, "__CAMELLIA_INSPECT__") as { snapshot(): Inspection }).snapshot()
             .phase === "preview",
       );
-      await waitForPosition(page, "a.maze.01.t.0.4");
+      await waitForPosition(page, "a.maze.01.t.n1.2");
       await page.waitForFunction(
         () =>
           (Reflect.get(window, "__CAMELLIA_INSPECT__") as { snapshot(): Inspection }).snapshot()
@@ -312,14 +312,14 @@ export async function verifyReviewRegressions(options: {
       await page.waitForTimeout(350);
       assert.equal(
         (await inspect(page)).position.tileId,
-        "a.maze.01.t.0.4",
+        "a.maze.01.t.n1.2",
         "失败前按住的方向不能在重试观察结束后继续移动",
       );
     } finally {
-      await page.keyboard.up("ArrowUp");
+      await page.keyboard.up("ArrowRight");
     }
-    await pressGameKey(page, "ArrowUp");
-    await waitForPosition(page, "a.maze.01.t.0.3");
+    await pressGameKey(page, "ArrowRight");
+    await waitForPosition(page, "a.maze.01.t.0.2");
     return { failedIntoPreview: true, heldInputCleared: true, newPressStillWorks: true };
   });
 

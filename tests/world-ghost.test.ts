@@ -5,14 +5,23 @@ import test from "node:test";
 import {
   assembleLegacyContent as assembleContent,
   legacyRealtimeContent as realtimeContent,
-} from "../src/content/assemble.ts";
-import { validateContent } from "../src/content/validate.ts";
-import { dispatch } from "../src/core/engine.ts";
-import { areaData, gateOpen, supplyProgress } from "../src/core/progress.ts";
-import type { GhostsState, RealtimeWitness } from "../src/core/realtime.ts";
-import type { Direction, FeedbackEvent, GameCommand, GameState } from "../src/core/types.ts";
-import { additiveProfileMigrations } from "../src/platform/migrations.ts";
-import { restorePayload, stablePayload, validatePayload } from "../src/platform/save-payload.ts";
+} from "../src/content/history/pre-r1/assemble.ts";
+import { validateContent } from "../src/content/history/pre-r1/validate.ts";
+import { dispatch } from "../src/content/history/pre-r1/engine.ts";
+import { areaData, gateOpen, supplyProgress } from "../src/content/history/pre-r1/progress.ts";
+import type { GhostsState, RealtimeWitness } from "../src/content/history/pre-r1/realtime.ts";
+import type {
+  Direction,
+  FeedbackEvent,
+  GameCommand,
+  GameState,
+} from "../src/content/history/pre-r1/types.ts";
+import { additiveProfileMigrations } from "../src/content/history/pre-r1/migrations.ts";
+import {
+  restorePayload,
+  stablePayload,
+  validatePayload,
+} from "../src/content/history/pre-r1/save-payload.ts";
 
 const content = assembleContent("M4");
 const sourceContent = assembleContent("M3");

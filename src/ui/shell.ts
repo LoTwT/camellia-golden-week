@@ -5,6 +5,8 @@ import { REWARD_LABELS } from "./labels.ts";
 import { firewallCue } from "./firewall-cue.ts";
 import { firewallFeedback } from "../core/firewall-feedback.ts";
 import { canReceiveMenuFocus, DialogNavigation } from "./menu-navigation.ts";
+import { antivirusActiveTargets, antivirusRequiredScore } from "../core/realtime.ts";
+import { theftPortSatisfied } from "../core/data-theft.ts";
 
 export interface ShellActions {
   send: (command: GameCommand) => void;
@@ -72,6 +74,12 @@ export class GameShell {
     firewallOverlay.hidden = true;
     firewallOverlay.innerHTML = `<div id="firewall-impact" class="firewall-impact" aria-hidden="true"></div><aside class="firewall-help"><span class="firewall-help-icon" aria-hidden="true">♪</span>跟随音乐与<em>白光</em>踩拍。<br>朝箭头方向迎向警报，可完美闪避。<br><span class="firewall-penalties">错拍 −1 · 警报命中 −5</span></aside><output id="firewall-feedback" class="firewall-feedback" aria-live="polite" aria-atomic="true"></output><div class="firewall-run-status"><span id="firewall-difficulty"></span><span id="firewall-goal"></span><span id="firewall-time"></span></div><progress id="firewall-song-progress" class="firewall-song-progress" max="1" value="0" aria-label="挑战时间进度"></progress><output id="firewall-combo-value" class="visually-hidden" aria-label="当前连击"></output>`;
     root.querySelector(".playfield")!.append(firewallOverlay);
+    const antivirusOverlay = document.createElement("section");
+    antivirusOverlay.id = "antivirus-overlay";
+    antivirusOverlay.className = "antivirus-overlay";
+    antivirusOverlay.hidden = true;
+    antivirusOverlay.innerHTML = `<strong id="antivirus-heading" class="antivirus-heading"></strong><aside id="antivirus-status" class="antivirus-status"><div class="antivirus-count"><span>侵蚀数据</span><strong id="antivirus-count"></strong></div><p>保持 9 个以内，第 10 个出现即失败。</p><output id="antivirus-last-clear" class="antivirus-last-clear" aria-live="polite"></output></aside><div class="antivirus-run"><span id="antivirus-score"></span><span id="antivirus-time"></span></div><div class="antivirus-legend">蓝色 +1 · 紫色 +2 · 金星清除全部蓝紫数据</div>`;
+    root.querySelector(".playfield")!.append(antivirusOverlay);
     for (const id of [
       "mission-text",
       "area-subtitle",
@@ -97,6 +105,13 @@ export class GameShell {
       "firewall-combo-value",
       "firewall-feedback",
       "firewall-impact",
+      "antivirus-overlay",
+      "antivirus-heading",
+      "antivirus-status",
+      "antivirus-count",
+      "antivirus-score",
+      "antivirus-time",
+      "antivirus-last-clear",
       "controls",
       "save-status",
     ]) {
@@ -451,8 +466,31 @@ export class GameShell {
   update(state: GameState) {
     this.state = state;
     const isFirewall = state.activeRealtime?.state.kind === "firewall";
-    this.element.dataset.challenge = isFirewall ? "firewall" : "";
+    const isAntivirus = state.activeRealtime?.state.kind === "antivirus";
+    const localDefinition =
+      state.playerPosition.space === "room"
+        ? this.content.staticChallenges.find(
+            (definition) => definition.boardId === state.playerPosition.boardId,
+          )
+        : undefined;
+    const isTheft = localDefinition?.kind === "theft";
+    this.element.dataset.challenge = isFirewall
+      ? "firewall"
+      : isAntivirus
+        ? "antivirus"
+        : isTheft
+          ? "theft"
+          : "";
     this.fields["firewall-overlay"]!.hidden = !isFirewall;
+    this.fields["antivirus-overlay"]!.hidden = !isAntivirus;
+    this.canvas.setAttribute(
+      "aria-label",
+      isTheft
+        ? "数据盗取平面棋盘，方向键移动与推动，Z撤销，Esc暂停"
+        : isAntivirus
+          ? "杀毒电视棋盘，方向键移动清除，F清除脚下目标，也可点击目标直达，Esc暂停"
+          : "电视探索棋盘，方向键移动，F交互，R增幅，M区域图，Esc暂停",
+    );
     const settingsKey = `${state.settings.reducedMotion}:${state.settings.reducedFlash}:${state.settings.quality}`;
     if (settingsKey !== this.settingsKey) {
       document.documentElement.dataset.reducedMotion = String(state.settings.reducedMotion);
@@ -504,7 +542,8 @@ export class GameShell {
       performance.now() < this.feedbackVisibleUntil ? state.lastResult.message : "",
     );
     let banner = "",
-      meter = "";
+      meter = "",
+      resultScore = "";
     if (state.activeStatic?.state.phase === "preview")
       banner = `记住安全路线\n${Math.max(0, (4000 - state.clock.activeTimeMs) / 1000).toFixed(1)} 秒`;
     if (state.activeStatic) {
@@ -516,8 +555,8 @@ export class GameShell {
         meter = `已走 ${layout.visitedTileIds.length} / ${definition.requiredTileIds.length} 格 · 覆盖全部格子后，最后进入出口`;
       if (definition?.kind === "routing")
         meter = `入站 ${definition.ballIds.filter((id) => layout.objectTileById[id] === definition.stationTileById[definition.targetStationByBallId[id]!]).length} / ${definition.ballIds.length} · 球滑行，车移动一格；Z 可撤销`;
-      if (definition?.kind === "theft")
-        meter = `匹配 ${definition.socketIds.filter((socket) => definition.objectIds.some((object) => layout.objectTileById[object] === definition.socketTileById[socket] && definition.colorByObjectId[object] === definition.colorBySocketId[socket])).length} / ${definition.socketIds.length} · 将对象推入相同字母的槽`;
+      if (definition?.kind === "theft" && layout.theft)
+        meter = `已接入 ${definition.powerPortIds.filter((port) => theftPortSatisfied(definition, layout.theft!, port)).length} / ${definition.powerPortIds.length} · 球滑行，基站固定，组合体逐格推动`;
     }
     if (state.activeCompletedRoom) meter = "完成布局 · 可自由行走，物体保持原位；F 开始独立练习";
     if (state.clock.countdownRemainingMs > 0)
@@ -529,6 +568,12 @@ export class GameShell {
       const definition = this.content.realtimeChallenges.find(
         (item) => item.id === state.activeRealtime?.roomId,
       );
+      const best = definition
+        ? state.bestResults.find(
+            (result) =>
+              result.challengeId === definition.id && result.ruleVersion === definition.ruleVersion,
+          )
+        : undefined;
       if (active.kind === "firewall" && definition?.kind === "firewall") {
         const difficultyNames: Record<string, string> = {
           tutorial: "防火墙 · 教学",
@@ -554,6 +599,7 @@ export class GameShell {
           state.clock.activeTimeMs / definition.rules.durationMs,
         );
         meter = `COMBO ${active.combo}   /   最高 ${active.bestCombo} · 目标 ${definition.rules.comboTarget}   /   ${Math.max(0, (definition.rules.durationMs - state.clock.activeTimeMs) / 1000).toFixed(1)} s`;
+        resultScore = `${meter} · 本规则最佳 ${best?.bestCombo ?? active.bestCombo}`;
         const cue = firewallCue(definition, active, state.clock);
         const feedback = firewallFeedback(active, state.clock);
         this.set("firewall-feedback", feedback.message);
@@ -578,8 +624,28 @@ export class GameShell {
           cue.phase === "ready" || cue.phase === "hit" || cue.phase === "judged",
         );
       }
-      if (active.kind === "antivirus" && definition?.kind === "antivirus")
-        meter = `得分 ${active.score} / ${definition.rules.targetScore}   ·   ${Math.max(0, (definition.rules.durationMs - state.clock.activeTimeMs) / 1000).toFixed(1)} s`;
+      if (active.kind === "antivirus" && definition?.kind === "antivirus") {
+        resultScore = `本次清除 ${active.score} / 目标 ${antivirusRequiredScore(definition)} · 本规则最佳 ${best?.bestScore ?? active.score} · 最大星清 ${best?.bestStarClear ?? active.bestStarClearCount}`;
+        const count = antivirusActiveTargets(definition, active).filter(
+          (target) => target.kind !== "star",
+        ).length;
+        const tier = definition.id.split(".").at(-1)!;
+        this.set(
+          "antivirus-heading",
+          `杀毒程序 · ${{ light: "轻度", medium: "中度", heavy: "重度" }[tier] ?? "挑战"}`,
+        );
+        this.set("antivirus-count", `${count} / 9`);
+        this.set("antivirus-score", `清除 ${active.score} / ${antivirusRequiredScore(definition)}`);
+        this.set(
+          "antivirus-time",
+          `剩余 ${Math.max(0, (definition.rules.durationMs - state.clock.activeTimeMs) / 1000).toFixed(1)} 秒`,
+        );
+        this.fields["antivirus-status"]!.dataset.pressure = count >= 7 ? "high" : "normal";
+        this.set(
+          "antivirus-last-clear",
+          active.lastStarClearCount > 0 ? `最近星清：${active.lastStarClearCount} 个侵蚀数据` : "",
+        );
+      }
       if (active.kind === "ghosts")
         meter = `已点亮 ${active.litLampIds.length} 盏灯 · 触碰幽灵会重试`;
     }
@@ -599,7 +665,7 @@ export class GameShell {
     if (rhythm) rhythm.hidden = state.activeRealtime?.state.kind !== "firewall";
     const screenLight = this.fields["firewall-screen-light"];
     if (screenLight) screenLight.hidden = state.activeRealtime?.state.kind !== "firewall";
-    const controlKey = `${state.mode}:${state.activeStatic?.state.phase ?? ""}:${isFirewall}`;
+    const controlKey = `${state.mode}:${state.activeStatic?.state.phase ?? ""}:${isFirewall}:${isAntivirus}`;
     const controls = this.fields.controls;
     if (controls && controls.dataset.mode !== controlKey) {
       controls.dataset.mode = controlKey;
@@ -632,6 +698,7 @@ export class GameShell {
         );
       if (state.mode === "challengeRunning")
         controls.append(
+          ...(isAntivirus ? [action("F 清除脚下", { kind: "Interact" })] : []),
           text("span", "实时挑战不支持撤销", "muted"),
           button("暂停", () => this.openPanel("pause")),
         );
@@ -668,7 +735,7 @@ export class GameShell {
       )?.kind;
       const description =
         kind === "antivirus"
-          ? "杀毒：移动到数据格或鼠标点选当前出现的数据。蓝色 +1，紫色 +2；星星清除当前蓝 / 紫数据。目标有时限，移动到空格不会扣分。"
+          ? "中央 5×4 棋盘：方向移动或鼠标直点目标均可清除，F 清除脚下目标。蓝色 +1，紫色 +2；金星清除当前全部蓝紫。普通数据会持续堆积，最多 9 个，第 10 个出现立即失败；达到分数即成功。四侧屏显示清除进度。点击空格只移动。"
           : kind === "ghosts"
             ? "幽灵：用方向键逐格避开幽灵，点亮灯以清除指定幽灵组。与幽灵碰撞或交换位置会重试；长距离自动寻路已停用。"
             : "跟随音乐与画面周围白光，在拍点移动。普通错拍减 1 连击，触碰警报减 5；朝箭头方向踩拍，迎向警报可完美闪避。警报会移动，停在红格也会受击。两侧电视显示连击，底部文字提示拍点，减少闪烁时可依文字操作。鼠标可点不同格；方向键每次按下移动一次，每拍最多加 1。";
@@ -678,14 +745,18 @@ export class GameShell {
           inner: "内层 · 45 秒 / Combo 40",
           deep: "深层 · 45 秒 / Combo 55",
           core: "核心 · 45 秒 / Combo 70",
-          light: "轻度 · 45 秒 / 40 分",
-          medium: "中度 · 45 秒 / 60 分",
-          heavy: "重度 · 45 秒 / 80 分",
+          light: "轻度",
+          medium: "中度",
+          heavy: "重度",
         };
-        for (const id of ids)
+        for (const id of ids) {
+          const definition = this.content.realtimeChallenges.find((item) => item.id === id);
+          const label = names[id.split(".").at(-1)!] ?? "开始幽灵挑战";
           this.dialog.append(
             button(
-              names[id.split(".").at(-1)!] ?? "开始幽灵挑战",
+              definition?.kind === "antivirus"
+                ? `${label} · ${definition.rules.durationMs / 1000} 秒 / ${antivirusRequiredScore(definition)} 分`
+                : label,
               () => {
                 this.close();
                 this.actions.send({ kind: "StartChallenge", challengeId: id });
@@ -694,6 +765,7 @@ export class GameShell {
               "challenge-choice",
             ),
           );
+        }
         this.dialog.append(
           button("返回地图", () => {
             this.close();
@@ -721,7 +793,7 @@ export class GameShell {
         )
       ) {
         this.dialog.append(
-          text("p", meter, "result-score"),
+          text("p", resultScore || meter, "result-score"),
           button(
             "再挑战一次",
             () => {

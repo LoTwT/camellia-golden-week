@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { assembleContent } from "../src/content/assemble.ts";
+import { assembleContent, staticContent } from "../src/content/assemble.ts";
 import { createGame, dispatch, worldPosition } from "../src/core/engine.ts";
 import { projectBoard } from "../src/core/projection.ts";
 import type { Direction, GameCommand, GameState, RuleResult } from "../src/core/types.ts";
@@ -75,7 +75,11 @@ class PlaySession {
 
   completeMaze(): void {
     this.wait(4000);
-    this.move("up", "up", "up", "up", "right", "right", "right", "right");
+    const witness = staticContent.witnesses.find(
+      (item) => item.id === "a.maze.01.witness.success",
+    )!;
+    for (const action of witness.actions)
+      if (action !== "activate" && action !== "reset" && action !== "undo") this.move(action);
     assert.equal(this.state.mode, "explore");
     assert.equal(this.state.playerPosition.tileId, "a.t.5.0");
   }
@@ -133,7 +137,7 @@ test("P01 真实新档与正常中心教学到 A 区的载荷逐步合法，导�
 test("P01 普通位置、已发现和已访问集合恢复一致，读回时钟和输入从空白开始", () => {
   const session = new PlaySession();
   session.enterA();
-  session.move("up", "up");
+  session.move("right", "down");
   const payload = requireValid(stablePayload(session.state));
   const restored = restorePayload(payload, content, 50000);
   assert.deepEqual(restored.playerPosition, session.state.playerPosition);
@@ -264,7 +268,7 @@ test("P01 / S02 迷宫预览刷新后重新观察完整 4 秒；危险格仅在�
     projectBoard(content, session.state).tiles.some((tile) => tile.icon === "hazard-active"),
   );
   const resumed = new PlaySession(restorePayload(payload, content, 20000), 20000);
-  assert.equal(resumed.state.playerPosition.tileId, "a.maze.01.t.0.4");
+  assert.equal(resumed.state.playerPosition.tileId, "a.maze.01.t.n1.2");
   resumed.wait(3999);
   assert.equal(resumed.state.activeStatic?.state.phase, "preview");
   resumed.wait(1);
@@ -279,11 +283,11 @@ test("P01 / S02 迷宫活动态刷新保留玩家与布局，撤销历史丢弃�
   const session = new PlaySession();
   session.enterMaze();
   session.wait(4000);
-  session.move("up", "up");
+  session.move("right", "down");
   assert.equal(session.state.activeStatic?.state.undoStack.length, 2);
   const payload = requireValid(stablePayload(session.state));
   const resumed = new PlaySession(restorePayload(payload, content, 30000), 30000);
-  assert.equal(resumed.state.playerPosition.tileId, "a.maze.01.t.0.2");
+  assert.equal(resumed.state.playerPosition.tileId, "a.maze.01.t.0.3");
   assert.deepEqual(
     resumed.state.activeStatic?.state.currentLayout,
     session.state.activeStatic?.state.currentLayout,
@@ -295,7 +299,7 @@ test("P01 / S02 迷宫活动态刷新保留玩家与布局，撤销历史丢弃�
   );
   assert.equal(resumed.send({ kind: "Undo" }).code, "noHistory");
   assert.equal(resumed.send({ kind: "ResetRoom" }).code, "reset");
-  assert.equal(resumed.state.playerPosition.tileId, "a.maze.01.t.0.4");
+  assert.equal(resumed.state.playerPosition.tileId, "a.maze.01.t.n1.2");
   assert.equal(resumed.state.activeStatic?.state.phase, "preview");
   assert.deepEqual(resumed.state.claimedRewardIds, payload.claimedRewardIds);
 });
@@ -304,10 +308,10 @@ test("P01 / S01 真正踩危险格后保存合法恢复预览，临时结果与�
   const session = new PlaySession();
   session.enterMaze();
   session.wait(4000);
-  session.move("up");
+  session.move("right");
   const failed = session.send({ kind: "Move", direction: "right" });
   assert.equal(failed.code, "failed");
-  assert.equal(session.state.playerPosition.tileId, "a.maze.01.t.0.4");
+  assert.equal(session.state.playerPosition.tileId, "a.maze.01.t.n1.2");
   const payload = requireValid(stablePayload(session.state));
   assert.equal(payload.room?.status, "preview");
   assert.deepEqual(payload.room?.pendingEffects, { objectiveIds: [], rewardIds: [] });
@@ -319,13 +323,13 @@ test("P06 静态存档拒绝危险或墙占格、重复对象、坏基线、错�
   const session = new PlaySession();
   session.enterMaze();
   session.wait(4000);
-  session.move("up");
+  session.move("right");
   const payload = stablePayload(session.state);
   expectInvalid(payload, (fault) => {
-    fault.playerPosition.tileId = "a.maze.01.t.1.3";
+    fault.playerPosition.tileId = "a.maze.01.t.1.2";
   });
   expectInvalid(payload, (fault) => {
-    fault.playerPosition.tileId = "a.maze.01.t.2.2";
+    fault.playerPosition.tileId = "a.maze.01.t.99.99";
   });
   expectInvalid(payload, (fault) => {
     assert.ok(fault.room && fault.room.status !== "completedVisit");
@@ -336,7 +340,7 @@ test("P06 静态存档拒绝危险或墙占格、重复对象、坏基线、错�
   });
   expectInvalid(payload, (fault) => {
     assert.ok(fault.room && fault.room.status !== "completedVisit");
-    fault.room.attemptBaseline = { ...fault.room.attemptBaseline, playerTileId: "a.maze.01.t.1.3" };
+    fault.room.attemptBaseline = { ...fault.room.attemptBaseline, playerTileId: "a.maze.01.t.1.2" };
   });
   expectInvalid(payload, (fault) => {
     assert.ok(fault.room && fault.room.status !== "completedVisit");
@@ -407,10 +411,10 @@ test("P01 / S09 完成布局访问态保存唯一玩家位置，恢复后危险�
   assert.equal(session.state.mode, "completedRoom");
   session.move("right");
   const payload = requireValid(stablePayload(session.state));
-  assert.equal(payload.schemaVersion, 2);
+  assert.equal(payload.schemaVersion, 3);
   assert.equal(payload.room?.status, "completedVisit");
   assert.deepEqual(Object.keys(payload.room ?? {}).sort(), ["returnAnchor", "roomId", "status"]);
-  assert.deepEqual(payload.completedRoomLayouts["a.maze.01"], {
+  assert.deepEqual(payload.completedRoomLayouts["a.maze.01"]?.layout, {
     objectTileById: {},
     visitedTileIds: [],
     activatedLocalIds: [],
@@ -421,7 +425,7 @@ test("P01 / S09 完成布局访问态保存唯一玩家位置，恢复后危险�
   assert.deepEqual(restored.state.playerPosition, payload.playerPosition);
   restored.move("up");
   assert.equal(restored.state.mode, "completedRoom");
-  assert.equal(restored.state.playerPosition.tileId, "a.maze.01.t.1.3");
+  assert.equal(restored.state.playerPosition.tileId, "a.maze.01.t.0.1");
   assert.deepEqual(restored.state.completedRoomLayouts, payload.completedRoomLayouts);
   assert.deepEqual(restored.state.claimedRewardIds, payload.claimedRewardIds);
   assert.notEqual(restored.state.completedRoomLayouts, payload.completedRoomLayouts);
@@ -429,7 +433,7 @@ test("P01 / S09 完成布局访问态保存唯一玩家位置，恢复后危险�
   assert.deepEqual(restored.state.playerPosition, payload.room?.returnAnchor);
 });
 
-test("P06 schema2 必须完整保存已完成静态布局，拒绝漏记、假布局、未知房间及非法访问占格", () => {
+test("P06 schema3 必须完整保存已完成静态布局，拒绝漏记、假布局、未知房间及非法访问占格", () => {
   const session = new PlaySession();
   session.enterMaze();
   session.completeMaze();
@@ -439,29 +443,41 @@ test("P06 schema2 必须完整保存已完成静态布局，拒绝漏记、假�
   });
   expectInvalid(payload, (fault) => {
     fault.completedRoomLayouts["unknown.room"] = {
-      objectTileById: {},
-      visitedTileIds: [],
-      activatedLocalIds: [],
+      contentVersion: content.contentVersion,
+      ruleVersion: content.ruleVersion,
+      layout: {
+        objectTileById: {},
+        visitedTileIds: [],
+        activatedLocalIds: [],
+      },
     };
   });
   expectInvalid(payload, (fault) => {
     fault.completedRoomLayouts["a.maze.02"] = {
-      objectTileById: {},
-      visitedTileIds: [],
-      activatedLocalIds: [],
+      contentVersion: content.contentVersion,
+      ruleVersion: content.ruleVersion,
+      layout: {
+        objectTileById: {},
+        visitedTileIds: [],
+        activatedLocalIds: [],
+      },
     };
   });
   expectInvalid(payload, (fault) => {
     fault.completedRoomLayouts["a.maze.01"] = {
-      objectTileById: { "unknown.object": "a.maze.01.t.0.0" },
-      visitedTileIds: [],
-      activatedLocalIds: [],
+      contentVersion: content.contentVersion,
+      ruleVersion: content.ruleVersion,
+      layout: {
+        objectTileById: { "unknown.object": "a.maze.01.t.0.0" },
+        visitedTileIds: [],
+        activatedLocalIds: [],
+      },
     };
   });
   session.move("left");
   const visit = requireValid(stablePayload(session.state));
   expectInvalid(visit, (fault) => {
-    fault.playerPosition.tileId = "a.maze.01.t.2.2";
+    fault.playerPosition.tileId = "a.maze.01.t.99.99";
   });
   const extraFields = structuredClone(visit) as unknown as { room: Record<string, unknown> };
   extraFields.room.practice = false;
@@ -599,7 +615,7 @@ test("稳定载荷与源世界互不别名，恢复的活动房间与输入载�
   const session = new PlaySession();
   session.enterMaze();
   session.wait(4000);
-  session.move("up");
+  session.move("right");
   const payload = requireValid(stablePayload(session.state));
   const before = structuredClone(payload);
   payload.settings.muted = true;

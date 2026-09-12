@@ -1,0 +1,941 @@
+{
+  "definitions": [
+    {
+      "kind": "capture",
+      "id": "c.capture.01",
+      "boardId": "c.capture.01",
+      "title": "推车捕获 01",
+      "includedFrom": "M3",
+      "sourceRecordIds": ["map.c.capture.r1"],
+      "tiles": [
+        {
+          "id": "c.capture.01.t.0.0",
+          "boardId": "c.capture.01",
+          "x": 0,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.01.t.1.0",
+          "boardId": "c.capture.01",
+          "x": 1,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.01.t.2.0",
+          "boardId": "c.capture.01",
+          "x": 2,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.01.t.0.1",
+          "boardId": "c.capture.01",
+          "x": 0,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.01.t.1.1",
+          "boardId": "c.capture.01",
+          "x": 1,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.01.t.2.1",
+          "boardId": "c.capture.01",
+          "x": 2,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.01.t.0.2",
+          "boardId": "c.capture.01",
+          "x": 0,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.01.t.1.2",
+          "boardId": "c.capture.01",
+          "x": 1,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.01.t.2.2",
+          "boardId": "c.capture.01",
+          "x": 2,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.01.t.0.3",
+          "boardId": "c.capture.01",
+          "x": 0,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.01.t.1.3",
+          "boardId": "c.capture.01",
+          "x": 1,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.01.t.2.3",
+          "boardId": "c.capture.01",
+          "x": 2,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.01.t.3.0",
+          "boardId": "c.capture.01",
+          "x": 3,
+          "y": 0,
+          "terrain": "buffer"
+        }
+      ],
+      "startTileId": "c.capture.01.t.3.0",
+      "completedEntryTileId": "c.capture.01.t.3.0",
+      "cartIds": ["c.capture.01.cart"],
+      "bangbooIds": ["c.capture.01.bangboo"],
+      "initialCartTileById": {
+        "c.capture.01.cart": "c.capture.01.t.1.2"
+      },
+      "initialBangbooTileById": {
+        "c.capture.01.bangboo": "c.capture.01.t.0.0"
+      },
+      "escapeRules": {
+        "kind": "adjacent-player-action",
+        "escapeTileIds": [
+          "c.capture.01.t.0.0",
+          "c.capture.01.t.1.0",
+          "c.capture.01.t.2.0",
+          "c.capture.01.t.0.1",
+          "c.capture.01.t.1.1",
+          "c.capture.01.t.2.1",
+          "c.capture.01.t.0.2",
+          "c.capture.01.t.1.2",
+          "c.capture.01.t.2.2",
+          "c.capture.01.t.0.3",
+          "c.capture.01.t.1.3",
+          "c.capture.01.t.2.3"
+        ],
+        "priority": ["up", "right", "down", "left"]
+      },
+      "captureConditions": "no-legal-escape-on-approach",
+      "cartUnlockObjectiveId": null
+    },
+    {
+      "kind": "capture",
+      "id": "c.capture.02",
+      "boardId": "c.capture.02",
+      "title": "推车捕获 02",
+      "includedFrom": "M3",
+      "sourceRecordIds": ["map.c.capture.r1"],
+      "tiles": [
+        {
+          "id": "c.capture.02.t.0.0",
+          "boardId": "c.capture.02",
+          "x": 0,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.02.t.1.0",
+          "boardId": "c.capture.02",
+          "x": 1,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.02.t.2.0",
+          "boardId": "c.capture.02",
+          "x": 2,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.02.t.0.1",
+          "boardId": "c.capture.02",
+          "x": 0,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.02.t.1.1",
+          "boardId": "c.capture.02",
+          "x": 1,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.02.t.2.1",
+          "boardId": "c.capture.02",
+          "x": 2,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.02.t.0.2",
+          "boardId": "c.capture.02",
+          "x": 0,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.02.t.1.2",
+          "boardId": "c.capture.02",
+          "x": 1,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.02.t.2.2",
+          "boardId": "c.capture.02",
+          "x": 2,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.02.t.0.3",
+          "boardId": "c.capture.02",
+          "x": 0,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.02.t.1.3",
+          "boardId": "c.capture.02",
+          "x": 1,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.02.t.2.3",
+          "boardId": "c.capture.02",
+          "x": 2,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.02.t.3.1",
+          "boardId": "c.capture.02",
+          "x": 3,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.02.t.4.1",
+          "boardId": "c.capture.02",
+          "x": 4,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.02.t.3.2",
+          "boardId": "c.capture.02",
+          "x": 3,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.02.t.4.2",
+          "boardId": "c.capture.02",
+          "x": 4,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.02.t.5.1",
+          "boardId": "c.capture.02",
+          "x": 5,
+          "y": 1,
+          "terrain": "buffer"
+        }
+      ],
+      "startTileId": "c.capture.02.t.4.2",
+      "completedEntryTileId": "c.capture.02.t.5.1",
+      "cartIds": ["c.capture.02.cart"],
+      "bangbooIds": ["c.capture.02.bangboo"],
+      "initialCartTileById": {
+        "c.capture.02.cart": "c.capture.02.t.3.2"
+      },
+      "initialBangbooTileById": {
+        "c.capture.02.bangboo": "c.capture.02.t.2.0"
+      },
+      "escapeRules": {
+        "kind": "adjacent-player-action",
+        "escapeTileIds": [
+          "c.capture.02.t.0.0",
+          "c.capture.02.t.1.0",
+          "c.capture.02.t.2.0",
+          "c.capture.02.t.0.1",
+          "c.capture.02.t.1.1",
+          "c.capture.02.t.2.1",
+          "c.capture.02.t.0.2",
+          "c.capture.02.t.1.2",
+          "c.capture.02.t.2.2",
+          "c.capture.02.t.0.3",
+          "c.capture.02.t.1.3",
+          "c.capture.02.t.2.3"
+        ],
+        "priority": ["up", "right", "down", "left"]
+      },
+      "captureConditions": "no-legal-escape-on-approach",
+      "cartUnlockObjectiveId": "c.theft.01"
+    },
+    {
+      "kind": "capture",
+      "id": "c.capture.03",
+      "boardId": "c.capture.03",
+      "title": "推车捕获 03",
+      "includedFrom": "M3",
+      "sourceRecordIds": ["map.c.capture.r1"],
+      "tiles": [
+        {
+          "id": "c.capture.03.t.0.0",
+          "boardId": "c.capture.03",
+          "x": 0,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.03.t.1.0",
+          "boardId": "c.capture.03",
+          "x": 1,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.03.t.2.0",
+          "boardId": "c.capture.03",
+          "x": 2,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.03.t.3.0",
+          "boardId": "c.capture.03",
+          "x": 3,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.03.t.0.1",
+          "boardId": "c.capture.03",
+          "x": 0,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.03.t.3.1",
+          "boardId": "c.capture.03",
+          "x": 3,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.03.t.0.2",
+          "boardId": "c.capture.03",
+          "x": 0,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.03.t.1.2",
+          "boardId": "c.capture.03",
+          "x": 1,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.03.t.2.2",
+          "boardId": "c.capture.03",
+          "x": 2,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.03.t.3.2",
+          "boardId": "c.capture.03",
+          "x": 3,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.03.t.1.3",
+          "boardId": "c.capture.03",
+          "x": 1,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.03.t.2.3",
+          "boardId": "c.capture.03",
+          "x": 2,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.03.t.1.4",
+          "boardId": "c.capture.03",
+          "x": 1,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.03.t.2.4",
+          "boardId": "c.capture.03",
+          "x": 2,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.03.t.n1.1",
+          "boardId": "c.capture.03",
+          "x": -1,
+          "y": 1,
+          "terrain": "buffer"
+        }
+      ],
+      "startTileId": "c.capture.03.t.1.4",
+      "completedEntryTileId": "c.capture.03.t.n1.1",
+      "cartIds": ["c.capture.03.cart"],
+      "bangbooIds": ["c.capture.03.bangboo"],
+      "initialCartTileById": {
+        "c.capture.03.cart": "c.capture.03.t.1.3"
+      },
+      "initialBangbooTileById": {
+        "c.capture.03.bangboo": "c.capture.03.t.3.0"
+      },
+      "escapeRules": {
+        "kind": "adjacent-player-action",
+        "escapeTileIds": [
+          "c.capture.03.t.0.0",
+          "c.capture.03.t.1.0",
+          "c.capture.03.t.2.0",
+          "c.capture.03.t.3.0",
+          "c.capture.03.t.0.1",
+          "c.capture.03.t.3.1",
+          "c.capture.03.t.0.2",
+          "c.capture.03.t.1.2",
+          "c.capture.03.t.2.2",
+          "c.capture.03.t.3.2"
+        ],
+        "priority": ["up", "right", "down", "left"]
+      },
+      "captureConditions": "no-legal-escape-on-approach",
+      "cartUnlockObjectiveId": "c.theft.02"
+    },
+    {
+      "kind": "capture",
+      "id": "c.capture.04",
+      "boardId": "c.capture.04",
+      "title": "推车捕获 04",
+      "includedFrom": "M3",
+      "sourceRecordIds": ["map.c.capture.r1"],
+      "tiles": [
+        {
+          "id": "c.capture.04.t.0.0",
+          "boardId": "c.capture.04",
+          "x": 0,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.04.t.1.0",
+          "boardId": "c.capture.04",
+          "x": 1,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.04.t.2.0",
+          "boardId": "c.capture.04",
+          "x": 2,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.04.t.3.0",
+          "boardId": "c.capture.04",
+          "x": 3,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.04.t.0.1",
+          "boardId": "c.capture.04",
+          "x": 0,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.04.t.3.1",
+          "boardId": "c.capture.04",
+          "x": 3,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.04.t.0.2",
+          "boardId": "c.capture.04",
+          "x": 0,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.04.t.1.2",
+          "boardId": "c.capture.04",
+          "x": 1,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.04.t.2.2",
+          "boardId": "c.capture.04",
+          "x": 2,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.04.t.3.2",
+          "boardId": "c.capture.04",
+          "x": 3,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.04.t.1.n2",
+          "boardId": "c.capture.04",
+          "x": 1,
+          "y": -2,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.04.t.2.n2",
+          "boardId": "c.capture.04",
+          "x": 2,
+          "y": -2,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.04.t.1.n1",
+          "boardId": "c.capture.04",
+          "x": 1,
+          "y": -1,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.04.t.2.n1",
+          "boardId": "c.capture.04",
+          "x": 2,
+          "y": -1,
+          "terrain": "floor"
+        },
+        {
+          "id": "c.capture.04.t.n1.1",
+          "boardId": "c.capture.04",
+          "x": -1,
+          "y": 1,
+          "terrain": "buffer"
+        }
+      ],
+      "startTileId": "c.capture.04.t.1.n2",
+      "completedEntryTileId": "c.capture.04.t.n1.1",
+      "cartIds": ["c.capture.04.cart"],
+      "bangbooIds": ["c.capture.04.bangboo"],
+      "initialCartTileById": {
+        "c.capture.04.cart": "c.capture.04.t.1.n1"
+      },
+      "initialBangbooTileById": {
+        "c.capture.04.bangboo": "c.capture.04.t.3.1"
+      },
+      "escapeRules": {
+        "kind": "adjacent-player-action",
+        "escapeTileIds": [
+          "c.capture.04.t.0.0",
+          "c.capture.04.t.1.0",
+          "c.capture.04.t.2.0",
+          "c.capture.04.t.3.0",
+          "c.capture.04.t.0.1",
+          "c.capture.04.t.3.1",
+          "c.capture.04.t.0.2",
+          "c.capture.04.t.1.2",
+          "c.capture.04.t.2.2",
+          "c.capture.04.t.3.2"
+        ],
+        "priority": ["up", "right", "down", "left"]
+      },
+      "captureConditions": "no-legal-escape-on-approach",
+      "cartUnlockObjectiveId": "c.theft.03"
+    }
+  ],
+  "witnesses": [
+    {
+      "id": "c.capture.01.witness.success",
+      "definitionId": "c.capture.01",
+      "kind": "success",
+      "description": "先推动障碍，再追赶至无路捕获；权威规则逐步记录",
+      "actions": ["left", "down", "down", "down", "left", "up", "up", "left"],
+      "expectedCodes": [
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "success"
+      ],
+      "expectedPhase": "complete",
+      "expectedPlayerTileId": "c.capture.01.t.0.1"
+    },
+    {
+      "id": "c.capture.01.witness.alternative",
+      "definitionId": "c.capture.01",
+      "kind": "alternative",
+      "description": "不同推车完成落点的合法捕获",
+      "actions": ["left", "left", "left", "right", "right", "down", "left", "down", "right"],
+      "expectedCodes": [
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "success"
+      ],
+      "expectedPhase": "complete",
+      "expectedPlayerTileId": "c.capture.01.t.2.2"
+    },
+    {
+      "id": "c.capture.01.witness.recovery",
+      "definitionId": "c.capture.01",
+      "kind": "deadEndRecovery",
+      "description": "正常移动进入完整状态图证实的不可解死角；撤销最后一步恢复可解状态，再重置并按原成功路线捕获。",
+      "actions": [
+        "left",
+        "down",
+        "down",
+        "left",
+        "up",
+        "left",
+        "undo",
+        "reset",
+        "left",
+        "down",
+        "down",
+        "down",
+        "left",
+        "up",
+        "up",
+        "left"
+      ],
+      "expectedCodes": [
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "undone",
+        "reset",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "success"
+      ],
+      "expectedPhase": "complete",
+      "expectedPlayerTileId": "c.capture.01.t.0.1"
+    },
+    {
+      "id": "c.capture.02.witness.success",
+      "definitionId": "c.capture.02",
+      "kind": "success",
+      "description": "先推动障碍，再追赶至无路捕获；权威规则逐步记录",
+      "actions": ["left", "left", "down", "left", "up", "up", "right"],
+      "expectedCodes": [
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "success"
+      ],
+      "expectedPhase": "complete",
+      "expectedPlayerTileId": "c.capture.02.t.2.1"
+    },
+    {
+      "id": "c.capture.02.witness.alternative",
+      "definitionId": "c.capture.02",
+      "kind": "alternative",
+      "description": "不同推车完成落点的合法捕获",
+      "actions": ["left", "left", "down", "left", "up", "left", "up", "right", "up"],
+      "expectedCodes": [
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "success"
+      ],
+      "expectedPhase": "complete",
+      "expectedPlayerTileId": "c.capture.02.t.1.0"
+    },
+    {
+      "id": "c.capture.02.witness.recovery",
+      "definitionId": "c.capture.02",
+      "kind": "deadEndRecovery",
+      "description": "正常移动进入完整状态图证实的不可解死角；撤销最后一步恢复可解状态，再重置并按原成功路线捕获。",
+      "actions": [
+        "left",
+        "left",
+        "left",
+        "undo",
+        "reset",
+        "left",
+        "left",
+        "down",
+        "left",
+        "up",
+        "up",
+        "right"
+      ],
+      "expectedCodes": [
+        "accepted",
+        "accepted",
+        "accepted",
+        "undone",
+        "reset",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "success"
+      ],
+      "expectedPhase": "complete",
+      "expectedPlayerTileId": "c.capture.02.t.2.1"
+    },
+    {
+      "id": "c.capture.03.witness.success",
+      "definitionId": "c.capture.03",
+      "kind": "success",
+      "description": "先推动障碍，再追赶至无路捕获；权威规则逐步记录",
+      "actions": ["up", "right", "up", "right", "up", "up", "left", "left", "left", "down"],
+      "expectedCodes": [
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "success"
+      ],
+      "expectedPhase": "complete",
+      "expectedPlayerTileId": "c.capture.03.t.0.1"
+    },
+    {
+      "id": "c.capture.03.witness.alternative",
+      "definitionId": "c.capture.03",
+      "kind": "alternative",
+      "description": "不同推车完成落点的合法捕获",
+      "actions": [
+        "up",
+        "right",
+        "up",
+        "left",
+        "right",
+        "right",
+        "up",
+        "up",
+        "left",
+        "left",
+        "left"
+      ],
+      "expectedCodes": [
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "success"
+      ],
+      "expectedPhase": "complete",
+      "expectedPlayerTileId": "c.capture.03.t.0.0"
+    },
+    {
+      "id": "c.capture.03.witness.recovery",
+      "definitionId": "c.capture.03",
+      "kind": "deadEndRecovery",
+      "description": "正常移动进入完整状态图证实的不可解死角；撤销最后一步恢复可解状态，再重置并按原成功路线捕获。",
+      "actions": [
+        "right",
+        "up",
+        "up",
+        "left",
+        "down",
+        "undo",
+        "reset",
+        "up",
+        "right",
+        "up",
+        "right",
+        "up",
+        "up",
+        "left",
+        "left",
+        "left",
+        "down"
+      ],
+      "expectedCodes": [
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "undone",
+        "reset",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "success"
+      ],
+      "expectedPhase": "complete",
+      "expectedPlayerTileId": "c.capture.03.t.0.1"
+    },
+    {
+      "id": "c.capture.04.witness.success",
+      "definitionId": "c.capture.04",
+      "kind": "success",
+      "description": "先推动障碍，再追赶至无路捕获；权威规则逐步记录",
+      "actions": ["down", "right", "down", "right", "down", "down", "left", "left", "left", "up"],
+      "expectedCodes": [
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "success"
+      ],
+      "expectedPhase": "complete",
+      "expectedPlayerTileId": "c.capture.04.t.0.1"
+    },
+    {
+      "id": "c.capture.04.witness.alternative",
+      "definitionId": "c.capture.04",
+      "kind": "alternative",
+      "description": "不同推车完成落点的合法捕获",
+      "actions": [
+        "down",
+        "right",
+        "down",
+        "left",
+        "right",
+        "right",
+        "down",
+        "down",
+        "left",
+        "left",
+        "left"
+      ],
+      "expectedCodes": [
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "success"
+      ],
+      "expectedPhase": "complete",
+      "expectedPlayerTileId": "c.capture.04.t.0.2"
+    },
+    {
+      "id": "c.capture.04.witness.recovery",
+      "definitionId": "c.capture.04",
+      "kind": "deadEndRecovery",
+      "description": "正常移动进入完整状态图证实的不可解死角；撤销最后一步恢复可解状态，再重置并按原成功路线捕获。",
+      "actions": [
+        "right",
+        "down",
+        "down",
+        "left",
+        "up",
+        "undo",
+        "reset",
+        "down",
+        "right",
+        "down",
+        "right",
+        "down",
+        "down",
+        "left",
+        "left",
+        "left",
+        "up"
+      ],
+      "expectedCodes": [
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "undone",
+        "reset",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "success"
+      ],
+      "expectedPhase": "complete",
+      "expectedPlayerTileId": "c.capture.04.t.0.1"
+    }
+  ]
+}

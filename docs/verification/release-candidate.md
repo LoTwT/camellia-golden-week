@@ -1,6 +1,33 @@
 # M5 静态交付包
 
+R1完整原始证据与静态ZIP改由[Release归档](r1-evidence-archive.md)分发；以下原发布提交与测量记录保留原时点含义，清理后的最新提交见PR提交列表；[清理完整复验](evidence/r1-cleanup-verification.json)确认游戏源码、资源与93文件正式产物字节不变。
+
+2026-09-12 R1 连续实施已生成并验证当前交付包。当前结果见下节；更早的 M5 / 防火墙 / 菜单包与验证记录保留历史含义，不作为 R1 通过依据。
+
 [文档索引](../index.md) · [操作与存档说明](../../README.md) · [验收结果](acceptance-results.md) · [实施进度](implementation-progress.md)
+
+## R1 当前交付包
+
+当前构建为 **0.5.0 / M5 / content6 / rule4 / schema3**，防火墙自身规则和成绩仍为v3。完整工程 `pnpm run verify` 退出0：682项原生测试、五profile生产产物与正常Chrome完整流程均通过。当前63项验收为62通过、V06不再要求，全部依据本轮证据。
+
+- [R1静态ZIP](https://github.com/LoTwT/camellia-golden-week/releases/download/v0.5.0-r1/camellia-golden-week-r1-dist.zip)：5,059,941字节，SHA-256 `55c517e3a1c69d92f58e101baea38be2cbf1d17ec2f43d10ea0851267e945046`。
+- [逐文件与归档核对](evidence/r1-original-package.json)：93文件／6,542,361字节，51项资源记录。CRC、每个解压文件与当前dist、Chrome实际验证production目录逐字节一致。
+- [固定5174 HTTP核对](r1-evidence-files.md#e-65c0532c935873ea)：根入口与93文件共94次200，MIME及每文件字节一致。首次Python HTTP读取继承环境代理得到502，[记录](r1-evidence-files.md#e-4fb97401a7834302)保留；改为进程内直连loopback后通过，没有改preview或系统代理。
+- [启动日志](r1-evidence-files.md#e-07ac215a8484758e)记录实际 `pnpm run preview --host localhost --port 5174 --strictPort`；[占用复验](r1-evidence-files.md#e-127ab6afac76c225)确认第二次启动明确失败，不切到其他端口。当前服务保留运行。
+
+运行入口为 [localhost:5174](http://localhost:5174)。安装、操作与旧档保护见[README](../../README.md)，各项新版本证据见[R1验收表](r1-acceptance-results.md)。[最终工程日志](r1-evidence-files.md#e-f7e86a485d3b122e)和[浏览器结果](r1-evidence-files.md#e-57e15a6dc986bceb)已归档；[1696输入只读核对](r1-evidence-files.md#e-798c2f3a3261e1b1)为零变更。最终[包与HTTP复核](r1-evidence-files.md#e-9c2e93f399e72062)再次确认93文件、94请求及ZIP与最终dist/production逐字节一致。
+
+[固定5174实际生产游玩](r1-evidence-files.md#e-7144e9eb775eb467)使用正常文件选择导入本轮M5真实全收集档，正常Right/Left移动后导出、刷新继续；26奖励/130物资、三盗取/四捕获与布局保持，继续140.24ms，errors0。测试使用独立Chrome context，未修改日常来源进度，生产包无验收接口。[可玩画面](evidence/r1-representative/production-5174.png)对应这一实际结果。
+
+当前包有36图标、13音频和2字体。原图已证实形态、本版具名适配、补制资源与未测部分分别见[R1视觉对照](../references/r1-visual-comparison.md)。原生画质select键盘改值仍未验证，Tab/事件边界已验证；Safari、Edge、其他硬件和断网未列为当前通过。构建的650kB主JS提示保留，本机性能达到原预算。
+
+R1 实现与验收已提交为 [a20d93a](r1-evidence-files.md#e-8f7e8ef9f435242e)，作者与提交者均为 `eruoos <github@eruoo.me>`，用户指定的本任务溯源为 `gpt-6-astra` / `max`。`eruoos` 已将该提交快进推送到同仓库 `codex/full-implementation`；`LoTwT` 回查远端精确OID一致，并更新 [PR #1：feat: restore R1 puzzles, maps and versioned progress](https://github.com/LoTwT/camellia-golden-week/pull/1) 的标题与正文。PR仍open、非draft，base main仍为 `bfb924b075aa6a153ed33b95ce4492260e18a8d9`，未合并。
+
+[发布回读快照](r1-evidence-files.md#e-5ee388965c24cf6e)连同原始提交对象、推送结果和PR正文回读记录本次实现发布；随后仅提交本节及进度记录，不改变已验证游戏源码或ZIP。该快照不自称包含自己的后续文档提交，最新分支提交见[PR提交列表](https://github.com/LoTwT/camellia-golden-week/pull/1/commits)。
+
+## R1 前交付记录（历史）
+
+以下版本、“当前”措辞、包和通过数均保留其原执行时点含义。
 
 2026-09-12：当前交付物为 **0.5.0 / M5 / content5 / rule3 / schema2** 的 production 构建，包含全部游戏内容。按[用户本轮范围调整](acceptance-scope-2026-09-11.md)，本机 Chrome 为验收环境，V05 达到原预算；63 个原始用例中 **62 项通过、V06 不再要求**。真实断外网、其他硬件与历史 Safari 结果不冒充已通过。实现分支 `codex/full-implementation` 从 `bfb924b075aa6a153ed33b95ce4492260e18a8d9` 建立；M1–M5 已按里程碑提交，M5 实现为 `811da5a1eb6ac175aa380418c2d84cf079469713`。游戏验收已按当前范围收口，实现分支已推送，[PR #1](https://github.com/LoTwT/camellia-golden-week/pull/1) 已创建，供用户审阅；main 尚未合并。
 

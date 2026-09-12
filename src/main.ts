@@ -25,6 +25,7 @@ import type { SavePayload } from "./platform/save-payload.ts";
 import type { AcceptanceFaultController } from "./platform/acceptance-faults.ts";
 import "./ui/style.css";
 import "./ui/firewall.css";
+import "./ui/r1-challenges.css";
 
 const root = document.querySelector<HTMLElement>("#app");
 if (!root) throw new Error("应用入口不存在");

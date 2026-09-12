@@ -1,3 +1,4 @@
+// Historical pre-R1 rules only. Current assembly/capture boundaries are tested in r1-static.test.ts.
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
@@ -14,17 +15,17 @@ import {
   validateStaticContent,
   validateStaticDefinition,
   validateStaticState,
-} from "../src/core/static-puzzle.ts";
+} from "../src/content/history/pre-r1/static-puzzle.ts";
 import type {
   StaticDefinition,
   StaticDirection,
   StaticInstance,
   StaticLayout,
   StaticState,
-} from "../src/core/static-puzzle.ts";
+} from "../src/content/history/pre-r1/static-puzzle.ts";
 
 const rawContent: unknown = JSON.parse(
-  readFileSync(new URL("../src/content/challenges/static.json", import.meta.url), "utf8"),
+  readFileSync(new URL("../src/content/history/pre-r1/static.json", import.meta.url), "utf8"),
 );
 assertStaticContent(rawContent);
 const content = rawContent;

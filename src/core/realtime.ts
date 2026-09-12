@@ -1,3 +1,6 @@
+import { advanceR1Antivirus, createR1Antivirus, validateR1Antivirus } from "./antivirus.ts";
+import type { R1AntivirusDefinition, R1AntivirusSpawn, R1AntivirusState } from "./antivirus.ts";
+
 export type RealtimeDirection = "up" | "right" | "down" | "left";
 export type RealtimeResult = "running" | "success" | "failure";
 
@@ -75,14 +78,42 @@ export interface AntivirusSpawn {
   readonly expiresAtMs: number;
 }
 
-export interface AntivirusDefinition extends RealtimeDefinitionBase {
+export interface LegacyAntivirusDefinition extends RealtimeDefinitionBase {
   readonly kind: "antivirus";
+  readonly ruleVersion: 1 | 2 | 3;
   readonly rules: {
     readonly durationMs: number;
     readonly targetScore: number;
     readonly spawns: readonly AntivirusSpawn[];
   };
   readonly goal: { readonly kind: "score" };
+}
+
+export type AntivirusDefinition = LegacyAntivirusDefinition | R1AntivirusDefinition;
+
+export function isR1AntivirusState(state: AntivirusState): state is R1AntivirusState {
+  return "ruleVersion" in state && state.ruleVersion === 4 && "activeTargets" in state;
+}
+
+export function antivirusSpawns(definition: AntivirusDefinition): readonly R1AntivirusSpawn[] {
+  return definition.ruleVersion === 4 ? definition.rules.spawnPlan : definition.rules.spawns;
+}
+
+export function antivirusRequiredScore(definition: AntivirusDefinition): number {
+  return definition.ruleVersion === 4
+    ? definition.rules.completionRules.targetScore
+    : definition.rules.targetScore;
+}
+
+export function antivirusActiveTargets(
+  definition: AntivirusDefinition,
+  state: AntivirusState,
+): readonly R1AntivirusSpawn[] {
+  if (definition.ruleVersion === 4) {
+    if (!isR1AntivirusState(state)) throw new TypeError("R1 杀毒缺少实例占格状态。");
+    return state.activeTargets;
+  }
+  return definition.rules.spawns.filter((target) => state.activeTargetIds.includes(target.id));
 }
 
 export interface GhostDefinition {
@@ -100,6 +131,7 @@ export interface GhostLamp {
 
 export interface GhostsDefinition extends RealtimeDefinitionBase {
   readonly kind: "ghosts";
+  readonly walls?: readonly RealtimeTile[];
   readonly rules: {
     readonly ghosts: readonly GhostDefinition[];
     readonly lamps: readonly GhostLamp[];
@@ -259,6 +291,7 @@ const DIRECTION_VECTORS: Readonly<Record<RealtimeDirection, readonly [number, nu
 };
 
 export function createRealtime(definition: FirewallDefinition): FirewallState;
+export function createRealtime(definition: R1AntivirusDefinition): R1AntivirusState;
 export function createRealtime(definition: AntivirusDefinition): AntivirusState;
 export function createRealtime(definition: GhostsDefinition): GhostsState;
 export function createRealtime(definition: RealtimeDefinition): RealtimeState;
@@ -291,6 +324,7 @@ export function createRealtime(definition: RealtimeDefinition): RealtimeState {
         lastJudgment: null,
       };
     case "antivirus":
+      if (definition.ruleVersion === 4) return createR1Antivirus(definition);
       return {
         ...base,
         kind: "antivirus",
@@ -383,6 +417,14 @@ export function advanceRealtime(
   ) {
     return { state: previous, result: previous.status, feedback: [] };
   }
+  if (
+    definition.kind === "antivirus" &&
+    definition.ruleVersion === 4 &&
+    previous.kind === "antivirus"
+  ) {
+    if (!isR1AntivirusState(previous)) throw new TypeError("R1 杀毒缺少实例占格状态。");
+    return advanceR1Antivirus(definition, previous, activeTimeMs, input);
+  }
   const feedback: RealtimeFeedback[] = [];
   let eventSequence = previous.eventSequence;
   const emit: EmitFeedback = (kind, timeMs, details = {}) => {
@@ -399,7 +441,11 @@ export function advanceRealtime(
   let state: RealtimeState;
   if (definition.kind === "firewall" && previous.kind === "firewall") {
     state = advanceFirewall(definition, previous, activeTimeMs, inputs, emit);
-  } else if (definition.kind === "antivirus" && previous.kind === "antivirus") {
+  } else if (
+    definition.kind === "antivirus" &&
+    definition.ruleVersion !== 4 &&
+    previous.kind === "antivirus"
+  ) {
     state = advanceAntivirus(definition, previous, activeTimeMs, inputs, emit);
   } else if (definition.kind === "ghosts" && previous.kind === "ghosts") {
     state = advanceGhosts(definition, previous, activeTimeMs, inputs, emit);
@@ -743,7 +789,7 @@ export function antivirusTargetValue(kind: AntivirusTargetKind): number {
 }
 
 function advanceAntivirus(
-  definition: AntivirusDefinition,
+  definition: LegacyAntivirusDefinition,
   previous: AntivirusState,
   activeTimeMs: number,
   inputs: readonly RealtimeInput[],
@@ -1060,6 +1106,34 @@ export function validateRealtimeDefinition(value: unknown): readonly RealtimeVal
     tiles.push({ id: tile.id, x: tile.x, y: tile.y });
   }
   const entryTileId = isRecord(value.entry) ? value.entry.tileId : undefined;
+  if (value.kind === "ghosts" && (value.ruleVersion === 4 || value.walls !== undefined)) {
+    if (!Array.isArray(value.walls)) {
+      report("walls", "R1 幽灵房间必须显式列出砖墙；没有砖墙时使用空数组。");
+    } else {
+      const wallIds = new Set<string>();
+      const wallCoordinates = new Set<string>();
+      for (const [index, wall] of value.walls.entries()) {
+        if (
+          !isRecord(wall) ||
+          !validId(wall.id) ||
+          typeof wall.x !== "number" ||
+          !Number.isSafeInteger(wall.x) ||
+          typeof wall.y !== "number" ||
+          !Number.isSafeInteger(wall.y)
+        ) {
+          report(`walls[${index}]`, "砖墙需要稳定 ID 和整数坐标。");
+          continue;
+        }
+        const coordinate = `${wall.x},${wall.y}`;
+        if (tileIds.has(wall.id) || wallIds.has(wall.id))
+          report(`walls[${index}].id`, "砖墙 ID 不能与地板或其它砖墙重复。");
+        if (coordinates.has(coordinate) || wallCoordinates.has(coordinate))
+          report(`walls[${index}]`, "砖墙坐标不能与地板或其它砖墙重叠。");
+        wallIds.add(wall.id);
+        wallCoordinates.add(coordinate);
+      }
+    }
+  }
   if (typeof entryTileId !== "string" || !tileIds.has(entryTileId))
     report("entry.tileId", "入口不在棋盘内。");
   if (!isRecord(value.rules)) return [...issues, { path: "rules", message: "缺少类型专属规则。" }];
@@ -1069,7 +1143,11 @@ export function validateRealtimeDefinition(value: unknown): readonly RealtimeVal
   if (!isRecord(value.goal) || value.goal.kind !== expectedGoal)
     report("goal", "目标与挑战类型不一致。");
   if (value.kind !== "ghosts") {
-    const rows = value.kind === "firewall" && Number(value.ruleVersion) >= 2 ? 4 : 5;
+    const rows =
+      (value.kind === "firewall" && Number(value.ruleVersion) >= 2) ||
+      (value.kind === "antivirus" && value.ruleVersion === 4)
+        ? 4
+        : 5;
     if (
       tiles.length !== 5 * rows ||
       tiles.some((tile) => tile.x < 0 || tile.x > 4 || tile.y < 0 || tile.y >= rows)
@@ -1080,13 +1158,21 @@ export function validateRealtimeDefinition(value: unknown): readonly RealtimeVal
       );
     if (
       tiles.find((tile) => tile.id === entryTileId)?.x !== 2 ||
-      tiles.find((tile) => tile.id === entryTileId)?.y !== 2
+      tiles.find((tile) => tile.id === entryTileId)?.y !==
+        (value.kind === "antivirus" && value.ruleVersion === 4 ? 0 : 2)
     )
       report("entry", "光标必须从中心格开始。");
     if (!finitePositive(rules.durationMs)) report("rules.durationMs", "时长必须为有限正数。");
   }
   if (value.kind === "firewall") validateFirewallRules(rules, tiles, value.ruleVersion, report);
-  if (value.kind === "antivirus") validateAntivirusRules(rules, tileIds, report);
+  if (value.kind === "antivirus") {
+    if (value.ruleVersion === 4) issues.push(...validateR1Antivirus(value));
+    else {
+      if (![1, 2, 3].includes(Number(value.ruleVersion)))
+        report("ruleVersion", "没有登记此杀毒规则版本。");
+      validateAntivirusRules(rules, tileIds, report);
+    }
+  }
   if (value.kind === "ghosts") validateGhostRules(rules, tiles, entryTileId, report);
   validateCanonicalChallenge(value, rules, tiles, report);
   if (value.kind === "firewall" && value.ruleVersion === 3 && issues.length === 0) {
@@ -1150,7 +1236,7 @@ function validateCanonicalChallenge(
     "b.antivirus.heavy": [350, 80],
   };
   const antivirusContract = typeof value.id === "string" ? antivirusContracts[value.id] : undefined;
-  if (value.kind !== "antivirus" || !antivirusContract) return;
+  if (value.kind !== "antivirus" || value.ruleVersion === 4 || !antivirusContract) return;
   const [intervalMs, targetScore] = antivirusContract;
   if (rules.durationMs !== 45000 || rules.targetScore !== targetScore)
     report("rules", "杀毒正式档位参数与玩法合同不一致。");

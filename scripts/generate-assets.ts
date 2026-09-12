@@ -30,6 +30,8 @@ interface IconDefinition {
   paths: string;
   representative?: boolean;
   firstProfile?: "M1" | "M2" | "M3" | "M4";
+  referenceSha256?: string;
+  referenceLocation?: string;
 }
 
 const check = `<path d="m46 67 12 12 26-29" fill="none" stroke="${ink}" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"/>`;
@@ -42,6 +44,33 @@ const face = (expression: "idle" | "move" | "hurt") => `
   ${expression === "move" ? `<path d="M7 63h11M4 77h13m-8 14h11" stroke="${paper}" stroke-width="4"/>` : ""}`;
 
 const icons: IconDefinition[] = [
+  {
+    id: "bangboo",
+    purpose: "世界捕获：未捕获邦布；浅色双耳头罩与黑面罩，区别玩家和信号球",
+    referenceId: "AR-C-CAPTURE-R1",
+    referenceSha256: "d152f1083f00ef6c1b9f20c0132eb5329dce9600d5f6d59d9a0f0189e592b5da",
+    referenceLocation: "S09 第三日第一组捕获，图9左上格；r1-map-mechanism-evidence.md §4.3",
+    firstProfile: "M3",
+    paths: `<path d="m37 42-8-23 14-5 12 23m18 0 12-23 14 5-8 23" fill="${paper}" stroke="${ink}" stroke-width="5"/><path d="M29 81V61c0-25 12-34 35-34s35 9 35 34v20l-10 11H39Z" fill="${paper}" stroke="${ink}" stroke-width="5"/><rect x="36" y="48" width="56" height="32" rx="13" fill="${ink}"/><path d="m45 59 12 4m14 0 12-4" stroke="${paper}" stroke-width="5"/><path d="M40 86h48l5 24H35Z" fill="${paper}" stroke="${ink}" stroke-width="5"/><path d="M44 99h40M44 110v7m40-7v7" stroke="${ink}" stroke-width="6"/><path d="m28 86-8 16m80-16 8 16" stroke="${paper}" stroke-width="9"/>`,
+  },
+  {
+    id: "bangboo-captured",
+    purpose: "世界捕获：已捕获反馈；浅色邦布轮廓与静态勾，不只靠颜色区分",
+    referenceId: "AR-C-CAPTURE-R1",
+    referenceSha256: "d152f1083f00ef6c1b9f20c0132eb5329dce9600d5f6d59d9a0f0189e592b5da",
+    referenceLocation: "S09 图9可见邦布轮廓；捕获后勾为本版辅助态，非原版已见帧",
+    firstProfile: "M3",
+    paths: `<path d="m37 42-8-23 14-5 12 23m18 0 12-23 14 5-8 23" fill="${paper}" stroke="${ink}" stroke-width="5"/><path d="M29 81V61c0-25 12-34 35-34s35 9 35 34v20l-10 11H39Z" fill="${paper}" stroke="${ink}" stroke-width="5"/><rect x="36" y="48" width="56" height="32" rx="13" fill="${ink}"/><path d="m45 63 6-5 6 5m14 0 6-5 6 5" fill="none" stroke="${paper}" stroke-width="4"/><path d="M40 86h39l5 24H35Z" fill="${muted}" stroke="${ink}" stroke-width="5"/><circle cx="95" cy="98" r="24" fill="${lime}" stroke="${ink}" stroke-width="5"/><path d="m82 98 9 9 17-20" fill="none" stroke="${ink}" stroke-width="6"/>`,
+  },
+  {
+    id: "brick-wall",
+    purpose: "D幽灵房砖墙：粉色错缝砖面；固定不可走地形，区别无格与幽灵",
+    referenceId: "AR-D-GHOST",
+    referenceSha256: "96430f8c38b0b59414de77d74c20c1dfd2cb7f271fe48a07c4798a9245438904",
+    referenceLocation: "S05-50 图10425919，5×5核心六块粉砖墙；r1-map-mechanism-evidence.md §7.1",
+    firstProfile: "M4",
+    paths: `<rect x="10" y="12" width="108" height="104" rx="10" fill="#a96e7c" stroke="#553f50" stroke-width="5"/><path d="M15 37h98M13 63h102M13 89h102M41 15v21m45-21v21M64 39v23M39 65v23m49-23v23M63 91v21" fill="none" stroke="#593f50" stroke-width="5"/><path d="M19 20h16m13 0h31m15 0h13M20 44h36m15 0h35M20 70h11m16 0h33m16 0h11M20 96h35m16 0h36" stroke="#d5a2ae" stroke-width="4"/><path d="M18 112h92" stroke="#775060" stroke-width="4"/>`,
+  },
   {
     id: "player-idle",
     purpose: "玩家：静止；以双耳与双眼识别当前格",
@@ -269,11 +298,16 @@ const references = {
   "AR-A-FIREWALL": "https://img.game8.jp/10416126/90d0be6152e66b41e8d600a6033fe4ae.jpeg/original",
   "AR-B-ANTIVIRUS": "https://img.game8.jp/10419120/602cc237bdd8cf72a9ee0dcaa63dc430.jpeg/original",
   "AR-C-COMBINED": "https://img1.ali213.net/glpic/2024/08/23/2024082342229370.png",
+  "AR-C-CAPTURE-R1": "https://img1.ali213.net/glpic/2024/08/23/2024082342226461.png",
   "AR-C-THEFT": "https://img.game8.jp/10422394/1517f985085bd4dd2888455995c57349.jpeg/original",
   "AR-D-GHOST": "https://img.game8.jp/10425919/85aab7d6be2de4425b7488e92ef92fd5.jpeg/original",
 };
 
 function describeIconDifferences(id: string): string {
+  if (id.startsWith("bangboo"))
+    return "R1按捕获原图的浅色头罩、黑面罩及双耳轮廓补制；小图不能证实精细机械结构，未复制原图像素或动画；捕获后的微笑与勾为本版静态反馈，不冒充原版完成帧";
+  if (id === "brick-wall")
+    return "R1按D原图六块粉砖墙补制错缝砖面，保留实心阻挡的形态职责；砖缝、描边和明暗为独立几何，透明外缘由电视屏承接；不是幽灵图标，也不填补原图无格";
   if (id.startsWith("player"))
     return "M5按防火墙原参考的深色圆顶、双耳和浅色圆眼重新补制；透明底由游戏屏面承接，保留独立轮廓与尺寸差异；移动偏眼/速度线及受损叉眼是新增状态，未声称取得原动画帧";
   if (id.startsWith("enrichment"))
@@ -367,7 +401,7 @@ const musicGeneratorHash = sha256(
     readFileSync(resolve(projectRoot, "src/audio/firewall-music.ts")),
   ]),
 );
-const assetVersion = "camellia-assets-v2";
+const assetVersion = "camellia-assets-v3-r1";
 const fontManifestPath = resolve(assetRoot, "font-manifest.json");
 const fontInputExtensions = new Set([".ts", ".js", ".json", ".css", ".html"]);
 interface FontSubsetMetadata {
@@ -600,6 +634,27 @@ if (process.argv.includes("--check")) {
     const bytes = readFileSync(resolve(projectRoot, "public", localPath.slice(1)));
     assert.equal(sha256(bytes), asset.sha256, `${id}: file checksum`);
     if (asset.kind === "icon") {
+      assert.equal(asset.sourceVersion, assetVersion, `${id}: icon source version`);
+      const definition = expectedIcons.find((icon) => icon.id === id);
+      assert(definition, `${id}: registered icon definition`);
+      assert.equal(asset.referenceId, definition.referenceId, `${id}: reference identity`);
+      assert.equal(
+        asset.referenceUrl,
+        references[definition.referenceId as keyof typeof references],
+        `${id}: reference location`,
+      );
+      if (definition.referenceSha256) {
+        assert.equal(
+          asset.referenceSha256,
+          definition.referenceSha256,
+          `${id}: reference checksum`,
+        );
+        assert.equal(
+          asset.referenceLocation,
+          definition.referenceLocation,
+          `${id}: precise locator`,
+        );
+      }
       const svg = bytes.toString("utf8");
       assert.match(svg, /^<svg[^>]+width="128" height="128"/);
       assert.doesNotMatch(svg, /<script|(?:href|src)=/);
@@ -727,6 +782,8 @@ for (const icon of selectedIcons) {
     transform: "确定性 SVG 几何；128×128 viewBox；透明背景；不裁切原图",
     referenceId: icon.referenceId,
     referenceUrl: references[icon.referenceId as keyof typeof references],
+    referenceSha256: icon.referenceSha256,
+    referenceLocation: icon.referenceLocation,
     differences: describeIconDifferences(icon.id),
   });
 }

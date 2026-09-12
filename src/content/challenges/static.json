@@ -44,6 +44,27 @@
           "terrain": "floor"
         },
         {
+          "id": "a.maze.01.t.5.0",
+          "boardId": "a.maze.01",
+          "x": 5,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.6.0",
+          "boardId": "a.maze.01",
+          "x": 6,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.7.0",
+          "boardId": "a.maze.01",
+          "x": 7,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
           "id": "a.maze.01.t.0.1",
           "boardId": "a.maze.01",
           "x": 0,
@@ -79,6 +100,27 @@
           "terrain": "floor"
         },
         {
+          "id": "a.maze.01.t.5.1",
+          "boardId": "a.maze.01",
+          "x": 5,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.6.1",
+          "boardId": "a.maze.01",
+          "x": 6,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.7.1",
+          "boardId": "a.maze.01",
+          "x": 7,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
           "id": "a.maze.01.t.0.2",
           "boardId": "a.maze.01",
           "x": 0,
@@ -97,7 +139,7 @@
           "boardId": "a.maze.01",
           "x": 2,
           "y": 2,
-          "terrain": "wall"
+          "terrain": "floor"
         },
         {
           "id": "a.maze.01.t.3.2",
@@ -110,6 +152,27 @@
           "id": "a.maze.01.t.4.2",
           "boardId": "a.maze.01",
           "x": 4,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.5.2",
+          "boardId": "a.maze.01",
+          "x": 5,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.6.2",
+          "boardId": "a.maze.01",
+          "x": 6,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.7.2",
+          "boardId": "a.maze.01",
+          "x": 7,
           "y": 2,
           "terrain": "floor"
         },
@@ -149,6 +212,27 @@
           "terrain": "floor"
         },
         {
+          "id": "a.maze.01.t.5.3",
+          "boardId": "a.maze.01",
+          "x": 5,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.6.3",
+          "boardId": "a.maze.01",
+          "x": 6,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.7.3",
+          "boardId": "a.maze.01",
+          "x": 7,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
           "id": "a.maze.01.t.0.4",
           "boardId": "a.maze.01",
           "x": 0,
@@ -182,37 +266,82 @@
           "x": 4,
           "y": 4,
           "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.5.4",
+          "boardId": "a.maze.01",
+          "x": 5,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.6.4",
+          "boardId": "a.maze.01",
+          "x": 6,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.7.4",
+          "boardId": "a.maze.01",
+          "x": 7,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.n1.2",
+          "boardId": "a.maze.01",
+          "x": -1,
+          "y": 2,
+          "terrain": "floor"
         }
       ],
-      "startTileId": "a.maze.01.t.0.4",
-      "exitTileId": "a.maze.01.t.4.0",
+      "startTileId": "a.maze.01.t.n1.2",
+      "exitTileId": "a.maze.01.t.7.2",
       "safeTileIds": [
-        "a.maze.01.t.0.0",
-        "a.maze.01.t.1.0",
         "a.maze.01.t.2.0",
         "a.maze.01.t.3.0",
         "a.maze.01.t.4.0",
+        "a.maze.01.t.5.0",
         "a.maze.01.t.0.1",
-        "a.maze.01.t.4.1",
+        "a.maze.01.t.2.1",
+        "a.maze.01.t.5.1",
+        "a.maze.01.t.6.1",
         "a.maze.01.t.0.2",
-        "a.maze.01.t.1.2",
-        "a.maze.01.t.3.2",
+        "a.maze.01.t.2.2",
         "a.maze.01.t.4.2",
+        "a.maze.01.t.5.2",
+        "a.maze.01.t.7.2",
         "a.maze.01.t.0.3",
+        "a.maze.01.t.1.3",
         "a.maze.01.t.2.3",
         "a.maze.01.t.4.3",
-        "a.maze.01.t.0.4",
+        "a.maze.01.t.5.3",
+        "a.maze.01.t.7.3",
         "a.maze.01.t.1.4",
-        "a.maze.01.t.2.4",
         "a.maze.01.t.3.4",
-        "a.maze.01.t.4.4"
+        "a.maze.01.t.5.4",
+        "a.maze.01.t.6.4",
+        "a.maze.01.t.7.4",
+        "a.maze.01.t.n1.2"
       ],
       "hazardTileIds": [
+        "a.maze.01.t.0.0",
+        "a.maze.01.t.1.0",
+        "a.maze.01.t.6.0",
+        "a.maze.01.t.7.0",
         "a.maze.01.t.1.1",
-        "a.maze.01.t.2.1",
         "a.maze.01.t.3.1",
-        "a.maze.01.t.1.3",
-        "a.maze.01.t.3.3"
+        "a.maze.01.t.4.1",
+        "a.maze.01.t.7.1",
+        "a.maze.01.t.1.2",
+        "a.maze.01.t.3.2",
+        "a.maze.01.t.6.2",
+        "a.maze.01.t.3.3",
+        "a.maze.01.t.6.3",
+        "a.maze.01.t.0.4",
+        "a.maze.01.t.2.4",
+        "a.maze.01.t.4.4"
       ],
       "previewMs": 4000
     },
@@ -229,14 +358,14 @@
           "boardId": "a.maze.02",
           "x": 0,
           "y": 0,
-          "terrain": "wall"
+          "terrain": "floor"
         },
         {
           "id": "a.maze.02.t.1.0",
           "boardId": "a.maze.02",
           "x": 1,
           "y": 0,
-          "terrain": "wall"
+          "terrain": "floor"
         },
         {
           "id": "a.maze.02.t.2.0",
@@ -264,12 +393,19 @@
           "boardId": "a.maze.02",
           "x": 5,
           "y": 0,
-          "terrain": "wall"
+          "terrain": "floor"
         },
         {
           "id": "a.maze.02.t.6.0",
           "boardId": "a.maze.02",
           "x": 6,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.7.0",
+          "boardId": "a.maze.02",
+          "x": 7,
           "y": 0,
           "terrain": "floor"
         },
@@ -323,6 +459,13 @@
           "terrain": "floor"
         },
         {
+          "id": "a.maze.02.t.7.1",
+          "boardId": "a.maze.02",
+          "x": 7,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
           "id": "a.maze.02.t.0.2",
           "boardId": "a.maze.02",
           "x": 0,
@@ -372,6 +515,13 @@
           "terrain": "floor"
         },
         {
+          "id": "a.maze.02.t.7.2",
+          "boardId": "a.maze.02",
+          "x": 7,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
           "id": "a.maze.02.t.0.3",
           "boardId": "a.maze.02",
           "x": 0,
@@ -397,7 +547,7 @@
           "boardId": "a.maze.02",
           "x": 3,
           "y": 3,
-          "terrain": "wall"
+          "terrain": "floor"
         },
         {
           "id": "a.maze.02.t.4.3",
@@ -417,6 +567,13 @@
           "id": "a.maze.02.t.6.3",
           "boardId": "a.maze.02",
           "x": 6,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.7.3",
+          "boardId": "a.maze.02",
+          "x": 7,
           "y": 3,
           "terrain": "floor"
         },
@@ -468,40 +625,69 @@
           "x": 6,
           "y": 4,
           "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.7.4",
+          "boardId": "a.maze.02",
+          "x": 7,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.n1.2",
+          "boardId": "a.maze.02",
+          "x": -1,
+          "y": 2,
+          "terrain": "floor"
         }
       ],
-      "startTileId": "a.maze.02.t.0.4",
-      "exitTileId": "a.maze.02.t.6.0",
+      "startTileId": "a.maze.02.t.n1.2",
+      "exitTileId": "a.maze.02.t.7.2",
       "safeTileIds": [
+        "a.maze.02.t.1.0",
         "a.maze.02.t.2.0",
         "a.maze.02.t.3.0",
         "a.maze.02.t.4.0",
-        "a.maze.02.t.6.0",
-        "a.maze.02.t.0.1",
-        "a.maze.02.t.1.1",
         "a.maze.02.t.2.1",
-        "a.maze.02.t.3.1",
+        "a.maze.02.t.4.1",
         "a.maze.02.t.5.1",
-        "a.maze.02.t.6.1",
         "a.maze.02.t.0.2",
         "a.maze.02.t.2.2",
         "a.maze.02.t.3.2",
-        "a.maze.02.t.4.2",
         "a.maze.02.t.5.2",
-        "a.maze.02.t.6.2",
+        "a.maze.02.t.7.2",
         "a.maze.02.t.0.3",
-        "a.maze.02.t.1.3",
-        "a.maze.02.t.2.3",
+        "a.maze.02.t.3.3",
         "a.maze.02.t.5.3",
         "a.maze.02.t.6.3",
+        "a.maze.02.t.7.3",
         "a.maze.02.t.0.4",
         "a.maze.02.t.1.4",
         "a.maze.02.t.2.4",
+        "a.maze.02.t.3.4",
+        "a.maze.02.t.n1.2"
+      ],
+      "hazardTileIds": [
+        "a.maze.02.t.0.0",
+        "a.maze.02.t.5.0",
+        "a.maze.02.t.6.0",
+        "a.maze.02.t.7.0",
+        "a.maze.02.t.0.1",
+        "a.maze.02.t.1.1",
+        "a.maze.02.t.3.1",
+        "a.maze.02.t.6.1",
+        "a.maze.02.t.7.1",
+        "a.maze.02.t.1.2",
+        "a.maze.02.t.4.2",
+        "a.maze.02.t.6.2",
+        "a.maze.02.t.1.3",
+        "a.maze.02.t.2.3",
+        "a.maze.02.t.4.3",
         "a.maze.02.t.4.4",
         "a.maze.02.t.5.4",
-        "a.maze.02.t.6.4"
+        "a.maze.02.t.6.4",
+        "a.maze.02.t.7.4"
       ],
-      "hazardTileIds": ["a.maze.02.t.4.1", "a.maze.02.t.1.2", "a.maze.02.t.4.3", "a.maze.02.t.3.4"],
       "previewMs": 4000
     },
     {
@@ -517,14 +703,14 @@
           "boardId": "a.maze.03",
           "x": 0,
           "y": 0,
-          "terrain": "wall"
+          "terrain": "floor"
         },
         {
           "id": "a.maze.03.t.1.0",
           "boardId": "a.maze.03",
           "x": 1,
           "y": 0,
-          "terrain": "wall"
+          "terrain": "floor"
         },
         {
           "id": "a.maze.03.t.2.0",
@@ -558,6 +744,13 @@
           "id": "a.maze.03.t.6.0",
           "boardId": "a.maze.03",
           "x": 6,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.7.0",
+          "boardId": "a.maze.03",
+          "x": 7,
           "y": 0,
           "terrain": "floor"
         },
@@ -601,12 +794,19 @@
           "boardId": "a.maze.03",
           "x": 5,
           "y": 1,
-          "terrain": "wall"
+          "terrain": "floor"
         },
         {
           "id": "a.maze.03.t.6.1",
           "boardId": "a.maze.03",
           "x": 6,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.7.1",
+          "boardId": "a.maze.03",
+          "x": 7,
           "y": 1,
           "terrain": "floor"
         },
@@ -660,6 +860,13 @@
           "terrain": "floor"
         },
         {
+          "id": "a.maze.03.t.7.2",
+          "boardId": "a.maze.03",
+          "x": 7,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
           "id": "a.maze.03.t.0.3",
           "boardId": "a.maze.03",
           "x": 0,
@@ -685,7 +892,7 @@
           "boardId": "a.maze.03",
           "x": 3,
           "y": 3,
-          "terrain": "wall"
+          "terrain": "floor"
         },
         {
           "id": "a.maze.03.t.4.3",
@@ -705,6 +912,13 @@
           "id": "a.maze.03.t.6.3",
           "boardId": "a.maze.03",
           "x": 6,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.7.3",
+          "boardId": "a.maze.03",
+          "x": 7,
           "y": 3,
           "terrain": "floor"
         },
@@ -758,153 +972,66 @@
           "terrain": "floor"
         },
         {
-          "id": "a.maze.03.t.0.5",
+          "id": "a.maze.03.t.7.4",
           "boardId": "a.maze.03",
-          "x": 0,
-          "y": 5,
+          "x": 7,
+          "y": 4,
           "terrain": "floor"
         },
         {
-          "id": "a.maze.03.t.1.5",
+          "id": "a.maze.03.t.n1.2",
           "boardId": "a.maze.03",
-          "x": 1,
-          "y": 5,
-          "terrain": "floor"
-        },
-        {
-          "id": "a.maze.03.t.2.5",
-          "boardId": "a.maze.03",
-          "x": 2,
-          "y": 5,
-          "terrain": "floor"
-        },
-        {
-          "id": "a.maze.03.t.3.5",
-          "boardId": "a.maze.03",
-          "x": 3,
-          "y": 5,
-          "terrain": "wall"
-        },
-        {
-          "id": "a.maze.03.t.4.5",
-          "boardId": "a.maze.03",
-          "x": 4,
-          "y": 5,
-          "terrain": "floor"
-        },
-        {
-          "id": "a.maze.03.t.5.5",
-          "boardId": "a.maze.03",
-          "x": 5,
-          "y": 5,
-          "terrain": "floor"
-        },
-        {
-          "id": "a.maze.03.t.6.5",
-          "boardId": "a.maze.03",
-          "x": 6,
-          "y": 5,
-          "terrain": "floor"
-        },
-        {
-          "id": "a.maze.03.t.0.6",
-          "boardId": "a.maze.03",
-          "x": 0,
-          "y": 6,
-          "terrain": "floor"
-        },
-        {
-          "id": "a.maze.03.t.1.6",
-          "boardId": "a.maze.03",
-          "x": 1,
-          "y": 6,
-          "terrain": "floor"
-        },
-        {
-          "id": "a.maze.03.t.2.6",
-          "boardId": "a.maze.03",
-          "x": 2,
-          "y": 6,
-          "terrain": "floor"
-        },
-        {
-          "id": "a.maze.03.t.3.6",
-          "boardId": "a.maze.03",
-          "x": 3,
-          "y": 6,
-          "terrain": "floor"
-        },
-        {
-          "id": "a.maze.03.t.4.6",
-          "boardId": "a.maze.03",
-          "x": 4,
-          "y": 6,
-          "terrain": "floor"
-        },
-        {
-          "id": "a.maze.03.t.5.6",
-          "boardId": "a.maze.03",
-          "x": 5,
-          "y": 6,
-          "terrain": "floor"
-        },
-        {
-          "id": "a.maze.03.t.6.6",
-          "boardId": "a.maze.03",
-          "x": 6,
-          "y": 6,
+          "x": -1,
+          "y": 2,
           "terrain": "floor"
         }
       ],
-      "startTileId": "a.maze.03.t.0.6",
-      "exitTileId": "a.maze.03.t.6.0",
+      "startTileId": "a.maze.03.t.n1.2",
+      "exitTileId": "a.maze.03.t.5.0",
       "safeTileIds": [
+        "a.maze.03.t.1.0",
         "a.maze.03.t.2.0",
         "a.maze.03.t.3.0",
-        "a.maze.03.t.4.0",
         "a.maze.03.t.5.0",
-        "a.maze.03.t.6.0",
+        "a.maze.03.t.7.0",
         "a.maze.03.t.0.1",
         "a.maze.03.t.1.1",
-        "a.maze.03.t.2.1",
-        "a.maze.03.t.4.1",
+        "a.maze.03.t.3.1",
+        "a.maze.03.t.5.1",
         "a.maze.03.t.6.1",
+        "a.maze.03.t.7.1",
         "a.maze.03.t.0.2",
         "a.maze.03.t.2.2",
         "a.maze.03.t.3.2",
-        "a.maze.03.t.4.2",
-        "a.maze.03.t.6.2",
+        "a.maze.03.t.7.2",
         "a.maze.03.t.0.3",
-        "a.maze.03.t.1.3",
         "a.maze.03.t.2.3",
         "a.maze.03.t.4.3",
         "a.maze.03.t.5.3",
         "a.maze.03.t.6.3",
-        "a.maze.03.t.1.4",
-        "a.maze.03.t.4.4",
-        "a.maze.03.t.6.4",
-        "a.maze.03.t.0.5",
-        "a.maze.03.t.1.5",
-        "a.maze.03.t.2.5",
-        "a.maze.03.t.4.5",
-        "a.maze.03.t.5.5",
-        "a.maze.03.t.6.5",
-        "a.maze.03.t.0.6",
-        "a.maze.03.t.1.6",
-        "a.maze.03.t.3.6",
-        "a.maze.03.t.4.6",
-        "a.maze.03.t.5.6",
-        "a.maze.03.t.6.6"
-      ],
-      "hazardTileIds": [
-        "a.maze.03.t.3.1",
-        "a.maze.03.t.1.2",
-        "a.maze.03.t.5.2",
-        "a.maze.03.t.0.4",
+        "a.maze.03.t.7.3",
         "a.maze.03.t.2.4",
         "a.maze.03.t.3.4",
+        "a.maze.03.t.4.4",
+        "a.maze.03.t.n1.2"
+      ],
+      "hazardTileIds": [
+        "a.maze.03.t.0.0",
+        "a.maze.03.t.4.0",
+        "a.maze.03.t.6.0",
+        "a.maze.03.t.2.1",
+        "a.maze.03.t.4.1",
+        "a.maze.03.t.1.2",
+        "a.maze.03.t.4.2",
+        "a.maze.03.t.5.2",
+        "a.maze.03.t.6.2",
+        "a.maze.03.t.1.3",
+        "a.maze.03.t.3.3",
+        "a.maze.03.t.0.4",
+        "a.maze.03.t.1.4",
         "a.maze.03.t.5.4",
-        "a.maze.03.t.2.6"
+        "a.maze.03.t.6.4",
+        "a.maze.03.t.7.4"
       ],
       "previewMs": 4000
     },
@@ -945,6 +1072,13 @@
           "terrain": "floor"
         },
         {
+          "id": "b.line.01.t.4.0",
+          "boardId": "b.line.01",
+          "x": 4,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
           "id": "b.line.01.t.0.1",
           "boardId": "b.line.01",
           "x": 0,
@@ -973,10 +1107,10 @@
           "terrain": "floor"
         },
         {
-          "id": "b.line.01.t.0.2",
+          "id": "b.line.01.t.4.1",
           "boardId": "b.line.01",
-          "x": 0,
-          "y": 2,
+          "x": 4,
+          "y": 1,
           "terrain": "floor"
         },
         {
@@ -999,23 +1133,31 @@
           "x": 3,
           "y": 2,
           "terrain": "floor"
+        },
+        {
+          "id": "b.line.01.t.2.n1",
+          "boardId": "b.line.01",
+          "x": 2,
+          "y": -1,
+          "terrain": "floor"
+        },
+        {
+          "id": "b.line.01.t.2.3",
+          "boardId": "b.line.01",
+          "x": 2,
+          "y": 3,
+          "terrain": "floor"
         }
       ],
-      "startTileId": "b.line.01.t.0.0",
-      "endTileId": "b.line.01.t.3.0",
+      "startTileId": "b.line.01.t.2.3",
+      "endTileId": "b.line.01.t.2.n1",
       "requiredTileIds": [
-        "b.line.01.t.0.0",
-        "b.line.01.t.1.0",
-        "b.line.01.t.2.0",
-        "b.line.01.t.3.0",
-        "b.line.01.t.0.1",
-        "b.line.01.t.1.1",
+        "b.line.01.t.3.2",
         "b.line.01.t.2.1",
-        "b.line.01.t.3.1",
-        "b.line.01.t.0.2",
-        "b.line.01.t.1.2",
-        "b.line.01.t.2.2",
-        "b.line.01.t.3.2"
+        "b.line.01.t.0.1",
+        "b.line.01.t.0.0",
+        "b.line.01.t.2.0",
+        "b.line.01.t.2.n1"
       ]
     },
     {
@@ -1097,13 +1239,6 @@
           "terrain": "floor"
         },
         {
-          "id": "b.line.02.t.0.2",
-          "boardId": "b.line.02",
-          "x": 0,
-          "y": 2,
-          "terrain": "floor"
-        },
-        {
           "id": "b.line.02.t.1.2",
           "boardId": "b.line.02",
           "x": 1,
@@ -1115,7 +1250,7 @@
           "boardId": "b.line.02",
           "x": 2,
           "y": 2,
-          "terrain": "wall"
+          "terrain": "floor"
         },
         {
           "id": "b.line.02.t.3.2",
@@ -1125,24 +1260,10 @@
           "terrain": "floor"
         },
         {
-          "id": "b.line.02.t.4.2",
+          "id": "b.line.02.t.2.n1",
           "boardId": "b.line.02",
-          "x": 4,
-          "y": 2,
-          "terrain": "floor"
-        },
-        {
-          "id": "b.line.02.t.0.3",
-          "boardId": "b.line.02",
-          "x": 0,
-          "y": 3,
-          "terrain": "floor"
-        },
-        {
-          "id": "b.line.02.t.1.3",
-          "boardId": "b.line.02",
-          "x": 1,
-          "y": 3,
+          "x": 2,
+          "y": -1,
           "terrain": "floor"
         },
         {
@@ -1151,1680 +1272,18 @@
           "x": 2,
           "y": 3,
           "terrain": "floor"
-        },
-        {
-          "id": "b.line.02.t.3.3",
-          "boardId": "b.line.02",
-          "x": 3,
-          "y": 3,
-          "terrain": "floor"
-        },
-        {
-          "id": "b.line.02.t.4.3",
-          "boardId": "b.line.02",
-          "x": 4,
-          "y": 3,
-          "terrain": "floor"
-        },
-        {
-          "id": "b.line.02.t.0.4",
-          "boardId": "b.line.02",
-          "x": 0,
-          "y": 4,
-          "terrain": "floor"
-        },
-        {
-          "id": "b.line.02.t.1.4",
-          "boardId": "b.line.02",
-          "x": 1,
-          "y": 4,
-          "terrain": "floor"
-        },
-        {
-          "id": "b.line.02.t.2.4",
-          "boardId": "b.line.02",
-          "x": 2,
-          "y": 4,
-          "terrain": "floor"
-        },
-        {
-          "id": "b.line.02.t.3.4",
-          "boardId": "b.line.02",
-          "x": 3,
-          "y": 4,
-          "terrain": "floor"
-        },
-        {
-          "id": "b.line.02.t.4.4",
-          "boardId": "b.line.02",
-          "x": 4,
-          "y": 4,
-          "terrain": "floor"
         }
       ],
-      "startTileId": "b.line.02.t.0.0",
-      "endTileId": "b.line.02.t.4.3",
+      "startTileId": "b.line.02.t.2.n1",
+      "endTileId": "b.line.02.t.4.0",
       "requiredTileIds": [
         "b.line.02.t.0.0",
-        "b.line.02.t.1.0",
-        "b.line.02.t.2.0",
-        "b.line.02.t.3.0",
-        "b.line.02.t.4.0",
-        "b.line.02.t.0.1",
-        "b.line.02.t.1.1",
-        "b.line.02.t.2.1",
-        "b.line.02.t.3.1",
-        "b.line.02.t.4.1",
-        "b.line.02.t.0.2",
         "b.line.02.t.1.2",
         "b.line.02.t.3.2",
-        "b.line.02.t.4.2",
-        "b.line.02.t.0.3",
-        "b.line.02.t.1.3",
-        "b.line.02.t.2.3",
-        "b.line.02.t.3.3",
-        "b.line.02.t.4.3",
-        "b.line.02.t.0.4",
-        "b.line.02.t.1.4",
-        "b.line.02.t.2.4",
-        "b.line.02.t.3.4",
-        "b.line.02.t.4.4"
+        "b.line.02.t.3.1",
+        "b.line.02.t.3.0",
+        "b.line.02.t.4.0"
       ]
-    },
-    {
-      "id": "c.routing.01",
-      "boardId": "c.routing.01",
-      "title": "信号调度 · 球与推车",
-      "kind": "routing",
-      "includedFrom": "M3",
-      "sourceRecordIds": ["map.static.c.routing.01"],
-      "tiles": [
-        {
-          "id": "c.routing.01.t.0.0",
-          "boardId": "c.routing.01",
-          "x": 0,
-          "y": 0,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.routing.01.t.1.0",
-          "boardId": "c.routing.01",
-          "x": 1,
-          "y": 0,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.routing.01.t.2.0",
-          "boardId": "c.routing.01",
-          "x": 2,
-          "y": 0,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.routing.01.t.3.0",
-          "boardId": "c.routing.01",
-          "x": 3,
-          "y": 0,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.routing.01.t.4.0",
-          "boardId": "c.routing.01",
-          "x": 4,
-          "y": 0,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.routing.01.t.5.0",
-          "boardId": "c.routing.01",
-          "x": 5,
-          "y": 0,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.routing.01.t.6.0",
-          "boardId": "c.routing.01",
-          "x": 6,
-          "y": 0,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.routing.01.t.0.1",
-          "boardId": "c.routing.01",
-          "x": 0,
-          "y": 1,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.routing.01.t.1.1",
-          "boardId": "c.routing.01",
-          "x": 1,
-          "y": 1,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.routing.01.t.2.1",
-          "boardId": "c.routing.01",
-          "x": 2,
-          "y": 1,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.routing.01.t.3.1",
-          "boardId": "c.routing.01",
-          "x": 3,
-          "y": 1,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.routing.01.t.4.1",
-          "boardId": "c.routing.01",
-          "x": 4,
-          "y": 1,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.routing.01.t.5.1",
-          "boardId": "c.routing.01",
-          "x": 5,
-          "y": 1,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.routing.01.t.6.1",
-          "boardId": "c.routing.01",
-          "x": 6,
-          "y": 1,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.routing.01.t.0.2",
-          "boardId": "c.routing.01",
-          "x": 0,
-          "y": 2,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.routing.01.t.1.2",
-          "boardId": "c.routing.01",
-          "x": 1,
-          "y": 2,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.routing.01.t.2.2",
-          "boardId": "c.routing.01",
-          "x": 2,
-          "y": 2,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.routing.01.t.3.2",
-          "boardId": "c.routing.01",
-          "x": 3,
-          "y": 2,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.routing.01.t.4.2",
-          "boardId": "c.routing.01",
-          "x": 4,
-          "y": 2,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.routing.01.t.5.2",
-          "boardId": "c.routing.01",
-          "x": 5,
-          "y": 2,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.routing.01.t.6.2",
-          "boardId": "c.routing.01",
-          "x": 6,
-          "y": 2,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.routing.01.t.0.3",
-          "boardId": "c.routing.01",
-          "x": 0,
-          "y": 3,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.routing.01.t.1.3",
-          "boardId": "c.routing.01",
-          "x": 1,
-          "y": 3,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.routing.01.t.2.3",
-          "boardId": "c.routing.01",
-          "x": 2,
-          "y": 3,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.routing.01.t.3.3",
-          "boardId": "c.routing.01",
-          "x": 3,
-          "y": 3,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.routing.01.t.4.3",
-          "boardId": "c.routing.01",
-          "x": 4,
-          "y": 3,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.routing.01.t.5.3",
-          "boardId": "c.routing.01",
-          "x": 5,
-          "y": 3,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.routing.01.t.6.3",
-          "boardId": "c.routing.01",
-          "x": 6,
-          "y": 3,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.routing.01.t.0.4",
-          "boardId": "c.routing.01",
-          "x": 0,
-          "y": 4,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.routing.01.t.1.4",
-          "boardId": "c.routing.01",
-          "x": 1,
-          "y": 4,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.routing.01.t.2.4",
-          "boardId": "c.routing.01",
-          "x": 2,
-          "y": 4,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.routing.01.t.3.4",
-          "boardId": "c.routing.01",
-          "x": 3,
-          "y": 4,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.routing.01.t.4.4",
-          "boardId": "c.routing.01",
-          "x": 4,
-          "y": 4,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.routing.01.t.5.4",
-          "boardId": "c.routing.01",
-          "x": 5,
-          "y": 4,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.routing.01.t.6.4",
-          "boardId": "c.routing.01",
-          "x": 6,
-          "y": 4,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.routing.01.t.0.5",
-          "boardId": "c.routing.01",
-          "x": 0,
-          "y": 5,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.routing.01.t.1.5",
-          "boardId": "c.routing.01",
-          "x": 1,
-          "y": 5,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.routing.01.t.2.5",
-          "boardId": "c.routing.01",
-          "x": 2,
-          "y": 5,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.routing.01.t.3.5",
-          "boardId": "c.routing.01",
-          "x": 3,
-          "y": 5,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.routing.01.t.4.5",
-          "boardId": "c.routing.01",
-          "x": 4,
-          "y": 5,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.routing.01.t.5.5",
-          "boardId": "c.routing.01",
-          "x": 5,
-          "y": 5,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.routing.01.t.6.5",
-          "boardId": "c.routing.01",
-          "x": 6,
-          "y": 5,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.routing.01.t.0.6",
-          "boardId": "c.routing.01",
-          "x": 0,
-          "y": 6,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.routing.01.t.1.6",
-          "boardId": "c.routing.01",
-          "x": 1,
-          "y": 6,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.routing.01.t.2.6",
-          "boardId": "c.routing.01",
-          "x": 2,
-          "y": 6,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.routing.01.t.3.6",
-          "boardId": "c.routing.01",
-          "x": 3,
-          "y": 6,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.routing.01.t.4.6",
-          "boardId": "c.routing.01",
-          "x": 4,
-          "y": 6,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.routing.01.t.5.6",
-          "boardId": "c.routing.01",
-          "x": 5,
-          "y": 6,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.routing.01.t.6.6",
-          "boardId": "c.routing.01",
-          "x": 6,
-          "y": 6,
-          "terrain": "wall"
-        }
-      ],
-      "startTileId": "c.routing.01.t.1.5",
-      "ballIds": ["c.routing.01.ball.01", "c.routing.01.ball.02"],
-      "cartIds": ["c.routing.01.cart.01"],
-      "stationIds": ["c.routing.01.station.01", "c.routing.01.station.02"],
-      "initialObjectTileById": {
-        "c.routing.01.ball.01": "c.routing.01.t.2.3",
-        "c.routing.01.ball.02": "c.routing.01.t.2.2",
-        "c.routing.01.cart.01": "c.routing.01.t.5.4"
-      },
-      "stationTileById": {
-        "c.routing.01.station.01": "c.routing.01.t.4.1",
-        "c.routing.01.station.02": "c.routing.01.t.2.1"
-      },
-      "targetStationByBallId": {
-        "c.routing.01.ball.01": "c.routing.01.station.01",
-        "c.routing.01.ball.02": "c.routing.01.station.02"
-      }
-    },
-    {
-      "id": "c.theft.01",
-      "boardId": "c.theft.01",
-      "title": "数据盗取 · 双路转存",
-      "kind": "theft",
-      "includedFrom": "M3",
-      "sourceRecordIds": ["map.static.c.theft.01"],
-      "tiles": [
-        {
-          "id": "c.theft.01.t.0.0",
-          "boardId": "c.theft.01",
-          "x": 0,
-          "y": 0,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.01.t.1.0",
-          "boardId": "c.theft.01",
-          "x": 1,
-          "y": 0,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.01.t.2.0",
-          "boardId": "c.theft.01",
-          "x": 2,
-          "y": 0,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.01.t.3.0",
-          "boardId": "c.theft.01",
-          "x": 3,
-          "y": 0,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.01.t.4.0",
-          "boardId": "c.theft.01",
-          "x": 4,
-          "y": 0,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.01.t.5.0",
-          "boardId": "c.theft.01",
-          "x": 5,
-          "y": 0,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.01.t.6.0",
-          "boardId": "c.theft.01",
-          "x": 6,
-          "y": 0,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.01.t.0.1",
-          "boardId": "c.theft.01",
-          "x": 0,
-          "y": 1,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.01.t.1.1",
-          "boardId": "c.theft.01",
-          "x": 1,
-          "y": 1,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.01.t.2.1",
-          "boardId": "c.theft.01",
-          "x": 2,
-          "y": 1,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.01.t.3.1",
-          "boardId": "c.theft.01",
-          "x": 3,
-          "y": 1,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.01.t.4.1",
-          "boardId": "c.theft.01",
-          "x": 4,
-          "y": 1,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.01.t.5.1",
-          "boardId": "c.theft.01",
-          "x": 5,
-          "y": 1,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.01.t.6.1",
-          "boardId": "c.theft.01",
-          "x": 6,
-          "y": 1,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.01.t.0.2",
-          "boardId": "c.theft.01",
-          "x": 0,
-          "y": 2,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.01.t.1.2",
-          "boardId": "c.theft.01",
-          "x": 1,
-          "y": 2,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.01.t.2.2",
-          "boardId": "c.theft.01",
-          "x": 2,
-          "y": 2,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.01.t.3.2",
-          "boardId": "c.theft.01",
-          "x": 3,
-          "y": 2,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.01.t.4.2",
-          "boardId": "c.theft.01",
-          "x": 4,
-          "y": 2,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.01.t.5.2",
-          "boardId": "c.theft.01",
-          "x": 5,
-          "y": 2,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.01.t.6.2",
-          "boardId": "c.theft.01",
-          "x": 6,
-          "y": 2,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.01.t.0.3",
-          "boardId": "c.theft.01",
-          "x": 0,
-          "y": 3,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.01.t.1.3",
-          "boardId": "c.theft.01",
-          "x": 1,
-          "y": 3,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.01.t.2.3",
-          "boardId": "c.theft.01",
-          "x": 2,
-          "y": 3,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.01.t.3.3",
-          "boardId": "c.theft.01",
-          "x": 3,
-          "y": 3,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.01.t.4.3",
-          "boardId": "c.theft.01",
-          "x": 4,
-          "y": 3,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.01.t.5.3",
-          "boardId": "c.theft.01",
-          "x": 5,
-          "y": 3,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.01.t.6.3",
-          "boardId": "c.theft.01",
-          "x": 6,
-          "y": 3,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.01.t.0.4",
-          "boardId": "c.theft.01",
-          "x": 0,
-          "y": 4,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.01.t.1.4",
-          "boardId": "c.theft.01",
-          "x": 1,
-          "y": 4,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.01.t.2.4",
-          "boardId": "c.theft.01",
-          "x": 2,
-          "y": 4,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.01.t.3.4",
-          "boardId": "c.theft.01",
-          "x": 3,
-          "y": 4,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.01.t.4.4",
-          "boardId": "c.theft.01",
-          "x": 4,
-          "y": 4,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.01.t.5.4",
-          "boardId": "c.theft.01",
-          "x": 5,
-          "y": 4,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.01.t.6.4",
-          "boardId": "c.theft.01",
-          "x": 6,
-          "y": 4,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.01.t.0.5",
-          "boardId": "c.theft.01",
-          "x": 0,
-          "y": 5,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.01.t.1.5",
-          "boardId": "c.theft.01",
-          "x": 1,
-          "y": 5,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.01.t.2.5",
-          "boardId": "c.theft.01",
-          "x": 2,
-          "y": 5,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.01.t.3.5",
-          "boardId": "c.theft.01",
-          "x": 3,
-          "y": 5,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.01.t.4.5",
-          "boardId": "c.theft.01",
-          "x": 4,
-          "y": 5,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.01.t.5.5",
-          "boardId": "c.theft.01",
-          "x": 5,
-          "y": 5,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.01.t.6.5",
-          "boardId": "c.theft.01",
-          "x": 6,
-          "y": 5,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.01.t.0.6",
-          "boardId": "c.theft.01",
-          "x": 0,
-          "y": 6,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.01.t.1.6",
-          "boardId": "c.theft.01",
-          "x": 1,
-          "y": 6,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.01.t.2.6",
-          "boardId": "c.theft.01",
-          "x": 2,
-          "y": 6,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.01.t.3.6",
-          "boardId": "c.theft.01",
-          "x": 3,
-          "y": 6,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.01.t.4.6",
-          "boardId": "c.theft.01",
-          "x": 4,
-          "y": 6,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.01.t.5.6",
-          "boardId": "c.theft.01",
-          "x": 5,
-          "y": 6,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.01.t.6.6",
-          "boardId": "c.theft.01",
-          "x": 6,
-          "y": 6,
-          "terrain": "wall"
-        }
-      ],
-      "startTileId": "c.theft.01.t.1.5",
-      "objectIds": ["c.theft.01.object.01", "c.theft.01.object.02"],
-      "socketIds": ["c.theft.01.socket.01", "c.theft.01.socket.02"],
-      "initialObjectTileById": {
-        "c.theft.01.object.01": "c.theft.01.t.2.3",
-        "c.theft.01.object.02": "c.theft.01.t.4.3"
-      },
-      "socketTileById": {
-        "c.theft.01.socket.01": "c.theft.01.t.2.1",
-        "c.theft.01.socket.02": "c.theft.01.t.4.1"
-      },
-      "colorByObjectId": {
-        "c.theft.01.object.01": "cyan",
-        "c.theft.01.object.02": "magenta"
-      },
-      "colorBySocketId": {
-        "c.theft.01.socket.01": "cyan",
-        "c.theft.01.socket.02": "magenta"
-      }
-    },
-    {
-      "id": "c.theft.02",
-      "boardId": "c.theft.02",
-      "title": "数据盗取 · 同色交换",
-      "kind": "theft",
-      "includedFrom": "M3",
-      "sourceRecordIds": ["map.static.c.theft.02"],
-      "tiles": [
-        {
-          "id": "c.theft.02.t.0.0",
-          "boardId": "c.theft.02",
-          "x": 0,
-          "y": 0,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.02.t.1.0",
-          "boardId": "c.theft.02",
-          "x": 1,
-          "y": 0,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.02.t.2.0",
-          "boardId": "c.theft.02",
-          "x": 2,
-          "y": 0,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.02.t.3.0",
-          "boardId": "c.theft.02",
-          "x": 3,
-          "y": 0,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.02.t.4.0",
-          "boardId": "c.theft.02",
-          "x": 4,
-          "y": 0,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.02.t.5.0",
-          "boardId": "c.theft.02",
-          "x": 5,
-          "y": 0,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.02.t.6.0",
-          "boardId": "c.theft.02",
-          "x": 6,
-          "y": 0,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.02.t.0.1",
-          "boardId": "c.theft.02",
-          "x": 0,
-          "y": 1,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.02.t.1.1",
-          "boardId": "c.theft.02",
-          "x": 1,
-          "y": 1,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.02.t.2.1",
-          "boardId": "c.theft.02",
-          "x": 2,
-          "y": 1,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.02.t.3.1",
-          "boardId": "c.theft.02",
-          "x": 3,
-          "y": 1,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.02.t.4.1",
-          "boardId": "c.theft.02",
-          "x": 4,
-          "y": 1,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.02.t.5.1",
-          "boardId": "c.theft.02",
-          "x": 5,
-          "y": 1,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.02.t.6.1",
-          "boardId": "c.theft.02",
-          "x": 6,
-          "y": 1,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.02.t.0.2",
-          "boardId": "c.theft.02",
-          "x": 0,
-          "y": 2,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.02.t.1.2",
-          "boardId": "c.theft.02",
-          "x": 1,
-          "y": 2,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.02.t.2.2",
-          "boardId": "c.theft.02",
-          "x": 2,
-          "y": 2,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.02.t.3.2",
-          "boardId": "c.theft.02",
-          "x": 3,
-          "y": 2,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.02.t.4.2",
-          "boardId": "c.theft.02",
-          "x": 4,
-          "y": 2,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.02.t.5.2",
-          "boardId": "c.theft.02",
-          "x": 5,
-          "y": 2,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.02.t.6.2",
-          "boardId": "c.theft.02",
-          "x": 6,
-          "y": 2,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.02.t.0.3",
-          "boardId": "c.theft.02",
-          "x": 0,
-          "y": 3,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.02.t.1.3",
-          "boardId": "c.theft.02",
-          "x": 1,
-          "y": 3,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.02.t.2.3",
-          "boardId": "c.theft.02",
-          "x": 2,
-          "y": 3,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.02.t.3.3",
-          "boardId": "c.theft.02",
-          "x": 3,
-          "y": 3,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.02.t.4.3",
-          "boardId": "c.theft.02",
-          "x": 4,
-          "y": 3,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.02.t.5.3",
-          "boardId": "c.theft.02",
-          "x": 5,
-          "y": 3,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.02.t.6.3",
-          "boardId": "c.theft.02",
-          "x": 6,
-          "y": 3,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.02.t.0.4",
-          "boardId": "c.theft.02",
-          "x": 0,
-          "y": 4,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.02.t.1.4",
-          "boardId": "c.theft.02",
-          "x": 1,
-          "y": 4,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.02.t.2.4",
-          "boardId": "c.theft.02",
-          "x": 2,
-          "y": 4,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.02.t.3.4",
-          "boardId": "c.theft.02",
-          "x": 3,
-          "y": 4,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.02.t.4.4",
-          "boardId": "c.theft.02",
-          "x": 4,
-          "y": 4,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.02.t.5.4",
-          "boardId": "c.theft.02",
-          "x": 5,
-          "y": 4,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.02.t.6.4",
-          "boardId": "c.theft.02",
-          "x": 6,
-          "y": 4,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.02.t.0.5",
-          "boardId": "c.theft.02",
-          "x": 0,
-          "y": 5,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.02.t.1.5",
-          "boardId": "c.theft.02",
-          "x": 1,
-          "y": 5,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.02.t.2.5",
-          "boardId": "c.theft.02",
-          "x": 2,
-          "y": 5,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.02.t.3.5",
-          "boardId": "c.theft.02",
-          "x": 3,
-          "y": 5,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.02.t.4.5",
-          "boardId": "c.theft.02",
-          "x": 4,
-          "y": 5,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.02.t.5.5",
-          "boardId": "c.theft.02",
-          "x": 5,
-          "y": 5,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.02.t.6.5",
-          "boardId": "c.theft.02",
-          "x": 6,
-          "y": 5,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.02.t.0.6",
-          "boardId": "c.theft.02",
-          "x": 0,
-          "y": 6,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.02.t.1.6",
-          "boardId": "c.theft.02",
-          "x": 1,
-          "y": 6,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.02.t.2.6",
-          "boardId": "c.theft.02",
-          "x": 2,
-          "y": 6,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.02.t.3.6",
-          "boardId": "c.theft.02",
-          "x": 3,
-          "y": 6,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.02.t.4.6",
-          "boardId": "c.theft.02",
-          "x": 4,
-          "y": 6,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.02.t.5.6",
-          "boardId": "c.theft.02",
-          "x": 5,
-          "y": 6,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.02.t.6.6",
-          "boardId": "c.theft.02",
-          "x": 6,
-          "y": 6,
-          "terrain": "wall"
-        }
-      ],
-      "startTileId": "c.theft.02.t.3.5",
-      "objectIds": ["c.theft.02.object.01", "c.theft.02.object.02"],
-      "socketIds": ["c.theft.02.socket.01", "c.theft.02.socket.02"],
-      "initialObjectTileById": {
-        "c.theft.02.object.01": "c.theft.02.t.2.3",
-        "c.theft.02.object.02": "c.theft.02.t.4.3"
-      },
-      "socketTileById": {
-        "c.theft.02.socket.01": "c.theft.02.t.2.1",
-        "c.theft.02.socket.02": "c.theft.02.t.4.1"
-      },
-      "colorByObjectId": {
-        "c.theft.02.object.01": "cyan",
-        "c.theft.02.object.02": "cyan"
-      },
-      "colorBySocketId": {
-        "c.theft.02.socket.01": "cyan",
-        "c.theft.02.socket.02": "cyan"
-      }
-    },
-    {
-      "id": "c.theft.03",
-      "boardId": "c.theft.03",
-      "title": "数据盗取 · 三色调度",
-      "kind": "theft",
-      "includedFrom": "M3",
-      "sourceRecordIds": ["map.static.c.theft.03"],
-      "tiles": [
-        {
-          "id": "c.theft.03.t.0.0",
-          "boardId": "c.theft.03",
-          "x": 0,
-          "y": 0,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.1.0",
-          "boardId": "c.theft.03",
-          "x": 1,
-          "y": 0,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.2.0",
-          "boardId": "c.theft.03",
-          "x": 2,
-          "y": 0,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.3.0",
-          "boardId": "c.theft.03",
-          "x": 3,
-          "y": 0,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.4.0",
-          "boardId": "c.theft.03",
-          "x": 4,
-          "y": 0,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.5.0",
-          "boardId": "c.theft.03",
-          "x": 5,
-          "y": 0,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.6.0",
-          "boardId": "c.theft.03",
-          "x": 6,
-          "y": 0,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.7.0",
-          "boardId": "c.theft.03",
-          "x": 7,
-          "y": 0,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.0.1",
-          "boardId": "c.theft.03",
-          "x": 0,
-          "y": 1,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.1.1",
-          "boardId": "c.theft.03",
-          "x": 1,
-          "y": 1,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.2.1",
-          "boardId": "c.theft.03",
-          "x": 2,
-          "y": 1,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.3.1",
-          "boardId": "c.theft.03",
-          "x": 3,
-          "y": 1,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.4.1",
-          "boardId": "c.theft.03",
-          "x": 4,
-          "y": 1,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.5.1",
-          "boardId": "c.theft.03",
-          "x": 5,
-          "y": 1,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.6.1",
-          "boardId": "c.theft.03",
-          "x": 6,
-          "y": 1,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.7.1",
-          "boardId": "c.theft.03",
-          "x": 7,
-          "y": 1,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.0.2",
-          "boardId": "c.theft.03",
-          "x": 0,
-          "y": 2,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.1.2",
-          "boardId": "c.theft.03",
-          "x": 1,
-          "y": 2,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.2.2",
-          "boardId": "c.theft.03",
-          "x": 2,
-          "y": 2,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.3.2",
-          "boardId": "c.theft.03",
-          "x": 3,
-          "y": 2,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.4.2",
-          "boardId": "c.theft.03",
-          "x": 4,
-          "y": 2,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.5.2",
-          "boardId": "c.theft.03",
-          "x": 5,
-          "y": 2,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.6.2",
-          "boardId": "c.theft.03",
-          "x": 6,
-          "y": 2,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.7.2",
-          "boardId": "c.theft.03",
-          "x": 7,
-          "y": 2,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.0.3",
-          "boardId": "c.theft.03",
-          "x": 0,
-          "y": 3,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.1.3",
-          "boardId": "c.theft.03",
-          "x": 1,
-          "y": 3,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.2.3",
-          "boardId": "c.theft.03",
-          "x": 2,
-          "y": 3,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.3.3",
-          "boardId": "c.theft.03",
-          "x": 3,
-          "y": 3,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.4.3",
-          "boardId": "c.theft.03",
-          "x": 4,
-          "y": 3,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.5.3",
-          "boardId": "c.theft.03",
-          "x": 5,
-          "y": 3,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.6.3",
-          "boardId": "c.theft.03",
-          "x": 6,
-          "y": 3,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.7.3",
-          "boardId": "c.theft.03",
-          "x": 7,
-          "y": 3,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.0.4",
-          "boardId": "c.theft.03",
-          "x": 0,
-          "y": 4,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.1.4",
-          "boardId": "c.theft.03",
-          "x": 1,
-          "y": 4,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.2.4",
-          "boardId": "c.theft.03",
-          "x": 2,
-          "y": 4,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.3.4",
-          "boardId": "c.theft.03",
-          "x": 3,
-          "y": 4,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.4.4",
-          "boardId": "c.theft.03",
-          "x": 4,
-          "y": 4,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.5.4",
-          "boardId": "c.theft.03",
-          "x": 5,
-          "y": 4,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.6.4",
-          "boardId": "c.theft.03",
-          "x": 6,
-          "y": 4,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.7.4",
-          "boardId": "c.theft.03",
-          "x": 7,
-          "y": 4,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.0.5",
-          "boardId": "c.theft.03",
-          "x": 0,
-          "y": 5,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.1.5",
-          "boardId": "c.theft.03",
-          "x": 1,
-          "y": 5,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.2.5",
-          "boardId": "c.theft.03",
-          "x": 2,
-          "y": 5,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.3.5",
-          "boardId": "c.theft.03",
-          "x": 3,
-          "y": 5,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.4.5",
-          "boardId": "c.theft.03",
-          "x": 4,
-          "y": 5,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.5.5",
-          "boardId": "c.theft.03",
-          "x": 5,
-          "y": 5,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.6.5",
-          "boardId": "c.theft.03",
-          "x": 6,
-          "y": 5,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.7.5",
-          "boardId": "c.theft.03",
-          "x": 7,
-          "y": 5,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.0.6",
-          "boardId": "c.theft.03",
-          "x": 0,
-          "y": 6,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.1.6",
-          "boardId": "c.theft.03",
-          "x": 1,
-          "y": 6,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.2.6",
-          "boardId": "c.theft.03",
-          "x": 2,
-          "y": 6,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.3.6",
-          "boardId": "c.theft.03",
-          "x": 3,
-          "y": 6,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.4.6",
-          "boardId": "c.theft.03",
-          "x": 4,
-          "y": 6,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.5.6",
-          "boardId": "c.theft.03",
-          "x": 5,
-          "y": 6,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.6.6",
-          "boardId": "c.theft.03",
-          "x": 6,
-          "y": 6,
-          "terrain": "floor"
-        },
-        {
-          "id": "c.theft.03.t.7.6",
-          "boardId": "c.theft.03",
-          "x": 7,
-          "y": 6,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.0.7",
-          "boardId": "c.theft.03",
-          "x": 0,
-          "y": 7,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.1.7",
-          "boardId": "c.theft.03",
-          "x": 1,
-          "y": 7,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.2.7",
-          "boardId": "c.theft.03",
-          "x": 2,
-          "y": 7,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.3.7",
-          "boardId": "c.theft.03",
-          "x": 3,
-          "y": 7,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.4.7",
-          "boardId": "c.theft.03",
-          "x": 4,
-          "y": 7,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.5.7",
-          "boardId": "c.theft.03",
-          "x": 5,
-          "y": 7,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.6.7",
-          "boardId": "c.theft.03",
-          "x": 6,
-          "y": 7,
-          "terrain": "wall"
-        },
-        {
-          "id": "c.theft.03.t.7.7",
-          "boardId": "c.theft.03",
-          "x": 7,
-          "y": 7,
-          "terrain": "wall"
-        }
-      ],
-      "startTileId": "c.theft.03.t.1.6",
-      "objectIds": ["c.theft.03.object.01", "c.theft.03.object.02", "c.theft.03.object.03"],
-      "socketIds": ["c.theft.03.socket.01", "c.theft.03.socket.02", "c.theft.03.socket.03"],
-      "initialObjectTileById": {
-        "c.theft.03.object.01": "c.theft.03.t.2.3",
-        "c.theft.03.object.02": "c.theft.03.t.4.3",
-        "c.theft.03.object.03": "c.theft.03.t.5.5"
-      },
-      "socketTileById": {
-        "c.theft.03.socket.01": "c.theft.03.t.2.1",
-        "c.theft.03.socket.02": "c.theft.03.t.5.1",
-        "c.theft.03.socket.03": "c.theft.03.t.5.3"
-      },
-      "colorByObjectId": {
-        "c.theft.03.object.01": "cyan",
-        "c.theft.03.object.02": "magenta",
-        "c.theft.03.object.03": "amber"
-      },
-      "colorBySocketId": {
-        "c.theft.03.socket.01": "cyan",
-        "c.theft.03.socket.02": "magenta",
-        "c.theft.03.socket.03": "amber"
-      }
     }
   ],
   "witnesses": [
@@ -2832,9 +1291,39 @@
       "id": "a.maze.01.witness.success",
       "definitionId": "a.maze.01",
       "kind": "success",
-      "description": "沿安全地形到出口；见证只供校验，不参与成功判定。",
-      "actions": ["activate", "up", "up", "up", "up", "right", "right", "right", "right"],
+      "description": "按原图安全路线完成；activate 表示公开预览到期入口，4秒时钟另由浏览器验收。",
+      "actions": [
+        "activate",
+        "right",
+        "down",
+        "right",
+        "right",
+        "up",
+        "up",
+        "up",
+        "right",
+        "right",
+        "right",
+        "down",
+        "down",
+        "down",
+        "down",
+        "right",
+        "right",
+        "up",
+        "up"
+      ],
       "expectedCodes": [
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
         "accepted",
         "accepted",
         "accepted",
@@ -2846,15 +1335,49 @@
         "success"
       ],
       "expectedPhase": "complete",
-      "expectedPlayerTileId": "a.maze.01.t.4.0"
+      "expectedPlayerTileId": "a.maze.01.t.7.2"
     },
     {
       "id": "a.maze.01.witness.alternative",
       "definitionId": "a.maze.01",
       "kind": "alternative",
-      "description": "经另一条安全分支到同一出口。",
-      "actions": ["activate", "right", "right", "right", "right", "up", "up", "up", "up"],
+      "description": "合法进入首格后折返入口，再沿安全路线完成；记忆迷宫允许安全格重走。",
+      "actions": [
+        "activate",
+        "right",
+        "left",
+        "right",
+        "down",
+        "right",
+        "right",
+        "up",
+        "up",
+        "up",
+        "right",
+        "right",
+        "right",
+        "down",
+        "down",
+        "down",
+        "down",
+        "right",
+        "right",
+        "up",
+        "up"
+      ],
       "expectedCodes": [
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
         "accepted",
         "accepted",
         "accepted",
@@ -2866,26 +1389,36 @@
         "success"
       ],
       "expectedPhase": "complete",
-      "expectedPlayerTileId": "a.maze.01.t.4.0"
+      "expectedPlayerTileId": "a.maze.01.t.7.2"
     },
     {
       "id": "a.maze.01.witness.recovery",
       "definitionId": "a.maze.01",
       "kind": "failureRecovery",
-      "description": "相邻移动踩入危险格后完整恢复基线，重新观察并成功。",
+      "description": "第二步踩中原图危险格，回安全起点重新观察，再完成。",
       "actions": [
         "activate",
-        "up",
+        "right",
         "right",
         "activate",
-        "up",
+        "right",
+        "down",
+        "right",
+        "right",
         "up",
         "up",
         "up",
         "right",
         "right",
         "right",
-        "right"
+        "down",
+        "down",
+        "down",
+        "down",
+        "right",
+        "right",
+        "up",
+        "up"
       ],
       "expectedCodes": [
         "accepted",
@@ -2899,26 +1432,46 @@
         "accepted",
         "accepted",
         "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
         "success"
       ],
       "expectedPhase": "complete",
-      "expectedPlayerTileId": "a.maze.01.t.4.0"
+      "expectedPlayerTileId": "a.maze.01.t.7.2"
     },
     {
       "id": "a.maze.02.witness.success",
       "definitionId": "a.maze.02",
       "kind": "success",
-      "description": "沿安全地形到出口；见证只供校验，不参与成功判定。",
+      "description": "按原图安全路线完成；activate 表示公开预览到期入口，4秒时钟另由浏览器验收。",
       "actions": [
         "activate",
+        "right",
+        "down",
+        "down",
+        "right",
+        "right",
+        "right",
+        "up",
+        "up",
+        "left",
+        "up",
         "up",
         "right",
         "right",
-        "up",
+        "down",
         "right",
+        "down",
+        "down",
         "right",
-        "right",
-        "up",
         "right",
         "up"
       ],
@@ -2933,28 +1486,48 @@
         "accepted",
         "accepted",
         "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
         "success"
       ],
       "expectedPhase": "complete",
-      "expectedPlayerTileId": "a.maze.02.t.6.0"
+      "expectedPlayerTileId": "a.maze.02.t.7.2"
     },
     {
       "id": "a.maze.02.witness.alternative",
       "definitionId": "a.maze.02",
       "kind": "alternative",
-      "description": "经另一条安全分支到同一出口。",
+      "description": "合法进入首格后折返入口，再沿安全路线完成；记忆迷宫允许安全格重走。",
       "actions": [
         "activate",
-        "up",
-        "up",
-        "up",
         "right",
+        "left",
+        "right",
+        "down",
+        "down",
+        "right",
+        "right",
+        "right",
+        "up",
+        "up",
+        "left",
+        "up",
+        "up",
         "right",
         "right",
         "down",
         "right",
+        "down",
+        "down",
         "right",
-        "up",
         "right",
         "up"
       ],
@@ -2971,35 +1544,53 @@
         "accepted",
         "accepted",
         "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
         "success"
       ],
       "expectedPhase": "complete",
-      "expectedPlayerTileId": "a.maze.02.t.6.0"
+      "expectedPlayerTileId": "a.maze.02.t.7.2"
     },
     {
       "id": "a.maze.02.witness.recovery",
       "definitionId": "a.maze.02",
       "kind": "failureRecovery",
-      "description": "相邻移动踩入危险格后完整恢复基线，重新观察并成功。",
+      "description": "第二步踩中原图危险格，回安全起点重新观察，再完成。",
       "actions": [
         "activate",
         "right",
         "right",
-        "right",
         "activate",
+        "right",
+        "down",
+        "down",
+        "right",
+        "right",
+        "right",
+        "up",
+        "up",
+        "left",
+        "up",
         "up",
         "right",
         "right",
-        "up",
+        "down",
         "right",
+        "down",
+        "down",
         "right",
-        "right",
-        "up",
         "right",
         "up"
       ],
       "expectedCodes": [
-        "accepted",
         "accepted",
         "accepted",
         "failed",
@@ -3013,69 +1604,49 @@
         "accepted",
         "accepted",
         "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
         "success"
       ],
       "expectedPhase": "complete",
-      "expectedPlayerTileId": "a.maze.02.t.6.0"
+      "expectedPlayerTileId": "a.maze.02.t.7.2"
     },
     {
       "id": "a.maze.03.witness.success",
       "definitionId": "a.maze.03",
       "kind": "success",
-      "description": "沿安全地形到出口；见证只供校验，不参与成功判定。",
+      "description": "按原图安全路线完成；activate 表示公开预览到期入口，4秒时钟另由浏览器验收。",
       "actions": [
         "activate",
-        "up",
         "right",
-        "up",
-        "up",
-        "right",
-        "up",
-        "up",
-        "up",
-        "right",
-        "right",
-        "right",
-        "right"
-      ],
-      "expectedCodes": [
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "success"
-      ],
-      "expectedPhase": "complete",
-      "expectedPlayerTileId": "a.maze.03.t.6.0"
-    },
-    {
-      "id": "a.maze.03.witness.alternative",
-      "definitionId": "a.maze.03",
-      "kind": "alternative",
-      "description": "经另一条安全分支到同一出口。",
-      "actions": [
-        "activate",
-        "up",
-        "right",
-        "up",
         "up",
         "right",
         "up",
         "right",
         "right",
         "down",
+        "down",
+        "left",
+        "down",
+        "down",
+        "right",
+        "right",
+        "up",
+        "right",
         "right",
         "right",
         "up",
         "up",
+        "left",
+        "left",
         "up"
       ],
       "expectedCodes": [
@@ -3093,33 +1664,113 @@
         "accepted",
         "accepted",
         "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
         "success"
       ],
       "expectedPhase": "complete",
-      "expectedPlayerTileId": "a.maze.03.t.6.0"
+      "expectedPlayerTileId": "a.maze.03.t.5.0"
+    },
+    {
+      "id": "a.maze.03.witness.alternative",
+      "definitionId": "a.maze.03",
+      "kind": "alternative",
+      "description": "合法进入首格后折返入口，再沿安全路线完成；记忆迷宫允许安全格重走。",
+      "actions": [
+        "activate",
+        "right",
+        "left",
+        "right",
+        "up",
+        "right",
+        "up",
+        "right",
+        "right",
+        "down",
+        "down",
+        "left",
+        "down",
+        "down",
+        "right",
+        "right",
+        "up",
+        "right",
+        "right",
+        "right",
+        "up",
+        "up",
+        "left",
+        "left",
+        "up"
+      ],
+      "expectedCodes": [
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "success"
+      ],
+      "expectedPhase": "complete",
+      "expectedPlayerTileId": "a.maze.03.t.5.0"
     },
     {
       "id": "a.maze.03.witness.recovery",
       "definitionId": "a.maze.03",
       "kind": "failureRecovery",
-      "description": "相邻移动踩入危险格后完整恢复基线，重新观察并成功。",
+      "description": "第二步踩中原图危险格，回安全起点重新观察，再完成。",
       "actions": [
         "activate",
-        "up",
-        "up",
+        "right",
+        "right",
         "activate",
+        "right",
         "up",
         "right",
         "up",
+        "right",
+        "right",
+        "down",
+        "down",
+        "left",
+        "down",
+        "down",
+        "right",
+        "right",
         "up",
+        "right",
+        "right",
         "right",
         "up",
         "up",
-        "up",
-        "right",
-        "right",
-        "right",
-        "right"
+        "left",
+        "left",
+        "up"
       ],
       "expectedCodes": [
         "accepted",
@@ -3137,29 +1788,27 @@
         "accepted",
         "accepted",
         "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
         "success"
       ],
       "expectedPhase": "complete",
-      "expectedPlayerTileId": "a.maze.03.t.6.0"
+      "expectedPlayerTileId": "a.maze.03.t.5.0"
     },
     {
       "id": "b.line.01.witness.success",
       "definitionId": "b.line.01",
       "kind": "success",
-      "description": "每个必经格恰好经过一次，最后到终点。",
-      "actions": [
-        "right",
-        "right",
-        "down",
-        "left",
-        "left",
-        "down",
-        "right",
-        "right",
-        "right",
-        "up",
-        "up"
-      ],
+      "description": "逐步复现原图箭头，收齐六数据目标并到固定终点；空地板允许行走。",
+      "actions": ["up", "right", "up", "left", "left", "left", "up", "right", "right", "up"],
       "expectedCodes": [
         "accepted",
         "accepted",
@@ -3170,27 +1819,62 @@
         "accepted",
         "accepted",
         "accepted",
+        "success"
+      ],
+      "expectedPhase": "complete",
+      "expectedPlayerTileId": "b.line.01.t.2.n1"
+    },
+    {
+      "id": "b.line.01.witness.recovery",
+      "definitionId": "b.line.01",
+      "kind": "failureRecovery",
+      "description": "返回已走起点触发失败，目标和路径清空后从起点正常重试完成。",
+      "actions": [
+        "up",
+        "down",
+        "up",
+        "right",
+        "up",
+        "left",
+        "left",
+        "left",
+        "up",
+        "right",
+        "right",
+        "up"
+      ],
+      "expectedCodes": [
+        "accepted",
+        "failed",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
         "accepted",
         "success"
       ],
       "expectedPhase": "complete",
-      "expectedPlayerTileId": "b.line.01.t.3.0"
+      "expectedPlayerTileId": "b.line.01.t.2.n1"
     },
     {
-      "id": "b.line.01.witness.alternative",
-      "definitionId": "b.line.01",
-      "kind": "alternative",
-      "description": "使用不同转向次序覆盖全部必经格。",
+      "id": "b.line.02.witness.success",
+      "definitionId": "b.line.02",
+      "kind": "success",
+      "description": "逐步复现原图箭头，收齐六数据目标并到固定终点；空地板允许行走。",
       "actions": [
-        "right",
         "down",
+        "left",
         "left",
         "down",
         "right",
+        "down",
         "right",
         "right",
         "up",
-        "left",
         "up",
         "right"
       ],
@@ -3208,265 +1892,31 @@
         "success"
       ],
       "expectedPhase": "complete",
-      "expectedPlayerTileId": "b.line.01.t.3.0"
-    },
-    {
-      "id": "b.line.01.witness.recovery",
-      "definitionId": "b.line.01",
-      "kind": "deadEndRecovery",
-      "description": "先走入所有合法后继均耗尽的路径死端，非法一步不修改布局；撤销、重置后成功。",
-      "actions": [
-        "right",
-        "right",
-        "down",
-        "right",
-        "down",
-        "left",
-        "left",
-        "up",
-        "left",
-        "down",
-        "up",
-        "undo",
-        "reset",
-        "right",
-        "right",
-        "down",
-        "left",
-        "left",
-        "down",
-        "right",
-        "right",
-        "right",
-        "up",
-        "up"
-      ],
-      "expectedCodes": [
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "alreadyVisited",
-        "undone",
-        "reset",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "success"
-      ],
-      "expectedPhase": "complete",
-      "expectedPlayerTileId": "b.line.01.t.3.0"
-    },
-    {
-      "id": "b.line.02.witness.success",
-      "definitionId": "b.line.02",
-      "kind": "success",
-      "description": "每个必经格恰好经过一次，最后到终点。",
-      "actions": [
-        "right",
-        "right",
-        "right",
-        "right",
-        "down",
-        "down",
-        "left",
-        "up",
-        "left",
-        "left",
-        "left",
-        "down",
-        "right",
-        "down",
-        "left",
-        "down",
-        "right",
-        "right",
-        "up",
-        "right",
-        "down",
-        "right",
-        "up"
-      ],
-      "expectedCodes": [
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "success"
-      ],
-      "expectedPhase": "complete",
-      "expectedPlayerTileId": "b.line.02.t.4.3"
-    },
-    {
-      "id": "b.line.02.witness.alternative",
-      "definitionId": "b.line.02",
-      "kind": "alternative",
-      "description": "使用不同转向次序覆盖全部必经格。",
-      "actions": [
-        "right",
-        "right",
-        "down",
-        "right",
-        "up",
-        "right",
-        "down",
-        "down",
-        "left",
-        "down",
-        "left",
-        "left",
-        "up",
-        "up",
-        "left",
-        "down",
-        "down",
-        "down",
-        "right",
-        "right",
-        "right",
-        "right",
-        "up"
-      ],
-      "expectedCodes": [
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "success"
-      ],
-      "expectedPhase": "complete",
-      "expectedPlayerTileId": "b.line.02.t.4.3"
+      "expectedPlayerTileId": "b.line.02.t.4.0"
     },
     {
       "id": "b.line.02.witness.recovery",
       "definitionId": "b.line.02",
-      "kind": "deadEndRecovery",
-      "description": "先走入所有合法后继均耗尽的路径死端，非法一步不修改布局；撤销、重置后成功。",
+      "kind": "failureRecovery",
+      "description": "返回已走起点触发失败，目标和路径清空后从起点正常重试完成。",
       "actions": [
-        "right",
-        "right",
-        "right",
-        "right",
         "down",
-        "down",
-        "left",
         "up",
-        "left",
-        "left",
         "down",
-        "down",
-        "right",
-        "right",
-        "down",
-        "right",
-        "up",
-        "undo",
-        "reset",
-        "right",
-        "right",
-        "right",
-        "right",
-        "down",
-        "down",
-        "left",
-        "up",
-        "left",
         "left",
         "left",
         "down",
         "right",
-        "down",
-        "left",
         "down",
         "right",
         "right",
         "up",
-        "right",
-        "down",
-        "right",
-        "up"
+        "up",
+        "right"
       ],
       "expectedCodes": [
         "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "endTooEarly",
-        "undone",
-        "reset",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
+        "failed",
         "accepted",
         "accepted",
         "accepted",
@@ -3480,589 +1930,7 @@
         "success"
       ],
       "expectedPhase": "complete",
-      "expectedPlayerTileId": "b.line.02.t.4.3"
-    },
-    {
-      "id": "c.routing.01.witness.success",
-      "definitionId": "c.routing.01",
-      "kind": "success",
-      "description": "先将推车升至阻挡位，使球一停在第四列，再分别送入指定基站。",
-      "actions": [
-        "right",
-        "right",
-        "right",
-        "right",
-        "up",
-        "left",
-        "left",
-        "left",
-        "left",
-        "up",
-        "right",
-        "up",
-        "right",
-        "down",
-        "down",
-        "right",
-        "up"
-      ],
-      "expectedCodes": [
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "success"
-      ],
-      "expectedPhase": "complete",
-      "expectedPlayerTileId": "c.routing.01.t.4.3"
-    },
-    {
-      "id": "c.routing.01.witness.alternative",
-      "definitionId": "c.routing.01",
-      "kind": "alternative",
-      "description": "推车布置相同，交换两只球最后入站的顺序。",
-      "actions": [
-        "right",
-        "right",
-        "right",
-        "right",
-        "up",
-        "left",
-        "left",
-        "left",
-        "left",
-        "up",
-        "right",
-        "down",
-        "right",
-        "right",
-        "up",
-        "left",
-        "left",
-        "up"
-      ],
-      "expectedCodes": [
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "success"
-      ],
-      "expectedPhase": "complete",
-      "expectedPlayerTileId": "c.routing.01.t.2.2"
-    },
-    {
-      "id": "c.routing.01.witness.recovery",
-      "definitionId": "c.routing.01",
-      "kind": "deadEndRecovery",
-      "description": "未先布置推车即推球，使球贴右边界而无法左推；撤销该原子滑行、重置后成功。",
-      "actions": [
-        "up",
-        "up",
-        "right",
-        "undo",
-        "reset",
-        "right",
-        "right",
-        "right",
-        "right",
-        "up",
-        "left",
-        "left",
-        "left",
-        "left",
-        "up",
-        "right",
-        "up",
-        "right",
-        "down",
-        "down",
-        "right",
-        "up"
-      ],
-      "expectedCodes": [
-        "accepted",
-        "accepted",
-        "accepted",
-        "undone",
-        "reset",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "success"
-      ],
-      "expectedPhase": "complete",
-      "expectedPlayerTileId": "c.routing.01.t.4.3"
-    },
-    {
-      "id": "c.theft.01.witness.success",
-      "definitionId": "c.theft.01",
-      "kind": "success",
-      "description": "两种颜色分别匹配接收槽，逐格推动且不串推。",
-      "actions": ["up", "right", "up", "up", "down", "down", "right", "right", "up", "up"],
-      "expectedCodes": [
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "success"
-      ],
-      "expectedPhase": "complete",
-      "expectedPlayerTileId": "c.theft.01.t.4.2"
-    },
-    {
-      "id": "c.theft.01.witness.alternative",
-      "definitionId": "c.theft.01",
-      "kind": "alternative",
-      "description": "先完成右侧品红对象，再完成左侧青色对象。",
-      "actions": [
-        "right",
-        "right",
-        "right",
-        "up",
-        "up",
-        "up",
-        "down",
-        "down",
-        "left",
-        "left",
-        "up",
-        "up"
-      ],
-      "expectedCodes": [
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "success"
-      ],
-      "expectedPhase": "complete",
-      "expectedPlayerTileId": "c.theft.01.t.2.2"
-    },
-    {
-      "id": "c.theft.01.witness.recovery",
-      "definitionId": "c.theft.01",
-      "kind": "deadEndRecovery",
-      "description": "把青色对象推到下边界死角；撤销并重置恢复。",
-      "actions": [
-        "up",
-        "up",
-        "up",
-        "right",
-        "down",
-        "down",
-        "undo",
-        "reset",
-        "up",
-        "right",
-        "up",
-        "up",
-        "down",
-        "down",
-        "right",
-        "right",
-        "up",
-        "up"
-      ],
-      "expectedCodes": [
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "undone",
-        "reset",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "success"
-      ],
-      "expectedPhase": "complete",
-      "expectedPlayerTileId": "c.theft.01.t.4.2"
-    },
-    {
-      "id": "c.theft.02.witness.success",
-      "definitionId": "c.theft.02",
-      "kind": "success",
-      "description": "两个青色对象分别进入同色槽。",
-      "actions": ["up", "right", "up", "up", "down", "down", "left", "left", "up", "up"],
-      "expectedCodes": [
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "success"
-      ],
-      "expectedPhase": "complete",
-      "expectedPlayerTileId": "c.theft.02.t.2.2"
-    },
-    {
-      "id": "c.theft.02.witness.alternative",
-      "definitionId": "c.theft.02",
-      "kind": "alternative",
-      "description": "交换两个同色对象的最终槽位；目标不按对象 ID 绑定。",
-      "actions": [
-        "up",
-        "right",
-        "up",
-        "up",
-        "right",
-        "up",
-        "left",
-        "left",
-        "down",
-        "left",
-        "left",
-        "down",
-        "right",
-        "right",
-        "down",
-        "right",
-        "up",
-        "up"
-      ],
-      "expectedCodes": [
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "success"
-      ],
-      "expectedPhase": "complete",
-      "expectedPlayerTileId": "c.theft.02.t.4.2"
-    },
-    {
-      "id": "c.theft.02.witness.recovery",
-      "definitionId": "c.theft.02",
-      "kind": "deadEndRecovery",
-      "description": "将对象推到下边界死角，越界推动被拒；完整撤销与重置再成功。",
-      "actions": [
-        "left",
-        "up",
-        "up",
-        "left",
-        "up",
-        "up",
-        "right",
-        "down",
-        "down",
-        "down",
-        "down",
-        "undo",
-        "reset",
-        "up",
-        "right",
-        "up",
-        "up",
-        "down",
-        "down",
-        "left",
-        "left",
-        "up",
-        "up"
-      ],
-      "expectedCodes": [
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "blocked",
-        "undone",
-        "reset",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "success"
-      ],
-      "expectedPhase": "complete",
-      "expectedPlayerTileId": "c.theft.02.t.2.2"
-    },
-    {
-      "id": "c.theft.03.witness.success",
-      "definitionId": "c.theft.03",
-      "kind": "success",
-      "description": "先腾开中部通路，再完成三色匹配。",
-      "actions": [
-        "up",
-        "up",
-        "right",
-        "up",
-        "up",
-        "down",
-        "right",
-        "right",
-        "up",
-        "right",
-        "right",
-        "down",
-        "down",
-        "left",
-        "up",
-        "up",
-        "right",
-        "down",
-        "down",
-        "down",
-        "down",
-        "left",
-        "up",
-        "up"
-      ],
-      "expectedCodes": [
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "success"
-      ],
-      "expectedPhase": "complete",
-      "expectedPlayerTileId": "c.theft.03.t.5.4"
-    },
-    {
-      "id": "c.theft.03.witness.alternative",
-      "definitionId": "c.theft.03",
-      "kind": "alternative",
-      "description": "沿右侧绕行，分开调度品红与琥珀对象后成功。",
-      "actions": [
-        "right",
-        "up",
-        "up",
-        "up",
-        "up",
-        "down",
-        "right",
-        "right",
-        "up",
-        "right",
-        "right",
-        "down",
-        "down",
-        "left",
-        "up",
-        "up",
-        "right",
-        "down",
-        "down",
-        "down",
-        "down",
-        "left",
-        "up",
-        "up"
-      ],
-      "expectedCodes": [
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "success"
-      ],
-      "expectedPhase": "complete",
-      "expectedPlayerTileId": "c.theft.03.t.5.4"
-    },
-    {
-      "id": "c.theft.03.witness.recovery",
-      "definitionId": "c.theft.03",
-      "kind": "deadEndRecovery",
-      "description": "将青色对象推至下边界不可回收格；撤销、重置后通关。",
-      "actions": [
-        "up",
-        "up",
-        "up",
-        "up",
-        "right",
-        "down",
-        "down",
-        "down",
-        "undo",
-        "reset",
-        "up",
-        "up",
-        "right",
-        "up",
-        "up",
-        "down",
-        "right",
-        "right",
-        "up",
-        "right",
-        "right",
-        "down",
-        "down",
-        "left",
-        "up",
-        "up",
-        "right",
-        "down",
-        "down",
-        "down",
-        "down",
-        "left",
-        "up",
-        "up"
-      ],
-      "expectedCodes": [
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "undone",
-        "reset",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "accepted",
-        "success"
-      ],
-      "expectedPhase": "complete",
-      "expectedPlayerTileId": "c.theft.03.t.5.4"
+      "expectedPlayerTileId": "b.line.02.t.4.0"
     }
   ]
 }

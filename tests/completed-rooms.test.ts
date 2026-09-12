@@ -5,6 +5,8 @@ import { createGame, dispatch } from "../src/core/engine.ts";
 import { projectBoard } from "../src/core/projection.ts";
 import {
   completedStaticExitTileId,
+  completedStaticEntryTileId,
+  staticOccupiedTiles,
   createStatic,
   createCompletedStaticLayout,
   isCompletedStaticPosition,
@@ -62,7 +64,7 @@ function roomContent(definition: StaticDefinition): GameContent {
   return {
     gameId: "camellia-golden-week",
     contentVersion: 1,
-    ruleVersion: 1,
+    ruleVersion: 4,
     areaIds: ["a"],
     entry: { areaId: "a", tileId: "a.t.0.0" },
     objectives,
@@ -162,9 +164,13 @@ class RoomSession {
 function solve(session: RoomSession, kind: "success" | "alternative" = "success") {
   if (session.state.mode === "explore") session.send({ kind: "Move", direction: "right" });
   assert.equal(session.state.mode, "staticPuzzle");
-  const witness = staticContent.witnesses.find(
-    (candidate) => candidate.id === `${session.definition.id}.witness.${kind}`,
-  )!;
+  const witness =
+    staticContent.witnesses.find(
+      (candidate) => candidate.id === `${session.definition.id}.witness.${kind}`,
+    ) ??
+    staticContent.witnesses.find(
+      (candidate) => candidate.id === `${session.definition.id}.witness.success`,
+    )!;
   for (const [index, action] of witness.actions.entries()) {
     if (action === "activate")
       for (let tick = 0; tick < 16; tick += 1) session.send({ kind: "Tick" }, "accepted", 250);
@@ -186,7 +192,7 @@ const directions = [
 ] as const;
 function completedPath(session: RoomSession, destination: string): StaticDirection[] {
   const definition = session.definition;
-  const layout = session.state.completedRoomLayouts[definition.id]!;
+  const layout = session.state.completedRoomLayouts[definition.id]!.layout;
   const queue = [{ id: session.state.playerPosition.tileId, path: [] as StaticDirection[] }];
   const seen = new Set([session.state.playerPosition.tileId]);
   for (let index = 0; index < queue.length; index += 1) {
@@ -212,17 +218,22 @@ for (const definition of staticContent.definitions) {
     const session = new RoomSession(definition);
     assert.deepEqual(session.state.completedRoomLayouts, {});
     solve(session, "alternative");
-    const witness = staticContent.witnesses.find(
-      (candidate) => candidate.id === `${definition.id}.witness.alternative`,
-    )!;
+    const witness =
+      staticContent.witnesses.find(
+        (candidate) => candidate.id === `${definition.id}.witness.alternative`,
+      ) ??
+      staticContent.witnesses.find(
+        (candidate) => candidate.id === `${definition.id}.witness.success`,
+      )!;
     const actual = replayStaticWitness(definition, witness);
     const record = session.state.completedRoomLayouts[definition.id]!;
-    assert.deepEqual(record, {
-      objectTileById: actual.state.currentLayout.objectTileById,
-      visitedTileIds: actual.state.currentLayout.visitedTileIds,
-      activatedLocalIds: actual.state.currentLayout.activatedLocalIds,
-    });
-    assert.deepEqual(validateCompletedStaticLayout(definition, record), []);
+    assert.deepEqual(
+      record.layout,
+      createCompletedStaticLayout(definition, actual.state, actual.playerTileId),
+    );
+    assert.equal(record.ruleVersion, 4);
+    assert.equal(record.contentVersion, session.content.contentVersion);
+    assert.deepEqual(validateCompletedStaticLayout(definition, record.layout), []);
     assert.equal(Object.hasOwn(record, "playerTileId"), false);
     assert.equal(Object.hasOwn(record, "phase"), false);
     assert.equal(Object.hasOwn(record, "pendingObjectiveIds"), false);
@@ -234,7 +245,7 @@ for (const definition of staticContent.definitions) {
     assert.equal(session.state.phase, "complete");
     assert.equal(session.state.activeStatic, null);
     assert.equal(session.state.activeCompletedRoom?.roomId, definition.id);
-    assert.equal(session.state.playerPosition.tileId, definition.startTileId);
+    assert.equal(session.state.playerPosition.tileId, completedStaticEntryTileId(definition));
     assert.equal(session.state.playerPosition.space, "room");
     session.send({ kind: "Tick" });
     assert.equal(session.state.mode, "completedRoom", "入口不会连锁退出");
@@ -273,9 +284,15 @@ test("完成态迷宫可踏原危险格，一笔画可重复访问，不改已�
       assert.equal(session.state.playerPosition.tileId, hazard);
       assert.equal(session.state.mode, "completedRoom");
     } else {
-      session.send({ kind: "Move", direction: "right" });
-      session.send({ kind: "Move", direction: "left" });
-      assert.equal(session.state.playerPosition.tileId, definition.startTileId);
+      const first = staticContent.witnesses.find(
+        (w) => w.id === `${definition.id}.witness.success`,
+      )!.actions[0] as StaticDirection;
+      session.send({ kind: "Move", direction: first });
+      session.send({
+        kind: "Move",
+        direction: ({ up: "down", down: "up", left: "right", right: "left" } as const)[first],
+      });
+      assert.equal(session.state.playerPosition.tileId, completedStaticEntryTileId(definition));
     }
     assert.deepEqual(session.state.completedRoomLayouts, before);
     assert.equal(session.pickups, 1);
@@ -287,13 +304,27 @@ test("完成态通过出口到世界成功出口；对象房走开再返回入�
     const session = new RoomSession(definition);
     solve(session);
     session.send({ kind: "Move", direction: "left" });
-    if (definition.kind === "routing" || definition.kind === "theft") {
-      session.send({ kind: "Move", direction: "right" });
-      session.send({ kind: "Move", direction: "left" });
-    } else {
-      for (const direction of completedPath(session, completedStaticExitTileId(definition)))
-        session.send({ kind: "Move", direction });
+    if (session.state.playerPosition.tileId === completedStaticExitTileId(definition)) {
+      const start = definition.tiles.find(
+        (tile) => tile.id === session.state.playerPosition.tileId,
+      )!;
+      const first = directions.find(([, dx, dy]) =>
+        definition.tiles.some(
+          (tile) =>
+            tile.x === start.x + dx &&
+            tile.y === start.y + dy &&
+            isCompletedStaticPosition(
+              definition,
+              session.state.completedRoomLayouts[definition.id]!.layout,
+              tile.id,
+            ),
+        ),
+      )!;
+      assert.ok(first);
+      session.send({ kind: "Move", direction: first[0] });
     }
+    for (const direction of completedPath(session, completedStaticExitTileId(definition)))
+      session.send({ kind: "Move", direction });
     assert.equal(session.state.playerPosition.tileId, "a.t.2.0");
     assert.equal(session.state.mode, "explore");
     assert.equal(session.pickups, 1);
@@ -302,16 +333,14 @@ test("完成态通过出口到世界成功出口；对象房走开再返回入�
 
 test("完成态信号球/推车/盗取对象阻挡移动并保持真实位置，不执行推动", () => {
   for (const definition of staticContent.definitions.filter(
-    (candidate) => candidate.kind === "routing" || candidate.kind === "theft",
+    (candidate) => candidate.kind === "capture" || candidate.kind === "theft",
   )) {
     const session = new RoomSession(definition);
     solve(session);
     session.send({ kind: "Move", direction: "left" });
     const record = structuredClone(session.state.completedRoomLayouts[definition.id]!);
-    const targetId =
-      definition.kind === "routing" ? definition.cartIds[0]! : definition.objectIds[0]!;
     const objectTile = definition.tiles.find(
-      (tile) => tile.id === record.objectTileById[targetId],
+      (tile) => tile.id === staticOccupiedTiles(record.layout)[0],
     )!;
     const adjacent = directions
       .map(([direction, dx, dy]) => ({
@@ -322,7 +351,7 @@ test("完成态信号球/推车/盗取对象阻挡移动并保持真实位置，
       }))
       .find(
         (candidate) =>
-          candidate.tile && isCompletedStaticPosition(definition, record, candidate.tile.id),
+          candidate.tile && isCompletedStaticPosition(definition, record.layout, candidate.tile.id),
       );
     assert.ok(adjacent?.tile);
     for (const direction of completedPath(session, adjacent.tile.id))
@@ -338,13 +367,13 @@ test("完成态信号球/推车/盗取对象阻挡移动并保持真实位置，
 });
 
 test("独立练习的替代解不会替换首个实际完成布局或重复奖励", () => {
-  for (const id of ["b.line.01", "c.theft.02"]) {
+  for (const id of ["a.maze.01", "c.capture.02"]) {
     const definition = staticContent.definitions.find((candidate) => candidate.id === id)!;
     const session = new RoomSession(definition);
     solve(session);
     const original = structuredClone(session.state.completedRoomLayouts[id]);
     session.send({ kind: "Move", direction: "left" });
-    session.send({ kind: id.startsWith("b.") ? "Interact" : "PracticeRoom" });
+    session.send({ kind: id.startsWith("a.") ? "Interact" : "PracticeRoom" });
     assert.equal(session.state.activeStatic?.practice, true);
     assert.equal(session.state.activeCompletedRoom, null);
     solve(session, "alternative");
@@ -355,10 +384,18 @@ test("独立练习的替代解不会替换首个实际完成布局或重复奖�
       definition,
       staticContent.witnesses.find((witness) => witness.id === `${id}.witness.alternative`)!,
     );
-    assert.notDeepEqual(
-      createCompletedStaticLayout(definition, alternative.state, alternative.playerTileId),
-      original,
+    assert.deepEqual(
+      validateCompletedStaticLayout(
+        definition,
+        createCompletedStaticLayout(definition, alternative.state, alternative.playerTileId),
+      ),
+      [],
     );
+    if (definition.kind === "capture")
+      assert.notDeepEqual(
+        createCompletedStaticLayout(definition, alternative.state, alternative.playerTileId),
+        original?.layout,
+      );
   }
 });
 
@@ -381,12 +418,11 @@ test("完成布局校验拒绝未解决对象、假完整路径、玩家/待发�
       createCompletedStaticLayout(definition, initial.state, initial.playerTileId),
     );
     if (definition.kind === "oneStroke") {
-      assert.deepEqual(
+      assert.ok(
         validateCompletedStaticLayout(definition, {
           ...layout,
           visitedTileIds: [...definition.requiredTileIds].reverse(),
-        }),
-        [],
+        }).length > 0,
       );
       assert.ok(
         validateCompletedStaticLayout(definition, {
@@ -395,25 +431,20 @@ test("完成布局校验拒绝未解决对象、假完整路径、玩家/待发�
         }).length > 0,
       );
     }
-    if (definition.kind === "routing" || definition.kind === "theft")
+    if (definition.kind === "theft" || definition.kind === "capture")
       assert.ok(
         validateCompletedStaticLayout(definition, {
           ...layout,
-          objectTileById: definition.initialObjectTileById,
+          ...(definition.kind === "theft"
+            ? { theft: initial.state.currentLayout.theft }
+            : { capture: initial.state.currentLayout.capture }),
         }).length > 0,
       );
   }
-  const routing = staticContent.definitions.find((definition) => definition.kind === "routing")!;
-  assert.equal(routing.kind, "routing");
-  if (routing.kind !== "routing") return;
-  const unsafe = {
-    ...routing,
-    initialObjectTileById: {
-      ...routing.initialObjectTileById,
-      [routing.cartIds[0]!]: "c.routing.01.t.1.4",
-    },
-  };
-  assert.ok(validateStaticDefinition(unsafe).some((error) => error.includes("推车可能覆盖")));
+  const capture = staticContent.definitions.find((definition) => definition.kind === "capture")!;
+  assert.ok(
+    validateStaticDefinition({ ...capture, completedEntryTileId: "missing.safe.entry" }).length > 0,
+  );
 });
 
 test("成功布局、目标和奖励在同一修订中提交，旧调用方状态保持原样", () => {

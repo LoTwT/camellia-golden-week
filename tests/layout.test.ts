@@ -108,9 +108,18 @@ test("电视几何经实际 Three 相机投影呈横向1.14比例，壳缝密且
   assert.ok(verticalGap > 0 && verticalGap < 0.03);
 });
 
-test("18个实际局部棋盘在1366/1920视口及缩放两端均避开HUD、完整拟合且每格至少44px", () => {
+test("18个电视局部棋盘在1366/1920视口及缩放两端均完整拟合；3个盗取终端由独立DOM布局验证", () => {
   const content = assembleContent("M4");
-  const definitions = [...content.staticChallenges, ...content.realtimeChallenges];
+  const theft = content.staticChallenges.filter((definition) => definition.kind === "theft");
+  assert.deepEqual(
+    theft.map((definition) => definition.tiles.length),
+    [36, 64, 64],
+  );
+  // Actual flat-panel CSS targets are measured in scripts/browser/r1-stage-check.ts at all three viewports.
+  const definitions = [
+    ...content.staticChallenges.filter((definition) => definition.kind !== "theft"),
+    ...content.realtimeChallenges,
+  ];
   assert.equal(definitions.length, 18);
   for (const definition of definitions) {
     for (const [width, height] of [
@@ -206,17 +215,17 @@ test("窄窗口先采用收起侧栏的内边距；无法同时全盘可见时�
   assertFitsActualBodies(grid(7, 7), custom);
 });
 
-test("镜头在100ms抵达并给呈现留余量，30/60/120帧轨迹一致，低动态即时且可连续改目标", () => {
+test("镜头在90ms抵达并给输入和呈现留余量，30/60/120帧轨迹一致，低动态即时且可连续改目标", () => {
   const from = { x: -2, y: 8 },
     target = { x: 4, y: -3 };
   for (const fps of [30, 60, 120]) {
-    for (let elapsed = 0; elapsed < 100; elapsed += 1000 / fps) {
+    for (let elapsed = 0; elapsed < 90; elapsed += 1000 / fps) {
       const point = cameraFocusAt(from, target, 1000, 1000 + elapsed);
       assert.ok(point.x >= from.x && point.x <= target.x);
       assert.ok(point.y <= from.y && point.y >= target.y);
     }
-    assert.notDeepEqual(cameraFocusAt(from, target, 1000, 1099), target);
-    assert.deepEqual(cameraFocusAt(from, target, 1000, 1100), target);
+    assert.notDeepEqual(cameraFocusAt(from, target, 1000, 1089), target);
+    assert.deepEqual(cameraFocusAt(from, target, 1000, 1090), target);
     assert.deepEqual(cameraFocusAt(from, target, 1000, 2000), target);
   }
   assert.deepEqual(cameraFocusAt(from, target, 1000, 999), from);

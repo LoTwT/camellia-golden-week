@@ -147,8 +147,8 @@ function compareSettingsReplay(
     | { kind: "input"; atMs: number; input: RealtimeInput }
     | { kind: "settings"; atMs: number; settings: GameSettings };
   const steps: ScheduledStep[] = [
-    { kind: "settings", atMs: witness.finishAtMs / 3, settings: defaultSettings },
-    { kind: "settings", atMs: (witness.finishAtMs * 2) / 3, settings: variantSettings },
+    { kind: "settings", atMs: Math.floor(witness.finishAtMs / 3), settings: defaultSettings },
+    { kind: "settings", atMs: Math.floor((witness.finishAtMs * 2) / 3), settings: variantSettings },
     { kind: "settings", atMs: witness.finishAtMs - 1, settings: defaultSettings },
     ...witness.commands.map((input): ScheduledStep => ({
       kind: "input",
@@ -177,8 +177,13 @@ function compareSettingsReplay(
     label,
   );
   const realtime = changed.activeRealtime?.state;
-  const best = changed.bestResults.find((result) => result.challengeId === witness.challengeId);
+  const definition = content.realtimeChallenges.find((item) => item.id === witness.challengeId)!;
+  const best = changed.bestResults.find(
+    (result) =>
+      result.challengeId === witness.challengeId && result.ruleVersion === definition.ruleVersion,
+  );
   assert.ok(realtime && best, label);
+  assert.equal(definition.ruleVersion, realtime.kind === "firewall" ? 3 : 4, label);
   assert.equal(realtime.playerTileId, witness.expectedFinalState.playerTileId, label);
   if (realtime.kind === "firewall") {
     assert.equal(realtime.bestCombo, witness.expectedFinalState.bestCombo, label);
@@ -196,8 +201,12 @@ for (const challengeId of challengeIds) {
   for (const outcome of ["success", "failure"] as const) {
     test(`T08 ${challengeId} ${outcome}：7种设置经公开命令切换后，时钟/分数/反馈/永久结果一致`, () => {
       const entrance = entrances.get(challengeId);
+      const definition = content.realtimeChallenges.find((item) => item.id === challengeId)!;
       const witness = (realtimeContent.witnesses as RealtimeWitness[]).find(
-        (candidate) => candidate.id === `${challengeId}.witness.${outcome}`,
+        (candidate) =>
+          candidate.challengeId === challengeId &&
+          candidate.ruleVersion === definition.ruleVersion &&
+          candidate.id.endsWith(`.witness.${outcome}`),
       );
       assert.ok(entrance && witness);
       for (const variant of settingVariants) compareSettingsReplay(entrance, witness, variant);

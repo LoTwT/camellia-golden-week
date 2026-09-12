@@ -1,3 +1,21 @@
+import {
+  createTheftLayout,
+  moveTheft,
+  theftSolved,
+  theftOccupiedTiles,
+  validateTheftLayout,
+  validateTheftDefinition,
+} from "./data-theft.ts";
+import type { AssemblyTheftDefinition, TheftLayout } from "./data-theft.ts";
+import {
+  createCaptureLayout,
+  moveCapture,
+  captureSolved,
+  captureOccupiedTiles,
+  validateCaptureLayout,
+  validateCaptureDefinition,
+} from "./capture.ts";
+import type { CaptureDefinition, CaptureLayout } from "./capture.ts";
 export type StaticDirection = "up" | "right" | "down" | "left";
 export type StaticPhase = "preview" | "active" | "complete";
 export type StaticColor = "cyan" | "magenta" | "amber";
@@ -7,7 +25,7 @@ export interface StaticTile {
   readonly boardId: string;
   readonly x: number;
   readonly y: number;
-  readonly terrain: "floor" | "wall";
+  readonly terrain: "floor" | "wall" | "buffer";
 }
 
 interface StaticDefinitionBase {
@@ -44,24 +62,19 @@ export interface RoutingDefinition extends StaticDefinitionBase {
   readonly targetStationByBallId: Readonly<Record<string, string>>;
 }
 
-export interface TheftDefinition extends StaticDefinitionBase {
-  readonly kind: "theft";
-  readonly objectIds: readonly string[];
-  readonly socketIds: readonly string[];
-  readonly initialObjectTileById: Readonly<Record<string, string>>;
-  readonly socketTileById: Readonly<Record<string, string>>;
-  readonly colorByObjectId: Readonly<Record<string, StaticColor>>;
-  readonly colorBySocketId: Readonly<Record<string, StaticColor>>;
-}
+export type TheftDefinition = AssemblyTheftDefinition;
 
 export type StaticDefinition =
   | MemoryDefinition
   | OneStrokeDefinition
   | RoutingDefinition
-  | TheftDefinition;
+  | TheftDefinition
+  | CaptureDefinition;
 
 /** Current player position lives only in the engine, never in this layout. */
 export interface StaticLayout {
+  readonly theft?: TheftLayout;
+  readonly capture?: CaptureLayout;
   readonly objectTileById: Readonly<Record<string, string>>;
   readonly visitedTileIds: readonly string[];
   readonly activatedLocalIds: readonly string[];
@@ -71,8 +84,10 @@ export interface StaticLayout {
 
 /** The first successful layout is permanent; practice never replaces this record. */
 export interface CompletedStaticLayout {
+  readonly theft?: TheftLayout;
+  readonly capture?: CaptureLayout;
   readonly objectTileById: Readonly<Record<string, string>>;
-  /** Completion keeps the fully visited set; it is not an active ordered path. */
+  /** R1 one-stroke completion retains the actual ordered walk, including ordinary floor. */
   readonly visitedTileIds: readonly string[];
   readonly activatedLocalIds: readonly string[];
 }
@@ -154,6 +169,8 @@ export const STATIC_UNDO_LIMIT = 256;
 
 function cloneLayout(layout: StaticLayout): StaticLayout {
   return {
+    ...(layout.theft ? { theft: structuredClone(layout.theft) } : {}),
+    ...(layout.capture ? { capture: structuredClone(layout.capture) } : {}),
     objectTileById: { ...layout.objectTileById },
     visitedTileIds: [...layout.visitedTileIds],
     activatedLocalIds: [...layout.activatedLocalIds],
@@ -168,10 +185,9 @@ function snapshot(playerTileId: string, layout: StaticLayout): StaticSnapshot {
 
 function initialLayout(definition: StaticDefinition): StaticLayout {
   return {
-    objectTileById:
-      definition.kind === "routing" || definition.kind === "theft"
-        ? { ...definition.initialObjectTileById }
-        : {},
+    ...(definition.kind === "theft" ? { theft: createTheftLayout(definition) } : {}),
+    ...(definition.kind === "capture" ? { capture: createCaptureLayout(definition) } : {}),
+    objectTileById: definition.kind === "routing" ? { ...definition.initialObjectTileById } : {},
     visitedTileIds: definition.kind === "oneStroke" ? [definition.startTileId] : [],
     activatedLocalIds: [],
     pendingObjectiveIds: [],
@@ -257,7 +273,6 @@ export function isStaticSolved(
     case "oneStroke":
       return (
         playerTileId === definition.endTileId &&
-        layout.visitedTileIds.length === definition.requiredTileIds.length &&
         definition.requiredTileIds.every((id) => layout.visitedTileIds.includes(id))
       );
     case "routing":
@@ -269,14 +284,9 @@ export function isStaticSolved(
         );
       });
     case "theft":
-      return definition.socketIds.every((socketId) => {
-        const tileId = definition.socketTileById[socketId];
-        const occupyingId = definition.objectIds.find((id) => layout.objectTileById[id] === tileId);
-        return (
-          occupyingId !== undefined &&
-          definition.colorByObjectId[occupyingId] === definition.colorBySocketId[socketId]
-        );
-      });
+      return !!layout.theft && theftSolved(definition, layout.theft);
+    case "capture":
+      return !!layout.capture && captureSolved(definition, layout.capture);
   }
 }
 
@@ -292,10 +302,10 @@ export function moveStatic(
     return reject(state, playerTileId, "wrongMode", "正在观察，记住安全路径后再移动。");
   if (!Object.hasOwn(directionOffsets, direction))
     return reject(state, playerTileId, "invalidTarget", "只能向相邻的四个方向移动。");
-  if (!definition.tiles.some((tile) => tile.id === playerTileId && tile.terrain === "floor"))
+  if (!definition.tiles.some((tile) => tile.id === playerTileId && tile.terrain !== "wall"))
     return reject(state, playerTileId, "invalidTarget", "玩家不在当前房间的有效格子。");
   const target = adjacentTile(definition, playerTileId, direction);
-  if (!target || target.terrain !== "floor")
+  if (!target || target.terrain === "wall")
     return reject(state, playerTileId, "blocked", "这里是墙或房间边界。");
 
   if (definition.kind === "memory" && definition.hazardTileIds.includes(target.id)) {
@@ -312,25 +322,45 @@ export function moveStatic(
   }
 
   let layout = cloneLayout(state.currentLayout);
+  let actionMessage = "已移动。";
   if (definition.kind === "oneStroke") {
-    if (!definition.requiredTileIds.includes(target.id))
-      return reject(state, playerTileId, "blocked", "这里只能沿必经路径移动。");
-    if (layout.visitedTileIds.includes(target.id))
-      return reject(
+    if (layout.visitedTileIds.includes(target.id)) {
+      const reset = resetStatic(definition, state, playerTileId);
+      return transition(
         state,
         playerTileId,
-        "alreadyVisited",
-        "每个路径格只能经过一次，可撤销上一步。",
+        reset.state,
+        reset.playerTileId,
+        "failed",
+        "重复经过旧格，已回起点并清空本次路径。",
+        true,
       );
+    }
     if (
       target.id === definition.endTileId &&
-      layout.visitedTileIds.length !== definition.requiredTileIds.length - 1
+      definition.requiredTileIds.some(
+        (id) => id !== target.id && !layout.visitedTileIds.includes(id),
+      )
     )
       return reject(state, playerTileId, "endTooEarly", "先走完其他必经格，最后到达终点。");
     layout = { ...layout, visitedTileIds: [...layout.visitedTileIds, target.id] };
   }
 
-  if (definition.kind === "routing" || definition.kind === "theft") {
+  if (definition.kind === "theft") {
+    if (!layout.theft) return reject(state, playerTileId, "invalidTarget", "组件布局缺失");
+    const moved = moveTheft(definition, layout.theft, playerTileId, direction);
+    if (!moved.legal) return reject(state, playerTileId, "blocked", moved.reason);
+    layout = { ...layout, theft: moved.layout };
+    actionMessage = moved.reason;
+  }
+  if (definition.kind === "capture") {
+    if (!layout.capture) return reject(state, playerTileId, "invalidTarget", "捕获布局缺失");
+    const moved = moveCapture(definition, layout.capture, playerTileId, direction);
+    if (!moved.legal) return reject(state, playerTileId, "blocked", moved.reason);
+    layout = { ...layout, capture: moved.layout };
+    actionMessage = moved.reason;
+  }
+  if (definition.kind === "routing") {
     const pushedId = objectAt(layout, target.id);
     if (pushedId) {
       const firstLanding = adjacentTile(definition, target.id, direction);
@@ -365,7 +395,7 @@ export function moveStatic(
     next,
     target.id,
     success ? "success" : "accepted",
-    success ? "机关完成。" : "已移动。",
+    success ? "机关完成。" : actionMessage,
     true,
   );
 }
@@ -436,7 +466,19 @@ export function completedStaticExitTileId(definition: StaticDefinition): string 
     ? definition.exitTileId
     : definition.kind === "oneStroke"
       ? definition.endTileId
-      : definition.startTileId;
+      : completedStaticEntryTileId(definition);
+}
+
+export function completedStaticEntryTileId(definition: StaticDefinition): string {
+  return definition.kind === "capture" ? definition.completedEntryTileId : definition.startTileId;
+}
+
+export function staticOccupiedTiles(layout: CompletedStaticLayout): string[] {
+  return [
+    ...Object.values(layout.objectTileById),
+    ...(layout.theft ? theftOccupiedTiles(layout.theft) : []),
+    ...(layout.capture ? captureOccupiedTiles(layout.capture) : []),
+  ];
 }
 
 export function isCompletedStaticPosition(
@@ -445,8 +487,8 @@ export function isCompletedStaticPosition(
   playerTileId: string,
 ): boolean {
   return (
-    definition.tiles.some((tile) => tile.id === playerTileId && tile.terrain === "floor") &&
-    !Object.values(layout.objectTileById).includes(playerTileId)
+    definition.tiles.some((tile) => tile.id === playerTileId && tile.terrain !== "wall") &&
+    !staticOccupiedTiles(layout).includes(playerTileId)
   );
 }
 
@@ -472,7 +514,7 @@ export function moveCompletedStatic(
   const from = definition.tiles.find((tile) => tile.id === playerTileId)!;
   const [dx, dy] = directionOffsets[direction];
   const target = definition.tiles.find((tile) => tile.x === from.x + dx && tile.y === from.y + dy);
-  if (!target || target.terrain !== "floor") return rejected("blocked", "此处没有可通行道路。");
+  if (!target || target.terrain === "wall") return rejected("blocked", "此处没有可通行道路。");
   if (!isCompletedStaticPosition(definition, layout, target.id))
     return rejected("blocked", "已完成的物体保持原位；按 F 可开始独立练习。");
   return {
@@ -493,6 +535,10 @@ export function createCompletedStaticLayout(
   if (state.phase !== "complete" || !isStaticSolved(definition, state.currentLayout, playerTileId))
     throw new Error(`${definition.id}: 只有真实成功布局可以提交`);
   const layout: CompletedStaticLayout = {
+    ...(state.currentLayout.theft ? { theft: structuredClone(state.currentLayout.theft) } : {}),
+    ...(state.currentLayout.capture
+      ? { capture: structuredClone(state.currentLayout.capture) }
+      : {}),
     objectTileById: { ...state.currentLayout.objectTileById },
     visitedTileIds: [...state.currentLayout.visitedTileIds],
     activatedLocalIds: [...state.currentLayout.activatedLocalIds],
@@ -506,9 +552,10 @@ export function createCompletedStaticLayout(
 export function validateCompletedStaticEntrySafety(definition: StaticDefinition): string[] {
   if (definition.kind === "memory" || definition.kind === "oneStroke") return [];
   if (definition.kind === "theft")
-    return Object.values(definition.socketTileById).includes(definition.startTileId)
+    return Object.values(definition.portTileById).includes(definition.startTileId)
       ? [`${definition.id}: 完成态接收槽不能覆盖安全访问入口`]
       : [];
+  if (definition.kind === "capture") return [];
   if (
     Object.values(definition.targetStationByBallId).some(
       (id) => definition.stationTileById[id] === definition.startTileId,
@@ -654,6 +701,8 @@ function connectedTileIds(
 
 /** Runtime validation is shared by content checks and untrusted-save checks. */
 export function validateStaticDefinition(raw: unknown): string[] {
+  if (isRecord(raw) && raw.kind === "theft") return validateTheftDefinition(raw);
+  if (isRecord(raw) && raw.kind === "capture") return validateCaptureDefinition(raw);
   const errors: string[] = [];
   if (!isRecord(raw)) return ["static: 必须是对象"];
   const path = typeof raw.id === "string" ? raw.id : "static";
@@ -682,16 +731,6 @@ export function validateStaticDefinition(raw: unknown): string[] {
         "initialObjectTileById",
         "stationTileById",
         "targetStationByBallId",
-      ];
-      break;
-    case "theft":
-      extraKeys = [
-        "objectIds",
-        "socketIds",
-        "initialObjectTileById",
-        "socketTileById",
-        "colorByObjectId",
-        "colorBySocketId",
       ];
       break;
     default:
@@ -739,12 +778,6 @@ export function validateStaticDefinition(raw: unknown): string[] {
   const floors = new Set(tiles.filter((tile) => tile.terrain === "floor").map((tile) => tile.id));
   const startTileId = typeof raw.startTileId === "string" ? raw.startTileId : "";
   checkFloorReferences([startTileId], floors, `${path}.startTileId`, errors);
-  if (raw.kind === "theft" && tiles.length > 0) {
-    const xs = tiles.map((tile) => tile.x);
-    const ys = tiles.map((tile) => tile.y);
-    if (Math.max(...xs) - Math.min(...xs) >= 9 || Math.max(...ys) - Math.min(...ys) >= 9)
-      errors.push(`${path}.tiles: 终端棋盘不能超过 9×9`);
-  }
   if (raw.kind === "memory") {
     const safe = readIds(raw.safeTileIds, `${path}.safeTileIds`, errors);
     const hazards = readIds(raw.hazardTileIds, `${path}.hazardTileIds`, errors);
@@ -767,14 +800,13 @@ export function validateStaticDefinition(raw: unknown): string[] {
     checkFloorReferences(required, floors, `${path}.requiredTileIds`, errors);
     if (
       required.length < 2 ||
-      !required.includes(startTileId) ||
       typeof raw.endTileId !== "string" ||
       !required.includes(raw.endTileId) ||
       raw.endTileId === startTileId
     )
       errors.push(`${path}: 必经路径必须包含不同的起终点`);
-    if (connectedTileIds(tiles, required, startTileId).size !== required.length)
-      errors.push(`${path}: 必经路径不连通`);
+    const reachable = connectedTileIds(tiles, [...floors], startTileId);
+    if (required.some((id) => !reachable.has(id))) errors.push(`${path}: 必取目标不可达`);
   } else {
     const objectIds =
       raw.kind === "routing"
@@ -782,7 +814,7 @@ export function validateStaticDefinition(raw: unknown): string[] {
             ...readIds(raw.ballIds, `${path}.ballIds`, errors),
             ...readIds(raw.cartIds, `${path}.cartIds`, errors),
           ]
-        : readIds(raw.objectIds, `${path}.objectIds`, errors);
+        : [];
     if (objectIds.length === 0) errors.push(`${path}: 至少需要一个可移动对象`);
     checkDistinct(objectIds, `${path}.objectIds`, errors);
     const objects = readIdMap(
@@ -816,34 +848,6 @@ export function validateStaticDefinition(raw: unknown): string[] {
       for (const station of Object.values(targets))
         if (!stations.includes(station))
           errors.push(`${path}.targetStationByBallId: 未知基站 ${station}`);
-    } else {
-      const sockets = readIds(raw.socketIds, `${path}.socketIds`, errors);
-      const socketTiles = readIdMap(raw.socketTileById, sockets, `${path}.socketTileById`, errors);
-      const objectColors = readIdMap(
-        raw.colorByObjectId,
-        objectIds,
-        `${path}.colorByObjectId`,
-        errors,
-      );
-      const socketColors = readIdMap(
-        raw.colorBySocketId,
-        sockets,
-        `${path}.colorBySocketId`,
-        errors,
-      );
-      checkFloorReferences(Object.values(socketTiles), floors, `${path}.socketTileById`, errors);
-      checkDistinct(Object.values(socketTiles), `${path}.socketTileById`, errors);
-      if (objectIds.length !== sockets.length) errors.push(`${path}: 对象数必须等于必需槽数`);
-      for (const color of [...Object.values(objectColors), ...Object.values(socketColors)])
-        if (!["cyan", "magenta", "amber"].includes(color))
-          errors.push(`${path}: 未知对象颜色 ${color}`);
-      for (const color of ["cyan", "magenta", "amber"]) {
-        if (
-          Object.values(objectColors).filter((value) => value === color).length !==
-          Object.values(socketColors).filter((value) => value === color).length
-        )
-          errors.push(`${path}: ${color} 对象与接收槽数量不匹配`);
-      }
     }
   }
   if (errors.length === 0)
@@ -861,7 +865,7 @@ function validateLayoutSnapshot(
   checkKeys(raw, ["playerTileId", "layout"], path, errors);
   if (!isStableId(raw.playerTileId)) errors.push(`${path}.playerTileId: 非法 ID`);
   const floors = new Set(
-    definition.tiles.filter((tile) => tile.terrain === "floor").map((tile) => tile.id),
+    definition.tiles.filter((tile) => tile.terrain !== "wall").map((tile) => tile.id),
   );
   const playerTileId = typeof raw.playerTileId === "string" ? raw.playerTileId : "";
   checkFloorReferences([playerTileId], floors, `${path}.playerTileId`, errors);
@@ -875,16 +879,14 @@ function validateLayoutSnapshot(
       "activatedLocalIds",
       "pendingObjectiveIds",
       "pendingRewardIds",
+      ...(definition.kind === "theft" ? ["theft"] : []),
+      ...(definition.kind === "capture" ? ["capture"] : []),
     ],
     `${path}.layout`,
     errors,
   );
   const objectIds =
-    definition.kind === "routing"
-      ? [...definition.ballIds, ...definition.cartIds]
-      : definition.kind === "theft"
-        ? definition.objectIds
-        : [];
+    definition.kind === "routing" ? [...definition.ballIds, ...definition.cartIds] : [];
   const objects = readIdMap(
     layout.objectTileById,
     objectIds,
@@ -894,6 +896,10 @@ function validateLayoutSnapshot(
   checkFloorReferences(Object.values(objects), floors, `${path}.layout.objectTileById`, errors);
   checkDistinct(Object.values(objects), `${path}.layout.objectTileById`, errors);
   if (Object.values(objects).includes(playerTileId)) errors.push(`${path}: 玩家与阻挡对象重合`);
+  if (definition.kind === "theft")
+    errors.push(...validateTheftLayout(definition, layout.theft, playerTileId));
+  if (definition.kind === "capture")
+    errors.push(...validateCaptureLayout(definition, layout.capture, playerTileId));
   const visited = readIds(layout.visitedTileIds, `${path}.layout.visitedTileIds`, errors);
   const local = readIds(layout.activatedLocalIds, `${path}.layout.activatedLocalIds`, errors);
   readIds(layout.pendingObjectiveIds, `${path}.layout.pendingObjectiveIds`, errors);
@@ -904,7 +910,7 @@ function validateLayoutSnapshot(
       errors.push(`${path}: 路径起点或末端与玩家位置不一致`);
     for (let index = 0; index < visited.length; index += 1) {
       const id = visited[index];
-      if (!id || !definition.requiredTileIds.includes(id)) errors.push(`${path}: 路径引用非必经格`);
+      if (!id || !floors.has(id)) errors.push(`${path}: 路径引用不可走格`);
       if (index > 0) {
         const previous = definition.tiles.find((tile) => tile.id === visited[index - 1]);
         const current = definition.tiles.find((tile) => tile.id === id);
@@ -918,7 +924,7 @@ function validateLayoutSnapshot(
     }
     if (
       visited.includes(definition.endTileId) &&
-      (visited.length !== definition.requiredTileIds.length ||
+      (definition.requiredTileIds.some((id) => !visited.includes(id)) ||
         visited.at(-1) !== definition.endTileId)
     )
       errors.push(`${path}: 在走完必经格前进入终点`);
@@ -936,21 +942,24 @@ export function validateCompletedStaticLayout(
   const path = `${definition.id}.completedLayout`;
   if (!isRecord(raw)) return [`${path}: 缺少已提交布局`];
   const errors: string[] = [];
-  checkKeys(raw, ["objectTileById", "visitedTileIds", "activatedLocalIds"], path, errors);
-  if (definition.kind === "oneStroke") {
-    readIdMap(raw.objectTileById, [], `${path}.objectTileById`, errors);
-    const visited = readIds(raw.visitedTileIds, `${path}.visitedTileIds`, errors);
-    const local = readIds(raw.activatedLocalIds, `${path}.activatedLocalIds`, errors);
-    if (local.length > 0) errors.push(`${path}: 当前房间没有可逆开关定义`);
-    if (
-      visited.length !== definition.requiredTileIds.length ||
-      definition.requiredTileIds.some((id) => !visited.includes(id))
-    )
-      errors.push(`${path}: 一笔画完成布局必须包含全部且仅有必经格`);
-    return errors;
-  }
+  checkKeys(
+    raw,
+    [
+      "objectTileById",
+      "visitedTileIds",
+      "activatedLocalIds",
+      ...(definition.kind === "theft" ? ["theft"] : []),
+      ...(definition.kind === "capture" ? ["capture"] : []),
+    ],
+    path,
+    errors,
+  );
   const completionTileId =
-    definition.kind === "memory" ? definition.exitTileId : definition.startTileId;
+    definition.kind === "memory"
+      ? definition.exitTileId
+      : definition.kind === "oneStroke"
+        ? definition.endTileId
+        : completedStaticEntryTileId(definition);
   const layout = { ...raw, pendingObjectiveIds: [], pendingRewardIds: [] };
   errors.push(
     ...validateLayoutSnapshot(definition, { playerTileId: completionTileId, layout }, path),
@@ -959,7 +968,7 @@ export function validateCompletedStaticLayout(
   const completed = raw as unknown as CompletedStaticLayout;
   if (!isStaticSolved(definition, layout as unknown as StaticLayout, completionTileId))
     errors.push(`${path}: 提交的布局不满足房间成功条件`);
-  if (!isCompletedStaticPosition(definition, completed, definition.startTileId))
+  if (!isCompletedStaticPosition(definition, completed, completedStaticEntryTileId(definition)))
     errors.push(`${path}: 已完成布局覆盖安全访问入口`);
   if (!isCompletedStaticPosition(definition, completed, completedStaticExitTileId(definition)))
     errors.push(`${path}: 已完成布局覆盖访问出口`);
@@ -968,6 +977,8 @@ export function validateCompletedStaticLayout(
 
 function sameLayout(left: StaticLayout, right: StaticLayout): boolean {
   return (
+    JSON.stringify(left.theft) === JSON.stringify(right.theft) &&
+    JSON.stringify(left.capture) === JSON.stringify(right.capture) &&
     Object.keys(left.objectTileById).length === Object.keys(right.objectTileById).length &&
     Object.entries(left.objectTileById).every(
       ([key, value]) => right.objectTileById[key] === value,
@@ -1112,8 +1123,15 @@ export function validateStaticContent(raw: unknown): string[] {
       definition.kind === "routing"
         ? [...definition.ballIds, ...definition.cartIds, ...definition.stationIds]
         : definition.kind === "theft"
-          ? [...definition.objectIds, ...definition.socketIds]
-          : [];
+          ? [
+              ...definition.ballIds,
+              ...definition.baseStationIds,
+              ...definition.amplifierIds,
+              ...definition.powerPortIds,
+            ]
+          : definition.kind === "capture"
+            ? [...definition.cartIds, ...definition.bangbooIds]
+            : [];
     for (const id of objects) {
       if (entityIds.has(id)) errors.push(`static.json: 跨房间重复对象 ${id}`);
       entityIds.add(id);

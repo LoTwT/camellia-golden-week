@@ -12,7 +12,11 @@ import {
 } from "../src/content/assemble.ts";
 import oldM1 from "../src/content/witnesses/m1.json" with { type: "json" };
 import { worldWitnesses, v2WorldWitnesses } from "../src/content/witnesses/index.ts";
-import { replayWorldWitness, validateContent } from "../src/content/validate.ts";
+import {
+  replayWorldWitness as historicalReplay,
+  validateContent as historicalValidate,
+} from "../src/content/history/pre-r1/validate.ts";
+import type { GameContent as HistoricalContent } from "../src/content/history/pre-r1/types.ts";
 import type { WorldWitness } from "../src/content/validate.ts";
 import { createGame, dispatch } from "../src/core/engine.ts";
 import { gateOpen, supplyProgress } from "../src/core/progress.ts";
@@ -106,7 +110,7 @@ test("v2 防火墙固定 5×4 / 110 BPM，27/82 拍均有完整窗口，奖励�
     const content = assembleV2Content(profile);
     assert.equal(content.contentVersion, Math.min(Number(profile.slice(1)), 4) + 1);
     assert.equal(content.ruleVersion, 2);
-    assert.deepEqual(validateContent(content), []);
+    assert.deepEqual(historicalValidate(content as unknown as HistoricalContent), []);
   }
 });
 
@@ -274,7 +278,10 @@ test("v1 原始实时定义保留 25 格、120 BPM、30/90 拍，历史文件按
 
 test("v2 十条世界见证与十八条实时见证公开命令重放均保持目标与完整物资账本", () => {
   for (const witness of v2WorldWitnesses) {
-    const result = replayWorldWitness(assembleV2Content(witness.profileId), witness);
+    const result = historicalReplay(
+      assembleV2Content(witness.profileId) as unknown as HistoricalContent,
+      witness,
+    );
     assert.deepEqual(result.issues, [], witness.id);
   }
   for (const witness of v2RealtimeContent.witnesses as RealtimeWitness[]) {
@@ -350,10 +357,11 @@ test("五个历史 profile 到本版同/较后 profile 有唯一迁移；旧物�
       assert.equal(plan.steps[0]?.definition.kind, "mapped");
       assert.equal(plan.steps[0]?.to.profile.id, sourceProfile);
       assert.equal(plan.steps[1]?.definition.kind, "rules");
-      assert.ok(plan.steps.slice(2).every((step) => step.definition.kind === "additive"));
+      assert.equal(plan.steps[2]?.definition.kind, "mapped");
+      assert.ok(plan.steps.slice(3).every((step) => step.definition.kind === "additive"));
       const migrated = validatePayload(original.payload, target, registry);
       assert.ok(migrated.ok, migrated.ok ? "" : migrated.error);
-      assert.equal(migrated.value.ruleVersion, 3);
+      assert.equal(migrated.value.ruleVersion, 4);
       assert.deepEqual(migrated.value.bestResults, source.value.bestResults);
       assert.deepEqual(migrated.value.claimedRewardIds, source.value.claimedRewardIds);
       assert.deepEqual(migrated.value.completedObjectiveIds, source.value.completedObjectiveIds);
@@ -446,7 +454,7 @@ test("v1/v2/v3 挑战中保存只保留外层锚点，升级与恢复不带局�
   }
 });
 
-test("部分构建只带本期/较早三版本视图，当前版本最后；每个视图可解析正确迁移", async () => {
+test("部分构建只带本期/较早四版本视图，当前版本最后；每个视图可解析正确迁移", async () => {
   for (const [index, profile] of profiles.entries()) {
     const releases = migrationContentReleases(profile);
     const source = contentModuleSource(releases);
@@ -454,7 +462,7 @@ test("部分构建只带本期/较早三版本视图，当前版本最后；每�
       default: GameContent;
       migrationReleases: GameContent[];
     };
-    assert.equal(module.migrationReleases.length, (index + 1) * 3);
+    assert.equal(module.migrationReleases.length, (index + 1) * 4);
     assert.deepEqual(module.default, assembleContent(profile));
     assert.equal(module.default, module.migrationReleases.at(-1));
     assert.ok(

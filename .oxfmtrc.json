@@ -8,6 +8,7 @@
     "tmp/**",
     "docs/spec/**",
     "docs/verification/evidence/**",
-    "docs/verification/2026-09-10-spec.md"
+    "docs/verification/2026-09-10-spec.md",
+    "tests/fixtures/r1/*.json"
   ]
 }

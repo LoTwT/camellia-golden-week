@@ -1,16 +1,15 @@
-// These tests replay the original v1 recordings/exports against their published content view.
+// Replay current R1 routes through the current engine and projection.
 import assert from "node:assert/strict";
 import test from "node:test";
-import { assembleLegacyContent as assembleContent } from "../src/content/assemble.ts";
+import { assembleContent } from "../src/content/assemble.ts";
 import type { WorldWitness } from "../src/content/validate.ts";
-import m1Witnesses from "../src/content/witnesses/m1.json" with { type: "json" };
-import m4Witnesses from "../src/content/witnesses/m4.json" with { type: "json" };
+import r1Witnesses from "../src/content/witnesses/r1-world.json" with { type: "json" };
 import { createGame, dispatch } from "../src/core/engine.ts";
 import { projectBoard } from "../src/core/projection.ts";
 import type { GameContent, GameState } from "../src/core/types.ts";
 
 const content = assembleContent("M1");
-const fullWitness = (m1Witnesses.witnesses as WorldWitness[]).find(
+const fullWitness = (r1Witnesses.witnesses as WorldWitness[]).find(
   (witness) => witness.id === "m1.world.full-collection-and-return",
 )!;
 
@@ -132,7 +131,7 @@ test("S01 迷宫危险只在真实观察阶段展示，观察结束后投影不�
 
 test("I04 / D 未揭示的隐藏路线不作为未知边界泄漏，揭示并走近后才展示", () => {
   const m4 = assembleContent("M4");
-  const witness = (m4Witnesses.witnesses as WorldWitness[]).find(
+  const witness = (r1Witnesses.witnesses as WorldWitness[]).find(
     (candidate) => candidate.id === "m4.world.main-path-without-scored-challenges",
   )!;
   const before = firstState((state) => state.playerPosition.boardId === "d", m4, witness);
@@ -150,4 +149,39 @@ test("I04 / D 未揭示的隐藏路线不作为未知边界泄漏，揭示并走
   );
   assert.equal(screen(after, "d.t.-2.0", m4).known, true);
   assert.notEqual(screen(after, "d.t.-2.0", m4).icon, "unknown");
+});
+
+test("R1 one-stroke exposes exactly six required data tiles and keeps ordinary floor distinct", () => {
+  const m2 = assembleContent("M2");
+  const witness = (r1Witnesses.witnesses as WorldWitness[]).find(
+    (item) => item.id === "m2.world.main-path",
+  )!;
+  const state = firstState((item) => item.activeStatic?.roomId === "b.line.01", m2, witness);
+  const definition = m2.staticChallenges.find((item) => item.id === "b.line.01")!;
+  assert.ok(definition.kind === "oneStroke");
+  for (const tile of projectBoard(m2, state).tiles) {
+    if (tile.id === definition.endTileId) assert.equal(tile.icon, "portal-ready");
+    else if (definition.requiredTileIds.includes(tile.id)) assert.equal(tile.icon, "data-ready");
+    else assert.equal(tile.icon, null);
+  }
+});
+
+test("R1 D brick obstacles are visible walls, distinct from missing floor; ghost/lamp remain readable", () => {
+  const m4 = assembleContent("M4");
+  const witness = (r1Witnesses.witnesses as WorldWitness[]).find(
+    (item) => item.id === "m4.world.main-path-without-scored-challenges",
+  )!;
+  const state = firstState((item) => item.activeRealtime?.roomId === "d.ghost.01", m4, witness);
+  const definition = m4.realtimeChallenges.find((item) => item.id === "d.ghost.01")!;
+  assert.ok(definition.kind === "ghosts");
+  const board = projectBoard(m4, state);
+  assert.equal(board.tiles.length, definition.tiles.length + definition.walls!.length);
+  for (const wall of definition.walls!) {
+    const tile = screen(state, wall.id, m4);
+    assert.equal(tile.icon, "brick-wall");
+    assert.equal(tile.label, "砖墙 · 不可通行");
+    assert.equal(tile.player, false);
+  }
+  assert.equal(board.tiles.filter((tile) => tile.icon === "lamp-unlit").length, 1);
+  assert.equal(board.tiles.filter((tile) => tile.icon === "ghost").length, 2);
 });

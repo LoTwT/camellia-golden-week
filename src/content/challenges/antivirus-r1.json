@@ -1,0 +1,3933 @@
+{
+  "ruleVersion": 4,
+  "adaptationDecisionId": "R1-B-ACCUMULATION-01",
+  "definitions": [
+    {
+      "id": "b.antivirus.light",
+      "boardId": "b.antivirus.light.board",
+      "kind": "antivirus",
+      "ruleVersion": 4,
+      "tiles": [
+        {
+          "id": "b.antivirus.light.tile.0.0",
+          "x": 0,
+          "y": 0
+        },
+        {
+          "id": "b.antivirus.light.tile.1.0",
+          "x": 1,
+          "y": 0
+        },
+        {
+          "id": "b.antivirus.light.tile.2.0",
+          "x": 2,
+          "y": 0
+        },
+        {
+          "id": "b.antivirus.light.tile.3.0",
+          "x": 3,
+          "y": 0
+        },
+        {
+          "id": "b.antivirus.light.tile.4.0",
+          "x": 4,
+          "y": 0
+        },
+        {
+          "id": "b.antivirus.light.tile.0.1",
+          "x": 0,
+          "y": 1
+        },
+        {
+          "id": "b.antivirus.light.tile.1.1",
+          "x": 1,
+          "y": 1
+        },
+        {
+          "id": "b.antivirus.light.tile.2.1",
+          "x": 2,
+          "y": 1
+        },
+        {
+          "id": "b.antivirus.light.tile.3.1",
+          "x": 3,
+          "y": 1
+        },
+        {
+          "id": "b.antivirus.light.tile.4.1",
+          "x": 4,
+          "y": 1
+        },
+        {
+          "id": "b.antivirus.light.tile.0.2",
+          "x": 0,
+          "y": 2
+        },
+        {
+          "id": "b.antivirus.light.tile.1.2",
+          "x": 1,
+          "y": 2
+        },
+        {
+          "id": "b.antivirus.light.tile.2.2",
+          "x": 2,
+          "y": 2
+        },
+        {
+          "id": "b.antivirus.light.tile.3.2",
+          "x": 3,
+          "y": 2
+        },
+        {
+          "id": "b.antivirus.light.tile.4.2",
+          "x": 4,
+          "y": 2
+        },
+        {
+          "id": "b.antivirus.light.tile.0.3",
+          "x": 0,
+          "y": 3
+        },
+        {
+          "id": "b.antivirus.light.tile.1.3",
+          "x": 1,
+          "y": 3
+        },
+        {
+          "id": "b.antivirus.light.tile.2.3",
+          "x": 2,
+          "y": 3
+        },
+        {
+          "id": "b.antivirus.light.tile.3.3",
+          "x": 3,
+          "y": 3
+        },
+        {
+          "id": "b.antivirus.light.tile.4.3",
+          "x": 4,
+          "y": 3
+        }
+      ],
+      "entry": {
+        "tileId": "b.antivirus.light.tile.2.0"
+      },
+      "effectBundleId": "b.antivirus.light.effects",
+      "witnessIds": [
+        "b.antivirus.light.r1.witness.success",
+        "b.antivirus.light.r1.witness.failure",
+        "b.antivirus.light.r1.witness.keyboard",
+        "b.antivirus.light.r1.witness.star-recovery"
+      ],
+      "goal": {
+        "kind": "score"
+      },
+      "rules": {
+        "adaptationDecisionId": "R1-B-ACCUMULATION-01",
+        "durationMs": 32000,
+        "completionRules": {
+          "kind": "scoreReachedBeforeDeadline",
+          "targetScore": 24
+        },
+        "maxActiveCorruption": 9,
+        "countedTargetKinds": ["blue", "purple"],
+        "overflowResolution": "immediateFailureBeforeInput",
+        "occupiedSpawnPolicy": "nextFreeRowMajorOrFailure",
+        "eventOrder": ["deadline", "spawnBatch", "overflow", "inputSequence", "completion"],
+        "targetRules": {
+          "blue": {
+            "lifetime": "untilCleared",
+            "score": 1
+          },
+          "purple": {
+            "lifetime": "untilCleared",
+            "score": 2
+          },
+          "star": {
+            "lifetime": "untilCleared",
+            "score": 0,
+            "clear": "allCorruptionWithoutStarChain"
+          }
+        },
+        "spawnPlan": [
+          {
+            "id": "b.antivirus.light.r1.target.000",
+            "tileId": "b.antivirus.light.tile.0.0",
+            "kind": "blue",
+            "spawnAtMs": 1000
+          },
+          {
+            "id": "b.antivirus.light.r1.target.001",
+            "tileId": "b.antivirus.light.tile.1.0",
+            "kind": "blue",
+            "spawnAtMs": 2100
+          },
+          {
+            "id": "b.antivirus.light.r1.target.002",
+            "tileId": "b.antivirus.light.tile.2.0",
+            "kind": "blue",
+            "spawnAtMs": 3200
+          },
+          {
+            "id": "b.antivirus.light.r1.target.003",
+            "tileId": "b.antivirus.light.tile.3.0",
+            "kind": "purple",
+            "spawnAtMs": 4300
+          },
+          {
+            "id": "b.antivirus.light.r1.target.004",
+            "tileId": "b.antivirus.light.tile.4.0",
+            "kind": "blue",
+            "spawnAtMs": 5400
+          },
+          {
+            "id": "b.antivirus.light.r1.target.005",
+            "tileId": "b.antivirus.light.tile.4.1",
+            "kind": "blue",
+            "spawnAtMs": 6500
+          },
+          {
+            "id": "b.antivirus.light.r1.target.006",
+            "tileId": "b.antivirus.light.tile.3.1",
+            "kind": "blue",
+            "spawnAtMs": 7600
+          },
+          {
+            "id": "b.antivirus.light.r1.target.007",
+            "tileId": "b.antivirus.light.tile.2.1",
+            "kind": "star",
+            "spawnAtMs": 8700
+          },
+          {
+            "id": "b.antivirus.light.r1.target.008",
+            "tileId": "b.antivirus.light.tile.1.1",
+            "kind": "blue",
+            "spawnAtMs": 9800
+          },
+          {
+            "id": "b.antivirus.light.r1.target.009",
+            "tileId": "b.antivirus.light.tile.0.1",
+            "kind": "blue",
+            "spawnAtMs": 10900
+          },
+          {
+            "id": "b.antivirus.light.r1.target.010",
+            "tileId": "b.antivirus.light.tile.0.2",
+            "kind": "blue",
+            "spawnAtMs": 12000
+          },
+          {
+            "id": "b.antivirus.light.r1.target.011",
+            "tileId": "b.antivirus.light.tile.1.2",
+            "kind": "purple",
+            "spawnAtMs": 13100
+          },
+          {
+            "id": "b.antivirus.light.r1.target.012",
+            "tileId": "b.antivirus.light.tile.2.2",
+            "kind": "blue",
+            "spawnAtMs": 14200
+          },
+          {
+            "id": "b.antivirus.light.r1.target.013",
+            "tileId": "b.antivirus.light.tile.3.2",
+            "kind": "blue",
+            "spawnAtMs": 15300
+          },
+          {
+            "id": "b.antivirus.light.r1.target.014",
+            "tileId": "b.antivirus.light.tile.4.2",
+            "kind": "blue",
+            "spawnAtMs": 16400
+          },
+          {
+            "id": "b.antivirus.light.r1.target.015",
+            "tileId": "b.antivirus.light.tile.4.3",
+            "kind": "star",
+            "spawnAtMs": 17500
+          },
+          {
+            "id": "b.antivirus.light.r1.target.016",
+            "tileId": "b.antivirus.light.tile.3.3",
+            "kind": "blue",
+            "spawnAtMs": 18600
+          },
+          {
+            "id": "b.antivirus.light.r1.target.017",
+            "tileId": "b.antivirus.light.tile.2.3",
+            "kind": "blue",
+            "spawnAtMs": 19700
+          },
+          {
+            "id": "b.antivirus.light.r1.target.018",
+            "tileId": "b.antivirus.light.tile.1.3",
+            "kind": "blue",
+            "spawnAtMs": 20800
+          },
+          {
+            "id": "b.antivirus.light.r1.target.019",
+            "tileId": "b.antivirus.light.tile.0.3",
+            "kind": "purple",
+            "spawnAtMs": 21900
+          },
+          {
+            "id": "b.antivirus.light.r1.target.020",
+            "tileId": "b.antivirus.light.tile.0.0",
+            "kind": "blue",
+            "spawnAtMs": 23000
+          },
+          {
+            "id": "b.antivirus.light.r1.target.021",
+            "tileId": "b.antivirus.light.tile.1.0",
+            "kind": "blue",
+            "spawnAtMs": 24100
+          },
+          {
+            "id": "b.antivirus.light.r1.target.022",
+            "tileId": "b.antivirus.light.tile.2.0",
+            "kind": "blue",
+            "spawnAtMs": 25200
+          },
+          {
+            "id": "b.antivirus.light.r1.target.023",
+            "tileId": "b.antivirus.light.tile.3.0",
+            "kind": "star",
+            "spawnAtMs": 26300
+          },
+          {
+            "id": "b.antivirus.light.r1.target.024",
+            "tileId": "b.antivirus.light.tile.4.0",
+            "kind": "blue",
+            "spawnAtMs": 27400
+          },
+          {
+            "id": "b.antivirus.light.r1.target.025",
+            "tileId": "b.antivirus.light.tile.4.1",
+            "kind": "blue",
+            "spawnAtMs": 28500
+          },
+          {
+            "id": "b.antivirus.light.r1.target.026",
+            "tileId": "b.antivirus.light.tile.3.1",
+            "kind": "blue",
+            "spawnAtMs": 29600
+          },
+          {
+            "id": "b.antivirus.light.r1.target.027",
+            "tileId": "b.antivirus.light.tile.2.1",
+            "kind": "purple",
+            "spawnAtMs": 30700
+          },
+          {
+            "id": "b.antivirus.light.r1.target.028",
+            "tileId": "b.antivirus.light.tile.1.1",
+            "kind": "blue",
+            "spawnAtMs": 31800
+          }
+        ]
+      }
+    },
+    {
+      "id": "b.antivirus.medium",
+      "boardId": "b.antivirus.medium.board",
+      "kind": "antivirus",
+      "ruleVersion": 4,
+      "tiles": [
+        {
+          "id": "b.antivirus.medium.tile.0.0",
+          "x": 0,
+          "y": 0
+        },
+        {
+          "id": "b.antivirus.medium.tile.1.0",
+          "x": 1,
+          "y": 0
+        },
+        {
+          "id": "b.antivirus.medium.tile.2.0",
+          "x": 2,
+          "y": 0
+        },
+        {
+          "id": "b.antivirus.medium.tile.3.0",
+          "x": 3,
+          "y": 0
+        },
+        {
+          "id": "b.antivirus.medium.tile.4.0",
+          "x": 4,
+          "y": 0
+        },
+        {
+          "id": "b.antivirus.medium.tile.0.1",
+          "x": 0,
+          "y": 1
+        },
+        {
+          "id": "b.antivirus.medium.tile.1.1",
+          "x": 1,
+          "y": 1
+        },
+        {
+          "id": "b.antivirus.medium.tile.2.1",
+          "x": 2,
+          "y": 1
+        },
+        {
+          "id": "b.antivirus.medium.tile.3.1",
+          "x": 3,
+          "y": 1
+        },
+        {
+          "id": "b.antivirus.medium.tile.4.1",
+          "x": 4,
+          "y": 1
+        },
+        {
+          "id": "b.antivirus.medium.tile.0.2",
+          "x": 0,
+          "y": 2
+        },
+        {
+          "id": "b.antivirus.medium.tile.1.2",
+          "x": 1,
+          "y": 2
+        },
+        {
+          "id": "b.antivirus.medium.tile.2.2",
+          "x": 2,
+          "y": 2
+        },
+        {
+          "id": "b.antivirus.medium.tile.3.2",
+          "x": 3,
+          "y": 2
+        },
+        {
+          "id": "b.antivirus.medium.tile.4.2",
+          "x": 4,
+          "y": 2
+        },
+        {
+          "id": "b.antivirus.medium.tile.0.3",
+          "x": 0,
+          "y": 3
+        },
+        {
+          "id": "b.antivirus.medium.tile.1.3",
+          "x": 1,
+          "y": 3
+        },
+        {
+          "id": "b.antivirus.medium.tile.2.3",
+          "x": 2,
+          "y": 3
+        },
+        {
+          "id": "b.antivirus.medium.tile.3.3",
+          "x": 3,
+          "y": 3
+        },
+        {
+          "id": "b.antivirus.medium.tile.4.3",
+          "x": 4,
+          "y": 3
+        }
+      ],
+      "entry": {
+        "tileId": "b.antivirus.medium.tile.2.0"
+      },
+      "effectBundleId": "b.antivirus.medium.effects",
+      "witnessIds": [
+        "b.antivirus.medium.r1.witness.success",
+        "b.antivirus.medium.r1.witness.failure",
+        "b.antivirus.medium.r1.witness.keyboard",
+        "b.antivirus.medium.r1.witness.star-recovery"
+      ],
+      "goal": {
+        "kind": "score"
+      },
+      "rules": {
+        "adaptationDecisionId": "R1-B-ACCUMULATION-01",
+        "durationMs": 40000,
+        "completionRules": {
+          "kind": "scoreReachedBeforeDeadline",
+          "targetScore": 40
+        },
+        "maxActiveCorruption": 9,
+        "countedTargetKinds": ["blue", "purple"],
+        "overflowResolution": "immediateFailureBeforeInput",
+        "occupiedSpawnPolicy": "nextFreeRowMajorOrFailure",
+        "eventOrder": ["deadline", "spawnBatch", "overflow", "inputSequence", "completion"],
+        "targetRules": {
+          "blue": {
+            "lifetime": "untilCleared",
+            "score": 1
+          },
+          "purple": {
+            "lifetime": "untilCleared",
+            "score": 2
+          },
+          "star": {
+            "lifetime": "untilCleared",
+            "score": 0,
+            "clear": "allCorruptionWithoutStarChain"
+          }
+        },
+        "spawnPlan": [
+          {
+            "id": "b.antivirus.medium.r1.target.000",
+            "tileId": "b.antivirus.medium.tile.0.0",
+            "kind": "blue",
+            "spawnAtMs": 1000
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.001",
+            "tileId": "b.antivirus.medium.tile.1.0",
+            "kind": "blue",
+            "spawnAtMs": 1850
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.002",
+            "tileId": "b.antivirus.medium.tile.2.0",
+            "kind": "blue",
+            "spawnAtMs": 2700
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.003",
+            "tileId": "b.antivirus.medium.tile.3.0",
+            "kind": "purple",
+            "spawnAtMs": 3550
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.004",
+            "tileId": "b.antivirus.medium.tile.4.0",
+            "kind": "blue",
+            "spawnAtMs": 4400
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.005",
+            "tileId": "b.antivirus.medium.tile.4.1",
+            "kind": "blue",
+            "spawnAtMs": 5250
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.006",
+            "tileId": "b.antivirus.medium.tile.3.1",
+            "kind": "blue",
+            "spawnAtMs": 6100
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.007",
+            "tileId": "b.antivirus.medium.tile.2.1",
+            "kind": "star",
+            "spawnAtMs": 6950
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.008",
+            "tileId": "b.antivirus.medium.tile.1.1",
+            "kind": "blue",
+            "spawnAtMs": 7800
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.009",
+            "tileId": "b.antivirus.medium.tile.0.1",
+            "kind": "blue",
+            "spawnAtMs": 8650
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.010",
+            "tileId": "b.antivirus.medium.tile.0.2",
+            "kind": "blue",
+            "spawnAtMs": 9500
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.011",
+            "tileId": "b.antivirus.medium.tile.1.2",
+            "kind": "purple",
+            "spawnAtMs": 10350
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.012",
+            "tileId": "b.antivirus.medium.tile.2.2",
+            "kind": "blue",
+            "spawnAtMs": 11200
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.013",
+            "tileId": "b.antivirus.medium.tile.3.2",
+            "kind": "blue",
+            "spawnAtMs": 12050
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.014",
+            "tileId": "b.antivirus.medium.tile.4.2",
+            "kind": "blue",
+            "spawnAtMs": 12900
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.015",
+            "tileId": "b.antivirus.medium.tile.4.3",
+            "kind": "star",
+            "spawnAtMs": 13750
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.016",
+            "tileId": "b.antivirus.medium.tile.3.3",
+            "kind": "blue",
+            "spawnAtMs": 14600
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.017",
+            "tileId": "b.antivirus.medium.tile.2.3",
+            "kind": "blue",
+            "spawnAtMs": 15450
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.018",
+            "tileId": "b.antivirus.medium.tile.1.3",
+            "kind": "blue",
+            "spawnAtMs": 16300
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.019",
+            "tileId": "b.antivirus.medium.tile.0.3",
+            "kind": "purple",
+            "spawnAtMs": 17150
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.020",
+            "tileId": "b.antivirus.medium.tile.0.0",
+            "kind": "blue",
+            "spawnAtMs": 18000
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.021",
+            "tileId": "b.antivirus.medium.tile.1.0",
+            "kind": "blue",
+            "spawnAtMs": 18850
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.022",
+            "tileId": "b.antivirus.medium.tile.2.0",
+            "kind": "blue",
+            "spawnAtMs": 19700
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.023",
+            "tileId": "b.antivirus.medium.tile.3.0",
+            "kind": "star",
+            "spawnAtMs": 20550
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.024",
+            "tileId": "b.antivirus.medium.tile.4.0",
+            "kind": "blue",
+            "spawnAtMs": 21400
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.025",
+            "tileId": "b.antivirus.medium.tile.4.1",
+            "kind": "blue",
+            "spawnAtMs": 22250
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.026",
+            "tileId": "b.antivirus.medium.tile.3.1",
+            "kind": "blue",
+            "spawnAtMs": 23100
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.027",
+            "tileId": "b.antivirus.medium.tile.2.1",
+            "kind": "purple",
+            "spawnAtMs": 23950
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.028",
+            "tileId": "b.antivirus.medium.tile.1.1",
+            "kind": "blue",
+            "spawnAtMs": 24800
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.029",
+            "tileId": "b.antivirus.medium.tile.0.1",
+            "kind": "blue",
+            "spawnAtMs": 25650
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.030",
+            "tileId": "b.antivirus.medium.tile.0.2",
+            "kind": "blue",
+            "spawnAtMs": 26500
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.031",
+            "tileId": "b.antivirus.medium.tile.1.2",
+            "kind": "star",
+            "spawnAtMs": 27350
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.032",
+            "tileId": "b.antivirus.medium.tile.2.2",
+            "kind": "blue",
+            "spawnAtMs": 28200
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.033",
+            "tileId": "b.antivirus.medium.tile.3.2",
+            "kind": "blue",
+            "spawnAtMs": 29050
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.034",
+            "tileId": "b.antivirus.medium.tile.4.2",
+            "kind": "blue",
+            "spawnAtMs": 29900
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.035",
+            "tileId": "b.antivirus.medium.tile.4.3",
+            "kind": "purple",
+            "spawnAtMs": 30750
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.036",
+            "tileId": "b.antivirus.medium.tile.3.3",
+            "kind": "blue",
+            "spawnAtMs": 31600
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.037",
+            "tileId": "b.antivirus.medium.tile.2.3",
+            "kind": "blue",
+            "spawnAtMs": 32450
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.038",
+            "tileId": "b.antivirus.medium.tile.1.3",
+            "kind": "blue",
+            "spawnAtMs": 33300
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.039",
+            "tileId": "b.antivirus.medium.tile.0.3",
+            "kind": "star",
+            "spawnAtMs": 34150
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.040",
+            "tileId": "b.antivirus.medium.tile.0.0",
+            "kind": "blue",
+            "spawnAtMs": 35000
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.041",
+            "tileId": "b.antivirus.medium.tile.1.0",
+            "kind": "blue",
+            "spawnAtMs": 35850
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.042",
+            "tileId": "b.antivirus.medium.tile.2.0",
+            "kind": "blue",
+            "spawnAtMs": 36700
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.043",
+            "tileId": "b.antivirus.medium.tile.3.0",
+            "kind": "purple",
+            "spawnAtMs": 37550
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.044",
+            "tileId": "b.antivirus.medium.tile.4.0",
+            "kind": "blue",
+            "spawnAtMs": 38400
+          },
+          {
+            "id": "b.antivirus.medium.r1.target.045",
+            "tileId": "b.antivirus.medium.tile.4.1",
+            "kind": "blue",
+            "spawnAtMs": 39250
+          }
+        ]
+      }
+    },
+    {
+      "id": "b.antivirus.heavy",
+      "boardId": "b.antivirus.heavy.board",
+      "kind": "antivirus",
+      "ruleVersion": 4,
+      "tiles": [
+        {
+          "id": "b.antivirus.heavy.tile.0.0",
+          "x": 0,
+          "y": 0
+        },
+        {
+          "id": "b.antivirus.heavy.tile.1.0",
+          "x": 1,
+          "y": 0
+        },
+        {
+          "id": "b.antivirus.heavy.tile.2.0",
+          "x": 2,
+          "y": 0
+        },
+        {
+          "id": "b.antivirus.heavy.tile.3.0",
+          "x": 3,
+          "y": 0
+        },
+        {
+          "id": "b.antivirus.heavy.tile.4.0",
+          "x": 4,
+          "y": 0
+        },
+        {
+          "id": "b.antivirus.heavy.tile.0.1",
+          "x": 0,
+          "y": 1
+        },
+        {
+          "id": "b.antivirus.heavy.tile.1.1",
+          "x": 1,
+          "y": 1
+        },
+        {
+          "id": "b.antivirus.heavy.tile.2.1",
+          "x": 2,
+          "y": 1
+        },
+        {
+          "id": "b.antivirus.heavy.tile.3.1",
+          "x": 3,
+          "y": 1
+        },
+        {
+          "id": "b.antivirus.heavy.tile.4.1",
+          "x": 4,
+          "y": 1
+        },
+        {
+          "id": "b.antivirus.heavy.tile.0.2",
+          "x": 0,
+          "y": 2
+        },
+        {
+          "id": "b.antivirus.heavy.tile.1.2",
+          "x": 1,
+          "y": 2
+        },
+        {
+          "id": "b.antivirus.heavy.tile.2.2",
+          "x": 2,
+          "y": 2
+        },
+        {
+          "id": "b.antivirus.heavy.tile.3.2",
+          "x": 3,
+          "y": 2
+        },
+        {
+          "id": "b.antivirus.heavy.tile.4.2",
+          "x": 4,
+          "y": 2
+        },
+        {
+          "id": "b.antivirus.heavy.tile.0.3",
+          "x": 0,
+          "y": 3
+        },
+        {
+          "id": "b.antivirus.heavy.tile.1.3",
+          "x": 1,
+          "y": 3
+        },
+        {
+          "id": "b.antivirus.heavy.tile.2.3",
+          "x": 2,
+          "y": 3
+        },
+        {
+          "id": "b.antivirus.heavy.tile.3.3",
+          "x": 3,
+          "y": 3
+        },
+        {
+          "id": "b.antivirus.heavy.tile.4.3",
+          "x": 4,
+          "y": 3
+        }
+      ],
+      "entry": {
+        "tileId": "b.antivirus.heavy.tile.2.0"
+      },
+      "effectBundleId": "b.antivirus.heavy.effects",
+      "witnessIds": [
+        "b.antivirus.heavy.r1.witness.success",
+        "b.antivirus.heavy.r1.witness.failure",
+        "b.antivirus.heavy.r1.witness.keyboard",
+        "b.antivirus.heavy.r1.witness.star-recovery"
+      ],
+      "goal": {
+        "kind": "score"
+      },
+      "rules": {
+        "adaptationDecisionId": "R1-B-ACCUMULATION-01",
+        "durationMs": 48000,
+        "completionRules": {
+          "kind": "scoreReachedBeforeDeadline",
+          "targetScore": 60
+        },
+        "maxActiveCorruption": 9,
+        "countedTargetKinds": ["blue", "purple"],
+        "overflowResolution": "immediateFailureBeforeInput",
+        "occupiedSpawnPolicy": "nextFreeRowMajorOrFailure",
+        "eventOrder": ["deadline", "spawnBatch", "overflow", "inputSequence", "completion"],
+        "targetRules": {
+          "blue": {
+            "lifetime": "untilCleared",
+            "score": 1
+          },
+          "purple": {
+            "lifetime": "untilCleared",
+            "score": 2
+          },
+          "star": {
+            "lifetime": "untilCleared",
+            "score": 0,
+            "clear": "allCorruptionWithoutStarChain"
+          }
+        },
+        "spawnPlan": [
+          {
+            "id": "b.antivirus.heavy.r1.target.000",
+            "tileId": "b.antivirus.heavy.tile.0.0",
+            "kind": "blue",
+            "spawnAtMs": 1000
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.001",
+            "tileId": "b.antivirus.heavy.tile.1.0",
+            "kind": "blue",
+            "spawnAtMs": 1650
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.002",
+            "tileId": "b.antivirus.heavy.tile.2.0",
+            "kind": "blue",
+            "spawnAtMs": 2300
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.003",
+            "tileId": "b.antivirus.heavy.tile.3.0",
+            "kind": "purple",
+            "spawnAtMs": 2950
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.004",
+            "tileId": "b.antivirus.heavy.tile.4.0",
+            "kind": "blue",
+            "spawnAtMs": 3600
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.005",
+            "tileId": "b.antivirus.heavy.tile.4.1",
+            "kind": "blue",
+            "spawnAtMs": 4250
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.006",
+            "tileId": "b.antivirus.heavy.tile.3.1",
+            "kind": "blue",
+            "spawnAtMs": 4900
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.007",
+            "tileId": "b.antivirus.heavy.tile.2.1",
+            "kind": "star",
+            "spawnAtMs": 5550
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.008",
+            "tileId": "b.antivirus.heavy.tile.1.1",
+            "kind": "blue",
+            "spawnAtMs": 6200
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.009",
+            "tileId": "b.antivirus.heavy.tile.0.1",
+            "kind": "blue",
+            "spawnAtMs": 6850
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.010",
+            "tileId": "b.antivirus.heavy.tile.0.2",
+            "kind": "blue",
+            "spawnAtMs": 7500
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.011",
+            "tileId": "b.antivirus.heavy.tile.1.2",
+            "kind": "purple",
+            "spawnAtMs": 8150
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.012",
+            "tileId": "b.antivirus.heavy.tile.2.2",
+            "kind": "blue",
+            "spawnAtMs": 8800
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.013",
+            "tileId": "b.antivirus.heavy.tile.3.2",
+            "kind": "blue",
+            "spawnAtMs": 9450
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.014",
+            "tileId": "b.antivirus.heavy.tile.4.2",
+            "kind": "blue",
+            "spawnAtMs": 10100
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.015",
+            "tileId": "b.antivirus.heavy.tile.4.3",
+            "kind": "star",
+            "spawnAtMs": 10750
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.016",
+            "tileId": "b.antivirus.heavy.tile.3.3",
+            "kind": "blue",
+            "spawnAtMs": 11400
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.017",
+            "tileId": "b.antivirus.heavy.tile.2.3",
+            "kind": "blue",
+            "spawnAtMs": 12050
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.018",
+            "tileId": "b.antivirus.heavy.tile.1.3",
+            "kind": "blue",
+            "spawnAtMs": 12700
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.019",
+            "tileId": "b.antivirus.heavy.tile.0.3",
+            "kind": "purple",
+            "spawnAtMs": 13350
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.020",
+            "tileId": "b.antivirus.heavy.tile.0.0",
+            "kind": "blue",
+            "spawnAtMs": 14000
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.021",
+            "tileId": "b.antivirus.heavy.tile.1.0",
+            "kind": "blue",
+            "spawnAtMs": 14650
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.022",
+            "tileId": "b.antivirus.heavy.tile.2.0",
+            "kind": "blue",
+            "spawnAtMs": 15300
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.023",
+            "tileId": "b.antivirus.heavy.tile.3.0",
+            "kind": "star",
+            "spawnAtMs": 15950
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.024",
+            "tileId": "b.antivirus.heavy.tile.4.0",
+            "kind": "blue",
+            "spawnAtMs": 16600
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.025",
+            "tileId": "b.antivirus.heavy.tile.4.1",
+            "kind": "blue",
+            "spawnAtMs": 17250
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.026",
+            "tileId": "b.antivirus.heavy.tile.3.1",
+            "kind": "blue",
+            "spawnAtMs": 17900
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.027",
+            "tileId": "b.antivirus.heavy.tile.2.1",
+            "kind": "purple",
+            "spawnAtMs": 18550
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.028",
+            "tileId": "b.antivirus.heavy.tile.1.1",
+            "kind": "blue",
+            "spawnAtMs": 19200
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.029",
+            "tileId": "b.antivirus.heavy.tile.0.1",
+            "kind": "blue",
+            "spawnAtMs": 19850
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.030",
+            "tileId": "b.antivirus.heavy.tile.0.2",
+            "kind": "blue",
+            "spawnAtMs": 20500
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.031",
+            "tileId": "b.antivirus.heavy.tile.1.2",
+            "kind": "star",
+            "spawnAtMs": 21150
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.032",
+            "tileId": "b.antivirus.heavy.tile.2.2",
+            "kind": "blue",
+            "spawnAtMs": 21800
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.033",
+            "tileId": "b.antivirus.heavy.tile.3.2",
+            "kind": "blue",
+            "spawnAtMs": 22450
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.034",
+            "tileId": "b.antivirus.heavy.tile.4.2",
+            "kind": "blue",
+            "spawnAtMs": 23100
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.035",
+            "tileId": "b.antivirus.heavy.tile.4.3",
+            "kind": "purple",
+            "spawnAtMs": 23750
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.036",
+            "tileId": "b.antivirus.heavy.tile.3.3",
+            "kind": "blue",
+            "spawnAtMs": 24400
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.037",
+            "tileId": "b.antivirus.heavy.tile.2.3",
+            "kind": "blue",
+            "spawnAtMs": 25050
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.038",
+            "tileId": "b.antivirus.heavy.tile.1.3",
+            "kind": "blue",
+            "spawnAtMs": 25700
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.039",
+            "tileId": "b.antivirus.heavy.tile.0.3",
+            "kind": "star",
+            "spawnAtMs": 26350
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.040",
+            "tileId": "b.antivirus.heavy.tile.0.0",
+            "kind": "blue",
+            "spawnAtMs": 27000
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.041",
+            "tileId": "b.antivirus.heavy.tile.1.0",
+            "kind": "blue",
+            "spawnAtMs": 27650
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.042",
+            "tileId": "b.antivirus.heavy.tile.2.0",
+            "kind": "blue",
+            "spawnAtMs": 28300
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.043",
+            "tileId": "b.antivirus.heavy.tile.3.0",
+            "kind": "purple",
+            "spawnAtMs": 28950
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.044",
+            "tileId": "b.antivirus.heavy.tile.4.0",
+            "kind": "blue",
+            "spawnAtMs": 29600
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.045",
+            "tileId": "b.antivirus.heavy.tile.4.1",
+            "kind": "blue",
+            "spawnAtMs": 30250
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.046",
+            "tileId": "b.antivirus.heavy.tile.3.1",
+            "kind": "blue",
+            "spawnAtMs": 30900
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.047",
+            "tileId": "b.antivirus.heavy.tile.2.1",
+            "kind": "star",
+            "spawnAtMs": 31550
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.048",
+            "tileId": "b.antivirus.heavy.tile.1.1",
+            "kind": "blue",
+            "spawnAtMs": 32200
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.049",
+            "tileId": "b.antivirus.heavy.tile.0.1",
+            "kind": "blue",
+            "spawnAtMs": 32850
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.050",
+            "tileId": "b.antivirus.heavy.tile.0.2",
+            "kind": "blue",
+            "spawnAtMs": 33500
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.051",
+            "tileId": "b.antivirus.heavy.tile.1.2",
+            "kind": "purple",
+            "spawnAtMs": 34150
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.052",
+            "tileId": "b.antivirus.heavy.tile.2.2",
+            "kind": "blue",
+            "spawnAtMs": 34800
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.053",
+            "tileId": "b.antivirus.heavy.tile.3.2",
+            "kind": "blue",
+            "spawnAtMs": 35450
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.054",
+            "tileId": "b.antivirus.heavy.tile.4.2",
+            "kind": "blue",
+            "spawnAtMs": 36100
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.055",
+            "tileId": "b.antivirus.heavy.tile.4.3",
+            "kind": "star",
+            "spawnAtMs": 36750
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.056",
+            "tileId": "b.antivirus.heavy.tile.3.3",
+            "kind": "blue",
+            "spawnAtMs": 37400
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.057",
+            "tileId": "b.antivirus.heavy.tile.2.3",
+            "kind": "blue",
+            "spawnAtMs": 38050
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.058",
+            "tileId": "b.antivirus.heavy.tile.1.3",
+            "kind": "blue",
+            "spawnAtMs": 38700
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.059",
+            "tileId": "b.antivirus.heavy.tile.0.3",
+            "kind": "purple",
+            "spawnAtMs": 39350
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.060",
+            "tileId": "b.antivirus.heavy.tile.0.0",
+            "kind": "blue",
+            "spawnAtMs": 40000
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.061",
+            "tileId": "b.antivirus.heavy.tile.1.0",
+            "kind": "blue",
+            "spawnAtMs": 40650
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.062",
+            "tileId": "b.antivirus.heavy.tile.2.0",
+            "kind": "blue",
+            "spawnAtMs": 41300
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.063",
+            "tileId": "b.antivirus.heavy.tile.3.0",
+            "kind": "star",
+            "spawnAtMs": 41950
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.064",
+            "tileId": "b.antivirus.heavy.tile.4.0",
+            "kind": "blue",
+            "spawnAtMs": 42600
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.065",
+            "tileId": "b.antivirus.heavy.tile.4.1",
+            "kind": "blue",
+            "spawnAtMs": 43250
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.066",
+            "tileId": "b.antivirus.heavy.tile.3.1",
+            "kind": "blue",
+            "spawnAtMs": 43900
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.067",
+            "tileId": "b.antivirus.heavy.tile.2.1",
+            "kind": "purple",
+            "spawnAtMs": 44550
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.068",
+            "tileId": "b.antivirus.heavy.tile.1.1",
+            "kind": "blue",
+            "spawnAtMs": 45200
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.069",
+            "tileId": "b.antivirus.heavy.tile.0.1",
+            "kind": "blue",
+            "spawnAtMs": 45850
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.070",
+            "tileId": "b.antivirus.heavy.tile.0.2",
+            "kind": "blue",
+            "spawnAtMs": 46500
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.071",
+            "tileId": "b.antivirus.heavy.tile.1.2",
+            "kind": "star",
+            "spawnAtMs": 47150
+          },
+          {
+            "id": "b.antivirus.heavy.r1.target.072",
+            "tileId": "b.antivirus.heavy.tile.2.2",
+            "kind": "blue",
+            "spawnAtMs": 47800
+          }
+        ]
+      }
+    }
+  ],
+  "witnesses": [
+    {
+      "id": "b.antivirus.light.r1.witness.success",
+      "challengeId": "b.antivirus.light",
+      "profileId": "M2",
+      "contentVersion": 4,
+      "ruleVersion": 4,
+      "initialStateId": "b.antivirus.light.initial",
+      "commands": [
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.0.0",
+          "targetId": "b.antivirus.light.r1.target.000",
+          "sequence": 1,
+          "activeTimeMs": 1250
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.1.0",
+          "targetId": "b.antivirus.light.r1.target.001",
+          "sequence": 2,
+          "activeTimeMs": 2350
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.2.0",
+          "targetId": "b.antivirus.light.r1.target.002",
+          "sequence": 3,
+          "activeTimeMs": 3450
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.3.0",
+          "targetId": "b.antivirus.light.r1.target.003",
+          "sequence": 4,
+          "activeTimeMs": 4550
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.4.0",
+          "targetId": "b.antivirus.light.r1.target.004",
+          "sequence": 5,
+          "activeTimeMs": 5650
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.4.1",
+          "targetId": "b.antivirus.light.r1.target.005",
+          "sequence": 6,
+          "activeTimeMs": 6750
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.3.1",
+          "targetId": "b.antivirus.light.r1.target.006",
+          "sequence": 7,
+          "activeTimeMs": 7850
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.2.1",
+          "targetId": "b.antivirus.light.r1.target.007",
+          "sequence": 8,
+          "activeTimeMs": 8950
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.1.1",
+          "targetId": "b.antivirus.light.r1.target.008",
+          "sequence": 9,
+          "activeTimeMs": 10050
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.0.1",
+          "targetId": "b.antivirus.light.r1.target.009",
+          "sequence": 10,
+          "activeTimeMs": 11150
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.0.2",
+          "targetId": "b.antivirus.light.r1.target.010",
+          "sequence": 11,
+          "activeTimeMs": 12250
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.1.2",
+          "targetId": "b.antivirus.light.r1.target.011",
+          "sequence": 12,
+          "activeTimeMs": 13350
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.2.2",
+          "targetId": "b.antivirus.light.r1.target.012",
+          "sequence": 13,
+          "activeTimeMs": 14450
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.3.2",
+          "targetId": "b.antivirus.light.r1.target.013",
+          "sequence": 14,
+          "activeTimeMs": 15550
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.4.2",
+          "targetId": "b.antivirus.light.r1.target.014",
+          "sequence": 15,
+          "activeTimeMs": 16650
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.4.3",
+          "targetId": "b.antivirus.light.r1.target.015",
+          "sequence": 16,
+          "activeTimeMs": 17750
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.3.3",
+          "targetId": "b.antivirus.light.r1.target.016",
+          "sequence": 17,
+          "activeTimeMs": 18850
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.2.3",
+          "targetId": "b.antivirus.light.r1.target.017",
+          "sequence": 18,
+          "activeTimeMs": 19950
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.1.3",
+          "targetId": "b.antivirus.light.r1.target.018",
+          "sequence": 19,
+          "activeTimeMs": 21050
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.0.3",
+          "targetId": "b.antivirus.light.r1.target.019",
+          "sequence": 20,
+          "activeTimeMs": 22150
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.0.0",
+          "targetId": "b.antivirus.light.r1.target.020",
+          "sequence": 21,
+          "activeTimeMs": 23250
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.1.0",
+          "targetId": "b.antivirus.light.r1.target.021",
+          "sequence": 22,
+          "activeTimeMs": 24350
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.2.0",
+          "targetId": "b.antivirus.light.r1.target.022",
+          "sequence": 23,
+          "activeTimeMs": 25450
+        }
+      ],
+      "finishAtMs": 25450,
+      "expectedResult": "success",
+      "expectedObjectives": [],
+      "expectedRewards": [],
+      "expectedFinalState": {
+        "playerTileId": "b.antivirus.light.tile.2.0",
+        "score": 24
+      },
+      "expectedBestStarClearCount": 0
+    },
+    {
+      "id": "b.antivirus.light.r1.witness.failure",
+      "challengeId": "b.antivirus.light",
+      "profileId": "M2",
+      "contentVersion": 4,
+      "ruleVersion": 4,
+      "initialStateId": "b.antivirus.light.initial",
+      "commands": [],
+      "finishAtMs": 12000,
+      "expectedResult": "failure",
+      "expectedObjectives": [],
+      "expectedRewards": [],
+      "expectedFinalState": {
+        "playerTileId": "b.antivirus.light.tile.2.0",
+        "score": 0
+      },
+      "expectedBestStarClearCount": 0
+    },
+    {
+      "id": "b.antivirus.light.r1.witness.keyboard",
+      "challengeId": "b.antivirus.light",
+      "profileId": "M2",
+      "contentVersion": 4,
+      "ruleVersion": 4,
+      "initialStateId": "b.antivirus.light.initial",
+      "commands": [
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 1,
+          "activeTimeMs": 1250
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 2,
+          "activeTimeMs": 1390
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 3,
+          "activeTimeMs": 2350
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 4,
+          "activeTimeMs": 3450
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 5,
+          "activeTimeMs": 4550
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 6,
+          "activeTimeMs": 5650
+        },
+        {
+          "kind": "move",
+          "direction": "down",
+          "sequence": 7,
+          "activeTimeMs": 6750
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 8,
+          "activeTimeMs": 7850
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 9,
+          "activeTimeMs": 8950
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 10,
+          "activeTimeMs": 10050
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 11,
+          "activeTimeMs": 11150
+        },
+        {
+          "kind": "move",
+          "direction": "down",
+          "sequence": 12,
+          "activeTimeMs": 12250
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 13,
+          "activeTimeMs": 13350
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 14,
+          "activeTimeMs": 14450
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 15,
+          "activeTimeMs": 15550
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 16,
+          "activeTimeMs": 16650
+        },
+        {
+          "kind": "move",
+          "direction": "down",
+          "sequence": 17,
+          "activeTimeMs": 17750
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 18,
+          "activeTimeMs": 18850
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 19,
+          "activeTimeMs": 19950
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 20,
+          "activeTimeMs": 21050
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 21,
+          "activeTimeMs": 22150
+        },
+        {
+          "kind": "move",
+          "direction": "up",
+          "sequence": 22,
+          "activeTimeMs": 23250
+        },
+        {
+          "kind": "move",
+          "direction": "up",
+          "sequence": 23,
+          "activeTimeMs": 23390
+        },
+        {
+          "kind": "move",
+          "direction": "up",
+          "sequence": 24,
+          "activeTimeMs": 23530
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 25,
+          "activeTimeMs": 24350
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 26,
+          "activeTimeMs": 25450
+        }
+      ],
+      "finishAtMs": 25450,
+      "expectedResult": "success",
+      "expectedObjectives": [],
+      "expectedRewards": [],
+      "expectedFinalState": {
+        "playerTileId": "b.antivirus.light.tile.2.0",
+        "score": 24
+      },
+      "expectedBestStarClearCount": 0
+    },
+    {
+      "id": "b.antivirus.light.r1.witness.star-recovery",
+      "challengeId": "b.antivirus.light",
+      "profileId": "M2",
+      "contentVersion": 4,
+      "ruleVersion": 4,
+      "initialStateId": "b.antivirus.light.initial",
+      "commands": [
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.2.1",
+          "targetId": "b.antivirus.light.r1.target.007",
+          "sequence": 1,
+          "activeTimeMs": 8950
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.1.1",
+          "targetId": "b.antivirus.light.r1.target.008",
+          "sequence": 2,
+          "activeTimeMs": 10050
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.0.1",
+          "targetId": "b.antivirus.light.r1.target.009",
+          "sequence": 3,
+          "activeTimeMs": 11150
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.0.2",
+          "targetId": "b.antivirus.light.r1.target.010",
+          "sequence": 4,
+          "activeTimeMs": 12250
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.1.2",
+          "targetId": "b.antivirus.light.r1.target.011",
+          "sequence": 5,
+          "activeTimeMs": 13350
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.2.2",
+          "targetId": "b.antivirus.light.r1.target.012",
+          "sequence": 6,
+          "activeTimeMs": 14450
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.3.2",
+          "targetId": "b.antivirus.light.r1.target.013",
+          "sequence": 7,
+          "activeTimeMs": 15550
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.4.2",
+          "targetId": "b.antivirus.light.r1.target.014",
+          "sequence": 8,
+          "activeTimeMs": 16650
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.4.3",
+          "targetId": "b.antivirus.light.r1.target.015",
+          "sequence": 9,
+          "activeTimeMs": 17750
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.3.3",
+          "targetId": "b.antivirus.light.r1.target.016",
+          "sequence": 10,
+          "activeTimeMs": 18850
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.2.3",
+          "targetId": "b.antivirus.light.r1.target.017",
+          "sequence": 11,
+          "activeTimeMs": 19950
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.1.3",
+          "targetId": "b.antivirus.light.r1.target.018",
+          "sequence": 12,
+          "activeTimeMs": 21050
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.0.3",
+          "targetId": "b.antivirus.light.r1.target.019",
+          "sequence": 13,
+          "activeTimeMs": 22150
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.0.0",
+          "targetId": "b.antivirus.light.r1.target.020",
+          "sequence": 14,
+          "activeTimeMs": 23250
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.1.0",
+          "targetId": "b.antivirus.light.r1.target.021",
+          "sequence": 15,
+          "activeTimeMs": 24350
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.light.tile.2.0",
+          "targetId": "b.antivirus.light.r1.target.022",
+          "sequence": 16,
+          "activeTimeMs": 25450
+        }
+      ],
+      "finishAtMs": 25450,
+      "expectedResult": "success",
+      "expectedObjectives": [],
+      "expectedRewards": [],
+      "expectedFinalState": {
+        "playerTileId": "b.antivirus.light.tile.2.0",
+        "score": 24
+      },
+      "expectedBestStarClearCount": 7
+    },
+    {
+      "id": "b.antivirus.medium.r1.witness.success",
+      "challengeId": "b.antivirus.medium",
+      "profileId": "M2",
+      "contentVersion": 4,
+      "ruleVersion": 4,
+      "initialStateId": "b.antivirus.medium.initial",
+      "commands": [
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.0.0",
+          "targetId": "b.antivirus.medium.r1.target.000",
+          "sequence": 1,
+          "activeTimeMs": 1250
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.1.0",
+          "targetId": "b.antivirus.medium.r1.target.001",
+          "sequence": 2,
+          "activeTimeMs": 2100
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.2.0",
+          "targetId": "b.antivirus.medium.r1.target.002",
+          "sequence": 3,
+          "activeTimeMs": 2950
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.3.0",
+          "targetId": "b.antivirus.medium.r1.target.003",
+          "sequence": 4,
+          "activeTimeMs": 3800
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.4.0",
+          "targetId": "b.antivirus.medium.r1.target.004",
+          "sequence": 5,
+          "activeTimeMs": 4650
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.4.1",
+          "targetId": "b.antivirus.medium.r1.target.005",
+          "sequence": 6,
+          "activeTimeMs": 5500
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.3.1",
+          "targetId": "b.antivirus.medium.r1.target.006",
+          "sequence": 7,
+          "activeTimeMs": 6350
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.2.1",
+          "targetId": "b.antivirus.medium.r1.target.007",
+          "sequence": 8,
+          "activeTimeMs": 7200
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.1.1",
+          "targetId": "b.antivirus.medium.r1.target.008",
+          "sequence": 9,
+          "activeTimeMs": 8050
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.0.1",
+          "targetId": "b.antivirus.medium.r1.target.009",
+          "sequence": 10,
+          "activeTimeMs": 8900
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.0.2",
+          "targetId": "b.antivirus.medium.r1.target.010",
+          "sequence": 11,
+          "activeTimeMs": 9750
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.1.2",
+          "targetId": "b.antivirus.medium.r1.target.011",
+          "sequence": 12,
+          "activeTimeMs": 10600
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.2.2",
+          "targetId": "b.antivirus.medium.r1.target.012",
+          "sequence": 13,
+          "activeTimeMs": 11450
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.3.2",
+          "targetId": "b.antivirus.medium.r1.target.013",
+          "sequence": 14,
+          "activeTimeMs": 12300
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.4.2",
+          "targetId": "b.antivirus.medium.r1.target.014",
+          "sequence": 15,
+          "activeTimeMs": 13150
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.4.3",
+          "targetId": "b.antivirus.medium.r1.target.015",
+          "sequence": 16,
+          "activeTimeMs": 14000
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.3.3",
+          "targetId": "b.antivirus.medium.r1.target.016",
+          "sequence": 17,
+          "activeTimeMs": 14850
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.2.3",
+          "targetId": "b.antivirus.medium.r1.target.017",
+          "sequence": 18,
+          "activeTimeMs": 15700
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.1.3",
+          "targetId": "b.antivirus.medium.r1.target.018",
+          "sequence": 19,
+          "activeTimeMs": 16550
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.0.3",
+          "targetId": "b.antivirus.medium.r1.target.019",
+          "sequence": 20,
+          "activeTimeMs": 17400
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.0.0",
+          "targetId": "b.antivirus.medium.r1.target.020",
+          "sequence": 21,
+          "activeTimeMs": 18250
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.1.0",
+          "targetId": "b.antivirus.medium.r1.target.021",
+          "sequence": 22,
+          "activeTimeMs": 19100
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.2.0",
+          "targetId": "b.antivirus.medium.r1.target.022",
+          "sequence": 23,
+          "activeTimeMs": 19950
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.3.0",
+          "targetId": "b.antivirus.medium.r1.target.023",
+          "sequence": 24,
+          "activeTimeMs": 20800
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.4.0",
+          "targetId": "b.antivirus.medium.r1.target.024",
+          "sequence": 25,
+          "activeTimeMs": 21650
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.4.1",
+          "targetId": "b.antivirus.medium.r1.target.025",
+          "sequence": 26,
+          "activeTimeMs": 22500
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.3.1",
+          "targetId": "b.antivirus.medium.r1.target.026",
+          "sequence": 27,
+          "activeTimeMs": 23350
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.2.1",
+          "targetId": "b.antivirus.medium.r1.target.027",
+          "sequence": 28,
+          "activeTimeMs": 24200
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.1.1",
+          "targetId": "b.antivirus.medium.r1.target.028",
+          "sequence": 29,
+          "activeTimeMs": 25050
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.0.1",
+          "targetId": "b.antivirus.medium.r1.target.029",
+          "sequence": 30,
+          "activeTimeMs": 25900
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.0.2",
+          "targetId": "b.antivirus.medium.r1.target.030",
+          "sequence": 31,
+          "activeTimeMs": 26750
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.1.2",
+          "targetId": "b.antivirus.medium.r1.target.031",
+          "sequence": 32,
+          "activeTimeMs": 27600
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.2.2",
+          "targetId": "b.antivirus.medium.r1.target.032",
+          "sequence": 33,
+          "activeTimeMs": 28450
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.3.2",
+          "targetId": "b.antivirus.medium.r1.target.033",
+          "sequence": 34,
+          "activeTimeMs": 29300
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.4.2",
+          "targetId": "b.antivirus.medium.r1.target.034",
+          "sequence": 35,
+          "activeTimeMs": 30150
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.4.3",
+          "targetId": "b.antivirus.medium.r1.target.035",
+          "sequence": 36,
+          "activeTimeMs": 31000
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.3.3",
+          "targetId": "b.antivirus.medium.r1.target.036",
+          "sequence": 37,
+          "activeTimeMs": 31850
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.2.3",
+          "targetId": "b.antivirus.medium.r1.target.037",
+          "sequence": 38,
+          "activeTimeMs": 32700
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.1.3",
+          "targetId": "b.antivirus.medium.r1.target.038",
+          "sequence": 39,
+          "activeTimeMs": 33550
+        }
+      ],
+      "finishAtMs": 33550,
+      "expectedResult": "success",
+      "expectedObjectives": [],
+      "expectedRewards": [],
+      "expectedFinalState": {
+        "playerTileId": "b.antivirus.medium.tile.1.3",
+        "score": 40
+      },
+      "expectedBestStarClearCount": 0
+    },
+    {
+      "id": "b.antivirus.medium.r1.witness.failure",
+      "challengeId": "b.antivirus.medium",
+      "profileId": "M2",
+      "contentVersion": 4,
+      "ruleVersion": 4,
+      "initialStateId": "b.antivirus.medium.initial",
+      "commands": [],
+      "finishAtMs": 9500,
+      "expectedResult": "failure",
+      "expectedObjectives": [],
+      "expectedRewards": [],
+      "expectedFinalState": {
+        "playerTileId": "b.antivirus.medium.tile.2.0",
+        "score": 0
+      },
+      "expectedBestStarClearCount": 0
+    },
+    {
+      "id": "b.antivirus.medium.r1.witness.keyboard",
+      "challengeId": "b.antivirus.medium",
+      "profileId": "M2",
+      "contentVersion": 4,
+      "ruleVersion": 4,
+      "initialStateId": "b.antivirus.medium.initial",
+      "commands": [
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 1,
+          "activeTimeMs": 1250
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 2,
+          "activeTimeMs": 1390
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 3,
+          "activeTimeMs": 2100
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 4,
+          "activeTimeMs": 2950
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 5,
+          "activeTimeMs": 3800
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 6,
+          "activeTimeMs": 4650
+        },
+        {
+          "kind": "move",
+          "direction": "down",
+          "sequence": 7,
+          "activeTimeMs": 5500
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 8,
+          "activeTimeMs": 6350
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 9,
+          "activeTimeMs": 7200
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 10,
+          "activeTimeMs": 8050
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 11,
+          "activeTimeMs": 8900
+        },
+        {
+          "kind": "move",
+          "direction": "down",
+          "sequence": 12,
+          "activeTimeMs": 9750
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 13,
+          "activeTimeMs": 10600
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 14,
+          "activeTimeMs": 11450
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 15,
+          "activeTimeMs": 12300
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 16,
+          "activeTimeMs": 13150
+        },
+        {
+          "kind": "move",
+          "direction": "down",
+          "sequence": 17,
+          "activeTimeMs": 14000
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 18,
+          "activeTimeMs": 14850
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 19,
+          "activeTimeMs": 15700
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 20,
+          "activeTimeMs": 16550
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 21,
+          "activeTimeMs": 17400
+        },
+        {
+          "kind": "move",
+          "direction": "up",
+          "sequence": 22,
+          "activeTimeMs": 18250
+        },
+        {
+          "kind": "move",
+          "direction": "up",
+          "sequence": 23,
+          "activeTimeMs": 18390
+        },
+        {
+          "kind": "move",
+          "direction": "up",
+          "sequence": 24,
+          "activeTimeMs": 18530
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 25,
+          "activeTimeMs": 19100
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 26,
+          "activeTimeMs": 19950
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 27,
+          "activeTimeMs": 20800
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 28,
+          "activeTimeMs": 21650
+        },
+        {
+          "kind": "move",
+          "direction": "down",
+          "sequence": 29,
+          "activeTimeMs": 22500
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 30,
+          "activeTimeMs": 23350
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 31,
+          "activeTimeMs": 24200
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 32,
+          "activeTimeMs": 25050
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 33,
+          "activeTimeMs": 25900
+        },
+        {
+          "kind": "move",
+          "direction": "down",
+          "sequence": 34,
+          "activeTimeMs": 26750
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 35,
+          "activeTimeMs": 27600
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 36,
+          "activeTimeMs": 28450
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 37,
+          "activeTimeMs": 29300
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 38,
+          "activeTimeMs": 30150
+        },
+        {
+          "kind": "move",
+          "direction": "down",
+          "sequence": 39,
+          "activeTimeMs": 31000
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 40,
+          "activeTimeMs": 31850
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 41,
+          "activeTimeMs": 32700
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 42,
+          "activeTimeMs": 33550
+        }
+      ],
+      "finishAtMs": 33550,
+      "expectedResult": "success",
+      "expectedObjectives": [],
+      "expectedRewards": [],
+      "expectedFinalState": {
+        "playerTileId": "b.antivirus.medium.tile.1.3",
+        "score": 40
+      },
+      "expectedBestStarClearCount": 0
+    },
+    {
+      "id": "b.antivirus.medium.r1.witness.star-recovery",
+      "challengeId": "b.antivirus.medium",
+      "profileId": "M2",
+      "contentVersion": 4,
+      "ruleVersion": 4,
+      "initialStateId": "b.antivirus.medium.initial",
+      "commands": [
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.2.1",
+          "targetId": "b.antivirus.medium.r1.target.007",
+          "sequence": 1,
+          "activeTimeMs": 7200
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.1.1",
+          "targetId": "b.antivirus.medium.r1.target.008",
+          "sequence": 2,
+          "activeTimeMs": 8050
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.0.1",
+          "targetId": "b.antivirus.medium.r1.target.009",
+          "sequence": 3,
+          "activeTimeMs": 8900
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.0.2",
+          "targetId": "b.antivirus.medium.r1.target.010",
+          "sequence": 4,
+          "activeTimeMs": 9750
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.1.2",
+          "targetId": "b.antivirus.medium.r1.target.011",
+          "sequence": 5,
+          "activeTimeMs": 10600
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.2.2",
+          "targetId": "b.antivirus.medium.r1.target.012",
+          "sequence": 6,
+          "activeTimeMs": 11450
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.3.2",
+          "targetId": "b.antivirus.medium.r1.target.013",
+          "sequence": 7,
+          "activeTimeMs": 12300
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.4.2",
+          "targetId": "b.antivirus.medium.r1.target.014",
+          "sequence": 8,
+          "activeTimeMs": 13150
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.4.3",
+          "targetId": "b.antivirus.medium.r1.target.015",
+          "sequence": 9,
+          "activeTimeMs": 14000
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.3.3",
+          "targetId": "b.antivirus.medium.r1.target.016",
+          "sequence": 10,
+          "activeTimeMs": 14850
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.2.3",
+          "targetId": "b.antivirus.medium.r1.target.017",
+          "sequence": 11,
+          "activeTimeMs": 15700
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.1.3",
+          "targetId": "b.antivirus.medium.r1.target.018",
+          "sequence": 12,
+          "activeTimeMs": 16550
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.0.3",
+          "targetId": "b.antivirus.medium.r1.target.019",
+          "sequence": 13,
+          "activeTimeMs": 17400
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.0.0",
+          "targetId": "b.antivirus.medium.r1.target.020",
+          "sequence": 14,
+          "activeTimeMs": 18250
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.1.0",
+          "targetId": "b.antivirus.medium.r1.target.021",
+          "sequence": 15,
+          "activeTimeMs": 19100
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.2.0",
+          "targetId": "b.antivirus.medium.r1.target.022",
+          "sequence": 16,
+          "activeTimeMs": 19950
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.3.0",
+          "targetId": "b.antivirus.medium.r1.target.023",
+          "sequence": 17,
+          "activeTimeMs": 20800
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.4.0",
+          "targetId": "b.antivirus.medium.r1.target.024",
+          "sequence": 18,
+          "activeTimeMs": 21650
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.4.1",
+          "targetId": "b.antivirus.medium.r1.target.025",
+          "sequence": 19,
+          "activeTimeMs": 22500
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.3.1",
+          "targetId": "b.antivirus.medium.r1.target.026",
+          "sequence": 20,
+          "activeTimeMs": 23350
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.2.1",
+          "targetId": "b.antivirus.medium.r1.target.027",
+          "sequence": 21,
+          "activeTimeMs": 24200
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.1.1",
+          "targetId": "b.antivirus.medium.r1.target.028",
+          "sequence": 22,
+          "activeTimeMs": 25050
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.0.1",
+          "targetId": "b.antivirus.medium.r1.target.029",
+          "sequence": 23,
+          "activeTimeMs": 25900
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.0.2",
+          "targetId": "b.antivirus.medium.r1.target.030",
+          "sequence": 24,
+          "activeTimeMs": 26750
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.1.2",
+          "targetId": "b.antivirus.medium.r1.target.031",
+          "sequence": 25,
+          "activeTimeMs": 27600
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.2.2",
+          "targetId": "b.antivirus.medium.r1.target.032",
+          "sequence": 26,
+          "activeTimeMs": 28450
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.3.2",
+          "targetId": "b.antivirus.medium.r1.target.033",
+          "sequence": 27,
+          "activeTimeMs": 29300
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.4.2",
+          "targetId": "b.antivirus.medium.r1.target.034",
+          "sequence": 28,
+          "activeTimeMs": 30150
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.4.3",
+          "targetId": "b.antivirus.medium.r1.target.035",
+          "sequence": 29,
+          "activeTimeMs": 31000
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.3.3",
+          "targetId": "b.antivirus.medium.r1.target.036",
+          "sequence": 30,
+          "activeTimeMs": 31850
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.2.3",
+          "targetId": "b.antivirus.medium.r1.target.037",
+          "sequence": 31,
+          "activeTimeMs": 32700
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.medium.tile.1.3",
+          "targetId": "b.antivirus.medium.r1.target.038",
+          "sequence": 32,
+          "activeTimeMs": 33550
+        }
+      ],
+      "finishAtMs": 33550,
+      "expectedResult": "success",
+      "expectedObjectives": [],
+      "expectedRewards": [],
+      "expectedFinalState": {
+        "playerTileId": "b.antivirus.medium.tile.1.3",
+        "score": 40
+      },
+      "expectedBestStarClearCount": 7
+    },
+    {
+      "id": "b.antivirus.heavy.r1.witness.success",
+      "challengeId": "b.antivirus.heavy",
+      "profileId": "M2",
+      "contentVersion": 4,
+      "ruleVersion": 4,
+      "initialStateId": "b.antivirus.heavy.initial",
+      "commands": [
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.0.0",
+          "targetId": "b.antivirus.heavy.r1.target.000",
+          "sequence": 1,
+          "activeTimeMs": 1250
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.1.0",
+          "targetId": "b.antivirus.heavy.r1.target.001",
+          "sequence": 2,
+          "activeTimeMs": 1900
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.2.0",
+          "targetId": "b.antivirus.heavy.r1.target.002",
+          "sequence": 3,
+          "activeTimeMs": 2550
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.3.0",
+          "targetId": "b.antivirus.heavy.r1.target.003",
+          "sequence": 4,
+          "activeTimeMs": 3200
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.4.0",
+          "targetId": "b.antivirus.heavy.r1.target.004",
+          "sequence": 5,
+          "activeTimeMs": 3850
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.4.1",
+          "targetId": "b.antivirus.heavy.r1.target.005",
+          "sequence": 6,
+          "activeTimeMs": 4500
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.3.1",
+          "targetId": "b.antivirus.heavy.r1.target.006",
+          "sequence": 7,
+          "activeTimeMs": 5150
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.2.1",
+          "targetId": "b.antivirus.heavy.r1.target.007",
+          "sequence": 8,
+          "activeTimeMs": 5800
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.1.1",
+          "targetId": "b.antivirus.heavy.r1.target.008",
+          "sequence": 9,
+          "activeTimeMs": 6450
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.0.1",
+          "targetId": "b.antivirus.heavy.r1.target.009",
+          "sequence": 10,
+          "activeTimeMs": 7100
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.0.2",
+          "targetId": "b.antivirus.heavy.r1.target.010",
+          "sequence": 11,
+          "activeTimeMs": 7750
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.1.2",
+          "targetId": "b.antivirus.heavy.r1.target.011",
+          "sequence": 12,
+          "activeTimeMs": 8400
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.2.2",
+          "targetId": "b.antivirus.heavy.r1.target.012",
+          "sequence": 13,
+          "activeTimeMs": 9050
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.3.2",
+          "targetId": "b.antivirus.heavy.r1.target.013",
+          "sequence": 14,
+          "activeTimeMs": 9700
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.4.2",
+          "targetId": "b.antivirus.heavy.r1.target.014",
+          "sequence": 15,
+          "activeTimeMs": 10350
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.4.3",
+          "targetId": "b.antivirus.heavy.r1.target.015",
+          "sequence": 16,
+          "activeTimeMs": 11000
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.3.3",
+          "targetId": "b.antivirus.heavy.r1.target.016",
+          "sequence": 17,
+          "activeTimeMs": 11650
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.2.3",
+          "targetId": "b.antivirus.heavy.r1.target.017",
+          "sequence": 18,
+          "activeTimeMs": 12300
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.1.3",
+          "targetId": "b.antivirus.heavy.r1.target.018",
+          "sequence": 19,
+          "activeTimeMs": 12950
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.0.3",
+          "targetId": "b.antivirus.heavy.r1.target.019",
+          "sequence": 20,
+          "activeTimeMs": 13600
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.0.0",
+          "targetId": "b.antivirus.heavy.r1.target.020",
+          "sequence": 21,
+          "activeTimeMs": 14250
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.1.0",
+          "targetId": "b.antivirus.heavy.r1.target.021",
+          "sequence": 22,
+          "activeTimeMs": 14900
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.2.0",
+          "targetId": "b.antivirus.heavy.r1.target.022",
+          "sequence": 23,
+          "activeTimeMs": 15550
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.3.0",
+          "targetId": "b.antivirus.heavy.r1.target.023",
+          "sequence": 24,
+          "activeTimeMs": 16200
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.4.0",
+          "targetId": "b.antivirus.heavy.r1.target.024",
+          "sequence": 25,
+          "activeTimeMs": 16850
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.4.1",
+          "targetId": "b.antivirus.heavy.r1.target.025",
+          "sequence": 26,
+          "activeTimeMs": 17500
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.3.1",
+          "targetId": "b.antivirus.heavy.r1.target.026",
+          "sequence": 27,
+          "activeTimeMs": 18150
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.2.1",
+          "targetId": "b.antivirus.heavy.r1.target.027",
+          "sequence": 28,
+          "activeTimeMs": 18800
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.1.1",
+          "targetId": "b.antivirus.heavy.r1.target.028",
+          "sequence": 29,
+          "activeTimeMs": 19450
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.0.1",
+          "targetId": "b.antivirus.heavy.r1.target.029",
+          "sequence": 30,
+          "activeTimeMs": 20100
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.0.2",
+          "targetId": "b.antivirus.heavy.r1.target.030",
+          "sequence": 31,
+          "activeTimeMs": 20750
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.1.2",
+          "targetId": "b.antivirus.heavy.r1.target.031",
+          "sequence": 32,
+          "activeTimeMs": 21400
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.2.2",
+          "targetId": "b.antivirus.heavy.r1.target.032",
+          "sequence": 33,
+          "activeTimeMs": 22050
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.3.2",
+          "targetId": "b.antivirus.heavy.r1.target.033",
+          "sequence": 34,
+          "activeTimeMs": 22700
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.4.2",
+          "targetId": "b.antivirus.heavy.r1.target.034",
+          "sequence": 35,
+          "activeTimeMs": 23350
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.4.3",
+          "targetId": "b.antivirus.heavy.r1.target.035",
+          "sequence": 36,
+          "activeTimeMs": 24000
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.3.3",
+          "targetId": "b.antivirus.heavy.r1.target.036",
+          "sequence": 37,
+          "activeTimeMs": 24650
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.2.3",
+          "targetId": "b.antivirus.heavy.r1.target.037",
+          "sequence": 38,
+          "activeTimeMs": 25300
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.1.3",
+          "targetId": "b.antivirus.heavy.r1.target.038",
+          "sequence": 39,
+          "activeTimeMs": 25950
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.0.3",
+          "targetId": "b.antivirus.heavy.r1.target.039",
+          "sequence": 40,
+          "activeTimeMs": 26600
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.0.0",
+          "targetId": "b.antivirus.heavy.r1.target.040",
+          "sequence": 41,
+          "activeTimeMs": 27250
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.1.0",
+          "targetId": "b.antivirus.heavy.r1.target.041",
+          "sequence": 42,
+          "activeTimeMs": 27900
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.2.0",
+          "targetId": "b.antivirus.heavy.r1.target.042",
+          "sequence": 43,
+          "activeTimeMs": 28550
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.3.0",
+          "targetId": "b.antivirus.heavy.r1.target.043",
+          "sequence": 44,
+          "activeTimeMs": 29200
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.4.0",
+          "targetId": "b.antivirus.heavy.r1.target.044",
+          "sequence": 45,
+          "activeTimeMs": 29850
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.4.1",
+          "targetId": "b.antivirus.heavy.r1.target.045",
+          "sequence": 46,
+          "activeTimeMs": 30500
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.3.1",
+          "targetId": "b.antivirus.heavy.r1.target.046",
+          "sequence": 47,
+          "activeTimeMs": 31150
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.2.1",
+          "targetId": "b.antivirus.heavy.r1.target.047",
+          "sequence": 48,
+          "activeTimeMs": 31800
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.1.1",
+          "targetId": "b.antivirus.heavy.r1.target.048",
+          "sequence": 49,
+          "activeTimeMs": 32450
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.0.1",
+          "targetId": "b.antivirus.heavy.r1.target.049",
+          "sequence": 50,
+          "activeTimeMs": 33100
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.0.2",
+          "targetId": "b.antivirus.heavy.r1.target.050",
+          "sequence": 51,
+          "activeTimeMs": 33750
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.1.2",
+          "targetId": "b.antivirus.heavy.r1.target.051",
+          "sequence": 52,
+          "activeTimeMs": 34400
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.2.2",
+          "targetId": "b.antivirus.heavy.r1.target.052",
+          "sequence": 53,
+          "activeTimeMs": 35050
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.3.2",
+          "targetId": "b.antivirus.heavy.r1.target.053",
+          "sequence": 54,
+          "activeTimeMs": 35700
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.4.2",
+          "targetId": "b.antivirus.heavy.r1.target.054",
+          "sequence": 55,
+          "activeTimeMs": 36350
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.4.3",
+          "targetId": "b.antivirus.heavy.r1.target.055",
+          "sequence": 56,
+          "activeTimeMs": 37000
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.3.3",
+          "targetId": "b.antivirus.heavy.r1.target.056",
+          "sequence": 57,
+          "activeTimeMs": 37650
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.2.3",
+          "targetId": "b.antivirus.heavy.r1.target.057",
+          "sequence": 58,
+          "activeTimeMs": 38300
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.1.3",
+          "targetId": "b.antivirus.heavy.r1.target.058",
+          "sequence": 59,
+          "activeTimeMs": 38950
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.0.3",
+          "targetId": "b.antivirus.heavy.r1.target.059",
+          "sequence": 60,
+          "activeTimeMs": 39600
+        }
+      ],
+      "finishAtMs": 39600,
+      "expectedResult": "success",
+      "expectedObjectives": [],
+      "expectedRewards": [],
+      "expectedFinalState": {
+        "playerTileId": "b.antivirus.heavy.tile.0.3",
+        "score": 61
+      },
+      "expectedBestStarClearCount": 0
+    },
+    {
+      "id": "b.antivirus.heavy.r1.witness.failure",
+      "challengeId": "b.antivirus.heavy",
+      "profileId": "M2",
+      "contentVersion": 4,
+      "ruleVersion": 4,
+      "initialStateId": "b.antivirus.heavy.initial",
+      "commands": [],
+      "finishAtMs": 7500,
+      "expectedResult": "failure",
+      "expectedObjectives": [],
+      "expectedRewards": [],
+      "expectedFinalState": {
+        "playerTileId": "b.antivirus.heavy.tile.2.0",
+        "score": 0
+      },
+      "expectedBestStarClearCount": 0
+    },
+    {
+      "id": "b.antivirus.heavy.r1.witness.keyboard",
+      "challengeId": "b.antivirus.heavy",
+      "profileId": "M2",
+      "contentVersion": 4,
+      "ruleVersion": 4,
+      "initialStateId": "b.antivirus.heavy.initial",
+      "commands": [
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 1,
+          "activeTimeMs": 1250
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 2,
+          "activeTimeMs": 1390
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 3,
+          "activeTimeMs": 1900
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 4,
+          "activeTimeMs": 2550
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 5,
+          "activeTimeMs": 3200
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 6,
+          "activeTimeMs": 3850
+        },
+        {
+          "kind": "move",
+          "direction": "down",
+          "sequence": 7,
+          "activeTimeMs": 4500
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 8,
+          "activeTimeMs": 5150
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 9,
+          "activeTimeMs": 5800
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 10,
+          "activeTimeMs": 6450
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 11,
+          "activeTimeMs": 7100
+        },
+        {
+          "kind": "move",
+          "direction": "down",
+          "sequence": 12,
+          "activeTimeMs": 7750
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 13,
+          "activeTimeMs": 8400
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 14,
+          "activeTimeMs": 9050
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 15,
+          "activeTimeMs": 9700
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 16,
+          "activeTimeMs": 10350
+        },
+        {
+          "kind": "move",
+          "direction": "down",
+          "sequence": 17,
+          "activeTimeMs": 11000
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 18,
+          "activeTimeMs": 11650
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 19,
+          "activeTimeMs": 12300
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 20,
+          "activeTimeMs": 12950
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 21,
+          "activeTimeMs": 13600
+        },
+        {
+          "kind": "move",
+          "direction": "up",
+          "sequence": 22,
+          "activeTimeMs": 14250
+        },
+        {
+          "kind": "move",
+          "direction": "up",
+          "sequence": 23,
+          "activeTimeMs": 14390
+        },
+        {
+          "kind": "move",
+          "direction": "up",
+          "sequence": 24,
+          "activeTimeMs": 14530
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 25,
+          "activeTimeMs": 14900
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 26,
+          "activeTimeMs": 15550
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 27,
+          "activeTimeMs": 16200
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 28,
+          "activeTimeMs": 16850
+        },
+        {
+          "kind": "move",
+          "direction": "down",
+          "sequence": 29,
+          "activeTimeMs": 17500
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 30,
+          "activeTimeMs": 18150
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 31,
+          "activeTimeMs": 18800
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 32,
+          "activeTimeMs": 19450
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 33,
+          "activeTimeMs": 20100
+        },
+        {
+          "kind": "move",
+          "direction": "down",
+          "sequence": 34,
+          "activeTimeMs": 20750
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 35,
+          "activeTimeMs": 21400
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 36,
+          "activeTimeMs": 22050
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 37,
+          "activeTimeMs": 22700
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 38,
+          "activeTimeMs": 23350
+        },
+        {
+          "kind": "move",
+          "direction": "down",
+          "sequence": 39,
+          "activeTimeMs": 24000
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 40,
+          "activeTimeMs": 24650
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 41,
+          "activeTimeMs": 25300
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 42,
+          "activeTimeMs": 25950
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 43,
+          "activeTimeMs": 26600
+        },
+        {
+          "kind": "move",
+          "direction": "up",
+          "sequence": 44,
+          "activeTimeMs": 27250
+        },
+        {
+          "kind": "move",
+          "direction": "up",
+          "sequence": 45,
+          "activeTimeMs": 27390
+        },
+        {
+          "kind": "move",
+          "direction": "up",
+          "sequence": 46,
+          "activeTimeMs": 27530
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 47,
+          "activeTimeMs": 27900
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 48,
+          "activeTimeMs": 28550
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 49,
+          "activeTimeMs": 29200
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 50,
+          "activeTimeMs": 29850
+        },
+        {
+          "kind": "move",
+          "direction": "down",
+          "sequence": 51,
+          "activeTimeMs": 30500
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 52,
+          "activeTimeMs": 31150
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 53,
+          "activeTimeMs": 31800
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 54,
+          "activeTimeMs": 32450
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 55,
+          "activeTimeMs": 33100
+        },
+        {
+          "kind": "move",
+          "direction": "down",
+          "sequence": 56,
+          "activeTimeMs": 33750
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 57,
+          "activeTimeMs": 34400
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 58,
+          "activeTimeMs": 35050
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 59,
+          "activeTimeMs": 35700
+        },
+        {
+          "kind": "move",
+          "direction": "right",
+          "sequence": 60,
+          "activeTimeMs": 36350
+        },
+        {
+          "kind": "move",
+          "direction": "down",
+          "sequence": 61,
+          "activeTimeMs": 37000
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 62,
+          "activeTimeMs": 37650
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 63,
+          "activeTimeMs": 38300
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 64,
+          "activeTimeMs": 38950
+        },
+        {
+          "kind": "move",
+          "direction": "left",
+          "sequence": 65,
+          "activeTimeMs": 39600
+        }
+      ],
+      "finishAtMs": 39600,
+      "expectedResult": "success",
+      "expectedObjectives": [],
+      "expectedRewards": [],
+      "expectedFinalState": {
+        "playerTileId": "b.antivirus.heavy.tile.0.3",
+        "score": 61
+      },
+      "expectedBestStarClearCount": 0
+    },
+    {
+      "id": "b.antivirus.heavy.r1.witness.star-recovery",
+      "challengeId": "b.antivirus.heavy",
+      "profileId": "M2",
+      "contentVersion": 4,
+      "ruleVersion": 4,
+      "initialStateId": "b.antivirus.heavy.initial",
+      "commands": [
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.2.1",
+          "targetId": "b.antivirus.heavy.r1.target.007",
+          "sequence": 1,
+          "activeTimeMs": 5800
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.1.1",
+          "targetId": "b.antivirus.heavy.r1.target.008",
+          "sequence": 2,
+          "activeTimeMs": 6450
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.0.1",
+          "targetId": "b.antivirus.heavy.r1.target.009",
+          "sequence": 3,
+          "activeTimeMs": 7100
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.0.2",
+          "targetId": "b.antivirus.heavy.r1.target.010",
+          "sequence": 4,
+          "activeTimeMs": 7750
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.1.2",
+          "targetId": "b.antivirus.heavy.r1.target.011",
+          "sequence": 5,
+          "activeTimeMs": 8400
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.2.2",
+          "targetId": "b.antivirus.heavy.r1.target.012",
+          "sequence": 6,
+          "activeTimeMs": 9050
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.3.2",
+          "targetId": "b.antivirus.heavy.r1.target.013",
+          "sequence": 7,
+          "activeTimeMs": 9700
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.4.2",
+          "targetId": "b.antivirus.heavy.r1.target.014",
+          "sequence": 8,
+          "activeTimeMs": 10350
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.4.3",
+          "targetId": "b.antivirus.heavy.r1.target.015",
+          "sequence": 9,
+          "activeTimeMs": 11000
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.3.3",
+          "targetId": "b.antivirus.heavy.r1.target.016",
+          "sequence": 10,
+          "activeTimeMs": 11650
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.2.3",
+          "targetId": "b.antivirus.heavy.r1.target.017",
+          "sequence": 11,
+          "activeTimeMs": 12300
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.1.3",
+          "targetId": "b.antivirus.heavy.r1.target.018",
+          "sequence": 12,
+          "activeTimeMs": 12950
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.0.3",
+          "targetId": "b.antivirus.heavy.r1.target.019",
+          "sequence": 13,
+          "activeTimeMs": 13600
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.0.0",
+          "targetId": "b.antivirus.heavy.r1.target.020",
+          "sequence": 14,
+          "activeTimeMs": 14250
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.1.0",
+          "targetId": "b.antivirus.heavy.r1.target.021",
+          "sequence": 15,
+          "activeTimeMs": 14900
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.2.0",
+          "targetId": "b.antivirus.heavy.r1.target.022",
+          "sequence": 16,
+          "activeTimeMs": 15550
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.3.0",
+          "targetId": "b.antivirus.heavy.r1.target.023",
+          "sequence": 17,
+          "activeTimeMs": 16200
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.4.0",
+          "targetId": "b.antivirus.heavy.r1.target.024",
+          "sequence": 18,
+          "activeTimeMs": 16850
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.4.1",
+          "targetId": "b.antivirus.heavy.r1.target.025",
+          "sequence": 19,
+          "activeTimeMs": 17500
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.3.1",
+          "targetId": "b.antivirus.heavy.r1.target.026",
+          "sequence": 20,
+          "activeTimeMs": 18150
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.2.1",
+          "targetId": "b.antivirus.heavy.r1.target.027",
+          "sequence": 21,
+          "activeTimeMs": 18800
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.1.1",
+          "targetId": "b.antivirus.heavy.r1.target.028",
+          "sequence": 22,
+          "activeTimeMs": 19450
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.0.1",
+          "targetId": "b.antivirus.heavy.r1.target.029",
+          "sequence": 23,
+          "activeTimeMs": 20100
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.0.2",
+          "targetId": "b.antivirus.heavy.r1.target.030",
+          "sequence": 24,
+          "activeTimeMs": 20750
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.1.2",
+          "targetId": "b.antivirus.heavy.r1.target.031",
+          "sequence": 25,
+          "activeTimeMs": 21400
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.2.2",
+          "targetId": "b.antivirus.heavy.r1.target.032",
+          "sequence": 26,
+          "activeTimeMs": 22050
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.3.2",
+          "targetId": "b.antivirus.heavy.r1.target.033",
+          "sequence": 27,
+          "activeTimeMs": 22700
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.4.2",
+          "targetId": "b.antivirus.heavy.r1.target.034",
+          "sequence": 28,
+          "activeTimeMs": 23350
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.4.3",
+          "targetId": "b.antivirus.heavy.r1.target.035",
+          "sequence": 29,
+          "activeTimeMs": 24000
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.3.3",
+          "targetId": "b.antivirus.heavy.r1.target.036",
+          "sequence": 30,
+          "activeTimeMs": 24650
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.2.3",
+          "targetId": "b.antivirus.heavy.r1.target.037",
+          "sequence": 31,
+          "activeTimeMs": 25300
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.1.3",
+          "targetId": "b.antivirus.heavy.r1.target.038",
+          "sequence": 32,
+          "activeTimeMs": 25950
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.0.3",
+          "targetId": "b.antivirus.heavy.r1.target.039",
+          "sequence": 33,
+          "activeTimeMs": 26600
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.0.0",
+          "targetId": "b.antivirus.heavy.r1.target.040",
+          "sequence": 34,
+          "activeTimeMs": 27250
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.1.0",
+          "targetId": "b.antivirus.heavy.r1.target.041",
+          "sequence": 35,
+          "activeTimeMs": 27900
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.2.0",
+          "targetId": "b.antivirus.heavy.r1.target.042",
+          "sequence": 36,
+          "activeTimeMs": 28550
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.3.0",
+          "targetId": "b.antivirus.heavy.r1.target.043",
+          "sequence": 37,
+          "activeTimeMs": 29200
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.4.0",
+          "targetId": "b.antivirus.heavy.r1.target.044",
+          "sequence": 38,
+          "activeTimeMs": 29850
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.4.1",
+          "targetId": "b.antivirus.heavy.r1.target.045",
+          "sequence": 39,
+          "activeTimeMs": 30500
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.3.1",
+          "targetId": "b.antivirus.heavy.r1.target.046",
+          "sequence": 40,
+          "activeTimeMs": 31150
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.2.1",
+          "targetId": "b.antivirus.heavy.r1.target.047",
+          "sequence": 41,
+          "activeTimeMs": 31800
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.1.1",
+          "targetId": "b.antivirus.heavy.r1.target.048",
+          "sequence": 42,
+          "activeTimeMs": 32450
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.0.1",
+          "targetId": "b.antivirus.heavy.r1.target.049",
+          "sequence": 43,
+          "activeTimeMs": 33100
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.0.2",
+          "targetId": "b.antivirus.heavy.r1.target.050",
+          "sequence": 44,
+          "activeTimeMs": 33750
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.1.2",
+          "targetId": "b.antivirus.heavy.r1.target.051",
+          "sequence": 45,
+          "activeTimeMs": 34400
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.2.2",
+          "targetId": "b.antivirus.heavy.r1.target.052",
+          "sequence": 46,
+          "activeTimeMs": 35050
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.3.2",
+          "targetId": "b.antivirus.heavy.r1.target.053",
+          "sequence": 47,
+          "activeTimeMs": 35700
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.4.2",
+          "targetId": "b.antivirus.heavy.r1.target.054",
+          "sequence": 48,
+          "activeTimeMs": 36350
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.4.3",
+          "targetId": "b.antivirus.heavy.r1.target.055",
+          "sequence": 49,
+          "activeTimeMs": 37000
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.3.3",
+          "targetId": "b.antivirus.heavy.r1.target.056",
+          "sequence": 50,
+          "activeTimeMs": 37650
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.2.3",
+          "targetId": "b.antivirus.heavy.r1.target.057",
+          "sequence": 51,
+          "activeTimeMs": 38300
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.1.3",
+          "targetId": "b.antivirus.heavy.r1.target.058",
+          "sequence": 52,
+          "activeTimeMs": 38950
+        },
+        {
+          "kind": "click",
+          "tileId": "b.antivirus.heavy.tile.0.3",
+          "targetId": "b.antivirus.heavy.r1.target.059",
+          "sequence": 53,
+          "activeTimeMs": 39600
+        }
+      ],
+      "finishAtMs": 39600,
+      "expectedResult": "success",
+      "expectedObjectives": [],
+      "expectedRewards": [],
+      "expectedFinalState": {
+        "playerTileId": "b.antivirus.heavy.tile.0.3",
+        "score": 61
+      },
+      "expectedBestStarClearCount": 7
+    }
+  ]
+}

@@ -2,11 +2,11 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { lstatSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
-import { assembleLegacyContent } from "../src/content/assemble.ts";
-import type { ProfileId } from "../src/core/types.ts";
-import { additiveProfileMigrations } from "../src/platform/migrations.ts";
-import { validatePayload } from "../src/platform/save-payload.ts";
-import type { SavePayload } from "../src/platform/save-payload.ts";
+import { assembleLegacyContent } from "../src/content/history/pre-r1/assemble.ts";
+import type { ProfileId } from "../src/content/history/pre-r1/types.ts";
+import { additiveProfileMigrations } from "../src/content/history/pre-r1/migrations.ts";
+import { validatePayload } from "../src/content/history/pre-r1/save-payload.ts";
+import type { SavePayload } from "../src/content/history/pre-r1/save-payload.ts";
 import {
   createSaveStore,
   MAX_IMPORT_BYTES,
