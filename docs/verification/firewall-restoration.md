@@ -1,4 +1,6 @@
-# 防火墙原版还原与 v2 迁移
+# 防火墙原版还原与 v2 迁移（历史）
+
+本页保留 v2 的原始实现与验收含义；当前警报扣分、方向闪避与 v3 迁移见[后续修复记录](firewall-hazards.md)。下文“当前”均指本页记录的 v2 交付时点。
 
 [文档索引](../index.md) · [当前进度](implementation-progress.md) · [音乐原参考 S11](../references/firewall-audio.md) · [玩法合同](../spec/gameplay.md#62-突破防火墙)
 

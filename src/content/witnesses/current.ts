@@ -1,64 +1,48 @@
-import { legacyRealtimeContent, realtimeContent, worldCatalog } from "../assemble.ts";
+import { realtimeContent, worldCatalog } from "../assemble.ts";
+import type { RealtimeWitness } from "../../core/realtime.ts";
 import type { WorldWitness } from "../validate.ts";
+import { v2WorldWitness } from "./v2.ts";
 
-/** Keep published v1 recordings intact, retiming only their firewall moves for the v2 chart. */
+/** Published recordings retain their world actions; v3 replaces firewall routes with fixed keyboard witnesses. */
 export function currentWorldWitness(witness: WorldWitness): WorldWitness {
-  if (
-    witness.ruleVersion !== 1 ||
-    witness.contentVersion !== Math.min(Number(witness.profileId.slice(1)), 4)
-  )
-    throw new Error("只能重定时已发布 v1 世界见证；其他版本需要明确转换");
-  let firewall: { challengeId: string; activeStartMs: number; endMs: number } | null = null;
-  const steps = witness.steps
-    .map((step) => {
-      if (
-        step.command.kind === "StartChallenge" &&
-        step.command.challengeId.startsWith("a.firewall.")
-      ) {
-        const challengeId = step.command.challengeId;
-        const definition = realtimeContent.definitions.find(
-          (candidate) => candidate.id === challengeId,
-        );
-        if (!definition || definition.kind !== "firewall") throw new Error("未知防火墙见证");
-        firewall = {
-          challengeId: definition.id,
-          activeStartMs: step.atMs + 3000,
-          endMs: step.atMs + 3000 + definition.rules.durationMs,
-        };
-      }
-      if (firewall && step.atMs > firewall.endMs) firewall = null;
-      if (
-        !firewall ||
-        step.atMs < firewall.activeStartMs ||
-        !["Move", "ClickTile"].includes(step.command.kind)
-      )
-        return step;
-      const challengeId = firewall.challengeId;
-      const before = legacyRealtimeContent.definitions.find(
-        (definition) => definition.id === challengeId,
-      );
-      const after = realtimeContent.definitions.find((definition) => definition.id === challengeId);
-      if (before?.kind !== "firewall" || after?.kind !== "firewall")
-        throw new Error("缺少见证的原始或当前防火墙");
-      const originalTimeMs = step.atMs - firewall.activeStartMs;
-      const oldIntervalMs = 60_000 / before.rules.bpm;
-      const beatIndex = Math.round((originalTimeMs - before.rules.firstBeatMs) / oldIntervalMs);
-      const offsetMs = originalTimeMs - before.rules.firstBeatMs - beatIndex * oldIntervalMs;
-      const atMs = Math.round(
-        firewall.activeStartMs +
-          after.rules.firstBeatMs +
-          beatIndex * (60_000 / after.rules.bpm) +
-          offsetMs,
-      );
-      if (atMs >= firewall.endMs) throw new Error("旧见证操作无法完整落在新谱面内，必须重新制作");
-      return { ...step, atMs };
-    })
-    .toSorted((left, right) => left.atMs - right.atMs);
+  const previous = v2WorldWitness(witness);
+  const intervals = previous.steps.flatMap((step) => {
+    if (
+      step.command.kind !== "StartChallenge" ||
+      !step.command.challengeId.startsWith("a.firewall.")
+    )
+      return [];
+    const challengeId = step.command.challengeId;
+    const definition = realtimeContent.definitions.find((item) => item.id === challengeId);
+    if (!definition || definition.kind !== "firewall") throw new Error("缺少当前防火墙定义");
+    const route = (realtimeContent.witnesses as RealtimeWitness[]).find(
+      (item) => item.challengeId === definition.id && item.expectedResult === "success",
+    );
+    if (!route) throw new Error("缺少当前防火墙方向键见证");
+    return [
+      { startMs: step.atMs + 3000, endMs: step.atMs + 3000 + definition.rules.durationMs, route },
+    ];
+  });
+  const retained = previous.steps.filter(
+    (step) =>
+      !(
+        ["Move", "ClickTile"].includes(step.command.kind) &&
+        intervals.some((interval) => step.atMs >= interval.startMs && step.atMs < interval.endMs)
+      ),
+  );
+  const replacements = intervals.flatMap((interval) =>
+    interval.route.commands.map((command) => {
+      if (command.kind !== "move") throw new Error("世界防火墙见证只接受正常方向键路线");
+      return {
+        atMs: interval.startMs + command.activeTimeMs,
+        command: { kind: "Move" as const, direction: command.direction },
+        expectedCode: "accepted" as const,
+      };
+    }),
+  );
   return {
-    ...witness,
-    contentVersion:
-      worldCatalog.contentVersion + Math.min(Number(witness.profileId.slice(1)), 4) - 1,
+    ...previous,
     ruleVersion: worldCatalog.ruleVersion,
-    steps,
+    steps: [...retained, ...replacements].toSorted((left, right) => left.atMs - right.atMs),
   };
 }

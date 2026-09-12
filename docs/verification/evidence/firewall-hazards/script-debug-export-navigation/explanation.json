@@ -1,0 +1,7 @@
+{
+  "classification": "browser-test-script-navigation-assumption",
+  "cause": "导出面板按 Escape 只返回存档菜单，测试错误地直接等待棋盘恢复；实际迁移、保存与 hazard 断言在此前均已完成。",
+  "repair": "使用正常 UI：返回存档菜单 → 继续探索，然后等待棋盘。",
+  "gameRuntimeChanged": false,
+  "originalError": "page.waitForFunction: Timeout 10000ms exceeded.\n    at waitForGameReady (/Users/caoyujie/codes/camellia-golden-week/scripts/browser/support.ts:8:14)\n    at async observeAlarmRecovery (/Users/caoyujie/codes/camellia-golden-week/scripts/browser/firewall-cue.ts:722:3)\n    at async verifyFirewallCue (/Users/caoyujie/codes/camellia-golden-week/scripts/browser/firewall-cue.ts:1057:23)\n    at async file:///private/tmp/camellia-firewall-hazards-run.mjs:22:23"
+}

@@ -1,11 +1,22 @@
 import assert from "node:assert/strict";
-import { writeFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
+import { readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 import type { Browser, Page } from "playwright";
-import { startNewGame, pressGameKey, waitForGameReady } from "./support.ts";
+import { assembleContent } from "../../src/content/assemble.ts";
+import type {
+  DirectionalFirewallDefinition,
+  FirewallState,
+  RealtimeDirection,
+} from "../../src/core/realtime.ts";
+import type { SaveEnvelope } from "../../src/platform/save-store.ts";
+import type { SavePayload } from "../../src/platform/save-payload.ts";
+import { exportThroughUi, startNewGame, pressGameKey, waitForGameReady } from "./support.ts";
 
 type FormalDifficulty = "inner" | "deep" | "core";
 type FirewallDifficulty = "tutorial" | FormalDifficulty;
+const preparationRecoveryCounts = new WeakMap<Page, number>();
 
 interface MusicTiming {
   id: string;
@@ -22,9 +33,127 @@ interface FirewallInspection {
   audio: { enabled: boolean; music: MusicTiming | null };
   render: { tileCount: number; firewallScoreboards: number };
   realtimeRoom: {
-    state: { lastJudgment: { kind: "perfect" | "miss"; activeTimeMs: number } | null };
+    state: FirewallState;
   } | null;
   lastResult: { code: string; message: string };
+}
+
+const directionKeys: Record<RealtimeDirection, string> = {
+  up: "ArrowUp",
+  right: "ArrowRight",
+  down: "ArrowDown",
+  left: "ArrowLeft",
+};
+
+interface FirewallRoute {
+  definition: DirectionalFirewallDefinition;
+  playerTileId: string;
+}
+
+async function createFirewallRoute(difficulty: FirewallDifficulty): Promise<FirewallRoute> {
+  const content = JSON.parse(
+    await readFile(new URL("../../src/content/challenges/realtime.json", import.meta.url), "utf8"),
+  ) as { definitions: DirectionalFirewallDefinition[] };
+  const definition = content.definitions.find((entry) => entry.id === `a.firewall.${difficulty}`);
+  assert.ok(definition?.ruleVersion === 3, "本轮浏览器回归只针对规则 v3 固定内容");
+  return { definition, playerTileId: definition.entry.tileId };
+}
+
+function routeCandidates(route: FirewallRoute, playerTileId: string, beatIndex: number) {
+  const { definition } = route;
+  const tile = definition.tiles.find((entry) => entry.id === playerTileId)!;
+  const beatMs = definition.rules.firstBeatMs + (beatIndex * 60_000) / definition.rules.bpm;
+  const alarmTiles = (
+    alarm: DirectionalFirewallDefinition["rules"]["alarms"][number],
+    time: number,
+  ) =>
+    time < alarm.startsAtMs || time >= alarm.endsAtMs
+      ? []
+      : (alarm.frames.findLast((frame) => frame.atMs <= time)?.tileIds ?? []);
+  return (["up", "right", "down", "left"] as const).flatMap((direction) => {
+    const vector = { up: [0, -1], right: [1, 0], down: [0, 1], left: [-1, 0] }[direction]!;
+    const destination = definition.tiles.find(
+      (candidate) => candidate.x === tile.x + vector[0]! && candidate.y === tile.y + vector[1]!,
+    );
+    if (!destination) return [];
+    const current = definition.rules.alarms.filter((alarm) =>
+      alarmTiles(alarm, beatMs).includes(destination.id),
+    );
+    // A candidate may cross the existing wave toward its source. It must be clear after the
+    // scheduled wave movement, so ending the finite dodge cannot cause an unobserved hit.
+    if (
+      current.some((alarm) => alarm.approachFrom !== direction) ||
+      definition.rules.alarms.some((alarm) =>
+        alarmTiles(alarm, beatMs + 151).includes(destination.id),
+      )
+    )
+      return [];
+    return [
+      {
+        direction,
+        destination: destination.id,
+        crossesAlarm: current.length > 0,
+        distanceFromCenter: Math.abs(destination.x - 2) + Math.abs(destination.y - 1.5),
+      },
+    ];
+  });
+}
+
+function chooseRouteInput(route: FirewallRoute, beatIndex: number) {
+  const memo = new Map<string, number>();
+  const safeBeats = (tile: string, beat: number): number => {
+    if (beat >= route.definition.rules.beatCount) return 0;
+    const key = `${tile}:${beat}`;
+    if (memo.has(key)) return memo.get(key)!;
+    const candidates = routeCandidates(route, tile, beat);
+    const result = candidates.length
+      ? 1 + Math.max(...candidates.map((candidate) => safeBeats(candidate.destination, beat + 1)))
+      : 0;
+    memo.set(key, result);
+    return result;
+  };
+  const candidates = routeCandidates(route, route.playerTileId, beatIndex).map((candidate) => ({
+    ...candidate,
+    safeBeats: safeBeats(candidate.destination, beatIndex + 1),
+  }));
+  candidates.sort(
+    (a, b) =>
+      b.safeBeats - a.safeBeats ||
+      Number(b.crossesAlarm) - Number(a.crossesAlarm) ||
+      a.distanceFromCenter - b.distanceFromCenter,
+  );
+  assert.ok(candidates[0], `固定地图在可见第 ${beatIndex + 1} 拍没有可规划的合法方向`);
+  return candidates[0];
+}
+
+async function readVisibleFeedback(page: Page) {
+  return page.evaluate(() => {
+    const impact = document.querySelector<HTMLElement>("#firewall-impact")!;
+    const style = getComputedStyle(impact);
+    const bounds = impact.getBoundingClientRect();
+    return {
+      combo: Number(document.querySelector("#firewall-combo-value")?.textContent),
+      beat: document.querySelector("#firewall-beat-count")?.textContent ?? "",
+      status: document.querySelector("#firewall-beat-status")?.textContent ?? "",
+      feedback: document.querySelector("#firewall-feedback")?.textContent ?? "",
+      kind: document.querySelector<HTMLElement>("#firewall-feedback")?.dataset.kind ?? "none",
+      impactOpacity: Number(style.opacity),
+      impactDisplay: style.display,
+      impactVisible:
+        style.display !== "none" &&
+        style.visibility === "visible" &&
+        Number(style.opacity) > 0 &&
+        bounds.width > 0 &&
+        bounds.height > 0,
+      marks: [...document.querySelectorAll<HTMLElement>(".firewall-tile-mark")]
+        .filter((element) => getComputedStyle(element).visibility === "visible")
+        .map((element) => ({
+          tileId: element.dataset.tileId!,
+          mark: element.textContent ?? "",
+          phase: element.dataset.hazardPhase ?? "",
+        })),
+    };
+  });
 }
 
 async function inspect(page: Page): Promise<FirewallInspection> {
@@ -63,7 +192,7 @@ async function sampleActiveFrameIntervals(page: Page) {
         const rhythm = document.querySelector("#firewall-rhythm");
         const dialog = document.querySelector<HTMLDialogElement>("#game-dialog");
         const shell = document.querySelector(".game-shell");
-        const eligiblePhases = new Set(["waiting", "ready", "hit"]);
+        const eligiblePhases = new Set(["waiting", "ready", "hit", "judged"]);
         const intervalsMs: number[] = [];
         let previousEligibleFrame: number | null = null;
         let firstEligibleFrameMs: number | null = null;
@@ -312,11 +441,40 @@ async function pauseAndResume(
   inspectAudio: boolean,
   difficulty: FirewallDifficulty = "tutorial",
 ) {
-  await page.waitForFunction(
-    () =>
-      document.querySelector<HTMLProgressElement>("#firewall-song-progress")!.value > 0.06 &&
-      document.querySelector("#firewall-rhythm")?.getAttribute("data-phase") === "waiting",
-  );
+  const preparationPauses = [];
+  for (;;) {
+    await page.waitForFunction(
+      () =>
+        (document.querySelector<HTMLProgressElement>("#firewall-song-progress")!.value > 0.06 &&
+          document.querySelector("#firewall-rhythm")?.getAttribute("data-phase") === "waiting") ||
+        (document.querySelector<HTMLDialogElement>("#game-dialog")?.open &&
+          document.querySelector(".dialog-description")?.textContent?.includes("前台调度中断")),
+    );
+    const dialog = page.locator("#game-dialog");
+    if (!(await dialog.evaluate((element) => (element as HTMLDialogElement).open))) break;
+    const previousRecoveries = preparationRecoveryCounts.get(page) ?? 0;
+    assert.equal(previousRecoveries, 0, "同一场景反复发生 clockGap，须单独诊断，不能自动掩盖");
+    preparationRecoveryCounts.set(page, previousRecoveries + 1);
+    const description = await page.locator(".dialog-description").innerText();
+    assert.match(description, /前台调度中断/);
+    const observedAt = new Date().toISOString();
+    const reading = await readVisibleFeedback(page);
+    const inspection = inspectAudio ? await inspect(page) : null;
+    await page.getByRole("button", { name: "继续探索", exact: true }).click();
+    await page.waitForFunction(
+      () => document.querySelector("#firewall-rhythm")?.getAttribute("data-phase") === "preparing",
+    );
+    await waitForGameReady(page);
+    preparationPauses.push({
+      observedAt,
+      description,
+      reading,
+      inspection,
+      method:
+        "Visible preparation pause, normal Continue button and full resume countdown; no clock or state injection.",
+    });
+    console.log(`Chrome firewall preparation clockGap recovered: ${difficulty} / ${observedAt}`);
+  }
   const before = inspectAudio ? await waitForMusic(page, difficulty) : null;
   await page.keyboard.press("Escape");
   await page.getByRole("heading", { name: "探索已暂停", exact: true }).waitFor();
@@ -343,17 +501,24 @@ async function pauseAndResume(
     assert.ok(resumed.audio.music.atAudioTime > before.audio.music.atAudioTime);
     assert.ok(resumed.audio.music.offsetSeconds > 0, "恢复须续播当前乐句，不能从头播放");
   }
-  return { pausedLight, before, paused, resumed, frozenTime };
+  return { preparationPauses, pausedLight, before, paused, resumed, frozenTime };
 }
 
-async function playVisibleBeats(page: Page, count: number, reduced: boolean) {
+async function playVisibleBeats(
+  page: Page,
+  count: number,
+  reduced: boolean,
+  route: FirewallRoute,
+  fixedDirections?: readonly RealtimeDirection[],
+) {
   const hitCounts: string[] = [];
   const comboSequence: number[] = [];
   const screenLightSamples = [];
   const waitingLightSamples = [];
   const inputResponses = [];
   for (let input = 0; input < count; input += 1) {
-    // Only the displayed cue drives these ordinary key presses; no rule clock or state is written.
+    // The displayed cue alone schedules physical keys. Fixed content is read only to plan
+    // directions, never to replace the observed browser clock, score, or completion.
     await page.waitForFunction(
       () => document.querySelector("#firewall-rhythm")?.getAttribute("data-phase") === "waiting",
     );
@@ -381,11 +546,38 @@ async function playVisibleBeats(page: Page, count: number, reduced: boolean) {
       assert.deepEqual(light.bounds, light.field, "白光应围绕整个挑战画面并覆盖底边");
     }
     screenLightSamples.push(light);
-    inputResponses.push(
-      await pressAndMeasureVisibleHit(page, input % 2 ? "ArrowLeft" : "ArrowRight", input + 1),
+    const before = await readVisibleFeedback(page);
+    if (input > 0)
+      assert.equal(before.combo, comboSequence.at(-1), "合法闪避结束与驻留之间不能出现隐藏扣分");
+    const beatIndex = Number(before.beat.split(" / ")[0]) - 1;
+    const planned = chooseRouteInput(route, beatIndex);
+    const direction = fixedDirections?.[input] ?? planned.direction;
+    const from = route.playerTileId;
+    const tile = route.definition.tiles.find((entry) => entry.id === from)!;
+    const vector = { up: [0, -1], right: [1, 0], down: [0, 1], left: [-1, 0] }[direction]!;
+    const destination = route.definition.tiles.find(
+      (entry) => entry.x === tile.x + vector[0]! && entry.y === tile.y + vector[1]!,
     );
-    hitCounts.push((await page.locator("#firewall-beat-count").textContent())!);
-    comboSequence.push(Number(await page.locator("#firewall-combo-value").textContent()));
+    assert.ok(destination, "普通方向键必须指向邻接格");
+    const response = await pressAndMeasureVisibleHit(
+      page,
+      directionKeys[direction],
+      before.combo + 1,
+    );
+    route.playerTileId = destination.id;
+    const after = await readVisibleFeedback(page);
+    assert.equal(after.combo, before.combo + 1);
+    inputResponses.push({
+      ...response,
+      direction,
+      from,
+      destination: destination.id,
+      plannedCrossing: planned.crossesAlarm,
+      before,
+      after,
+    });
+    hitCounts.push(after.beat);
+    comboSequence.push(after.combo);
   }
   return {
     hitCounts,
@@ -397,56 +589,206 @@ async function playVisibleBeats(page: Page, count: number, reduced: boolean) {
   };
 }
 
-async function observeNaturalMiss(page: Page, outputDir: string, id: string) {
-  const warmup = await playVisibleBeats(page, 5, false);
-  assert.equal(Number(await page.locator("#firewall-combo-value").textContent()), 5);
+async function observeNaturalMiss(
+  page: Page,
+  outputDir: string,
+  id: string,
+  reduced: boolean,
+  route: FirewallRoute,
+) {
+  const warmup = await playVisibleBeats(page, 5, reduced, route);
+  await page.waitForFunction(
+    () => document.querySelector("#firewall-beat-status")?.textContent === "等待拍点",
+  );
+  const before = await readVisibleFeedback(page);
+  assert.equal(before.combo, 5);
+  const lastMove = warmup.inputResponses.at(-1)!;
+  const inverse: Record<RealtimeDirection, RealtimeDirection> = {
+    up: "down",
+    down: "up",
+    left: "right",
+    right: "left",
+  };
+  const direction = inverse[lastMove.direction];
+  // The tutorial's early safe cells separate the ordinary miss from a collision penalty.
+  assert.equal(before.marks.length, 0, "普通 MISS 证据不得混入警报碰撞");
+  await page.keyboard.press(directionKeys[direction]);
+  route.playerTileId = lastMove.from;
   await page.waitForFunction(
     () =>
-      document.querySelector("#firewall-beat-status")?.textContent === "等待拍点" &&
+      document.querySelector<HTMLElement>("#firewall-feedback")?.dataset.kind === "miss" &&
+      Number(document.querySelector("#firewall-combo-value")?.textContent) === 4,
+  );
+  const after = await readVisibleFeedback(page);
+  assert.equal(after.combo, before.combo - 1);
+  assert.match(after.feedback, /错拍.*−1/);
+  assert.equal(after.impactOpacity, 0, "普通错拍不能伪装为警报受击红屏");
+  await page.screenshot({ path: join(outputDir, `${id}-miss.png`), fullPage: true });
+  return { warmup, before, after, direction, comboBefore: 5, comboAfter: 4 };
+}
+
+async function closeExportToGame(page: Page) {
+  await page.getByRole("button", { name: "返回存档菜单", exact: true }).click();
+  await page.getByRole("button", { name: "继续探索", exact: true }).click();
+  await waitForGameReady(page);
+}
+
+async function observeAlarmRecovery(
+  page: Page,
+  options: {
+    outputDir: string;
+    id: string;
+    reduced: boolean;
+    acceptance: boolean;
+  },
+) {
+  await pressGameKey(page, "f");
+  await startFirewall(page, "inner");
+  const route = await createFirewallRoute("inner");
+  const warmup = await playVisibleBeats(page, 6, options.reduced, route, [
+    "up",
+    "down",
+    "up",
+    "down",
+    "up",
+    "down",
+  ]);
+  assert.equal(route.playerTileId, route.definition.entry.tileId);
+  const before = await readVisibleFeedback(page);
+  assert.equal(before.combo, 6);
+  // Stay on the normally reached cell. The moving wave, rather than another input, hits it.
+  await page.waitForFunction(
+    () =>
+      document.querySelector<HTMLElement>("#firewall-feedback")?.dataset.kind === "hazardHit" &&
+      Number(document.querySelector("#firewall-combo-value")?.textContent) === 1,
+  );
+  const hit = await readVisibleFeedback(page);
+  assert.match(hit.feedback, /警报命中.*−5/);
+  assert.equal(hit.combo, before.combo - 5);
+  assert.ok(
+    hit.marks.some((mark) => mark.phase === "active" && mark.tileId === route.playerTileId),
+  );
+  if (options.reduced) {
+    assert.equal(hit.impactDisplay, "none", "减少闪烁时用文字报告受击，关闭红色晕屏");
+    assert.equal(hit.impactVisible, false);
+    assert.equal(await page.locator("#firewall-impact").isVisible(), false);
+  } else assert.equal(hit.impactVisible, true, "普通画面须即时出现受击晕屏");
+  const inspectedHit = options.acceptance ? await inspect(page) : null;
+  if (inspectedHit) {
+    assert.equal(inspectedHit.realtimeRoom?.state.lastHazardHit?.penalty, 5);
+    assert.ok(inspectedHit.realtimeRoom!.state.lastHazardHit!.alarmIds.length > 0);
+  }
+  await page.screenshot({
+    path: join(options.outputDir, `${options.id}-hazard-hit.png`),
+    fullPage: true,
+  });
+  await page.waitForTimeout(120);
+  const stationary = await readVisibleFeedback(page);
+  assert.equal(stationary.combo, hit.combo, "同一警报持续接触不能逐帧续扣");
+  const pause = await pauseAndResume(page, options.acceptance, "inner");
+  const resumed = await readVisibleFeedback(page);
+  assert.equal(resumed.combo, hit.combo, "暂停与恢复倒数不能重新扣除同一警报");
+  await page.waitForTimeout(100);
+  const afterResume = await readVisibleFeedback(page);
+  assert.equal(afterResume.combo, hit.combo);
+  if (inspectedHit)
+    assert.deepEqual(
+      (await inspect(page)).realtimeRoom?.state.lastHazardHit,
+      inspectedHit.realtimeRoom?.state.lastHazardHit,
+    );
+
+  // The next left-coming wave is observed in its active cell. Wait for the following visible
+  // ready window, then physically move left into it; no private clock schedules this input.
+  const destination = route.definition.tiles.find((tile) => tile.x === 1 && tile.y === 2)!.id;
+  await page.waitForFunction(
+    (tileId) =>
       [...document.querySelectorAll<HTMLElement>(".firewall-tile-mark")].some(
         (element) =>
-          element.textContent === "!" && getComputedStyle(element).visibility === "visible",
+          element.dataset.tileId === tileId &&
+          element.dataset.hazardPhase === "active" &&
+          element.textContent === "←",
       ),
+    destination,
   );
-  // Five alternating hits end one cell to the right; this ordinary offbeat key returns to the start.
-  await page.keyboard.press("ArrowLeft");
-  await page.waitForFunction(() => {
-    const observer = Reflect.get(window, "__CAMELLIA_INSPECT__") as {
-      snapshot(): FirewallInspection;
-    };
-    return (
-      Number(document.querySelector("#firewall-combo-value")?.textContent) === 0 &&
-      observer.snapshot().realtimeRoom?.state.lastJudgment?.kind === "miss"
-    );
+  await page.waitForFunction(
+    () => document.querySelector("#firewall-rhythm")?.getAttribute("data-phase") === "waiting",
+  );
+  await page.waitForFunction(
+    () => document.querySelector("#firewall-beat-status")?.textContent === "现在移动",
+  );
+  const beforeDodge = await readVisibleFeedback(page);
+  assert.equal(beforeDodge.combo, hit.combo);
+  const input = await pressAndMeasureVisibleHit(page, "ArrowLeft", beforeDodge.combo + 1);
+  route.playerTileId = destination;
+  await page.waitForFunction(
+    () => document.querySelector<HTMLElement>("#firewall-feedback")?.dataset.kind === "dodged",
+  );
+  const dodge = await readVisibleFeedback(page);
+  assert.equal(dodge.combo, beforeDodge.combo + 1);
+  assert.match(dodge.feedback, /完美闪避/);
+  assert.equal(dodge.impactOpacity, 0);
+  const inspectedDodge = options.acceptance ? await inspect(page) : null;
+  if (inspectedDodge) assert.ok(inspectedDodge.realtimeRoom?.state.lastDodgeAtMs !== null);
+  await page.screenshot({
+    path: join(options.outputDir, `${options.id}-toward-alarm-dodge.png`),
+    fullPage: true,
   });
-  await page.screenshot({ path: join(outputDir, `${id}-miss.png`), fullPage: true });
-  const missed = await inspect(page);
-  assert.equal(missed.realtimeRoom?.state.lastJudgment?.kind, "miss");
-  assert.match(missed.lastResult.message, /错拍/);
+  await page.waitForTimeout(250);
+  const afterDodge = await readVisibleFeedback(page);
+  assert.equal(afterDodge.combo, dodge.combo, "有限闪避结束后安全落点不能延迟受击");
+
+  const interrupted = await exportThroughUi(page);
+  assert.equal(interrupted.payload.ruleVersion, 3);
+  assert.deepEqual(interrupted.payload.resumeHint, {
+    kind: "restartChallenge",
+    challengeId: "a.firewall.inner",
+  });
+  assert.equal(interrupted.payload.room, null);
+  await writeFile(
+    join(options.outputDir, `${options.id}-interrupted-save.json`),
+    `${JSON.stringify(interrupted, null, 2)}\n`,
+  );
+  await page.reload();
+  await page.getByRole("button", { name: "继续游戏", exact: true }).click();
+  await waitForGameReady(page);
   assert.equal(
-    Number(await page.locator("#firewall-combo-value").textContent()),
-    0,
-    "自然错拍须处罚已取得的五次连击",
+    await page.locator("#firewall-overlay").isVisible(),
+    false,
+    "未结算实时局恢复到外层安全入口",
   );
-  await page.waitForFunction(() =>
-    [...document.querySelectorAll<HTMLElement>(".firewall-tile-mark")].some(
-      (element) =>
-        element.textContent === "!" && getComputedStyle(element).visibility === "visible",
-    ),
+  if (options.acceptance) assert.equal((await inspect(page)).realtimeRoom, null);
+  const restored = await exportThroughUi(page);
+  for (const key of [
+    "bestResults",
+    "claimedRewardIds",
+    "completedObjectiveIds",
+    "playerPosition",
+  ] as const)
+    assert.deepEqual(restored.payload[key], interrupted.payload[key], `重启保留 ${key}`);
+  assert.equal(restored.payload.resumeHint, null, "外层新保存不保留过期实时尝试");
+  await writeFile(
+    join(options.outputDir, `${options.id}-restored-save.json`),
+    `${JSON.stringify(restored, null, 2)}\n`,
   );
-  const warnings = await page
-    .locator(".firewall-tile-mark")
-    .evaluateAll((elements) =>
-      elements
-        .filter(
-          (element) =>
-            element.textContent === "!" && getComputedStyle(element).visibility === "visible",
-        )
-        .map((element) => element.getAttribute("data-tile-id")),
-    );
-  assert.ok(warnings.length > 0, "危险出现前须显示感叹号预告");
-  await page.screenshot({ path: join(outputDir, `${id}-warning.png`), fullPage: true });
-  return { warmup, missed, warnings, comboBefore: 5, comboAfter: 0 };
+  await closeExportToGame(page);
+  return {
+    warmup,
+    before,
+    hit,
+    inspectedHit,
+    stationary,
+    pause,
+    resumed,
+    afterResume,
+    beforeDodge,
+    input,
+    dodge,
+    inspectedDodge,
+    afterDodge,
+    interruptedVersion: interrupted.payload.ruleVersion,
+    safeAnchor: restored.payload.playerPosition,
+    preservedBestResults: restored.payload.bestResults,
+  };
 }
 
 async function readAndAssertLayout(page: Page) {
@@ -481,6 +823,189 @@ async function readAndAssertLayout(page: Page) {
   return layout;
 }
 
+async function verifyCompletedFirewallPersistence(page: Page, outputDir: string, id: string) {
+  const saved = await exportThroughUi(page);
+  assert.equal(saved.payload.ruleVersion, 3);
+  for (const [difficulty, target] of [
+    ["inner", 40],
+    ["deep", 55],
+    ["core", 70],
+  ] as const) {
+    const result = saved.payload.bestResults.find(
+      (entry) => entry.challengeId === `a.firewall.${difficulty}` && entry.ruleVersion === 3,
+    );
+    assert.ok(result && result.bestCombo! >= target, `${difficulty} 的真实 v3 成绩必须已保存`);
+  }
+  await writeFile(
+    join(outputDir, `${id}-completed-save.json`),
+    `${JSON.stringify(saved, null, 2)}\n`,
+  );
+  await page.reload();
+  await page.getByRole("button", { name: "继续游戏", exact: true }).click();
+  await waitForGameReady(page);
+  const restored = await exportThroughUi(page);
+  assert.deepEqual(restored.payload, saved.payload, "三档自然结算后的完整稳定进度须刷新恢复一致");
+  await closeExportToGame(page);
+  return { bestResults: restored.payload.bestResults, restoredIdentically: true };
+}
+
+export async function verifyFirewallMigrations(options: {
+  browser: Browser;
+  url: string;
+  outputDir: string;
+}) {
+  const results = [];
+  const expectedContent = assembleContent("M5");
+  for (const [id, sourceUrl] of [
+    [
+      "v1-full-collection",
+      new URL(
+        "../../docs/verification/evidence/m5-chrome-final-production-complete-save.json",
+        import.meta.url,
+      ),
+    ],
+    [
+      "v2-earned-result",
+      new URL(
+        "../../docs/verification/evidence/firewall-hazards/legacy-v2/legacy-v2-earned-save.json",
+        import.meta.url,
+      ),
+    ],
+  ] as const) {
+    const source = await readFile(sourceUrl);
+    const original = JSON.parse(source.toString()) as SaveEnvelope<SavePayload>;
+    const context = await options.browser.newContext({ viewport: { width: 1512, height: 771 } });
+    const page = await context.newPage();
+    page.setDefaultTimeout(10_000);
+    const errors: string[] = [];
+    page.on("pageerror", (error) => errors.push(error.message));
+    await context.tracing.start({ screenshots: true, snapshots: true });
+    try {
+      await page.goto(options.url);
+      assert.equal(await page.evaluate(() => Reflect.has(window, "__CAMELLIA_INSPECT__")), false);
+      await startNewGame(page);
+      await page.getByRole("button", { name: "打开暂停菜单", exact: true }).click();
+      await page.getByRole("button", { name: "进度与存档", exact: true }).click();
+      const chooser = page.waitForEvent("filechooser");
+      await page.getByRole("button", { name: "导入存档", exact: true }).click();
+      await (await chooser).setFiles(fileURLToPath(sourceUrl));
+      await page.getByRole("heading", { name: "确认导入进度", exact: true }).waitFor();
+      const preview = await page.locator(".dialog-description").innerText();
+      await page.screenshot({
+        path: join(options.outputDir, `${id}-migration-preview.png`),
+        fullPage: true,
+      });
+      await page.getByRole("button", { name: "确认替换", exact: true }).click();
+      await waitForGameReady(page);
+      const imported = await exportThroughUi(page);
+      assert.equal(imported.payload.ruleVersion, 3);
+      assert.equal(imported.payload.contentVersion, expectedContent.contentVersion);
+      for (const key of [
+        "claimedRewardIds",
+        "completedObjectiveIds",
+        "completedRoomLayouts",
+        "playerPosition",
+        "bestResults",
+        "capabilities",
+        "activatedTeleportIds",
+        "campaignCompletedAt",
+      ] as const)
+        assert.deepEqual(imported.payload[key], original.payload[key], `旧档迁移保留 ${key}`);
+      if (id === "v1-full-collection") assert.equal(imported.payload.claimedRewardIds.length, 26);
+      else
+        assert.ok(
+          imported.payload.bestResults.some(
+            (entry) =>
+              entry.challengeId === "a.firewall.tutorial" &&
+              entry.ruleVersion === 2 &&
+              entry.bestCombo === 14,
+          ),
+        );
+      await writeFile(
+        join(options.outputDir, `${id}-migration-save.json`),
+        `${JSON.stringify(imported, null, 2)}\n`,
+      );
+      await page.reload();
+      await page.getByRole("button", { name: "继续游戏", exact: true }).click();
+      await waitForGameReady(page);
+      const restored = await exportThroughUi(page);
+      assert.deepEqual(restored.payload, imported.payload);
+      let coexistence = null;
+      if (id === "v2-earned-result") {
+        await closeExportToGame(page);
+        await pressGameKey(page, "f");
+        await startFirewall(page, "tutorial");
+        const route = await createFirewallRoute("tutorial");
+        const hits = await playVisibleBeats(page, 18, false, route);
+        await finishFirewall(page, { outputDir: options.outputDir, id: `${id}-v3`, combo: 18 });
+        const combined = await exportThroughUi(page);
+        for (const [ruleVersion, bestCombo] of [
+          [2, 14],
+          [3, 18],
+        ] as const)
+          assert.ok(
+            combined.payload.bestResults.some(
+              (entry) =>
+                entry.challengeId === "a.firewall.tutorial" &&
+                entry.ruleVersion === ruleVersion &&
+                entry.bestCombo === bestCombo,
+            ),
+          );
+        assert.deepEqual(combined.payload.claimedRewardIds, original.payload.claimedRewardIds);
+        await writeFile(
+          join(options.outputDir, `${id}-coexisting-save.json`),
+          `${JSON.stringify(combined, null, 2)}\n`,
+        );
+        await page.reload();
+        await page.getByRole("button", { name: "继续游戏", exact: true }).click();
+        await waitForGameReady(page);
+        assert.deepEqual((await exportThroughUi(page)).payload, combined.payload);
+        coexistence = {
+          hits,
+          bestResults: combined.payload.bestResults,
+          restoredIdentically: true,
+        };
+      }
+      assert.deepEqual(errors, []);
+      results.push({
+        id,
+        method:
+          "Normal file chooser, reviewed import, export, reload/continue and export; v2 case earns v3 result through visible-ready direction keys and natural settlement.",
+        source: fileURLToPath(sourceUrl),
+        sourceSha256: createHash("sha256").update(source).digest("hex"),
+        from: {
+          contentVersion: original.payload.contentVersion,
+          ruleVersion: original.payload.ruleVersion,
+        },
+        to: {
+          contentVersion: imported.payload.contentVersion,
+          ruleVersion: imported.payload.ruleVersion,
+        },
+        preview,
+        preservedRewards: imported.payload.claimedRewardIds.length,
+        preservedBestResults: imported.payload.bestResults,
+        restoredIdentically: true,
+        coexistence,
+        errors,
+      });
+    } catch (error) {
+      await page.screenshot({
+        path: join(options.outputDir, `${id}-migration-failed.png`),
+        fullPage: true,
+      });
+      throw error;
+    } finally {
+      await context.tracing.stop({ path: join(options.outputDir, `${id}-migration-trace.zip`) });
+      await context.close();
+    }
+  }
+  await writeFile(
+    join(options.outputDir, "firewall-migrations-results.json"),
+    `${JSON.stringify(results, null, 2)}\n`,
+  );
+  return results;
+}
+
 async function finishFirewall(
   page: Page,
   options: { outputDir: string; id: string; combo: number },
@@ -507,6 +1032,7 @@ export async function verifyFirewallCue(options: {
   url: string;
   outputDir: string;
   acceptanceUrl?: string;
+  scenarioIds?: readonly string[];
 }) {
   const results = [];
   const scenarios = [
@@ -533,7 +1059,16 @@ export async function verifyFirewallCue(options: {
         ]
       : []),
   ];
-  for (const scenario of scenarios) {
+  const selectedScenarios = options.scenarioIds
+    ? scenarios.filter((scenario) => options.scenarioIds!.includes(scenario.id))
+    : scenarios;
+  if (options.scenarioIds)
+    assert.deepEqual(
+      selectedScenarios.map((scenario) => scenario.id).sort(),
+      [...options.scenarioIds].sort(),
+      "定向调试只接受已提供 URL 的明确场景；默认仍运行全部场景",
+    );
+  for (const scenario of selectedScenarios) {
     const { id, reduced, acceptance, viewport } = scenario;
     const context = await options.browser.newContext({ viewport });
     const page = await context.newPage();
@@ -558,7 +1093,15 @@ export async function verifyFirewallCue(options: {
       await openFirewallFromNewGame(page, reduced);
       await startFirewall(page, "tutorial");
       const pause = await pauseAndResume(page, acceptance);
-      const tutorial = await playVisibleBeats(page, 14, reduced);
+      const tutorialRoute = await createFirewallRoute("tutorial");
+      const tutorialMiss = await observeNaturalMiss(
+        page,
+        options.outputDir,
+        id,
+        reduced,
+        tutorialRoute,
+      );
+      const tutorial = await playVisibleBeats(page, 14, reduced, tutorialRoute);
       const layout = await readAndAssertLayout(page);
       assert.equal(await page.locator(".audio-prompt").isVisible(), false, "本地声音应加载成功");
       const stage = acceptance ? (await inspect(page)).render : null;
@@ -567,7 +1110,13 @@ export async function verifyFirewallCue(options: {
         assert.equal(stage.firewallScoreboards, 4, "两侧须有四块独立的 COMBO 电视");
       }
       await page.screenshot({ path: join(options.outputDir, `${id}.png`), fullPage: true });
-      await finishFirewall(page, { outputDir: options.outputDir, id, combo: 14 });
+      await finishFirewall(page, { outputDir: options.outputDir, id, combo: 18 });
+      const hazards = await observeAlarmRecovery(page, {
+        outputDir: options.outputDir,
+        id,
+        reduced,
+        acceptance,
+      });
       const formal = [];
       if (acceptance) {
         assert.equal((await inspect(page)).audio.music, null, "离开挑战后停止配乐");
@@ -598,11 +1147,8 @@ export async function verifyFirewallCue(options: {
           const frameSampling = sampleActiveFrameIntervals(page).catch((error: unknown) => ({
             error: error instanceof Error ? error.message : String(error),
           }));
-          const miss =
-            difficulty === "inner"
-              ? await observeNaturalMiss(page, options.outputDir, formalId)
-              : null;
-          const performance = await playVisibleBeats(page, combo, false);
+          const route = await createFirewallRoute(difficulty);
+          const performance = await playVisibleBeats(page, combo, false, route);
           const playing = await waitForMusic(page, difficulty);
           assert.equal(playing.render.tileCount, 20);
           assert.equal(playing.render.firewallScoreboards, 4);
@@ -625,6 +1171,10 @@ export async function verifyFirewallCue(options: {
           if ("error" in sampledFrames) throw new Error(sampledFrames.error);
           assert.equal(sampledFrames.stopReason, "natural-settlement");
           const frameTiming = timingDistribution(sampledFrames.intervalsMs);
+          await writeFile(
+            join(options.outputDir, `${formalId}-frame-samples.json`),
+            `${JSON.stringify({ ...sampledFrames, frameTiming }, null, 2)}\n`,
+          );
           assert.ok(
             frameTiming.medianMs <= 16.7 + 1e-6,
             `${difficulty} 帧间隔中位数 ${frameTiming.medianMs}ms，要求不超过16.7ms`,
@@ -634,9 +1184,7 @@ export async function verifyFirewallCue(options: {
             `${difficulty} 帧间隔p95 ${frameTiming.p95Ms}ms，要求不超过25ms`,
           );
           const inputLatency = timingDistribution(
-            [...(miss?.warmup.inputResponses ?? []), ...performance.inputResponses].map(
-              (response) => response.latencyMs,
-            ),
+            performance.inputResponses.map((response) => response.latencyMs),
           );
           const scenePerformance = {
             scope:
@@ -652,7 +1200,7 @@ export async function verifyFirewallCue(options: {
             },
             frameTiming: {
               method:
-                "相邻rAF仅在waiting/ready/hit、无菜单且页面可见并聚焦时纳入；暂停/倒数/菜单/焦点边界重置前帧。",
+                "相邻rAF仅在waiting/ready/hit/judged、无菜单且页面可见并聚焦时纳入；暂停/倒数/菜单/焦点边界重置前帧。",
               ...frameTiming,
               coverageSeconds:
                 sampledFrames.intervalsMs.reduce((sum, value) => sum + value, 0) / 1000,
@@ -667,7 +1215,7 @@ export async function verifyFirewallCue(options: {
                 "捕获实际keydown至rAF观察到对应可见命中提示，再至下一rAF留出一次绘制机会；不含自动化协议往返。",
               ...inputLatency,
               thresholdMs: 100,
-              includesWarmupHits: miss !== null,
+              includesWarmupHits: false,
               excludesIntentionalMiss: true,
             },
           };
@@ -680,16 +1228,22 @@ export async function verifyFirewallCue(options: {
             musicStart,
             continuous,
             pause: formalPause,
-            miss,
             ...performance,
             playing,
             scenePerformance,
             exited,
             completed: true,
           });
+          await writeFile(
+            join(options.outputDir, `${formalId}-results.json`),
+            `${JSON.stringify(formal.at(-1), null, 2)}\n`,
+          );
           console.log(`Chrome firewall level passed: ${difficulty} / ${combo} Combo`);
         }
       }
+      const persistence = acceptance
+        ? await verifyCompletedFirewallPersistence(page, options.outputDir, id)
+        : null;
       assert.deepEqual(errors, []);
       assert.deepEqual(
         [...new Set(musicResponses.map((item) => item.path))].sort(),
@@ -705,18 +1259,29 @@ export async function verifyFirewallCue(options: {
         muted: reduced,
         acceptance,
         ...tutorial,
+        tutorialMiss,
+        hazards,
         pause,
         layout,
         stage,
         musicResponses,
         formal,
+        persistence,
         completed: true,
         hiddenAfterExit: true,
         errors,
       });
+      await writeFile(
+        join(options.outputDir, "firewall-cue-results.json"),
+        `${JSON.stringify(results, null, 2)}\n`,
+      );
       console.log(`Chrome firewall restoration passed: ${id}`);
     } catch (error) {
       await page.screenshot({ path: join(options.outputDir, `${id}-failed.png`), fullPage: true });
+      await writeFile(
+        join(options.outputDir, `${id}-failure.json`),
+        `${JSON.stringify({ error: error instanceof Error ? error.stack : String(error), observedAt: new Date().toISOString(), inspection: acceptance ? await inspect(page) : null, ui: await page.evaluate(() => ({ phase: document.querySelector("#firewall-rhythm")?.getAttribute("data-phase"), dialog: document.querySelector("#game-dialog")?.textContent })) }, null, 2)}\n`,
+      );
       throw error;
     } finally {
       await context.close();
@@ -726,5 +1291,6 @@ export async function verifyFirewallCue(options: {
     join(options.outputDir, "firewall-cue-results.json"),
     JSON.stringify(results, null, 2) + "\n",
   );
-  return results;
+  const migrations = await verifyFirewallMigrations(options);
+  return { scenarios: results, migrations };
 }

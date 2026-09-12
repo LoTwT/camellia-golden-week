@@ -5,6 +5,16 @@ import m4 from "./m4.json" with { type: "json" };
 import { m5WorldWitnesses } from "./m5.ts";
 import type { WorldWitness } from "../validate.ts";
 import { currentWorldWitness } from "./current.ts";
+import { v2WorldWitness } from "./v2.ts";
+
+export const v2WorldWitnesses = [
+  ...[m1, m2, m3, m4].flatMap((source) => (source.witnesses as WorldWitness[]).map(v2WorldWitness)),
+  ...(m4.witnesses as WorldWitness[]).map((witness) => ({
+    ...v2WorldWitness(witness),
+    id: witness.id.replace("m4.", "m5."),
+    profileId: "M5" as const,
+  })),
+];
 
 export const worldWitnesses = [
   ...(m1.witnesses as WorldWitness[]).map(currentWorldWitness),

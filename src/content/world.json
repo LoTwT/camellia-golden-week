@@ -1,7 +1,7 @@
 {
   "gameId": "camellia-golden-week",
   "contentVersion": 2,
-  "ruleVersion": 2,
+  "ruleVersion": 3,
   "areaIds": ["hub", "a", "b", "c", "d", "warehouse"],
   "entry": {
     "areaId": "hub",

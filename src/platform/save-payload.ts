@@ -1,5 +1,6 @@
 import { createGame, worldPosition } from "../core/engine.ts";
 import { createClock } from "../core/clock.ts";
+import { firewallBeatCount } from "../core/realtime.ts";
 import {
   createStatic,
   isCompletedStaticPosition,
@@ -345,7 +346,7 @@ function validateSnapshot(
       (entry.bestScore !== undefined ||
         entry.bestStarClear !== undefined ||
         typeof entry.bestCombo !== "number" ||
-        entry.bestCombo > definition.rules.beatMasks.length)
+        entry.bestCombo > firewallBeatCount(definition))
     )
       return invalid("防火墙成绩超出理论范围");
     if (

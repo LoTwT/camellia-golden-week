@@ -1,0 +1,6 @@
+{
+  "classification": "visible-runtime-clock-gap-during-preparation",
+  "observed": "首次 acceptance 教学尚未输入时已显示“检测到前台调度中断”暂停；测试尚未开始45秒性能采样。",
+  "continuation": "识别可见暂停，正常点击继续并记录恢复，不修改250ms阈值或时钟。运行中的暂停仍使正常游玩测试失败。",
+  "gameRuntimeChanged": false
+}

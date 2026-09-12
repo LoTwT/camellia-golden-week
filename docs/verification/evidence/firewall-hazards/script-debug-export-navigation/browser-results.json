@@ -1,0 +1,15 @@
+{
+  "startedAt": "2026-09-12T05:21:34.522Z",
+  "browser": "153.0.8010.36",
+  "node": "v24.18.0",
+  "headless": true,
+  "platform": "darwin",
+  "arch": "arm64",
+  "urls": {
+    "url": "http://127.0.0.1:55303",
+    "acceptanceUrl": "http://127.0.0.1:55304"
+  },
+  "success": false,
+  "error": "page.waitForFunction: Timeout 10000ms exceeded.\n    at waitForGameReady (/Users/caoyujie/codes/camellia-golden-week/scripts/browser/support.ts:8:14)\n    at async observeAlarmRecovery (/Users/caoyujie/codes/camellia-golden-week/scripts/browser/firewall-cue.ts:722:3)\n    at async verifyFirewallCue (/Users/caoyujie/codes/camellia-golden-week/scripts/browser/firewall-cue.ts:1057:23)\n    at async file:///private/tmp/camellia-firewall-hazards-run.mjs:22:23",
+  "finishedAt": "2026-09-12T05:22:25.885Z"
+}

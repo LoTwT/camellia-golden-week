@@ -1,0 +1,1231 @@
+$ pnpm test && pnpm run build && pnpm run validate:artifacts && pnpm run test:browser
+$ node scripts/run-tests.ts
+Node 原生测试：递归发现 39 个测试文件。
+✔ 验收开关仅接受 acceptance；生产、开发或 URL 参数不能启用控制器，也不访问平台 (0.522791ms)
+✔ 实际存储夹具严格限定A/B且必须持有会话，未知键和超大原文不能写入 (0.717167ms)
+✔ 音频拒绝只消耗一次，解除后正常启用不再抛错 (0.4015ms)
+✔ 存储拒绝仅命中指定完整键并消耗一次，其余键和原字节保持可用 (0.353083ms)
+✔ 回读故障等待目标成功写入；提前读取、其他键写入、底层写失败均不消耗 (0.155333ms)
+✔ P03/P09 故障端口接真实双槽服务返回明确失败，原槽与内存保留且正常重试可保存 (1.147ms)
+✔ P09 迁移备份的写入或回读故障不会触碰两个原槽，解除后正常迁移可继续 (0.225042ms)
+✔ 成功反馈异常只由指定通道的实际 success 描述消耗，普通反馈不消耗，重复调用不再抛错 (0.262917ms)
+✔ 启动故障只识别规定参数并在初始化前消耗一次；错误参数不会改变任何平台 (0.159042ms)
+✔ 解除和停用恢复端口透传；快照不暴露可改写的故障状态，未知键不能被配置 (0.204334ms)
+✔ 上下文操作仅请求真实扩展，等浏览器报告丢失才允许恢复，保留原上下文恢复句柄 (0.108458ms)
+✔ 没有 WebGL 扩展或浏览器拒绝请求时明确失败，不生成替代图形事件 (0.1405ms)
+✔ T12 只在前台执行真实 300ms 阻塞；现有有效时钟在下一次正常推进时冻结为 clockGap (300.883583ms)
+✔ 警报受击音不被普通无效输入限流吞掉，闪避与计分不叠播两次提示 (1.192167ms)
+✔ 配乐迟到启用时从当前乐句位置播放，逐帧同步不重播或叠加循环 (15.709708ms)
+✔ 同局音频设备延迟变化后重新对齐当前乐句，小幅测量抖动不会重启 (1.417208ms)
+✔ V04 新一次启用成功后，旧声音请求迟到失败不能关闭声音 (2.05825ms)
+✔ V04 新一次启用失败后，旧 resume 迟到成功不能覆盖最新失败 (1.053625ms)
+✔ V04 disable 使尚未完成的音频启用失效，迟到资源不会重新启用 (1.0205ms)
+✔ V04 dispose 使尚未完成的音频启用失效，迟到资源不会重新启用 (0.881541ms)
+✔ 暂停停止配乐，恢复倒数不播放，倒数结束从冻结的乐句位置继续 (0.898542ms)
+✔ 浏览器拒绝声音和本地声音缺失均可再次启用，不静默标为正常 (1.588458ms)
+✔ 无效音效180ms限频不作用于成功反馈，未变音量不反复调度 (0.941292ms)
+✔ I03 自动续步从物理点击的首步起等待 140ms，最后一格也按同一节奏 (2.0385ms)
+✔ I03 迟到帧只续走一格，下一步从实际执行时刻再等 140ms，不补跑 (0.764584ms)
+✔ I03 中途及最后一格重新校验全部安全条件，变化时停在前格且不拾取、不入房、不另算绕路 (18.352791ms)
+✔ I03 已开且无其他事件的门仍可逐步通过；新点击替换目标并重锚续步 (2.138208ms)
+✔ I03 取消是瞬时临时命令，不改变时钟、稳定 revision、永久进度或反馈 (0.914083ms)
+✔ I03 暂停或时钟断档丢弃旧路径，恢复后不补走 (1.74375ms)
+✔ I03 物理相邻点击仍可探索未访问格并触发对象，自动续步没有改变手动规则 (0.787916ms)
+✔ I03 新物理方向即使进入 140ms 等待队列也立即取消旧路径，随后只执行等待方向 (2.389209ms)
+✔ 场景准备冻结倒数与有效时间，图形就绪不能解除同时发生的失焦 (0.945708ms)
+✔ 有效时间使用单调毫秒；30 / 60 / 120fps 推进结果一致 (1.132417ms)
+✔ 3 秒准备倒数不消耗挑战时间，跨倒数末端只增加剩余部分 (0.158125ms)
+✔ T11 首步前 1ms 暂停、后台 30 秒、恢复 3 秒后仍剩 1ms (0.125791ms)
+✔ T12 前台 300ms 卡顿冻结到最后已处理时间并清输入，不补算时间 (0.112292ms)
+✔ 间隔 250ms 合法，250ms 以上才进入 clockGap (0.068458ms)
+✔ 各暂停原因均清输入；系统原因移除不自动恢复 (0.11925ms)
+✔ Resume 不能强制清理仍在生效的系统原因或无效画布条件 (0.136167ms)
+✔ 多个原因必须独立解除；静态恢复可立即继续观察有效时间 (0.095083ms)
+✔ 重复 Resume 不重启倒数，重复暂停不重复生成事件 (0.123417ms)
+✔ 倒数中卡顿仍暂停，恢复时重建完整倒数；回退或非有限时钟不污染状态 (0.290292ms)
+✔ 时钟不会修改传入快照 (0.11675ms)
+✔ 首次真实成功原子保存并自动重访完整布局：a.maze.01 (4.007375ms)
+✔ 首次真实成功原子保存并自动重访完整布局：a.maze.02 (1.010833ms)
+✔ 首次真实成功原子保存并自动重访完整布局：a.maze.03 (1.363625ms)
+✔ 首次真实成功原子保存并自动重访完整布局：b.line.01 (1.076584ms)
+✔ 首次真实成功原子保存并自动重访完整布局：b.line.02 (3.5455ms)
+✔ 首次真实成功原子保存并自动重访完整布局：c.routing.01 (2.033667ms)
+✔ 首次真实成功原子保存并自动重访完整布局：c.theft.01 (0.95175ms)
+✔ 首次真实成功原子保存并自动重访完整布局：c.theft.02 (1.43825ms)
+✔ 首次真实成功原子保存并自动重访完整布局：c.theft.03 (2.509459ms)
+✔ 完成态迷宫可踏原危险格，一笔画可重复访问，不改已提交路线 (3.203167ms)
+✔ 完成态通过出口到世界成功出口；对象房走开再返回入口垫才离开 (5.310917ms)
+✔ 完成态信号球/推车/盗取对象阻挡移动并保持真实位置，不执行推动 (3.288125ms)
+✔ 独立练习的替代解不会替换首个实际完成布局或重复奖励 (2.487792ms)
+✔ 完成布局校验拒绝未解决对象、假完整路径、玩家/待发字段和入口堵塞 (6.294125ms)
+✔ 成功布局、目标和奖励在同一修订中提交，旧调用方状态保持原样 (0.474042ms)
+✔ 构建共享内容模块保留M1–M5全部历史结构；实际执行视图可完整通关 (232.1ms)
+✔ 单独M1包只有该阶段内容，中文和引号可安全往返 (7.047791ms)
+✔ 实时源的版本元数据必须与装配发布一致，不能被忽略 (6.767541ms)
+✔ 实时源的 definitions 不能混入其它规则版本 (3.9965ms)
+✔ 实时源的 witnesses 不能混入其它规则版本 (3.939417ms)
+✔ 装配前拒绝不存在的实体格，即使其所属区域尚未收录 (1.60425ms)
+✔ 回访合并前检查 A 首访 tileIds，不能用派生集合掩盖孤儿格 (0.975916ms)
+✔ 装配前拒绝错误的区域 entityIds，不静默重建 (0.884375ms)
+✔ 装配前拒绝错误的区域 roomIds，不静默重建 (0.926375ms)
+✔ 装配前拒绝跨区实体归属 (0.728375ms)
+✔ 装配前拒绝基础地图与回访扩展之间的重复 ID (0.767ms)
+✔ 装配前拒绝未找到父区域的回访扩展 (0.647417ms)
+✔ 装配前拒绝重复区域扩展，不能只读取第一份 (0.608125ms)
+✔ 原始 profile 的房间清单不能被实际房间覆盖后假称闭合 (0.473375ms)
+✔ 装配前拒绝越过 M5 的收录阶段，不能把非法内容裁掉 (0.699959ms)
+✔ 装配前拒绝未使用的效应和未注册的挑战，不能由引用过滤掩盖 (3.6135ms)
+✔ 合法的未来地图和回访仍按 M1–M5 裁剪，装配只读 (43.764834ms)
+✔ 目录账本保留 26 个唯一奖励、130 单位和五个 profile 的准确分母 (2.643917ms)
+✔ M1 已加载结构、所有实体 / 房间 / 来源 / 效应引用闭合 (12.45575ms)
+✔ 未实际收录的未来世界不能只凭完整目录声明为通过 (0.107333ms)
+✔ 目录拒绝奖励改名、重复生产者、错误数量和重复数据事件 (3.674583ms)
+✔ 目录拒绝目标环、主路径读取可选挑战和错误回访依赖 (2.741875ms)
+✔ schema 拒绝未知 kind、脚本条件和数组伪装布尔 / 枚举 (14.331625ms)
+✔ 地图拒绝重复 ID / 坐标、非有限坐标、孤立的主终端 (12.854334ms)
+✔ 引用校验拒绝未知门 / 物资格、失配生产者和效应包 (22.070459ms)
+✔ 安全恢复拒绝房间出口覆盖、传送入自动房间及反向自跳 (13.346083ms)
+✔ 主路径和未收录展示不能携带全数据门、未来坐标或执行效应 (10.480167ms)
+✔ 固定世界见证只允许公开命令，不接受进度或坐标注入 (1.522167ms)
+✔ 暂停输入所在截止时刻先提交实时结算，再冻结；重复暂停不重复事件 (6.99575ms)
+✔ 没有警报接触时，视觉拍点窗口与四档真实评分的首末边界完全一致 (2.957875ms)
+✔ 拍点提示读取内容参数，不另写一套250/500/150ms常数 (0.216667ms)
+✔ 已经计分的同一拍显示命中，下一拍重新提示移动 (0.146625ms)
+✔ 踩拍受击消耗本拍后不再提示现在移动，节拍白光仍与时间同步 (0.168416ms)
+✔ 暂停、失焦待恢复和准备倒数不提示玩家输入 (0.08575ms)
+✔ 时间终点与已结算状态都关闭输入提示，拍数不会越界 (0.056833ms)
+✔ 画面白光只在有效窗口亮起，拍点达到峰值，命中后仍保持同一节拍 (0.151166ms)
+✔ 受击有独立扣分反馈，不被上一拍PERFECT掩盖，显示函数不改变规则状态 (0.944083ms)
+✔ 闪避提示只来自真实接触事件，普通踩拍的保护窗口不冒充闪避 (0.09175ms)
+✔ 受击后的下一次踩拍或闪避立即更新文字，旧扣分不会覆盖新判定 (0.075334ms)
+✔ 暂停、失焦、准备与已结束状态同时收起受击红晕和文字 (0.106166ms)
+✔ 警报时间推进的受击接入世界事件和四屏投影，永久进度不受影响 (3.235125ms)
+✔ 三首配乐是不同的连续32拍PCM，具有实际声部、确定字节且不削波 (1307.277417ms)
+✔ 音乐首拍、循环后与延迟启用均映射到同一权威拍表，并补偿输出延迟 (0.345333ms)
+✔ 原参考的防火墙为完整 5 列 4 行，四档均不能沿用通用 5×5 棋盘 (0.933541ms)
+✔ 正常命中后同一16ms画面桶内暂停，必须刷新投影以清除四屏PERFECT (7.393625ms)
+✔ 完整电视墙在三种 Chrome 验收视口保留四侧屏空间，中央二十格均可点击 (0.458917ms)
+✔ v2 防火墙固定 5×4 / 110 BPM，27/82 拍均有完整窗口，奖励目标保持 (37.800292ms)
+✔ v2 每档首末拍 ±150ms 端点有效，窗外 1ms 无分；每拍只计一次 (1.107125ms)
+✔ v2 内容校验拒绝深层或核心沿用旧棋盘的危险格数量上限 (0.391875ms)
+✔ v2 全拍正常交替移动可达 27/82，输入终点不能补分，结算幂等 (0.489834ms)
+✔ PERFECT/MISS 只由一次真实规则判定产生；同拍重复、按住、越界不刷新 (0.159916ms)
+✔ 危险预告提前 150ms，当前危险优先；预告本身不会触发危险判定 (0.141709ms)
+✔ v1 原始实时定义保留 25 格、120 BPM、30/90 拍，历史文件按发布校验值冻结 (2.041709ms)
+✔ v2 十条世界见证与十八条实时见证公开命令重放均保持目标与完整物资账本 (373.289666ms)
+✔ v2 非整数节拍在 30/60/120fps 下判定、提示事件与结算完全相同 (34.445334ms)
+✔ 五个历史 profile 到本版同/较后 profile 有唯一迁移；旧物资、门禁和成绩不变 (185.67825ms)
+✔ 旧 90 Combo 由正常命令产生，升级后保留历史且 v2/v3 拒绝 90 分伪造记录 (10.566125ms)
+✔ v1/v2/v3 挑战中保存只保留外层锚点，升级与恢复不带局部格/闪避/接触/分数 (10.864375ms)
+✔ 部分构建只带本期/较早三版本视图，当前版本最后；每个视图可解析正确迁移 (196.0985ms)
+✔ 迁移前保存双槽原文；备份存储失败时拒绝写入新版本 (19.471542ms)
+✔ 原版录像回归：普通格错拍只减 1，保留本轮最高 Combo (1.387125ms)
+✔ 警报错拍接触只扣 5，不清零、不另扣普通 MISS，最高 Combo 保留 (0.679ms)
+✔ 时间推进会命中驻留玩家；连续接触不按 Tick、帧或拍点重复扣分 (0.195334ms)
+✔ 被动受击不占用尚未输入的拍点，窗内随后移到安全格仍可加 1 (0.151583ms)
+✔ 迎向来袭方向的早/中/晚踩拍均保护到拍点或输入较晚者后 150ms，期满驻留可受击 (0.320084ms)
+✔ 普通踩拍不会伪报 DODGE；踩拍向错方向入警报不能取得瞬时最高分 (0.157333ms)
+✔ 同拍重复不刷新保护；转向取消旧方向保护，不能借它横穿另一警报 (0.191ms)
+✔ 闪避后离开重入不能在同拍重开保护；新波次与重入均能再受击 (0.285334ms)
+✔ 同刻多警报合并一次 -5；无效、重复或同格输入不能吞掉被动接触 (0.378458ms)
+✔ 精确警报/拍点边界 Tick(t)→Input(t) 与同刻批处理完全一致 (0.265208ms)
+✔ 警报与玩家同刻对穿也判接触，正确迎向踩拍可闪避 (0.226208ms)
+✔ 警报来向与 150ms 预告共用排表，预告不受击、当前危险优先 (0.1685ms)
+✔ v3 四档键盘见证都有实际方向闪避，无受击完成 27/82，帧率和分段不改变结果 (174.221292ms)
+✔ v2 原发布 JSON 按校验值冻结，v2 五个完整 profile 通过唯一规则升级保留成绩/物资/门禁 (475.990208ms)
+✔ 警报排表拒绝重复身份、无效时间、非法格、跳格、反向帧与非整数处罚 (0.456834ms)
+✔ v3 截止时先结算，终点输入不补分；过期、倒退和重复序号均不重复事务 (0.20525ms)
+✔ I01 八个方向键只派发对应四向一步，画布消费游戏按键而不消费其他输入 (2.560541ms)
+✔ I01 长按由适配器在 250ms 首次重复，再以 140ms 节奏派发；浏览器 repeat 不改时序 (0.27725ms)
+✔ I01 两方向按住时重复最新方向，释放它后回到前一个仍按住方向 (0.18275ms)
+✔ I02 动画期新方向覆盖唯一等待方向，到 140ms 仅提交最新一步 (0.1865ms)
+✔ I02 新物理按键在 139ms 等待、140ms 当场提交，不等待下一渲染帧 (0.205ms)
+✔ I03 自动续步在 139ms 不执行、140ms 执行；不可操作时不消耗到期动作 (0.116333ms)
+✔ I02 帧调用迟到时至多派发一次，不积攒或追补长按步数 (0.175208ms)
+✔ I07 clear 丢弃等待方向并抑制仍按住的键，恢复后必须 keyup 再次按下 (0.228042ms)
+✔ I07 连续暂停或模式切换重复 clear 不解除按住抑制，释放后新方向正常操作 (0.182459ms)
+✔ I10 菜单、输入框或导入控件拥有焦点时，不消费快捷键、方向或菜单键 (0.2225ms)
+✔ I07 / I10 画布失去焦点或 canPlay 关闭期间，按住重复与等待命令均不穿透 (0.179125ms)
+✔ I10 画布快捷键派发语义命令，重复事件无效，地图和暂停只调用对应 UI 接口 (0.155ms)
+✔ I01 / T02 防火墙每次物理按下只派发一次，不生成适配器长按或等待移动 (0.124041ms)
+✔ dispose 移除监听，后续键盘不会派发或消费按键 (0.063208ms)
+✔ 浏览器修饰快捷键不移动、增幅或撤销，保留刷新与常规键盘操作 (0.105958ms)
+✔ Tab或鼠标移出画布清除等待方向，重新聚焦不会执行旧输入 (0.108542ms)
+✔ G09 收集列表为完整奖励账本提供中文名称，不能退回稳定 ID 或遗漏奖励 (0.9585ms)
+✔ G10 所有分期收集列表的奖励都能取得完整账本中的名称 (5.857125ms)
+✔ 电视几何经实际 Three 相机投影呈横向1.14比例，壳缝密且点击量度为CSS尺寸 (2.327625ms)
+✔ 18个实际局部棋盘在1366/1920视口及缩放两端均避开HUD、完整拟合且每格至少44px (22.23575ms)
+✔ 9列长通道与9×9上限按双轴拟合，局部放大到边界会明确记录effective zoom (1.47625ms)
+✔ 世界默认约9×7可见范围，0.75–1.5按倍数缩放，不强行全世界挤进视口 (0.4965ms)
+✔ 非原点与稀疏地图保持同样构图；外壳厚度与高亮边框均落在测量bounds内 (0.172042ms)
+✔ 窄窗口先采用收起侧栏的内边距；无法同时全盘可见时保留44px并报告扩大窗口 (0.480042ms)
+✔ 镜头在100ms抵达并给呈现留余量，30/60/120帧轨迹一致，低动态即时且可连续改目标 (0.17125ms)
+✔ 布局计算不改输入，拒绝非有限画布/坐标/边距而不产生坏相机矩阵 (0.372792ms)
+✔ P07 真实 M1 全收集迁入真实 M2 内容，26 单位与旧终点历史保留，分母更新为 51 (4.32575ms)
+✔ P07 真实 M1 来源经逐期与直升合成 M3/M4 目标一致，不替代完整内容迁移验收 (21.305292ms)
+✔ P07 真实迷宫预览和活动布局迁入合成 M4 目标保持，恢复清空撤销且仍能重置 (14.241625ms)
+✔ P07 双槽真实 M1 进度先备份原文再持久升级，重复载入与普通保存不覆盖迁移备份 (14.857166ms)
+✔ P09 真实 M1→M2 的迁移备份额度不足时停止，两个原槽逐字可导出 (5.039833ms)
+✔ P08 合成规则 v2 的较低上限不误拒真实 v1 成绩；旧奖励保留，新成绩独立结算 (2.546375ms)
+✔ P08 未登记规则路径或未提供原始内容定义时拒绝，不从载荷版本猜修复 (0.128791ms)
+✔ P08 世界坐标只按显式旧格→新格映射，玩家、发现和已访问集合一起迁移 (7.649959ms)
+✔ P08 静态坐标映射覆盖玩家、棋盘、返回锚点与重置基线，恢复后可正常移动和重置 (6.07625ms)
+✔ P08 合成静态初态的路径访问集合与物体占格、基线布局全部经同一坐标映射 (12.498041ms)
+✔ P08 仅已登记的无法映射房间可退回安全入口并说明；原本坏档不能借退出映射洗白 (3.657083ms)
+✔ P08 目标和奖励重命名必须显式一对一映射，保持物资与既有门禁结果 (4.61725ms)
+✔ P08 改变奖励数额、合并奖励或改变既有门禁的映射均停止迁移 (3.159625ms)
+✔ 迁移拒绝伪装为 additive 的坐标或规则改动、降级路径及多条歧义路径 (2.288667ms)
+✔ P07 合成 M4→M5 只更新发布 profile，内容与规则版本、游戏进度均保持 (10.187167ms)
+✔ P08 坐标步骤不能暗改实时规则，规则步骤不能暗改局部棋盘坐标 (1.904291ms)
+✔ P07 历史 M1 schema1 只回填记忆迷宫确定的空布局，重复迁移不再变更 (0.525ms)
+✔ P07 真实浏览器 M2 schema1 全收集文件升级 schema2，51物资与全部成绩原样保留 (1.478875ms)
+✔ P07 真实 schema1 M2 文件持久升级前保存两槽原文，恢复当前 schema 后不重复补布局 (2.028208ms)
+✔ P08 永久完成的一笔画集合与回访玩家坐标同步映射，不重算或替换提交结果 (8.580875ms)
+✔ P07 实际 m3-browser-main-save.json 迁入完整 M4 / 同 content4 的 M5，原成绩和完成布局逐项保持 (35.015542ms)
+✔ P07 实际 m3-browser-save.json 迁入完整 M4 / 同 content4 的 M5，原成绩和完成布局逐项保持 (25.852875ms)
+✔ P07 真实 M1 全收集按实际 M1→M2→M3→M4 与直接 M1→M4 迁移一致 (26.07ms)
+✔ G04/P07 实际 C 主线档升级 M4 后只用移动和 F 即进入 D，三盗取仍未完成 (3.834625ms)
+✔ P01/P07 真实 C 完成态访问在 M4→M5 保留九个首次布局，载入后仍可正常离开 (7.462917ms)
+✔ P07 实际 M3 双槽升级 M4 / M5 前保留 content3 原文，代数增加且九完成布局不变 (65.637625ms)
+✔ P05 实际 M3 旧槽旁的较新 schema / content / rule / profile 均受保护，不能静默退回旧档 (52.205416ms)
+✔ P06 实际 M4 显露集合须与观察和增幅事件双向闭合，多组/漏组坏导入保持原世界 (5.684708ms)
+✔ P06/P07 显露组闭合校验仍接受真实 M1–M3 浏览器导出及其实际完整内容升级 (24.34225ms)
+✔ P06/P07 真实 M4 全收集浏览器导出含三组合法揭示，升同 content4 M5 保留130与九完成布局 (5.406125ms)
+✔ P01/P07 Chrome 新档正常游玩 M4 无评分仓库通关导出升级同 content4 M5，恢复完整载荷且原字节不变 (6.011208ms)
+✔ P01/P07 Chrome 新档正常游玩 M4 完整收集导出升级同 content4 M5，恢复完整载荷且原字节不变 (5.50975ms)
+✔ G09/P07 M4 已完成仓库的真实全收集档在 M5 首次访问挑战不重复结算事件 (4.805541ms)
+✔ I05 / M1 绕过能力拾取到达真实富集节点，必须先领取增幅仪才可清除 (4.728417ms)
+✔ I05 / M2 绕过能力拾取到达真实富集节点，必须先领取增幅仪才可清除 (0.967666ms)
+✔ I05 / M3 绕过能力拾取到达真实富集节点，必须先领取增幅仪才可清除 (1.105916ms)
+✔ I05 / M4 绕过能力拾取到达真实富集节点，必须先领取增幅仪才可清除 (1.550583ms)
+✔ I05 / M5 绕过能力拾取到达真实富集节点，必须先领取增幅仪才可清除 (1.422791ms)
+✔ I04 未发现边界仅显示未知占位，移动显露后投影跟随权威位置且不泄漏其他棋盘 (2.502959ms)
+✔ I05 覆盖显露仍显示覆盖，真实增幅后节点变为已使用、被清除格变为道路 (0.579375ms)
+✔ G09 物资实际领取前后保留同一实体，图标从可领取切换到已收集 (2.485208ms)
+✔ G02 主终端交互完成才切换完成图标，可选挑战完成后对应奖励门才显示开放 (18.519792ms)
+✔ S01 迷宫危险只在真实观察阶段展示，观察结束后投影不保留答案图标或文字 (0.751291ms)
+✔ I04 / D 未揭示的隐藏路线不作为未知边界泄漏，揭示并走近后才展示 (13.471542ms)
+✔ 冻结的 9 个实时定义均通过结构、谱面、生命周期和幽灵同步路线校验 (3.352875ms)
+✔ 全部 18 条成功 / 失败见证通过权威规则重放，终态与逐项预期一致 (5.994958ms)
+✔ T01 防火墙窗口的 100 / 400ms 命中，99 / 401ms 错拍 (0.295791ms)
+✔ T02 同拍多个输入只加一；当前格、越界、按键重复都不计分 (0.147875ms)
+✔ T02 错拍普通格减 5 且最低 0；危险格归零；最高 Combo 保留 (0.18775ms)
+✔ T03 有效拍可跨危险格，危险图案在站立脚下替换不扣分，重试一致 (0.13175ms)
+✔ T04 四档阈值 12 / 40 / 55 / 70，最大命中数 30 / 90，结束事件仅一次 (0.51425ms)
+✔ T05 出现时与过期前 1ms 可清除，过期时优先移除，脚下出现不自动清除 (0.249125ms)
+✔ T05 同刻顺序为过期→出现→输入，同一格的新实例可被清除 (0.12025ms)
+✔ T06 星星原子清除活跃蓝紫，同刻重复点击不重复计分，不连锁其他星星或未来目标 (8.193125ms)
+✔ T07 截止时先结束；duration-1ms 的输入按各自规则处理 (0.17925ms)
+✔ 输入序号去重，回退时间及未来输入不污染规则，传入状态保持不变 (0.09675ms)
+✔ T09 幽灵走入静止玩家会失败；恰好帧边界先保留 tick 直到同刻输入或下一时刻 (0.140375ms)
+✔ T09 同刻交换失败，双方跟随且不重合或交换则存活 (0.098667ms)
+✔ T10 灯与碰撞同刻时失败优先，正常亮灯只清指定组，重试恢复全部初态 (0.119083ms)
+✔ 幽灵移动间隔 140ms，远点击拒绝，同刻最多一个玩家移动 (0.0755ms)
+✔ T13 所有实时成功与失败见证在 30 / 60 / 120fps 下终态、结果及反馈完全一致 (258.670833ms)
+✔ T14 三档固定杀毒排表见证均在每目标出现后至少 150ms 操作并达标 (1.749416ms)
+✔ 内容校验拒绝未知类型、非有限时间、重复格、超上限门槛、同格重叠与非连续幽灵路径 (0.319209ms)
+✔ P01 真实新档与正常中心教学到 A 区的载荷逐步合法，导出没有会话或渲染状态 (3.492209ms)
+✔ P01 普通位置、已发现和已访问集合恢复一致，读回时钟和输入从空白开始 (0.622333ms)
+✔ P06 未知或重复目标、奖励、格子、富集节点、显露组和传送点逐项被拒 (0.991125ms)
+✔ P06 目标漏前置、能力或自动奖励与教学事务不一致时拒绝 (0.665708ms)
+✔ P06 当前世界位置不能是未访问格、以太覆盖格、未开放门或未知棋盘 (0.608667ms)
+✔ P06 富集节点完成与清除记录必须是同一完整事务 (0.394917ms)
+✔ P01 / S02 迷宫预览刷新后重新观察完整 4 秒；危险格仅在预览显示 (1.460833ms)
+✔ P01 / S02 迷宫活动态刷新保留玩家与布局，撤销历史丢弃，重置仍回完整出生基线 (0.895083ms)
+✔ P01 / S01 真正踩危险格后保存合法恢复预览，临时结果与错误步不泄露 (0.85ms)
+✔ P06 静态存档拒绝危险或墙占格、重复对象、坏基线、错误锚点和待发结果注入 (1.115958ms)
+✔ P06 未完成房间不能仅篡改 practice 标记冒充独立练习 (0.451625ms)
+✔ P01 / S09 已完成迷宫重新进入的练习载荷可恢复，不能伪装成首次尝试 (1.127833ms)
+✔ P01 / S09 正常完成迷宫、拾取物资与 M1 终端后的稳定记录可恢复 (0.840083ms)
+✔ P01 / S09 完成布局访问态保存唯一玩家位置，恢复后危险失效且永久布局保持 (1.011042ms)
+✔ P06 schema2 必须完整保存已完成静态布局，拒绝漏记、假布局、未知房间及非法访问占格 (1.401333ms)
+✔ P02 实时准备及运行中只保存外层安全入口，分数与倒数不会进入载荷 (1.269666ms)
+✔ P02 防火墙真实达标后立即保存结果，恢复不强制重打或重复发奖励 (1.627583ms)
+✔ P06 实时安全恢复提示不能改为其他房间、其他入口或混入静态活动存档 (0.69025ms)
+✔ P05 高版本 schema / content / rule 和较新 profile 受保护，未登记迁移不猜测修复 (0.254875ms)
+✔ P06 设置有限值按合同约束范围，NaN、未知字段和非 JSON 数据被拒 (0.157416ms)
+✔ 稳定载荷与源世界互不别名，恢复的活动房间与输入载荷也互不别名 (0.60975ms)
+✔ P06 真实进度的非法导入或合法导入写入失败不改变原世界及旧有效槽 (1.100625ms)
+✔ P06 极大修订号 9007199254740991 导入后可连续移动、保存、导出并恢复 (7.293458ms)
+✔ P06 极大修订号 9007199254740990 导入后可连续移动、保存、导出并恢复 (2.942708ms)
+✔ P06 极大修订号 9007199254740989 导入后可连续移动、保存、导出并恢复 (2.22725ms)
+✔ P01 普通修订号恢复保留原值与全部进度 (0.153417ms)
+✔ P06 画质仅接受字符串枚举，拒绝可转换为合法文字的数组且保留原槽 (0.83125ms)
+✔ P04 同代深层坏档保持冲突与原始导出，不使启动检查抛错 (7.522375ms)
+✔ P04 两份同代深层相同坏载荷被归为损坏而非空档，比较不依赖递归栈 (19.664916ms)
+✔ P06 1 MiB 导入边界使用合法 JSON 与尾部空白，不能被解析失败掩盖 (2.69975ms)
+✔ P01 双槽交替写入完整快照，回读成功后才返回已保存，始终保留上一有效槽 (1.345916ms)
+✔ P03 setItem 抛错或回读不匹配都不标为已保存，上一有效原槽仍可导出 (0.273125ms)
+✔ P03 写后读取抛错也保留上一槽，恢复能力后重读发现已写入槽，不重复奖励事务 (0.135542ms)
+✔ P04 以代数而非槽名、日期选择；坏 JSON 不等于空档，有效备份须明确恢复 (0.220291ms)
+✔ P04 最新可解析代数的载荷损坏或时间字段损坏，不静默跳到旧槽 (0.160833ms)
+✔ P04 同代数不同载荷冲突停止自动载入；同载荷仅字段顺序和日期不同不冲突 (0.443833ms)
+✔ P05 最新较新版本与旧兼容槽并存，任何保存、导入、新游戏或备份恢复均保护原槽 (0.16925ms)
+✔ P06 导入先大小、JSON、项目与语义校验；预览和失败均不写存储，脚本作为数据被拒 (1.114167ms)
+✔ P06 单槽预算按 UTF-8 字节计算；导入虽低于 1 MiB 但迁移后超过 512 KiB 仍拒绝 (4.360125ms)
+✔ P07 迁移先以单键保存两槽完整原文并回读；普通保存不覆盖迁移备份 (0.264291ms)
+✔ P09 迁移备份写不下或回读不匹配时停止，两个原槽逐字保持 (0.171167ms)
+✔ P09 不可读不等于无档；临时模式不写原槽，仍可导出内存快照 (0.135042ms)
+✔ P10 写前重新读取，代数变化或同代数原文变化均拒绝过期快照 (0.085333ms)
+✔ P10 保存最后一步再次核对会话锁，已释放的会话无法写入 (0.063458ms)
+✔ P11 新游戏和导入都延续本地最大代数，旧高代数不能复活，原有效槽保留 (0.116541ms)
+✔ P11 两槽都坏时新游戏须明确确认；保留原文的确认摘要跨刷新有效 (0.866958ms)
+✔ 损坏原文的 SHA-256 与 Node 原生实现一致，覆盖中文、多块与尾部边界 (1.837667ms)
+✔ 代数安全整数耗尽、循环 JSON 与校验器异常均失败且不写槽 (0.173041ms)
+✔ P10 Web Locks 同源会话只一位持锁者；第二窗口不排队抢占，释放后显式重试可获取 (102.667792ms)
+✔ 重复获取锁复用当前会话；不支持或 API 拒绝时不会假装可写 (0.331084ms)
+✔ 页面在获取锁完成前离开，迟到回调立即释放，不留下后台写会话 (0.15875ms)
+✔ P03 临时读取失败保留最后可信基线，恢复读取后一次重试即可成功 (0.241542ms)
+✔ P10 新外部槽使连续重试均拒绝，不能用一次冲突结果接受新基线覆盖旧内存 (0.129917ms)
+✔ P03 回读异常后只有确认本次原文和保留槽均一致才接续本次写入基线 (0.214667ms)
+✔ P10 本次写入后保留槽被外部更改也不接受新基线 (0.120709ms)
+✔ 验收会话观察原样传递参数及两个 Promise，锁仍由原回调结束后释放 (3.320333ms)
+✔ 同标签导航合并原页 pagehide 与新页轨迹，BFCache 旧页后续事件不覆盖新页 (0.342917ms)
+✔ 轨迹按数量和 UTF-8 字节双重限量，损坏或超大旧诊断不进入快照 (35.235459ms)
+✔ 诊断存储拒绝不会改变锁获取/释放；生产模式不读取存储或请求锁 (1.237166ms)
+✔ query 仅记录指定锁及 clientId；只读查询失败不获取/释放或传播异常 (0.756292ms)
+✔ 原生 request 拒绝保持原 Promise 和错误，观察者不产生新的未处理拒绝 (0.404875ms)
+✔ P10 首次 busy 后仅等待 100ms 再试；旧持有者在间隔内释放后可取得会话 (3.227375ms)
+✔ P10 真实另一页持续持有时只额外尝试一次，随后保持 busy 且不排队抢占 (0.530708ms)
+✔ P10 延迟期间 release 立即取消，不留下定时获取或改变后续会话 (0.384625ms)
+✔ P10 隐藏页面的 AbortSignal 取消 pending；已获取后中止信号不能释放持锁会话 (0.540584ms)
+✔ P10 并发 acquire 复用同一 pending，显式中止旧请求后新请求有自己的重试窗口 (0.374584ms)
+✔ P10 未返回的旧请求被取消后，迟到的成功或拒绝均不得改变新会话 (0.545417ms)
+✔ P10 已中止信号不发请求，API 拒绝不当作 busy 重试 (0.294542ms)
+✔ P10 恢复页 busy：原槽导出使用新磁盘原文，旧内存保留自己的代数且不能继续 (5.015792ms)
+✔ P10 重新取得锁仍不能操作旧副本；显式继续重读的最新槽后才正常写下一代 (6.278208ms)
+✔ P10 离开后不沿用显式临时授权；重新确认新临时进度才可操作且不写原槽 (0.612666ms)
+✔ P03/P10 未保存的当前内存导出沿用最后确认代数，成功重试后再更新 (2.261958ms)
+✔ P04/P10 只读原槽包含损坏和较新版本字节，每次关闭都回原会话决定 (0.357583ms)
+✔ P09/P10 读取失败不把旧内存伪装为可读取原槽 (0.095417ms)
+✔ T08 a.firewall.tutorial success：7种设置经公开命令切换后，时钟/分数/反馈/永久结果一致 (38.488292ms)
+✔ T08 a.firewall.tutorial failure：7种设置经公开命令切换后，时钟/分数/反馈/永久结果一致 (19.623958ms)
+✔ T08 a.firewall.inner success：7种设置经公开命令切换后，时钟/分数/反馈/永久结果一致 (129.185458ms)
+✔ T08 a.firewall.inner failure：7种设置经公开命令切换后，时钟/分数/反馈/永久结果一致 (67.54675ms)
+✔ T08 a.firewall.deep success：7种设置经公开命令切换后，时钟/分数/反馈/永久结果一致 (131.764167ms)
+✔ T08 a.firewall.deep failure：7种设置经公开命令切换后，时钟/分数/反馈/永久结果一致 (74.543375ms)
+✔ T08 a.firewall.core success：7种设置经公开命令切换后，时钟/分数/反馈/永久结果一致 (151.494875ms)
+✔ T08 a.firewall.core failure：7种设置经公开命令切换后，时钟/分数/反馈/永久结果一致 (89.870166ms)
+✔ T08 b.antivirus.light success：7种设置经公开命令切换后，时钟/分数/反馈/永久结果一致 (122.513375ms)
+✔ T08 b.antivirus.light failure：7种设置经公开命令切换后，时钟/分数/反馈/永久结果一致 (73.669916ms)
+✔ T08 b.antivirus.medium success：7种设置经公开命令切换后，时钟/分数/反馈/永久结果一致 (147.251459ms)
+✔ T08 b.antivirus.medium failure：7种设置经公开命令切换后，时钟/分数/反馈/永久结果一致 (78.981833ms)
+✔ T08 b.antivirus.heavy success：7种设置经公开命令切换后，时钟/分数/反馈/永久结果一致 (196.455ms)
+✔ T08 b.antivirus.heavy failure：7种设置经公开命令切换后，时钟/分数/反馈/永久结果一致 (88.220334ms)
+✔ 固定内容包含 M1–M3 的九个房间和每房三条完整见证 (15.633625ms)
+✔ 权威规则见证：a.maze.01.witness.success (0.406292ms)
+✔ 权威规则见证：a.maze.01.witness.alternative (0.255541ms)
+✔ 权威规则见证：a.maze.01.witness.recovery (0.408917ms)
+✔ 权威规则见证：a.maze.02.witness.success (0.36175ms)
+✔ 权威规则见证：a.maze.02.witness.alternative (0.4295ms)
+✔ 权威规则见证：a.maze.02.witness.recovery (0.369833ms)
+✔ 权威规则见证：a.maze.03.witness.success (0.523083ms)
+✔ 权威规则见证：a.maze.03.witness.alternative (0.8265ms)
+✔ 权威规则见证：a.maze.03.witness.recovery (0.630625ms)
+✔ 权威规则见证：b.line.01.witness.success (0.458375ms)
+✔ 权威规则见证：b.line.01.witness.alternative (0.49725ms)
+✔ 权威规则见证：b.line.01.witness.recovery (0.8275ms)
+✔ 权威规则见证：b.line.02.witness.success (2.354792ms)
+✔ 权威规则见证：b.line.02.witness.alternative (2.158875ms)
+✔ 权威规则见证：b.line.02.witness.recovery (3.185541ms)
+✔ 权威规则见证：c.routing.01.witness.success (0.900667ms)
+✔ 权威规则见证：c.routing.01.witness.alternative (0.85925ms)
+✔ 权威规则见证：c.routing.01.witness.recovery (1.028125ms)
+✔ 权威规则见证：c.theft.01.witness.success (0.488208ms)
+✔ 权威规则见证：c.theft.01.witness.alternative (0.486917ms)
+✔ 权威规则见证：c.theft.01.witness.recovery (0.572958ms)
+✔ 权威规则见证：c.theft.02.witness.success (0.375667ms)
+✔ 权威规则见证：c.theft.02.witness.alternative (0.9225ms)
+✔ 权威规则见证：c.theft.02.witness.recovery (0.762083ms)
+✔ 权威规则见证：c.theft.03.witness.success (1.801375ms)
+✔ 权威规则见证：c.theft.03.witness.alternative (1.802417ms)
+✔ 权威规则见证：c.theft.03.witness.recovery (2.331125ms)
+✔ S01：观察阶段拒绝移动，时钟显式完成观察后才接收方向 (0.103875ms)
+✔ S01/S02：危险步丢弃临时结果、返回基线并重新观察，墙不会触发失败 (0.376167ms)
+✔ I01：缺少的整数坐标保持地图外，无效方向或位置不改变状态 (0.303333ms)
+✔ S03：重复路径和提前终点被拒，撤销还原精确访问集合 (0.148875ms)
+✔ S04：同方向推动时信号球滑到第一基站，盗取对象仅前进一格 (0.143917ms)
+✔ S05：推车前进一格并改变滑球原子落点，撤销恢复完整布局 (0.189417ms)
+✔ S05：不串推，墙边和边界推动不部分改变物体或历史 (0.168667ms)
+✔ S05：任意基站都能停止球，错误站不销毁球，成功前正确入站仍可推离 (0.10875ms)
+✔ S06：槽是可通行地板；异色互换不成功，正确物体在整体成功前不锁死 (0.100042ms)
+✔ S06：固定盗取 02 的第二条成功见证交换同色物体的最终槽位 (2.168792ms)
+✔ S07：第 257 步淘汰最老历史；只撤销最近 256 步后仍可重置 (1.22175ms)
+✔ S07/S08：完整前态包含临时结果，快照与调用者输入互不别名 (0.125708ms)
+✔ S07：四个推物恢复见证确实先将指定物体送入不可逆边界死角 (0.366625ms)
+✔ S02/S08/P01：活动布局可序列化恢复，当前玩家只保存在调用方，历史丢弃后重置仍完整 (0.222708ms)
+✔ S09：成功是撤销与重置边界，独立练习从固定基线重建 (6.934667ms)
+✔ 内容校验拒绝非法类型、坐标、引用、危险起点和颜色账本 (1.428292ms)
+✔ 内容校验拒绝缺见证、伪结果码、重复答案和数组伪装动作 (64.486125ms)
+✔ P06：存档校验拒绝重复玩家、坏路径、非法占格和篡改重置基线 (0.427334ms)
+✔ G11 真实M1→M4：继续/导入保留80数据，说明D四权限回访，保存后不重复提示 (79.979708ms)
+✔ G11 真实M2→M4：继续/导入保留80数据，说明D四权限回访，保存后不重复提示 (63.862917ms)
+✔ G11 真实M3→M4：继续/导入保留80数据，说明D四权限回访，保存后不重复提示 (41.119833ms)
+✔ G11 真实M1→M5：继续/导入保留80数据，说明D四权限回访，保存后不重复提示 (99.200041ms)
+✔ G11 真实M2→M5：继续/导入保留80数据，说明D四权限回访，保存后不重复提示 (87.159125ms)
+✔ G11 真实M3→M5：继续/导入保留80数据，说明D四权限回访，保存后不重复提示 (65.864625ms)
+✔ G11 真实M4同profile继续/导入：130完整进度不误报新增回访 (2.451292ms)
+✔ G11 真实M5同profile继续/导入：130完整进度不误报新增回访 (1.996083ms)
+✔ G11 真实M4→M5仅profile升级：两种入口不把已有回访或130物资称为新增 (43.014208ms)
+✔ G11 真实M1同profile仅schema1→2：需要迁移但没有新增回访提示 (1.061459ms)
+✔ 发布产物拒绝错误分期、漏入口、隐藏诊断和未声明的未来资源 (88.345542ms)
+✔ 测试入口递归发现子目录失败用例并传播非零退出；空目录不能通过 (451.749459ms)
+✔ 构建模式保持开发 / 生产 / 验收与五个分期；未知分期明确失败 (0.425167ms)
+✔ 真实编译器依赖图拒绝核心反向引用、外部包和浏览器 API，保留同名局部字段 (189.324666ms)
+✔ M4 实际世界接入两个冻结幽灵棋盘，入口/恢复锚点/成功侧与正常 C 主线档闭合 (16.004041ms)
+✔ I06/I07 d.ghost.01 必须在物理入口 F 后开始；入场快照安全，倒数清输入且不移动 (2.45175ms)
+✔ P02/S08 d.ghost.01 碰撞与放弃不发权限/物资，失败时钟停止，刷新或重试回安全入口 (2.253208ms)
+✔ G09/S09 d.ghost.01 成功只先开安全门，终端与物资分别提交；重复练习保留权限且不重复领取 (4.383208ms)
+✔ P02 d.ghost.01 灯已亮的进行中快照仍只恢复世界安全点，灯和幽灵从冻结初态重开 (1.7545ms)
+✔ I06/I07 d.ghost.02 必须在物理入口 F 后开始；入场快照安全，倒数清输入且不移动 (1.261375ms)
+✔ P02/S08 d.ghost.02 碰撞与放弃不发权限/物资，失败时钟停止，刷新或重试回安全入口 (1.891167ms)
+✔ G09/S09 d.ghost.02 成功只先开安全门，终端与物资分别提交；重复练习保留权限且不重复领取 (3.808917ms)
+✔ P02 d.ghost.02 灯已亮的进行中快照仍只恢复世界安全点，灯和幽灵从冻结初态重开 (1.682ms)
+✔ T11 两个幽灵世界接口在首步前1ms失焦/后台后显式恢复，3秒倒数不消耗剩余1ms (2.210791ms)
+✔ T09/T13 先渲染同刻Tick再发真实移动仍统一幽灵意图，同刻重绘不多走一次 (1.368042ms)
+✔ T12 世界入口中的300ms调度间断先冻结并丢弃输入，保留幽灵灯态和永久进度 (0.698125ms)
+✔ G09 双幽灵成功但四权限均未确认时可独立领额外物资，关闭的双段门仍不可绕过 (3.564834ms)
+✔ S08/S09 已正常取得权限04及物资后，其他幽灵段失败和放弃均不移除永久权限 (3.900375ms)
+✔ M2 已加载 B 固定地图、房间 / 效应 / 来源和 51 单位账本闭合 (9.16075ms)
+✔ G02/G03/G10：新档 A/B 各仅20数据即可到 M2 主终点，杀毒未玩 (0.233833ms)
+✔ G03：一笔画01和捷径按钮前无法沿回环或主终端门绕过 (2.286083ms)
+✔ I05：B 北侧增幅只清指定覆盖，20数据必须走到末端 F 取得 (19.238625ms)
+✔ G09/G10：新档全收集与往返练习后累计11个奖励ID、51物资和A/B各80数据 (0.257125ms)
+✔ G09/T14：重度先成功并领取，不依赖轻中档；三个奖励均为门后独立拾取 (26.707708ms)
+✔ T14：完整世界见证的三档杀毒点击都在固定目标出现至少150ms后执行 (40.590959ms)
+✔ S03：B实际入口的一笔画提前终点/重复步不提交，Z与重置精确恢复 (1.048209ms)
+✔ S08/P01：B一笔画中途载荷恢复保留路径、清空撤销，重置后仍能正常解出 (17.29425ms)
+✔ S08：B房间放弃回入口安全侧，未完成的一笔画不泄漏数据和奖励 (27.376375ms)
+✔ T07/P02：杀毒不操作至失败不开发奖门，放弃/恢复均回安全终端可重试 (17.572125ms)
+✔ S09：一笔画练习和重复拾取/终端/增幅保留永久进度、三档最佳分与51物资 (0.109209ms)
+✔ P07：真实 M1 载荷迁移续玩 m2.continuation.main-path (4.922458ms)
+✔ P07：真实 M1 载荷迁移续玩 m2.continuation.full-collection-and-return (44.66825ms)
+✔ I09：A/B物理传送连续30个往返保持落点和同一进度，不自动反向跳转 (24.046959ms)
+✔ M3 正式装配 C 的41格/4房闭合，固定17奖励81单位与260本版数据 (12.507792ms)
+✔ G02/G03/G10：新档完成 C 主线只需球车机关，三盗取与计分均未完成 (0.268208ms)
+✔ G03/I09：主机关未完成时返程门阻挡，放弃回安全入口且无目标泄漏 (5.079583ms)
+✔ G09/S04：前后两份机关物资独立，三盗取及侧路可先于主机关取得80数据 (0.121292ms)
+✔ G09/G10：新档全收集17个唯一奖励、81物资，A80/B80/C100且未伪造完整通关 (0.173917ms)
+✔ S04/S05/S06/S08：真实入口 c.routing.01 success 按布局成功且提交前不泄漏 (51.727375ms)
+✔ S04/S05/S06/S08：真实入口 c.routing.01 alternative 按布局成功且提交前不泄漏 (48.746709ms)
+✔ S04/S05/S06/S08：真实入口 c.routing.01 recovery 按布局成功且提交前不泄漏 (48.468125ms)
+✔ S04/S05/S06/S08：真实入口 c.theft.01 success 按布局成功且提交前不泄漏 (39.236167ms)
+✔ S04/S05/S06/S08：真实入口 c.theft.01 alternative 按布局成功且提交前不泄漏 (39.870375ms)
+✔ S04/S05/S06/S08：真实入口 c.theft.01 recovery 按布局成功且提交前不泄漏 (40.29025ms)
+✔ S04/S05/S06/S08：真实入口 c.theft.02 success 按布局成功且提交前不泄漏 (40.307375ms)
+✔ S04/S05/S06/S08：真实入口 c.theft.02 alternative 按布局成功且提交前不泄漏 (42.155625ms)
+✔ S04/S05/S06/S08：真实入口 c.theft.02 recovery 按布局成功且提交前不泄漏 (43.11325ms)
+✔ S04/S05/S06/S08：真实入口 c.theft.03 success 按布局成功且提交前不泄漏 (45.851084ms)
+✔ S04/S05/S06/S08：真实入口 c.theft.03 alternative 按布局成功且提交前不泄漏 (44.604083ms)
+✔ S04/S05/S06/S08：真实入口 c.theft.03 recovery 按布局成功且提交前不泄漏 (44.7555ms)
+✔ S04：实际球车房间车只推一格，未布置车时滑球可进死角且 Z 恢复整个移动 (44.58425ms)
+✔ S06：盗取02的世界替代解真实交换同色对象，按颜色和槽集合成功 (0.336208ms)
+✔ S08/P01：c.routing.01 推物中途保存恢复后无撤销历史、重置回原布局仍可解 (46.983417ms)
+✔ S09/P01：c.routing.01 完成访问保留实际布局、对象不再推动，保存与独立练习均保持 (3.231459ms)
+✔ S08/P01：c.theft.01 推物中途保存恢复后无撤销历史、重置回原布局仍可解 (40.846084ms)
+✔ S09/P01：c.theft.01 完成访问保留实际布局、对象不再推动，保存与独立练习均保持 (2.443875ms)
+✔ S08/P01：c.theft.02 推物中途保存恢复后无撤销历史、重置回原布局仍可解 (42.248125ms)
+✔ S09/P01：c.theft.02 完成访问保留实际布局、对象不再推动，保存与独立练习均保持 (2.506417ms)
+✔ S08/P01：c.theft.03 推物中途保存恢复后无撤销历史、重置回原布局仍可解 (42.90325ms)
+✔ S09/P01：c.theft.03 完成访问保留实际布局、对象不再推动，保存与独立练习均保持 (3.818709ms)
+✔ S09/G09：完整公开见证里的完成出口、独立练习、重复拾取和区域往返不重复发奖 (0.249209ms)
+✔ P07：真实 M2 保存载荷升级后正常续玩 m3.continuation.main-path (8.460959ms)
+✔ P07：真实 M2 保存载荷升级后正常续玩 m3.continuation.full-collection-and-return (61.780583ms)
+✔ I09：C/B实体入口连续30次往返，落点安全且无自动回跳 (23.954708ms)
+✔ M4 正式内容闭合：四区400数据、26奖励130物资、回访和仓库已加载 (13.305792ms)
+✔ G08：新档从未进入防火墙或杀毒，完成20项数据仍能开库与结算100/130 (0.445ms)
+✔ G09：新档全收集恰好26个唯一奖励和130单位，不以计分或重复拾取增加物资 (0.142709ms)
+✔ G05：D 四权限实际路线 01→02→03→04 无相互门禁且第4项即时开放回访 (5.310875ms)
+✔ G05：D 四权限实际路线 01→02→04→03 无相互门禁且第4项即时开放回访 (4.993375ms)
+✔ G05：D 四权限实际路线 01→03→02→04 无相互门禁且第4项即时开放回访 (4.411417ms)
+✔ G05：D 四权限实际路线 01→03→04→02 无相互门禁且第4项即时开放回访 (4.580542ms)
+✔ G05：D 四权限实际路线 01→04→02→03 无相互门禁且第4项即时开放回访 (4.400958ms)
+✔ G05：D 四权限实际路线 01→04→03→02 无相互门禁且第4项即时开放回访 (4.376583ms)
+✔ G05：D 四权限实际路线 02→01→03→04 无相互门禁且第4项即时开放回访 (4.603041ms)
+✔ G05：D 四权限实际路线 02→01→04→03 无相互门禁且第4项即时开放回访 (4.482041ms)
+✔ G05：D 四权限实际路线 02→03→01→04 无相互门禁且第4项即时开放回访 (4.4775ms)
+✔ G05：D 四权限实际路线 02→03→04→01 无相互门禁且第4项即时开放回访 (4.495708ms)
+✔ G05：D 四权限实际路线 02→04→01→03 无相互门禁且第4项即时开放回访 (4.29675ms)
+✔ G05：D 四权限实际路线 02→04→03→01 无相互门禁且第4项即时开放回访 (4.34325ms)
+✔ G05：D 四权限实际路线 03→01→02→04 无相互门禁且第4项即时开放回访 (4.531125ms)
+✔ G05：D 四权限实际路线 03→01→04→02 无相互门禁且第4项即时开放回访 (4.482167ms)
+✔ G05：D 四权限实际路线 03→02→01→04 无相互门禁且第4项即时开放回访 (4.198209ms)
+✔ G05：D 四权限实际路线 03→02→04→01 无相互门禁且第4项即时开放回访 (4.467583ms)
+✔ G05：D 四权限实际路线 03→04→01→02 无相互门禁且第4项即时开放回访 (4.166709ms)
+✔ G05：D 四权限实际路线 03→04→02→01 无相互门禁且第4项即时开放回访 (4.426917ms)
+✔ G05：D 四权限实际路线 04→01→02→03 无相互门禁且第4项即时开放回访 (4.836458ms)
+✔ G05：D 四权限实际路线 04→01→03→02 无相互门禁且第4项即时开放回访 (4.316916ms)
+✔ G05：D 四权限实际路线 04→02→01→03 无相互门禁且第4项即时开放回访 (4.19875ms)
+✔ G05：D 四权限实际路线 04→02→03→01 无相互门禁且第4项即时开放回访 (4.213583ms)
+✔ G05：D 四权限实际路线 04→03→01→02 无相互门禁且第4项即时开放回访 (4.206584ms)
+✔ G05：D 四权限实际路线 04→03→02→01 无相互门禁且第4项即时开放回访 (4.559584ms)
+✔ G06：A/B 回访实际顺序 a→b 只需四权限，旧数据20也可进入 (3.946ms)
+✔ G06：A/B 回访实际顺序 b→a 只需四权限，旧数据20也可进入 (3.671416ms)
+✔ G05/G06/I05：D 四权限之前 A/B 回访实体门不能进入，原区主路径保持可达 (0.136834ms)
+✔ I06：19个隐藏格初态不投影、点击或邻接发现，三个揭示组分别由指定节点开放 (1.528ms)
+✔ G05/I06：D 隐藏数据可先于全部权限取得，仅隐藏终端 F 给20数据 (0.925083ms)
+✔ G09：两幽灵段即可领取专属物资，不要求任何权限 F 或四权限聚合 (1.879833ms)
+✔ G07：合成门禁边界仅移除 a.data.main 时仓库仍拒绝进入 (0.146875ms)
+✔ G07：合成门禁边界仅移除 a.data.maze02 时仓库仍拒绝进入 (0.099458ms)
+✔ G07：合成门禁边界仅移除 a.data.maze03 时仓库仍拒绝进入 (0.109792ms)
+✔ G07：合成门禁边界仅移除 a.data.side 时仓库仍拒绝进入 (0.106708ms)
+✔ G07：合成门禁边界仅移除 a.data.revisit 时仓库仍拒绝进入 (0.09875ms)
+✔ G07：合成门禁边界仅移除 b.data.main 时仓库仍拒绝进入 (0.100291ms)
+✔ G07：合成门禁边界仅移除 b.data.line02 时仓库仍拒绝进入 (0.108333ms)
+✔ G07：合成门禁边界仅移除 b.data.north 时仓库仍拒绝进入 (0.113ms)
+✔ G07：合成门禁边界仅移除 b.data.south 时仓库仍拒绝进入 (0.111958ms)
+✔ G07：合成门禁边界仅移除 b.data.revisit 时仓库仍拒绝进入 (0.107958ms)
+✔ G07：合成门禁边界仅移除 c.data.main 时仓库仍拒绝进入 (0.124333ms)
+✔ G07：合成门禁边界仅移除 c.data.theft01 时仓库仍拒绝进入 (0.115042ms)
+✔ G07：合成门禁边界仅移除 c.data.theft02 时仓库仍拒绝进入 (0.102417ms)
+✔ G07：合成门禁边界仅移除 c.data.theft03 时仓库仍拒绝进入 (0.100875ms)
+✔ G07：合成门禁边界仅移除 c.data.side 时仓库仍拒绝进入 (0.100041ms)
+✔ G07：合成门禁边界仅移除 d.data.permission01 时仓库仍拒绝进入 (0.113709ms)
+✔ G07：合成门禁边界仅移除 d.data.permission02 时仓库仍拒绝进入 (0.10525ms)
+✔ G07：合成门禁边界仅移除 d.data.permission03 时仓库仍拒绝进入 (0.104667ms)
+✔ G07：合成门禁边界仅移除 d.data.permission04 时仓库仍拒绝进入 (0.105875ms)
+✔ G07：合成门禁边界仅移除 d.data.hidden 时仓库仍拒绝进入 (0.121625ms)
+✔ G07：真实流程的最后一项D隐藏数据同事务开库，不等待130物资 (0.116667ms)
+✔ G08/G09：最终F同事务完成目标/九单位/结算历史，重复F与自由回访不再发奖 (1.634ms)
+✔ G09：整条公开全收集路线的目标、奖励和已开门单调，首次开库前没有结束标记 (88.477542ms)
+✔ T09/P02：实际 d.ghost.01 碰撞不发权限/物资，保存回安全终端，重试含亮灯可成功 (2.475667ms)
+✔ T09/P02：实际 d.ghost.02 碰撞不发权限/物资，保存回安全终端，重试含亮灯可成功 (1.372625ms)
+✔ G09/S09：通关后幽灵进入独立练习，普通安全路线与永久结算保持 (79.663667ms)
+✔ P07：真实M3稳定载荷升级并继续 m4.continuation.main-path-without-scored-challenges (37.564583ms)
+✔ P07：真实M3稳定载荷升级并继续 m4.continuation.full-collection-and-return (87.707542ms)
+✔ P07：实际浏览器导出的M3全收集81载荷，保留M1/M2/M3历史后用同一公开路线到130 (26.35625ms)
+✔ I09/G09：仓库与中心实体入口连续30次往返无自动回跳，最终物资仍130 (14.949375ms)
+✔ 世界见证清单要求每个已发布 profile 的主路径和全收集，可另加合法路线 (21.834291ms)
+✔ 见证清单拒绝重复 ID、错误版本和 profile (8.253875ms)
+✔ 见证范围不能弱化本版终点、全奖励、数据或无计分挑战通关断言 (19.066583ms)
+✔ 真实内容校验入口拒绝 M5 见证被清空，M1–M4 通过不能代替 M5 (754.405417ms)
+✔ G01/G02/G10：新档经真实命令完成 M1 主路径，不要求数据支路或防火墙 (0.949666ms)
+✔ G09/G10：M1 完整收集、重玩和往返后仍只有六个奖励 ID 与 26 单位 (0.1095ms)
+✔ G10：B 和仓库未收录边界保留提示，不加载未来可执行目的地 (0.115542ms)
+✔ G09：先完成核心并领取，内层与深层未完成也不会阻挡可选路线 (5.227709ms)
+✔ I05：发现覆盖格不会清除；增幅只改变当前节点列出的覆盖与教学事务 (0.205584ms)
+✔ S01：迷宫观察在有效 3,999ms 仍拒绝移动，4,000ms 转活动态 (0.35925ms)
+✔ S01/T11：观察中失焦 30 秒不消耗时间，重新显露仍须显式恢复 (0.468792ms)
+✔ S01/S08：危险失败与放弃只丢弃房间尝试，永久教学和入口不变 (0.418333ms)
+✔ S09：独立练习与重复实时成功保留门、奖励和最好成绩 (0.095125ms)
+✔ I03/I06：远距离点击只走已访问安全路径一步，静态棋盘不允许远点击 (0.619ms)
+✔ I09：物理传送与地图传送都保持同一进度，落点 Tick 不反向回跳 (0.081375ms)
+✔ I08：完整重放不修改调用者旧快照，所有反馈事件 ID 唯一且修订号仅随稳定动作增加 (33.543917ms)
+ℹ tests 510
+ℹ suites 0
+ℹ pass 510
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14124.956959
+$ pnpm run lint && pnpm run format:check && pnpm run typecheck && pnpm run validate:architecture && pnpm run validate:content && vite build
+$ oxlint --deny-warnings
+$ oxfmt --check
+Checking formatting...
+
+All matched files use the correct format.
+Finished in 604ms on 148 files using 10 threads.
+$ tsc --noEmit
+$ node scripts/check-architecture.ts
+架构校验通过：8 个核心模块，19 条依赖。
+$ node scripts/generate-assets.ts --check && node scripts/validate-content.ts
+Asset check passed: 48 records (prepared-all-profiles); exact profile membership, local checksums and recorded font coverage.
+M1 目录账本：6 个奖励 ID / 26 单位；世界地图已收录，继续校验
+M1 世界结构：2 区 / 61 格 / 7 房 / 80 本版数据，引用闭合通过
+M2 目录账本：11 个奖励 ID / 51 单位；世界地图已收录，继续校验
+M2 世界结构：3 区 / 105 格 / 12 房 / 160 本版数据，引用闭合通过
+M3 目录账本：17 个奖励 ID / 81 单位；世界地图已收录，继续校验
+M3 世界结构：4 区 / 146 格 / 16 房 / 260 本版数据，引用闭合通过
+M4 目录账本：26 个奖励 ID / 130 单位；世界地图已收录，继续校验
+M4 世界结构：6 区 / 214 格 / 18 房 / 400 本版数据，引用闭合通过
+M5 目录账本：26 个奖励 ID / 130 单位；世界地图已收录，继续校验
+M5 世界结构：6 区 / 214 格 / 18 房 / 400 本版数据，引用闭合通过
+静态独立规则：9 个固定定义 / 27 条成功、替代解与恢复见证通过
+实时独立规则：9 个固定定义 / 18 条成功与失败见证通过；尚未收录区域不据此视为世界验收通过
+m1.world.main-path：40 条公开命令，2 次首次领取；6 物资，通过
+m1.world.full-collection-and-return：1447 条公开命令，6 次首次领取；26 物资，通过
+m2.world.main-path：78 条公开命令，3 次首次领取；11 物资，通过
+m2.world.full-collection-and-return：2618 条公开命令，11 次首次领取；51 物资，通过
+m3.world.main-path：131 条公开命令，3 次首次领取；11 物资，通过
+m3.world.full-collection-and-return：2926 条公开命令，17 次首次领取；81 物资，通过
+m4.world.main-path-without-scored-challenges：688 条公开命令，20 次首次领取；100 物资，通过
+m4.world.full-collection-and-return：3273 条公开命令，26 次首次领取；130 物资，通过
+m5.world.main-path-without-scored-challenges：688 条公开命令，20 次首次领取；100 物资，通过
+m5.world.full-collection-and-return：3273 条公开命令，26 次首次领取；130 物资，通过
+内容校验只读完成。浏览器、存档故障与视听验收由各自记录承担。
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 34 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/assets/icons/hazard-safe.svg               0.29 kB │ gzip:   0.20 kB
+dist/assets/icons/hazard-active.svg             0.34 kB │ gzip:   0.22 kB
+dist/assets/icons/target-star.svg               0.34 kB │ gzip:   0.24 kB
+dist/assets/icons/door-open.svg                 0.34 kB │ gzip:   0.23 kB
+dist/assets/icons/enrichment-used.svg           0.35 kB │ gzip:   0.22 kB
+dist/assets/icons/lamp-unlit.svg                0.35 kB │ gzip:   0.25 kB
+dist/assets/icons/unknown.svg                   0.35 kB │ gzip:   0.25 kB
+dist/assets/icons/portal-ready.svg              0.36 kB │ gzip:   0.24 kB
+dist/assets/icons/checkpoint.svg                0.36 kB │ gzip:   0.23 kB
+dist/assets/icons/socket.svg                    0.37 kB │ gzip:   0.24 kB
+dist/assets/icons/supply-collected.svg          0.37 kB │ gzip:   0.23 kB
+dist/assets/icons/data-collected.svg            0.37 kB │ gzip:   0.22 kB
+dist/assets/icons/target-blue.svg               0.38 kB │ gzip:   0.25 kB
+dist/assets/icons/observation.svg               0.38 kB │ gzip:   0.24 kB
+dist/assets/icons/data-object.svg               0.38 kB │ gzip:   0.26 kB
+dist/assets/icons/door-closed.svg               0.41 kB │ gzip:   0.25 kB
+dist/assets/icons/antivirus.svg                 0.41 kB │ gzip:   0.27 kB
+dist/assets/icons/data-ready.svg                0.42 kB │ gzip:   0.24 kB
+dist/assets/icons/terminal-complete.svg         0.42 kB │ gzip:   0.23 kB
+dist/assets/icons/firewall.svg                  0.44 kB │ gzip:   0.27 kB
+dist/assets/icons/target-purple.svg             0.44 kB │ gzip:   0.24 kB
+dist/assets/icons/portal-locked.svg             0.45 kB │ gzip:   0.27 kB
+dist/assets/icons/enrichment-ready.svg          0.46 kB │ gzip:   0.25 kB
+dist/assets/icons/signal-ball.svg               0.46 kB │ gzip:   0.27 kB
+dist/index.html                                 0.47 kB │ gzip:   0.33 kB
+dist/assets/icons/lamp-lit.svg                  0.48 kB │ gzip:   0.30 kB
+dist/assets/icons/terminal-ready.svg            0.49 kB │ gzip:   0.25 kB
+dist/assets/icons/supply-ready.svg              0.49 kB │ gzip:   0.25 kB
+dist/assets/icons/station.svg                   0.61 kB │ gzip:   0.29 kB
+dist/assets/icons/ghost.svg                     0.64 kB │ gzip:   0.33 kB
+dist/assets/icons/player-hurt.svg               0.65 kB │ gzip:   0.34 kB
+dist/assets/icons/player-idle.svg               0.74 kB │ gzip:   0.35 kB
+dist/assets/icons/player-move.svg               0.81 kB │ gzip:   0.38 kB
+dist/assets/icons/cart.svg                      0.90 kB │ gzip:   0.33 kB
+dist/assets/icons/data-ready.png                1.96 kB
+dist/assets/icons/supply-ready.png              2.00 kB
+dist/assets/icons/target-blue.png               2.20 kB
+dist/assets/icons/door-closed.png               2.20 kB
+dist/assets/icons/checkpoint.png                2.30 kB
+dist/assets/icons/data-collected.png            2.59 kB
+dist/assets/icons/door-open.png                 3.07 kB
+dist/assets/icons/terminal-complete.png         3.09 kB
+dist/assets/icons/unknown.png                   3.16 kB
+dist/assets/icons/firewall.png                  3.18 kB
+dist/assets/icons/supply-collected.png          3.29 kB
+dist/assets/icons/terminal-ready.png            3.33 kB
+dist/assets/icons/hazard-safe.png               3.34 kB
+dist/assets/icons/data-object.png               3.43 kB
+dist/assets/icons/socket.png                    3.61 kB
+dist/assets/audio/beat.wav                      4.01 kB
+dist/assets/fonts/noto-OFL.txt                  4.30 kB │ gzip:   1.93 kB
+dist/assets/fonts/barlow-OFL.txt                4.37 kB │ gzip:   1.97 kB
+dist/assets/icons/antivirus.png                 5.74 kB
+dist/assets/icons/observation.png               5.85 kB
+dist/assets/icons/enrichment-used.png           5.87 kB
+dist/assets/icons/lamp-lit.png                  6.11 kB
+dist/assets/icons/target-star.png               6.12 kB
+dist/assets/icons/portal-ready.png              6.20 kB
+dist/assets/audio/move.wav                      6.21 kB
+dist/assets/icons/ghost.png                     6.31 kB
+dist/assets/icons/hazard-active.png             6.36 kB
+dist/assets/icons/lamp-unlit.png                6.91 kB
+dist/assets/icons/portal-locked.png             7.35 kB
+dist/assets/icons/target-purple.png             7.60 kB
+dist/assets/icons/cart.png                      8.09 kB
+dist/assets/icons/player-hurt.png               8.58 kB
+dist/assets/audio/invalid.wav                   8.86 kB
+dist/assets/icons/player-idle.png               9.15 kB
+dist/assets/icons/player-move.png               9.21 kB
+dist/assets/icons/signal-ball.png               9.86 kB
+dist/assets/icons/station.png                  10.90 kB
+dist/assets/icons/enrichment-ready.png         11.22 kB
+dist/assets/audio/reveal.wav                   15.92 kB
+dist/assets/audio/door.wav                     16.80 kB
+dist/assets/audio/pickup.wav                   21.21 kB
+dist/assets/audio/failure.wav                  28.26 kB
+dist/assets/audio/portal.wav                   30.03 kB
+dist/assets/audio/amplify.wav                  31.79 kB
+dist/assets/fonts/camellia-numerals.woff2      39.38 kB
+dist/assets/audio/success.wav                  45.90 kB
+dist/assets/manifest.json                     120.65 kB │ gzip:  18.85 kB
+dist/assets/fonts/camellia-ui.woff2           186.43 kB
+dist/assets/audio/firewall-music-core.wav   1,539.53 kB
+dist/assets/audio/firewall-music-deep.wav   1,539.53 kB
+dist/assets/audio/firewall-music-inner.wav  1,539.53 kB
+dist/assets/index-CkA_k8bn.css                 14.89 kB │ gzip:   4.18 kB
+dist/assets/index-DZm4oZID.js                 980.36 kB │ gzip: 230.22 kB
+
+✓ built in 293ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 650 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+$ node scripts/verify-artifacts.ts
+{
+  "profile": "M5",
+  "assets": 48,
+  "representations": 83,
+  "javascriptFiles": [
+    "assets/index-DZm4oZID.js"
+  ]
+}
+$ node scripts/verify-browser.ts
+vite v8.3.0 building client environment for production...
+transforming...
+✓ 34 modules transformed.
+rendering chunks...
+computing gzip size...
+test-results/review-fixes/pipeline/builds/production/assets/icons/hazard-safe.svg               0.29 kB │ gzip:   0.20 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/hazard-active.svg             0.34 kB │ gzip:   0.22 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/target-star.svg               0.34 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/door-open.svg                 0.34 kB │ gzip:   0.23 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/enrichment-used.svg           0.35 kB │ gzip:   0.22 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/lamp-unlit.svg                0.35 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/unknown.svg                   0.35 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/portal-ready.svg              0.36 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/checkpoint.svg                0.36 kB │ gzip:   0.23 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/socket.svg                    0.37 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/supply-collected.svg          0.37 kB │ gzip:   0.23 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/data-collected.svg            0.37 kB │ gzip:   0.22 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/target-blue.svg               0.38 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/observation.svg               0.38 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/data-object.svg               0.38 kB │ gzip:   0.26 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/door-closed.svg               0.41 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/antivirus.svg                 0.41 kB │ gzip:   0.27 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/data-ready.svg                0.42 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/terminal-complete.svg         0.42 kB │ gzip:   0.23 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/firewall.svg                  0.44 kB │ gzip:   0.27 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/target-purple.svg             0.44 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/portal-locked.svg             0.45 kB │ gzip:   0.27 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/enrichment-ready.svg          0.46 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/signal-ball.svg               0.46 kB │ gzip:   0.27 kB
+test-results/review-fixes/pipeline/builds/production/index.html                                 0.47 kB │ gzip:   0.33 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/lamp-lit.svg                  0.48 kB │ gzip:   0.30 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/terminal-ready.svg            0.49 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/supply-ready.svg              0.49 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/station.svg                   0.61 kB │ gzip:   0.29 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/ghost.svg                     0.64 kB │ gzip:   0.33 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/player-hurt.svg               0.65 kB │ gzip:   0.34 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/player-idle.svg               0.74 kB │ gzip:   0.35 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/player-move.svg               0.81 kB │ gzip:   0.38 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/cart.svg                      0.90 kB │ gzip:   0.33 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/data-ready.png                1.96 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/supply-ready.png              2.00 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/target-blue.png               2.20 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/door-closed.png               2.20 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/checkpoint.png                2.30 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/data-collected.png            2.59 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/door-open.png                 3.07 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/terminal-complete.png         3.09 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/unknown.png                   3.16 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/firewall.png                  3.18 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/supply-collected.png          3.29 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/terminal-ready.png            3.33 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/hazard-safe.png               3.34 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/data-object.png               3.43 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/socket.png                    3.61 kB
+test-results/review-fixes/pipeline/builds/production/assets/audio/beat.wav                      4.01 kB
+test-results/review-fixes/pipeline/builds/production/assets/fonts/noto-OFL.txt                  4.30 kB │ gzip:   1.93 kB
+test-results/review-fixes/pipeline/builds/production/assets/fonts/barlow-OFL.txt                4.37 kB │ gzip:   1.97 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/antivirus.png                 5.74 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/observation.png               5.85 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/enrichment-used.png           5.87 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/lamp-lit.png                  6.11 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/target-star.png               6.12 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/portal-ready.png              6.20 kB
+test-results/review-fixes/pipeline/builds/production/assets/audio/move.wav                      6.21 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/ghost.png                     6.31 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/hazard-active.png             6.36 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/lamp-unlit.png                6.91 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/portal-locked.png             7.35 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/target-purple.png             7.60 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/cart.png                      8.09 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/player-hurt.png               8.58 kB
+test-results/review-fixes/pipeline/builds/production/assets/audio/invalid.wav                   8.86 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/player-idle.png               9.15 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/player-move.png               9.21 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/signal-ball.png               9.86 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/station.png                  10.90 kB
+test-results/review-fixes/pipeline/builds/production/assets/icons/enrichment-ready.png         11.22 kB
+test-results/review-fixes/pipeline/builds/production/assets/audio/reveal.wav                   15.92 kB
+test-results/review-fixes/pipeline/builds/production/assets/audio/door.wav                     16.80 kB
+test-results/review-fixes/pipeline/builds/production/assets/audio/pickup.wav                   21.21 kB
+test-results/review-fixes/pipeline/builds/production/assets/audio/failure.wav                  28.26 kB
+test-results/review-fixes/pipeline/builds/production/assets/audio/portal.wav                   30.03 kB
+test-results/review-fixes/pipeline/builds/production/assets/audio/amplify.wav                  31.79 kB
+test-results/review-fixes/pipeline/builds/production/assets/fonts/camellia-numerals.woff2      39.38 kB
+test-results/review-fixes/pipeline/builds/production/assets/audio/success.wav                  45.90 kB
+test-results/review-fixes/pipeline/builds/production/assets/manifest.json                     120.65 kB │ gzip:  18.85 kB
+test-results/review-fixes/pipeline/builds/production/assets/fonts/camellia-ui.woff2           186.43 kB
+test-results/review-fixes/pipeline/builds/production/assets/audio/firewall-music-core.wav   1,539.53 kB
+test-results/review-fixes/pipeline/builds/production/assets/audio/firewall-music-deep.wav   1,539.53 kB
+test-results/review-fixes/pipeline/builds/production/assets/audio/firewall-music-inner.wav  1,539.53 kB
+test-results/review-fixes/pipeline/builds/production/assets/index-CkA_k8bn.css                 14.89 kB │ gzip:   4.18 kB
+test-results/review-fixes/pipeline/builds/production/assets/index-DZm4oZID.js                 980.36 kB │ gzip: 230.22 kB
+
+✓ built in 264ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 650 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+vite v8.3.0 building client environment for m1...
+transforming...
+✓ 34 modules transformed.
+rendering chunks...
+computing gzip size...
+test-results/review-fixes/pipeline/builds/m1/assets/icons/hazard-safe.svg               0.29 kB │ gzip:   0.20 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/hazard-active.svg             0.34 kB │ gzip:   0.22 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/door-open.svg                 0.34 kB │ gzip:   0.23 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/enrichment-used.svg           0.35 kB │ gzip:   0.22 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/unknown.svg                   0.35 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/portal-ready.svg              0.36 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/checkpoint.svg                0.36 kB │ gzip:   0.23 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/supply-collected.svg          0.37 kB │ gzip:   0.23 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/data-collected.svg            0.37 kB │ gzip:   0.22 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/observation.svg               0.38 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/door-closed.svg               0.41 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/data-ready.svg                0.42 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/terminal-complete.svg         0.42 kB │ gzip:   0.23 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/firewall.svg                  0.44 kB │ gzip:   0.27 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/portal-locked.svg             0.45 kB │ gzip:   0.27 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/enrichment-ready.svg          0.46 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/m1/index.html                                 0.47 kB │ gzip:   0.33 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/terminal-ready.svg            0.49 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/supply-ready.svg              0.49 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/player-hurt.svg               0.65 kB │ gzip:   0.34 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/player-idle.svg               0.74 kB │ gzip:   0.35 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/player-move.svg               0.81 kB │ gzip:   0.38 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/data-ready.png                1.96 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/supply-ready.png              2.00 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/door-closed.png               2.20 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/checkpoint.png                2.30 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/data-collected.png            2.59 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/door-open.png                 3.07 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/terminal-complete.png         3.09 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/unknown.png                   3.16 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/firewall.png                  3.18 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/supply-collected.png          3.29 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/terminal-ready.png            3.33 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/hazard-safe.png               3.34 kB
+test-results/review-fixes/pipeline/builds/m1/assets/audio/beat.wav                      4.01 kB
+test-results/review-fixes/pipeline/builds/m1/assets/fonts/noto-OFL.txt                  4.30 kB │ gzip:   1.93 kB
+test-results/review-fixes/pipeline/builds/m1/assets/fonts/barlow-OFL.txt                4.37 kB │ gzip:   1.97 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/observation.png               5.85 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/enrichment-used.png           5.87 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/portal-ready.png              6.20 kB
+test-results/review-fixes/pipeline/builds/m1/assets/audio/move.wav                      6.21 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/hazard-active.png             6.36 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/portal-locked.png             7.35 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/player-hurt.png               8.58 kB
+test-results/review-fixes/pipeline/builds/m1/assets/audio/invalid.wav                   8.86 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/player-idle.png               9.15 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/player-move.png               9.21 kB
+test-results/review-fixes/pipeline/builds/m1/assets/icons/enrichment-ready.png         11.22 kB
+test-results/review-fixes/pipeline/builds/m1/assets/audio/reveal.wav                   15.92 kB
+test-results/review-fixes/pipeline/builds/m1/assets/audio/door.wav                     16.80 kB
+test-results/review-fixes/pipeline/builds/m1/assets/audio/pickup.wav                   21.21 kB
+test-results/review-fixes/pipeline/builds/m1/assets/audio/failure.wav                  28.26 kB
+test-results/review-fixes/pipeline/builds/m1/assets/audio/portal.wav                   30.03 kB
+test-results/review-fixes/pipeline/builds/m1/assets/audio/amplify.wav                  31.79 kB
+test-results/review-fixes/pipeline/builds/m1/assets/fonts/camellia-numerals.woff2      39.38 kB
+test-results/review-fixes/pipeline/builds/m1/assets/audio/success.wav                  45.90 kB
+test-results/review-fixes/pipeline/builds/m1/assets/manifest.json                      99.45 kB │ gzip:  15.92 kB
+test-results/review-fixes/pipeline/builds/m1/assets/fonts/camellia-ui.woff2           186.43 kB
+test-results/review-fixes/pipeline/builds/m1/assets/audio/firewall-music-core.wav   1,539.53 kB
+test-results/review-fixes/pipeline/builds/m1/assets/audio/firewall-music-deep.wav   1,539.53 kB
+test-results/review-fixes/pipeline/builds/m1/assets/audio/firewall-music-inner.wav  1,539.53 kB
+test-results/review-fixes/pipeline/builds/m1/assets/index-CkA_k8bn.css                 14.89 kB │ gzip:   4.18 kB
+test-results/review-fixes/pipeline/builds/m1/assets/index-Dh3AVEmM.js                 841.74 kB │ gzip: 209.71 kB
+
+✓ built in 183ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 650 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+vite v8.3.0 building client environment for m2...
+transforming...
+✓ 34 modules transformed.
+rendering chunks...
+computing gzip size...
+test-results/review-fixes/pipeline/builds/m2/assets/icons/hazard-safe.svg               0.29 kB │ gzip:   0.20 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/hazard-active.svg             0.34 kB │ gzip:   0.22 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/target-star.svg               0.34 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/door-open.svg                 0.34 kB │ gzip:   0.23 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/enrichment-used.svg           0.35 kB │ gzip:   0.22 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/unknown.svg                   0.35 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/portal-ready.svg              0.36 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/checkpoint.svg                0.36 kB │ gzip:   0.23 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/supply-collected.svg          0.37 kB │ gzip:   0.23 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/data-collected.svg            0.37 kB │ gzip:   0.22 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/target-blue.svg               0.38 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/observation.svg               0.38 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/door-closed.svg               0.41 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/antivirus.svg                 0.41 kB │ gzip:   0.27 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/data-ready.svg                0.42 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/terminal-complete.svg         0.42 kB │ gzip:   0.23 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/firewall.svg                  0.44 kB │ gzip:   0.27 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/target-purple.svg             0.44 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/portal-locked.svg             0.45 kB │ gzip:   0.27 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/enrichment-ready.svg          0.46 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/m2/index.html                                 0.47 kB │ gzip:   0.33 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/terminal-ready.svg            0.49 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/supply-ready.svg              0.49 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/player-hurt.svg               0.65 kB │ gzip:   0.34 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/player-idle.svg               0.74 kB │ gzip:   0.35 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/player-move.svg               0.81 kB │ gzip:   0.38 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/data-ready.png                1.96 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/supply-ready.png              2.00 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/target-blue.png               2.20 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/door-closed.png               2.20 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/checkpoint.png                2.30 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/data-collected.png            2.59 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/door-open.png                 3.07 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/terminal-complete.png         3.09 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/unknown.png                   3.16 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/firewall.png                  3.18 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/supply-collected.png          3.29 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/terminal-ready.png            3.33 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/hazard-safe.png               3.34 kB
+test-results/review-fixes/pipeline/builds/m2/assets/audio/beat.wav                      4.01 kB
+test-results/review-fixes/pipeline/builds/m2/assets/fonts/noto-OFL.txt                  4.30 kB │ gzip:   1.93 kB
+test-results/review-fixes/pipeline/builds/m2/assets/fonts/barlow-OFL.txt                4.37 kB │ gzip:   1.97 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/antivirus.png                 5.74 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/observation.png               5.85 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/enrichment-used.png           5.87 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/target-star.png               6.12 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/portal-ready.png              6.20 kB
+test-results/review-fixes/pipeline/builds/m2/assets/audio/move.wav                      6.21 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/hazard-active.png             6.36 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/portal-locked.png             7.35 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/target-purple.png             7.60 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/player-hurt.png               8.58 kB
+test-results/review-fixes/pipeline/builds/m2/assets/audio/invalid.wav                   8.86 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/player-idle.png               9.15 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/player-move.png               9.21 kB
+test-results/review-fixes/pipeline/builds/m2/assets/icons/enrichment-ready.png         11.22 kB
+test-results/review-fixes/pipeline/builds/m2/assets/audio/reveal.wav                   15.92 kB
+test-results/review-fixes/pipeline/builds/m2/assets/audio/door.wav                     16.80 kB
+test-results/review-fixes/pipeline/builds/m2/assets/audio/pickup.wav                   21.21 kB
+test-results/review-fixes/pipeline/builds/m2/assets/audio/failure.wav                  28.26 kB
+test-results/review-fixes/pipeline/builds/m2/assets/audio/portal.wav                   30.03 kB
+test-results/review-fixes/pipeline/builds/m2/assets/audio/amplify.wav                  31.79 kB
+test-results/review-fixes/pipeline/builds/m2/assets/fonts/camellia-numerals.woff2      39.38 kB
+test-results/review-fixes/pipeline/builds/m2/assets/audio/success.wav                  45.90 kB
+test-results/review-fixes/pipeline/builds/m2/assets/manifest.json                     106.65 kB │ gzip:  16.84 kB
+test-results/review-fixes/pipeline/builds/m2/assets/fonts/camellia-ui.woff2           186.43 kB
+test-results/review-fixes/pipeline/builds/m2/assets/audio/firewall-music-core.wav   1,539.53 kB
+test-results/review-fixes/pipeline/builds/m2/assets/audio/firewall-music-deep.wav   1,539.53 kB
+test-results/review-fixes/pipeline/builds/m2/assets/audio/firewall-music-inner.wav  1,539.53 kB
+test-results/review-fixes/pipeline/builds/m2/assets/index-CkA_k8bn.css                 14.89 kB │ gzip:   4.18 kB
+test-results/review-fixes/pipeline/builds/m2/assets/index-BCeMXKuH.js                 905.64 kB │ gzip: 218.50 kB
+
+✓ built in 197ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 650 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+vite v8.3.0 building client environment for m3...
+transforming...
+✓ 34 modules transformed.
+rendering chunks...
+computing gzip size...
+test-results/review-fixes/pipeline/builds/m3/assets/icons/hazard-safe.svg               0.29 kB │ gzip:   0.20 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/hazard-active.svg             0.34 kB │ gzip:   0.22 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/target-star.svg               0.34 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/door-open.svg                 0.34 kB │ gzip:   0.23 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/enrichment-used.svg           0.35 kB │ gzip:   0.22 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/unknown.svg                   0.35 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/portal-ready.svg              0.36 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/checkpoint.svg                0.36 kB │ gzip:   0.23 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/socket.svg                    0.37 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/supply-collected.svg          0.37 kB │ gzip:   0.23 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/data-collected.svg            0.37 kB │ gzip:   0.22 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/target-blue.svg               0.38 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/observation.svg               0.38 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/data-object.svg               0.38 kB │ gzip:   0.26 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/door-closed.svg               0.41 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/antivirus.svg                 0.41 kB │ gzip:   0.27 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/data-ready.svg                0.42 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/terminal-complete.svg         0.42 kB │ gzip:   0.23 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/firewall.svg                  0.44 kB │ gzip:   0.27 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/target-purple.svg             0.44 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/portal-locked.svg             0.45 kB │ gzip:   0.27 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/enrichment-ready.svg          0.46 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/signal-ball.svg               0.46 kB │ gzip:   0.27 kB
+test-results/review-fixes/pipeline/builds/m3/index.html                                 0.47 kB │ gzip:   0.33 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/terminal-ready.svg            0.49 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/supply-ready.svg              0.49 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/station.svg                   0.61 kB │ gzip:   0.29 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/player-hurt.svg               0.65 kB │ gzip:   0.34 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/player-idle.svg               0.74 kB │ gzip:   0.35 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/player-move.svg               0.81 kB │ gzip:   0.38 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/cart.svg                      0.90 kB │ gzip:   0.33 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/data-ready.png                1.96 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/supply-ready.png              2.00 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/target-blue.png               2.20 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/door-closed.png               2.20 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/checkpoint.png                2.30 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/data-collected.png            2.59 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/door-open.png                 3.07 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/terminal-complete.png         3.09 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/unknown.png                   3.16 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/firewall.png                  3.18 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/supply-collected.png          3.29 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/terminal-ready.png            3.33 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/hazard-safe.png               3.34 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/data-object.png               3.43 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/socket.png                    3.61 kB
+test-results/review-fixes/pipeline/builds/m3/assets/audio/beat.wav                      4.01 kB
+test-results/review-fixes/pipeline/builds/m3/assets/fonts/noto-OFL.txt                  4.30 kB │ gzip:   1.93 kB
+test-results/review-fixes/pipeline/builds/m3/assets/fonts/barlow-OFL.txt                4.37 kB │ gzip:   1.97 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/antivirus.png                 5.74 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/observation.png               5.85 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/enrichment-used.png           5.87 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/target-star.png               6.12 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/portal-ready.png              6.20 kB
+test-results/review-fixes/pipeline/builds/m3/assets/audio/move.wav                      6.21 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/hazard-active.png             6.36 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/portal-locked.png             7.35 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/target-purple.png             7.60 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/cart.png                      8.09 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/player-hurt.png               8.58 kB
+test-results/review-fixes/pipeline/builds/m3/assets/audio/invalid.wav                   8.86 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/player-idle.png               9.15 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/player-move.png               9.21 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/signal-ball.png               9.86 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/station.png                  10.90 kB
+test-results/review-fixes/pipeline/builds/m3/assets/icons/enrichment-ready.png         11.22 kB
+test-results/review-fixes/pipeline/builds/m3/assets/audio/reveal.wav                   15.92 kB
+test-results/review-fixes/pipeline/builds/m3/assets/audio/door.wav                     16.80 kB
+test-results/review-fixes/pipeline/builds/m3/assets/audio/pickup.wav                   21.21 kB
+test-results/review-fixes/pipeline/builds/m3/assets/audio/failure.wav                  28.26 kB
+test-results/review-fixes/pipeline/builds/m3/assets/audio/portal.wav                   30.03 kB
+test-results/review-fixes/pipeline/builds/m3/assets/audio/amplify.wav                  31.79 kB
+test-results/review-fixes/pipeline/builds/m3/assets/fonts/camellia-numerals.woff2      39.38 kB
+test-results/review-fixes/pipeline/builds/m3/assets/audio/success.wav                  45.90 kB
+test-results/review-fixes/pipeline/builds/m3/assets/manifest.json                     115.42 kB │ gzip:  18.17 kB
+test-results/review-fixes/pipeline/builds/m3/assets/fonts/camellia-ui.woff2           186.43 kB
+test-results/review-fixes/pipeline/builds/m3/assets/audio/firewall-music-core.wav   1,539.53 kB
+test-results/review-fixes/pipeline/builds/m3/assets/audio/firewall-music-deep.wav   1,539.53 kB
+test-results/review-fixes/pipeline/builds/m3/assets/audio/firewall-music-inner.wav  1,539.53 kB
+test-results/review-fixes/pipeline/builds/m3/assets/index-CkA_k8bn.css                 14.89 kB │ gzip:   4.18 kB
+test-results/review-fixes/pipeline/builds/m3/assets/index-D0lf0hIX.js                 942.03 kB │ gzip: 223.92 kB
+
+✓ built in 205ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 650 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+vite v8.3.0 building client environment for m4...
+transforming...
+✓ 34 modules transformed.
+rendering chunks...
+computing gzip size...
+test-results/review-fixes/pipeline/builds/m4/assets/icons/hazard-safe.svg               0.29 kB │ gzip:   0.20 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/hazard-active.svg             0.34 kB │ gzip:   0.22 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/target-star.svg               0.34 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/door-open.svg                 0.34 kB │ gzip:   0.23 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/enrichment-used.svg           0.35 kB │ gzip:   0.22 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/lamp-unlit.svg                0.35 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/unknown.svg                   0.35 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/portal-ready.svg              0.36 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/checkpoint.svg                0.36 kB │ gzip:   0.23 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/socket.svg                    0.37 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/supply-collected.svg          0.37 kB │ gzip:   0.23 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/data-collected.svg            0.37 kB │ gzip:   0.22 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/target-blue.svg               0.38 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/observation.svg               0.38 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/data-object.svg               0.38 kB │ gzip:   0.26 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/door-closed.svg               0.41 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/antivirus.svg                 0.41 kB │ gzip:   0.27 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/data-ready.svg                0.42 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/terminal-complete.svg         0.42 kB │ gzip:   0.23 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/firewall.svg                  0.44 kB │ gzip:   0.27 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/target-purple.svg             0.44 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/portal-locked.svg             0.45 kB │ gzip:   0.27 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/enrichment-ready.svg          0.46 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/signal-ball.svg               0.46 kB │ gzip:   0.27 kB
+test-results/review-fixes/pipeline/builds/m4/index.html                                 0.47 kB │ gzip:   0.33 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/lamp-lit.svg                  0.48 kB │ gzip:   0.30 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/terminal-ready.svg            0.49 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/supply-ready.svg              0.49 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/station.svg                   0.61 kB │ gzip:   0.29 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/ghost.svg                     0.64 kB │ gzip:   0.33 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/player-hurt.svg               0.65 kB │ gzip:   0.34 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/player-idle.svg               0.74 kB │ gzip:   0.35 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/player-move.svg               0.81 kB │ gzip:   0.38 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/cart.svg                      0.90 kB │ gzip:   0.33 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/data-ready.png                1.96 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/supply-ready.png              2.00 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/target-blue.png               2.20 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/door-closed.png               2.20 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/checkpoint.png                2.30 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/data-collected.png            2.59 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/door-open.png                 3.07 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/terminal-complete.png         3.09 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/unknown.png                   3.16 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/firewall.png                  3.18 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/supply-collected.png          3.29 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/terminal-ready.png            3.33 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/hazard-safe.png               3.34 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/data-object.png               3.43 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/socket.png                    3.61 kB
+test-results/review-fixes/pipeline/builds/m4/assets/audio/beat.wav                      4.01 kB
+test-results/review-fixes/pipeline/builds/m4/assets/fonts/noto-OFL.txt                  4.30 kB │ gzip:   1.93 kB
+test-results/review-fixes/pipeline/builds/m4/assets/fonts/barlow-OFL.txt                4.37 kB │ gzip:   1.97 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/antivirus.png                 5.74 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/observation.png               5.85 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/enrichment-used.png           5.87 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/lamp-lit.png                  6.11 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/target-star.png               6.12 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/portal-ready.png              6.20 kB
+test-results/review-fixes/pipeline/builds/m4/assets/audio/move.wav                      6.21 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/ghost.png                     6.31 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/hazard-active.png             6.36 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/lamp-unlit.png                6.91 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/portal-locked.png             7.35 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/target-purple.png             7.60 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/cart.png                      8.09 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/player-hurt.png               8.58 kB
+test-results/review-fixes/pipeline/builds/m4/assets/audio/invalid.wav                   8.86 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/player-idle.png               9.15 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/player-move.png               9.21 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/signal-ball.png               9.86 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/station.png                  10.90 kB
+test-results/review-fixes/pipeline/builds/m4/assets/icons/enrichment-ready.png         11.22 kB
+test-results/review-fixes/pipeline/builds/m4/assets/audio/reveal.wav                   15.92 kB
+test-results/review-fixes/pipeline/builds/m4/assets/audio/door.wav                     16.80 kB
+test-results/review-fixes/pipeline/builds/m4/assets/audio/pickup.wav                   21.21 kB
+test-results/review-fixes/pipeline/builds/m4/assets/audio/failure.wav                  28.26 kB
+test-results/review-fixes/pipeline/builds/m4/assets/audio/portal.wav                   30.03 kB
+test-results/review-fixes/pipeline/builds/m4/assets/audio/amplify.wav                  31.79 kB
+test-results/review-fixes/pipeline/builds/m4/assets/fonts/camellia-numerals.woff2      39.38 kB
+test-results/review-fixes/pipeline/builds/m4/assets/audio/success.wav                  45.90 kB
+test-results/review-fixes/pipeline/builds/m4/assets/manifest.json                     120.65 kB │ gzip:  18.85 kB
+test-results/review-fixes/pipeline/builds/m4/assets/fonts/camellia-ui.woff2           186.43 kB
+test-results/review-fixes/pipeline/builds/m4/assets/audio/firewall-music-core.wav   1,539.53 kB
+test-results/review-fixes/pipeline/builds/m4/assets/audio/firewall-music-deep.wav   1,539.53 kB
+test-results/review-fixes/pipeline/builds/m4/assets/audio/firewall-music-inner.wav  1,539.53 kB
+test-results/review-fixes/pipeline/builds/m4/assets/index-CkA_k8bn.css                 14.89 kB │ gzip:   4.18 kB
+test-results/review-fixes/pipeline/builds/m4/assets/index-Dj_4Pyao.js                 979.17 kB │ gzip: 230.18 kB
+
+✓ built in 221ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 650 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+vite v8.3.0 building client environment for acceptance...
+transforming...
+✓ 36 modules transformed.
+rendering chunks...
+computing gzip size...
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/hazard-safe.svg                0.29 kB │ gzip:   0.20 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/hazard-active.svg              0.34 kB │ gzip:   0.22 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/target-star.svg                0.34 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/door-open.svg                  0.34 kB │ gzip:   0.23 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/enrichment-used.svg            0.35 kB │ gzip:   0.22 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/lamp-unlit.svg                 0.35 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/unknown.svg                    0.35 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/portal-ready.svg               0.36 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/checkpoint.svg                 0.36 kB │ gzip:   0.23 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/socket.svg                     0.37 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/supply-collected.svg           0.37 kB │ gzip:   0.23 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/data-collected.svg             0.37 kB │ gzip:   0.22 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/target-blue.svg                0.38 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/observation.svg                0.38 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/data-object.svg                0.38 kB │ gzip:   0.26 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/door-closed.svg                0.41 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/antivirus.svg                  0.41 kB │ gzip:   0.27 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/data-ready.svg                 0.42 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/terminal-complete.svg          0.42 kB │ gzip:   0.23 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/firewall.svg                   0.44 kB │ gzip:   0.27 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/target-purple.svg              0.44 kB │ gzip:   0.24 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/portal-locked.svg              0.45 kB │ gzip:   0.27 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/enrichment-ready.svg           0.46 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/signal-ball.svg                0.46 kB │ gzip:   0.27 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/lamp-lit.svg                   0.48 kB │ gzip:   0.30 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/terminal-ready.svg             0.49 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/supply-ready.svg               0.49 kB │ gzip:   0.25 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/station.svg                    0.61 kB │ gzip:   0.29 kB
+test-results/review-fixes/pipeline/builds/acceptance/index.html                                  0.64 kB │ gzip:   0.38 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/ghost.svg                      0.64 kB │ gzip:   0.33 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/player-hurt.svg                0.65 kB │ gzip:   0.34 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/player-idle.svg                0.74 kB │ gzip:   0.35 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/player-move.svg                0.81 kB │ gzip:   0.38 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/cart.svg                       0.90 kB │ gzip:   0.33 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/data-ready.png                 1.96 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/supply-ready.png               2.00 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/target-blue.png                2.20 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/door-closed.png                2.20 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/checkpoint.png                 2.30 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/data-collected.png             2.59 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/door-open.png                  3.07 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/terminal-complete.png          3.09 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/unknown.png                    3.16 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/firewall.png                   3.18 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/supply-collected.png           3.29 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/terminal-ready.png             3.33 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/hazard-safe.png                3.34 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/data-object.png                3.43 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/socket.png                     3.61 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/audio/beat.wav                       4.01 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/fonts/noto-OFL.txt                   4.30 kB │ gzip:   1.93 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/fonts/barlow-OFL.txt                 4.37 kB │ gzip:   1.97 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/antivirus.png                  5.74 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/observation.png                5.85 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/enrichment-used.png            5.87 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/lamp-lit.png                   6.11 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/target-star.png                6.12 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/portal-ready.png               6.20 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/audio/move.wav                       6.21 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/ghost.png                      6.31 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/hazard-active.png              6.36 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/lamp-unlit.png                 6.91 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/portal-locked.png              7.35 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/target-purple.png              7.60 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/cart.png                       8.09 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/player-hurt.png                8.58 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/audio/invalid.wav                    8.86 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/player-idle.png                9.15 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/player-move.png                9.21 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/signal-ball.png                9.86 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/station.png                   10.90 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/icons/enrichment-ready.png          11.22 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/audio/reveal.wav                    15.92 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/audio/door.wav                      16.80 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/audio/pickup.wav                    21.21 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/audio/failure.wav                   28.26 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/audio/portal.wav                    30.03 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/audio/amplify.wav                   31.79 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/fonts/camellia-numerals.woff2       39.38 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/audio/success.wav                   45.90 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/manifest.json                      120.65 kB │ gzip:  18.85 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/fonts/camellia-ui.woff2            186.43 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/audio/firewall-music-core.wav    1,539.53 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/audio/firewall-music-deep.wav    1,539.53 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/audio/firewall-music-inner.wav   1,539.53 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/index-CkA_k8bn.css                  14.89 kB │ gzip:   4.18 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/session-lock-CNG7AKhU.js             1.24 kB │ gzip:   0.64 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/session-diagnostics-DCQXVVyH.js      3.37 kB │ gzip:   1.44 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/acceptance-faults-CpJL4RQu.js        9.04 kB │ gzip:   4.04 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/save-store-BaO9QwYf.js              11.27 kB │ gzip:   4.81 kB
+test-results/review-fixes/pipeline/builds/acceptance/assets/index-2orihmSs.js                  974.25 kB │ gzip: 227.79 kB
+
+✓ built in 250ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 650 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+Chrome regression passed: revision-import
+Chrome regression passed: quality-import
+Chrome regression passed: nested-corrupt-slots
+Chrome regression passed: audio-late-failure
+Chrome regression passed: main-auto-walk
+Chrome regression passed: main-clear-held-input
+Chrome regression passed: main-firewall-beats
+Chrome firewall restoration passed: firewall-cue-standard
+Chrome firewall restoration passed: firewall-cue-reduced
+Chrome firewall level passed: inner / 47 Combo
+Chrome firewall level passed: deep / 57 Combo
+Chrome firewall level passed: core / 72 Combo
+Chrome firewall restoration passed: firewall-music-levels
+Chrome 正常键鼠、保存恢复、分期产物与故障回归全部通过。

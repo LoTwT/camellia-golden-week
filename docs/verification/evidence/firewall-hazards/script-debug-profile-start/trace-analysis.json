@@ -1,0 +1,304 @@
+{
+  "observedStage": "首次棋盘截图期间，任何方向键之前",
+  "screenshotCall": {
+    "startTimeMs": 2347.786,
+    "endTimeMs": 2827.028,
+    "durationMs": 479.242
+  },
+  "firstClockGapDomSnapshotTimeMs": 2828.44,
+  "firstDirectionKeyTimeMs": 3199.06,
+  "interpretation": "可见暂停在首次截图期间出现。trace支持时间关联，不单凭协议耗时认定具体GPU或截图内部原因。旧截图稳定性检查没有验证可玩态，随后方向键落入暂停面板。",
+  "events": [
+    {
+      "type": "before",
+      "callId": "call@36",
+      "startTime": 2347.786,
+      "class": "Page",
+      "method": "screenshot",
+      "params": {
+        "clip": {
+          "x": 409.8,
+          "y": 262,
+          "width": 546.4,
+          "height": 388
+        },
+        "timeout": 15000
+      }
+    },
+    {
+      "type": "after",
+      "callId": "call@36",
+      "endTime": 2827.028,
+      "result": {
+        "binary": "<Buffer>"
+      }
+    },
+    {
+      "type": "frame-snapshot",
+      "snapshot": {
+        "callId": "call@36",
+        "phase": "after",
+        "pageId": "page@5a8362c1f24d2682e221e15541386c5e",
+        "frameId": "frame@7903a90df8067e628af782d40d114f4f",
+        "frameUrl": "http://127.0.0.1:61963/",
+        "doctype": "html",
+        "html": [
+          "HTML",
+          {
+            "lang": "zh-CN",
+            "data-reduced-motion": "true",
+            "data-reduced-flash": "true",
+            "data-quality": "standard"
+          },
+          [
+            [
+              25,
+              14
+            ]
+          ],
+          [
+            [
+              25,
+              15
+            ]
+          ],
+          [
+            "BODY",
+            {},
+            [
+              [
+                25,
+                16
+              ]
+            ],
+            [
+              "DIV",
+              {
+                "id": "app"
+              },
+              [
+                "MAIN",
+                {
+                  "class": "game-shell",
+                  "data-challenge": ""
+                },
+                [
+                  [
+                    14,
+                    6
+                  ]
+                ],
+                [
+                  "SECTION",
+                  {
+                    "class": "playfield"
+                  },
+                  [
+                    [
+                      7,
+                      0
+                    ]
+                  ],
+                  [
+                    [
+                      25,
+                      37
+                    ]
+                  ],
+                  [
+                    [
+                      25,
+                      38
+                    ]
+                  ],
+                  [
+                    [
+                      25,
+                      39
+                    ]
+                  ],
+                  [
+                    [
+                      14,
+                      14
+                    ]
+                  ],
+                  [
+                    [
+                      3,
+                      1
+                    ]
+                  ],
+                  [
+                    [
+                      25,
+                      57
+                    ]
+                  ],
+                  [
+                    [
+                      25,
+                      59
+                    ]
+                  ],
+                  [
+                    [
+                      25,
+                      60
+                    ]
+                  ],
+                  [
+                    "DIV",
+                    {
+                      "class": "context-tip",
+                      "id": "context-tip"
+                    },
+                    "已暂停 · 请点击继续"
+                  ],
+                  [
+                    [
+                      25,
+                      75
+                    ]
+                  ],
+                  [
+                    [
+                      25,
+                      96
+                    ]
+                  ]
+                ],
+                [
+                  [
+                    14,
+                    36
+                  ]
+                ],
+                [
+                  "DIALOG",
+                  {
+                    "__playwright_dialog_open_": "modal",
+                    "id": "game-dialog",
+                    "aria-labelledby": "dialog-title"
+                  },
+                  [
+                    "SPAN",
+                    {
+                      "class": "eyebrow"
+                    },
+                    "CAMELLIA / TERMINAL"
+                  ],
+                  [
+                    "H2",
+                    {
+                      "class": "",
+                      "id": "dialog-title"
+                    },
+                    "探索已暂停"
+                  ],
+                  [
+                    "P",
+                    {
+                      "class": "dialog-description"
+                    },
+                    "检测到前台调度中断，时间已冻结且未补跑。返回地图后，实时挑战有 3 秒准备倒数。"
+                  ],
+                  [
+                    "BUTTON",
+                    {
+                      "type": "button",
+                      "class": "primary"
+                    },
+                    "继续探索"
+                  ],
+                  [
+                    "BUTTON",
+                    {
+                      "type": "button",
+                      "class": ""
+                    },
+                    "区域图与传送 · M"
+                  ],
+                  [
+                    "BUTTON",
+                    {
+                      "type": "button",
+                      "class": ""
+                    },
+                    "声音与显示"
+                  ],
+                  [
+                    "BUTTON",
+                    {
+                      "type": "button",
+                      "class": ""
+                    },
+                    "收集记录"
+                  ],
+                  [
+                    "BUTTON",
+                    {
+                      "type": "button",
+                      "class": ""
+                    },
+                    "进度与存档"
+                  ]
+                ],
+                [
+                  [
+                    25,
+                    108
+                  ]
+                ]
+              ]
+            ],
+            [
+              [
+                25,
+                111
+              ]
+            ]
+          ]
+        ],
+        "viewport": {
+          "width": 1366,
+          "height": 900
+        },
+        "timestamp": 2828.44,
+        "wallTime": 1789191670200,
+        "collectionTime": 0.19999992847442627,
+        "resourceOverrides": [],
+        "isMainFrame": true
+      }
+    },
+    {
+      "type": "before",
+      "callId": "call@56",
+      "startTime": 3199.06,
+      "class": "Page",
+      "method": "keyboardPress",
+      "params": {
+        "key": "ArrowRight"
+      }
+    },
+    {
+      "type": "after",
+      "callId": "call@56",
+      "endTime": 3202.438
+    }
+  ],
+  "images": [
+    {
+      "traceFile": "screencast/page@5a8362c1f24d2682e221e15541386c5e-1789191669711.jpeg",
+      "traceTimestampMs": 2339.354,
+      "archived": "before-first-screenshot.jpeg",
+      "sha256": "3ed265141ee240d044586ba2a7050b753142b80a857a1d85c10de4bdab3c05ef"
+    },
+    {
+      "traceFile": "screencast/page@5a8362c1f24d2682e221e15541386c5e-1789191670200.jpeg",
+      "traceTimestampMs": 2827.798,
+      "archived": "after-first-screenshot.jpeg",
+      "sha256": "78633008f1682246e50360526d90f0f2971b29d1b57ff5376b104f1d4be311d7"
+    }
+  ]
+}

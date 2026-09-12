@@ -597,7 +597,7 @@ export class BoardRenderer {
         this.dummy.position.y = 0.164;
         this.dummy.rotation.x = -Math.PI / 2;
         this.dummy.rotation.z = board.firewall && (tile.x + tile.y * 3) % 3 === 0 ? Math.PI : 0;
-        if (board.firewall && (tile.player || (tile.icon === "hazard-active" && tile.mark !== "!")))
+        if (board.firewall && (tile.player || tile.hazardPhase === "active"))
           this.dummy.scale.setScalar(0);
         this.dummy.updateMatrix();
         this.reflections.setMatrixAt(index, this.dummy.matrix);
@@ -677,6 +677,7 @@ export class BoardRenderer {
           element.className = board.firewall ? "tile-mark firewall-tile-mark" : "tile-mark";
           element.textContent = tile.mark;
           element.dataset.tileId = tile.id;
+          if (tile.hazardPhase) element.dataset.hazardPhase = tile.hazardPhase;
           this.labelLayer.append(element);
           return { element, tile };
         });

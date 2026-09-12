@@ -6,6 +6,22 @@ import { assembleContent } from "../src/content/assemble.ts";
 import { createGame } from "../src/core/engine.ts";
 import { createClock } from "../src/core/clock.ts";
 
+test("警报受击音不被普通无效输入限流吞掉，闪避与计分不叠播两次提示", (context) => {
+  const audio = new GameAudio();
+  const sounds: string[] = [];
+  context.mock.method(audio, "play", (id: string) => sounds.push(id));
+  audio.feedback([{ id: 1, kind: "invalid", message: "越界" }], 100);
+  audio.feedback([{ id: 2, kind: "hazardHit", message: "警报命中" }], 110);
+  audio.feedback(
+    [
+      { id: 3, kind: "score", message: "拍点命中" },
+      { id: 4, kind: "dodged", message: "完美闪避" },
+    ],
+    500,
+  );
+  assert.deepEqual(sounds, ["invalid", "failure", "reveal"]);
+});
+
 function audioHarness(context: TestContext) {
   let rejectResume = false;
   let resourceStatus = 200;

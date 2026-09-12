@@ -1,0 +1,51 @@
+{
+  "status": "passed",
+  "browser": "153.0.8010.36",
+  "node": "v24.18.0",
+  "method": "新游戏→增幅仪→中心教学→A迷宫01→首物资→导出→刷新继续",
+  "recoveryCount": 0,
+  "recoveryBranchActuallyTriggered": false,
+  "limitation": "本次定向重跑未再发生 clockGap，因此没有声称实际触发新增恢复分支。正常可玩截图、首移动、中心/A迷宫链、收集和保存恢复已真实通过。",
+  "automaticRecoveryBoundary": "仅首个方向键之前允许一次可见 clockGap；后续游玩没有自动恢复分支。",
+  "playableBeforeMove": true,
+  "pageErrors": [],
+  "scriptSha256": "d0c203d5172e7518efce68f3ecfc8d9fae39e06a09e6b5f4702f89876f43749d",
+  "checks": [
+    "Oxfmt",
+    "Oxlint",
+    "strict TypeScript check"
+  ],
+  "files": [
+    {
+      "file": "targeted-browser-results.json",
+      "sha256": "34aba88585082e919f56fac03bb41d5b69392d7f4ee1d885d991a37d87499202",
+      "bytes": 1163
+    },
+    {
+      "file": "targeted-m5-startup-preparation.json",
+      "sha256": "c775fa98c1731a41dd48c90820b0f68795577169723a428f3eef7f97ac767329",
+      "bytes": 354
+    },
+    {
+      "file": "targeted-m5-before-move.png",
+      "sha256": "4e57a6d6c896e2f2710119e709ab2156cec764bc1d5a3634403014e5a1bc1a08",
+      "bytes": 69160
+    },
+    {
+      "file": "targeted-m5-after-move.png",
+      "sha256": "5cb526b83f8a0a5d2b468377d8da273356103e43426feceeddd91432da9d455a",
+      "bytes": 77503
+    },
+    {
+      "file": "targeted-m5-restored.png",
+      "sha256": "39cdf07ded4e9ca06c2a134f5b731b197575d693f54ee07b07c554e86088638b",
+      "bytes": 260468
+    }
+  ],
+  "trace": {
+    "path": "test-results/firewall-hazards/profile-start-current/m5-trace.zip",
+    "sha256": "4ca621689b11e0d6cae3400d516f906a599e4775b055d0ea661b474ee8b7044b",
+    "bytes": 22051684,
+    "tracking": "ignored local evidence; not copied to Git"
+  }
+}

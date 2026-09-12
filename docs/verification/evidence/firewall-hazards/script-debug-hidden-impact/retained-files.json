@@ -1,0 +1,8 @@
+{
+  "files": [
+    "explanation.json",
+    "browser-results.json",
+    "no-visible-impact.png"
+  ],
+  "ignoredTraces": []
+}

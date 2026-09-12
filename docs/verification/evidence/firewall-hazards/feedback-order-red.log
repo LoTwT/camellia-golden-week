@@ -1,0 +1,38 @@
+✔ 受击有独立扣分反馈，不被上一拍PERFECT掩盖，显示函数不改变规则状态 (1.031125ms)
+✔ 闪避提示只来自真实接触事件，普通踩拍的保护窗口不冒充闪避 (0.09525ms)
+✖ 受击后的下一次踩拍或闪避立即更新文字，旧扣分不会覆盖新判定 (0.567959ms)
+✔ 暂停、失焦、准备与已结束状态同时收起受击红晕和文字 (0.120791ms)
+✔ 警报时间推进的受击接入世界事件和四屏投影，永久进度不受影响 (3.637292ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 4
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 114.019416
+
+✖ failing tests:
+
+test at tests/firewall-feedback.test.ts:77:1
+✖ 受击后的下一次踩拍或闪避立即更新文字，旧扣分不会覆盖新判定 (0.567959ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'hazardHit'
+  - 'perfect'
+  
+      at TestContext.<anonymous> (file:///Users/caoyujie/codes/camellia-golden-week/tests/firewall-feedback.test.ts:84:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'hazardHit',
+    expected: 'perfect',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

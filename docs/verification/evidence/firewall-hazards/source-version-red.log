@@ -1,0 +1,72 @@
+✖ 实时源的版本元数据必须与装配发布一致，不能被忽略 (0.87075ms)
+✖ 实时源的 definitions 不能混入其它规则版本 (7.852917ms)
+✖ 实时源的 witnesses 不能混入其它规则版本 (4.386708ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 0
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 126.773958
+
+✖ failing tests:
+
+test at tests/content-source.test.ts:39:1
+✖ 实时源的版本元数据必须与装配发布一致，不能被忽略 (0.87075ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  2 !== 3
+  
+      at TestContext.<anonymous> (file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:41:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.start (node:internal/test_runner/test:1191:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:385:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 3,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/content-source.test.ts:47:3
+✖ 实时源的 definitions 不能混入其它规则版本 (7.852917ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:49:20
+      at withSourceChange (file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:20:5)
+      at TestContext.<anonymous> (file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:48:5)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:385:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /实时内容版本/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/content-source.test.ts:47:3
+✖ 实时源的 witnesses 不能混入其它规则版本 (4.386708ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:49:20
+      at withSourceChange (file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:20:5)
+      at TestContext.<anonymous> (file:///Users/caoyujie/codes/camellia-golden-week/tests/content-source.test.ts:48:5)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /实时内容版本/,
+    operator: 'throws',
+    diff: 'simple'
+  }

@@ -1,0 +1,15 @@
+{
+  "startedAt": "2026-09-12T05:23:01.577Z",
+  "browser": "153.0.8010.36",
+  "node": "v24.18.0",
+  "headless": true,
+  "platform": "darwin",
+  "arch": "arm64",
+  "urls": {
+    "url": "http://127.0.0.1:55849",
+    "acceptanceUrl": "http://127.0.0.1:55853"
+  },
+  "success": false,
+  "error": "AssertionError [ERR_ASSERTION]: 减少闪烁时用文字报告受击，关闭红色晕屏\n\n0.988849 !== 0\n\n    at observeAlarmRecovery (file:///Users/caoyujie/codes/camellia-golden-week/scripts/browser/firewall-cue.ts:628:31)\n    at async verifyFirewallCue (file:///Users/caoyujie/codes/camellia-golden-week/scripts/browser/firewall-cue.ts:1060:23)\n    at async file:///private/tmp/camellia-firewall-hazards-run.mjs:22:23",
+  "finishedAt": "2026-09-12T05:24:14.004Z"
+}

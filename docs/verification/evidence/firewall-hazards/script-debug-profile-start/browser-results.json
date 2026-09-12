@@ -1,0 +1,22 @@
+{
+  "startedAt": "2026-09-12T05:41:08.382Z",
+  "browser": "153.0.8010.36",
+  "node": "v24.18.0",
+  "headless": true,
+  "platform": "darwin",
+  "arch": "arm64",
+  "mode": "full",
+  "profileChecks": [
+    {
+      "profile": "M5",
+      "assets": 48,
+      "representations": 83,
+      "javascriptFiles": [
+        "assets/index-DZm4oZID.js"
+      ]
+    }
+  ],
+  "success": false,
+  "error": "page.waitForFunction: Timeout 15000ms exceeded.\n    at verifyProductionProfile (/Users/caoyujie/codes/camellia-golden-week/scripts/browser/production-profile.ts:78:16)\n    at async file:///Users/caoyujie/codes/camellia-golden-week/scripts/verify-browser.ts:53:7",
+  "finishedAt": "2026-09-12T05:41:26.171Z"
+}

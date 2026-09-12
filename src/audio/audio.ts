@@ -83,6 +83,15 @@ export class GameAudio {
   }
   feedback(events: FeedbackEvent[], now: number) {
     for (const event of events) {
+      if (event.kind === "hazardHit") {
+        this.play("failure");
+        continue;
+      }
+      if (event.kind === "dodged") {
+        this.play("reveal");
+        continue;
+      }
+      if (event.kind === "score" && events.some((item) => item.kind === "dodged")) continue;
       if (event.kind === "invalid") {
         if (now - this.lastInvalid < 180) continue;
         this.lastInvalid = now;

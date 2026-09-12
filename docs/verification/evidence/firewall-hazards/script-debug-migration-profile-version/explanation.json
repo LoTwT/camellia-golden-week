@@ -1,0 +1,6 @@
+{
+  "classification": "browser-test-script-profile-version-assumption",
+  "cause": "错误地把实时内容文件的 M1 起始 contentVersion=2 当作已装配 M5 存档的版本；实际导入已为 content5/rule3。",
+  "repair": "从 assembleContent(\"M5\") 获取当前 profile 的权威版本。",
+  "gameRuntimeChanged": false
+}

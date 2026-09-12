@@ -1,0 +1,36 @@
+{
+  "failureFiles": [
+    {
+      "source": "test-results/review-fixes/pipeline/m5-failure.png",
+      "archived": "docs/verification/evidence/firewall-hazards/script-debug-profile-start/m5-failure.png",
+      "bytes": 194180,
+      "sha256": "ab2ba421385f2636046cf862ff2ea18642f0116d6da24357ccd4c79b72fbe61d"
+    },
+    {
+      "source": "test-results/review-fixes/pipeline/browser-results.json",
+      "archived": "docs/verification/evidence/firewall-hazards/script-debug-profile-start/browser-results.json",
+      "bytes": 701,
+      "sha256": "fa41bec30405fdf365a11d57b0c098416591ad5b3dfbc3e5202c6e454ddf5126"
+    },
+    {
+      "source": "docs/verification/evidence/firewall-hazards/verify.log",
+      "archived": "docs/verification/evidence/firewall-hazards/script-debug-profile-start/verify.log",
+      "bytes": 72966,
+      "sha256": "8cebb3877502530fa211cfb230c41ce3346881393259344ec3d96aff40d90d6b"
+    },
+    {
+      "source": "docs/verification/evidence/firewall-hazards/verification.json",
+      "archived": "docs/verification/evidence/firewall-hazards/script-debug-profile-start/verification.json",
+      "bytes": 137532,
+      "sha256": "9735d01e6d578ed0c264a3df1356fc368f457f3ee03c90d2f738de323236cf79"
+    }
+  ],
+  "trace": {
+    "path": "test-results/firewall-hazards/script-debug-profile-start/m5-trace.zip",
+    "bytes": 8336310,
+    "sha256": "e9cb92cc458a93cecc4cbba0883aba4653b09b01e5b8139a27faa83fa4822c8f",
+    "copied": true,
+    "originalPipelinePath": "test-results/review-fixes/pipeline/m5-trace.zip",
+    "tracking": "ignored local evidence; not included in Git"
+  }
+}

@@ -12,8 +12,9 @@ import warehouseJson from "./areas/warehouse.json" with { type: "json" };
 import staticJson from "./challenges/static.json" with { type: "json" };
 import realtimeJson from "./challenges/realtime.json" with { type: "json" };
 import legacyRealtimeJson from "./history/realtime-v1.json" with { type: "json" };
+import v2RealtimeJson from "./history/realtime-v2.json" with { type: "json" };
 import type { StaticContent } from "../core/static-puzzle.ts";
-import type { RealtimeDefinition } from "../core/realtime.ts";
+import type { RealtimeDefinition, RealtimeWitness } from "../core/realtime.ts";
 import { assertSourceIntegrity } from "./source-validation.ts";
 import type { AreaSource, AreaExtension } from "./source-validation.ts";
 import type {
@@ -27,11 +28,14 @@ import type {
 export const AVAILABLE_PROFILE: ProfileId = "M5";
 export const staticContent = staticJson as unknown as StaticContent;
 export const realtimeContent = realtimeJson as unknown as {
+  contentVersion: number;
+  ruleVersion: number;
   definitions: RealtimeDefinition[];
-  witnesses: unknown[];
+  witnesses: RealtimeWitness[];
 };
 /** Original released scoring tables must remain available for old best-result validation. */
 export const legacyRealtimeContent = legacyRealtimeJson as unknown as typeof realtimeContent;
+export const v2RealtimeContent = v2RealtimeJson as unknown as typeof realtimeContent;
 const baseCatalog = worldJson as unknown as WorldDefinition;
 const registrations = [bRegistration, cRegistration, dRegistration];
 export const worldCatalog = {
@@ -83,12 +87,20 @@ export function assembleLegacyContent(profileId: ProfileId = AVAILABLE_PROFILE):
   return assembleRelease(profileId, legacyRealtimeContent, 1, 1);
 }
 
+export function assembleV2Content(profileId: ProfileId = AVAILABLE_PROFILE): GameContent {
+  return assembleRelease(profileId, v2RealtimeContent, 2, 2);
+}
+
 /** Current release is last; a partial build never includes a later stage's playable maps. */
 export function migrationContentReleases(profileId: ProfileId = AVAILABLE_PROFILE): GameContent[] {
   const profiles = worldCatalog.releaseProfiles
     .filter((profile) => Number(profile.id.slice(1)) <= Number(profileId.slice(1)))
     .map((profile) => profile.id);
-  return [...profiles.map(assembleLegacyContent), ...profiles.map(assembleContent)];
+  return [
+    ...profiles.map(assembleLegacyContent),
+    ...profiles.map(assembleV2Content),
+    ...profiles.map(assembleContent),
+  ];
 }
 
 function assembleRelease(
@@ -97,6 +109,13 @@ function assembleRelease(
   firstContentVersion: number,
   ruleVersion: number,
 ): GameContent {
+  if (
+    realtimeSource.contentVersion !== firstContentVersion ||
+    realtimeSource.ruleVersion !== ruleVersion ||
+    realtimeSource.definitions.some((definition) => definition.ruleVersion !== ruleVersion) ||
+    realtimeSource.witnesses.some((witness) => witness.ruleVersion !== ruleVersion)
+  )
+    throw new Error("实时内容版本与发布、定义或见证不一致");
   assertSourceIntegrity(
     rawAreas,
     rawExtensions,

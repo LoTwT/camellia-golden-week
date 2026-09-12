@@ -1,5 +1,12 @@
 import { entitiesAt, tileCleared } from "./engine.ts";
-import { firewallDangerTileIds, firewallWarningTileIds, ghostTileIds } from "./realtime.ts";
+import {
+  firewallAlarmContacts,
+  firewallDangerTileIds,
+  firewallWarningTileIds,
+  ghostTileIds,
+} from "./realtime.ts";
+import { firewallFeedback } from "./firewall-feedback.ts";
+import type { FirewallJudgment } from "./firewall-feedback.ts";
 import { gateOpen } from "./progress.ts";
 import { completedStaticExitTileId } from "./static-puzzle.ts";
 import type { GameContent, GameState } from "./types.ts";
@@ -15,13 +22,14 @@ export interface ScreenTile {
   mark: string;
   player: boolean;
   visited: boolean;
+  hazardPhase?: "active" | "warning";
 }
 export interface BoardProjection {
   id: string;
   tiles: ScreenTile[];
   focus: { x: number; y: number };
   local: boolean;
-  firewall?: { combo: number; judgment: "perfect" | "miss" | null };
+  firewall?: { combo: number; judgment: FirewallJudgment };
 }
 const COLORS = {
   floor: "#363345",
@@ -247,24 +255,35 @@ export function projectBoard(content: GameContent, state: GameState): BoardProje
       (candidate) => candidate.id === state.activeRealtime?.roomId,
     );
     const active = state.activeRealtime.state;
+    const alarms =
+      definition?.kind === "firewall"
+        ? firewallAlarmContacts(definition, state.clock.activeTimeMs)
+        : [];
+    const dangerIds = new Set(
+      definition?.kind === "firewall"
+        ? firewallDangerTileIds(definition, state.clock.activeTimeMs)
+        : [],
+    );
+    const warningIds = new Set(
+      definition?.kind === "firewall"
+        ? firewallWarningTileIds(definition, state.clock.activeTimeMs)
+        : [],
+    );
     if (definition)
       tiles = definition.tiles.map((tile) => {
         let color = COLORS.floor;
         let icon: string | null = null;
         let label = "挑战格";
-        if (
-          definition.kind === "firewall" &&
-          firewallDangerTileIds(definition, state.clock.activeTimeMs).includes(tile.id)
-        ) {
+        let hazardPhase: "active" | "warning" | null = null;
+        if (definition.kind === "firewall" && dangerIds.has(tile.id)) {
           color = COLORS.danger;
           icon = "hazard-active";
-          label = "危险格 · 拍点内可通过";
-        } else if (
-          definition.kind === "firewall" &&
-          firewallWarningTileIds(definition, state.clock.activeTimeMs).includes(tile.id)
-        ) {
+          label = "警报标记 · 触碰扣 5 连击";
+          hazardPhase = "active";
+        } else if (definition.kind === "firewall" && warningIds.has(tile.id)) {
           icon = "hazard-active";
           label = "即将出现危险格";
+          hazardPhase = "warning";
         }
         if (definition.kind === "antivirus" && active.kind === "antivirus") {
           const target = definition.rules.spawns.find(
@@ -299,6 +318,20 @@ export function projectBoard(content: GameContent, state: GameState): BoardProje
             label = "安全出口";
           }
         }
+        const approaches = [
+          ...new Set(
+            alarms
+              .filter(
+                (alarm) =>
+                  alarm.tileIds.includes(tile.id) || alarm.warningTileIds.includes(tile.id),
+              )
+              .map((alarm) => alarm.approachFrom),
+          ),
+        ];
+        const directionLabels = { up: "上", right: "右", down: "下", left: "左" };
+        const directionMarks = { up: "↑", right: "→", down: "↓", left: "←" };
+        if (approaches.length)
+          label += ` · 来自${approaches.map((direction) => directionLabels[direction]).join(" / ")}，迎向来处踩拍可闪避`;
         return {
           id: tile.id,
           x: tile.x,
@@ -309,14 +342,17 @@ export function projectBoard(content: GameContent, state: GameState): BoardProje
           label,
           mark:
             definition.kind === "firewall"
-              ? label === "即将出现危险格"
-                ? "!"
-                : state.settings.reducedFlash && icon === "hazard-active"
-                  ? "×"
-                  : ""
+              ? approaches.length
+                ? approaches.map((direction) => directionMarks[direction]).join("")
+                : label === "即将出现危险格"
+                  ? "!"
+                  : state.settings.reducedFlash && icon === "hazard-active"
+                    ? "×"
+                    : ""
               : "",
           player: tile.id === position.tileId,
           visited: false,
+          ...(hazardPhase ? { hazardPhase } : {}),
         };
       });
   }
@@ -331,13 +367,8 @@ export function projectBoard(content: GameContent, state: GameState): BoardProje
           firewall: {
             combo: state.activeRealtime.state.combo,
             judgment:
-              state.mode === "challengeRunning" &&
-              !state.clock.pauseReasons.length &&
-              !state.clock.awaitingResume &&
-              !state.clock.countdownRemainingMs &&
-              state.activeRealtime.state.lastJudgment &&
-              state.clock.activeTimeMs - state.activeRealtime.state.lastJudgment.activeTimeMs < 220
-                ? state.activeRealtime.state.lastJudgment.kind
+              state.mode === "challengeRunning"
+                ? firewallFeedback(state.activeRealtime.state, state.clock).judgment
                 : null,
           },
         }

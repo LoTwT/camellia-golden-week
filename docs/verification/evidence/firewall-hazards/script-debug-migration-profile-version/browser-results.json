@@ -1,0 +1,15 @@
+{
+  "startedAt": "2026-09-12T05:31:47.800Z",
+  "browser": "153.0.8010.36",
+  "node": "v24.18.0",
+  "headless": true,
+  "platform": "darwin",
+  "arch": "arm64",
+  "urls": {
+    "url": "http://127.0.0.1:58877",
+    "acceptanceUrl": "http://127.0.0.1:58880"
+  },
+  "success": false,
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n5 !== 2\n\n    at verifyFirewallMigrations (file:///Users/caoyujie/codes/camellia-golden-week/scripts/browser/firewall-cue.ts:904:14)\n    at async verifyFirewallCue (file:///Users/caoyujie/codes/camellia-golden-week/scripts/browser/firewall-cue.ts:1288:22)\n    at async file:///private/tmp/camellia-firewall-hazards-run.mjs:23:23",
+  "finishedAt": "2026-09-12T05:35:07.106Z"
+}

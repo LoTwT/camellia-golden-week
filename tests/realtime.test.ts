@@ -15,7 +15,7 @@ import type {
   AntivirusDefinition,
   AntivirusSpawn,
   AntivirusState,
-  FirewallDefinition,
+  LegacyFirewallDefinition as FirewallDefinition,
   FirewallState,
   GhostsDefinition,
   RealtimeAdvance,
@@ -31,7 +31,7 @@ const witnesses = content.witnesses as readonly RealtimeWitness[];
 
 function firewall(difficulty = "tutorial"): FirewallDefinition {
   const definition = definitions.find((candidate) => candidate.id === `a.firewall.${difficulty}`);
-  assert.ok(definition?.kind === "firewall");
+  assert.ok(definition?.kind === "firewall" && definition.ruleVersion === 1);
   return definition;
 }
 

@@ -2,9 +2,20 @@
 
 [文档索引](../index.md) · [操作与存档说明](../../README.md) · [验收结果](acceptance-results.md) · [实施进度](implementation-progress.md)
 
-2026-09-12：当前交付物为 **0.5.0 / M5 / content5 / rule2 / schema2** 的 production 构建，包含全部游戏内容。按[用户本轮范围调整](acceptance-scope-2026-09-11.md)，本机 Chrome 为验收环境，V05 达到原预算；63 个原始用例中 **62 项通过、V06 不再要求**。真实断外网、其他硬件与历史 Safari 结果不冒充已通过。实现分支 `codex/full-implementation` 从 `bfb924b075aa6a153ed33b95ce4492260e18a8d9` 建立；M1–M5 已按里程碑提交，M5 实现为 `811da5a1eb6ac175aa380418c2d84cf079469713`。游戏验收已按当前范围收口，实现分支已推送，[PR #1](https://github.com/LoTwT/camellia-golden-week/pull/1) 已创建，供用户审阅；main 尚未合并。
+2026-09-12：当前交付物为 **0.5.0 / M5 / content5 / rule3 / schema2** 的 production 构建，包含全部游戏内容。按[用户本轮范围调整](acceptance-scope-2026-09-11.md)，本机 Chrome 为验收环境，V05 达到原预算；63 个原始用例中 **62 项通过、V06 不再要求**。真实断外网、其他硬件与历史 Safari 结果不冒充已通过。实现分支 `codex/full-implementation` 从 `bfb924b075aa6a153ed33b95ce4492260e18a8d9` 建立；M1–M5 已按里程碑提交，M5 实现为 `811da5a1eb6ac175aa380418c2d84cf079469713`。游戏验收已按当前范围收口，实现分支已推送，[PR #1](https://github.com/LoTwT/camellia-golden-week/pull/1) 已创建，供用户审阅；main 尚未合并。
 
 ## 1. 当前静态交付物
+
+当前包已完成[警报扣分、方向闪避与v3迁移](firewall-hazards.md)：普通错拍−1、警报接触−5，具名移动警报、有限迎向闪避、受击与减少效果反馈；v1/v2历史成绩和永久进度保留。
+
+- [完整静态ZIP](evidence/firewall-hazards/firewall-hazards-dist.zip)：5,002,112字节；SHA-256 `482f4bba7b8ac33fdcf9dd4dc57cadb88beece79d18256f01afba1308d2531e6`。
+- [产物与逐文件清单](evidence/firewall-hazards/package.json)：87文件 / 6,374,035字节；48条资源记录，CRC、dist与Chrome验证的production字节一致。
+- [固定5174 HTTP复核](evidence/firewall-hazards/http-audit.json)：根入口及全部文件共88次200、字节一致。
+- [最终工程检查](evidence/firewall-hazards/verification.json)：510项、五分期、七项故障回归、防火墙三档47/57/72与v1/v2真实旧档迁移通过；547个所选实现及测试输入哈希不变。详细测量、失败修正与覆盖范围见[修复记录](firewall-hazards.md#验证与交付)。
+
+原版−1/−5及迎向闪避依据见[S12](../references/firewall-hazards.md)；精确时间参数、完整警报排表和原版约70秒/60目标仍有明确差异。下面旧包与“当前”字样保留各自时点含义。
+
+### 前一轮电视墙、配乐与v2迁移包（历史）
 
 当前包已完成[防火墙原版还原与 v2 迁移](firewall-restoration.md)：中央 5×4 与四块 COMBO 电视、110 BPM 本地原创替代配乐及同步白光、PERFECT / MISS、危险预告；旧成绩归档，物资和主线进度保留。
 
@@ -57,7 +68,7 @@ pnpm run preview --host localhost --port 5174 --strictPort --outDir /absolute/pa
 
 ## 3. 工程检查
 
-当前484项及v2实际浏览器结果见[防火墙还原记录](firewall-restoration.md)。前次464项测试、五分期和画面周边拍点操作见[拍点补修](firewall-visual-cue.md#原版核对后的画面周边节拍补修)。前次458项和消融结果见[Review修复记录](review-fixes.md#4-完整验证与交付)。以下 npm 日志保留 M5 原交付时的实际执行方式；后续[pnpm 迁移记录](pnpm-migration.md)也保留迁移时点的锁文件和构建等价结论。
+当前510项及v3实际浏览器结果见[警报修复记录](firewall-hazards.md#验证与交付)。前次484项及v2结果见[防火墙还原记录](firewall-restoration.md)。前次464项测试、五分期和画面周边拍点操作见[拍点补修](firewall-visual-cue.md#原版核对后的画面周边节拍补修)。前次458项和消融结果见[Review修复记录](review-fixes.md#4-完整验证与交付)。以下 npm 日志保留 M5 原交付时的实际执行方式；后续[pnpm 迁移记录](pnpm-migration.md)也保留迁移时点的锁文件和构建等价结论。
 
 | 命令 / 检查      | 实际结果与原始证据                                                                                                                                                                                                                                                    |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

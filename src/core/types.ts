@@ -282,6 +282,8 @@ export interface FeedbackEvent {
     | "invalid"
     | "pickup"
     | "score"
+    | "hazardHit"
+    | "dodged"
     | "reveal"
     | "amplify"
     | "door"

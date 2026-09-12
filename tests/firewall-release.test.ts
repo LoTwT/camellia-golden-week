@@ -5,12 +5,13 @@ import test from "node:test";
 import {
   assembleContent,
   assembleLegacyContent,
+  assembleV2Content,
   legacyRealtimeContent,
   migrationContentReleases,
-  realtimeContent,
+  v2RealtimeContent,
 } from "../src/content/assemble.ts";
 import oldM1 from "../src/content/witnesses/m1.json" with { type: "json" };
-import { worldWitnesses } from "../src/content/witnesses/index.ts";
+import { worldWitnesses, v2WorldWitnesses } from "../src/content/witnesses/index.ts";
 import { replayWorldWitness, validateContent } from "../src/content/validate.ts";
 import type { WorldWitness } from "../src/content/validate.ts";
 import { createGame, dispatch } from "../src/core/engine.ts";
@@ -24,7 +25,7 @@ import {
   validateRealtimeDefinition,
 } from "../src/core/realtime.ts";
 import type {
-  FirewallDefinition,
+  LegacyFirewallDefinition as FirewallDefinition,
   RealtimeFeedback,
   RealtimeInput,
   RealtimeWitness,
@@ -43,14 +44,19 @@ import type { SaveEnvelope, SaveStorage } from "../src/platform/save-store.ts";
 import { contentModuleSource } from "../scripts/content-module.ts";
 
 const profiles = ["M1", "M2", "M3", "M4", "M5"] as const;
-const firewalls = realtimeContent.definitions.filter(
-  (definition): definition is FirewallDefinition => definition.kind === "firewall",
+const firewalls = v2RealtimeContent.definitions.filter(
+  (definition): definition is FirewallDefinition =>
+    definition.kind === "firewall" && definition.ruleVersion === 2,
 );
 const savedAt = "2026-09-11T18:00:00.000Z";
 
 function playToFirewall(content: GameContent, challengeId = "a.firewall.core") {
   const witnesses =
-    content.ruleVersion === 1 ? (oldM1.witnesses as WorldWitness[]) : worldWitnesses;
+    content.ruleVersion === 1
+      ? (oldM1.witnesses as WorldWitness[])
+      : content.ruleVersion === 2
+        ? v2WorldWitnesses
+        : worldWitnesses;
   const witness = witnesses.find((item) => item.id === "m1.world.full-collection-and-return")!;
   let state = createGame(content);
   let now = 0;
@@ -95,9 +101,9 @@ test("v2 防火墙固定 5×4 / 110 BPM，27/82 拍均有完整窗口，奖励�
     assert.equal(definition.rules.comboTarget, [12, 40, 55, 70][index]);
     assert.deepEqual(validateRealtimeDefinition(definition), []);
   }
-  for (const definition of realtimeContent.definitions) assert.equal(definition.ruleVersion, 2);
+  for (const definition of v2RealtimeContent.definitions) assert.equal(definition.ruleVersion, 2);
   for (const profile of profiles) {
-    const content = assembleContent(profile);
+    const content = assembleV2Content(profile);
     assert.equal(content.contentVersion, Math.min(Number(profile.slice(1)), 4) + 1);
     assert.equal(content.ruleVersion, 2);
     assert.deepEqual(validateContent(content), []);
@@ -267,15 +273,15 @@ test("v1 原始实时定义保留 25 格、120 BPM、30/90 拍，历史文件按
 });
 
 test("v2 十条世界见证与十八条实时见证公开命令重放均保持目标与完整物资账本", () => {
-  for (const witness of worldWitnesses) {
-    const result = replayWorldWitness(assembleContent(witness.profileId), witness);
+  for (const witness of v2WorldWitnesses) {
+    const result = replayWorldWitness(assembleV2Content(witness.profileId), witness);
     assert.deepEqual(result.issues, [], witness.id);
   }
-  for (const witness of realtimeContent.witnesses as RealtimeWitness[]) {
-    const release = assembleContent(witness.profileId as ProfileId);
+  for (const witness of v2RealtimeContent.witnesses as RealtimeWitness[]) {
+    const release = assembleV2Content(witness.profileId as ProfileId);
     assert.equal(witness.contentVersion, release.contentVersion);
     assert.equal(witness.ruleVersion, release.ruleVersion);
-    const definition = realtimeContent.definitions.find(
+    const definition = v2RealtimeContent.definitions.find(
       (candidate) => candidate.id === witness.challengeId,
     )!;
     const result = replayRealtimeWitness(definition, witness);
@@ -287,7 +293,7 @@ test("v2 十条世界见证与十八条实时见证公开命令重放均保持�
 
 test("v2 非整数节拍在 30/60/120fps 下判定、提示事件与结算完全相同", () => {
   for (const definition of firewalls) {
-    for (const witness of (realtimeContent.witnesses as RealtimeWitness[]).filter(
+    for (const witness of (v2RealtimeContent.witnesses as RealtimeWitness[]).filter(
       (item) => item.challengeId === definition.id,
     )) {
       const expected = replayRealtimeWitness(definition, witness);
@@ -343,10 +349,11 @@ test("五个历史 profile 到本版同/较后 profile 有唯一迁移；旧物�
       assert.ok(plan.ok, plan.ok ? "" : plan.error);
       assert.equal(plan.steps[0]?.definition.kind, "mapped");
       assert.equal(plan.steps[0]?.to.profile.id, sourceProfile);
-      assert.ok(plan.steps.slice(1).every((step) => step.definition.kind === "additive"));
+      assert.equal(plan.steps[1]?.definition.kind, "rules");
+      assert.ok(plan.steps.slice(2).every((step) => step.definition.kind === "additive"));
       const migrated = validatePayload(original.payload, target, registry);
       assert.ok(migrated.ok, migrated.ok ? "" : migrated.error);
-      assert.equal(migrated.value.ruleVersion, 2);
+      assert.equal(migrated.value.ruleVersion, 3);
       assert.deepEqual(migrated.value.bestResults, source.value.bestResults);
       assert.deepEqual(migrated.value.claimedRewardIds, source.value.claimedRewardIds);
       assert.deepEqual(migrated.value.completedObjectiveIds, source.value.completedObjectiveIds);
@@ -368,7 +375,7 @@ test("五个历史 profile 到本版同/较后 profile 有唯一迁移；旧物�
   }
 });
 
-test("旧 90 Combo 由正常命令产生，升级后保留历史且新规则拒绝 90 分伪造记录", () => {
+test("旧 90 Combo 由正常命令产生，升级后保留历史且 v2/v3 拒绝 90 分伪造记录", () => {
   const oldContent = assembleLegacyContent("M1");
   const session = playToFirewall(oldContent);
   session.wait(3000);
@@ -387,11 +394,13 @@ test("旧 90 Combo 由正常命令产生，升级后保留历史且新规则拒�
   const migrated = validatePayload(payload, current, registry);
   assert.ok(migrated.ok, migrated.ok ? "" : migrated.error);
   assert.deepEqual(migrated.value.bestResults, payload.bestResults);
-  const forged = structuredClone(migrated.value);
-  forged.bestResults.push({ challengeId: "a.firewall.core", ruleVersion: 2, bestCombo: 90 });
-  const rejected = validatePayload(forged, current, registry);
-  assert.ok(!rejected.ok);
-  assert.match(rejected.error, /超出理论范围/);
+  for (const ruleVersion of [2, 3]) {
+    const forged = structuredClone(migrated.value);
+    forged.bestResults.push({ challengeId: "a.firewall.core", ruleVersion, bestCombo: 90 });
+    const rejected = validatePayload(forged, current, registry);
+    assert.ok(!rejected.ok);
+    assert.match(rejected.error, /超出理论范围/);
+  }
   assert.equal(
     validatePayload(migrated.value, current).ok,
     false,
@@ -399,10 +408,10 @@ test("旧 90 Combo 由正常命令产生，升级后保留历史且新规则拒�
   );
 });
 
-test("v1/v2 挑战中保存只保留外层锚点，升级与恢复不带旧格坐标/分数/判定提示", () => {
+test("v1/v2/v3 挑战中保存只保留外层锚点，升级与恢复不带局部格/闪避/接触/分数", () => {
   const target = assembleContent("M1");
   const registry = publishedProfileMigrations(migrationContentReleases("M1"));
-  for (const source of [assembleLegacyContent("M1"), target]) {
+  for (const source of [assembleLegacyContent("M1"), assembleV2Content("M1"), target]) {
     const session = playToFirewall(source, "a.firewall.tutorial");
     session.wait(3000);
     session.wait(source.ruleVersion === 1 ? 250 : 273);
@@ -419,6 +428,16 @@ test("v1/v2 挑战中保存只保留外层锚点，升级与恢复不带旧格�
       challengeId: "a.firewall.tutorial",
     });
     assert.equal(JSON.stringify(result.value).includes("lastJudgment"), false);
+    for (const key of [
+      "nextAlarmEventIndex",
+      "judgedBeatIndices",
+      "dodge",
+      "contactedAlarmIds",
+      "dodgedAlarmIds",
+      "lastDodgeAtMs",
+      "lastHazardHit",
+    ])
+      assert.equal(JSON.stringify(result.value).includes(`"${key}"`), false);
     const restored = restorePayload(result.value, target, 99_000);
     assert.equal(restored.activeRealtime, null);
     assert.equal(restored.mode, "explore");
@@ -427,7 +446,7 @@ test("v1/v2 挑战中保存只保留外层锚点，升级与恢复不带旧格�
   }
 });
 
-test("部分构建只带本期/较早双版本视图，当前版本最后；每个视图可解析正确迁移", async () => {
+test("部分构建只带本期/较早三版本视图，当前版本最后；每个视图可解析正确迁移", async () => {
   for (const [index, profile] of profiles.entries()) {
     const releases = migrationContentReleases(profile);
     const source = contentModuleSource(releases);
@@ -435,7 +454,7 @@ test("部分构建只带本期/较早双版本视图，当前版本最后；每�
       default: GameContent;
       migrationReleases: GameContent[];
     };
-    assert.equal(module.migrationReleases.length, (index + 1) * 2);
+    assert.equal(module.migrationReleases.length, (index + 1) * 3);
     assert.deepEqual(module.default, assembleContent(profile));
     assert.equal(module.default, module.migrationReleases.at(-1));
     assert.ok(

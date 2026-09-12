@@ -1,0 +1,83 @@
+{
+  "date": "2026-09-12",
+  "baselineCommit": "210a53e852dfbb0531cc54a592f995383d0583f3",
+  "method": "Normal browser playback at 0.25 speed, paused frame stepping, read-only video.currentTime; images visually inspected. No original-game state manipulation or full-video download.",
+  "referenceOnly": true,
+  "runtimeAsset": false,
+  "screenshots": [
+    {
+      "file": "original-offbeat-before.jpg",
+      "sourceUrl": "https://www.youtube.com/watch?v=le65NrzX-S8&t=1246s",
+      "videoTimeSeconds": 1246.609384,
+      "visibleCombo": 50,
+      "format": "JPEG",
+      "width": 1048,
+      "height": 515,
+      "bytes": 52808,
+      "sha256": "4bc03e70c2f6ef32af60a450595b3714d7c1d4ef09e20e5aab0ab57f307959b9",
+      "transform": "Browser screenshot clipped to the visible player; original screenshot bytes preserved."
+    },
+    {
+      "file": "original-offbeat-after.jpg",
+      "sourceUrl": "https://www.youtube.com/watch?v=le65NrzX-S8&t=1246s",
+      "videoTimeSeconds": 1246.859383,
+      "visibleCombo": 49,
+      "format": "JPEG",
+      "width": 1048,
+      "height": 515,
+      "bytes": 56075,
+      "sha256": "71d49915740db11cd6a7664056aac781f8ffab5cfb47b568be1a51b55b1f8f17",
+      "transform": "Browser screenshot clipped to the visible player; original screenshot bytes preserved."
+    },
+    {
+      "file": "original-collision-before.jpg",
+      "sourceUrl": "https://www.youtube.com/watch?v=Ua1SdQqcePc&t=2809s",
+      "videoTimeSeconds": 2809.423217,
+      "visibleCombo": 52,
+      "format": "JPEG",
+      "width": 1048,
+      "height": 515,
+      "bytes": 90211,
+      "sha256": "ca3e1ed73e6f658ad9e78583ef2d6ca8a0b25a97fa2f26b9ba5a91f3361ba14c",
+      "transform": "Browser screenshot clipped to the visible player; original screenshot bytes preserved."
+    },
+    {
+      "file": "original-collision-after.jpg",
+      "sourceUrl": "https://www.youtube.com/watch?v=Ua1SdQqcePc&t=2809s",
+      "videoTimeSeconds": 2809.623217,
+      "visibleCombo": 47,
+      "format": "JPEG",
+      "width": 1048,
+      "height": 515,
+      "bytes": 57074,
+      "sha256": "75e943fc14c8cf2744ec8e6950e589e9ad4e8d1d37b8ddfff73bc686288ae0ba",
+      "transform": "Browser screenshot clipped to the visible player; original screenshot bytes preserved."
+    }
+  ],
+  "dodgeTutorial": {
+    "sourceUrl": "https://zzz.honeyhunterworld.com/2001003-tutorial/?lang=CN",
+    "animationUrl": "https://zzz.honeyhunterworld.com/img/tutorial/2001003-tutorial_anim.webp",
+    "animationSha256": "b6815d2526dd8c0d2a5ba6ac2126fa20f224772b9cff31016590ce0c1bf713ec",
+    "width": 568,
+    "height": 320,
+    "frames": 50,
+    "frameDurationMs": 100,
+    "inspectedFrames": [
+      [
+        11,
+        16
+      ],
+      [
+        26,
+        30
+      ]
+    ],
+    "observation": "Player moves upward into a downward-moving horizontal alarm line; combo rises 4→5→6, with PERFECT.",
+    "redistributed": false
+  },
+  "limitations": [
+    "No original input overlay: stationary collision timing cannot be inferred from sprite position alone.",
+    "Exact dodge duration, scoring window, overlap merging and miss/collision priority remain reconstructed.",
+    "Original core round is approximately 70 seconds with a visible 60-combo objective; this patch retains the project's 45-second duration and established reward thresholds."
+  ]
+}

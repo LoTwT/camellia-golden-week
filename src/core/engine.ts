@@ -459,6 +459,8 @@ export function dispatch(
       if (input && update.state.playerTileId !== previous.playerPosition.tileId)
         emit("move", "移动");
       const hit = update.feedback.find((event) => event.kind === "hit");
+      const hazard = update.feedback.findLast((event) => event.kind === "hazardHit");
+      const dodge = update.feedback.findLast((event) => event.kind === "dodged");
       const star = update.feedback.find((event) => event.kind === "starCleared");
       const cleared = update.feedback.filter((event) => event.kind === "targetCleared");
       const lamp = update.feedback.find((event) => event.kind === "lampLit");
@@ -482,6 +484,16 @@ export function dispatch(
         code = error.kind;
         emit("invalid", error.reason ?? "未命中拍点");
         state.lastResult = { code, message: error.reason ?? "未命中拍点 · Combo 已重算" };
+      }
+      if (dodge && !hazard) {
+        emit("dodged", "迎向警报 · 完美闪避");
+        state.lastResult = { code: "accepted", message: "迎向警报 · 完美闪避" };
+      }
+      if (hazard) {
+        code = "hazardHit";
+        const message = hazard.reason ?? "警报命中 · 连击减少 5";
+        emit("hazardHit", message);
+        state.lastResult = { code, message };
       }
       if (update.result !== "running") {
         // Timed reducers return fresh state, so commits always mutate a private progress copy.

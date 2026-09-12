@@ -84,20 +84,22 @@ export function additiveProfileMigrations(releases: readonly GameContent[]): Mig
   return { releases: sorted, steps };
 }
 
-/** Explicit v1 → v2 publication: upgrade in place before adding later profile content. */
+/** Published releases upgrade in place before adding later profile content. */
 export function publishedProfileMigrations(releases: readonly GameContent[]): MigrationRegistry {
-  const current = releases.filter((release) => release.ruleVersion === 2);
+  const current = releases.filter((release) => release.ruleVersion === 3);
+  const second = releases.filter((release) => release.ruleVersion === 2);
   const legacy = releases.filter((release) => release.ruleVersion === 1);
   if (
     current.length === 0 ||
     current.length !== legacy.length ||
-    current.length + legacy.length !== releases.length ||
+    current.length !== second.length ||
+    current.length + second.length + legacy.length !== releases.length ||
     new Set(releases.map((release) => key(releaseVersion(release)))).size !== releases.length
   )
-    throw new Error("当前发布迁移需要每个已收录 profile 的唯一 v1 和 v2 内容视图");
+    throw new Error("当前发布迁移需要每个已收录 profile 的唯一 v1、v2、v3 内容视图");
   const additive = additiveProfileMigrations(current);
   if (additive.releases[0]?.profile.id !== "M1") throw new Error("当前发布迁移必须从 M1 开始收录");
-  const mappedSteps = additive.releases.map((to): MigrationStep => {
+  const mappedSteps = second.map((to): MigrationStep => {
     const from = legacy.find((candidate) => candidate.profile.id === to.profile.id);
     const originalContentVersion = Math.min(Number(to.profile.id.slice(1)), 4);
     if (
@@ -109,9 +111,19 @@ export function publishedProfileMigrations(releases: readonly GameContent[]): Mi
     // Realtime attempts persist their outer safe anchor, never their local board coordinates.
     return { from: releaseVersion(from), to: releaseVersion(to), kind: "mapped", mapping: {} };
   });
+  const ruleSteps = additive.releases.map((to): MigrationStep => {
+    const from = second.find((candidate) => candidate.profile.id === to.profile.id);
+    if (
+      !from ||
+      from.contentVersion !== to.contentVersion ||
+      to.contentVersion !== Math.min(Number(to.profile.id.slice(1)), 4) + 1
+    )
+      throw new Error(`缺少 ${to.profile.id} 从 v2 到警报判定 v3 的明确规则升级`);
+    return { from: releaseVersion(from), to: releaseVersion(to), kind: "rules" };
+  });
   return {
-    releases: [...legacy, ...additive.releases],
-    steps: [...mappedSteps, ...additive.steps],
+    releases: [...legacy, ...second, ...additive.releases],
+    steps: [...mappedSteps, ...ruleSteps, ...additive.steps],
   };
 }
 

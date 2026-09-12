@@ -583,7 +583,7 @@ test("P08 坐标步骤不能暗改实时规则，规则步骤不能暗改局部�
   const ruleChanged = structuredClone(m1);
   ruleChanged.contentVersion = 2;
   ruleChanged.realtimeChallenges = ruleChanged.realtimeChallenges.map((challenge) =>
-    challenge.kind === "firewall"
+    challenge.kind === "firewall" && challenge.ruleVersion !== 3
       ? {
           ...challenge,
           rules: { ...challenge.rules, comboTarget: challenge.rules.comboTarget + 1 },
@@ -593,11 +593,22 @@ test("P08 坐标步骤不能暗改实时规则，规则步骤不能暗改局部�
   rejected(realM1, ruleChanged, pair(m1, ruleChanged, { kind: "mapped" }), /没有提升 ruleVersion/);
   const boardChanged = structuredClone(m1);
   boardChanged.ruleVersion = 2;
-  boardChanged.realtimeChallenges = boardChanged.realtimeChallenges.map((challenge) => ({
-    ...challenge,
-    ruleVersion: 2,
-    tiles: challenge.tiles.map((tile) => ({ ...tile, x: tile.x + 1 })),
-  }));
+  boardChanged.realtimeChallenges = boardChanged.realtimeChallenges.map((challenge) => {
+    if (challenge.kind === "firewall") {
+      assert.notEqual(challenge.ruleVersion, 3);
+      if (challenge.ruleVersion === 3) throw new Error("历史夹具不能含 v3 规则");
+      return {
+        ...challenge,
+        ruleVersion: 2,
+        tiles: challenge.tiles.map((tile) => ({ ...tile, x: tile.x + 1 })),
+      };
+    }
+    return {
+      ...challenge,
+      ruleVersion: 2,
+      tiles: challenge.tiles.map((tile) => ({ ...tile, x: tile.x + 1 })),
+    };
+  });
   rejected(realM1, boardChanged, pair(m1, boardChanged, { kind: "rules" }), /同时改变地图/);
   assert.throws(
     () => additiveProfileMigrations([m1, { ...m2, contentVersion: 1 }]),

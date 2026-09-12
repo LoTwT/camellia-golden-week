@@ -20,8 +20,10 @@
 
 | 记录                                                               | 当前职责与边界                                                                                          |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------- |
-| [防火墙原版还原与 v2 迁移](verification/firewall-restoration.md)   | 当前电视墙构图、110 BPM 配乐同步、三档挑战、旧成绩与进度迁移、实际验收和差异                            |
+| [防火墙警报修复与 v3 迁移](verification/firewall-hazards.md)       | 当前错拍 / 受击扣分、迎向闪避、方向警报、存档迁移、Chrome 实测与重建边界                                |
+| [防火墙原版还原与 v2 迁移](verification/firewall-restoration.md)   | 历史电视墙构图、110 BPM 配乐同步、三档挑战、旧成绩迁移及对应验收                                        |
 | [原版音乐核对 S11](references/firewall-audio.md)                   | Red! 系列曲名、约 110 BPM 实测、使用条件与三首原创替代配乐                                              |
+| [原版警报规则核对 S12](references/firewall-hazards.md)             | 原版错拍与受击扣分、迎向闪避条件、逐帧证据及重建边界                                                    |
 | [防火墙拍点可读性修复](verification/firewall-visual-cue.md)        | 历史两轮周边白光、独立节拍条和教学补修，保留原始版本和验收含义                                          |
 | [消融 Review 修复](verification/review-fixes.md)                   | 四项运行时修复、内容与工程校验、真实 Chrome 回归、消融复验和更新静态包；不重写历史验收含义              |
 | [pnpm 迁移与验证](verification/pnpm-migration.md)                  | 当前包管理、冻结锁文件、依赖版本 / 完整性等价及安装 / 检查 / 构建证据；旧 npm 日志保留历史含义          |

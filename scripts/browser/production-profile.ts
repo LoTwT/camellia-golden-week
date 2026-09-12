@@ -32,12 +32,37 @@ async function captureBoardPixels(page: Page): Promise<Buffer> {
   });
 }
 
-async function captureSettledBoard(page: Page): Promise<Buffer> {
-  let previous = await captureBoardPixels(page);
-  for (let attempt = 0; attempt < 10; attempt += 1) {
-    await page.waitForTimeout(120);
+async function captureSettledBoard(
+  page: Page,
+  recoverStartupPause?: (stage: "before-capture" | "after-capture") => Promise<boolean>,
+): Promise<Buffer> {
+  let previous: Buffer | null = null;
+  for (let attempt = 0; attempt < 11; attempt += 1) {
+    if (previous) await page.waitForTimeout(120);
+    if (await recoverStartupPause?.("before-capture")) {
+      previous = null;
+      continue;
+    }
+    assert.equal(
+      await page.locator("#game-dialog").evaluate((element) => (element as HTMLDialogElement).open),
+      false,
+      "稳定棋盘取样前必须处于可玩态",
+    );
     const current = await captureBoardPixels(page);
-    if (current.equals(previous)) return current;
+    // A screenshot can delay rendering. Observe the next rendered frame before accepting it.
+    await page.evaluate(
+      () => new Promise<void>((resolve) => requestAnimationFrame(() => resolve())),
+    );
+    if (await recoverStartupPause?.("after-capture")) {
+      previous = null;
+      continue;
+    }
+    assert.equal(
+      await page.locator("#game-dialog").evaluate((element) => (element as HTMLDialogElement).open),
+      false,
+      "暂停画面不能充当稳定棋盘证据；运行中不自动恢复",
+    );
+    if (previous && current.equals(previous)) return current;
     previous = current;
   }
   throw new Error("关闭动态效果后，静止棋盘未能形成连续相同的画面。");
@@ -57,6 +82,18 @@ export async function verifyProductionProfile(options: {
     reducedMotion: "reduce",
   });
   const errors: string[] = [];
+  const startupPreparation: {
+    scope: string;
+    recoveries: { observedAt: string; stage: string; description: string; screenshot: string }[];
+    playableBeforeMove: boolean;
+    beforeMoveSha256: string | null;
+  } = {
+    scope:
+      "仅首个方向键之前的启动截图准备允许一次可见 clockGap 正常继续；后续运行不自动恢复。恢复后弃用暂停前后样本，重新取得连续相同的可玩棋盘。",
+    recoveries: [],
+    playableBeforeMove: false,
+    beforeMoveSha256: null,
+  };
   const page = await context.newPage();
   page.setDefaultTimeout(15_000);
   page.on("pageerror", (error) => errors.push(error.message));
@@ -73,7 +110,39 @@ export async function verifyProductionProfile(options: {
     await startNewGame(page);
     assert.equal(await page.locator("#supplies").innerText(), `0 / ${supplyTotals[profile]}`);
     assert.equal(await page.locator("#amplifier").innerText(), "增幅仪待领取");
-    const beforeMove = await captureSettledBoard(page);
+    const beforeMove = await captureSettledBoard(page, async (stage) => {
+      const observed = await page.evaluate(() => ({
+        open: document.querySelector<HTMLDialogElement>("#game-dialog")?.open ?? false,
+        heading: document.querySelector("#dialog-title")?.textContent ?? "",
+        description: document.querySelector(".dialog-description")?.textContent ?? "",
+        visible: document.visibilityState === "visible",
+        focused: document.hasFocus(),
+      }));
+      if (!observed.open) return false;
+      assert.equal(observed.heading, "探索已暂停", "启动阶段其它对话框不得被自动确认");
+      assert.match(observed.description, /检测到前台调度中断/);
+      assert.ok(observed.visible && observed.focused, "失焦或隐藏不是可恢复的启动截图 clockGap");
+      assert.equal(startupPreparation.recoveries.length, 0, "启动反复中断须诊断，不能反复恢复");
+      const screenshot = `${profile.toLowerCase()}-startup-clock-gap.png`;
+      startupPreparation.recoveries.push({
+        observedAt: new Date().toISOString(),
+        stage,
+        description: observed.description,
+        screenshot,
+      });
+      await page.screenshot({ path: join(outputDir, screenshot) });
+      await page.getByRole("button", { name: "继续探索", exact: true }).click();
+      await waitForGameReady(page);
+      assert.equal(await page.locator("#supplies").innerText(), `0 / ${supplyTotals[profile]}`);
+      assert.equal(await page.locator("#amplifier").innerText(), "增幅仪待领取");
+      return true;
+    });
+    assert.equal(
+      await page.locator("#game-dialog").evaluate((element) => (element as HTMLDialogElement).open),
+      false,
+    );
+    startupPreparation.playableBeforeMove = true;
+    startupPreparation.beforeMoveSha256 = createHash("sha256").update(beforeMove).digest("hex");
     await pressGameKey(page, "ArrowRight");
     await page.waitForFunction(() =>
       document.querySelector("#amplifier")?.textContent?.includes("阳炎增幅仪"),
@@ -159,6 +228,7 @@ export async function verifyProductionProfile(options: {
       claimedRewardIds: afterReload.payload.claimedRewardIds,
       position: afterReload.payload.playerPosition,
       saveGeneration: afterReload.saveGeneration,
+      startupPreparation,
       errors,
     };
   } catch (error) {
@@ -167,6 +237,10 @@ export async function verifyProductionProfile(options: {
       .catch(() => {});
     throw error;
   } finally {
+    await writeFile(
+      join(outputDir, `${profile.toLowerCase()}-startup-preparation.json`),
+      `${JSON.stringify(startupPreparation, null, 2)}\n`,
+    );
     await context.tracing.stop({ path: join(outputDir, `${profile.toLowerCase()}-trace.zip`) });
     await context.close();
   }

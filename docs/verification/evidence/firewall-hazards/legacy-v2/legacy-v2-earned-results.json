@@ -1,0 +1,93 @@
+{
+  "method": "Frozen v2 production ZIP, fresh context, normal new-game route and visible-ready direction keys; natural 15-second settlement; UI export only.",
+  "url": "http://127.0.0.1:49942",
+  "browser": "153.0.8010.36",
+  "viewport": {
+    "width": 1512,
+    "height": 771
+  },
+  "environment": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36"
+  },
+  "inputs": [
+    {
+      "key": "ArrowRight",
+      "beat": "1 / 27",
+      "combo": 1
+    },
+    {
+      "key": "ArrowLeft",
+      "beat": "2 / 27",
+      "combo": 2
+    },
+    {
+      "key": "ArrowRight",
+      "beat": "3 / 27",
+      "combo": 3
+    },
+    {
+      "key": "ArrowLeft",
+      "beat": "4 / 27",
+      "combo": 4
+    },
+    {
+      "key": "ArrowRight",
+      "beat": "5 / 27",
+      "combo": 5
+    },
+    {
+      "key": "ArrowLeft",
+      "beat": "6 / 27",
+      "combo": 6
+    },
+    {
+      "key": "ArrowRight",
+      "beat": "7 / 27",
+      "combo": 7
+    },
+    {
+      "key": "ArrowLeft",
+      "beat": "8 / 27",
+      "combo": 8
+    },
+    {
+      "key": "ArrowRight",
+      "beat": "9 / 27",
+      "combo": 9
+    },
+    {
+      "key": "ArrowLeft",
+      "beat": "10 / 27",
+      "combo": 10
+    },
+    {
+      "key": "ArrowRight",
+      "beat": "11 / 27",
+      "combo": 11
+    },
+    {
+      "key": "ArrowLeft",
+      "beat": "12 / 27",
+      "combo": 12
+    },
+    {
+      "key": "ArrowRight",
+      "beat": "13 / 27",
+      "combo": 13
+    },
+    {
+      "key": "ArrowLeft",
+      "beat": "14 / 27",
+      "combo": 14
+    }
+  ],
+  "score": "COMBO 14 / 最高 14 · 目标 12 / 0.0 s",
+  "bestResults": [
+    {
+      "challengeId": "a.firewall.tutorial",
+      "ruleVersion": 2,
+      "bestCombo": 14
+    }
+  ],
+  "errors": []
+}

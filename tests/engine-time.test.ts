@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { assembleContent } from "../src/content/assemble.ts";
 import { createGame, dispatch } from "../src/core/engine.ts";
+import { firewallBeatCount } from "../src/core/realtime.ts";
 import type { GameCommand } from "../src/core/types.ts";
 
 test("暂停输入所在截止时刻先提交实时结算，再冻结；重复暂停不重复事件", () => {
@@ -26,7 +27,7 @@ test("暂停输入所在截止时刻先提交实时结算，再冻结；重复�
     (challenge) => challenge.id === "a.firewall.tutorial",
   );
   assert.ok(definition?.kind === "firewall");
-  for (let beat = 0; beat < definition.rules.beatMasks.length; beat++) {
+  for (let beat = 0; beat < firewallBeatCount(definition); beat++) {
     const target = Math.round(
       definition.rules.firstBeatMs + beat * (60_000 / definition.rules.bpm),
     );

@@ -17,18 +17,52 @@ interface RealtimeDefinitionBase {
   readonly witnessIds: readonly string[];
 }
 
-export interface FirewallDefinition extends RealtimeDefinitionBase {
+interface FirewallTimingRules {
+  readonly durationMs: number;
+  readonly bpm: number;
+  readonly firstBeatMs: number;
+  readonly windowMs: number;
+  readonly comboTarget: number;
+  readonly offbeatPenalty: number;
+}
+
+export interface LegacyFirewallDefinition extends RealtimeDefinitionBase {
   readonly kind: "firewall";
-  readonly rules: {
-    readonly durationMs: number;
-    readonly bpm: number;
-    readonly firstBeatMs: number;
-    readonly windowMs: number;
-    readonly comboTarget: number;
-    readonly offbeatPenalty: number;
+  readonly ruleVersion: 1 | 2;
+  readonly rules: FirewallTimingRules & {
     readonly beatMasks: readonly (readonly string[])[];
   };
   readonly goal: { readonly kind: "highestCombo" };
+}
+
+export interface FirewallAlarm {
+  readonly id: string;
+  readonly startsAtMs: number;
+  readonly endsAtMs: number;
+  /** The movement direction that faces this incoming alarm. */
+  readonly approachFrom: RealtimeDirection;
+  readonly frames: readonly { readonly atMs: number; readonly tileIds: readonly string[] }[];
+}
+
+export interface DirectionalFirewallDefinition extends RealtimeDefinitionBase {
+  readonly kind: "firewall";
+  readonly ruleVersion: 3;
+  readonly rules: FirewallTimingRules & {
+    readonly beatCount: number;
+    readonly hazardPenalty: number;
+    readonly dodgeWindowMs: number;
+    readonly alarms: readonly FirewallAlarm[];
+  };
+  readonly goal: { readonly kind: "highestCombo" };
+}
+
+export type FirewallDefinition = LegacyFirewallDefinition | DirectionalFirewallDefinition;
+
+export interface FirewallAlarmContact {
+  readonly alarmId: string;
+  readonly tileIds: readonly string[];
+  readonly warningTileIds: readonly string[];
+  readonly approachFrom: RealtimeDirection;
 }
 
 export type AntivirusTargetKind = "blue" | "purple" | "star";
@@ -111,6 +145,21 @@ export interface FirewallState extends RealtimeStateBase {
   readonly scoredBeatIndices: readonly number[];
   readonly nextBeatIndex: number;
   readonly maskIndex: number;
+  readonly nextAlarmEventIndex: number;
+  readonly judgedBeatIndices: readonly number[];
+  readonly dodge: {
+    readonly direction: RealtimeDirection;
+    readonly untilMs: number;
+    readonly beatIndex: number;
+  } | null;
+  readonly contactedAlarmIds: readonly string[];
+  readonly dodgedAlarmIds: readonly string[];
+  readonly lastDodgeAtMs: number | null;
+  readonly lastHazardHit: {
+    readonly activeTimeMs: number;
+    readonly alarmIds: readonly string[];
+    readonly penalty: number;
+  } | null;
   readonly lastJudgment: {
     readonly kind: "perfect" | "miss";
     readonly activeTimeMs: number;
@@ -147,6 +196,8 @@ export type RealtimeFeedbackKind =
   | "beat"
   | "hit"
   | "miss"
+  | "hazardHit"
+  | "dodged"
   | "targetSpawned"
   | "targetExpired"
   | "targetCleared"
@@ -165,6 +216,7 @@ export interface RealtimeFeedback {
   readonly tileId?: string;
   readonly targetId?: string;
   readonly ghostIds?: readonly string[];
+  readonly alarmIds?: readonly string[];
   readonly value?: number;
   readonly reason?: string;
 }
@@ -229,6 +281,13 @@ export function createRealtime(definition: RealtimeDefinition): RealtimeState {
         scoredBeatIndices: [],
         nextBeatIndex: 0,
         maskIndex: 0,
+        nextAlarmEventIndex: 0,
+        judgedBeatIndices: [],
+        dodge: null,
+        contactedAlarmIds: [],
+        dodgedAlarmIds: [],
+        lastDodgeAtMs: null,
+        lastHazardHit: null,
         lastJudgment: null,
       };
     case "antivirus":
@@ -360,6 +419,10 @@ export function firewallDangerTileIds(
     activeTimeMs >= definition.rules.durationMs
   )
     return [];
+  if (definition.ruleVersion === 3)
+    return [
+      ...new Set(firewallAlarmContacts(definition, activeTimeMs).flatMap((alarm) => alarm.tileIds)),
+    ];
   const intervalMs = 60_000 / definition.rules.bpm;
   const firstMaskMs = definition.rules.firstBeatMs - intervalMs / 2;
   const index = Math.min(
@@ -380,6 +443,12 @@ export function firewallWarningTileIds(
     activeTimeMs >= definition.rules.durationMs
   )
     return [];
+  if (definition.ruleVersion === 3)
+    return [
+      ...new Set(
+        firewallAlarmContacts(definition, activeTimeMs).flatMap((alarm) => alarm.warningTileIds),
+      ),
+    ];
   const intervalMs = 60_000 / definition.rules.bpm;
   const firstMaskMs = definition.rules.firstBeatMs - intervalMs / 2;
   const nextIndex = Math.floor((activeTimeMs - firstMaskMs) / intervalMs) + 1;
@@ -389,6 +458,44 @@ export function firewallWarningTileIds(
   return (definition.rules.beatMasks[nextIndex] ?? []).filter((tileId) => !active.has(tileId));
 }
 
+export function firewallBeatCount(definition: FirewallDefinition): number {
+  return definition.ruleVersion === 3
+    ? definition.rules.beatCount
+    : definition.rules.beatMasks.length;
+}
+
+function alarmTilesAt(alarm: FirewallAlarm, activeTimeMs: number): readonly string[] {
+  if (activeTimeMs < alarm.startsAtMs || activeTimeMs >= alarm.endsAtMs) return [];
+  return alarm.frames.findLast((frame) => frame.atMs <= activeTimeMs)?.tileIds ?? [];
+}
+
+export function firewallAlarmContacts(
+  definition: FirewallDefinition,
+  activeTimeMs: number,
+): readonly FirewallAlarmContact[] {
+  if (
+    definition.ruleVersion !== 3 ||
+    !Number.isFinite(activeTimeMs) ||
+    activeTimeMs < 0 ||
+    activeTimeMs >= definition.rules.durationMs
+  )
+    return [];
+  const activeTiles = new Set(
+    definition.rules.alarms.flatMap((alarm) => alarmTilesAt(alarm, activeTimeMs)),
+  );
+  return definition.rules.alarms.flatMap((alarm): FirewallAlarmContact[] => {
+    const tileIds = alarmTilesAt(alarm, activeTimeMs);
+    const next = alarm.frames.find((frame) => frame.atMs > activeTimeMs);
+    const warningTileIds =
+      next && next.atMs - activeTimeMs <= 150
+        ? next.tileIds.filter((tileId) => !activeTiles.has(tileId))
+        : [];
+    return tileIds.length || warningTileIds.length
+      ? [{ alarmId: alarm.id, tileIds, warningTileIds, approachFrom: alarm.approachFrom }]
+      : [];
+  });
+}
+
 function advanceFirewall(
   definition: FirewallDefinition,
   previous: FirewallState,
@@ -396,6 +503,8 @@ function advanceFirewall(
   inputs: readonly RealtimeInput[],
   emit: EmitFeedback,
 ): FirewallState {
+  if (definition.ruleVersion === 3)
+    return advanceDirectionalFirewall(definition, previous, activeTimeMs, inputs, emit);
   const state: Mutable<FirewallState> = { ...previous };
   const rules = definition.rules;
   const intervalMs = 60_000 / rules.bpm;
@@ -456,6 +565,172 @@ function advanceFirewall(
     rules.beatMasks.length - 1,
     Math.max(0, Math.floor((state.activeTimeMs - rules.firstBeatMs + intervalMs / 2) / intervalMs)),
   );
+  if (activeTimeMs >= rules.durationMs) {
+    state.status = state.bestCombo >= rules.comboTarget ? "success" : "failure";
+    emit(state.status, rules.durationMs, { value: state.bestCombo });
+  }
+  return state;
+}
+
+function advanceDirectionalFirewall(
+  definition: DirectionalFirewallDefinition,
+  previous: FirewallState,
+  activeTimeMs: number,
+  inputs: readonly RealtimeInput[],
+  emit: EmitFeedback,
+): FirewallState {
+  const state: Mutable<FirewallState> = { ...previous };
+  const rules = definition.rules;
+  const intervalMs = 60_000 / rules.bpm;
+  const alarmTimes = [
+    ...new Set(
+      rules.alarms.flatMap((alarm) => [...alarm.frames.map((frame) => frame.atMs), alarm.endsAtMs]),
+    ),
+  ].sort((left, right) => left - right);
+
+  const contactsAt = (timeMs: number, from?: string) =>
+    rules.alarms.filter((alarm) => {
+      const now = alarmTilesAt(alarm, timeMs);
+      if (now.includes(state.playerTileId)) return true;
+      if (!from || from === state.playerTileId || !now.includes(from)) return false;
+      const before = alarm.frames.findLast((frame) => frame.atMs < timeMs);
+      return (
+        alarm.startsAtMs < timeMs &&
+        alarm.endsAtMs > timeMs &&
+        before?.tileIds.includes(state.playerTileId)
+      );
+    });
+  const resolveContacts = (timeMs: number, from?: string): boolean => {
+    const contacts = contactsAt(timeMs, from);
+    const ids = contacts.map((alarm) => alarm.id);
+    state.contactedAlarmIds = state.contactedAlarmIds.filter((id) => ids.includes(id));
+    state.dodgedAlarmIds = state.dodgedAlarmIds.filter((id) => ids.includes(id));
+    const protectedIds = contacts
+      .filter(
+        (alarm) =>
+          state.dodge &&
+          timeMs < state.dodge.untilMs &&
+          state.dodge.direction === alarm.approachFrom,
+      )
+      .map((alarm) => alarm.id);
+    const newlyDodged = protectedIds.filter((id) => !state.dodgedAlarmIds.includes(id));
+    if (newlyDodged.length) {
+      state.dodgedAlarmIds = [...state.dodgedAlarmIds, ...newlyDodged];
+      state.lastDodgeAtMs = timeMs;
+      emit("dodged", timeMs, { tileId: state.playerTileId, alarmIds: newlyDodged });
+    }
+    const hits = ids.filter(
+      (id) => !protectedIds.includes(id) && !state.contactedAlarmIds.includes(id),
+    );
+    if (!hits.length) return false;
+    state.contactedAlarmIds = [...state.contactedAlarmIds, ...hits];
+    state.combo = Math.max(0, state.combo - rules.hazardPenalty);
+    state.lastHazardHit = { activeTimeMs: timeMs, alarmIds: hits, penalty: rules.hazardPenalty };
+    emit("hazardHit", timeMs, {
+      tileId: state.playerTileId,
+      alarmIds: hits,
+      value: state.combo,
+      reason: `警报命中，Combo 减少 ${rules.hazardPenalty}。`,
+    });
+    return true;
+  };
+  const resolveInput = (command: RealtimeInput) => {
+    state.lastInputSequence = command.sequence;
+    const timeMs = command.activeTimeMs;
+    if (command.kind === "interact" || (command.kind === "move" && command.repeat)) {
+      emit("invalidInput", timeMs, { reason: "防火墙每次物理按下只移动一次，交互键无效。" });
+      resolveContacts(timeMs);
+      return;
+    }
+    const from = state.playerTileId;
+    const destination = inputDestination(definition, from, command, false);
+    if (destination === null || destination === from) {
+      emit("blocked", timeMs, { reason: "请选择棋盘内的不同格。" });
+      resolveContacts(timeMs);
+      return;
+    }
+    const before = definition.tiles.find((tile) => tile.id === from)!;
+    const after = definition.tiles.find((tile) => tile.id === destination)!;
+    const direction: RealtimeDirection | null =
+      before.x === after.x
+        ? after.y < before.y
+          ? "up"
+          : "down"
+        : before.y === after.y
+          ? after.x < before.x
+            ? "left"
+            : "right"
+          : null;
+    if (state.dodge && direction !== state.dodge.direction) state.dodge = null;
+    state.playerTileId = destination;
+    emit("move", timeMs, { tileId: destination });
+    const beatIndex = Math.round((timeMs - rules.firstBeatMs) / intervalMs);
+    const beatMs = rules.firstBeatMs + beatIndex * intervalMs;
+    const onBeat =
+      beatIndex >= 0 && beatIndex < rules.beatCount && Math.abs(timeMs - beatMs) <= rules.windowMs;
+    const firstOnBeat = onBeat && !state.judgedBeatIndices.includes(beatIndex);
+    if (firstOnBeat) {
+      state.judgedBeatIndices = [...state.judgedBeatIndices, beatIndex];
+      state.dodge = direction
+        ? { direction, untilMs: Math.max(timeMs, beatMs) + rules.dodgeWindowMs, beatIndex }
+        : null;
+    }
+    // Reconstructed priority: one new alarm contact replaces this input's ordinary beat result.
+    if (resolveContacts(timeMs, from)) return;
+    if (firstOnBeat) {
+      state.combo += 1;
+      state.bestCombo = Math.max(state.bestCombo, state.combo);
+      state.scoredBeatIndices = [...state.scoredBeatIndices, beatIndex];
+      state.lastJudgment = { kind: "perfect", activeTimeMs: timeMs };
+      emit("hit", timeMs, { tileId: destination, value: state.combo });
+    } else if (!onBeat) {
+      state.combo = Math.max(0, state.combo - rules.offbeatPenalty);
+      state.lastJudgment = { kind: "miss", activeTimeMs: timeMs };
+      emit("miss", timeMs, {
+        tileId: destination,
+        value: state.combo,
+        reason: `错拍，Combo 减少 ${rules.offbeatPenalty}。`,
+      });
+    }
+  };
+
+  let inputIndex = 0;
+  while (true) {
+    const command = inputs[inputIndex];
+    const nextBeat =
+      state.nextBeatIndex < rules.beatCount
+        ? rules.firstBeatMs + state.nextBeatIndex * intervalMs
+        : Infinity;
+    const nextTimeMs = Math.min(
+      alarmTimes[state.nextAlarmEventIndex] ?? Infinity,
+      state.dodge?.untilMs ?? Infinity,
+      nextBeat,
+      command?.activeTimeMs ?? Infinity,
+    );
+    if (
+      nextTimeMs >= rules.durationMs ||
+      nextTimeMs > activeTimeMs ||
+      (nextTimeMs === activeTimeMs && command?.activeTimeMs !== activeTimeMs)
+    )
+      break;
+    while ((alarmTimes[state.nextAlarmEventIndex] ?? Infinity) <= nextTimeMs)
+      state.nextAlarmEventIndex += 1;
+    if (state.dodge && state.dodge.untilMs <= nextTimeMs) state.dodge = null;
+    if (nextBeat === nextTimeMs) {
+      emit("beat", nextTimeMs, { value: state.nextBeatIndex });
+      state.nextBeatIndex += 1;
+    }
+    let processedInput = false;
+    while (inputs[inputIndex]?.activeTimeMs === nextTimeMs) {
+      const input = inputs[inputIndex++]!;
+      if (input.sequence <= state.lastInputSequence) continue;
+      resolveInput(input);
+      processedInput = true;
+    }
+    if (!processedInput) resolveContacts(nextTimeMs);
+  }
+  state.activeTimeMs = Math.min(activeTimeMs, rules.durationMs);
+  state.maskIndex = Math.max(0, state.nextAlarmEventIndex - 1);
   if (activeTimeMs >= rules.durationMs) {
     state.status = state.bestCombo >= rules.comboTarget ? "success" : "failure";
     emit(state.status, rules.durationMs, { value: state.bestCombo });
@@ -810,10 +1085,29 @@ export function validateRealtimeDefinition(value: unknown): readonly RealtimeVal
       report("entry", "光标必须从中心格开始。");
     if (!finitePositive(rules.durationMs)) report("rules.durationMs", "时长必须为有限正数。");
   }
-  if (value.kind === "firewall") validateFirewallRules(rules, tileIds, report);
+  if (value.kind === "firewall") validateFirewallRules(rules, tiles, value.ruleVersion, report);
   if (value.kind === "antivirus") validateAntivirusRules(rules, tileIds, report);
   if (value.kind === "ghosts") validateGhostRules(rules, tiles, entryTileId, report);
   validateCanonicalChallenge(value, rules, tiles, report);
+  if (value.kind === "firewall" && value.ruleVersion === 3 && issues.length === 0) {
+    const definition = value as unknown as DirectionalFirewallDefinition;
+    const limits: Readonly<Record<string, number>> = {
+      "a.firewall.tutorial": 4,
+      "a.firewall.inner": 5,
+      "a.firewall.deep": 8,
+      "a.firewall.core": 12,
+    };
+    const limit = limits[definition.id];
+    if (
+      limit !== undefined &&
+      definition.rules.alarms.some((alarm) =>
+        alarm.frames.some((frame) => firewallDangerTileIds(definition, frame.atMs).length > limit),
+      )
+    )
+      report("rules.alarms", `本档同时危险格上限为 ${limit}。`);
+    if (firewallDangerTileIds(definition, 0).includes(definition.entry.tileId))
+      report("entry", "防火墙不能在初始时刻将警报放在玩家脚下。");
+  }
   return issues;
 }
 
@@ -840,7 +1134,8 @@ function validateCanonicalChallenge(
       rules.bpm !== bpm ||
       rules.firstBeatMs !== 60_000 / bpm / 2 ||
       rules.windowMs !== 150 ||
-      rules.offbeatPenalty !== 5
+      rules.offbeatPenalty !== (value.ruleVersion === 3 ? 1 : 5) ||
+      (value.ruleVersion === 3 && (rules.hazardPenalty !== 5 || rules.dodgeWindowMs !== 150))
     )
       report("rules", "防火墙正式档位参数与玩法合同不一致。");
     if (
@@ -903,21 +1198,32 @@ function validateCanonicalChallenge(
 
 function validateFirewallRules(
   rules: Record<string, unknown>,
-  tileIds: ReadonlySet<string>,
+  tiles: readonly RealtimeTile[],
+  ruleVersion: unknown,
   report: (path: string, message: string) => void,
 ): void {
+  const tileIds = new Set(tiles.map((tile) => tile.id));
   for (const field of ["bpm", "windowMs", "comboTarget", "offbeatPenalty"]) {
     if (!finitePositive(rules[field])) report(`rules.${field}`, "参数必须为有限正数。");
   }
+  if (!Number.isSafeInteger(rules.offbeatPenalty))
+    report("rules.offbeatPenalty", "错拍扣分必须为整数。");
   const firstBeatMs = rules.firstBeatMs;
   const validFirstBeat =
     typeof firstBeatMs === "number" && Number.isFinite(firstBeatMs) && firstBeatMs >= 0;
   if (!validFirstBeat) report("rules.firstBeatMs", "首拍时间必须为有限非负毫秒。");
-  if (!Array.isArray(rules.beatMasks) || rules.beatMasks.length === 0) {
+  if (![1, 2, 3].includes(Number(ruleVersion))) report("ruleVersion", "没有登记此防火墙规则版本。");
+  if (ruleVersion === 3) validateFirewallAlarms(rules, tiles, report);
+  if (ruleVersion !== 3 && (!Array.isArray(rules.beatMasks) || rules.beatMasks.length === 0)) {
     report("rules.beatMasks", "必须冻结逐拍危险图案。");
     return;
   }
-  for (const [index, mask] of rules.beatMasks.entries()) {
+  const beatCount = ruleVersion === 3 ? rules.beatCount : (rules.beatMasks as unknown[]).length;
+  if (!validNonnegativeInteger(beatCount) || beatCount === 0) {
+    report("rules.beatCount", "拍数必须为正整数。");
+    return;
+  }
+  for (const [index, mask] of (ruleVersion === 3 ? [] : (rules.beatMasks as unknown[])).entries()) {
     if (
       !Array.isArray(mask) ||
       mask.some((id: unknown) => typeof id !== "string" || !tileIds.has(id)) ||
@@ -932,19 +1238,98 @@ function validateFirewallRules(
     validFirstBeat &&
     finitePositive(rules.durationMs)
   ) {
+    const beatPath = ruleVersion === 3 ? "rules.beatCount" : "rules.beatMasks";
     const intervalMs = 60_000 / rules.bpm;
-    const lastBeatMs = firstBeatMs + (rules.beatMasks.length - 1) * intervalMs;
+    const lastBeatMs = firstBeatMs + (beatCount - 1) * intervalMs;
     if (2 * rules.windowMs >= intervalMs) report("rules.windowMs", "节拍窗口重叠或相接。");
     if (firstBeatMs - rules.windowMs < 0 || lastBeatMs + rules.windowMs >= rules.durationMs)
-      report("rules.beatMasks", "首末窗口必须完整位于挑战内。");
+      report(beatPath, "首末窗口必须完整位于挑战内。");
     if (lastBeatMs + intervalMs < rules.durationMs)
-      report("rules.beatMasks", "逐拍危险图案不完整。");
+      report(beatPath, ruleVersion === 3 ? "节拍序列不完整。" : "逐拍危险图案不完整。");
   }
   if (
     typeof rules.comboTarget === "number" &&
-    (!Number.isSafeInteger(rules.comboTarget) || rules.comboTarget >= rules.beatMasks.length)
+    (!Number.isSafeInteger(rules.comboTarget) || rules.comboTarget >= beatCount)
   )
     report("rules.comboTarget", "Combo 门槛必须为低于拍数的正整数。");
+}
+
+function validateFirewallAlarms(
+  rules: Record<string, unknown>,
+  tiles: readonly RealtimeTile[],
+  report: (path: string, message: string) => void,
+): void {
+  const tileIds = new Set(tiles.map((tile) => tile.id));
+  if (!finitePositive(rules.hazardPenalty) || !Number.isSafeInteger(rules.hazardPenalty))
+    report("rules.hazardPenalty", "警报扣分必须为正整数。");
+  if (!finitePositive(rules.dodgeWindowMs))
+    report("rules.dodgeWindowMs", "闪避时段必须为有限正数。");
+  if (!Array.isArray(rules.alarms)) {
+    report("rules.alarms", "必须明确提供固定警报排表。");
+    return;
+  }
+  const ids = new Set<string>();
+  for (const [index, alarm] of rules.alarms.entries()) {
+    const path = `rules.alarms[${index}]`;
+    if (
+      !isRecord(alarm) ||
+      !validId(alarm.id) ||
+      !["up", "right", "down", "left"].includes(String(alarm.approachFrom)) ||
+      typeof alarm.startsAtMs !== "number" ||
+      !Number.isFinite(alarm.startsAtMs) ||
+      alarm.startsAtMs < 0 ||
+      !finitePositive(alarm.endsAtMs) ||
+      alarm.endsAtMs <= alarm.startsAtMs ||
+      (typeof rules.durationMs === "number" && alarm.endsAtMs > rules.durationMs) ||
+      !Array.isArray(alarm.frames) ||
+      alarm.frames.length === 0
+    ) {
+      report(path, "警报需要稳定身份、有效来向、半开活跃时段及固定移动帧。");
+      continue;
+    }
+    if (ids.has(alarm.id)) report(`${path}.id`, "警报实例 ID 重复。");
+    ids.add(alarm.id);
+    let previousTime = -Infinity;
+    let previousTileIds: readonly string[] | null = null;
+    for (const [frameIndex, frame] of alarm.frames.entries()) {
+      if (
+        !isRecord(frame) ||
+        typeof frame.atMs !== "number" ||
+        !Number.isFinite(frame.atMs) ||
+        frame.atMs < alarm.startsAtMs ||
+        frame.atMs >= alarm.endsAtMs ||
+        frame.atMs <= previousTime ||
+        (frameIndex === 0 && frame.atMs !== alarm.startsAtMs) ||
+        !Array.isArray(frame.tileIds) ||
+        frame.tileIds.length === 0 ||
+        frame.tileIds.some((id: unknown) => typeof id !== "string" || !tileIds.has(id)) ||
+        new Set(frame.tileIds).size !== frame.tileIds.length
+      ) {
+        report(
+          `${path}.frames[${frameIndex}]`,
+          "警报帧必须按有效时间严格递增，起帧与出现时间一致，并引用不同的已知格。",
+        );
+        continue;
+      }
+      if (previousTileIds) {
+        const [dx, dy] = DIRECTION_VECTORS[alarm.approachFrom as RealtimeDirection];
+        const expected = previousTileIds.map((id) => {
+          const from = tiles.find((tile) => tile.id === id)!;
+          return tiles.find((tile) => tile.x === from.x - dx && tile.y === from.y - dy)?.id;
+        });
+        if (
+          expected.length !== frame.tileIds.length ||
+          expected.some((id) => id === undefined || !(frame.tileIds as unknown[]).includes(id))
+        )
+          report(
+            `${path}.frames[${frameIndex}]`,
+            "每个警报帧必须从所标来向四邻接移动一步，不能跳格或逆向。",
+          );
+      }
+      previousTime = frame.atMs;
+      previousTileIds = frame.tileIds as string[];
+    }
+  }
 }
 
 function validateAntivirusRules(

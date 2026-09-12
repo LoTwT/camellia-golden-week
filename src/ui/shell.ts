@@ -3,6 +3,7 @@ import { entitiesAt } from "../core/engine.ts";
 import type { GameCommand, GameContent, GameSettings, GameState } from "../core/types.ts";
 import { REWARD_LABELS } from "./labels.ts";
 import { firewallCue } from "./firewall-cue.ts";
+import { firewallFeedback } from "../core/firewall-feedback.ts";
 
 export interface ShellActions {
   send: (command: GameCommand) => void;
@@ -65,7 +66,7 @@ export class GameShell {
     firewallOverlay.id = "firewall-overlay";
     firewallOverlay.className = "firewall-overlay";
     firewallOverlay.hidden = true;
-    firewallOverlay.innerHTML = `<aside class="firewall-help"><span class="firewall-help-icon" aria-hidden="true">♪</span>跟随音乐节拍移动，<em>白光</em>亮起时踩拍。<br>注意即将变红的危险格！</aside><div class="firewall-run-status"><span id="firewall-difficulty"></span><span id="firewall-goal"></span><span id="firewall-time"></span></div><progress id="firewall-song-progress" class="firewall-song-progress" max="1" value="0" aria-label="挑战时间进度"></progress><output id="firewall-combo-value" class="visually-hidden" aria-label="当前连击"></output>`;
+    firewallOverlay.innerHTML = `<div id="firewall-impact" class="firewall-impact" aria-hidden="true"></div><aside class="firewall-help"><span class="firewall-help-icon" aria-hidden="true">♪</span>跟随音乐与<em>白光</em>踩拍。<br>朝箭头方向迎向警报，可完美闪避。<br><span class="firewall-penalties">错拍 −1 · 警报命中 −5</span></aside><output id="firewall-feedback" class="firewall-feedback" aria-live="polite" aria-atomic="true"></output><div class="firewall-run-status"><span id="firewall-difficulty"></span><span id="firewall-goal"></span><span id="firewall-time"></span></div><progress id="firewall-song-progress" class="firewall-song-progress" max="1" value="0" aria-label="挑战时间进度"></progress><output id="firewall-combo-value" class="visually-hidden" aria-label="当前连击"></output>`;
     root.querySelector(".playfield")!.append(firewallOverlay);
     for (const id of [
       "mission-text",
@@ -90,6 +91,8 @@ export class GameShell {
       "firewall-time",
       "firewall-song-progress",
       "firewall-combo-value",
+      "firewall-feedback",
+      "firewall-impact",
       "controls",
       "save-status",
     ]) {
@@ -532,6 +535,10 @@ export class GameShell {
         );
         meter = `COMBO ${active.combo}   /   最高 ${active.bestCombo} · 目标 ${definition.rules.comboTarget}   /   ${Math.max(0, (definition.rules.durationMs - state.clock.activeTimeMs) / 1000).toFixed(1)} s`;
         const cue = firewallCue(definition, active, state.clock);
+        const feedback = firewallFeedback(active, state.clock);
+        this.set("firewall-feedback", feedback.message);
+        this.fields["firewall-feedback"]!.dataset.kind = feedback.judgment ?? "none";
+        this.fields["firewall-impact"]!.style.opacity = String(feedback.impactOpacity);
         const screenLight = this.fields["firewall-screen-light"];
         if (screenLight) {
           screenLight.dataset.phase = cue.phase;
@@ -548,7 +555,7 @@ export class GameShell {
         }
         this.fields["challenge-meter"]?.classList.toggle(
           "beat-window",
-          cue.phase === "ready" || cue.phase === "hit",
+          cue.phase === "ready" || cue.phase === "hit" || cue.phase === "judged",
         );
       }
       if (active.kind === "antivirus" && definition?.kind === "antivirus")
@@ -644,7 +651,7 @@ export class GameShell {
           ? "杀毒：移动到数据格或鼠标点选当前出现的数据。蓝色 +1，紫色 +2；星星清除当前蓝 / 紫数据。目标有时限，移动到空格不会扣分。"
           : kind === "ghosts"
             ? "幽灵：用方向键逐格避开幽灵，点亮灯以清除指定幽灵组。与幽灵碰撞或交换位置会重试；长距离自动寻路已停用。"
-            : "跟随音乐与画面周围白光，在拍点移动。两侧电视显示连击，命中显示 PERFECT。底部文字也会提示拍点；减少闪烁时可依文字操作。鼠标可直接点任意不同格；方向键每次按下移动一次，每拍计分一次。";
+            : "跟随音乐与画面周围白光，在拍点移动。普通错拍减 1 连击，触碰警报减 5；朝箭头方向踩拍，迎向警报可完美闪避。警报会移动，停在红格也会受击。两侧电视显示连击，底部文字提示拍点，减少闪烁时可依文字操作。鼠标可点不同格；方向键每次按下移动一次，每拍最多加 1。";
       if (this.modal("终端挑战", description, `ready:${state.playerPosition.tileId}`)) {
         const names: Record<string, string> = {
           tutorial: "教学 · 15 秒 / Combo 12",

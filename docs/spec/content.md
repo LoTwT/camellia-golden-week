@@ -131,7 +131,7 @@ ID 只用小写 ASCII、数字、点、短横线，在各类型目录内唯一�
 | oneStroke | `requiredTileIds, startTileId, endTileId`；路径集合连通且含起终点 |
 | routing | `ballIds, cartIds, stationIds, targetStationByBallId`；所有物体位于本房间；不同球的指定基站不得重复 |
 | theft | `objectIds, socketIds, colorByObjectId, colorBySocketId`；同色数量匹配 |
-| firewall | `durationMs, bpm, firstBeatMs, windowMs, comboTarget, offbeatPenalty, beatMasks`；每拍独立图案，至少一条达标操作记录 |
+| firewall | v3：`durationMs, bpm, firstBeatMs, windowMs, comboTarget, offbeatPenalty, beatCount, hazardPenalty, dodgeWindowMs, alarms`；警报含 `id, startsAtMs, endsAtMs, approachFrom, frames[{atMs,tileIds}]`；方向与时间均固定、至少一条正常方向键达标见证；v1/v2 历史定义保留 `beatMasks`，不能用警报数量充当拍数 |
 | antivirus | `durationMs, targetScore, spawns`；spawns 每项有 `id, tileId, kind, spawnAtMs, expiresAtMs`，固定脚本 |
 | ghosts | `ghosts, lamps, playerStepMinMs, exitTileId`；ghost 含路径 / 步间隔 / 初始索引，lamp 含明确 `ghostIds` |
 

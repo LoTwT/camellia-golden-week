@@ -6,6 +6,7 @@ import aSource from "../src/content/areas/a.json" with { type: "json" };
 import dSource from "../src/content/areas/d.json" with { type: "json" };
 import revisitSource from "../src/content/areas/revisits.json" with { type: "json" };
 import staticSource from "../src/content/challenges/static.json" with { type: "json" };
+import realtimeSource from "../src/content/challenges/realtime.json" with { type: "json" };
 import type { ProfileId } from "../src/core/types.ts";
 
 function withSourceChange<T extends object>(
@@ -33,6 +34,30 @@ function restoreSource(target: object, original: object): void {
     else current[key] = structuredClone(value);
   }
   if (Array.isArray(target) && Array.isArray(original)) target.length = original.length;
+}
+
+test("实时源的版本元数据必须与装配发布一致，不能被忽略", () => {
+  assert.equal(realtimeSource.contentVersion, worldCatalog.contentVersion);
+  assert.equal(realtimeSource.ruleVersion, worldCatalog.ruleVersion);
+  withSourceChange(
+    realtimeSource,
+    (source) => {
+      source.ruleVersion += 1;
+    },
+    () => assert.throws(() => assembleContent("M1"), /实时内容版本/),
+  );
+});
+
+for (const field of ["definitions", "witnesses"] as const) {
+  test(`实时源的 ${field} 不能混入其它规则版本`, () => {
+    withSourceChange(
+      realtimeSource,
+      (source) => {
+        source[field][0]!.ruleVersion += 1;
+      },
+      () => assert.throws(() => assembleContent("M1"), /实时内容版本/),
+    );
+  });
 }
 
 test("装配前拒绝不存在的实体格，即使其所属区域尚未收录", () => {

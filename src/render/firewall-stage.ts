@@ -2,7 +2,7 @@ import * as THREE from "three";
 import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
 import { TELEVISION } from "./layout.ts";
 
-type FirewallJudgment = "perfect" | "miss" | null;
+import type { FirewallJudgment } from "../core/firewall-feedback.ts";
 
 const SCREEN_WIDTH = 1024;
 const SCREEN_HEIGHT = 768;
@@ -236,14 +236,15 @@ export class FirewallStage {
     paintChromaticText(context, "COMBO", 720, 630, "#f0eedf");
 
     if (this.judgment) {
+      const labels = { perfect: "PERFECT", miss: "MISS", hazardHit: "−5 COMBO", dodged: "DODGE" };
+      const colors = {
+        perfect: "#e4de94",
+        miss: "#ef999e",
+        hazardHit: "#ff879a",
+        dodged: "#baf4df",
+      };
       context.font = 'italic 700 74px "Camellia Numbers", sans-serif';
-      paintChromaticText(
-        context,
-        this.judgment === "perfect" ? "PERFECT" : "MISS",
-        169,
-        700,
-        this.judgment === "perfect" ? "#e4de94" : "#ef999e",
-      );
+      paintChromaticText(context, labels[this.judgment], 169, 700, colors[this.judgment]);
     }
 
     context.fillStyle = "#18152223";

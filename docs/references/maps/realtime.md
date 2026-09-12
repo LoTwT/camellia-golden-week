@@ -2,7 +2,11 @@
 
 [文档索引](../../index.md) · [玩法合同](../../spec/gameplay.md) · [内容合同](../../spec/content.md) · [验收合同](../../spec/acceptance.md) · [来源入口](../index.md)
 
-当前防火墙 v2 采用原参考的 5×4 构图及约 110 BPM 节奏。新版固定数据是 [`realtime.json`](../../../src/content/challenges/realtime.json)，行列危险组与首末拍均有公开命令见证；来源、参数推断边界及实际验证见[防火墙还原记录](../../verification/firewall-restoration.md)与 [S11](../firewall-audio.md)。
+当前防火墙 v3 保留 5×4 构图与 110 BPM，改用具有稳定 ID、来向、逐帧占格和生灭时间的移动警报。固定数据为 [`realtime.json`](../../../src/content/challenges/realtime.json)，普通错拍 −1、警报命中 −5、迎向踩拍闪避的原始证据见 [S12](../firewall-hazards.md)。精确时窗与警报排表属于固定重建，由[玩法合同](../../spec/gameplay.md#62-突破防火墙)维护。教学前 12 拍安全，随后一条来自右侧的列波；正式三档递增移动警报与交叉组合。
+
+[`current.ts`](../../../src/content/witnesses/current.ts) 通过正常方向命令重放：教学 27 拍、1 次实际闪避；内层 / 深层 / 核心各 82 拍，分别 10 / 13 / 20 次实际闪避，全程无受击。每个方向与时间均明列，不比较答案字符串；另有失败见证及其它合法操作测试。世界见证保留主路径与全收集区别，最终账本仍为 26 个奖励 / 130 物资。实际工程与 Chrome 覆盖见[警报修复记录](../../verification/firewall-hazards.md)。
+
+v2 数据与见证分别冻结于 [`history/realtime-v2.json`](../../../src/content/history/realtime-v2.json) 和 [`witnesses/v2.ts`](../../../src/content/witnesses/v2.ts)；对应版本的来源与实测见[历史还原记录](../../verification/firewall-restoration.md)及 [S11](../firewall-audio.md)，不以 v3 规则重新解释旧成绩。
 
 下文保留 2026-09-11 首轮内容版本 1 / 规则版本 1 的测绘与纯规则验证，权威数据已冻结为 [`history/realtime-v1.json`](../../../src/content/history/realtime-v1.json)，不会随新版重写。运行规则是 [`realtime.ts`](../../../src/core/realtime.ts)，有效时钟是 [`clock.ts`](../../../src/core/clock.ts)。下列旧坐标和精确时间均为当时的重建，不声称测得原版地图或节奏算法。
 

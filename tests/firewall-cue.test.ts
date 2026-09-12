@@ -1,8 +1,12 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { createClock } from "../src/core/clock.ts";
-import { advanceRealtime, createRealtime } from "../src/core/realtime.ts";
-import type { FirewallDefinition, RealtimeDefinition } from "../src/core/realtime.ts";
+import { advanceRealtime, createRealtime, firewallBeatCount } from "../src/core/realtime.ts";
+import type {
+  DirectionalFirewallDefinition,
+  FirewallDefinition,
+  RealtimeDefinition,
+} from "../src/core/realtime.ts";
 import content from "../src/content/challenges/realtime.json" with { type: "json" };
 import { firewallCue } from "../src/ui/firewall-cue.ts";
 
@@ -12,11 +16,18 @@ const definitions = (content.definitions as RealtimeDefinition[]).filter(
 const tutorial = definitions.find((definition) => definition.id === "a.firewall.tutorial")!;
 const clockAt = (activeTimeMs: number) => ({ ...createClock(0, { realtime: true }), activeTimeMs });
 
-test("防火墙视觉可移动窗口与四档真实评分的首末边界完全一致", () => {
-  for (const definition of definitions) {
-    const { firstBeatMs, bpm, windowMs, durationMs, beatMasks } = definition.rules;
+test("没有警报接触时，视觉拍点窗口与四档真实评分的首末边界完全一致", () => {
+  for (const original of definitions) {
+    const definition: FirewallDefinition =
+      original.ruleVersion === 3
+        ? { ...original, rules: { ...original.rules, alarms: [] } }
+        : {
+            ...original,
+            rules: { ...original.rules, beatMasks: original.rules.beatMasks.map(() => []) },
+          };
+    const { firstBeatMs, bpm, windowMs, durationMs } = definition.rules;
     const period = 60_000 / bpm;
-    const lastBeat = firstBeatMs + (beatMasks.length - 1) * period;
+    const lastBeat = firstBeatMs + (firewallBeatCount(definition) - 1) * period;
     for (const at of [
       0,
       firstBeatMs - windowMs - 1,
@@ -49,15 +60,20 @@ test("防火墙视觉可移动窗口与四档真实评分的首末边界完全�
 });
 
 test("拍点提示读取内容参数，不另写一套250/500/150ms常数", () => {
-  const definition: FirewallDefinition = {
+  const definition: DirectionalFirewallDefinition = {
     ...tutorial,
+    ruleVersion: 3,
     rules: {
-      ...tutorial.rules,
       firstBeatMs: 400,
       bpm: 100,
       windowMs: 80,
       durationMs: 1800,
-      beatMasks: [[], [], []],
+      comboTarget: 1,
+      offbeatPenalty: 1,
+      beatCount: 3,
+      hazardPenalty: 5,
+      dodgeWindowMs: 150,
+      alarms: [],
     },
   };
   for (const at of [319, 320, 400, 480, 481, 919, 920, 1000, 1080, 1081]) {
@@ -92,6 +108,44 @@ test("已经计分的同一拍显示命中，下一拍重新提示移动", () =>
   assert.equal(firewallCue(tutorial, result.state, clockAt(nextBeat)).beatNumber, 2);
 });
 
+test("踩拍受击消耗本拍后不再提示现在移动，节拍白光仍与时间同步", () => {
+  assert.ok(tutorial.ruleVersion === 3);
+  const entry = tutorial.tiles.find((tile) => tile.id === tutorial.entry.tileId)!;
+  const destination = tutorial.tiles.find((tile) => tile.x === entry.x + 1 && tile.y === entry.y)!;
+  const beat = tutorial.rules.firstBeatMs;
+  const definition: DirectionalFirewallDefinition = {
+    ...tutorial,
+    rules: {
+      ...tutorial.rules,
+      alarms: [
+        {
+          id: "cue-hit",
+          approachFrom: "left",
+          startsAtMs: beat,
+          endsAtMs: beat + 500,
+          frames: [{ atMs: beat, tileIds: [destination.id] }],
+        },
+      ],
+    },
+  };
+  const result = advanceRealtime(definition, createRealtime(definition), beat, {
+    kind: "move",
+    direction: "right",
+    activeTimeMs: beat,
+    sequence: 1,
+  });
+  assert.ok(result.state.kind === "firewall");
+  assert.ok(result.feedback.some((event) => event.kind === "hazardHit"));
+  const cue = firewallCue(definition, result.state, clockAt(beat));
+  assert.equal(cue.label, "本拍受击");
+  assert.equal(cue.phase, "judged");
+  assert.equal(cue.screenLightOpacity, 1);
+  assert.equal(
+    firewallCue(definition, result.state, clockAt(beat + 60_000 / definition.rules.bpm)).phase,
+    "ready",
+  );
+});
+
 test("暂停、失焦待恢复和准备倒数不提示玩家输入", () => {
   const active = createRealtime(tutorial);
   assert.equal(
@@ -118,7 +172,7 @@ test("时间终点与已结算状态都关闭输入提示，拍数不会越界",
   );
   assert.equal(
     firewallCue(tutorial, active, clockAt(20000)).beatNumber,
-    tutorial.rules.beatMasks.length,
+    firewallBeatCount(tutorial),
   );
 });
 

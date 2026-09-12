@@ -1,0 +1,6 @@
+{
+  "scope": "仅首个方向键之前的启动截图准备允许一次可见 clockGap 正常继续；后续运行不自动恢复。恢复后弃用暂停前后样本，重新取得连续相同的可玩棋盘。",
+  "recoveries": [],
+  "playableBeforeMove": true,
+  "beforeMoveSha256": "4e57a6d6c896e2f2710119e709ab2156cec764bc1d5a3634403014e5a1bc1a08"
+}

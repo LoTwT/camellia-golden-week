@@ -1705,7 +1705,7 @@
       "sourceUrl": "https://raw.githubusercontent.com/notofonts/noto-cjk/165c01b46ea533872e002e0785ff17e44f6d97d8/Sans/SubsetOTF/SC/NotoSansSC-Regular.otf",
       "sourceVersion": "165c01b46ea533872e002e0785ff17e44f6d97d8",
       "sourceSha256": "faa6c9df652116dde789d351359f3d7e5d2285a2b2a1f04a2d7244df706d5ea9",
-      "sha256": "ba720c7cadcdd2232037e40b7f5c9c00bfa21d06969c4bdf9e1855111ec0c937",
+      "sha256": "340762aafc27b1d7eb724fa9a5fca8f9af9594fd370f13dbdc9b5bb4ccf3d1c5",
       "family": "Noto Sans SC",
       "weights": "400",
       "dimensions": null,
@@ -1860,6 +1860,7 @@
           8594,
           8595,
           8599,
+          8722,
           8734,
           9642,
           9675,
@@ -1941,6 +1942,7 @@
           19990,
           20002,
           20004,
+          20005,
           20010,
           20013,
           20018,
@@ -2035,6 +2037,7 @@
           21040,
           21046,
           21047,
+          21051,
           21069,
           21103,
           21147,
@@ -2049,6 +2052,7 @@
           21305,
           21306,
           21319,
+          21322,
           21327,
           21333,
           21335,
@@ -2120,6 +2124,7 @@
           22826,
           22830,
           22833,
+          22836,
           22841,
           22870,
           22909,
@@ -2165,6 +2170,7 @@
           24038,
           24050,
           24067,
+          24103,
           24120,
           24133,
           24179,
@@ -2200,7 +2206,6 @@
           24635,
           24674,
           24688,
-          24847,
           25103,
           25104,
           25110,
@@ -2221,6 +2226,7 @@
           25243,
           25250,
           25252,
+          25253,
           25269,
           25293,
           25298,
@@ -2281,6 +2287,7 @@
           26367,
           26368,
           26377,
+          26397,
           26399,
           26410,
           26411,
@@ -2416,6 +2423,7 @@
           31561,
           31572,
           31639,
+          31661,
           31867,
           31934,
           31995,
@@ -2444,6 +2452,7 @@
           32570,
           32599,
           32622,
+          32654,
           32771,
           32773,
           32780,
@@ -2483,6 +2492,7 @@
           35299,
           35302,
           35328,
+          35686,
           35745,
           35746,
           35748,
@@ -2523,6 +2533,7 @@
           36319,
           36328,
           36335,
+          36339,
           36367,
           36393,
           36523,
@@ -2552,6 +2563,7 @@
           36870,
           36873,
           36880,
+          36882,
           36890,
           36895,
           36896,
@@ -2847,8 +2859,8 @@
           65517,
           65518
         ],
-        "glyphCount": 1432,
-        "cmapCount": 1123,
+        "glyphCount": 1444,
+        "cmapCount": 1135,
         "fonttoolsVersion": "4.65.0",
         "brotliVersion": "1.2.0",
         "reservedUnicodeRanges": [
@@ -2869,7 +2881,7 @@
           },
           {
             "path": "src/audio/audio.ts",
-            "sha256": "9fc1aac99115c22907f0d648126403586c6f9ca4ef778dbbdf18dfd4f1eeb258"
+            "sha256": "59cd2505eea445907035b7e048f6840304cb9f9efbc21d06e27847c07974dc3b"
           },
           {
             "path": "src/audio/firewall-music.ts",
@@ -2917,11 +2929,11 @@
           },
           {
             "path": "src/content/assemble.ts",
-            "sha256": "da1f51dcf110f00449836e3a38910c35d68290f6a78c0375d2d8b37027753c67"
+            "sha256": "ae474e09cb4365a663e7c6c7a9ee12827dc591e756bd61076b2ce176203c6c9c"
           },
           {
             "path": "src/content/challenges/realtime.json",
-            "sha256": "fe746e9e816a88a0956de297014e2ab19c7b3fccd3e883cf65ccfa04d666e353"
+            "sha256": "7ac766389ec4e9a5de8bbf2638369df48372a2a6b030848e79dc5744f6e9fae7"
           },
           {
             "path": "src/content/challenges/static.json",
@@ -2930,6 +2942,10 @@
           {
             "path": "src/content/history/realtime-v1.json",
             "sha256": "3600214a533fffc2152184ba99d30d008d36584bb73778c85745638915249edf"
+          },
+          {
+            "path": "src/content/history/realtime-v2.json",
+            "sha256": "fe746e9e816a88a0956de297014e2ab19c7b3fccd3e883cf65ccfa04d666e353"
           },
           {
             "path": "src/content/source-validation.ts",
@@ -2941,11 +2957,11 @@
           },
           {
             "path": "src/content/witnesses/current.ts",
-            "sha256": "f5fd0aea20a5b0a0fa5dddb3b30836bcead27097fc99ce9d1baf85329ec2fa90"
+            "sha256": "e9898a980fa20079f98d17fe5e59d5b4457e1b0108f833e6abbbd62723b0240c"
           },
           {
             "path": "src/content/witnesses/index.ts",
-            "sha256": "c75cc3e37c309c112caf6569a34cdef7671ce826588ef13fbb2dba9a78e39d0a"
+            "sha256": "fb53d70829d538e200f2c236205056d9a0b713222ea2826a4401686c053789a4"
           },
           {
             "path": "src/content/witnesses/m1.json",
@@ -2968,8 +2984,12 @@
             "sha256": "f0bc6ba7ce3d4219c3b6e16eb3ad0bf362f9de76076a8158db64f8b12ad84075"
           },
           {
+            "path": "src/content/witnesses/v2.ts",
+            "sha256": "efdc72e8a643e5175fd0a248068b57e645b9a905fcf9c3bc18368ecbad0f42bd"
+          },
+          {
             "path": "src/content/world.json",
-            "sha256": "3084cdc97a46308f850256c90b9e3defc8cf170796896ce9d75f448859b7f144"
+            "sha256": "c72ed9f3e4aaec22e606fb2bcec1089cfc1fdf6674b88fcd6e8900ee5c95f20f"
           },
           {
             "path": "src/core/clock.ts",
@@ -2977,7 +2997,11 @@
           },
           {
             "path": "src/core/engine.ts",
-            "sha256": "31af0e061c15de17d96361dfb4293173a87405757d49dcf88e01fc3949872546"
+            "sha256": "9aad72e0992d547b8a6bf9b33c34f2c57a0876c8e6ca82c1bd9c9c514d279149"
+          },
+          {
+            "path": "src/core/firewall-feedback.ts",
+            "sha256": "f0301c09e954e2d4dc45dfc8397c50a95b0243bd2753e6b40a2ad111fc95c74f"
           },
           {
             "path": "src/core/progress.ts",
@@ -2985,11 +3009,11 @@
           },
           {
             "path": "src/core/projection.ts",
-            "sha256": "735f38a8c642da4374ddad88ce7bd19bc85cd2695033cb9b5e78a74e40320fdb"
+            "sha256": "921bc2ac25d84cd21418e826d81ffd3b7d07c2776a061eee56bbef0b026d1014"
           },
           {
             "path": "src/core/realtime.ts",
-            "sha256": "8ee5567b8af28e6c126d52279919b08cc6a62e149483217c7941c3cbbe828d2d"
+            "sha256": "10174fb620488fe173784188571c713435712cb25fdc71f3191c9cb53a8c015a"
           },
           {
             "path": "src/core/static-puzzle.ts",
@@ -2997,7 +3021,7 @@
           },
           {
             "path": "src/core/types.ts",
-            "sha256": "d453174b2c8125bd4b56c6b7b587ac04647f1161920434cf048755dd0e477c33"
+            "sha256": "c864a47f8c4650bda017ad52145c1b2db0bf300ed76c54490acf4c7647f43e2a"
           },
           {
             "path": "src/env.d.ts",
@@ -3017,11 +3041,11 @@
           },
           {
             "path": "src/platform/migrations.ts",
-            "sha256": "271fd23dbaf824ffe83bef3ea4f40ce20fe445def1f5905714602e0456ac2253"
+            "sha256": "f4a1b26535c2be734909ccbe99df781e674bb75a2fa0c49f7cb9c1a3a11f16ee"
           },
           {
             "path": "src/platform/save-payload.ts",
-            "sha256": "12c4401d56344ad70e2aa4102f70d01699aa67780e86ff4e73c7f0899c37e0d7"
+            "sha256": "f1137563e92c9e7c82eddf5e13f86d6fe3cc85190fd1e6332bfbdc3a5302a952"
           },
           {
             "path": "src/platform/save-store.ts",
@@ -3045,11 +3069,11 @@
           },
           {
             "path": "src/render/board.ts",
-            "sha256": "0ff577b88815afc7dcd8dd82f7cef8dc42ae81c8f6faa71d47e0f0c758cb0e7d"
+            "sha256": "542e8edffc9925bed0e031d9ba3a8910ce00fad2bf73633ccd5e0013ef065c49"
           },
           {
             "path": "src/render/firewall-stage.ts",
-            "sha256": "4757fef67f8b1d9cacccdabf7c923a951c86a224e6506546579d805139d5a88d"
+            "sha256": "1039aea6723a18b51f00bdb5e30eaf37ae8d90f76fb59d4f462fdf4482095171"
           },
           {
             "path": "src/render/layout.ts",
@@ -3061,11 +3085,11 @@
           },
           {
             "path": "src/ui/firewall-cue.ts",
-            "sha256": "0bd0dfe50e423dcc519a3dc0da4aa8b7b352210b52e1c5472523f5a13be94eff"
+            "sha256": "52555411654ac62a30d252f67dbf7a1119ce9250321c31f32cb0e1a02aa2cde4"
           },
           {
             "path": "src/ui/firewall.css",
-            "sha256": "8e9874fe57ee4a4af356ec586a871210699375b339069353bbd82304db1fd2c4"
+            "sha256": "86f9ef5735659bd27fa37dd83dc2b043bd30e38def4aba4b51d0036c8710d3c5"
           },
           {
             "path": "src/ui/labels.ts",
@@ -3073,7 +3097,7 @@
           },
           {
             "path": "src/ui/shell.ts",
-            "sha256": "b6d83c6971bb21bf1847a30bedee0a6916a36c1c0c9488630020353689fbb9fd"
+            "sha256": "6e788332cac4863f1fa40647b5a4044a166e46a98d45bdeacf4eef9eb5681833"
           },
           {
             "path": "src/ui/style.css",
@@ -3189,6 +3213,7 @@
           8594,
           8595,
           8599,
+          8722,
           8734,
           9642,
           9675,
@@ -3210,6 +3235,7 @@
           19990,
           20002,
           20004,
+          20005,
           20010,
           20013,
           20018,
@@ -3304,6 +3330,7 @@
           21040,
           21046,
           21047,
+          21051,
           21069,
           21103,
           21147,
@@ -3318,6 +3345,7 @@
           21305,
           21306,
           21319,
+          21322,
           21327,
           21333,
           21335,
@@ -3389,6 +3417,7 @@
           22826,
           22830,
           22833,
+          22836,
           22841,
           22870,
           22909,
@@ -3434,6 +3463,7 @@
           24038,
           24050,
           24067,
+          24103,
           24120,
           24133,
           24179,
@@ -3469,7 +3499,6 @@
           24635,
           24674,
           24688,
-          24847,
           25103,
           25104,
           25110,
@@ -3490,6 +3519,7 @@
           25243,
           25250,
           25252,
+          25253,
           25269,
           25293,
           25298,
@@ -3550,6 +3580,7 @@
           26367,
           26368,
           26377,
+          26397,
           26399,
           26410,
           26411,
@@ -3685,6 +3716,7 @@
           31561,
           31572,
           31639,
+          31661,
           31867,
           31934,
           31995,
@@ -3713,6 +3745,7 @@
           32570,
           32599,
           32622,
+          32654,
           32771,
           32773,
           32780,
@@ -3752,6 +3785,7 @@
           35299,
           35302,
           35328,
+          35686,
           35745,
           35746,
           35748,
@@ -3792,6 +3826,7 @@
           36319,
           36328,
           36335,
+          36339,
           36367,
           36393,
           36523,
@@ -3821,6 +3856,7 @@
           36870,
           36873,
           36880,
+          36882,
           36890,
           36895,
           36896,
@@ -3891,7 +3927,6 @@
           40664,
           40736,
           40784,
-          65281,
           65288,
           65289,
           65292,
@@ -3899,9 +3934,9 @@
           65307,
           65311
         ],
-        "coverageSha256": "bef918a1661ef5acce301d29add22d038984f1788d372db47913c6dd41a5bf04",
-        "outputSha256": "ba720c7cadcdd2232037e40b7f5c9c00bfa21d06969c4bdf9e1855111ec0c937",
-        "byteLength": 184736
+        "coverageSha256": "1a26914b8c7ad7f92d513bf2fdab26658858f36dcd7966ad1b75312917133a71",
+        "outputSha256": "340762aafc27b1d7eb724fa9a5fca8f9af9594fd370f13dbdc9b5bb4ccf3d1c5",
+        "byteLength": 186432
       },
       "licenseSha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2",
       "profiles": [

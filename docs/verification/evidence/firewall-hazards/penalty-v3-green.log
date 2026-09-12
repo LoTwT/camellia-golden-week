@@ -1,0 +1,10 @@
+{"source":"current workspace v3 reducer + v3 definition","ruleVersion":3}
+✔ 录像回归：六次成功后普通错拍只减1，得到5而非1 (1.104083ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 93.529708
