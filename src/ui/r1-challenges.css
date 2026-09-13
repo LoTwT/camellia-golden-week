@@ -1,0 +1,330 @@
+/* R1 dedicated surfaces, scoped away from the established firewall presentation. */
+.game-shell:is([data-challenge="antivirus"], [data-challenge="theft"]) {
+  display: block;
+}
+.game-shell:is([data-challenge="antivirus"], [data-challenge="theft"]) .playfield {
+  height: 100%;
+}
+.game-shell:is([data-challenge="antivirus"], [data-challenge="theft"]) .hud-top {
+  position: absolute;
+  z-index: 4;
+  top: 2.4%;
+  left: 3%;
+  width: 51%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.game-shell:is([data-challenge="antivirus"], [data-challenge="theft"])
+  :is(.brand, .save-area, .area-title, .progress-rail, .mission, .challenge-meter) {
+  display: none;
+}
+.game-shell:is([data-challenge="antivirus"], [data-challenge="theft"]) #menu-button {
+  border: 2px solid #151620;
+  border-radius: 24px;
+  background: #292d3c;
+}
+.game-shell:is([data-challenge="antivirus"], [data-challenge="theft"]) .hud-bottom {
+  position: absolute;
+  z-index: 4;
+  inset: auto 0 0;
+  min-height: 54px;
+  padding: 0 3%;
+  background: #121725db;
+  border: 0;
+}
+.game-shell:is([data-challenge="antivirus"], [data-challenge="theft"]) .controls {
+  width: 100%;
+  justify-content: space-between;
+}
+.game-shell:is([data-challenge="antivirus"], [data-challenge="theft"]) .controls .muted {
+  display: none;
+}
+.game-shell:is([data-challenge="antivirus"], [data-challenge="theft"]) .context-tip {
+  left: 20%;
+  right: 20%;
+  bottom: 9%;
+  text-align: center;
+  z-index: 4;
+}
+.game-shell:is([data-challenge="antivirus"], [data-challenge="theft"]) #game-canvas:focus-visible {
+  outline: none;
+}
+.game-shell:is([data-challenge="antivirus"], [data-challenge="theft"]):has(
+    #game-canvas:focus-visible
+  )
+  .key-hint {
+  outline: 2px solid var(--acid);
+  outline-offset: 4px;
+}
+.antivirus-overlay {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  pointer-events: none;
+}
+.antivirus-heading {
+  position: absolute;
+  top: 3%;
+  left: 13%;
+  font-size: clamp(18px, 2vw, 28px);
+  color: #f0f4fb;
+  text-shadow: 0 2px 4px #10111c;
+}
+.antivirus-status {
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  width: 34%;
+  max-width: 500px;
+  padding: 10px 20px;
+  border: 3px solid #151422;
+  border-radius: 24px;
+  background: #272a39f5;
+  box-shadow: inset 0 1px #8c91a3;
+  color: #f7e9ac;
+}
+.antivirus-count {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+.antivirus-count strong {
+  font:
+    700 clamp(22px, 2.6vw, 38px) "Camellia Numbers",
+    sans-serif;
+  color: #dceaf7;
+}
+.antivirus-status[data-pressure="high"] .antivirus-count strong {
+  color: #ffd28a;
+}
+.antivirus-status p {
+  margin: 4px 0 0;
+  font-size: clamp(12px, 1.05vw, 16px);
+}
+.antivirus-run {
+  position: absolute;
+  left: 27%;
+  right: 27%;
+  bottom: 12%;
+  display: flex;
+  justify-content: space-between;
+  color: #f6f3df;
+  font-size: clamp(13px, 1.2vw, 18px);
+  text-shadow: 0 2px 4px #171622;
+}
+.antivirus-legend {
+  position: absolute;
+  bottom: 60px;
+  left: 24%;
+  right: 24%;
+  text-align: center;
+  font-size: 13px;
+  color: #e1e8f2;
+}
+.game-shell[data-challenge="antivirus"] .context-tip {
+  display: none;
+}
+.antivirus-last-clear {
+  display: block;
+  font-size: 12px;
+  color: #bddef5;
+  margin-top: 4px;
+}
+.game-shell[data-challenge="theft"] .playfield {
+  background: #080b12;
+}
+.game-shell[data-challenge="theft"] .tile-labels {
+  visibility: hidden;
+}
+.theft-panel {
+  position: absolute;
+  z-index: 2;
+  inset: 15% 3% 15%;
+  display: grid;
+  grid-template-columns: minmax(150px, 1fr) auto minmax(150px, 1fr);
+  gap: 12px;
+  align-items: stretch;
+}
+.theft-panel[hidden],
+.antivirus-overlay[hidden] {
+  display: none;
+}
+.theft-grid-frame {
+  padding: 13px;
+  background: #384354;
+  border: 3px solid #192334;
+  border-radius: 10px;
+  box-shadow:
+    inset 0 0 0 3px #536073,
+    0 4px 12px #0009;
+  display: flex;
+  align-items: center;
+}
+.theft-panel[data-phase="completed"] .theft-grid-frame {
+  border-color: #8eac95;
+}
+.theft-grid {
+  width: min(59vh, 54vw);
+  height: min(59vh, 54vw);
+  display: grid;
+  grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+  grid-template-rows: repeat(var(--rows), minmax(0, 1fr));
+  gap: 2px;
+  padding: 2px;
+  background: #41484b;
+}
+.theft-cell {
+  position: relative;
+  display: block;
+  min-height: 0;
+  padding: 0;
+  border: 1px solid #313a3c;
+  border-radius: 0;
+  background: radial-gradient(ellipse at 55% 36%, #1c262b, #10191d);
+  overflow: hidden;
+  transition: background 100ms;
+}
+.theft-cell:hover {
+  background: #34414a;
+}
+.theft-cell:active {
+  transform: none;
+}
+.theft-cell[data-kind="theft-buffer"],
+.theft-buffer-key {
+  background: repeating-linear-gradient(135deg, #4a5054 0 6px, #232b30 6px 12px);
+}
+.theft-cell[data-player="true"] {
+  outline: 3px solid #d8e3e9;
+  outline-offset: -3px;
+}
+.theft-glyph {
+  position: absolute;
+  inset: 5%;
+  color: var(--component-color, #88c2ee);
+}
+.theft-glyph svg,
+.theft-player svg {
+  width: 100%;
+  height: 100%;
+}
+.theft-player {
+  position: absolute;
+  inset: 4%;
+}
+.theft-cell:has(.theft-glyph svg) .theft-player {
+  inset: 39% 0 0 40%;
+  background: #16202adc;
+  border-radius: 5px;
+}
+.theft-component-mark {
+  position: absolute;
+  right: 2px;
+  bottom: 1px;
+  font:
+    700 clamp(12px, 1.2vw, 18px) "Camellia Numbers",
+    sans-serif;
+  padding: 0 3px;
+  color: #fcf7df;
+  background: #10151dea;
+}
+.theft-console {
+  min-width: 0;
+  background: #323e50;
+  border: 3px solid #1d293c;
+  box-shadow: inset 0 0 0 2px #586275;
+  border-radius: 10px;
+  padding: 16px 12px 10px;
+  display: flex;
+  flex-direction: column;
+}
+.theft-console-title {
+  padding: 0 3px 14px;
+  font:
+    700 12px "Camellia Numbers",
+    sans-serif;
+  color: #c6d0dc;
+  letter-spacing: 0.12em;
+}
+.theft-console-title span {
+  display: block;
+  margin-top: 5px;
+  font:
+    700 clamp(16px, 1.6vw, 24px) "Camellia UI",
+    sans-serif;
+  color: #f3f2e8;
+  letter-spacing: 0;
+}
+.theft-console-display {
+  flex: 1;
+  padding: 15px 12px;
+  border: 4px solid #151e34;
+  border-radius: 5px;
+  background: #0a101b;
+  color: #b8c4d2;
+}
+.theft-console-display > strong {
+  color: #e6deac;
+  font-size: clamp(14px, 1.5vw, 20px);
+}
+.theft-console-display p {
+  font-size: 12px;
+  line-height: 1.6;
+}
+.theft-key {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 14px;
+  font-size: 13px;
+}
+.theft-key svg,
+.theft-buffer-key {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  color: #85b9f3;
+}
+.theft-key strong {
+  display: block;
+  margin-top: 3px;
+  color: #96a8bb;
+  font-size: 11px;
+  font-weight: 400;
+}
+.theft-console-footer {
+  text-align: center;
+  font-size: 11px;
+  padding: 9px 0 0;
+  color: #c0c9da;
+}
+[data-reduced-motion="true"] .theft-cell {
+  transition: none;
+}
+@media (max-width: 1150px) {
+  .theft-panel {
+    gap: 7px;
+    inset-inline: 2%;
+    grid-template-columns: minmax(140px, 1fr) auto minmax(140px, 1fr);
+  }
+  .theft-console {
+    padding: 12px 7px 8px;
+  }
+  .theft-console-display {
+    padding: 10px 7px;
+  }
+  .theft-key {
+    gap: 5px;
+    margin-top: 11px;
+    font-size: 12px;
+  }
+  .theft-key svg {
+    width: 30px;
+    height: 30px;
+  }
+  .theft-grid-frame {
+    padding: 9px;
+  }
+}

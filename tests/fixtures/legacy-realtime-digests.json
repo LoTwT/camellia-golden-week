@@ -1,0 +1,27 @@
+{
+  "baseline": "a761c5b1d72730fe17d4f293b80679116fbb109a",
+  "hashEncoding": "SHA-256 of JSON.stringify on the original parsed object; property and array order retained",
+  "files": [
+    {
+      "path": "src/content/history/realtime-v1.json",
+      "originalSha256": "3600214a533fffc2152184ba99d30d008d36584bb73778c85745638915249edf",
+      "expandedSha256": "f59ebdbbb47189ece517ce4e2409b10b710f1e43420eef8557a473e959f023cc",
+      "definitions": 9,
+      "witnesses": 18
+    },
+    {
+      "path": "src/content/history/realtime-v2.json",
+      "originalSha256": "fe746e9e816a88a0956de297014e2ab19c7b3fccd3e883cf65ccfa04d666e353",
+      "expandedSha256": "1783671de862d6a0b6651d258fc6b3fd5296305248d3a32972d326780f6aec90",
+      "definitions": 9,
+      "witnesses": 18
+    },
+    {
+      "path": "src/content/history/pre-r1/realtime.json",
+      "originalSha256": "7ac766389ec4e9a5de8bbf2638369df48372a2a6b030848e79dc5744f6e9fae7",
+      "expandedSha256": "d8a9965eb2df8c2089ef6a45bba64f9e0350b71a244f3f143d53bfd93c506d87",
+      "definitions": 9,
+      "witnesses": 18
+    }
+  ]
+}

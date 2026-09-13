@@ -1,0 +1,66 @@
+{
+  "base": "d22db8e2863ef83f359843ce978530049090e963",
+  "tests": 787,
+  "newRegressionTests": 39,
+  "checks": [
+    {
+      "command": [
+        "pnpm",
+        "test"
+      ],
+      "startedAt": "2026-09-13T11:39:16.868244+00:00",
+      "exitCode": 0,
+      "finishedAt": "2026-09-13T11:40:03.955969+00:00"
+    },
+    {
+      "command": [
+        "pnpm",
+        "run",
+        "build"
+      ],
+      "startedAt": "2026-09-13T11:40:03.956436+00:00",
+      "exitCode": 0,
+      "finishedAt": "2026-09-13T11:40:10.762865+00:00"
+    },
+    {
+      "command": [
+        "pnpm",
+        "run",
+        "validate:artifacts"
+      ],
+      "startedAt": "2026-09-13T11:40:10.763265+00:00",
+      "exitCode": 0,
+      "finishedAt": "2026-09-13T11:40:11.150440+00:00"
+    },
+    {
+      "command": [
+        "pnpm",
+        "run",
+        "test:browser",
+        "--review-only"
+      ],
+      "startedAt": "2026-09-13T11:40:11.150828+00:00",
+      "exitCode": 0,
+      "finishedAt": "2026-09-13T11:46:47.158029+00:00"
+    }
+  ],
+  "browser": {
+    "version": "153.0.8010.36",
+    "mode": "targeted-review-regressions",
+    "success": true,
+    "startedAt": "2026-09-13T11:40:17.064Z",
+    "finishedAt": "2026-09-13T11:46:46.940Z",
+    "regressionCount": 8,
+    "migrationEntries": [
+      "continue",
+      "backup",
+      "import"
+    ]
+  },
+  "sourceFilesUnchangedDuringVerification": 306,
+  "artifactFiles": 93,
+  "artifactBytes": 6542590,
+  "httpMatches": 94,
+  "fullVerifyRerun": false,
+  "rawEvidenceDirectory": "/Users/caoyujie/codex-artifacts/camellia-pr-fixes-20260913"
+}

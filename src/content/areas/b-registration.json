@@ -1,0 +1,142 @@
+{
+  "areaFile": "src/content/areas/b.json",
+  "includedFrom": 2,
+  "effects": [
+    {
+      "id": "b.line.01.effects",
+      "completeObjectiveIds": ["b.line.01"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "b.line.02.effects",
+      "completeObjectiveIds": ["b.line.02"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "b.switch.shortcut.effects",
+      "completeObjectiveIds": ["b.switch.shortcut"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "b.main.terminal.effects",
+      "completeObjectiveIds": ["b.main"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "b.nexus.north.effects",
+      "completeObjectiveIds": ["b.nexus.north"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": ["b.t.-2.-1"]
+    },
+    {
+      "id": "b.north.terminal.effects",
+      "completeObjectiveIds": ["b.north.terminal"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "b.south.terminal.effects",
+      "completeObjectiveIds": ["b.south.terminal"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "b.antivirus.access.effects",
+      "completeObjectiveIds": ["b.antivirus.access"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "b.antivirus.light.effects",
+      "completeObjectiveIds": ["b.antivirus.light"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "b.antivirus.medium.effects",
+      "completeObjectiveIds": ["b.antivirus.medium"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    },
+    {
+      "id": "b.antivirus.heavy.effects",
+      "completeObjectiveIds": ["b.antivirus.heavy"],
+      "grantRewardIds": [],
+      "revealGroupIds": [],
+      "clearEtherTileIds": []
+    }
+  ],
+  "gates": [],
+  "sources": [
+    {
+      "id": "map.b.reconstructed",
+      "urlOrPath": "docs/references/maps/world-m2.md",
+      "locator": "B 首访固定地图、节点映射与公开命令见证",
+      "checkedAt": "2026-09-11",
+      "evidenceLevel": "reconstruction",
+      "supportedClaim": "固定B拓扑保持一笔画01→捷径按钮→主终端，北/南/一笔画02数据支路、独立杀毒奖励门与区域往返。",
+      "limitation": "依据已归档S04/S05机制线索重建；未测得原活动完整格图，全部本版坐标不能当作原坐标。",
+      "adaptedElementIds": [
+        "b.teleport.point",
+        "b.to.a",
+        "b.line.01.entrance",
+        "b.supply.line01.pickup",
+        "b.switch.shortcut",
+        "b.shortcut.door",
+        "b.main.door",
+        "b.main.terminal",
+        "b.to.c",
+        "b.line.02.entrance",
+        "b.supply.line02.pickup",
+        "b.nexus.north",
+        "b.north.terminal",
+        "b.south.terminal",
+        "b.antivirus.access",
+        "b.antivirus.light.door",
+        "b.supply.antivirus.light.pickup",
+        "b.antivirus.medium.door",
+        "b.supply.antivirus.medium.pickup",
+        "b.antivirus.heavy.door",
+        "b.supply.antivirus.heavy.pickup"
+      ]
+    }
+  ],
+  "objectiveAdditions": [
+    {
+      "id": "b.nexus.north",
+      "kind": "route",
+      "producer": "b.nexus.north",
+      "prerequisites": {
+        "kind": "objective",
+        "objectiveId": "a.main"
+      },
+      "includedFrom": 2
+    }
+  ],
+  "objectiveProducerCorrections": [],
+  "profileAdditions": {
+    "from": "M2",
+    "includedRoomIds": [
+      "b.line.01",
+      "b.line.02",
+      "b.antivirus.light",
+      "b.antivirus.medium",
+      "b.antivirus.heavy"
+    ],
+    "includedObjectiveIds": ["b.nexus.north"]
+  }
+}

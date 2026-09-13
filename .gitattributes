@@ -1,0 +1,5 @@
+# Frozen machine-produced data remains inspectable; handwritten rules remain visible.
+src/content/history/pre-r1/releases.json linguist-generated=true
+src/content/witnesses/r1-world.json linguist-generated=true
+docs/verification/r1-evidence-files.md linguist-generated=true
+docs/verification/evidence/r1-archive-manifest.json linguist-generated=true

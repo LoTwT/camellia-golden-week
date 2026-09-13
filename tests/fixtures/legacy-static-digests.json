@@ -1,0 +1,13 @@
+{
+  "baseline": "15360c8c7638eb71ea6cfb8d3b573029fe9317ed",
+  "hashEncoding": "SHA-256 of JSON.stringify on the original parsed object; property and array order retained",
+  "files": [
+    {
+      "path": "src/content/history/pre-r1/static.json",
+      "originalSha256": "890512a795e5556e5fdc9fc026c85f46b193bfc57ad3db996529718321efbdb7",
+      "expandedSha256": "9d2315add58ffc25be543dfbb520ad41bd072fd95bbb5b3856b3a253a3e0435e",
+      "definitions": 9,
+      "witnesses": 27
+    }
+  ]
+}
