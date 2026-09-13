@@ -7,7 +7,7 @@ import type { WorldWitness } from "../src/content/validate.ts";
 import { dispatch, safePath } from "../src/core/engine.ts";
 import type { EntityDefinition, GameCommand, GameContent, GameState } from "../src/core/types.ts";
 import { AutoWalkScheduler, InputAdapter } from "../src/platform/input.ts";
-import witnessContent from "../src/content/witnesses/m1.json" with { type: "json" };
+import witnessContent from "../src/content/witnesses/m1.ts";
 
 const content = assembleContent("M1");
 const witness = (witnessContent.witnesses as WorldWitness[]).find(

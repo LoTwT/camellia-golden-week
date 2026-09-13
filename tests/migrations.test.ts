@@ -19,7 +19,7 @@ import type { StaticDefinition as HistoricalStaticDefinition } from "../src/cont
 const validateContent = (content: GameContent) =>
   validateHistoricalContent(content as unknown as HistoricalGameContent);
 import type { WorldWitness } from "../src/content/validate.ts";
-import witnessJson from "../src/content/witnesses/m1.json" with { type: "json" };
+import witnessJson from "../src/content/witnesses/m1.ts";
 import { createGame, dispatch } from "../src/core/engine.ts";
 import { areaData, gateOpen, supplyProgress } from "../src/core/progress.ts";
 import type { GameCommand, GameContent, GameState } from "../src/core/types.ts";
@@ -65,7 +65,7 @@ const fullReplay = replayWorldWitness(m1, fullWitness);
 assert.deepEqual(fullReplay.issues, []);
 const realM1 = stablePayload(fullReplay.state);
 const browserM2Raw = readFileSync(
-  new URL("../docs/verification/evidence/m2-browser-save-schema1.json", import.meta.url),
+  new URL("../tests/fixtures/historical/m2-browser-save-schema1.json", import.meta.url),
   "utf8",
 );
 const browserM2 = JSON.parse(browserM2Raw) as {
@@ -789,7 +789,7 @@ const browserM3Samples = [
   },
   { file: "m3-browser-save.json", supplyUnits: 81, rewardCount: 17, layoutCount: 9, cData: 100 },
 ].map((sample) => {
-  const url = new URL(`../docs/verification/evidence/${sample.file}`, import.meta.url);
+  const url = new URL(`../tests/fixtures/historical/${sample.file}`, import.meta.url);
   const raw = readFileSync(url, "utf8");
   const envelope = JSON.parse(raw) as {
     saveGeneration: number;
@@ -1068,7 +1068,7 @@ test("P06/P07 显露组闭合校验仍接受真实 M1–M3 浏览器导出及其
     ["m3-browser-main-save.json", actualM3],
     ["m3-browser-save.json", actualM3],
   ] as const) {
-    const url = new URL(`../docs/verification/evidence/${file}`, import.meta.url);
+    const url = new URL(`../tests/fixtures/historical/${file}`, import.meta.url);
     const raw = readFileSync(url, "utf8");
     const payload = (JSON.parse(raw) as { payload: unknown }).payload;
     const compatible = valid(payload, source, actualRegistry).value;
@@ -1082,7 +1082,7 @@ test("P06/P07 显露组闭合校验仍接受真实 M1–M3 浏览器导出及其
 });
 
 test("P06/P07 真实 M4 全收集浏览器导出含三组合法揭示，升同 content4 M5 保留130与九完成布局", () => {
-  const url = new URL("../docs/verification/evidence/m4-browser-save.json", import.meta.url);
+  const url = new URL("../tests/fixtures/historical/m4-browser-save.json", import.meta.url);
   const raw = readFileSync(url, "utf8");
   const original = (JSON.parse(raw) as { payload: SavePayload }).payload;
   const source = valid(original, actualM4, actualRegistry);
@@ -1129,7 +1129,7 @@ for (const sample of [
   },
 ] as const) {
   test(`P01/P07 Chrome 新档正常游玩 M4 ${sample.label}导出升级同 content4 M5，恢复完整载荷且原字节不变`, () => {
-    const url = new URL(`../docs/verification/evidence/${sample.file}`, import.meta.url);
+    const url = new URL(`../tests/fixtures/historical/${sample.file}`, import.meta.url);
     const sourceBytes = readFileSync(url);
     const envelope = JSON.parse(sourceBytes.toString("utf8")) as {
       saveGeneration: number;
@@ -1209,7 +1209,7 @@ for (const sample of [
 
 test("G09/P07 M4 已完成仓库的真实全收集档在 M5 首次访问挑战不重复结算事件", () => {
   const url = new URL(
-    "../docs/verification/evidence/m4-chrome-browser-full-save.json",
+    "../tests/fixtures/historical/m4-chrome-browser-full-save.json",
     import.meta.url,
   );
   const bytes = readFileSync(url);

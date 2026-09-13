@@ -1,4 +1,4 @@
-import r1 from "./r1-world.json" with { type: "json" };
+import r1 from "./r1-world.ts";
 import type { WorldWitness } from "../validate.ts";
 
 /** Returns authored, frozen R1 commands. Validation and builds never regenerate a route. */

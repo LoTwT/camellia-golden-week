@@ -1,6 +1,0 @@
-{
-  "classification": "browser-test-script-style-assumption",
-  "cause": "减少闪烁通过 display:none 隐藏晕屏；读取动态 opacity 不等于实际可见性。原始截图没有晕屏。",
-  "repair": "记录 display/visibility/bounds/opacity，并断言实际可见性。",
-  "gameRuntimeChanged": false
-}

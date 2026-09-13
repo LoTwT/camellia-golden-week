@@ -10,22 +10,22 @@
 
 固定地址为 `http://localhost:5174/`，根任务交接的最终 production 构建为 `0.5.0 / M5 / contentVersion4 / ruleVersion1 / schemaVersion2`。本轮没有修改源码、dist、服务、存储或其他浏览器。Safari 安装版本沿用[浏览器记录](browser-matrix.md)，本轮未重新打开系统版本页。原生截图包含 Safari 工具栏，图像为约 1184×768 像素，不能把截图尺寸直接当作 CSS 视口或推定 DPR。
 
-[交接原档](evidence/m5-production-safari-restored-save.json)为根任务一分钟前正常 UI 导出并刷新恢复的 generation234，玩家在 a.t.1.4，6 单位。中心增幅教学与三记忆迷宫此前已在同一 Safari 正常新档链完成；本轮没有导入其他进度，也不把穿过已完成迷宫写成一次新的解题。
+[交接原档](historical-evidence-files.md#file-4630df61b70a18ed)为根任务一分钟前正常 UI 导出并刷新恢复的 generation234，玩家在 a.t.1.4，6 单位。中心增幅教学与三记忆迷宫此前已在同一 Safari 正常新档链完成；本轮没有导入其他进度，也不把穿过已完成迷宫写成一次新的解题。
 
-本轮只使用 CUA 原生 Safari 的可见按钮、方向键、F/R、Escape、窗口 Raise 与截图。方向批次每步等待 190ms；实际按键的发送与返回时间保存在[操作记录](evidence/m5-production-safari-journey-actions.json)。该记录只证明发送过输入，失焦期间的输入不视为已接受；每段成功须由实际 HUD、终端反馈或 UI 导出的永久字段确认。固定地图和公开见证仅提供合法方向，不向浏览器发送任何合成游戏状态或成功命令。
+本轮只使用 CUA 原生 Safari 的可见按钮、方向键、F/R、Escape、窗口 Raise 与截图。方向批次每步等待 190ms；实际按键的发送与返回时间保存在[操作记录](historical-evidence-files.md#file-41b0bbb4edb92141)。该记录只证明发送过输入，失焦期间的输入不视为已接受；每段成功须由实际 HUD、终端反馈或 UI 导出的永久字段确认。固定地图和公开见证仅提供合法方向，不向浏览器发送任何合成游戏状态或成功命令。
 
-导出通过暂停菜单、进度与存档、导出当前进度依次打开，从原生 AX 的 `text entry area 完整存档文本, Value` 读取完整 JSON。后面的普通 text 子节点会截断，未采用它。原文逐字保存为下表文件；仅对这些本地副本调用真实 `validatePayload(raw.payload, assembleContent("M5"))`，没有写回浏览器。[只读校验记录](evidence/m5-production-safari-journey-save-verification.json)保存大小、SHA-256、版本和完整布局清单，四份载荷均合法。
+导出通过暂停菜单、进度与存档、导出当前进度依次打开，从原生 AX 的 `text entry area 完整存档文本, Value` 读取完整 JSON。后面的普通 text 子节点会截断，未采用它。原文逐字保存为下表文件；仅对这些本地副本调用真实 `validatePayload(raw.payload, assembleContent("M5"))`，没有写回浏览器。[只读校验记录](historical-evidence-files.md#file-5b184598ceb9bf57)保存大小、SHA-256、版本和完整布局清单，四份载荷均合法。
 
 ## 实际完成阶段
 
-| 阶段                 | 正常操作与实际结果                                                                                                                             | 原始证据                                                                                                                                                                                                                                                                                                                                |
-| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 交接起点             | generation234，a.t.1.4；2 个奖励、6 单位、3 个迷宫完成布局，成绩为空                                                                           | [原始存档](evidence/m5-production-safari-restored-save.json)，1860 字节                                                                                                                                                                                                                                                                 |
-| A 侧路               | 经南侧回环到 a.t.3.-1，以 R 清除对应覆盖，再到 a.t.3.-2 按 F；A 数据 40→60，物资仍 6                                                           | [侧路 AX](evidence/m5-production-safari-journey-a-side.txt)                                                                                                                                                                                                                                                                             |
-| A 主路径完成         | 正常重访迷宫 01 的已完成布局，U4/R4 穿过出口；独立拾取 a.supply.maze01，再在 a.t.7.0 按 F。A 首访 80/100、11 单位，当前目标转为 B 主终端       | [A 主终端 AX](evidence/m5-production-safari-journey-a-main.txt)、[画面](evidence/m5-production-safari-journey-a-main.jpg)、[UI 导出 AX](evidence/m5-production-safari-journey-a-export.txt)、[generation262 原文](evidence/m5-production-safari-journey-a-save.json)，2099 字节                                                         |
-| B 主路径完成         | 从 A 的正常入口 F 到 B，向右进入一笔画 01，依合法方向完成；拾取物资、F 按捷径按钮，再到主终端 F。B 数据 20/100、16 单位，当前目标转为 C 主终端 | [B 主终端 AX](evidence/m5-production-safari-journey-b-main.txt)、[画面](evidence/m5-production-safari-journey-b-main.jpg)                                                                                                                                                                                                               |
-| B 第二处一笔画与北侧 | 经已开捷径进入 24 格一笔画 02，合法路径完成后独立拾取；到北侧节点 R，再到末端 F。B 数据 60/100、21 单位；首次失焦后实际导出仍在 b.t.-2.-2      | [generation330 原文](evidence/m5-production-safari-journey-b-interrupted-save.json)、[导出 AX](evidence/m5-production-safari-journey-b-interrupted-export.txt)，3611 字节                                                                                                                                                               |
-| B 首访完成           | 恢复后从北侧终端正常返回南侧，在 b.t.1.4 按 F。B 首访 80/100、21 单位；A/B 的回访数据仍未开放                                                  | [完成 AX](evidence/m5-production-safari-journey-b-first-visit-complete.txt)、[完成画面](evidence/m5-production-safari-journey-b-first-visit-complete.jpg)、[UI 导出 AX](evidence/m5-production-safari-journey-b-first-visit-export.txt)、[generation340 原文](evidence/m5-production-safari-journey-b-first-visit-save.json)，3719 字节 |
+| 阶段                 | 正常操作与实际结果                                                                                                                             | 原始证据                                                                                                                                                                                                                                                                             |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 交接起点             | generation234，a.t.1.4；2 个奖励、6 单位、3 个迷宫完成布局，成绩为空                                                                           | [原始存档](historical-evidence-files.md#file-4630df61b70a18ed)，1860 字节                                                                                                                                                                                                            |
+| A 侧路               | 经南侧回环到 a.t.3.-1，以 R 清除对应覆盖，再到 a.t.3.-2 按 F；A 数据 40→60，物资仍 6                                                           | [侧路 AX](historical-evidence-files.md#file-d70dd08e05ebea77)                                                                                                                                                                                                                        |
+| A 主路径完成         | 正常重访迷宫 01 的已完成布局，U4/R4 穿过出口；独立拾取 a.supply.maze01，再在 a.t.7.0 按 F。A 首访 80/100、11 单位，当前目标转为 B 主终端       | [A 主终端 AX](historical-evidence-files.md#file-d7624443c89efd4b)、[画面](historical-evidence-files.md#file-1fb63ffc90e13be6)、[UI 导出 AX](historical-evidence-files.md#file-6a1b4733d09a9944)、[generation262 原文](historical-evidence-files.md#file-ffe4723534950449)，2099 字节 |
+| B 主路径完成         | 从 A 的正常入口 F 到 B，向右进入一笔画 01，依合法方向完成；拾取物资、F 按捷径按钮，再到主终端 F。B 数据 20/100、16 单位，当前目标转为 C 主终端 | [B 主终端 AX](historical-evidence-files.md#file-7d40c9fa8a127ec5)、[画面](historical-evidence-files.md#file-d11df05ab6950583)                                                                                                                                                        |
+| B 第二处一笔画与北侧 | 经已开捷径进入 24 格一笔画 02，合法路径完成后独立拾取；到北侧节点 R，再到末端 F。B 数据 60/100、21 单位；首次失焦后实际导出仍在 b.t.-2.-2      | [generation330 原文](historical-evidence-files.md#file-54d40939134d56f3)、[导出 AX](historical-evidence-files.md#file-9605520a44782fee)，3611 字节                                                                                                                                   |
+| B 首访完成           | 恢复后从北侧终端正常返回南侧，在 b.t.1.4 按 F。B 首访 80/100、21 单位；A/B 的回访数据仍未开放                                                  | [完成 AX](historical-evidence-files.md#file-a7f8e8e6b4a29a94)、[完成画面](historical-evidence-files.md#file-9f28756bee9d169d)、[UI 导出 AX](historical-evidence-files.md#file-526f45c7070d2669)、[generation340 原文](historical-evidence-files.md#file-3afcc4228f037412)，3719 字节 |
 
 generation340 的 5 个领取 ID 为 hub.supply.tutorial、a.supply.maze03、a.supply.maze01、b.supply.line01、b.supply.line02。三迷宫与两一笔画的首次完成布局都存在；所有防火墙 / 杀毒成绩仍为空，C/D/回访/仓库目标尚未产生。A 主终端、B 主终端及 B 首访完成三张本地图片已实际查看，HUD、当前位置标记与目标文字相符。
 
@@ -33,15 +33,15 @@ generation340 的 5 个领取 ID 为 hub.supply.tutorial、a.supply.maze03、a.s
 
 首次把窗口 Raise 与旧 AX 索引点击放在同一调用时，工具返回 invalid element ID；重新读取当前 AX 后正常继续。该错误属于过期的工具索引，不是游戏交互失败。
 
-B 北侧终端之后，一批方向输入期间失焦，界面显示“窗口失去焦点，时间与输入已冻结”。[原始暂停 AX](evidence/m5-production-safari-journey-b-first-visit.txt)与[原始暂停画面](evidence/m5-production-safari-journey-b-first-visit.jpg)保留原文件名，其 first-visit 名称不代表该次已经完成首访。通过实际导出确认 generation330、b.t.-2.-2 未变，再正常恢复并重走南侧路线，后续才达到 generation340。
+B 北侧终端之后，一批方向输入期间失焦，界面显示“窗口失去焦点，时间与输入已冻结”。[原始暂停 AX](historical-evidence-files.md#file-e56cac68bd73f7b7)与[原始暂停画面](historical-evidence-files.md#file-ddc7d79da6f8509e)保留原文件名，其 first-visit 名称不代表该次已经完成首访。通过实际导出确认 generation330、b.t.-2.-2 未变，再正常恢复并重走南侧路线，后续才达到 generation340。
 
 随后原生调用出现一次 `ScreenCaptureKit.SCStreamErrorDomain Code=-3811`，消息为 `Failed to start stream due to audio/video capture failure`。重新读取 AX 后存档菜单仍可用，实际完成 generation340 导出。此后数次 Raise、重新读取索引、点击继续，仍返回失焦暂停；向 B→C 方向发送的一批按键未由界面证明被接受，不能把它算作进入 C。操作记录中最后一批 F 于 **12:47:35.141（Asia/Shanghai）**返回；其后按截图可见的继续按钮坐标点击，原生工具返回 `noWindowsAvailable`，该次独立点击未记录精确宿主时刻。
 
-**12:48:45（Asia/Shanghai）**写入的[最后新鲜 AX](evidence/m5-production-safari-journey-native-window-unavailable.txt)仍能读取游戏窗口、Start Page 与一个游戏标签，但页面处于失焦暂停。AX 可读与原生坐标控制无可用窗口同时存在，不能由此断言窗口已关闭、锁屏或游戏有缺陷。根任务确认独占交接后未操作任何 UI。未绕过原生控制工具、修改焦点判定或写浏览器状态；需恢复宿主前台窗口的可用性后再继续。
+**12:48:45（Asia/Shanghai）**写入的[最后新鲜 AX](historical-evidence-files.md#file-001a1f0c6a0ce878)仍能读取游戏窗口、Start Page 与一个游戏标签，但页面处于失焦暂停。AX 可读与原生坐标控制无可用窗口同时存在，不能由此断言窗口已关闭、锁屏或游戏有缺陷。根任务确认独占交接后未操作任何 UI。未绕过原生控制工具、修改焦点判定或写浏览器状态；需恢复宿主前台窗口的可用性后再继续。
 
 generation340 是实际导出且载荷校验通过的最后确认存档；本轮尚未刷新并确认恢复它。根任务此前对 generation234 的刷新恢复仍只证明交接起点，不能替代本次末态。既有 Safari 两档帧间隔中位 17ms 的预算失败继续保留，本任务没有修改或重新验收帧率。
 
-子任务停止后，主任务另做[一次恢复检查](evidence/m5-production-safari-final-window-check.json)：新鲜AX、Raise、重新取得按钮索引、点击继续并正常Up，后续仍显示失焦暂停。再经实际菜单[导出当前进度](evidence/m5-production-safari-final-paused-save.json)，仍为340、b.t.1.4；[只读比较](evidence/m5-production-safari-final-state-validation.json)确认与上次末态完整载荷相同。该次Up未造成位置变化，未继续重复试点，最后保留暂停菜单，等待宿主前台窗口恢复。
+子任务停止后，主任务另做[一次恢复检查](historical-evidence-files.md#file-aa484b961724740f)：新鲜AX、Raise、重新取得按钮索引、点击继续并正常Up，后续仍显示失焦暂停。再经实际菜单[导出当前进度](historical-evidence-files.md#file-3b7d73eb004a2c94)，仍为340、b.t.1.4；[只读比较](historical-evidence-files.md#file-e6128bf3687c8a13)确认与上次末态完整载荷相同。该次Up未造成位置变化，未继续重复试点，最后保留暂停菜单，等待宿主前台窗口恢复。
 
 ## 环境恢复后的路线准备（尚未执行）
 
@@ -59,10 +59,10 @@ generation340 是实际导出且载荷校验通过的最后确认存档；本轮
 
 ## 下一Goal回合的刷新尝试
 
-主任务续回合重新核对后仍不能从blur暂停恢复实际输入。随后通过原生Safari的ReloadButton刷新；400ms与再过1000ms两次AX均停在“正在获取当前浏览器的单写会话”，[原始记录](evidence/m5-production-safari-blocked-refresh.json)保留完整观测。尚未完成继续、再次导出或340恢复验证，也不能从短时观测推定请求永久失败。当前恢复起点改为启动页；待宿主前台可用后先读新鲜UI，不重复旧按钮索引或把最后发送的Up算作已移动。
+主任务续回合重新核对后仍不能从blur暂停恢复实际输入。随后通过原生Safari的ReloadButton刷新；400ms与再过1000ms两次AX均停在“正在获取当前浏览器的单写会话”，[原始记录](historical-evidence-files.md#file-7c868ee829c3eeb4)保留完整观测。尚未完成继续、再次导出或340恢复验证，也不能从短时观测推定请求永久失败。当前恢复起点改为启动页；待宿主前台可用后先读新鲜UI，不重复旧按钮索引或把最后发送的Up算作已移动。
 
 ## 延迟就绪后的数据恢复与最终阻塞
 
-再下一Goal回合的新鲜AX已显示继续入口；实际Raise并点击继续后，B区HUD显示21单位和C主终端目标，但场景仍显示连接/暂停。正常打开菜单并[导出当前进度](evidence/m5-production-safari-delayed-reload-save.json)，[当前M5语义校验和完整载荷比较](evidence/m5-production-safari-delayed-reload-validation.json)通过：仍340、b.t.1.4、5奖励/21、五布局，与刷新前原文的payload完全相同。savedAt是本次导出时间，不作为发生新游戏进度的依据。
+再下一Goal回合的新鲜AX已显示继续入口；实际Raise并点击继续后，B区HUD显示21单位和C主终端目标，但场景仍显示连接/暂停。正常打开菜单并[导出当前进度](historical-evidence-files.md#file-a6004f4d060095cb)，[当前M5语义校验和完整载荷比较](historical-evidence-files.md#file-6bf65f722079a245)通过：仍340、b.t.1.4、5奖励/21、五布局，与刷新前原文的payload完全相同。savedAt是本次导出时间，不作为发生新游戏进度的依据。
 
-[完整实际记录](evidence/m5-production-safari-delayed-reload.json)同时保留继续后及500ms后的连接状态、最终Raise/继续/Up后再次出现的blur暂停。这里已证实数据读取和导出恢复，尚未证实可玩恢复，未推进C。当时preview会话仍运行且production JS同源GET匹配磁盘，未重启服务或改存储。此前连续三个回合的前台/设备/提交信息阻塞未解除时，Goal曾实际标为blocked；这是范围调整前的状态记录。当前不再等待Safari前台恢复，Chrome验收及Goal当前状态由[实施进度](implementation-progress.md)维护，上述失败与加载边界保留。
+[完整实际记录](historical-evidence-files.md#file-3d29d42b6b50381c)同时保留继续后及500ms后的连接状态、最终Raise/继续/Up后再次出现的blur暂停。这里已证实数据读取和导出恢复，尚未证实可玩恢复，未推进C。当时preview会话仍运行且production JS同源GET匹配磁盘，未重启服务或改存储。此前连续三个回合的前台/设备/提交信息阻塞未解除时，Goal曾实际标为blocked；这是范围调整前的状态记录。当前不再等待Safari前台恢复，Chrome验收及Goal当前状态由[实施进度](implementation-progress.md)维护，上述失败与加载边界保留。

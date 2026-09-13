@@ -1003,14 +1003,14 @@ export async function verifyFirewallMigrations(options: {
     [
       "v1-full-collection",
       new URL(
-        "../../docs/verification/evidence/m5-chrome-final-production-complete-save.json",
+        "../../tests/fixtures/historical/m5-chrome-final-production-complete-save.json",
         import.meta.url,
       ),
     ],
     [
       "v2-earned-result",
       new URL(
-        "../../docs/verification/evidence/firewall-hazards/legacy-v2/legacy-v2-earned-save.json",
+        "../../tests/fixtures/historical/firewall-hazards/legacy-v2/legacy-v2-earned-save.json",
         import.meta.url,
       ),
     ],

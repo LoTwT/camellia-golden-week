@@ -39,8 +39,8 @@ import {
   stablePayload,
   validatePayload,
 } from "../src/content/history/pre-r1/save-payload.ts";
-import m2Json from "../src/content/witnesses/m2.json" with { type: "json" };
-import m3Json from "../src/content/witnesses/m3.json" with { type: "json" };
+import m2Json from "../src/content/witnesses/m2.ts";
+import m3Json from "../src/content/witnesses/m3.ts";
 
 interface Continuation extends WorldWitness {
   readonly initialStateId: string;

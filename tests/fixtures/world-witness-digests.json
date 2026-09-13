@@ -1,0 +1,32 @@
+[
+  {
+    "name": "m1",
+    "originalFileSha256": "32ac974bdf01988c3eabbe632a223f91a07ab61b6b5c822ae2b677e55de10ec2",
+    "expandedCanonicalSha256": "c5b964fa98335ba506594b6b5569f6d26eee90fb0ed3d885fcaa57930e24c6bf",
+    "steps": 1349
+  },
+  {
+    "name": "m2",
+    "originalFileSha256": "0c70d221e7571e319eb7b9526e376f0c3b68cf062d47b5e3bab2473933ddf9a7",
+    "expandedCanonicalSha256": "1692fcc8e249ff17952ccb1777085a4d12b16de6a37381eddb3f9d1852ee09aa",
+    "steps": 3768
+  },
+  {
+    "name": "m3",
+    "originalFileSha256": "a4dfb4a6c161838c44743be7397a8936925282a53868b3f7d9cb596cfd27f1f2",
+    "expandedCanonicalSha256": "bcea176b23b631758eafad117dc8a21d86024a744e9b80ecc077c981cc722a9b",
+    "steps": 3282
+  },
+  {
+    "name": "m4",
+    "originalFileSha256": "a7be2a365e8c205ee3489135c0cbb90ca29f93d4fb15ec79eebae7986ce9b099",
+    "expandedCanonicalSha256": "39fb0241db4e19657536e286bf6ecf74ea746ea4c7e17993d46a16c86be0f4db",
+    "steps": 4729
+  },
+  {
+    "name": "r1-world",
+    "originalFileSha256": "133ee2755d96aa2e7ad49b0780ca41beb7dd0a9ae32c5c606da9ddc8f2288b52",
+    "expandedCanonicalSha256": "cabf4020fdeb4808570fcac1b1b5d4dfb11b0871e587e432afa8251c38ad5f2e",
+    "steps": 25763
+  }
+]

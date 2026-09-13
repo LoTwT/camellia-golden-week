@@ -9,6 +9,7 @@
     "docs/spec/**",
     "docs/verification/evidence/**",
     "docs/verification/2026-09-10-spec.md",
-    "tests/fixtures/r1/*.json"
+    "tests/fixtures/r1/*.json",
+    "tests/fixtures/historical/**"
   ]
 }

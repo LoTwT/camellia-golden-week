@@ -49,15 +49,15 @@
 
 最终 `pnpm run verify` 退出 0。**458/458** 项原生测试（33 个文件）通过，失败 / 跳过 / 取消 / todo 均为 0；五个 profile 的正常 Chrome 流程与七项具名修复回归全部通过。验证前冻结的182个源码、配置、资产和测试文件在验证后SHA-256完全相同。
 
-| 验证            | 实际结果 / 证据                                                                                                                                                                                                                                                         |
-| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 干净冻结安装    | 独立空依赖目录执行 `pnpm install --frozen-lockfile` 退出0，锁文件未变，Playwright可加载；[记录](evidence/review-fixes/frozen-install.json)、[日志](evidence/review-fixes/frozen-install.log)                                                                            |
-| 统一交付入口    | 原生测试、lint、格式、类型、核心架构、原始内容 / 10条世界见证、只读资产检查、production build、实际产物、Chrome均通过；[完整日志](evidence/review-fixes/verify-final.log)、[结果及输入不变性](evidence/review-fixes/verification-final.json)                            |
-| Chrome          | 153.0.8010.36，五个分期及七项回归；[机器结果](evidence/review-fixes/pipeline/browser-results.json)、[M5导出恢复画面](evidence/review-fixes/pipeline/m5-restored.png)、[失败后新按键可用](evidence/review-fixes/pipeline/main-clear-held-input.png)                      |
-| 字体缺字拦截    | 首次完整检查拒绝六个新字符；显式按原配方补制183,808字节WOFF2，实际解码覆盖全部808个源码字符。保留[失败日志](evidence/review-fixes/verify-font-missing.log)、[生成日志](evidence/review-fixes/font-subset.log)、[解码核对](evidence/review-fixes/font-verification.json) |
-| 地图 / 分期未改 | M1–M5内容装配结果与 `e70fc7d` 深度相等；[核对](evidence/review-fixes/content/profile-equivalence.json)                                                                                                                                                                  |
-| 最终归档        | 84文件 / 1,677,281字节，ZIP 847,180字节；CRC、解压字节及Chrome实际验证的production目录全部匹配；[ZIP](evidence/review-fixes/review-fixes-dist.zip)、[SHA-256](evidence/review-fixes/review-fixes-dist.zip.sha256)、[逐文件记录](evidence/review-fixes/package.json)     |
-| 固定5174        | 原preview进程未重启，85次本地HTTP全部200且字节 / Content-Type匹配，80项资产和许可哈希匹配；[审计](evidence/review-fixes/http-audit.json)。首次使用系统代理的读取得到502，改为探针直接连接localhost后通过，未改浏览器或代理配置                                          |
+| 验证            | 实际结果 / 证据                                                                                                                                                                                                                                                                                 |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 干净冻结安装    | 独立空依赖目录执行 `pnpm install --frozen-lockfile` 退出0，锁文件未变，Playwright可加载；[记录](historical-evidence-files.md#file-e74c62b01d8da2bb)、[日志](historical-evidence-files.md#file-9fda822fa4d57da0)                                                                                 |
+| 统一交付入口    | 原生测试、lint、格式、类型、核心架构、原始内容 / 10条世界见证、只读资产检查、production build、实际产物、Chrome均通过；[完整日志](historical-evidence-files.md#file-776a46fd00c98fd8)、[结果及输入不变性](historical-evidence-files.md#file-bed18d5ace1fd9cd)                                   |
+| Chrome          | 153.0.8010.36，五个分期及七项回归；[机器结果](historical-evidence-files.md#file-5e4ad7578e003dc4)、[M5导出恢复画面](historical-evidence-files.md#file-513d08216ba8089e)、[失败后新按键可用](historical-evidence-files.md#file-7fa58140c53ed615)                                                 |
+| 字体缺字拦截    | 首次完整检查拒绝六个新字符；显式按原配方补制183,808字节WOFF2，实际解码覆盖全部808个源码字符。保留[失败日志](historical-evidence-files.md#file-64271e22b2091753)、[生成日志](historical-evidence-files.md#file-43d9b553ff3790ca)、[解码核对](historical-evidence-files.md#file-5daac6a5ef6cfe3c) |
+| 地图 / 分期未改 | M1–M5内容装配结果与 `e70fc7d` 深度相等；[核对](historical-evidence-files.md#file-32e21956e85d70d7)                                                                                                                                                                                              |
+| 最终归档        | 84文件 / 1,677,281字节，ZIP 847,180字节；CRC、解压字节及Chrome实际验证的production目录全部匹配；[ZIP](historical-evidence-files.md#file-32358b0cc72ce73b)、[SHA-256](historical-evidence-files.md#file-64bf9813619ac6f2)、[逐文件记录](historical-evidence-files.md#file-9527e55623d0e2b7)      |
+| 固定5174        | 原preview进程未重启，85次本地HTTP全部200且字节 / Content-Type匹配，80项资产和许可哈希匹配；[审计](historical-evidence-files.md#file-dc73b4c2be19d6d2)。首次使用系统代理的读取得到502，改为探针直接连接localhost后通过，未改浏览器或代理配置                                                     |
 
 `pnpm run verify` 是交付入口：依次执行原生测试、完整只读检查与构建、实际 `dist/` 校验、独立五期和 acceptance 静态包的 Chrome 检查。普通 `vite build` 仍是构建器入口，本身不承担整个发布验收。检查不自动格式化、不生成夹具、不改写权威资产。Vite原有单JS超过650kB的提示保留，没有提高阈值；当前入口918,522字节，gzip大小因工具选项不同以各自日志为准。
 
@@ -67,19 +67,19 @@
 
 在独立临时副本真实移除一处逻辑，再用正式检查入口验证。下表八处原先可逃过测试的删除，现在全部触发预期失败；没有通过修改主工作区或游戏进度制造结果。主程序三项接线消融在独立副本的production与acceptance构建成功后才进入浏览器断言，正常基线先通过。
 
-| 被移除 / 改错的逻辑    | 新检查捕获的实际结果                                    | 证据                                                                                                                                                                |
-| ---------------------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 自动保存调用           | 刷新丢失刚领取的增幅仪及稳定位置，完整载荷不相等        | [产物 / Chrome消融](evidence/review-fixes/pipeline/ablations/results.json)                                                                                          |
-| 棋盘更新调用           | 中央电视像素不随正常移动变化                            | 同上                                                                                                                                                                |
-| 失败时 `input.clear()` | 观察结束后旧长按继续移动到0,1，预期仍在0,4              | [主程序消融](evidence/review-fixes/main-ablations/results.json)、[失败画面](evidence/review-fixes/main-ablations/clear-held-input/main-clear-held-input-failed.png) |
-| `autoWalk.observe`     | 远点移动只发生1步，预期4步到达已访问目标                | 同上；[诊断](evidence/review-fixes/main-ablations/auto-walk/diagnostic.json)                                                                                        |
-| `audio.syncFirewall`   | 挑战已运行、音频已启用且有13个普通声音源，但未来节拍为0 | 同上；[诊断](evidence/review-fixes/main-ablations/firewall-beats/diagnostic.json)                                                                                   |
-| 正式包诊断门控         | 正式JS检出 `__CAMELLIA_INSPECT__`                       | [产物 / Chrome消融](evidence/review-fixes/pipeline/ablations/results.json)                                                                                          |
-| 分期选择固定为M5       | 请求M1却产出M5，manifest检查失败                        | 同上                                                                                                                                                                |
-| 导入1MiB上限           | 合法JSON加尾随空白至1MiB+1不再拒绝，边界断言失败        | [导入消融](evidence/review-fixes/persistence/import-size-ablation.json)、[日志](evidence/review-fixes/persistence/import-size-ablation.log)                         |
+| 被移除 / 改错的逻辑    | 新检查捕获的实际结果                                    | 证据                                                                                                                             |
+| ---------------------- | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| 自动保存调用           | 刷新丢失刚领取的增幅仪及稳定位置，完整载荷不相等        | [产物 / Chrome消融](historical-evidence-files.md#file-78c117fd0bba6dd8)                                                          |
+| 棋盘更新调用           | 中央电视像素不随正常移动变化                            | 同上                                                                                                                             |
+| 失败时 `input.clear()` | 观察结束后旧长按继续移动到0,1，预期仍在0,4              | [主程序消融](historical-evidence-files.md#file-e5262c0cc38bbec4)、[失败画面](historical-evidence-files.md#file-6ab16cf7e68ad89a) |
+| `autoWalk.observe`     | 远点移动只发生1步，预期4步到达已访问目标                | 同上；[诊断](historical-evidence-files.md#file-47bcb76c3ba05775)                                                                 |
+| `audio.syncFirewall`   | 挑战已运行、音频已启用且有13个普通声音源，但未来节拍为0 | 同上；[诊断](historical-evidence-files.md#file-1eb05a27bd994eeb)                                                                 |
+| 正式包诊断门控         | 正式JS检出 `__CAMELLIA_INSPECT__`                       | [产物 / Chrome消融](historical-evidence-files.md#file-78c117fd0bba6dd8)                                                          |
+| 分期选择固定为M5       | 请求M1却产出M5，manifest检查失败                        | 同上                                                                                                                             |
+| 导入1MiB上限           | 合法JSON加尾随空白至1MiB+1不再拒绝，边界断言失败        | [导入消融](historical-evidence-files.md#file-a87b4f09834a73a1)、[日志](historical-evidence-files.md#file-06ff76623390311d)       |
 
-另有空 `main.ts` 的真实Chrome启动失败；投影图标反转、隐藏边缘泄露、观察态门控删除、奖励名称缺失、增幅能力门槛删除及140ms输入间隔漂移共六项语义变异全部被检出，见[结果](evidence/review-fixes/presentation/ablation-results.json)。原始内容错误和必需见证清空经真实装配 / CLI验证，见[记录](evidence/review-fixes/content/content-review-fixes.json)。不同报告的实验分母不相加为“覆盖率”。
+另有空 `main.ts` 的真实Chrome启动失败；投影图标反转、隐藏边缘泄露、观察态门控删除、奖励名称缺失、增幅能力门槛删除及140ms输入间隔漂移共六项语义变异全部被检出，见[结果](historical-evidence-files.md#file-5fb98c43d5ca9f54)。原始内容错误和必需见证清空经真实装配 / CLI验证，见[记录](historical-evidence-files.md#file-5e947a03f74d7fe6)。不同报告的实验分母不相加为“覆盖率”。
 
-最初整块画布截图包含HUD，渲染删除曾被文字变化掩盖；最终改为中央区域并验证静止连续截图一致，随后再消融确认失败。归档仅保留最终有效断言的结果和失败画面，未把早期通过时留下的截图混入最终渲染证据。原始日志、快照与对应源码为复核依据；运行时完整trace保留在ignored `test-results/`，Git归档包含关键截图与机器结果。证据路径及校验值见[归档索引](evidence/review-fixes/evidence-index.json)。
+最初整块画布截图包含HUD，渲染删除曾被文字变化掩盖；最终改为中央区域并验证静止连续截图一致，随后再消融确认失败。归档仅保留最终有效断言的结果和失败画面，未把早期通过时留下的截图混入最终渲染证据。原始日志、快照与对应源码为复核依据；运行时完整trace保留在ignored `test-results/`，Git归档包含关键截图与机器结果。证据路径及校验值见[归档索引](historical-evidence-files.md#file-8405dbdf09eca432)。
 
 修复沿用 `codex/full-implementation` 并更新[现有PR #1](https://github.com/LoTwT/camellia-golden-week/pull/1)，不合并main；具体已发布提交以[PR提交列表](https://github.com/LoTwT/camellia-golden-week/pull/1/commits)为准。

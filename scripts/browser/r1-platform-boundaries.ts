@@ -7,7 +7,7 @@ import { chromium } from "playwright";
 import type { Browser, BrowserContext, Page } from "playwright";
 import { build, preview } from "vite";
 import { assembleContent } from "../../src/content/assemble.ts";
-import worldWitnesses from "../../src/content/witnesses/r1-world.json" with { type: "json" };
+import worldWitnesses from "../../src/content/witnesses/r1-world.ts";
 import { createGame, dispatch } from "../../src/core/engine.ts";
 import type { GameCommand, GameState } from "../../src/core/types.ts";
 import { SAVE_KEYS } from "../../src/platform/save-store.ts";
@@ -37,7 +37,7 @@ interface Observation {
 const keys = { up: "ArrowUp", right: "ArrowRight", down: "ArrowDown", left: "ArrowLeft" };
 const currentSource = resolve("tests/fixtures/r1/m5-main-earned-save.json");
 const oldSource = resolve(
-  "docs/verification/evidence/controls-readability/v1-full-collection-migration-save.json",
+  "tests/fixtures/historical/controls-readability/v1-full-collection-migration-save.json",
 );
 const observe = (page: Page): Promise<Observation> =>
   page.evaluate(() =>

@@ -19,11 +19,11 @@ const content = assembleContent("M5");
 const migrations = publishedProfileMigrations(migrationContentReleases("M5"));
 const savedAt = "2026-09-11T08:00:00.000Z";
 const retainedRaw = readFileSync(
-  new URL("../docs/verification/evidence/m5-production-iab-save.json", import.meta.url),
+  new URL("../tests/fixtures/historical/m5-production-iab-save.json", import.meta.url),
   "utf8",
 );
 const latestRaw = readFileSync(
-  new URL("../docs/verification/evidence/m5-production-chrome-restored-save.json", import.meta.url),
+  new URL("../tests/fixtures/historical/m5-production-chrome-restored-save.json", import.meta.url),
   "utf8",
 );
 const retained = JSON.parse(retainedRaw) as SaveEnvelope<SavePayload>;

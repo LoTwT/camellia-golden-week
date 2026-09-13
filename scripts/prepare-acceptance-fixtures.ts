@@ -31,7 +31,12 @@ const outputPath = "test-results/m5-fault-fixtures/";
 const outputDirectory = new URL(outputPath, repository);
 const sourcePath = "docs/verification/evidence/m4-chrome-browser-full-save.json";
 const trackedManifestPath = "docs/verification/evidence/m5-fault-fixtures.json";
-const sourceBytes = readFileSync(new URL(sourcePath, repository));
+const sourceBytes = readFileSync(
+  new URL(
+    sourcePath.replace("docs/verification/evidence/", "tests/fixtures/historical/"),
+    repository,
+  ),
+);
 const sha256 = (bytes: string | Uint8Array) => createHash("sha256").update(bytes).digest("hex");
 const sourceHash = "4e71abc34dae4b070d8c3846f56985d93d528a09027d6862e2606bae088a956b";
 assert.equal(sha256(sourceBytes), sourceHash, "真实 UI 导出来源发生变化，请先重新核对来源");
@@ -397,13 +402,26 @@ for (const output of outputs) {
   assert.deepEqual(readFileSync(url), Buffer.from(output.raw), `${output.name}: 文件字节不匹配`);
 }
 assert.deepEqual(
-  readFileSync(new URL(sourcePath, repository)),
+  readFileSync(
+    new URL(
+      sourcePath.replace("docs/verification/evidence/", "tests/fixtures/historical/"),
+      repository,
+    ),
+  ),
   sourceBytes,
   "真实 UI 导出必须保持原文",
 );
 if (mode === "--check")
   assert.deepEqual(
-    JSON.parse(readFileSync(new URL(trackedManifestPath, repository), "utf8")),
+    JSON.parse(
+      readFileSync(
+        new URL(
+          trackedManifestPath.replace("docs/verification/evidence/", "tests/fixtures/historical/"),
+          repository,
+        ),
+        "utf8",
+      ),
+    ),
     manifest,
     "跟踪的证据清单与生成结果不一致（格式差异不影响内容）",
   );

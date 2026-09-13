@@ -1,7 +1,7 @@
-import m1 from "./m1.json" with { type: "json" };
-import m2 from "./m2.json" with { type: "json" };
-import m3 from "./m3.json" with { type: "json" };
-import m4 from "./m4.json" with { type: "json" };
+import m1 from "./m1.ts";
+import m2 from "./m2.ts";
+import m3 from "./m3.ts";
+import m4 from "./m4.ts";
 import { m5WorldWitnesses } from "./m5.ts";
 import type { WorldWitness } from "../validate.ts";
 import { currentWorldWitness } from "./current.ts";

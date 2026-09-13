@@ -1,6 +1,0 @@
-{
-  "path": "test-results/firewall-hazards/legacy-v2/legacy-v2-trace.zip",
-  "bytes": 42462082,
-  "sha256": "bd27c1def5dee9aabd242458ae58cfcb5434f300548393754624c570f8da41cd",
-  "retention": "Full Playwright trace retained locally in ignored test-results; committed screenshots, input sequence, save and archive verification provide the focused evidence."
-}

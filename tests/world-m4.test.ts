@@ -35,8 +35,8 @@ import {
   stablePayload,
   validatePayload,
 } from "../src/content/history/pre-r1/save-payload.ts";
-import m3Json from "../src/content/witnesses/m3.json" with { type: "json" };
-import m4Json from "../src/content/witnesses/m4.json" with { type: "json" };
+import m3Json from "../src/content/witnesses/m3.ts";
+import m4Json from "../src/content/witnesses/m4.ts";
 
 interface Continuation extends WorldWitness {
   readonly initialStateId: string;
@@ -741,7 +741,7 @@ for (const continuation of continuations) {
 
 test("P07：实际浏览器导出的M3全收集81载荷，保留M1/M2/M3历史后用同一公开路线到130", () => {
   const text = readFileSync(
-    new URL("../docs/verification/evidence/m3-browser-save.json", import.meta.url),
+    new URL("../tests/fixtures/historical/m3-browser-save.json", import.meta.url),
     "utf8",
   );
   const envelope = JSON.parse(text) as { payload: unknown };
@@ -762,7 +762,7 @@ test("P07：实际浏览器导出的M3全收集81载荷，保留M1/M2/M3历史�
     assert.deepEqual(session.state.completedRoomLayouts[roomId], layout);
   assert.equal(
     readFileSync(
-      new URL("../docs/verification/evidence/m3-browser-save.json", import.meta.url),
+      new URL("../tests/fixtures/historical/m3-browser-save.json", import.meta.url),
       "utf8",
     ),
     text,

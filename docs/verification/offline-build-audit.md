@@ -2,7 +2,7 @@
 
 [文档索引](../index.md) · [工程合同](../spec/architecture.md#3-浏览器与运行预算) · [V06验收合同](../spec/acceptance.md#7-表现与浏览器) · [验收总表](acceptance-results.md) · [美术资源记录](../references/art-implementation.md)
 
-核对日期：2026-09-11。**真实断外网仍未验证；按[用户本轮范围调整](acceptance-scope-2026-09-11.md)，V06 不再要求，不计为测试通过。** 当前 production 构建为 84 个文件、1,674,897 字节；连同根页面的 85 次本地 GET 均为 200 且逐字节匹配。45 项资源清单、78 个内容哈希、2 个许可哈希及 ZIP 的 CRC / 解压字节核对通过。[机器证据](evidence/m5-chrome-release-build-audit.json)、[静态 ZIP](evidence/m5-chrome-release-dist.zip)及[归档清单](evidence/m5-chrome-release-package.json)见第 8 节。早期 acceptance、旧 production 和隔离尝试保留当时事实；第 5 节只作为可选的后续步骤，不再是发布待办。第 9.3 节明确记录 DevTools 清理未完成的工具限制，未声称环境完全恢复。
+核对日期：2026-09-11。**真实断外网仍未验证；按[用户本轮范围调整](acceptance-scope-2026-09-11.md)，V06 不再要求，不计为测试通过。** 当前 production 构建为 84 个文件、1,674,897 字节；连同根页面的 85 次本地 GET 均为 200 且逐字节匹配。45 项资源清单、78 个内容哈希、2 个许可哈希及 ZIP 的 CRC / 解压字节核对通过。[机器证据](historical-evidence-files.md#file-76d5ac682129fa80)、[静态 ZIP](historical-evidence-files.md#file-a68b083b831dbd7a)及[归档清单](historical-evidence-files.md#file-b65a9409eb1d2533)见第 8 节。早期 acceptance、旧 production 和隔离尝试保留当时事实；第 5 节只作为可选的后续步骤，不再是发布待办。第 9.3 节明确记录 DevTools 清理未完成的工具限制，未声称环境完全恢复。
 
 ## 1. 早期acceptance被审计对象与证据边界
 
@@ -230,7 +230,7 @@ curl --noproxy '*' --connect-timeout 5 --max-time 10 -I http://localhost:5174/
 
 本次对主任务已生成的production `dist/` 做独立只读审计，未执行build、原生测试或浏览器动作。UTC时间为 **2026-09-11 04:06:17.741–04:06:18.160**，即本地12:06:17.741–12:06:18.160（UTC+8）；使用已经运行的固定5174 preview。监听检查为Node在 `[::1]:5174`，随后逐文件响应与被审计目录字节一致；没有启动第二个服务。
 
-[`m5-production-build-audit.json`](evidence/m5-production-build-audit.json)是可交付的机器证据，包含84个文件各自的相对路径、类别、大小、SHA-256与HTTP结果；80条声明内容/许可的清单哈希、磁盘哈希和public对照；起终文件集合与指纹；源码入口哈希、依赖分类、被排除的生产诊断标记和未验证边界。每项HTTP记录包含实际URL、最终URL、状态、Content-Type、响应大小、响应哈希及耗时，不把404返回的HTML当作资源成功。
+[`m5-production-build-audit.json`](historical-evidence-files.md#file-76cc9b0cdec55326)是可交付的机器证据，包含84个文件各自的相对路径、类别、大小、SHA-256与HTTP结果；80条声明内容/许可的清单哈希、磁盘哈希和public对照；起终文件集合与指纹；源码入口哈希、依赖分类、被排除的生产诊断标记和未验证边界。每项HTTP记录包含实际URL、最终URL、状态、Content-Type、响应大小、响应哈希及耗时，不把404返回的HTML当作资源成功。
 
 | 类别     | 文件数 |      字节数 | 实际内容                                                   |
 | -------- | -----: | ----------: | ---------------------------------------------------------- |
@@ -341,7 +341,7 @@ PY
 | TXT      |      2 |        8678 | 两份OFL许可                                                    |
 | **合计** | **84** | **1674897** | **84文件及根页面共85次GET全部200，同源、正确类型、字节一致**   |
 
-[`m5-chrome-release-build-audit.json`](evidence/m5-chrome-release-build-audit.json)逐项记录文件路径、大小、SHA-256、修改时间、HTTP状态 / 类型 / 字节 / 耗时及声明清单对照。45个唯一ID均包含M5且与public清单对应条目相同；45个主资源与33个PNG缓存共78个内容哈希、2个OFL许可哈希，形成80个唯一声明路径。加上HTML、JS、CSS和清单，恰好覆盖全部84文件，没有额外打入字体源OTF / TTF、DDS、参考画面、source map或临时目录。
+[`m5-chrome-release-build-audit.json`](historical-evidence-files.md#file-76d5ac682129fa80)逐项记录文件路径、大小、SHA-256、修改时间、HTTP状态 / 类型 / 字节 / 耗时及声明清单对照。45个唯一ID均包含M5且与public清单对应条目相同；45个主资源与33个PNG缓存共78个内容哈希、2个OFL许可哈希，形成80个唯一声明路径。加上HTML、JS、CSS和清单，恰好覆盖全部84文件，没有额外打入字体源OTF / TTF、DDS、参考画面、source map或临时目录。
 
 中文字体是本次缺字修复后的802字符子集，SHA-256为 `c78799c16975421b3513435fa8a71f031434d8d39840682051f804473c89f217`，清单记录1,420个glyph / 1,111个cmap；与public实际字节一致。其源版本、转换和实际解码证据见[美术资源记录](../references/art-implementation.md#51-可复现中文子集)。本次包审计没有另行裁切或生成字体。
 
@@ -364,7 +364,7 @@ GET禁用环境代理、禁止重定向，发送 `Cache-Control: no-cache` 与 `
 
 ### 8.2 独立ZIP与复核命令
 
-本次按授权新建 [`m5-chrome-release-dist.zip`](evidence/m5-chrome-release-dist.zip)，**845,629字节**，SHA-256为 `62b119813a7d3269a95f30f4894e3f4efb5996ccabd054d5fe9acf7d1a888175`；附[SHA-256文件](evidence/m5-chrome-release-dist.zip.sha256)和[机器归档清单](evidence/m5-chrome-release-package.json)。归档时段为08:27:43.127–08:27:43.187 UTC。只归档dist内84个文件，没有包装父目录，也没有额外文件。
+本次按授权新建 [`m5-chrome-release-dist.zip`](historical-evidence-files.md#file-a68b083b831dbd7a)，**845,629字节**，SHA-256为 `62b119813a7d3269a95f30f4894e3f4efb5996ccabd054d5fe9acf7d1a888175`；附[SHA-256文件](historical-evidence-files.md#file-90c56e63c8a12b79)和[机器归档清单](historical-evidence-files.md#file-b65a9409eb1d2533)。归档时段为08:27:43.127–08:27:43.187 UTC。只归档dist内84个文件，没有包装父目录，也没有额外文件。
 
 实际使用Python `zipfile` 的DEFLATE level 9，按相对路径排序；每项固定ZIP元数据时间为1980-01-01 00:00:00，权限为普通文件0644，不带本机用户名、绝对路径或文件时间。这个固定时间用于稳定归档元数据，不是源码创建时间。创建后重新打开ZIP，`testzip()` 返回 `None`；全部84项CRC核对通过，逐项解压字节和SHA-256均等于被审计dist，文件集合一致，没有加密项、绝对路径、上级目录跳转或附加项。打包期间dist未变；没有覆盖旧ZIP。
 
@@ -413,7 +413,7 @@ PY
 
 ## 9. Chrome 请求隔离尝试：未建立，任务标签已关闭
 
-2026-09-11，在第8节同一production包、固定5174服务和自身真实1109代存档基础上，尝试使用Chrome原生DevTools的Request conditions隔离外部请求。仅使用CUA公开原生界面和正常导航；没有CDP、终端浏览器控制、网络脚本、存储写入或游戏状态注入。**本次未建立并证明“外部阻断、localhost放行”，没有进行隔离下的游戏验收，V06仍为未验证。** [实际尝试记录](evidence/m5-chrome-offline-attempt.json)区分了观察结果、推断及剩余清理事项。
+2026-09-11，在第8节同一production包、固定5174服务和自身真实1109代存档基础上，尝试使用Chrome原生DevTools的Request conditions隔离外部请求。仅使用CUA公开原生界面和正常导航；没有CDP、终端浏览器控制、网络脚本、存储写入或游戏状态注入。**本次未建立并证明“外部阻断、localhost放行”，没有进行隔离下的游戏验收，V06仍为未验证。** [实际尝试记录](historical-evidence-files.md#file-c60814c5d13803c6)区分了观察结果、推断及剩余清理事项。
 
 [Chrome官方说明](https://developer.chrome.com/docs/devtools/request-conditions)确认规则按首个匹配项生效，关闭DevTools会停用请求阻断，但规则仍会保存。因此原计划是在本任务标签中先配置localhost豁免，再添加其他请求阻断；没有使用会同时封锁本地服务的“全部离线”模式。本节也不将浏览器级请求条件等同于整机所有外网通道已断开。
 
@@ -421,9 +421,9 @@ PY
 
 | 步骤           | 实际结果与证据                                                                                                                                                                                                                                                                                            |
 | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 保存原设置     | [初始设置摘录](evidence/m5-chrome-offline-devtools-before.txt)：Request conditions没有规则且未启用；设备仿真开启、1920×1080、Fit to window；Disable cache开启；Keep log关闭；Network过滤文字为`Request conditions`。没有覆盖既有规则。                                                                    |
-| 第一个外部对照 | 同一任务标签正常访问并刷新`https://example.com/?camellia-offline-control=20260911`；[页面与Network摘录](evidence/m5-chrome-offline-online-example-com.txt)包含对应请求的200 OK。                                                                                                                          |
-| 第二个外部对照 | 正常访问`https://example.org/?camellia-offline-control=20260911`，Example Domain页面可见；[实际摘录](evidence/m5-chrome-offline-online-example-org.txt)中的Network仍只显示此前example.com行，因此未取得example.org响应状态，不把旧行当作新请求200。                                                       |
+| 保存原设置     | [初始设置摘录](historical-evidence-files.md#file-2f8117da8291fd40)：Request conditions没有规则且未启用；设备仿真开启、1920×1080、Fit to window；Disable cache开启；Keep log关闭；Network过滤文字为`Request conditions`。没有覆盖既有规则。                                                                |
+| 第一个外部对照 | 同一任务标签正常访问并刷新`https://example.com/?camellia-offline-control=20260911`；[页面与Network摘录](historical-evidence-files.md#file-57be54a2906a214b)包含对应请求的200 OK。                                                                                                                         |
+| 第二个外部对照 | 正常访问`https://example.org/?camellia-offline-control=20260911`，Example Domain页面可见；[实际摘录](historical-evidence-files.md#file-9d97d6b9393cb6c4)中的Network仍只显示此前example.com行，因此未取得example.org响应状态，不把旧行当作新请求200。                                                      |
 | 配置尝试       | 两次依据新鲜AX点击Add condition后，紧接的AX均未显示编辑表单；DevTools内的Reload page曾返回工具错误`elementHasNoFrame`。后一次设置记录出现启用的`*://*` / Block规则、0 affected。未输入过该pattern，可能是Add的默认值，此处只是推断；localhost豁免始终未配置完成，也没有取得`(blocked:devtools)`对照证据。 |
 | 停止原生操作   | 后续新鲜AX显示当前所选标签与验收目标不一致、变成非任务页面，原因未确认；立即停止全局原生键鼠，未操作该页面。这是界面控制与取证未完成，不能归因于游戏缺陷。                                                                                                                                                |
 
@@ -433,13 +433,13 @@ PY
 
 停止前的实际AX确认Keep log已恢复关闭；设备仿真、画质和Disable cache从未修改。网络过滤文字尚为空，原值为`Request conditions`。新出现的默认阻断规则是否已被删除尚未验证，不能写成所有DevTools设置均已恢复。
 
-随后按主任务授权，通过本任务标签自身的公开`close()`接口关闭仅由本agent拥有的Chrome标签546939540及其附属DevTools；[关闭记录](evidence/m5-chrome-offline-target-closed.json)和紧接的只读浏览器清单确认该ID已不存在，未关闭其他标签、未新建页面。依据官方行为，该目标的请求阻断随DevTools关闭停用；**持久规则的删除及过滤文字恢复仍待可安全操作的窗口，不将目标关闭等同于规则清除。**
+随后按主任务授权，通过本任务标签自身的公开`close()`接口关闭仅由本agent拥有的Chrome标签546939540及其附属DevTools；[关闭记录](historical-evidence-files.md#file-d24a22c555afb915)和紧接的只读浏览器清单确认该ID已不存在，未关闭其他标签、未新建页面。依据官方行为，该目标的请求阻断随DevTools关闭停用；**持久规则的删除及过滤文字恢复仍待可安全操作的窗口，不将目标关闭等同于规则清除。**
 
-本次没有执行游戏命令，没有修改或清除存档。[此前正常UI导出的1109代真实存档](evidence/m5-chrome-final-production-restored-save.json)继续保留：中央仓库`warehouse.t.7.0`、26个奖励、130单位物资、默认设置。这里是对已有导出文件的保护记录，不是隔离后的保存恢复证据。外部请求失败、localhost隔离刷新、进区、静态/实时重试和隔离下保存恢复均未验证。
+本次没有执行游戏命令，没有修改或清除存档。[此前正常UI导出的1109代真实存档](historical-evidence-files.md#file-ff76a37c4bc25ef5)继续保留：中央仓库`warehouse.t.7.0`、26个奖励、130单位物资、默认设置。这里是对已有导出文件的保护记录，不是隔离后的保存恢复证据。外部请求失败、localhost隔离刷新、进区、静态/实时重试和隔离下保存恢复均未验证。
 
 ### 9.3 取消离线验收后的有界清理尝试
 
-用户随后表达不要求断网游玩，本次后续操作仅清理第9.2节残留，不再执行离线验收。[清理尝试记录](evidence/m5-chrome-devtools-cleanup-attempt.json)保存了脱敏目标、工具错误和关闭确认。
+用户随后表达不要求断网游玩，本次后续操作仅清理第9.2节残留，不再执行离线验收。[清理尝试记录](historical-evidence-files.md#file-15944ec90c84c9cc)保存了脱敏目标、工具错误和关闭确认。
 
 新建专用localhost标签546939601后，正常启动页显示中央仓库、130单位物资及继续按钮。发送DevTools快捷键前，同次调用先核对原生窗口的精确URL；当前前台为非任务标签，保护检查阻止了快捷键。随后依据新鲜AX仅选择唯一的“🧹 DevTools 清理”任务标签时，原生工具在27.025秒返回ScreenCaptureKit `-3811`：音视频捕获失败。没有取得可用截图，没有打开DevTools或接近删除控件，也没有修改规则、过滤文本或其他设置。
 

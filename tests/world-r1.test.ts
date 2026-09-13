@@ -143,7 +143,7 @@ test("R1 真实 v3 全收集旧档归档后正常导航体验新版盗取，退�
   const content = assembleContent("M5");
   const raw = readFileSync(
     new URL(
-      "../docs/verification/evidence/controls-readability/v1-full-collection-migration-save.json",
+      "../tests/fixtures/historical/controls-readability/v1-full-collection-migration-save.json",
       import.meta.url,
     ),
     "utf8",
@@ -206,7 +206,7 @@ test("R1 旧完成迷宫保留入口至出口自然通行；显式新版练习�
   const raw = JSON.parse(
     readFileSync(
       new URL(
-        "../docs/verification/evidence/controls-readability/v1-full-collection-migration-save.json",
+        "../tests/fixtures/historical/controls-readability/v1-full-collection-migration-save.json",
         import.meta.url,
       ),
       "utf8",

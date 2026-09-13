@@ -1,4 +1,4 @@
-import m4 from "./m4.json" with { type: "json" };
+import m4 from "./m4.ts";
 import type { WorldWitness } from "../validate.ts";
 import { currentWorldWitness } from "./current.ts";
 

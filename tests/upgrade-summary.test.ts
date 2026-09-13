@@ -50,7 +50,7 @@ class MemoryStorage implements SaveStorage {
 }
 
 function openExport(file: string, target: GameContent, entry: "continue" | "import") {
-  const url = new URL(`../docs/verification/evidence/${file}`, import.meta.url);
+  const url = new URL(`../tests/fixtures/historical/${file}`, import.meta.url);
   const originalBytes = readFileSync(url);
   const raw = originalBytes.toString("utf8");
   const originalEnvelope = JSON.parse(raw) as SaveEnvelope<unknown>;

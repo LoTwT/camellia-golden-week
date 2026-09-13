@@ -1,9 +1,0 @@
-{
-  "baseline": "cdc7e64b971086e3838b8c17aa3f6796633b5e4c",
-  "baselineContentSha256": "3600214a533fffc2152184ba99d30d008d36584bb73778c85745638915249edf",
-  "currentContentSha256": "fe746e9e816a88a0956de297014e2ab19c7b3fccd3e883cf65ccfa04d666e353",
-  "sameTestSource": "import assert from \"node:assert/strict\";\nimport test from \"node:test\";\nimport content from \"../src/content/challenges/realtime.json\" with { type: \"json\" };\n\ntest(\"原参考的防火墙为完整 5 列 4 行，四档均不能沿用通用 5×5 棋盘\", () => {\n  const definitions = content.definitions.filter((definition) => definition.kind === \"firewall\");\n  assert.equal(definitions.length, 4);\n  for (const definition of definitions) {\n    assert.equal(definition.tiles.length, 20, definition.id);\n    assert.deepEqual(\n      definition.tiles.map((tile) => `${tile.x},${tile.y}`).sort(),\n      Array.from({ length: 20 }, (_, index) => `${index % 5},${Math.floor(index / 5)}`).sort(),\n    );\n  }\n});\n",
-  "testSha256": "f66871724037c482ea931a4b2eb590119a5ca0bcf7d120b691c276f481246596",
-  "redExitCode": 1,
-  "greenExitCode": 0
-}

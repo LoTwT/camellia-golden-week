@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { assembleContent, realtimeContent } from "../src/content/assemble.ts";
-import routes from "../src/content/witnesses/r1-world.json" with { type: "json" };
+import routes from "../src/content/witnesses/r1-world.ts";
 import { createGame, dispatch } from "../src/core/engine.ts";
 import {
   advanceRealtime,

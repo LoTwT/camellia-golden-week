@@ -15,7 +15,7 @@
 
 手册页面当前显示 Latest Live / 3.2.1 更新提示，因此它是现存原文转录，不冒充冻结的 1.1 游戏数据。两段有明确发布日期的原版录像补充数值证据。页面曾对文本抓取返回 403；实际内容通过正常浏览器载入取得，没有绕过访问控制。原文用途由 [Fandom 的独立手册条目](https://zenless-zone-zero.fandom.com/wiki/Tutorial/Breach_Firewall)交叉核对。
 
-数值样本由 Chrome 与 Codex 内置浏览器独立查看，0.25 倍速暂停后逐帧定位；时间来自页面视频元素的只读 `currentTime`。只保留播放器区域的必要截图，[截图清单](../verification/evidence/firewall-hazards/source-evidence.json)记录来源、时间、大小与 SHA-256。未下载完整录像，也未把原录像、手册动画或截图作为游戏运行素材。
+数值样本由 Chrome 与 Codex 内置浏览器独立查看，0.25 倍速暂停后逐帧定位；时间来自页面视频元素的只读 `currentTime`。只保留播放器区域的必要截图，[截图清单](../verification/historical-evidence-files.md#file-fc9d9e917ddbcb8c)记录来源、时间、大小与 SHA-256。未下载完整录像，也未把原录像、手册动画或截图作为游戏运行素材。
 
 ## 推断边界与固定重建
 

@@ -8,7 +8,7 @@ import {
   validateWorldWitness,
 } from "../src/content/validate.ts";
 import type { GameContent, ProfileId } from "../src/core/types.ts";
-import m1Witnesses from "../src/content/witnesses/m1.json" with { type: "json" };
+import m1Witnesses from "../src/content/witnesses/m1.ts";
 
 function altered(change: (content: GameContent) => void): GameContent {
   const content = structuredClone(assembleContent("M1"));

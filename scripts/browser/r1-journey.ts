@@ -11,7 +11,7 @@ import {
   realtimeContent,
   staticContent,
 } from "../../src/content/assemble.ts";
-import routes from "../../src/content/witnesses/r1-world.json" with { type: "json" };
+import routes from "../../src/content/witnesses/r1-world.ts";
 import { createGame, dispatch } from "../../src/core/engine.ts";
 import { publishedProfileMigrations } from "../../src/platform/migrations.ts";
 import { restorePayload, validatePayload } from "../../src/platform/save-payload.ts";

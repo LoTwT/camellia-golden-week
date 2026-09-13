@@ -10,7 +10,7 @@ import {
   migrationContentReleases,
   v2RealtimeContent,
 } from "../src/content/assemble.ts";
-import oldM1 from "../src/content/witnesses/m1.json" with { type: "json" };
+import oldM1 from "../src/content/witnesses/m1.ts";
 import { worldWitnesses, v2WorldWitnesses } from "../src/content/witnesses/index.ts";
 import {
   replayWorldWitness as historicalReplay,
@@ -341,7 +341,7 @@ test("五个历史 profile 到本版同/较后 profile 有唯一迁移；旧物�
   for (const [sourceIndex, sourceProfile] of profiles.entries()) {
     const original = JSON.parse(
       readFileSync(
-        new URL(`../docs/verification/evidence/${originalExports[sourceIndex]}`, import.meta.url),
+        new URL(`../tests/fixtures/historical/${originalExports[sourceIndex]}`, import.meta.url),
         "utf8",
       ),
     ) as SaveEnvelope<SavePayload>;
@@ -493,7 +493,7 @@ test("部分构建只带本期/较早四版本视图，当前版本最后；每�
 
 test("迁移前保存双槽原文；备份存储失败时拒绝写入新版本", () => {
   const raw = readFileSync(
-    new URL("../docs/verification/evidence/m1-browser-save.json", import.meta.url),
+    new URL("../tests/fixtures/historical/m1-browser-save.json", import.meta.url),
     "utf8",
   );
   for (const failBackup of [false, true]) {

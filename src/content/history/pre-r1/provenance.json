@@ -14,7 +14,101 @@
     {
       "source": "7fe7d8e src/content/assemble.ts migrationContentReleases(M5); canonical formatting with pinned Oxfmt",
       "frozen": "src/content/history/pre-r1/releases.json",
-      "sha256": "270b610d5775260750a5bb9965cce00c1a5e91a3215a0d659869c6f83e6d68d6"
+      "sha256": "378e70a95f052f082715521bad9baae60e9cf143f96435372751894f364f045a",
+      "originalSha256": "270b610d5775260750a5bb9965cce00c1a5e91a3215a0d659869c6f83e6d68d6",
+      "conversion": "frozen-release-blocks-v1: shared entries per content array field, ordered references; expanded snapshot JSON SHA-256 below retains property and array order",
+      "expandedSnapshots": [
+        {
+          "profile": "M1",
+          "contentVersion": 1,
+          "ruleVersion": 1,
+          "sha256": "d8c07b85c96382b63cc771d9628c8dff94befcf088a9e8879e93bb480d1fbe86"
+        },
+        {
+          "profile": "M2",
+          "contentVersion": 2,
+          "ruleVersion": 1,
+          "sha256": "d54c21d9102cd2e92945d466c40ae1905c70213b4ae0fde8ab2ac84434f8ff67"
+        },
+        {
+          "profile": "M3",
+          "contentVersion": 3,
+          "ruleVersion": 1,
+          "sha256": "76193a7d891d9c2d5d9103c2167bb8df63b216f03430a68af108edab0cc9f6b8"
+        },
+        {
+          "profile": "M4",
+          "contentVersion": 4,
+          "ruleVersion": 1,
+          "sha256": "c470af1dd6995d59618d5504ee4db6b1bede27156a55990e6e1f325858f45c9b"
+        },
+        {
+          "profile": "M5",
+          "contentVersion": 4,
+          "ruleVersion": 1,
+          "sha256": "1f6dd0599ae4bb880877ca9b354fdcb87f36f1f3908bf39cd73516b803c52b52"
+        },
+        {
+          "profile": "M1",
+          "contentVersion": 2,
+          "ruleVersion": 2,
+          "sha256": "a21be08f0af5831291bddaa75ea09de7286e2ed7cf733d54c62f5bad4d5fb020"
+        },
+        {
+          "profile": "M2",
+          "contentVersion": 3,
+          "ruleVersion": 2,
+          "sha256": "aebd3fc80661e9896b6ccdbf784e2bee56cbe20d3e95cf12619f62627d680869"
+        },
+        {
+          "profile": "M3",
+          "contentVersion": 4,
+          "ruleVersion": 2,
+          "sha256": "45b71c93455dfacf1c3e758715d17bb440fa801f98376930e31371e25fe9333d"
+        },
+        {
+          "profile": "M4",
+          "contentVersion": 5,
+          "ruleVersion": 2,
+          "sha256": "b3df245e76b3cf8947898a2cc5679f5daef0951a6924358df4fb76def15b53d9"
+        },
+        {
+          "profile": "M5",
+          "contentVersion": 5,
+          "ruleVersion": 2,
+          "sha256": "d856d2df411ec371bf420784c22f96311efba6ee450d81affd109df258bde6a5"
+        },
+        {
+          "profile": "M1",
+          "contentVersion": 2,
+          "ruleVersion": 3,
+          "sha256": "69e8a60a746b676a49661eac16c4008108f69f65753e7f1a8dfcd436b39be80a"
+        },
+        {
+          "profile": "M2",
+          "contentVersion": 3,
+          "ruleVersion": 3,
+          "sha256": "db991880907642cbaca13dcfa9b489edee2d36e5dd6c416033be27c8213045e2"
+        },
+        {
+          "profile": "M3",
+          "contentVersion": 4,
+          "ruleVersion": 3,
+          "sha256": "f790ed50378d5d5477ac0f6779ed991733a25fab64f76227717bfe0335eeeb2b"
+        },
+        {
+          "profile": "M4",
+          "contentVersion": 5,
+          "ruleVersion": 3,
+          "sha256": "d8c00e32d25b7e5db57ec890efc0b140265a6ae3b4dd0c5fbc2be54795011516"
+        },
+        {
+          "profile": "M5",
+          "contentVersion": 5,
+          "ruleVersion": 3,
+          "sha256": "357dd7a3385d93a86d97395e750f67ec180729edf3c275a3e3c21a1179494474"
+        }
+      ]
     },
     {
       "source": "src/core/engine.ts",
@@ -99,7 +193,7 @@
   ],
   "existingSaveEvidence": [
     {
-      "path": "docs/verification/evidence/m2-browser-save-schema1.json",
+      "path": "tests/fixtures/historical/m2-browser-save-schema1.json",
       "sha256": "c6cfcc2c0870c855329a5dc5bc037b39296bdb2da5521fc078fbcf4088917b17",
       "schemaVersion": 1,
       "contentVersion": 2,
@@ -107,7 +201,7 @@
       "profile": "M2"
     },
     {
-      "path": "docs/verification/evidence/m5-chrome-final-production-restored-save.json",
+      "path": "tests/fixtures/historical/m5-chrome-final-production-restored-save.json",
       "sha256": "fd8acfa125f7d828e5f521a066b781ccf9a92089b910f5e8203331a555c7c6e0",
       "schemaVersion": 2,
       "contentVersion": 4,
@@ -115,7 +209,7 @@
       "profile": "M5"
     },
     {
-      "path": "docs/verification/evidence/controls-readability/v1-full-collection-migration-save.json",
+      "path": "tests/fixtures/historical/controls-readability/v1-full-collection-migration-save.json",
       "sha256": "875124f82484520f3bc84c90e25dca69c3f5883b1184e923f66144333cdfcefb",
       "schemaVersion": 2,
       "contentVersion": 5,
@@ -123,7 +217,7 @@
       "profile": "M5"
     },
     {
-      "path": "docs/verification/evidence/controls-readability/firewall-music-levels-completed-save.json",
+      "path": "tests/fixtures/historical/controls-readability/firewall-music-levels-completed-save.json",
       "sha256": "fc220564c5b01ac84e338c51e855ceb7c98190896a8443f56d42c961c11ba71c",
       "schemaVersion": 2,
       "contentVersion": 5,
@@ -131,7 +225,7 @@
       "profile": "M5"
     },
     {
-      "path": "docs/verification/evidence/m1-browser-save.json",
+      "path": "tests/fixtures/historical/m1-browser-save.json",
       "sha256": "8f71c22f83a8783effaf3540fc0c142d3f83e08c94537080757a4734e311b187",
       "schemaVersion": 1,
       "contentVersion": 1,
@@ -139,7 +233,7 @@
       "profile": "M1"
     },
     {
-      "path": "docs/verification/evidence/m3-browser-save.json",
+      "path": "tests/fixtures/historical/m3-browser-save.json",
       "sha256": "aa2ea52fc9c484f2c53ed1aae8161607bdff14b9adf3180796bdc2588050648a",
       "schemaVersion": 2,
       "contentVersion": 3,
@@ -147,7 +241,7 @@
       "profile": "M3"
     },
     {
-      "path": "docs/verification/evidence/m4-chrome-browser-full-save.json",
+      "path": "tests/fixtures/historical/m4-chrome-browser-full-save.json",
       "sha256": "4e71abc34dae4b070d8c3846f56985d93d528a09027d6862e2606bae088a956b",
       "schemaVersion": 2,
       "contentVersion": 4,

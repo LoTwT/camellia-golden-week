@@ -28,8 +28,8 @@ import {
   validatePayload,
 } from "../src/content/history/pre-r1/save-payload.ts";
 import { additiveProfileMigrations } from "../src/content/history/pre-r1/migrations.ts";
-import m1Json from "../src/content/witnesses/m1.json" with { type: "json" };
-import m2Json from "../src/content/witnesses/m2.json" with { type: "json" };
+import m1Json from "../src/content/witnesses/m1.ts";
+import m2Json from "../src/content/witnesses/m2.ts";
 
 interface Continuation extends WorldWitness {
   readonly initialStateId: string;

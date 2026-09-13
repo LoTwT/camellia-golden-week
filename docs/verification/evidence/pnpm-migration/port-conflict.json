@@ -1,7 +1,0 @@
-{
-  "command": "pnpm run preview --host localhost --port 5174 --strictPort",
-  "exitCode": 1,
-  "expectedError": "Port 5174 is already in use",
-  "context": "First preview attempt while task-owned dev was still running; guard initially expected the npm executable path instead of pnpm shim path. No process was stopped until exact path and cwd were verified.",
-  "unexpectedPortFallback": false
-}

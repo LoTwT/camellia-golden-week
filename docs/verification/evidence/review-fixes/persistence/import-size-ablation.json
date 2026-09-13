@@ -1,7 +1,0 @@
-{
-  "mutation": "Remove only 1 MiB prepareSaveImport UTF-8 size guard",
-  "exitCode": 1,
-  "expectedFailure": "Legal JSON plus trailing whitespace at 1 MiB + 1 must be rejected",
-  "baseline": "test-results/review-fixes/persistence/green.log",
-  "sharedSourceChanged": false
-}

@@ -22,7 +22,7 @@ const historical = frozenContentRelease("M5", 3);
 const raw = JSON.parse(
   readFileSync(
     new URL(
-      "../docs/verification/evidence/controls-readability/v1-full-collection-migration-save.json",
+      "../tests/fixtures/historical/controls-readability/v1-full-collection-migration-save.json",
       import.meta.url,
     ),
     "utf8",
@@ -202,7 +202,7 @@ test("R1 P07 five profiles and all forward upgrades preserve real original perma
   const profileIds: ProfileId[] = ["M1", "M2", "M3", "M4", "M5"];
   for (const [sourceProfile, path] of actualProfileSaves) {
     const input = JSON.parse(
-      readFileSync(new URL(`../docs/verification/evidence/${path}`, import.meta.url), "utf8"),
+      readFileSync(new URL(`../tests/fixtures/historical/${path}`, import.meta.url), "utf8"),
     ).payload;
     const source = frozenContentRelease(sourceProfile, input.ruleVersion);
     for (const profileId of profileIds.filter((id) => id >= sourceProfile)) {

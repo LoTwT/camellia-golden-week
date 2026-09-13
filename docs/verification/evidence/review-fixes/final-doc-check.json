@@ -1,7 +1,0 @@
-{
-  "status": "passed",
-  "localMarkdownTargets": 748,
-  "unchangedImplementationInputs": 182,
-  "gitDiffCheck": "Implementation and maintained documentation passed; raw evidence logs retain exact tool output",
-  "rawLogTrailingWhitespaceWarnings": 63
-}

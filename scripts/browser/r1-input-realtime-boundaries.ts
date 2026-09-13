@@ -100,8 +100,14 @@ async function pointerPoint(page: Page, tile: { x: number; y: number }, state: O
 /** Read-only event/position observation. All inputs are Playwright keyboard/mouse operations. */
 async function watchInputs(page: Page) {
   return page.evaluateHandle(() => {
-    const events: { type: string; key?: string; repeat?: boolean; target: string; time: number }[] =
-      [];
+    const events: {
+      type: string;
+      key?: string;
+      repeat?: boolean;
+      target: string;
+      time: number;
+      position?: Observation["position"];
+    }[] = [];
     const positions: { tileId: string; time: number }[] = [];
     let raf = 0,
       stopped = false;
@@ -112,6 +118,14 @@ async function watchInputs(page: Page) {
         ...key,
         target: (event.target as HTMLElement)?.id ?? "",
         time: performance.now(),
+        // Capture the actual release boundary, before another animation frame can run.
+        ...(event.type === "keyup"
+          ? {
+              position: (
+                Reflect.get(window, "__CAMELLIA_INSPECT__") as { snapshot(): Observation }
+              ).snapshot().position,
+            }
+          : {}),
       });
     };
     const frame = () => {
@@ -332,15 +346,20 @@ export async function verifyR1InputRealtimeBoundaries(options: {
     await page.keyboard.up("ArrowRight");
     await page.waitForTimeout(200);
     const stopped = await observe(page);
-    assert.deepEqual(stopped.position, earlierStillHeld.position);
-    assert.deepEqual(permanent(stopped), permanent(before));
     const inputs = await watcher.evaluate((value) => value.stop());
     await watcher.dispose();
+    const released = inputs.events.find(
+      (event) => event.type === "keyup" && event.key === "ArrowRight",
+    );
+    assert.ok(released?.position, "必须记录真实 ArrowRight keyup 时的位置");
+    assert.deepEqual(stopped.position, released.position);
+    assert.deepEqual(permanent(stopped), permanent(before));
     return {
       before,
       latest,
       bothHeld,
       earlierStillHeld,
+      released,
       stopped,
       inputs,
       method:

@@ -1,9 +1,0 @@
-{
-  "error": "AssertionError [ERR_ASSERTION]: 方向必须使用粗实心图形，不能依赖细字体箭头\n\n0 !== 1\n\n    at assertReadableAlarmDirections (file:///Users/caoyujie/codes/camellia-golden-week/scripts/browser/firewall-cue.ts:192:12)\n    at runNextTicks (node:internal/process/task_queues:65:5)\n    at process.processImmediate (node:internal/timers:472:9)\n    at async observeAlarmRecovery (file:///Users/caoyujie/codes/camellia-golden-week/scripts/browser/firewall-cue.ts:718:25)\n    at async verifyFirewallCue (file:///Users/caoyujie/codes/camellia-golden-week/scripts/browser/firewall-cue.ts:1168:23)\n    at async file:///private/tmp/camellia-direction-red.mjs:8:25",
-  "observedAt": "2026-09-12T06:16:51.277Z",
-  "inspection": null,
-  "ui": {
-    "phase": "waiting",
-    "dialog": "CAMELLIA / TERMINAL终端挑战跟随音乐与画面周围白光，在拍点移动。普通错拍减 1 连击，触碰警报减 5；朝箭头方向踩拍，迎向警报可完美闪避。警报会移动，停在红格也会受击。两侧电视显示连击，底部文字提示拍点，减少闪烁时可依文字操作。鼠标可点不同格；方向键每次按下移动一次，每拍最多加 1。教学 · 15 秒 / Combo 12内层 · 45 秒 / Combo 40深层 · 45 秒 / Combo 55核心 · 45 秒 / Combo 70返回地图"
-  }
-}

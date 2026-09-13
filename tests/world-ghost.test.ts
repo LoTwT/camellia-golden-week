@@ -27,7 +27,7 @@ const content = assembleContent("M4");
 const sourceContent = assembleContent("M3");
 const registry = additiveProfileMigrations([sourceContent, content]);
 const originalRaw = readFileSync(
-  new URL("../docs/verification/evidence/m3-browser-main-save.json", import.meta.url),
+  new URL("../tests/fixtures/historical/m3-browser-main-save.json", import.meta.url),
   "utf8",
 );
 const original = JSON.parse(originalRaw) as { payload: unknown };

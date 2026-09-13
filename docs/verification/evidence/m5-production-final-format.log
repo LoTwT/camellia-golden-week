@@ -1,8 +1,0 @@
-
-> camellia-golden-week@0.5.0 format:check
-> oxfmt --check
-
-Checking formatting...
-
-All matched files use the correct format.
-Finished in 981ms on 100 files using 10 threads.

@@ -17,7 +17,7 @@ import {
   supplyProgress,
 } from "../src/content/history/pre-r1/progress.ts";
 import type { GameState } from "../src/content/history/pre-r1/types.ts";
-import witnessContent from "../src/content/witnesses/m1.json" with { type: "json" };
+import witnessContent from "../src/content/witnesses/m1.ts";
 
 const content = assembleContent("M1");
 const witnesses = witnessContent.witnesses as WorldWitness[];

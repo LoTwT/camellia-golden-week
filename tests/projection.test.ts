@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { assembleContent } from "../src/content/assemble.ts";
 import type { WorldWitness } from "../src/content/validate.ts";
-import r1Witnesses from "../src/content/witnesses/r1-world.json" with { type: "json" };
+import r1Witnesses from "../src/content/witnesses/r1-world.ts";
 import { createGame, dispatch } from "../src/core/engine.ts";
 import { projectBoard } from "../src/core/projection.ts";
 import type { GameContent, GameState } from "../src/core/types.ts";

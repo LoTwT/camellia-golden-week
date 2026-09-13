@@ -23,12 +23,12 @@
 
 实际查看的本版图片均为 1280×720：
 
-- [中心代表画面](../verification/evidence/m1-representative-hub.png)：核对普通探索的构图、玩家与 HUD。
-- [M2 B 入口](../verification/evidence/m2-b-entry.png)：核对探索比例、未知格与外壳。
-- [M2 重度杀毒活动态](../verification/evidence/m2-antivirus-heavy-active.png)：核对局部棋盘比例、目标图标与屏面。
-- [M3 调整前](../verification/evidence/m3-routing-before-polish.png)：仅用于确认旧遮挡问题。
-- [M3 当前代表画面](../verification/evidence/m3-routing-representative.png)：本次建议的主要基准。计数、规则与短反馈已移到左侧，玩家不再被底部说明遮挡；两球和目标站已显示配对数字。这两项不再列为待修建议。
-- [M4 幽灵段 01 代表画面](../verification/evidence/m4-ghost01-representative.png)：后补只读对照，截图显示“已点亮 0 盏灯”和“准备倒数 · 3 秒”；只证明该时刻的玩家、幽灵、未亮灯与出口显示，状态转换另见下节限制。
+- [中心代表画面](../verification/historical-evidence-files.md#file-d304327f31dbea86)：核对普通探索的构图、玩家与 HUD。
+- [M2 B 入口](../verification/historical-evidence-files.md#file-2a9a0b245ef818c5)：核对探索比例、未知格与外壳。
+- [M2 重度杀毒活动态](../verification/historical-evidence-files.md#file-16959ac959c9cb44)：核对局部棋盘比例、目标图标与屏面。
+- [M3 调整前](../verification/historical-evidence-files.md#file-7bcded3ed21cd5e7)：仅用于确认旧遮挡问题。
+- [M3 当前代表画面](../verification/historical-evidence-files.md#file-f55f9e644c1c3d54)：本次建议的主要基准。计数、规则与短反馈已移到左侧，玩家不再被底部说明遮挡；两球和目标站已显示配对数字。这两项不再列为待修建议。
+- [M4 幽灵段 01 代表画面](../verification/historical-evidence-files.md#file-2dea9a1ab045a184)：后补只读对照，截图显示“已点亮 0 盏灯”和“准备倒数 · 3 秒”；只证明该时刻的玩家、幽灵、未亮灯与出口显示，状态转换另见下节限制。
 
 同时读取 [board.ts](../../src/render/board.ts)、[style.css](../../src/ui/style.css) 和投影层的当前颜色定义。旧 M2 截图中间的计分条不代表现有 CSS；本轮不据旧图重复要求已经完成的迁移。
 

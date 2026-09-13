@@ -6,7 +6,7 @@ import { chromium } from "playwright";
 import type { Browser, Page } from "playwright";
 import { build, preview } from "vite";
 import { assembleContent } from "../../src/content/assemble.ts";
-import routes from "../../src/content/witnesses/r1-world.json" with { type: "json" };
+import routes from "../../src/content/witnesses/r1-world.ts";
 import { createGame, dispatch } from "../../src/core/engine.ts";
 import type { GameState, ProfileId } from "../../src/core/types.ts";
 import type { R1AntivirusState } from "../../src/core/antivirus.ts";

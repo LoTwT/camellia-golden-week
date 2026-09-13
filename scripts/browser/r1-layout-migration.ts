@@ -46,7 +46,7 @@ interface Observation {
   lastResult: GameState["lastResult"];
 }
 const sourceUrl = new URL(
-  "../../docs/verification/evidence/controls-readability/v1-full-collection-migration-save.json",
+  "../../tests/fixtures/historical/controls-readability/v1-full-collection-migration-save.json",
   import.meta.url,
 );
 const sourceSha256 = "875124f82484520f3bc84c90e25dca69c3f5883b1184e923f66144333cdfcefb";
@@ -527,7 +527,7 @@ export async function authorHistoricalCompletedVisit(options: {
   );
   await mkdir(output, { recursive: true });
   const authorSourceUrl = options.unclaimed
-    ? new URL("../../docs/verification/evidence/m2-browser-save.json", import.meta.url)
+    ? new URL("../../tests/fixtures/historical/m2-browser-save.json", import.meta.url)
     : sourceUrl;
   const authorSourceHash = options.unclaimed
     ? "b8e6fcaac082820270ccc4c19c214d6f1f98d786426b9904a037aefcfc13fe18"

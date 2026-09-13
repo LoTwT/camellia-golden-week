@@ -1,5 +1,6 @@
 /** Explicit authoring only. Neither build nor validation imports or executes this writer. */
 import { writeFileSync } from "node:fs";
+import { compactWitnessCollection } from "../src/content/witnesses/compact.ts";
 import { assembleContent, staticContent, realtimeContent } from "../src/content/assemble.ts";
 import { frozenContentRelease } from "../src/content/history/frozen-releases.ts";
 import {
@@ -14,10 +15,10 @@ import { createGame, dispatch } from "../src/core/engine.ts";
 import { moveCompletedStatic } from "../src/core/static-puzzle.ts";
 import type { Direction, GameCommand, GameContent, GameState } from "../src/core/types.ts";
 import type { WorldWitness, WorldWitnessStep } from "../src/content/validate.ts";
-import m1 from "../src/content/witnesses/m1.json" with { type: "json" };
-import m2 from "../src/content/witnesses/m2.json" with { type: "json" };
-import m3 from "../src/content/witnesses/m3.json" with { type: "json" };
-import m4 from "../src/content/witnesses/m4.json" with { type: "json" };
+import m1 from "../src/content/witnesses/m1.ts";
+import m2 from "../src/content/witnesses/m2.ts";
+import m3 from "../src/content/witnesses/m3.ts";
+import m4 from "../src/content/witnesses/m4.ts";
 
 if (process.argv[2] !== "--write" || process.argv.length !== 3)
   throw new Error("Explicit authoring requires --write");
@@ -232,7 +233,10 @@ for (const source of m4.witnesses as WorldWitness[]) witnesses.push(author(sourc
 writeFileSync(
   new URL("../src/content/witnesses/r1-world.json", import.meta.url),
   JSON.stringify(
-    { authoredFrom: "7fe7d8e world navigation plus R1 fixed puzzle witnesses", witnesses },
+    compactWitnessCollection({
+      authoredFrom: "7fe7d8e world navigation plus R1 fixed puzzle witnesses",
+      witnesses,
+    }),
     null,
     2,
   ) + "\n",

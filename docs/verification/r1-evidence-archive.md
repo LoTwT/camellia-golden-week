@@ -1,6 +1,6 @@
 # R1 验收证据归档
 
-[文档索引](../index.md) · [63项结果](r1-acceptance-results.md) · [逐文件索引](r1-evidence-files.md) · [权威清单](evidence/r1-archive-manifest.json)
+[文档索引](../index.md) · [后续整个 PR 数据精简](pr-data-cleanup.md) · [63项结果](r1-acceptance-results.md) · [逐文件索引](r1-evidence-files.md) · [权威清单](evidence/r1-archive-manifest.json)
 
 R1 的完整原始验收输出通过 [v0.5.0-r1 Release](https://github.com/LoTwT/camellia-golden-week/releases/tag/v0.5.0-r1) 分发，不再随普通 Git 克隆下载。归档包含成功和失败尝试，保存原文件字节、原路径、原时间与原提交号；本次改变存放方式，不改变历史结论。Release 标签绑定清理后的提交，旧提交仅作为证据来源标识。
 

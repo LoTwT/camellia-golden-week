@@ -145,7 +145,7 @@ SVG 使用 128×128 透明画板，主体大致位于 18–110 范围，玩家�
 
 ### 4.1 首轮可交互代表图校准
 
-本版证据为 [M1 中心富集节点截图](../verification/evidence/m1-representative-hub.png)，`contentVersion: 1`，PNG 尺寸 **1280×720**，SHA-256 `2ba76e1fdcf19e516b14f9dd9960ef0ad241d703626d0c4ba5450ce393242449`。主实现者通过正常键盘走到教学富集节点后拍摄；本资源制作者实际查看该截图，并与 `AR-CENTER` / `AR-A-EXPLORATION`、1920×1080 的 `AR-A-MAZE` / `AR-A-FIREWALL` 交叉核对。子任务没有把截图检查报告成一次独立的键盘通关复测。
+本版证据为 [M1 中心富集节点截图](../verification/historical-evidence-files.md#file-d304327f31dbea86)，`contentVersion: 1`，PNG 尺寸 **1280×720**，SHA-256 `2ba76e1fdcf19e516b14f9dd9960ef0ad241d703626d0c4ba5450ce393242449`。主实现者通过正常键盘走到教学富集节点后拍摄；本资源制作者实际查看该截图，并与 `AR-CENTER` / `AR-A-EXPLORATION`、1920×1080 的 `AR-A-MAZE` / `AR-A-FIREWALL` 交叉核对。子任务没有把截图检查报告成一次独立的键盘通关复测。
 
 | 对照项          | 本版实际观察与已校准内容                                                             | 与原参考的剩余差异 / 检验边界                                                                                          |
 | --------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -186,7 +186,7 @@ B 普通蓝目标为单菱形像素十字，紫目标为双菱形与速度短线
 
 C 图只能证实推车的这些粗轮廓；信号球本体和基站外观仍未证实。其清单差异字段已明确改为独立补制，球 / 基站编号由投影层提供。CRT 暗角、紫灰反光、屏幕尺寸和背景多边形均由渲染层生成，本次资产生成器没有引入重复 CRT 贴图。游戏内六类场景的最终比例、遮挡、动态与声音效果仍须使用阶段截图和实际操作验收；上述单图核对不代表 V01–V03 已通过。
 
-此前[相机布局](../../src/render/layout.ts)与[玩家渲染](../../src/render/board.ts)共用 `MOVEMENT_TRANSITION_MS=100` 视觉过渡目标，为合同“镜头120ms内、普通移动总时长≤140ms”预留实际帧完成余量；[普通输入间隔](../../src/platform/input.ts)仍为140ms，规则时钟未改。100ms是源码目标，不是实际渲染耗时。主任务已用正常键鼠完成该版本的[IAB世界六步](../verification/evidence/m5-iab-movement-100ms.json)104.8–109.5ms及[Safari64格六步](../verification/evidence/m5-safari-dense-movement-100ms.json)101–116ms的实际渲染完成复验，两组普通移动≤140ms子项通过，后者包含新场景首次热身。准确环境、逐步代数、进度恢复与计量边界见[性能记录](../verification/performance.md#100ms视觉目标复验)。
+此前[相机布局](../../src/render/layout.ts)与[玩家渲染](../../src/render/board.ts)共用 `MOVEMENT_TRANSITION_MS=100` 视觉过渡目标，为合同“镜头120ms内、普通移动总时长≤140ms”预留实际帧完成余量；[普通输入间隔](../../src/platform/input.ts)仍为140ms，规则时钟未改。100ms是源码目标，不是实际渲染耗时。主任务已用正常键鼠完成该版本的[IAB世界六步](../verification/historical-evidence-files.md#file-f420c7e2a2410efb)104.8–109.5ms及[Safari64格六步](../verification/historical-evidence-files.md#file-b29f6caf2707f94f)101–116ms的实际渲染完成复验，两组普通移动≤140ms子项通过，后者包含新场景首次热身。准确环境、逐步代数、进度恢复与计量边界见[性能记录](../verification/performance.md#100ms视觉目标复验)。
 
 旧120ms目标下Safari159ms热身超限保留为促成本次缩短过渡的失败记录，不与新版本样本混用。该修改不是FPS修复，Safari两档median17ms的帧率失败、指定基准硬件缺口及原版动态/声音未核对仍保留；六类静图也不替代动态测量。
 
@@ -226,15 +226,15 @@ node scripts/generate-assets.ts --check
 
 2026-09-11 发布前检查发现新增UI文案需要 `副 U+526F` 和 `它 U+5B83`，只读构建按约定拒绝缺字。随后显式运行上面的 `--subset-font` 模式，实际源路径为作者缓存 `/tmp/camellia-art-reference/NotoSansSC-Regular.otf`，8,331,336字节，其SHA-256与固定官方源匹配。生成器SHA-256为 `0e4140cf980a7826e31d1d83f5bd8022c552ef7f83c72cc77bcc83e84d499251`，工具和配方不变；此次形成45文件 / 802字符的历史子集（182,592字节，1,420个glyph、1,111个cmap，输出SHA-256 `c78799c16975421b3513435fa8a71f031434d8d39840682051f804473c89f217`）。实际FontTools解码核对新增两字、全部必需字符、glyph / cmap数量、版权名称记录及两份清单一致性；cmap清单SHA-256为 `e234a41d01261772dfe24533bb8a38f8c46136871efb7f016d3a0ff7ac8fedcc`，字体清单文件SHA-256为 `6345a59cec2ddbd301d51f8befd07132aa1ca17c24b905812276fcc34155b890`，总资源清单文件SHA-256为 `110af4b866272166414ef79194d7cbfb5273f907413dced997e4c3fa6d0772b8`。此字体维护操作仅生成中文WOFF2及两份清单，没有构建或改写既有静态包；成品构建的字体版本另以对应构建审计为准。
 
-2026-09-11 消融 Review 修复后，完整检查再次正确拒绝六个缺字：`儿 U+513F`、`册 U+518C`、`孤 U+5B64`、`注 U+6CE8`、`言 U+8A00`、`默 U+9ED8`。沿用同一固定 OTF、生成器和工具版本，显式补制该次47文件 / 808字符子集；只更新中文WOFF2和两份清单。实际FontTools解码核对808个必需字符、1,426个glyph、1,117个cmap及版权名称，清单与字体字节一致。[字体复核](../verification/evidence/review-fixes/font-verification.json)记录全部SHA-256，[修复与构建记录](../verification/review-fixes.md)保留失败日志和后续完整验证；没有放宽只读检查。
+2026-09-11 消融 Review 修复后，完整检查再次正确拒绝六个缺字：`儿 U+513F`、`册 U+518C`、`孤 U+5B64`、`注 U+6CE8`、`言 U+8A00`、`默 U+9ED8`。沿用同一固定 OTF、生成器和工具版本，显式补制该次47文件 / 808字符子集；只更新中文WOFF2和两份清单。实际FontTools解码核对808个必需字符、1,426个glyph、1,117个cmap及版权名称，清单与字体字节一致。[字体复核](../verification/historical-evidence-files.md#file-5daac6a5ef6cfe3c)记录全部SHA-256，[修复与构建记录](../verification/review-fixes.md)保留失败日志和后续完整验证；没有放宽只读检查。
 
-2026-09-11 用户体验反馈防火墙拍点难辨。新增UI文字需要 `束 U+675F`，构建前沿用固定OTF和配方显式补制当前48文件 / 811字符子集。实际FontTools解码确认1,427个glyph、1,118个cmap、全部811字符覆盖，见[字体核对](../verification/evidence/firewall-cue/font-verification.json)。独立节拍条由DOM/CSS绘制，读权威有效时钟；没有新增图片或声音。屏幕和操作对照见[拍点修复](../verification/firewall-visual-cue.md)。
+2026-09-11 用户体验反馈防火墙拍点难辨。新增UI文字需要 `束 U+675F`，构建前沿用固定OTF和配方显式补制当前48文件 / 811字符子集。实际FontTools解码确认1,427个glyph、1,118个cmap、全部811字符覆盖，见[字体核对](../verification/historical-evidence-files.md#file-1bf9bfa24e8d4b8d)。独立节拍条由DOM/CSS绘制，读权威有效时钟；没有新增图片或声音。屏幕和操作对照见[拍点修复](../verification/firewall-visual-cue.md)。
 
-2026-09-11 原版教学补核后，为画面周边节拍提示新增 `白 U+767D`；只读检查先报缺字，再以同一固定源、配方和工具显式补齐。当前48文件 / 812字符子集为183,336字节，实际解码1,428个glyph、1,119个cmap，新增字符及全部必需字符均覆盖，见[本次字体核对](../verification/evidence/firewall-perimeter/font-verification.json)。周边灯光由DOM/CSS绘制，没有引入原视频影音或额外贴图。
+2026-09-11 原版教学补核后，为画面周边节拍提示新增 `白 U+767D`；只读检查先报缺字，再以同一固定源、配方和工具显式补齐。当前48文件 / 812字符子集为183,336字节，实际解码1,428个glyph、1,119个cmap，新增字符及全部必需字符均覆盖，见[本次字体核对](../verification/historical-evidence-files.md#file-adb3daf57b23baa6)。周边灯光由DOM/CSS绘制，没有引入原视频影音或额外贴图。
 
-2026-09-12 防火墙 v3 警报修复沿用相同固定源与工具。前一版 v2 子集为54文件 / 817字符，184,736字节、1,432个glyph、1,123个cmap，SHA-256 `ba720c7cadcdd2232037e40b7f5c9c00bfa21d06969c4bdf9e1855111ec0c937`，这些值从已发布 `210a53e` 清单核回。本次普通只读检查先拒绝“警、报、箭”等缺字，再显式补制；最终57文件 / 828字符、186,432字节，实际FontTools解码确认字形覆盖、版权名称和两份清单一致，见[v3字体核对](../verification/evidence/firewall-hazards/font-verification.json)。受击与闪避复用已打包的 `failure.wav` / `reveal.wav`；没有导入原录像音效或新增图片。
+2026-09-12 防火墙 v3 警报修复沿用相同固定源与工具。前一版 v2 子集为54文件 / 817字符，184,736字节、1,432个glyph、1,123个cmap，SHA-256 `ba720c7cadcdd2232037e40b7f5c9c00bfa21d06969c4bdf9e1855111ec0c937`，这些值从已发布 `210a53e` 清单核回。本次普通只读检查先拒绝“警、报、箭”等缺字，再显式补制；最终57文件 / 828字符、186,432字节，实际FontTools解码确认字形覆盖、版权名称和两份清单一致，见[v3字体核对](../verification/historical-evidence-files.md#file-0ae8a93d32cb527f)。受击与闪避复用已打包的 `failure.wav` / `reveal.wav`；没有导入原录像音效或新增图片。
 
-2026-09-12 菜单键盘提示需要 `切 U+5207`，普通只读检查先失败，再按原固定 OTF 与配方显式补齐。当前58文件 / 829字符子集的实际解码、版权名称及两份清单核对见[字体复核](../verification/evidence/controls-readability/font-verification.json)，[缺字失败](../verification/evidence/controls-readability/font-coverage-red.log)与[生成日志](../verification/evidence/controls-readability/font-generation.log)保留原文。
+2026-09-12 菜单键盘提示需要 `切 U+5207`，普通只读检查先失败，再按原固定 OTF 与配方显式补齐。当前58文件 / 829字符子集的实际解码、版权名称及两份清单核对见[字体复核](../verification/historical-evidence-files.md#file-fb18ff379bb0e25e)，[缺字失败](../verification/historical-evidence-files.md#file-ee7c4148ecf88a55)与[生成日志](../verification/historical-evidence-files.md#file-611632d239f1221a)保留原文。
 
 同次方向箭头采用本项目绘制的内联矢量路径，由[电视渲染代码](../../src/render/board.ts)创建并旋转，[专用样式](../../src/ui/firewall.css)提供深浅底色、虚实边线和尺寸。版本以该次[修复记录](../verification/controls-readability.md)与完整验证的源哈希为准；它是程序绘制的 UI 标记，不是原作提取图，也不额外占用48项文件资源清单。用途依据 S12 的警报来向与闪避说明，显示差异在修复记录中注明；没有引入新图像、字体来源或声音许可。
 
