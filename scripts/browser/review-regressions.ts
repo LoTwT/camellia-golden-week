@@ -154,6 +154,60 @@ export async function verifyReviewRegressions(options: {
     return { importedRevision: external.payload.stateRevision, progressed, restored };
   });
 
+  await scenario("side-entry-room-save", options.productionUrl, async (page) => {
+    await startNewGame(page);
+    for (const key of [
+      "ArrowRight",
+      "ArrowRight",
+      "ArrowRight",
+      "r",
+      "ArrowRight",
+      "ArrowRight",
+      "ArrowRight",
+      "f",
+    ])
+      await pressGameKey(page, key);
+    await waitForGameReady(page);
+    for (const key of ["ArrowUp", "ArrowUp", "ArrowUp", "ArrowRight"])
+      await pressGameKey(page, key);
+    await waitForGameReady(page);
+    assert.match(await page.locator("#save-status").innerText(), /已保存/);
+    const slots = await readSlots(page);
+    const entrance = Object.values(slots)
+      .filter((raw): raw is string => raw !== null)
+      .map(
+        (raw) =>
+          JSON.parse(raw) as SaveEnvelope<import("../../src/platform/save-payload.ts").SavePayload>,
+      )
+      .sort((a, b) => b.saveGeneration - a.saveGeneration)[0]!;
+    assert.equal(entrance.payload.room?.roomId, "a.maze.02");
+    assert.equal(entrance.payload.visitedTileIds.includes("a.t.1.-2"), false);
+    await page.waitForFunction(
+      () => !document.querySelector("#mode-banner")?.textContent?.includes("记住安全路线"),
+    );
+    await pressGameKey(page, "ArrowRight");
+    const progressed = await exportThroughUi(page);
+    assert.equal(progressed.payload.room?.status, "active");
+    assert.notDeepEqual(progressed.payload.playerPosition, entrance.payload.playerPosition);
+    assert.equal(progressed.payload.visitedTileIds.includes("a.t.1.-2"), false);
+    await page.reload();
+    await page.getByRole("button", { name: "继续游戏", exact: true }).click();
+    await waitForGameReady(page);
+    const restored = await exportThroughUi(page);
+    assert.deepEqual(restored.payload, progressed.payload);
+    await importThroughUi(page, progressed);
+    await page.getByRole("button", { name: "确认替换", exact: true }).click();
+    await waitForGameReady(page);
+    assert.deepEqual((await exportThroughUi(page)).payload, progressed.payload);
+    return {
+      roomId: entrance.payload.room?.roomId,
+      returnAnchor: entrance.payload.room?.returnAnchor,
+      returnedAnchorVisited: false,
+      restoredPosition: restored.payload.playerPosition,
+      importAccepted: true,
+    };
+  });
+
   await scenario("quality-import", options.productionUrl, async (page) => {
     await startNewGame(page);
     const baseline = await exportThroughUi(page);

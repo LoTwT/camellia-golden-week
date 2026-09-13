@@ -1,3 +1,4 @@
+import { sameJsonValue } from "../core/json-value.ts";
 import * as historicalStatic from "../content/history/pre-r1/static-puzzle.ts";
 import { createGame, worldPosition } from "../core/engine.ts";
 import { createClock } from "../core/clock.ts";
@@ -607,12 +608,13 @@ function validateSnapshot(
       );
       if (
         !registered ||
-        JSON.stringify(
+        !sameJsonValue(
           mapCompletedLayout(
             archive.layout as CompletedStaticLayout,
             registered.kind === "mapped" ? registered.mapping : {},
           ),
-        ) !== JSON.stringify(record.layout)
+          record.layout,
+        )
       )
         return invalid(`完成布局缺少已登记的一一语义映射或与来源不符：${roomId}`);
     }
@@ -686,7 +688,10 @@ function validateSnapshot(
   for (const id of payload.activatedTeleportIds)
     if (!content.areas.some((area) => area.teleportId === id && area.includedFrom <= sourceStage))
       return invalid(`未知传送点：${id}`);
-  const validatePosition = (position: unknown, worldOnly: boolean): string | null => {
+  const validatePosition = (
+    position: unknown,
+    role: "player" | "roomReturnAnchor",
+  ): string | null => {
     if (
       !object(position) ||
       !exactKeys(position, ["space", "areaId", "boardId", "tileId"]) ||
@@ -706,7 +711,7 @@ function validateSnapshot(
         tile.boardId !== position.areaId ||
         position.boardId !== position.areaId ||
         !payload.discoveredTileIds.includes(tile.id) ||
-        !payload.visitedTileIds.includes(tile.id)
+        (role === "player" && !payload.visitedTileIds.includes(tile.id))
       )
         return "位置不是已发现且可通行的合法格";
       if (
@@ -726,10 +731,10 @@ function validateSnapshot(
         if (!gate || !gateSatisfied(sourceContent, payload, gate.condition))
           return "位置位于未开放的门或奖励格";
       }
-    } else if (worldOnly) return "返回入口必须在世界空间";
+    } else if (role === "roomReturnAnchor") return "返回入口必须在世界空间";
     return null;
   };
-  const positionError = validatePosition(raw.playerPosition, false);
+  const positionError = validatePosition(raw.playerPosition, "player");
   if (positionError) return invalid(positionError);
   if (payload.room !== null) {
     if (
@@ -766,7 +771,7 @@ function validateSnapshot(
       payload.playerPosition.areaId !== room.areaId
     )
       return invalid("活动房间与玩家空间不一致");
-    const anchorError = validatePosition(payload.room.returnAnchor, true);
+    const anchorError = validatePosition(payload.room.returnAnchor, "roomReturnAnchor");
     if (
       anchorError ||
       payload.room.returnAnchor.tileId !== room.returnTileId ||

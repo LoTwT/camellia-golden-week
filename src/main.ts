@@ -1,6 +1,6 @@
 import content, { migrationReleases } from "virtual:camellia-content";
 import { publishedProfileMigrations } from "./platform/migrations.ts";
-import { contentUpgradeSummary } from "./platform/upgrade-summary.ts";
+import { saveUpgradeSummary } from "./platform/upgrade-summary.ts";
 import { createGame, dispatch } from "./core/engine.ts";
 import { projectBoard } from "./core/projection.ts";
 import { areaData, supplyProgress } from "./core/progress.ts";
@@ -373,10 +373,11 @@ function showStartup() {
       : []),
   ];
   if (inspection.status === "ready" && inspection.latest?.payload) {
-    const upgradeSummary = contentUpgradeSummary(
+    const upgradeSummary = saveUpgradeSummary(
       inspection.latest.envelope?.payload,
       inspection.latest.payload,
       content,
+      inspection.latest.migrationNotes,
     );
     shell.showDecision(
       "继续探索",
@@ -442,7 +443,16 @@ function showStartup() {
       : inspection.status === "recovery"
         ? "选择存档恢复方式"
         : "需要处理本地存档",
-    inspection.message + (inspection.latest?.error ? ` ${inspection.latest.error}` : ""),
+    inspection.message +
+      (inspection.latest?.error ? ` ${inspection.latest.error}` : "") +
+      (inspection.status === "recovery" && inspection.backup?.payload
+        ? saveUpgradeSummary(
+            inspection.backup.envelope?.payload,
+            inspection.backup.payload,
+            content,
+            inspection.backup.migrationNotes,
+          )
+        : ""),
     choices,
   );
 }
@@ -498,10 +508,11 @@ async function importFile(file: File) {
     );
     return;
   }
-  const upgradeSummary = contentUpgradeSummary(
+  const upgradeSummary = saveUpgradeSummary(
     prepared.envelope.payload,
     prepared.payload,
     content,
+    prepared.migrationNotes,
   );
   shell.showDecision(
     "确认导入进度",

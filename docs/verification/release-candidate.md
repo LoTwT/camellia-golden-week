@@ -1,5 +1,7 @@
 # M5 静态交付包
 
+2026-09-13 最新存档修复见 [PR 存档审查修复](pr-save-review-fixes.md)。本次改变运行代码，下面的 Release ZIP 和逐字节等价结论只对应此前 R1/数据精简阶段，不包含本次修复。最新版本从当前 PR 源码构建；本轮不覆盖原 Release 附件或移动标签。
+
 2026-09-13 补充：[整个 PR 数据精简](pr-data-cleanup.md)已完成实现和完整验证。源数据改用无损表示，93 个正式构建文件与本页原发布 ZIP 逐字节一致，原 ZIP 继续有效；当前开发基线与新克隆数据见精简记录。
 
 R1完整原始证据与静态ZIP改由[Release归档](r1-evidence-archive.md)分发；以下原发布提交与测量记录保留原时点含义，清理后的最新提交见PR提交列表；[清理完整复验](evidence/r1-cleanup-verification.json)确认游戏源码、资源与93文件正式产物字节不变。 [归档发布回读](evidence/r1-cleanup-publication.json)确认6附件重新下载一致，以及新克隆的冻结安装、682测试与构建通过。

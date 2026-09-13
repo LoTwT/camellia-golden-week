@@ -37,3 +37,14 @@ export function contentUpgradeSummary(
     });
   return `${content.profile.id} 新增${revisits.map((area) => area.label).join("、")}回访；${[...openingConditions].join("；")}。已有首访数据与已领取物资保留（${retainedData.join("；")}）。请按主路径提示继续推进。`;
 }
+
+export function saveUpgradeSummary(
+  originalPayload: unknown,
+  upgradedProgress: ProgressState,
+  content: GameContent,
+  migrationNotes: readonly string[] = [],
+): string {
+  return (
+    migrationNotes.join("") + contentUpgradeSummary(originalPayload, upgradedProgress, content)
+  );
+}

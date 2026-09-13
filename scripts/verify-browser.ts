@@ -7,6 +7,7 @@ import type { ProfileId } from "../src/core/types.ts";
 import { verifyArtifacts } from "./verify-artifacts.ts";
 import { verifyProductionProfile } from "./browser/production-profile.ts";
 import { verifyReviewRegressions } from "./browser/review-regressions.ts";
+import { verifyMigrationNotes } from "./browser/migration-notes.ts";
 import { verifyFirewallCue } from "./browser/firewall-cue.ts";
 import { verifyMenuKeyboard } from "./browser/menu-keyboard.ts";
 import { verifyR1Journey } from "./browser/r1-journey.ts";
@@ -92,6 +93,11 @@ try {
     productionUrl: production.url,
     acceptanceUrl: acceptance.url,
     outputDir,
+  });
+  results.migrationNotes = await verifyMigrationNotes({
+    browser,
+    productionUrl: production.url,
+    outputDir: join(outputDir, "migration-notes"),
   });
   if (!reviewOnly)
     results.r1PlatformBoundaries = await verifyR1PlatformBoundaries({

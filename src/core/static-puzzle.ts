@@ -1,3 +1,4 @@
+import { sameJsonValue } from "./json-value.ts";
 import {
   createTheftLayout,
   moveTheft,
@@ -977,8 +978,8 @@ export function validateCompletedStaticLayout(
 
 function sameLayout(left: StaticLayout, right: StaticLayout): boolean {
   return (
-    JSON.stringify(left.theft) === JSON.stringify(right.theft) &&
-    JSON.stringify(left.capture) === JSON.stringify(right.capture) &&
+    sameJsonValue(left.theft, right.theft) &&
+    sameJsonValue(left.capture, right.capture) &&
     Object.keys(left.objectTileById).length === Object.keys(right.objectTileById).length &&
     Object.entries(left.objectTileById).every(
       ([key, value]) => right.objectTileById[key] === value,

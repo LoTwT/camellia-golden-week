@@ -1,3 +1,4 @@
+import { sameJsonValue } from "../core/json-value.ts";
 import { r1RoomLayoutMappings } from "../content/history/r1-room-map.ts";
 import * as historicalStatic from "../content/history/pre-r1/static-puzzle.ts";
 import {
@@ -558,7 +559,7 @@ export function applyMigrationStep(
         item.contentVersion === archive.contentVersion &&
         item.ruleVersion === archive.ruleVersion,
     );
-    if (existing && JSON.stringify(existing.layout) !== JSON.stringify(archive.layout))
+    if (existing && !sameJsonValue(existing.layout, archive.layout))
       return { ok: false, error: `历史完成布局键冲突：${roomId}` };
     if (!existing) next.archivedCompletedRoomLayouts.push(archive);
     if (operation?.kind !== "archive") {

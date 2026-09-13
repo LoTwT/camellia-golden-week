@@ -2,7 +2,9 @@
 
 《绝区零》「沙罗黄金周」（Camellia Golden Week）空洞电视格子玩法的单人本地复刻。保留探索、机关、格子内挑战与四区联动，移除剧情、空洞外流程和动作战斗。
 
-R1 已完成三个信号组装盗取终端、四组推车捕获、持续堆积的三档杀毒、重新测绘的 A / B / D 机关和专用界面。默认 M5 包含中心、A–D 四区、回访和中央仓库，保持 26 个唯一奖励、130 单位物资。完整 `pnpm run verify` 通过，682 项原生测试零失败；当前 63 项验收为 **62 项通过、V06 断网不再要求**，逐项新证据见[R1 验收结果](docs/verification/r1-acceptance-results.md)。
+R1 已完成三个信号组装盗取终端、四组推车捕获、持续堆积的三档杀毒、重新测绘的 A / B / D 机关和专用界面。默认 M5 包含中心、A–D 四区、回访和中央仓库，保持 26 个唯一奖励、130 单位物资。首次 R1 交付的完整 `pnpm run verify` 通过，682 项原生测试零失败；63 项验收为 **62 项通过、V06 断网不再要求**，逐项证据见[R1 验收结果](docs/verification/r1-acceptance-results.md)。
+
+2026-09-13 补修了侧路进入房间后的保存、JSON 对象键重排导入和旧档迁移说明，当前 787 项原生测试通过，实际验证与边界见[PR 存档审查修复](docs/verification/pr-save-review-fixes.md)。下列 Release ZIP 保留首次 R1 交付，不含后续修复；最新版本请使用当前 PR 源码构建。
 
 本机独立 Chrome 已正常键鼠完成跳过计分挑战到仓库、M5 的 130 全收集、三个盗取与四组捕获，以及 M1–M3 独立全收集、升级续玩、旧档完成访问与新版练习链。视口、性能、菜单和故障恢复均有本轮证据，历史通过数未继承。可直接打开[固定本地入口](http://localhost:5174)，或下载[R1 静态 ZIP](https://github.com/LoTwT/camellia-golden-week/releases/download/v0.5.0-r1/camellia-golden-week-r1-dist.zip)；[静态交付记录](docs/verification/release-candidate.md)给出校验值与验证方法，[PR #1](https://github.com/LoTwT/camellia-golden-week/pull/1)用于审阅，不合并 main。
 
