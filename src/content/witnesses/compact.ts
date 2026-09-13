@@ -19,7 +19,7 @@ type ExpandedCollection<T> = {
   [K in keyof T as K extends "encoding" | "commands" ? never : K]: K extends
     | "witnesses"
     | "continuations"
-    ? T[K] extends readonly (infer R)[]
+    ? NonNullable<T[K]> extends readonly (infer R)[]
       ? ExpandedRoute<R>[]
       : never
     : T[K];
@@ -109,9 +109,21 @@ type AuthoredCollection = {
   readonly witnesses: readonly AuthoredRoute[];
   readonly continuations?: readonly AuthoredRoute[];
 };
+type CompactedCollection<T> = {
+  encoding: "world-witness-runs-v1";
+  commands: Record<string, GameCommand>;
+} & {
+  [K in keyof T]: K extends "witnesses" | "continuations"
+    ? NonNullable<T[K]> extends readonly (infer R)[]
+      ? (Omit<R, "steps"> & { runs: WitnessRun[] })[]
+      : never
+    : T[K];
+};
 
 /** Explicit authors call this encoder; imports, tests and builds never write data. */
-export function compactWitnessCollection<T extends AuthoredCollection>(source: T) {
+export function compactWitnessCollection<T extends AuthoredCollection>(
+  source: T,
+): CompactedCollection<T> {
   if (Object.hasOwn(source, "encoding") || Object.hasOwn(source, "commands"))
     throw new Error("Authored witnesses contain reserved encoding fields");
   const commands: Record<string, GameCommand> = {};
@@ -171,5 +183,5 @@ export function compactWitnessCollection<T extends AuthoredCollection>(source: T
     ...(source.continuations ? { continuations: source.continuations.map(compactRoute) } : {}),
   };
   expandWitnessCollection(result);
-  return result;
+  return result as CompactedCollection<T>;
 }

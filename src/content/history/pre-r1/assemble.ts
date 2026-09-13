@@ -1,6 +1,6 @@
 import { frozenContentRelease } from "../frozen-releases.ts";
 import staticJson from "./static.json" with { type: "json" };
-import realtimeJson from "../realtime-v1.json" with { type: "json" };
+import realtimeJson from "../realtime-v1.ts";
 import type { StaticContent } from "./static-puzzle.ts";
 import type { RealtimeDefinition, RealtimeWitness } from "./realtime.ts";
 import type { GameContent, ProfileId } from "./types.ts";

@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import test from "node:test";
+import legacyDigests from "./fixtures/legacy-realtime-digests.json" with { type: "json" };
 import {
   assembleContent,
   assembleLegacyContent,
@@ -260,11 +261,15 @@ test("危险预告提前 150ms，当前危险优先；预告本身不会触发�
   assert.deepEqual(firewallDangerTileIds(definition, definition.rules.durationMs), []);
 });
 
-test("v1 原始实时定义保留 25 格、120 BPM、30/90 拍，历史文件按发布校验值冻结", () => {
-  const bytes = readFileSync(new URL("../src/content/history/realtime-v1.json", import.meta.url));
+test("v1 原始实时定义保留 25 格、120 BPM、30/90 拍，展开对象按发布校验值冻结", () => {
+  const source = legacyDigests.files.find((entry) => entry.path.endsWith("/realtime-v1.json"))!;
   assert.equal(
-    createHash("sha256").update(bytes).digest("hex"),
+    source.originalSha256,
     "3600214a533fffc2152184ba99d30d008d36584bb73778c85745638915249edf",
+  );
+  assert.equal(
+    createHash("sha256").update(JSON.stringify(legacyRealtimeContent)).digest("hex"),
+    source.expandedSha256,
   );
   for (const definition of legacyRealtimeContent.definitions) {
     assert.deepEqual(validateRealtimeDefinition(definition), []);

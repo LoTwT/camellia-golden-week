@@ -153,7 +153,10 @@
     {
       "source": "src/content/challenges/realtime.json",
       "frozen": "src/content/history/pre-r1/realtime.json",
-      "sha256": "7ac766389ec4e9a5de8bbf2638369df48372a2a6b030848e79dc5744f6e9fae7"
+      "sha256": "38cdfeb59ea6523ac40c1733cbef71dfc9f6cc89e9c67aca890b4cfbb46f8357",
+      "originalSha256": "7ac766389ec4e9a5de8bbf2638369df48372a2a6b030848e79dc5744f6e9fae7",
+      "conversion": "legacy-realtime-references-v1: definition index/id references resolve only against pre-r1/releases.json shared.realtimeChallenges; metadata, witnesses, property and array order unchanged",
+      "expandedSha256": "d8a9965eb2df8c2089ef6a45bba64f9e0350b71a244f3f143d53bfd93c506d87"
     },
     {
       "source": "src/core/projection.ts",
@@ -186,9 +189,25 @@
     {
       "source": "src/content/witnesses/current.ts",
       "frozen": "src/content/witnesses/v3.ts",
-      "sha256": "c7657cd9446dff974f195fcdfd1f76797fffefef7e1f4e9166db43a7a08b2983",
+      "sha256": "f985be5acc35a1c54b2f67f6daf6847a68595a96344054f4a7e48e5521c44f6d",
       "originalSha256": "e9898a980fa20079f98d17fe5e59d5b4457e1b0108f833e6abbbd62723b0240c",
-      "conversion": "rename currentWorldWitness to v3WorldWitness; read frozen pre-r1/realtime.json; literal ruleVersion 3; TypeScript declaration/import adaptation only"
+      "conversion": "rename currentWorldWitness to v3WorldWitness; read frozen pre-r1/realtime.json; literal ruleVersion 3; TypeScript declaration/import adaptation only; frozen realtime-content.ts wrapper expands stored definition references"
+    },
+    {
+      "source": "src/content/history/realtime-v1.json",
+      "frozen": "src/content/history/realtime-v1.json",
+      "sha256": "30ce3da443f03f3ed1e746d1dff3fbece29b6af3f9e111e68dec3998ce87e723",
+      "originalSha256": "3600214a533fffc2152184ba99d30d008d36584bb73778c85745638915249edf",
+      "conversion": "legacy-realtime-references-v1: definition index/id references resolve only against pre-r1/releases.json shared.realtimeChallenges; metadata, witnesses, property and array order unchanged",
+      "expandedSha256": "f59ebdbbb47189ece517ce4e2409b10b710f1e43420eef8557a473e959f023cc"
+    },
+    {
+      "source": "src/content/history/realtime-v2.json",
+      "frozen": "src/content/history/realtime-v2.json",
+      "sha256": "68e01be91219944d8bc661bfb0ace3f5af7ffad4a7f9b7c069a8a341e3de77b5",
+      "originalSha256": "fe746e9e816a88a0956de297014e2ab19c7b3fccd3e883cf65ccfa04d666e353",
+      "conversion": "legacy-realtime-references-v1: definition index/id references resolve only against pre-r1/releases.json shared.realtimeChallenges; metadata, witnesses, property and array order unchanged",
+      "expandedSha256": "1783671de862d6a0b6651d258fc6b3fd5296305248d3a32972d326780f6aec90"
     }
   ],
   "existingSaveEvidence": [

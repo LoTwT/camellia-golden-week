@@ -25,6 +25,34 @@ function canonical(value: unknown): unknown {
   return value;
 }
 const sources = { m1, m2, m3, m4, "r1-world": r1 };
+test("可选续玩字段在编解码后仍保留元数据类型与步骤", () => {
+  const source: {
+    witnesses: { id: string; steps: WorldWitnessStep[] }[];
+    continuations?: { initialStateId: string; steps: WorldWitnessStep[] }[];
+  } = {
+    witnesses: [
+      { id: "main", steps: [{ atMs: 0, command: { kind: "Tick" }, expectedCode: "accepted" }] },
+    ],
+    continuations: [
+      {
+        initialStateId: "saved",
+        steps: [{ atMs: 100, command: { kind: "Tick" }, expectedCode: "accepted" }],
+      },
+    ],
+  };
+  const compact = compactWitnessCollection(source);
+  assert.deepEqual(
+    compact.continuations?.map((route) => route.initialStateId),
+    ["saved"],
+  );
+  const expanded = expandWitnessCollection(compact);
+  assert.deepEqual(
+    expanded.continuations?.map((route) => route.initialStateId),
+    ["saved"],
+  );
+  assert.deepEqual(expanded, source);
+});
+
 for (const digest of digests)
   test(`${digest.name} 展开后全部步骤、时间、检查点、续玩及元数据与独立冻结摘要一致`, () => {
     const source = sources[digest.name as keyof typeof sources];

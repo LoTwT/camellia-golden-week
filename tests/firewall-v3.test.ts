@@ -5,7 +5,9 @@ import {
   assembleV2Content,
   migrationContentReleases,
   realtimeContent,
+  v2RealtimeContent,
 } from "../src/content/assemble.ts";
+import legacyDigests from "./fixtures/legacy-realtime-digests.json" with { type: "json" };
 import { v2WorldWitnesses } from "../src/content/witnesses/index.ts";
 import { replayWorldWitness } from "../src/content/history/pre-r1/validate.ts";
 import type { GameContent as HistoricalContent } from "../src/content/history/pre-r1/types.ts";
@@ -40,7 +42,6 @@ import {
 } from "../src/platform/migrations.ts";
 import { validatePayload } from "../src/platform/save-payload.ts";
 import { createHash } from "node:crypto";
-import { readFileSync } from "node:fs";
 
 const template = realtimeContent.definitions.find(
   (item): item is DirectionalFirewallDefinition =>
@@ -375,11 +376,15 @@ test("v3 四档键盘见证都有实际方向闪避，无受击完成 27/82，�
   }
 });
 
-test("v2 原发布 JSON 按校验值冻结，v2 五个完整 profile 通过唯一规则升级保留成绩/物资/门禁", () => {
-  const bytes = readFileSync(new URL("../src/content/history/realtime-v2.json", import.meta.url));
+test("v2 原发布 JSON 展开后按校验值冻结，v2 五个完整 profile 通过唯一规则升级保留成绩/物资/门禁", () => {
+  const source = legacyDigests.files.find((entry) => entry.path.endsWith("/realtime-v2.json"))!;
   assert.equal(
-    createHash("sha256").update(bytes).digest("hex"),
+    source.originalSha256,
     "fe746e9e816a88a0956de297014e2ab19c7b3fccd3e883cf65ccfa04d666e353",
+  );
+  assert.equal(
+    createHash("sha256").update(JSON.stringify(v2RealtimeContent)).digest("hex"),
+    source.expandedSha256,
   );
   const profiles = ["M1", "M2", "M3", "M4", "M5"] as const;
   for (const [index, profile] of profiles.entries()) {

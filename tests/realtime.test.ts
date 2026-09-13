@@ -1,7 +1,7 @@
 // V1 timing boundaries remain covered for historical release compatibility. V2 has its own suite.
 import assert from "node:assert/strict";
 import test from "node:test";
-import content from "../src/content/history/realtime-v1.json" with { type: "json" };
+import content from "../src/content/history/realtime-v1.ts";
 import {
   advanceRealtime,
   antivirusTargetValue,

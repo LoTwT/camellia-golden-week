@@ -1,4 +1,4 @@
-import frozenRealtime from "../history/pre-r1/realtime.json" with { type: "json" };
+import frozenRealtime from "../history/pre-r1/realtime-content.ts";
 import type { RealtimeDefinition } from "../../core/realtime.ts";
 const realtimeContent = frozenRealtime as unknown as {
   definitions: RealtimeDefinition[];

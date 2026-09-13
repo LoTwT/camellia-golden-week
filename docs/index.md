@@ -16,7 +16,7 @@
 
 ## 实施与实际验证
 
-整个 PR 的证据归档、冻结快照去重与路线精简见 [PR 数据精简](verification/pr-data-cleanup.md)。
+整个 PR 的证据归档、冻结快照去重，以及后续旧关卡定义与路线公共前缀精简见 [PR 数据精简](verification/pr-data-cleanup.md)。
 
 完整R1原始证据已改为独立归档分发，使用方法、原路径与校验值见[R1证据归档](verification/r1-evidence-archive.md)。正常安装、测试与游戏不需要下载大型归档。
 
