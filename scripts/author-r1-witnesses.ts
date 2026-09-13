@@ -2,6 +2,7 @@
 import { writeFileSync } from "node:fs";
 import { compactWitnessCollection } from "../src/content/witnesses/compact.ts";
 import { compactWitnessPrefixes } from "../src/content/witnesses/prefixes.ts";
+import { compactExpectationLists } from "../src/content/witnesses/expectation-lists.ts";
 import { assembleContent, staticContent, realtimeContent } from "../src/content/assemble.ts";
 import { frozenContentRelease } from "../src/content/history/frozen-releases.ts";
 import {
@@ -234,11 +235,13 @@ for (const source of m4.witnesses as WorldWitness[]) witnesses.push(author(sourc
 writeFileSync(
   new URL("../src/content/witnesses/r1-world.json", import.meta.url),
   JSON.stringify(
-    compactWitnessPrefixes(
-      compactWitnessCollection({
-        authoredFrom: "7fe7d8e world navigation plus R1 fixed puzzle witnesses",
-        witnesses,
-      }),
+    compactExpectationLists(
+      compactWitnessPrefixes(
+        compactWitnessCollection({
+          authoredFrom: "7fe7d8e world navigation plus R1 fixed puzzle witnesses",
+          witnesses,
+        }),
+      ),
     ),
     null,
     2,

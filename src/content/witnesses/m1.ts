@@ -1,4 +1,5 @@
 import compact from "./m1.json" with { type: "json" };
 import { expandWitnessCollection } from "./compact.ts";
+import { expandExpectationLists } from "./expectation-lists.ts";
 
-export default expandWitnessCollection(compact);
+export default expandWitnessCollection(expandExpectationLists(compact));

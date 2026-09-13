@@ -6,7 +6,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import { chromium } from "playwright";
 import type { Browser, Page } from "playwright";
 import { build, preview } from "vite";
-import oldStatic from "../../src/content/history/pre-r1/static.json" with { type: "json" };
+import oldStatic from "../../src/content/history/pre-r1/static-content.ts";
 import {
   createStatic as createOldStatic,
   moveStatic as moveOldStatic,

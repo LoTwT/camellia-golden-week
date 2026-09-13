@@ -69,25 +69,9 @@
         "areaId": "a",
         "tileId": "a.t.7.0",
         "mode": "explore",
-        "completedObjectiveIds": [
-          "hub.amplifier",
-          "hub.tutorial",
-          "a.nexus.route",
-          "a.maze.01",
-          "a.main"
-        ],
-        "absentObjectiveIds": [
-          "a.maze.02",
-          "a.maze.03",
-          "a.side.terminal",
-          "a.nexus.side",
-          "a.firewall.access",
-          "a.firewall.tutorial",
-          "a.firewall.inner",
-          "a.firewall.deep",
-          "a.firewall.core"
-        ],
-        "claimedRewardIds": ["hub.supply.tutorial", "a.supply.maze01"],
+        "completedObjectiveIds": 0,
+        "absentObjectiveIds": 0,
+        "claimedRewardIds": 0,
         "supplyUnits": 6,
         "aData": 20
       },
@@ -116,25 +100,9 @@
               "areaId": "a",
               "tileId": "a.t.7.0",
               "mode": "explore",
-              "completedObjectiveIds": [
-                "hub.amplifier",
-                "hub.tutorial",
-                "a.nexus.route",
-                "a.maze.01",
-                "a.main"
-              ],
-              "absentObjectiveIds": [
-                "a.maze.02",
-                "a.maze.03",
-                "a.side.terminal",
-                "a.nexus.side",
-                "a.firewall.access",
-                "a.firewall.tutorial",
-                "a.firewall.inner",
-                "a.firewall.deep",
-                "a.firewall.core"
-              ],
-              "claimedRewardIds": ["hub.supply.tutorial", "a.supply.maze01"],
+              "completedObjectiveIds": 0,
+              "absentObjectiveIds": 0,
+              "claimedRewardIds": 0,
               "supplyUnits": 6,
               "aData": 20
             }
@@ -152,31 +120,9 @@
         "areaId": "a",
         "tileId": "a.t.0.0",
         "mode": "explore",
-        "completedObjectiveIds": [
-          "hub.amplifier",
-          "hub.tutorial",
-          "a.nexus.route",
-          "a.maze.01",
-          "a.maze.02",
-          "a.maze.03",
-          "a.main",
-          "a.side.terminal",
-          "a.nexus.side",
-          "a.firewall.access",
-          "a.firewall.tutorial",
-          "a.firewall.inner",
-          "a.firewall.deep",
-          "a.firewall.core"
-        ],
-        "absentObjectiveIds": ["a.revisit.terminal", "b.main", "warehouse.complete"],
-        "claimedRewardIds": [
-          "hub.supply.tutorial",
-          "a.supply.maze01",
-          "a.supply.maze03",
-          "a.supply.firewall.inner",
-          "a.supply.firewall.deep",
-          "a.supply.firewall.core"
-        ],
+        "completedObjectiveIds": 1,
+        "absentObjectiveIds": 1,
+        "claimedRewardIds": 1,
         "supplyUnits": 26,
         "aData": 80
       },
@@ -205,25 +151,9 @@
               "areaId": "a",
               "tileId": "a.t.7.0",
               "mode": "explore",
-              "completedObjectiveIds": [
-                "hub.amplifier",
-                "hub.tutorial",
-                "a.nexus.route",
-                "a.maze.01",
-                "a.main"
-              ],
-              "absentObjectiveIds": [
-                "a.maze.02",
-                "a.maze.03",
-                "a.side.terminal",
-                "a.nexus.side",
-                "a.firewall.access",
-                "a.firewall.tutorial",
-                "a.firewall.inner",
-                "a.firewall.deep",
-                "a.firewall.core"
-              ],
-              "claimedRewardIds": ["hub.supply.tutorial", "a.supply.maze01"],
+              "completedObjectiveIds": 0,
+              "absentObjectiveIds": 0,
+              "claimedRewardIds": 0,
               "supplyUnits": 6,
               "aData": 20
             }
@@ -243,25 +173,9 @@
               "areaId": "a",
               "tileId": "a.t.8.0",
               "mode": "explore",
-              "completedObjectiveIds": [
-                "hub.amplifier",
-                "hub.tutorial",
-                "a.nexus.route",
-                "a.maze.01",
-                "a.main"
-              ],
-              "absentObjectiveIds": [
-                "a.maze.02",
-                "a.maze.03",
-                "a.side.terminal",
-                "a.nexus.side",
-                "a.firewall.access",
-                "a.firewall.tutorial",
-                "a.firewall.inner",
-                "a.firewall.deep",
-                "a.firewall.core"
-              ],
-              "claimedRewardIds": ["hub.supply.tutorial", "a.supply.maze01"],
+              "completedObjectiveIds": 0,
+              "absentObjectiveIds": 0,
+              "claimedRewardIds": 0,
               "supplyUnits": 6,
               "aData": 20
             }
@@ -699,31 +613,9 @@
               "areaId": "a",
               "tileId": "a.t.-2.-4",
               "mode": "explore",
-              "completedObjectiveIds": [
-                "hub.amplifier",
-                "hub.tutorial",
-                "a.nexus.route",
-                "a.maze.01",
-                "a.maze.02",
-                "a.maze.03",
-                "a.main",
-                "a.side.terminal",
-                "a.nexus.side",
-                "a.firewall.access",
-                "a.firewall.tutorial",
-                "a.firewall.inner",
-                "a.firewall.deep",
-                "a.firewall.core"
-              ],
-              "absentObjectiveIds": ["a.revisit.terminal", "b.main", "warehouse.complete"],
-              "claimedRewardIds": [
-                "hub.supply.tutorial",
-                "a.supply.maze01",
-                "a.supply.maze03",
-                "a.supply.firewall.inner",
-                "a.supply.firewall.deep",
-                "a.supply.firewall.core"
-              ],
+              "completedObjectiveIds": 1,
+              "absentObjectiveIds": 1,
+              "claimedRewardIds": 1,
               "supplyUnits": 26,
               "aData": 80
             }
@@ -744,31 +636,9 @@
               "areaId": "hub",
               "tileId": "hub.t.0.2",
               "mode": "explore",
-              "completedObjectiveIds": [
-                "hub.amplifier",
-                "hub.tutorial",
-                "a.nexus.route",
-                "a.maze.01",
-                "a.maze.02",
-                "a.maze.03",
-                "a.main",
-                "a.side.terminal",
-                "a.nexus.side",
-                "a.firewall.access",
-                "a.firewall.tutorial",
-                "a.firewall.inner",
-                "a.firewall.deep",
-                "a.firewall.core"
-              ],
-              "absentObjectiveIds": ["a.revisit.terminal", "b.main", "warehouse.complete"],
-              "claimedRewardIds": [
-                "hub.supply.tutorial",
-                "a.supply.maze01",
-                "a.supply.maze03",
-                "a.supply.firewall.inner",
-                "a.supply.firewall.deep",
-                "a.supply.firewall.core"
-              ],
+              "completedObjectiveIds": 1,
+              "absentObjectiveIds": 1,
+              "claimedRewardIds": 1,
               "supplyUnits": 26,
               "aData": 80
             }
@@ -791,31 +661,9 @@
               "areaId": "a",
               "tileId": "a.t.0.0",
               "mode": "explore",
-              "completedObjectiveIds": [
-                "hub.amplifier",
-                "hub.tutorial",
-                "a.nexus.route",
-                "a.maze.01",
-                "a.maze.02",
-                "a.maze.03",
-                "a.main",
-                "a.side.terminal",
-                "a.nexus.side",
-                "a.firewall.access",
-                "a.firewall.tutorial",
-                "a.firewall.inner",
-                "a.firewall.deep",
-                "a.firewall.core"
-              ],
-              "absentObjectiveIds": ["a.revisit.terminal", "b.main", "warehouse.complete"],
-              "claimedRewardIds": [
-                "hub.supply.tutorial",
-                "a.supply.maze01",
-                "a.supply.maze03",
-                "a.supply.firewall.inner",
-                "a.supply.firewall.deep",
-                "a.supply.firewall.core"
-              ],
+              "completedObjectiveIds": 1,
+              "absentObjectiveIds": 1,
+              "claimedRewardIds": 1,
               "supplyUnits": 26,
               "aData": 80
             }
@@ -838,31 +686,9 @@
               "areaId": "a",
               "tileId": "a.t.3.0",
               "mode": "explore",
-              "completedObjectiveIds": [
-                "hub.amplifier",
-                "hub.tutorial",
-                "a.nexus.route",
-                "a.maze.01",
-                "a.maze.02",
-                "a.maze.03",
-                "a.main",
-                "a.side.terminal",
-                "a.nexus.side",
-                "a.firewall.access",
-                "a.firewall.tutorial",
-                "a.firewall.inner",
-                "a.firewall.deep",
-                "a.firewall.core"
-              ],
-              "absentObjectiveIds": ["a.revisit.terminal", "b.main", "warehouse.complete"],
-              "claimedRewardIds": [
-                "hub.supply.tutorial",
-                "a.supply.maze01",
-                "a.supply.maze03",
-                "a.supply.firewall.inner",
-                "a.supply.firewall.deep",
-                "a.supply.firewall.core"
-              ],
+              "completedObjectiveIds": 1,
+              "absentObjectiveIds": 1,
+              "claimedRewardIds": 1,
               "supplyUnits": 26,
               "aData": 80
             }
@@ -974,31 +800,9 @@
               "areaId": "a",
               "tileId": "a.t.-2.-4",
               "mode": "explore",
-              "completedObjectiveIds": [
-                "hub.amplifier",
-                "hub.tutorial",
-                "a.nexus.route",
-                "a.maze.01",
-                "a.maze.02",
-                "a.maze.03",
-                "a.main",
-                "a.side.terminal",
-                "a.nexus.side",
-                "a.firewall.access",
-                "a.firewall.tutorial",
-                "a.firewall.inner",
-                "a.firewall.deep",
-                "a.firewall.core"
-              ],
-              "absentObjectiveIds": ["a.revisit.terminal", "b.main", "warehouse.complete"],
-              "claimedRewardIds": [
-                "hub.supply.tutorial",
-                "a.supply.maze01",
-                "a.supply.maze03",
-                "a.supply.firewall.inner",
-                "a.supply.firewall.deep",
-                "a.supply.firewall.core"
-              ],
+              "completedObjectiveIds": 1,
+              "absentObjectiveIds": 1,
+              "claimedRewardIds": 1,
               "supplyUnits": 26,
               "aData": 80
             }
@@ -1016,31 +820,9 @@
               "areaId": "hub",
               "tileId": "hub.t.0.2",
               "mode": "explore",
-              "completedObjectiveIds": [
-                "hub.amplifier",
-                "hub.tutorial",
-                "a.nexus.route",
-                "a.maze.01",
-                "a.maze.02",
-                "a.maze.03",
-                "a.main",
-                "a.side.terminal",
-                "a.nexus.side",
-                "a.firewall.access",
-                "a.firewall.tutorial",
-                "a.firewall.inner",
-                "a.firewall.deep",
-                "a.firewall.core"
-              ],
-              "absentObjectiveIds": ["a.revisit.terminal", "b.main", "warehouse.complete"],
-              "claimedRewardIds": [
-                "hub.supply.tutorial",
-                "a.supply.maze01",
-                "a.supply.maze03",
-                "a.supply.firewall.inner",
-                "a.supply.firewall.deep",
-                "a.supply.firewall.core"
-              ],
+              "completedObjectiveIds": 1,
+              "absentObjectiveIds": 1,
+              "claimedRewardIds": 1,
               "supplyUnits": 26,
               "aData": 80
             }
@@ -1049,5 +831,52 @@
         [252320, "Teleport:a.teleport", "accepted"]
       ]
     }
-  ]
+  ],
+  "expectationLists": {
+    "format": "world-witness-expectation-lists-v1",
+    "completedObjectiveIds": [
+      ["hub.amplifier", "hub.tutorial", "a.nexus.route", "a.maze.01", "a.main"],
+      [
+        "hub.amplifier",
+        "hub.tutorial",
+        "a.nexus.route",
+        "a.maze.01",
+        "a.maze.02",
+        "a.maze.03",
+        "a.main",
+        "a.side.terminal",
+        "a.nexus.side",
+        "a.firewall.access",
+        "a.firewall.tutorial",
+        "a.firewall.inner",
+        "a.firewall.deep",
+        "a.firewall.core"
+      ]
+    ],
+    "absentObjectiveIds": [
+      [
+        "a.maze.02",
+        "a.maze.03",
+        "a.side.terminal",
+        "a.nexus.side",
+        "a.firewall.access",
+        "a.firewall.tutorial",
+        "a.firewall.inner",
+        "a.firewall.deep",
+        "a.firewall.core"
+      ],
+      ["a.revisit.terminal", "b.main", "warehouse.complete"]
+    ],
+    "claimedRewardIds": [
+      ["hub.supply.tutorial", "a.supply.maze01"],
+      [
+        "hub.supply.tutorial",
+        "a.supply.maze01",
+        "a.supply.maze03",
+        "a.supply.firewall.inner",
+        "a.supply.firewall.deep",
+        "a.supply.firewall.core"
+      ]
+    ]
+  }
 }

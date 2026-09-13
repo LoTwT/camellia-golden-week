@@ -148,7 +148,10 @@
     {
       "source": "src/content/challenges/static.json",
       "frozen": "src/content/history/pre-r1/static.json",
-      "sha256": "890512a795e5556e5fdc9fc026c85f46b193bfc57ad3db996529718321efbdb7"
+      "sha256": "00cb1310a845083df6c088879dd8bc2f19227b62ad85c7b864892ac18c7d7cfa",
+      "originalSha256": "890512a795e5556e5fdc9fc026c85f46b193bfc57ad3db996529718321efbdb7",
+      "conversion": "legacy-static-references-v1: definition index/id references resolve only against pre-r1/releases.json shared.staticChallenges; witnesses, property and array order unchanged",
+      "expandedSha256": "9d2315add58ffc25be543dfbb520ad41bd072fd95bbb5b3856b3a253a3e0435e"
     },
     {
       "source": "src/content/challenges/realtime.json",

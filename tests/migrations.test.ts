@@ -5,7 +5,7 @@ import test from "node:test";
 import { frozenContentRelease } from "../src/content/history/frozen-releases.ts";
 const assembleContent = (profileId: import("../src/core/types.ts").ProfileId) =>
   frozenContentRelease(profileId, 1);
-import frozenStaticJson from "../src/content/history/pre-r1/static.json" with { type: "json" };
+import frozenStaticJson from "../src/content/history/pre-r1/static-content.ts";
 import type {
   StaticContent as HistoricalStaticContent,
   StaticDirection as HistoricalDirection,
