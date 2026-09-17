@@ -1,0 +1,308 @@
+{
+  "area": {
+    "id": "hub",
+    "label": "中心区",
+    "subtitle": "HOLLOW / CENTRAL HUB",
+    "statsAreaId": "hub",
+    "tileIds": [
+      "hub.t.0.2",
+      "hub.t.1.2",
+      "hub.t.2.2",
+      "hub.t.3.2",
+      "hub.t.4.2",
+      "hub.t.5.2",
+      "hub.t.6.2",
+      "hub.t.0.1",
+      "hub.t.0.0",
+      "hub.t.0.-1",
+      "hub.t.1.0",
+      "hub.t.2.0",
+      "hub.t.3.0",
+      "hub.t.0.3",
+      "hub.t.1.3",
+      "hub.t.2.3"
+    ],
+    "roomIds": [],
+    "entryTileId": "hub.t.0.2",
+    "teleportId": "hub.teleport",
+    "entityIds": [
+      "hub.teleport.point",
+      "hub.amplifier.pickup",
+      "hub.nexus",
+      "hub.to.a",
+      "hub.to.warehouse"
+    ],
+    "revealGroups": [],
+    "sourceRecordIds": ["map.hub.reconstructed"],
+    "includedFrom": 1
+  },
+  "tiles": [
+    {
+      "id": "hub.t.0.2",
+      "boardId": "hub",
+      "x": 0,
+      "y": 2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "hub.t.1.2",
+      "boardId": "hub",
+      "x": 1,
+      "y": 2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "hub.t.2.2",
+      "boardId": "hub",
+      "x": 2,
+      "y": 2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "hub.t.3.2",
+      "boardId": "hub",
+      "x": 3,
+      "y": 2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "hub.t.4.2",
+      "boardId": "hub",
+      "x": 4,
+      "y": 2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": "hub.nexus",
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "hub.t.5.2",
+      "boardId": "hub",
+      "x": 5,
+      "y": 2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": "hub.nexus",
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "hub.t.6.2",
+      "boardId": "hub",
+      "x": 6,
+      "y": 2,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "hub.t.0.1",
+      "boardId": "hub",
+      "x": 0,
+      "y": 1,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "hub.t.0.0",
+      "boardId": "hub",
+      "x": 0,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "hub.t.0.-1",
+      "boardId": "hub",
+      "x": 0,
+      "y": -1,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "hub.t.1.0",
+      "boardId": "hub",
+      "x": 1,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "hub.t.2.0",
+      "boardId": "hub",
+      "x": 2,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "hub.t.3.0",
+      "boardId": "hub",
+      "x": 3,
+      "y": 0,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "hub.t.0.3",
+      "boardId": "hub",
+      "x": 0,
+      "y": 3,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "hub.t.1.3",
+      "boardId": "hub",
+      "x": 1,
+      "y": 3,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    },
+    {
+      "id": "hub.t.2.3",
+      "boardId": "hub",
+      "x": 2,
+      "y": 3,
+      "terrain": "floor",
+      "initialDiscovery": false,
+      "etherGroupId": null,
+      "hiddenGroupId": null,
+      "overlayIds": [],
+      "includedFrom": 1
+    }
+  ],
+  "entities": [
+    {
+      "id": "hub.teleport.point",
+      "kind": "checkpoint",
+      "tileId": "hub.t.0.2",
+      "label": "中心传送点",
+      "params": {
+        "teleportId": "hub.teleport"
+      },
+      "gateId": "always",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.hub.reconstructed"],
+      "includedFrom": 1
+    },
+    {
+      "id": "hub.amplifier.pickup",
+      "kind": "amplifier",
+      "tileId": "hub.t.1.2",
+      "label": "领取阳炎增幅仪",
+      "params": {
+        "completionObjectiveId": "hub.amplifier"
+      },
+      "gateId": "always",
+      "effectBundleId": "hub.amplifier.effects",
+      "sourceRecordIds": ["map.hub.reconstructed"],
+      "includedFrom": 1
+    },
+    {
+      "id": "hub.nexus",
+      "kind": "nexus",
+      "tileId": "hub.t.3.2",
+      "label": "教学富集节点",
+      "params": {
+        "clearsTileIds": ["hub.t.4.2", "hub.t.5.2"],
+        "revealsGroupIds": [],
+        "capabilityRequired": "amplifier",
+        "completionObjectiveId": "hub.tutorial"
+      },
+      "gateId": "always",
+      "effectBundleId": "hub.nexus.effects",
+      "sourceRecordIds": ["map.hub.reconstructed"],
+      "includedFrom": 1
+    },
+    {
+      "id": "hub.to.a",
+      "kind": "teleport",
+      "tileId": "hub.t.6.2",
+      "label": "进入仓储区 A",
+      "params": {
+        "destinationAreaId": "a",
+        "destinationTileId": "a.t.0.0",
+        "activationObjectiveId": null
+      },
+      "gateId": "gate.hub.tutorial",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.hub.reconstructed"],
+      "includedFrom": 1
+    },
+    {
+      "id": "hub.to.warehouse",
+      "kind": "teleport",
+      "tileId": "hub.t.3.0",
+      "label": "中央仓库",
+      "params": {
+        "destinationAreaId": "warehouse",
+        "destinationTileId": "warehouse.t.0.0",
+        "activationObjectiveId": null
+      },
+      "gateId": "gate.warehouse",
+      "effectBundleId": null,
+      "sourceRecordIds": ["map.hub.reconstructed"],
+      "includedFrom": 4
+    }
+  ],
+  "rooms": []
+}

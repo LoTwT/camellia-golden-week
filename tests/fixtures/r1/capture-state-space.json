@@ -1,0 +1,364 @@
+{
+  "formatVersion": 1,
+  "ruleVersion": 4,
+  "captureRuleSha256": "ac51fc70f67e34fb4cf7b5739952f1fe1e81139bb67f87e18f0e136a24893545",
+  "method": "Breadth-first enumeration from the authored initial state through moveCapture; successful captures are terminal. Node identity includes player, named carts, named uncaptured bangboo positions and the sorted captured IDs. Undo/reset are excluded. Reverse reachability from every successful terminal classifies every reachable node.",
+  "directionOrder": [
+    "up",
+    "right",
+    "down",
+    "left"
+  ],
+  "analyses": [
+    {
+      "definitionId": "c.capture.01",
+      "definitionSha256": "53d7f3739765e9931454af342c0af670ba5c2be3a230c1494f25cb71cba2c40f",
+      "reachableStateCount": 872,
+      "legalTransitionCount": 2253,
+      "blockedMoveCount": 1203,
+      "successStateCount": 8,
+      "statesReachingSuccess": 494,
+      "deadEndStateCount": 378,
+      "initialStateSolvable": true,
+      "graphSha256": "67a6710125fc202dce8b8e046aeb93478297fbae3f48c35392381f626490be55",
+      "shortestSuccess": {
+        "actions": [
+          "left",
+          "down",
+          "down",
+          "down",
+          "left",
+          "up",
+          "up",
+          "left"
+        ],
+        "state": {
+          "playerTileId": "c.capture.01.t.0.1",
+          "layout": {
+            "cartTileById": {
+              "c.capture.01.cart": "c.capture.01.t.1.0"
+            },
+            "bangbooTileById": {},
+            "capturedBangbooIds": [
+              "c.capture.01.bangboo"
+            ]
+          }
+        }
+      },
+      "firstDeadEnd": {
+        "actions": [
+          "left",
+          "down",
+          "down",
+          "left",
+          "up",
+          "left"
+        ],
+        "state": {
+          "playerTileId": "c.capture.01.t.0.1",
+          "layout": {
+            "cartTileById": {
+              "c.capture.01.cart": "c.capture.01.t.0.2"
+            },
+            "bangbooTileById": {
+              "c.capture.01.bangboo": "c.capture.01.t.1.0"
+            },
+            "capturedBangbooIds": []
+          }
+        },
+        "undoRestoresSolvableState": true,
+        "undoState": {
+          "playerTileId": "c.capture.01.t.1.1",
+          "layout": {
+            "cartTileById": {
+              "c.capture.01.cart": "c.capture.01.t.0.2"
+            },
+            "bangbooTileById": {
+              "c.capture.01.bangboo": "c.capture.01.t.0.0"
+            },
+            "capturedBangbooIds": []
+          }
+        }
+      },
+      "firstBlockedMove": {
+        "actions": [],
+        "direction": "up",
+        "reason": "捕获区域边界或墙",
+        "state": {
+          "playerTileId": "c.capture.01.t.3.0",
+          "layout": {
+            "cartTileById": {
+              "c.capture.01.cart": "c.capture.01.t.1.2"
+            },
+            "bangbooTileById": {
+              "c.capture.01.bangboo": "c.capture.01.t.0.0"
+            },
+            "capturedBangbooIds": []
+          }
+        }
+      }
+    },
+    {
+      "definitionId": "c.capture.02",
+      "definitionSha256": "6c8a20b267e18dc89ff58878cea87b39080965984048c65c2b47ffe1153dd3e8",
+      "reachableStateCount": 1636,
+      "legalTransitionCount": 4370,
+      "blockedMoveCount": 2142,
+      "successStateCount": 8,
+      "statesReachingSuccess": 892,
+      "deadEndStateCount": 744,
+      "initialStateSolvable": true,
+      "graphSha256": "f44d161959c284a9ce948b68ad92b878cc3b36962f1ef3847097641d67114453",
+      "shortestSuccess": {
+        "actions": [
+          "left",
+          "left",
+          "down",
+          "left",
+          "up",
+          "up",
+          "right"
+        ],
+        "state": {
+          "playerTileId": "c.capture.02.t.2.1",
+          "layout": {
+            "cartTileById": {
+              "c.capture.02.cart": "c.capture.02.t.1.0"
+            },
+            "bangbooTileById": {},
+            "capturedBangbooIds": [
+              "c.capture.02.bangboo"
+            ]
+          }
+        }
+      },
+      "firstDeadEnd": {
+        "actions": [
+          "left",
+          "left",
+          "left"
+        ],
+        "state": {
+          "playerTileId": "c.capture.02.t.1.2",
+          "layout": {
+            "cartTileById": {
+              "c.capture.02.cart": "c.capture.02.t.0.2"
+            },
+            "bangbooTileById": {
+              "c.capture.02.bangboo": "c.capture.02.t.2.0"
+            },
+            "capturedBangbooIds": []
+          }
+        },
+        "undoRestoresSolvableState": true,
+        "undoState": {
+          "playerTileId": "c.capture.02.t.2.2",
+          "layout": {
+            "cartTileById": {
+              "c.capture.02.cart": "c.capture.02.t.1.2"
+            },
+            "bangbooTileById": {
+              "c.capture.02.bangboo": "c.capture.02.t.2.0"
+            },
+            "capturedBangbooIds": []
+          }
+        }
+      },
+      "firstBlockedMove": {
+        "actions": [],
+        "direction": "right",
+        "reason": "捕获区域边界或墙",
+        "state": {
+          "playerTileId": "c.capture.02.t.4.2",
+          "layout": {
+            "cartTileById": {
+              "c.capture.02.cart": "c.capture.02.t.3.2"
+            },
+            "bangbooTileById": {
+              "c.capture.02.bangboo": "c.capture.02.t.2.0"
+            },
+            "capturedBangbooIds": []
+          }
+        }
+      }
+    },
+    {
+      "definitionId": "c.capture.03",
+      "definitionSha256": "8995456c268a0c045a6c72cb41d8097af65b49f655233cbc2cdca2e83ba5a174",
+      "reachableStateCount": 308,
+      "legalTransitionCount": 671,
+      "blockedMoveCount": 553,
+      "successStateCount": 2,
+      "statesReachingSuccess": 207,
+      "deadEndStateCount": 101,
+      "initialStateSolvable": true,
+      "graphSha256": "5a66543ffdff13da1d63bcea0374774460619a238e56754564e71a074b1c7048",
+      "shortestSuccess": {
+        "actions": [
+          "up",
+          "right",
+          "up",
+          "right",
+          "up",
+          "up",
+          "left",
+          "left",
+          "left",
+          "down"
+        ],
+        "state": {
+          "playerTileId": "c.capture.03.t.0.1",
+          "layout": {
+            "cartTileById": {
+              "c.capture.03.cart": "c.capture.03.t.1.2"
+            },
+            "bangbooTileById": {},
+            "capturedBangbooIds": [
+              "c.capture.03.bangboo"
+            ]
+          }
+        }
+      },
+      "firstDeadEnd": {
+        "actions": [
+          "right",
+          "up",
+          "up",
+          "left",
+          "down"
+        ],
+        "state": {
+          "playerTileId": "c.capture.03.t.1.3",
+          "layout": {
+            "cartTileById": {
+              "c.capture.03.cart": "c.capture.03.t.1.4"
+            },
+            "bangbooTileById": {
+              "c.capture.03.bangboo": "c.capture.03.t.3.0"
+            },
+            "capturedBangbooIds": []
+          }
+        },
+        "undoRestoresSolvableState": true,
+        "undoState": {
+          "playerTileId": "c.capture.03.t.1.2",
+          "layout": {
+            "cartTileById": {
+              "c.capture.03.cart": "c.capture.03.t.1.3"
+            },
+            "bangbooTileById": {
+              "c.capture.03.bangboo": "c.capture.03.t.3.0"
+            },
+            "capturedBangbooIds": []
+          }
+        }
+      },
+      "firstBlockedMove": {
+        "actions": [],
+        "direction": "down",
+        "reason": "捕获区域边界或墙",
+        "state": {
+          "playerTileId": "c.capture.03.t.1.4",
+          "layout": {
+            "cartTileById": {
+              "c.capture.03.cart": "c.capture.03.t.1.3"
+            },
+            "bangbooTileById": {
+              "c.capture.03.bangboo": "c.capture.03.t.3.0"
+            },
+            "capturedBangbooIds": []
+          }
+        }
+      }
+    },
+    {
+      "definitionId": "c.capture.04",
+      "definitionSha256": "9025eecfe55ef23bf47895a43fc935ad7c0adc9eba27183061d115efd9c2b0f5",
+      "reachableStateCount": 308,
+      "legalTransitionCount": 671,
+      "blockedMoveCount": 553,
+      "successStateCount": 2,
+      "statesReachingSuccess": 207,
+      "deadEndStateCount": 101,
+      "initialStateSolvable": true,
+      "graphSha256": "5a7bcded806fd156178b0bb6d6dcee9257785104f97f265a5035988cc8196ef6",
+      "shortestSuccess": {
+        "actions": [
+          "down",
+          "right",
+          "down",
+          "right",
+          "down",
+          "down",
+          "left",
+          "left",
+          "left",
+          "up"
+        ],
+        "state": {
+          "playerTileId": "c.capture.04.t.0.1",
+          "layout": {
+            "cartTileById": {
+              "c.capture.04.cart": "c.capture.04.t.1.0"
+            },
+            "bangbooTileById": {},
+            "capturedBangbooIds": [
+              "c.capture.04.bangboo"
+            ]
+          }
+        }
+      },
+      "firstDeadEnd": {
+        "actions": [
+          "right",
+          "down",
+          "down",
+          "left",
+          "up"
+        ],
+        "state": {
+          "playerTileId": "c.capture.04.t.1.n1",
+          "layout": {
+            "cartTileById": {
+              "c.capture.04.cart": "c.capture.04.t.1.n2"
+            },
+            "bangbooTileById": {
+              "c.capture.04.bangboo": "c.capture.04.t.3.1"
+            },
+            "capturedBangbooIds": []
+          }
+        },
+        "undoRestoresSolvableState": true,
+        "undoState": {
+          "playerTileId": "c.capture.04.t.1.0",
+          "layout": {
+            "cartTileById": {
+              "c.capture.04.cart": "c.capture.04.t.1.n1"
+            },
+            "bangbooTileById": {
+              "c.capture.04.bangboo": "c.capture.04.t.3.1"
+            },
+            "capturedBangbooIds": []
+          }
+        }
+      },
+      "firstBlockedMove": {
+        "actions": [],
+        "direction": "up",
+        "reason": "捕获区域边界或墙",
+        "state": {
+          "playerTileId": "c.capture.04.t.1.n2",
+          "layout": {
+            "cartTileById": {
+              "c.capture.04.cart": "c.capture.04.t.1.n1"
+            },
+            "bangbooTileById": {
+              "c.capture.04.bangboo": "c.capture.04.t.3.1"
+            },
+            "capturedBangbooIds": []
+          }
+        }
+      }
+    }
+  ]
+}

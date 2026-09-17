@@ -1,0 +1,1936 @@
+{
+  "definitions": [
+    {
+      "id": "a.maze.01",
+      "boardId": "a.maze.01",
+      "title": "记忆迷宫 · 初始回路",
+      "kind": "memory",
+      "includedFrom": "M1",
+      "sourceRecordIds": ["map.static.a.maze.01"],
+      "tiles": [
+        {
+          "id": "a.maze.01.t.0.0",
+          "boardId": "a.maze.01",
+          "x": 0,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.1.0",
+          "boardId": "a.maze.01",
+          "x": 1,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.2.0",
+          "boardId": "a.maze.01",
+          "x": 2,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.3.0",
+          "boardId": "a.maze.01",
+          "x": 3,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.4.0",
+          "boardId": "a.maze.01",
+          "x": 4,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.5.0",
+          "boardId": "a.maze.01",
+          "x": 5,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.6.0",
+          "boardId": "a.maze.01",
+          "x": 6,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.7.0",
+          "boardId": "a.maze.01",
+          "x": 7,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.0.1",
+          "boardId": "a.maze.01",
+          "x": 0,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.1.1",
+          "boardId": "a.maze.01",
+          "x": 1,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.2.1",
+          "boardId": "a.maze.01",
+          "x": 2,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.3.1",
+          "boardId": "a.maze.01",
+          "x": 3,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.4.1",
+          "boardId": "a.maze.01",
+          "x": 4,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.5.1",
+          "boardId": "a.maze.01",
+          "x": 5,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.6.1",
+          "boardId": "a.maze.01",
+          "x": 6,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.7.1",
+          "boardId": "a.maze.01",
+          "x": 7,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.0.2",
+          "boardId": "a.maze.01",
+          "x": 0,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.1.2",
+          "boardId": "a.maze.01",
+          "x": 1,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.2.2",
+          "boardId": "a.maze.01",
+          "x": 2,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.3.2",
+          "boardId": "a.maze.01",
+          "x": 3,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.4.2",
+          "boardId": "a.maze.01",
+          "x": 4,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.5.2",
+          "boardId": "a.maze.01",
+          "x": 5,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.6.2",
+          "boardId": "a.maze.01",
+          "x": 6,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.7.2",
+          "boardId": "a.maze.01",
+          "x": 7,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.0.3",
+          "boardId": "a.maze.01",
+          "x": 0,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.1.3",
+          "boardId": "a.maze.01",
+          "x": 1,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.2.3",
+          "boardId": "a.maze.01",
+          "x": 2,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.3.3",
+          "boardId": "a.maze.01",
+          "x": 3,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.4.3",
+          "boardId": "a.maze.01",
+          "x": 4,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.5.3",
+          "boardId": "a.maze.01",
+          "x": 5,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.6.3",
+          "boardId": "a.maze.01",
+          "x": 6,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.7.3",
+          "boardId": "a.maze.01",
+          "x": 7,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.0.4",
+          "boardId": "a.maze.01",
+          "x": 0,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.1.4",
+          "boardId": "a.maze.01",
+          "x": 1,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.2.4",
+          "boardId": "a.maze.01",
+          "x": 2,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.3.4",
+          "boardId": "a.maze.01",
+          "x": 3,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.4.4",
+          "boardId": "a.maze.01",
+          "x": 4,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.5.4",
+          "boardId": "a.maze.01",
+          "x": 5,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.6.4",
+          "boardId": "a.maze.01",
+          "x": 6,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.7.4",
+          "boardId": "a.maze.01",
+          "x": 7,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.01.t.n1.2",
+          "boardId": "a.maze.01",
+          "x": -1,
+          "y": 2,
+          "terrain": "floor"
+        }
+      ],
+      "startTileId": "a.maze.01.t.n1.2",
+      "exitTileId": "a.maze.01.t.7.2",
+      "safeTileIds": [
+        "a.maze.01.t.2.0",
+        "a.maze.01.t.3.0",
+        "a.maze.01.t.4.0",
+        "a.maze.01.t.5.0",
+        "a.maze.01.t.0.1",
+        "a.maze.01.t.2.1",
+        "a.maze.01.t.5.1",
+        "a.maze.01.t.6.1",
+        "a.maze.01.t.0.2",
+        "a.maze.01.t.2.2",
+        "a.maze.01.t.4.2",
+        "a.maze.01.t.5.2",
+        "a.maze.01.t.7.2",
+        "a.maze.01.t.0.3",
+        "a.maze.01.t.1.3",
+        "a.maze.01.t.2.3",
+        "a.maze.01.t.4.3",
+        "a.maze.01.t.5.3",
+        "a.maze.01.t.7.3",
+        "a.maze.01.t.1.4",
+        "a.maze.01.t.3.4",
+        "a.maze.01.t.5.4",
+        "a.maze.01.t.6.4",
+        "a.maze.01.t.7.4",
+        "a.maze.01.t.n1.2"
+      ],
+      "hazardTileIds": [
+        "a.maze.01.t.0.0",
+        "a.maze.01.t.1.0",
+        "a.maze.01.t.6.0",
+        "a.maze.01.t.7.0",
+        "a.maze.01.t.1.1",
+        "a.maze.01.t.3.1",
+        "a.maze.01.t.4.1",
+        "a.maze.01.t.7.1",
+        "a.maze.01.t.1.2",
+        "a.maze.01.t.3.2",
+        "a.maze.01.t.6.2",
+        "a.maze.01.t.3.3",
+        "a.maze.01.t.6.3",
+        "a.maze.01.t.0.4",
+        "a.maze.01.t.2.4",
+        "a.maze.01.t.4.4"
+      ],
+      "previewMs": 4000
+    },
+    {
+      "id": "a.maze.02",
+      "boardId": "a.maze.02",
+      "title": "记忆迷宫 · 交错分支",
+      "kind": "memory",
+      "includedFrom": "M1",
+      "sourceRecordIds": ["map.static.a.maze.02"],
+      "tiles": [
+        {
+          "id": "a.maze.02.t.0.0",
+          "boardId": "a.maze.02",
+          "x": 0,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.1.0",
+          "boardId": "a.maze.02",
+          "x": 1,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.2.0",
+          "boardId": "a.maze.02",
+          "x": 2,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.3.0",
+          "boardId": "a.maze.02",
+          "x": 3,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.4.0",
+          "boardId": "a.maze.02",
+          "x": 4,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.5.0",
+          "boardId": "a.maze.02",
+          "x": 5,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.6.0",
+          "boardId": "a.maze.02",
+          "x": 6,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.7.0",
+          "boardId": "a.maze.02",
+          "x": 7,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.0.1",
+          "boardId": "a.maze.02",
+          "x": 0,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.1.1",
+          "boardId": "a.maze.02",
+          "x": 1,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.2.1",
+          "boardId": "a.maze.02",
+          "x": 2,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.3.1",
+          "boardId": "a.maze.02",
+          "x": 3,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.4.1",
+          "boardId": "a.maze.02",
+          "x": 4,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.5.1",
+          "boardId": "a.maze.02",
+          "x": 5,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.6.1",
+          "boardId": "a.maze.02",
+          "x": 6,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.7.1",
+          "boardId": "a.maze.02",
+          "x": 7,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.0.2",
+          "boardId": "a.maze.02",
+          "x": 0,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.1.2",
+          "boardId": "a.maze.02",
+          "x": 1,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.2.2",
+          "boardId": "a.maze.02",
+          "x": 2,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.3.2",
+          "boardId": "a.maze.02",
+          "x": 3,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.4.2",
+          "boardId": "a.maze.02",
+          "x": 4,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.5.2",
+          "boardId": "a.maze.02",
+          "x": 5,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.6.2",
+          "boardId": "a.maze.02",
+          "x": 6,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.7.2",
+          "boardId": "a.maze.02",
+          "x": 7,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.0.3",
+          "boardId": "a.maze.02",
+          "x": 0,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.1.3",
+          "boardId": "a.maze.02",
+          "x": 1,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.2.3",
+          "boardId": "a.maze.02",
+          "x": 2,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.3.3",
+          "boardId": "a.maze.02",
+          "x": 3,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.4.3",
+          "boardId": "a.maze.02",
+          "x": 4,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.5.3",
+          "boardId": "a.maze.02",
+          "x": 5,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.6.3",
+          "boardId": "a.maze.02",
+          "x": 6,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.7.3",
+          "boardId": "a.maze.02",
+          "x": 7,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.0.4",
+          "boardId": "a.maze.02",
+          "x": 0,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.1.4",
+          "boardId": "a.maze.02",
+          "x": 1,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.2.4",
+          "boardId": "a.maze.02",
+          "x": 2,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.3.4",
+          "boardId": "a.maze.02",
+          "x": 3,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.4.4",
+          "boardId": "a.maze.02",
+          "x": 4,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.5.4",
+          "boardId": "a.maze.02",
+          "x": 5,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.6.4",
+          "boardId": "a.maze.02",
+          "x": 6,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.7.4",
+          "boardId": "a.maze.02",
+          "x": 7,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.02.t.n1.2",
+          "boardId": "a.maze.02",
+          "x": -1,
+          "y": 2,
+          "terrain": "floor"
+        }
+      ],
+      "startTileId": "a.maze.02.t.n1.2",
+      "exitTileId": "a.maze.02.t.7.2",
+      "safeTileIds": [
+        "a.maze.02.t.1.0",
+        "a.maze.02.t.2.0",
+        "a.maze.02.t.3.0",
+        "a.maze.02.t.4.0",
+        "a.maze.02.t.2.1",
+        "a.maze.02.t.4.1",
+        "a.maze.02.t.5.1",
+        "a.maze.02.t.0.2",
+        "a.maze.02.t.2.2",
+        "a.maze.02.t.3.2",
+        "a.maze.02.t.5.2",
+        "a.maze.02.t.7.2",
+        "a.maze.02.t.0.3",
+        "a.maze.02.t.3.3",
+        "a.maze.02.t.5.3",
+        "a.maze.02.t.6.3",
+        "a.maze.02.t.7.3",
+        "a.maze.02.t.0.4",
+        "a.maze.02.t.1.4",
+        "a.maze.02.t.2.4",
+        "a.maze.02.t.3.4",
+        "a.maze.02.t.n1.2"
+      ],
+      "hazardTileIds": [
+        "a.maze.02.t.0.0",
+        "a.maze.02.t.5.0",
+        "a.maze.02.t.6.0",
+        "a.maze.02.t.7.0",
+        "a.maze.02.t.0.1",
+        "a.maze.02.t.1.1",
+        "a.maze.02.t.3.1",
+        "a.maze.02.t.6.1",
+        "a.maze.02.t.7.1",
+        "a.maze.02.t.1.2",
+        "a.maze.02.t.4.2",
+        "a.maze.02.t.6.2",
+        "a.maze.02.t.1.3",
+        "a.maze.02.t.2.3",
+        "a.maze.02.t.4.3",
+        "a.maze.02.t.4.4",
+        "a.maze.02.t.5.4",
+        "a.maze.02.t.6.4",
+        "a.maze.02.t.7.4"
+      ],
+      "previewMs": 4000
+    },
+    {
+      "id": "a.maze.03",
+      "boardId": "a.maze.03",
+      "title": "记忆迷宫 · 深层折返",
+      "kind": "memory",
+      "includedFrom": "M1",
+      "sourceRecordIds": ["map.static.a.maze.03"],
+      "tiles": [
+        {
+          "id": "a.maze.03.t.0.0",
+          "boardId": "a.maze.03",
+          "x": 0,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.1.0",
+          "boardId": "a.maze.03",
+          "x": 1,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.2.0",
+          "boardId": "a.maze.03",
+          "x": 2,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.3.0",
+          "boardId": "a.maze.03",
+          "x": 3,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.4.0",
+          "boardId": "a.maze.03",
+          "x": 4,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.5.0",
+          "boardId": "a.maze.03",
+          "x": 5,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.6.0",
+          "boardId": "a.maze.03",
+          "x": 6,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.7.0",
+          "boardId": "a.maze.03",
+          "x": 7,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.0.1",
+          "boardId": "a.maze.03",
+          "x": 0,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.1.1",
+          "boardId": "a.maze.03",
+          "x": 1,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.2.1",
+          "boardId": "a.maze.03",
+          "x": 2,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.3.1",
+          "boardId": "a.maze.03",
+          "x": 3,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.4.1",
+          "boardId": "a.maze.03",
+          "x": 4,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.5.1",
+          "boardId": "a.maze.03",
+          "x": 5,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.6.1",
+          "boardId": "a.maze.03",
+          "x": 6,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.7.1",
+          "boardId": "a.maze.03",
+          "x": 7,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.0.2",
+          "boardId": "a.maze.03",
+          "x": 0,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.1.2",
+          "boardId": "a.maze.03",
+          "x": 1,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.2.2",
+          "boardId": "a.maze.03",
+          "x": 2,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.3.2",
+          "boardId": "a.maze.03",
+          "x": 3,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.4.2",
+          "boardId": "a.maze.03",
+          "x": 4,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.5.2",
+          "boardId": "a.maze.03",
+          "x": 5,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.6.2",
+          "boardId": "a.maze.03",
+          "x": 6,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.7.2",
+          "boardId": "a.maze.03",
+          "x": 7,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.0.3",
+          "boardId": "a.maze.03",
+          "x": 0,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.1.3",
+          "boardId": "a.maze.03",
+          "x": 1,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.2.3",
+          "boardId": "a.maze.03",
+          "x": 2,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.3.3",
+          "boardId": "a.maze.03",
+          "x": 3,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.4.3",
+          "boardId": "a.maze.03",
+          "x": 4,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.5.3",
+          "boardId": "a.maze.03",
+          "x": 5,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.6.3",
+          "boardId": "a.maze.03",
+          "x": 6,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.7.3",
+          "boardId": "a.maze.03",
+          "x": 7,
+          "y": 3,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.0.4",
+          "boardId": "a.maze.03",
+          "x": 0,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.1.4",
+          "boardId": "a.maze.03",
+          "x": 1,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.2.4",
+          "boardId": "a.maze.03",
+          "x": 2,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.3.4",
+          "boardId": "a.maze.03",
+          "x": 3,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.4.4",
+          "boardId": "a.maze.03",
+          "x": 4,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.5.4",
+          "boardId": "a.maze.03",
+          "x": 5,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.6.4",
+          "boardId": "a.maze.03",
+          "x": 6,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.7.4",
+          "boardId": "a.maze.03",
+          "x": 7,
+          "y": 4,
+          "terrain": "floor"
+        },
+        {
+          "id": "a.maze.03.t.n1.2",
+          "boardId": "a.maze.03",
+          "x": -1,
+          "y": 2,
+          "terrain": "floor"
+        }
+      ],
+      "startTileId": "a.maze.03.t.n1.2",
+      "exitTileId": "a.maze.03.t.5.0",
+      "safeTileIds": [
+        "a.maze.03.t.1.0",
+        "a.maze.03.t.2.0",
+        "a.maze.03.t.3.0",
+        "a.maze.03.t.5.0",
+        "a.maze.03.t.7.0",
+        "a.maze.03.t.0.1",
+        "a.maze.03.t.1.1",
+        "a.maze.03.t.3.1",
+        "a.maze.03.t.5.1",
+        "a.maze.03.t.6.1",
+        "a.maze.03.t.7.1",
+        "a.maze.03.t.0.2",
+        "a.maze.03.t.2.2",
+        "a.maze.03.t.3.2",
+        "a.maze.03.t.7.2",
+        "a.maze.03.t.0.3",
+        "a.maze.03.t.2.3",
+        "a.maze.03.t.4.3",
+        "a.maze.03.t.5.3",
+        "a.maze.03.t.6.3",
+        "a.maze.03.t.7.3",
+        "a.maze.03.t.2.4",
+        "a.maze.03.t.3.4",
+        "a.maze.03.t.4.4",
+        "a.maze.03.t.n1.2"
+      ],
+      "hazardTileIds": [
+        "a.maze.03.t.0.0",
+        "a.maze.03.t.4.0",
+        "a.maze.03.t.6.0",
+        "a.maze.03.t.2.1",
+        "a.maze.03.t.4.1",
+        "a.maze.03.t.1.2",
+        "a.maze.03.t.4.2",
+        "a.maze.03.t.5.2",
+        "a.maze.03.t.6.2",
+        "a.maze.03.t.1.3",
+        "a.maze.03.t.3.3",
+        "a.maze.03.t.0.4",
+        "a.maze.03.t.1.4",
+        "a.maze.03.t.5.4",
+        "a.maze.03.t.6.4",
+        "a.maze.03.t.7.4"
+      ],
+      "previewMs": 4000
+    },
+    {
+      "id": "b.line.01",
+      "boardId": "b.line.01",
+      "title": "一笔画 · 三排回路",
+      "kind": "oneStroke",
+      "includedFrom": "M2",
+      "sourceRecordIds": ["map.static.b.line.01"],
+      "tiles": [
+        {
+          "id": "b.line.01.t.0.0",
+          "boardId": "b.line.01",
+          "x": 0,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "b.line.01.t.1.0",
+          "boardId": "b.line.01",
+          "x": 1,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "b.line.01.t.2.0",
+          "boardId": "b.line.01",
+          "x": 2,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "b.line.01.t.3.0",
+          "boardId": "b.line.01",
+          "x": 3,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "b.line.01.t.4.0",
+          "boardId": "b.line.01",
+          "x": 4,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "b.line.01.t.0.1",
+          "boardId": "b.line.01",
+          "x": 0,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "b.line.01.t.1.1",
+          "boardId": "b.line.01",
+          "x": 1,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "b.line.01.t.2.1",
+          "boardId": "b.line.01",
+          "x": 2,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "b.line.01.t.3.1",
+          "boardId": "b.line.01",
+          "x": 3,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "b.line.01.t.4.1",
+          "boardId": "b.line.01",
+          "x": 4,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "b.line.01.t.1.2",
+          "boardId": "b.line.01",
+          "x": 1,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "b.line.01.t.2.2",
+          "boardId": "b.line.01",
+          "x": 2,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "b.line.01.t.3.2",
+          "boardId": "b.line.01",
+          "x": 3,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "b.line.01.t.2.n1",
+          "boardId": "b.line.01",
+          "x": 2,
+          "y": -1,
+          "terrain": "floor"
+        },
+        {
+          "id": "b.line.01.t.2.3",
+          "boardId": "b.line.01",
+          "x": 2,
+          "y": 3,
+          "terrain": "floor"
+        }
+      ],
+      "startTileId": "b.line.01.t.2.3",
+      "endTileId": "b.line.01.t.2.n1",
+      "requiredTileIds": [
+        "b.line.01.t.3.2",
+        "b.line.01.t.2.1",
+        "b.line.01.t.0.1",
+        "b.line.01.t.0.0",
+        "b.line.01.t.2.0",
+        "b.line.01.t.2.n1"
+      ]
+    },
+    {
+      "id": "b.line.02",
+      "boardId": "b.line.02",
+      "title": "一笔画 · 中空矩阵",
+      "kind": "oneStroke",
+      "includedFrom": "M2",
+      "sourceRecordIds": ["map.static.b.line.02"],
+      "tiles": [
+        {
+          "id": "b.line.02.t.0.0",
+          "boardId": "b.line.02",
+          "x": 0,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "b.line.02.t.1.0",
+          "boardId": "b.line.02",
+          "x": 1,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "b.line.02.t.2.0",
+          "boardId": "b.line.02",
+          "x": 2,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "b.line.02.t.3.0",
+          "boardId": "b.line.02",
+          "x": 3,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "b.line.02.t.4.0",
+          "boardId": "b.line.02",
+          "x": 4,
+          "y": 0,
+          "terrain": "floor"
+        },
+        {
+          "id": "b.line.02.t.0.1",
+          "boardId": "b.line.02",
+          "x": 0,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "b.line.02.t.1.1",
+          "boardId": "b.line.02",
+          "x": 1,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "b.line.02.t.2.1",
+          "boardId": "b.line.02",
+          "x": 2,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "b.line.02.t.3.1",
+          "boardId": "b.line.02",
+          "x": 3,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "b.line.02.t.4.1",
+          "boardId": "b.line.02",
+          "x": 4,
+          "y": 1,
+          "terrain": "floor"
+        },
+        {
+          "id": "b.line.02.t.1.2",
+          "boardId": "b.line.02",
+          "x": 1,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "b.line.02.t.2.2",
+          "boardId": "b.line.02",
+          "x": 2,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "b.line.02.t.3.2",
+          "boardId": "b.line.02",
+          "x": 3,
+          "y": 2,
+          "terrain": "floor"
+        },
+        {
+          "id": "b.line.02.t.2.n1",
+          "boardId": "b.line.02",
+          "x": 2,
+          "y": -1,
+          "terrain": "floor"
+        },
+        {
+          "id": "b.line.02.t.2.3",
+          "boardId": "b.line.02",
+          "x": 2,
+          "y": 3,
+          "terrain": "floor"
+        }
+      ],
+      "startTileId": "b.line.02.t.2.n1",
+      "endTileId": "b.line.02.t.4.0",
+      "requiredTileIds": [
+        "b.line.02.t.0.0",
+        "b.line.02.t.1.2",
+        "b.line.02.t.3.2",
+        "b.line.02.t.3.1",
+        "b.line.02.t.3.0",
+        "b.line.02.t.4.0"
+      ]
+    }
+  ],
+  "witnesses": [
+    {
+      "id": "a.maze.01.witness.success",
+      "definitionId": "a.maze.01",
+      "kind": "success",
+      "description": "按原图安全路线完成；activate 表示公开预览到期入口，4秒时钟另由浏览器验收。",
+      "actions": [
+        "activate",
+        "right",
+        "down",
+        "right",
+        "right",
+        "up",
+        "up",
+        "up",
+        "right",
+        "right",
+        "right",
+        "down",
+        "down",
+        "down",
+        "down",
+        "right",
+        "right",
+        "up",
+        "up"
+      ],
+      "expectedCodes": [
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "success"
+      ],
+      "expectedPhase": "complete",
+      "expectedPlayerTileId": "a.maze.01.t.7.2"
+    },
+    {
+      "id": "a.maze.01.witness.alternative",
+      "definitionId": "a.maze.01",
+      "kind": "alternative",
+      "description": "合法进入首格后折返入口，再沿安全路线完成；记忆迷宫允许安全格重走。",
+      "actions": [
+        "activate",
+        "right",
+        "left",
+        "right",
+        "down",
+        "right",
+        "right",
+        "up",
+        "up",
+        "up",
+        "right",
+        "right",
+        "right",
+        "down",
+        "down",
+        "down",
+        "down",
+        "right",
+        "right",
+        "up",
+        "up"
+      ],
+      "expectedCodes": [
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "success"
+      ],
+      "expectedPhase": "complete",
+      "expectedPlayerTileId": "a.maze.01.t.7.2"
+    },
+    {
+      "id": "a.maze.01.witness.recovery",
+      "definitionId": "a.maze.01",
+      "kind": "failureRecovery",
+      "description": "第二步踩中原图危险格，回安全起点重新观察，再完成。",
+      "actions": [
+        "activate",
+        "right",
+        "right",
+        "activate",
+        "right",
+        "down",
+        "right",
+        "right",
+        "up",
+        "up",
+        "up",
+        "right",
+        "right",
+        "right",
+        "down",
+        "down",
+        "down",
+        "down",
+        "right",
+        "right",
+        "up",
+        "up"
+      ],
+      "expectedCodes": [
+        "accepted",
+        "accepted",
+        "failed",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "success"
+      ],
+      "expectedPhase": "complete",
+      "expectedPlayerTileId": "a.maze.01.t.7.2"
+    },
+    {
+      "id": "a.maze.02.witness.success",
+      "definitionId": "a.maze.02",
+      "kind": "success",
+      "description": "按原图安全路线完成；activate 表示公开预览到期入口，4秒时钟另由浏览器验收。",
+      "actions": [
+        "activate",
+        "right",
+        "down",
+        "down",
+        "right",
+        "right",
+        "right",
+        "up",
+        "up",
+        "left",
+        "up",
+        "up",
+        "right",
+        "right",
+        "down",
+        "right",
+        "down",
+        "down",
+        "right",
+        "right",
+        "up"
+      ],
+      "expectedCodes": [
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "success"
+      ],
+      "expectedPhase": "complete",
+      "expectedPlayerTileId": "a.maze.02.t.7.2"
+    },
+    {
+      "id": "a.maze.02.witness.alternative",
+      "definitionId": "a.maze.02",
+      "kind": "alternative",
+      "description": "合法进入首格后折返入口，再沿安全路线完成；记忆迷宫允许安全格重走。",
+      "actions": [
+        "activate",
+        "right",
+        "left",
+        "right",
+        "down",
+        "down",
+        "right",
+        "right",
+        "right",
+        "up",
+        "up",
+        "left",
+        "up",
+        "up",
+        "right",
+        "right",
+        "down",
+        "right",
+        "down",
+        "down",
+        "right",
+        "right",
+        "up"
+      ],
+      "expectedCodes": [
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "success"
+      ],
+      "expectedPhase": "complete",
+      "expectedPlayerTileId": "a.maze.02.t.7.2"
+    },
+    {
+      "id": "a.maze.02.witness.recovery",
+      "definitionId": "a.maze.02",
+      "kind": "failureRecovery",
+      "description": "第二步踩中原图危险格，回安全起点重新观察，再完成。",
+      "actions": [
+        "activate",
+        "right",
+        "right",
+        "activate",
+        "right",
+        "down",
+        "down",
+        "right",
+        "right",
+        "right",
+        "up",
+        "up",
+        "left",
+        "up",
+        "up",
+        "right",
+        "right",
+        "down",
+        "right",
+        "down",
+        "down",
+        "right",
+        "right",
+        "up"
+      ],
+      "expectedCodes": [
+        "accepted",
+        "accepted",
+        "failed",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "success"
+      ],
+      "expectedPhase": "complete",
+      "expectedPlayerTileId": "a.maze.02.t.7.2"
+    },
+    {
+      "id": "a.maze.03.witness.success",
+      "definitionId": "a.maze.03",
+      "kind": "success",
+      "description": "按原图安全路线完成；activate 表示公开预览到期入口，4秒时钟另由浏览器验收。",
+      "actions": [
+        "activate",
+        "right",
+        "up",
+        "right",
+        "up",
+        "right",
+        "right",
+        "down",
+        "down",
+        "left",
+        "down",
+        "down",
+        "right",
+        "right",
+        "up",
+        "right",
+        "right",
+        "right",
+        "up",
+        "up",
+        "left",
+        "left",
+        "up"
+      ],
+      "expectedCodes": [
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "success"
+      ],
+      "expectedPhase": "complete",
+      "expectedPlayerTileId": "a.maze.03.t.5.0"
+    },
+    {
+      "id": "a.maze.03.witness.alternative",
+      "definitionId": "a.maze.03",
+      "kind": "alternative",
+      "description": "合法进入首格后折返入口，再沿安全路线完成；记忆迷宫允许安全格重走。",
+      "actions": [
+        "activate",
+        "right",
+        "left",
+        "right",
+        "up",
+        "right",
+        "up",
+        "right",
+        "right",
+        "down",
+        "down",
+        "left",
+        "down",
+        "down",
+        "right",
+        "right",
+        "up",
+        "right",
+        "right",
+        "right",
+        "up",
+        "up",
+        "left",
+        "left",
+        "up"
+      ],
+      "expectedCodes": [
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "success"
+      ],
+      "expectedPhase": "complete",
+      "expectedPlayerTileId": "a.maze.03.t.5.0"
+    },
+    {
+      "id": "a.maze.03.witness.recovery",
+      "definitionId": "a.maze.03",
+      "kind": "failureRecovery",
+      "description": "第二步踩中原图危险格，回安全起点重新观察，再完成。",
+      "actions": [
+        "activate",
+        "right",
+        "right",
+        "activate",
+        "right",
+        "up",
+        "right",
+        "up",
+        "right",
+        "right",
+        "down",
+        "down",
+        "left",
+        "down",
+        "down",
+        "right",
+        "right",
+        "up",
+        "right",
+        "right",
+        "right",
+        "up",
+        "up",
+        "left",
+        "left",
+        "up"
+      ],
+      "expectedCodes": [
+        "accepted",
+        "accepted",
+        "failed",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "success"
+      ],
+      "expectedPhase": "complete",
+      "expectedPlayerTileId": "a.maze.03.t.5.0"
+    },
+    {
+      "id": "b.line.01.witness.success",
+      "definitionId": "b.line.01",
+      "kind": "success",
+      "description": "逐步复现原图箭头，收齐六数据目标并到固定终点；空地板允许行走。",
+      "actions": ["up", "right", "up", "left", "left", "left", "up", "right", "right", "up"],
+      "expectedCodes": [
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "success"
+      ],
+      "expectedPhase": "complete",
+      "expectedPlayerTileId": "b.line.01.t.2.n1"
+    },
+    {
+      "id": "b.line.01.witness.recovery",
+      "definitionId": "b.line.01",
+      "kind": "failureRecovery",
+      "description": "返回已走起点触发失败，目标和路径清空后从起点正常重试完成。",
+      "actions": [
+        "up",
+        "down",
+        "up",
+        "right",
+        "up",
+        "left",
+        "left",
+        "left",
+        "up",
+        "right",
+        "right",
+        "up"
+      ],
+      "expectedCodes": [
+        "accepted",
+        "failed",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "success"
+      ],
+      "expectedPhase": "complete",
+      "expectedPlayerTileId": "b.line.01.t.2.n1"
+    },
+    {
+      "id": "b.line.02.witness.success",
+      "definitionId": "b.line.02",
+      "kind": "success",
+      "description": "逐步复现原图箭头，收齐六数据目标并到固定终点；空地板允许行走。",
+      "actions": [
+        "down",
+        "left",
+        "left",
+        "down",
+        "right",
+        "down",
+        "right",
+        "right",
+        "up",
+        "up",
+        "right"
+      ],
+      "expectedCodes": [
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "success"
+      ],
+      "expectedPhase": "complete",
+      "expectedPlayerTileId": "b.line.02.t.4.0"
+    },
+    {
+      "id": "b.line.02.witness.recovery",
+      "definitionId": "b.line.02",
+      "kind": "failureRecovery",
+      "description": "返回已走起点触发失败，目标和路径清空后从起点正常重试完成。",
+      "actions": [
+        "down",
+        "up",
+        "down",
+        "left",
+        "left",
+        "down",
+        "right",
+        "down",
+        "right",
+        "right",
+        "up",
+        "up",
+        "right"
+      ],
+      "expectedCodes": [
+        "accepted",
+        "failed",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "accepted",
+        "success"
+      ],
+      "expectedPhase": "complete",
+      "expectedPlayerTileId": "b.line.02.t.4.0"
+    }
+  ]
+}

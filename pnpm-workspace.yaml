@@ -1,0 +1,7 @@
+engineStrict: true
+saveExact: true
+pmOnFail: error
+allowBuilds:
+  fsevents: false
+minimumReleaseAgeExclude:
+  - vite@8.3.0

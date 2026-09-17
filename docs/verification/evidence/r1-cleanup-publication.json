@@ -1,0 +1,95 @@
+{
+  "scope": "Published clean R1 implementation snapshot. This receipt is added afterward in a documentation-only commit; latest branch head is available from PR commits.",
+  "at": "2026-09-12T15:39:15.428649+00:00",
+  "implementationCommit": "878de7429df5313bbb247538e24f6bcb5f3ab57e",
+  "parent": "7fe7d8e9179e0c9dcef505f454232a9a38321234",
+  "tag": "v0.5.0-r1",
+  "tagTarget": "878de7429df5313bbb247538e24f6bcb5f3ab57e",
+  "release": {
+    "url": "https://github.com/LoTwT/camellia-golden-week/releases/tag/v0.5.0-r1",
+    "draft": false,
+    "prerelease": true,
+    "publishedAt": "2026-09-12T15:37:13Z"
+  },
+  "remoteBranch": {
+    "ref": "refs/heads/codex/full-implementation",
+    "oldOid": "083a9bec407259c015958392284b697c0c252220",
+    "newOid": "878de7429df5313bbb247538e24f6bcb5f3ab57e",
+    "actor": "eruoos",
+    "expectedOidGuardVerified": true
+  },
+  "assetDownload": {
+    "actor": "LoTwT",
+    "allVerified": true,
+    "sourceCommit": "878de7429df5313bbb247538e24f6bcb5f3ab57e",
+    "assets": [
+      {
+        "asset": "r1-evidence-pipeline.zip",
+        "bytes": 407246485,
+        "sha256": "dc25f01bef36677e1708241e8818a69ca708202e129f32fc828afed50adec016",
+        "matchesLocal": true
+      },
+      {
+        "asset": "r1-evidence-browser.zip",
+        "bytes": 307823510,
+        "sha256": "c2989b34f2d7ca03cd33b4d5b3d294a50c30932e397993cc41ea15b458ddb3f9",
+        "matchesLocal": true
+      },
+      {
+        "asset": "r1-evidence-support.zip",
+        "bytes": 10631062,
+        "sha256": "1bd4f83b2b652b344e4691ebc3b57f6d375e547ed8ee0bf02ec48677de887341",
+        "matchesLocal": true
+      },
+      {
+        "asset": "r1-cleanup-verification.zip",
+        "bytes": 12906783,
+        "sha256": "ffd8d3ede9856b858be9e2043e40a5518697f18ff13ed2991cf3290c2fe360a2",
+        "matchesLocal": true
+      },
+      {
+        "asset": "camellia-golden-week-r1-dist.zip",
+        "bytes": 5059941,
+        "sha256": "55c517e3a1c69d92f58e101baea38be2cbf1d17ec2f43d10ea0851267e945046",
+        "matchesLocal": true
+      },
+      {
+        "asset": "r1-archive-manifest.json",
+        "bytes": 456700,
+        "sha256": "45b46116ee777855fe6dd068d92b90a63417d1da477770e532004255de3c361d",
+        "matchesLocal": true
+      }
+    ],
+    "at": "2026-09-12T15:36:53.397692+00:00"
+  },
+  "freshClone": {
+    "at": "2026-09-12T15:38:37.188136+00:00",
+    "actor": "LoTwT",
+    "head": "878de7429df5313bbb247538e24f6bcb5f3ab57e",
+    "directory": "/Users/caoyujie/codex-artifacts/camellia-r1-cleanup-20260912/fresh-clone",
+    "cloneMode": "network, single-branch, no-tags, full history, no local objects",
+    "packBytes": 75117126,
+    "packFiles": 1,
+    "trackedFiles": 1186,
+    "trackedBytes": 122948703,
+    "checks": [
+      {
+        "name": "install",
+        "exitCode": 0
+      },
+      {
+        "name": "test",
+        "exitCode": 0
+      },
+      {
+        "name": "build",
+        "exitCode": 0
+      }
+    ],
+    "productionFiles": 93,
+    "productionByteIdentical": true,
+    "workingTreeClean": true
+  },
+  "mainUnchanged": "bfb924b075aa6a153ed33b95ce4492260e18a8d9",
+  "backup": "Verified before-cleanup.bundle and unchanged original evidence ZIPs retained outside the repository."
+}

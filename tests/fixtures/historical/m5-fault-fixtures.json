@@ -1,0 +1,397 @@
+{
+  "schemaVersion": 1,
+  "purpose": "P04/P05/P06 平台故障与导入边界夹具；不属于正常通关见证。",
+  "generator": "scripts/prepare-acceptance-fixtures.ts",
+  "commands": {
+    "generate": "node scripts/prepare-acceptance-fixtures.ts --write",
+    "verify": "node scripts/prepare-acceptance-fixtures.ts --check",
+    "publishEvidence": "cp test-results/m5-fault-fixtures/manifest.json docs/verification/evidence/m5-fault-fixtures.json"
+  },
+  "source": {
+    "path": "docs/verification/evidence/m4-chrome-browser-full-save.json",
+    "bytes": 9313,
+    "sha256": "4e71abc34dae4b070d8c3846f56985d93d528a09027d6862e2606bae088a956b",
+    "saveGeneration": 516,
+    "savedAt": "2026-09-10T20:01:51.693Z",
+    "releaseProfileId": "M4",
+    "rewardCount": 26,
+    "supplyUnits": 130,
+    "completedRoomLayoutCount": 9
+  },
+  "target": {
+    "releaseProfileId": "M5",
+    "schemaVersion": 2,
+    "contentVersion": 4,
+    "ruleVersion": 1
+  },
+  "validation": {
+    "implementation": [
+      "prepareSaveImport",
+      "validatePayload",
+      "additiveProfileMigrations",
+      "createSaveStore.inspect/write"
+    ],
+    "fixtureCount": 10,
+    "slotScenarioCount": 9,
+    "allExpectedResultsMatched": true,
+    "sourceBytesUnchanged": true,
+    "browserStatus": "未执行；这些结果仅来自真实纯 TypeScript 校验器与内存存储端口。"
+  },
+  "browserUse": [
+    "先通过游戏 UI 导出当前正常进度；全部夹具只供 acceptance 构建和单独故障会话使用。",
+    "P04/P05 通过可见故障面板按 slotScenarios 分别写入 A/B，再刷新检查；两槽原文仍应可导出。",
+    "P06 使用游戏导入按钮选择夹具；失败后对比导入前世界与存档，合法文件必须先预览再确认。",
+    "脚本字符串夹具应拒绝，document.documentElement 不应出现 data-camellia-fixture-executed；本脚本未执行 DOM 验证。",
+    "over-1mib 只用于文件导入，不经过有 512 KiB 单槽限制的故障原文面板。",
+    "故障边界记录与正常新档通关记录分开，不能把这些文件作为通关操作证据。"
+  ],
+  "fixtures": [
+    {
+      "id": "valid-original",
+      "path": "test-results/m5-fault-fixtures/valid-original.json",
+      "bytes": 9313,
+      "sha256": "4e71abc34dae4b070d8c3846f56985d93d528a09027d6862e2606bae088a956b",
+      "cases": [
+        "P04",
+        "P05",
+        "P06"
+      ],
+      "purpose": "合法导入对照、旧有效槽；浏览器仍须预览并明确确认才替换。",
+      "mutation": "无；与真实 Chrome UI 导出逐字节相同。",
+      "expectedImport": "accepted",
+      "actualImport": {
+        "ok": true,
+        "releaseProfileId": "M5",
+        "migrationRequired": true
+      }
+    },
+    {
+      "id": "valid-higher-generation-older-time",
+      "path": "test-results/m5-fault-fixtures/valid-higher-generation-older-time.json",
+      "bytes": 9312,
+      "sha256": "54ecf92c65c0c501fb0e6c8544490f236fbbf26e03192adb0e86365fe8d92ce8",
+      "cases": [
+        "P04"
+      ],
+      "purpose": "与 valid-original 分别交换 A/B，验证始终选择较高代数，不按键名或墙钟日期选择。",
+      "mutation": "仅 envelope.saveGeneration=517，savedAt=2000-01-01T00:00:00.000Z；payload 原样保留。",
+      "expectedImport": "accepted",
+      "actualImport": {
+        "ok": true,
+        "releaseProfileId": "M5",
+        "migrationRequired": true
+      }
+    },
+    {
+      "id": "bad-json",
+      "path": "test-results/m5-fault-fixtures/bad-json.json",
+      "bytes": 9311,
+      "sha256": "8895b1fa1f336b095905e9289c52ef0d8f899054643f2106afcda49d8bfa08c3",
+      "cases": [
+        "P04",
+        "P06"
+      ],
+      "purpose": "单槽损坏、两槽损坏及 JSON 导入失败；截断后代数不可解析，必须显式恢复。",
+      "mutation": "截去真实源档最后一个闭合花括号。",
+      "expectedImport": "invalidEnvelope",
+      "actualImport": {
+        "ok": false,
+        "code": "invalidEnvelope",
+        "message": "导入文件不是完整有效的存档 JSON。"
+      }
+    },
+    {
+      "id": "over-1mib",
+      "path": "test-results/m5-fault-fixtures/over-1mib.json",
+      "bytes": 1048577,
+      "sha256": "eb02a414166df3f56e3759f1dda0dcbccab6a9ac11961d5bb9914afec33d9161",
+      "cases": [
+        "P06"
+      ],
+      "purpose": "仅超出导入大小上限 1 字节；JSON 本身仍合法，验证大小检查优先。",
+      "mutation": "在原 JSON 后追加合法 ASCII 空白，使 UTF-8 大小精确为 1,048,577 字节。",
+      "expectedImport": "tooLarge",
+      "actualImport": {
+        "ok": false,
+        "code": "tooLarge",
+        "message": "导入文件超过 1 MiB 限制。"
+      }
+    },
+    {
+      "id": "wrong-project",
+      "path": "test-results/m5-fault-fixtures/wrong-project.json",
+      "bytes": 9313,
+      "sha256": "bbf3d7dbd19dfffcbda05506effdfcb22763da2332628ffd63f619ddb245c32d",
+      "cases": [
+        "P06"
+      ],
+      "purpose": "错误项目文件必须拒绝。",
+      "mutation": "仅 payload.gameId=acceptance-other-game。",
+      "expectedImport": "invalidPayload",
+      "actualImport": {
+        "ok": false,
+        "code": "invalidPayload",
+        "message": "此文件不属于沙罗黄金周"
+      }
+    },
+    {
+      "id": "unknown-objective",
+      "path": "test-results/m5-fault-fixtures/unknown-objective.json",
+      "bytes": 9343,
+      "sha256": "df7be1a53f3004c1a77c69978b0e8dd5a2b91d9be2d3ae3cf8c964fe8ba17e2c",
+      "cases": [
+        "P06"
+      ],
+      "purpose": "合法 ID 字符格式但目录中不存在的目标必须拒绝。",
+      "mutation": "仅追加 completedObjectiveIds=acceptance.unknown-objective。",
+      "expectedImport": "invalidPayload",
+      "actualImport": {
+        "ok": false,
+        "code": "invalidPayload",
+        "message": "未知或来源包未收录的目标：acceptance.unknown-objective"
+      }
+    },
+    {
+      "id": "illegal-object-overlap",
+      "path": "test-results/m5-fault-fixtures/illegal-object-overlap.json",
+      "bytes": 9312,
+      "sha256": "ab3dc41f75634cbd2b0494d907b71ca6b2da53bc56674b6bbbc6aa72e1cc866e",
+      "cases": [
+        "P06"
+      ],
+      "purpose": "固定房间中两个已知对象占据同一已知格必须拒绝。",
+      "mutation": "仅把 c.theft.01 第二个对象的完成落点改为第一个对象落点；不改变目标、奖励或玩家。",
+      "expectedImport": "invalidPayload",
+      "actualImport": {
+        "ok": false,
+        "code": "invalidPayload",
+        "message": "完成布局 c.theft.01 不合法：c.theft.01.completedLayout.layout.objectTileById: 多个阻挡对象或目标重叠"
+      }
+    },
+    {
+      "id": "script-string",
+      "path": "test-results/m5-fault-fixtures/script-string.json",
+      "bytes": 9433,
+      "sha256": "fd512aeec311a781f4d9be40a5443950ef63b4526dcf43696c12f724314d36a1",
+      "cases": [
+        "P06"
+      ],
+      "purpose": "脚本文本只作为 JSON 字符串交给校验器，不得执行或注入 DOM；未知字段应拒绝。",
+      "mutation": "仅增加非法 acceptanceScript 字段，内容为无网络请求的 DOM 标记脚本文本。",
+      "expectedImport": "invalidPayload",
+      "actualImport": {
+        "ok": false,
+        "code": "invalidPayload",
+        "message": "存档缺少必需字段或包含未知字段"
+      }
+    },
+    {
+      "id": "future-schema",
+      "path": "test-results/m5-fault-fixtures/future-schema.json",
+      "bytes": 9312,
+      "sha256": "cef3fd0791975b7ef2eae786be2e93284fcc4c3812a475b7c062fa7c0250cbb8",
+      "cases": [
+        "P05",
+        "P06"
+      ],
+      "purpose": "与 valid-original 组成新旧两槽，较新版本必须阻止回退与写入；导入也必须拒绝。",
+      "mutation": "仅 envelope.saveGeneration=517，payload.schemaVersion=3。",
+      "expectedImport": "futureProtected",
+      "actualImport": {
+        "ok": false,
+        "code": "futureProtected",
+        "message": "此进度来自较新版本，请使用匹配或更新的构建；原档已保护"
+      }
+    },
+    {
+      "id": "future-content",
+      "path": "test-results/m5-fault-fixtures/future-content.json",
+      "bytes": 9312,
+      "sha256": "d0b9b9ca810abbfde669615abd9388dac013d20357a81c214d51a2de410be631",
+      "cases": [
+        "P05",
+        "P06"
+      ],
+      "purpose": "与 valid-original 组成新旧两槽，较新版本必须阻止回退与写入；导入也必须拒绝。",
+      "mutation": "仅 envelope.saveGeneration=517，payload.contentVersion=5。",
+      "expectedImport": "futureProtected",
+      "actualImport": {
+        "ok": false,
+        "code": "futureProtected",
+        "message": "此进度来自较新版本，请使用匹配或更新的构建；原档已保护"
+      }
+    }
+  ],
+  "slotScenarios": [
+    {
+      "id": "corrupt-a-valid-b",
+      "caseId": "P04",
+      "a": "bad-json",
+      "b": "valid-original",
+      "expected": "recovery",
+      "backup": "b",
+      "actual": {
+        "status": "recovery",
+        "latest": "b",
+        "backup": "b",
+        "maxGeneration": 516,
+        "rejectedWrite": {
+          "code": "recoveryRequired",
+          "writes": 0
+        },
+        "rawSlotsUnchanged": true
+      }
+    },
+    {
+      "id": "valid-a-corrupt-b",
+      "caseId": "P04",
+      "a": "valid-original",
+      "b": "bad-json",
+      "expected": "recovery",
+      "backup": "a",
+      "actual": {
+        "status": "recovery",
+        "latest": "a",
+        "backup": "a",
+        "maxGeneration": 516,
+        "rejectedWrite": {
+          "code": "recoveryRequired",
+          "writes": 0
+        },
+        "rawSlotsUnchanged": true
+      }
+    },
+    {
+      "id": "both-corrupt",
+      "caseId": "P04",
+      "a": "bad-json",
+      "b": "bad-json",
+      "expected": "corrupt",
+      "actual": {
+        "status": "corrupt",
+        "latest": null,
+        "backup": null,
+        "maxGeneration": 0,
+        "rejectedWrite": {
+          "code": "recoveryRequired",
+          "writes": 0
+        },
+        "rawSlotsUnchanged": true
+      }
+    },
+    {
+      "id": "higher-a-older-wall-clock",
+      "caseId": "P04",
+      "a": "valid-higher-generation-older-time",
+      "b": "valid-original",
+      "expected": "ready",
+      "latest": "a",
+      "backup": "b",
+      "actual": {
+        "status": "ready",
+        "latest": "a",
+        "backup": "b",
+        "maxGeneration": 517,
+        "rejectedWrite": null,
+        "rawSlotsUnchanged": true
+      }
+    },
+    {
+      "id": "higher-b-older-wall-clock",
+      "caseId": "P04",
+      "a": "valid-original",
+      "b": "valid-higher-generation-older-time",
+      "expected": "ready",
+      "latest": "b",
+      "backup": "a",
+      "actual": {
+        "status": "ready",
+        "latest": "b",
+        "backup": "a",
+        "maxGeneration": 517,
+        "rejectedWrite": null,
+        "rawSlotsUnchanged": true
+      }
+    },
+    {
+      "id": "future-schema-a",
+      "caseId": "P05",
+      "a": "future-schema",
+      "b": "valid-original",
+      "expected": "future",
+      "latest": "a",
+      "backup": "b",
+      "actual": {
+        "status": "future",
+        "latest": "a",
+        "backup": "b",
+        "maxGeneration": 517,
+        "rejectedWrite": {
+          "code": "futureProtected",
+          "writes": 0
+        },
+        "rawSlotsUnchanged": true
+      }
+    },
+    {
+      "id": "future-schema-b",
+      "caseId": "P05",
+      "a": "valid-original",
+      "b": "future-schema",
+      "expected": "future",
+      "latest": "b",
+      "backup": "a",
+      "actual": {
+        "status": "future",
+        "latest": "b",
+        "backup": "a",
+        "maxGeneration": 517,
+        "rejectedWrite": {
+          "code": "futureProtected",
+          "writes": 0
+        },
+        "rawSlotsUnchanged": true
+      }
+    },
+    {
+      "id": "future-content-a",
+      "caseId": "P05",
+      "a": "future-content",
+      "b": "valid-original",
+      "expected": "future",
+      "latest": "a",
+      "backup": "b",
+      "actual": {
+        "status": "future",
+        "latest": "a",
+        "backup": "b",
+        "maxGeneration": 517,
+        "rejectedWrite": {
+          "code": "futureProtected",
+          "writes": 0
+        },
+        "rawSlotsUnchanged": true
+      }
+    },
+    {
+      "id": "future-content-b",
+      "caseId": "P05",
+      "a": "valid-original",
+      "b": "future-content",
+      "expected": "future",
+      "latest": "b",
+      "backup": "a",
+      "actual": {
+        "status": "future",
+        "latest": "b",
+        "backup": "a",
+        "maxGeneration": 517,
+        "rejectedWrite": {
+          "code": "futureProtected",
+          "writes": 0
+        },
+        "rawSlotsUnchanged": true
+      }
+    }
+  ]
+}

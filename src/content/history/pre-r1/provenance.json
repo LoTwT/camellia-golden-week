@@ -1,0 +1,274 @@
+{
+  "baseline": "7fe7d8e9179e0c9dcef505f454232a9a38321234",
+  "files": [
+    {
+      "source": "src/core/static-puzzle.ts",
+      "frozen": "src/content/history/pre-r1/static-puzzle.ts",
+      "sha256": "2fec34a4d23428f36adfc94903ea908316be5f94ba630ab4d3f940a9f054ffae"
+    },
+    {
+      "source": "src/core/realtime.ts",
+      "frozen": "src/content/history/pre-r1/realtime.ts",
+      "sha256": "10174fb620488fe173784188571c713435712cb25fdc71f3191c9cb53a8c015a"
+    },
+    {
+      "source": "7fe7d8e src/content/assemble.ts migrationContentReleases(M5); canonical formatting with pinned Oxfmt",
+      "frozen": "src/content/history/pre-r1/releases.json",
+      "sha256": "378e70a95f052f082715521bad9baae60e9cf143f96435372751894f364f045a",
+      "originalSha256": "270b610d5775260750a5bb9965cce00c1a5e91a3215a0d659869c6f83e6d68d6",
+      "conversion": "frozen-release-blocks-v1: shared entries per content array field, ordered references; expanded snapshot JSON SHA-256 below retains property and array order",
+      "expandedSnapshots": [
+        {
+          "profile": "M1",
+          "contentVersion": 1,
+          "ruleVersion": 1,
+          "sha256": "d8c07b85c96382b63cc771d9628c8dff94befcf088a9e8879e93bb480d1fbe86"
+        },
+        {
+          "profile": "M2",
+          "contentVersion": 2,
+          "ruleVersion": 1,
+          "sha256": "d54c21d9102cd2e92945d466c40ae1905c70213b4ae0fde8ab2ac84434f8ff67"
+        },
+        {
+          "profile": "M3",
+          "contentVersion": 3,
+          "ruleVersion": 1,
+          "sha256": "76193a7d891d9c2d5d9103c2167bb8df63b216f03430a68af108edab0cc9f6b8"
+        },
+        {
+          "profile": "M4",
+          "contentVersion": 4,
+          "ruleVersion": 1,
+          "sha256": "c470af1dd6995d59618d5504ee4db6b1bede27156a55990e6e1f325858f45c9b"
+        },
+        {
+          "profile": "M5",
+          "contentVersion": 4,
+          "ruleVersion": 1,
+          "sha256": "1f6dd0599ae4bb880877ca9b354fdcb87f36f1f3908bf39cd73516b803c52b52"
+        },
+        {
+          "profile": "M1",
+          "contentVersion": 2,
+          "ruleVersion": 2,
+          "sha256": "a21be08f0af5831291bddaa75ea09de7286e2ed7cf733d54c62f5bad4d5fb020"
+        },
+        {
+          "profile": "M2",
+          "contentVersion": 3,
+          "ruleVersion": 2,
+          "sha256": "aebd3fc80661e9896b6ccdbf784e2bee56cbe20d3e95cf12619f62627d680869"
+        },
+        {
+          "profile": "M3",
+          "contentVersion": 4,
+          "ruleVersion": 2,
+          "sha256": "45b71c93455dfacf1c3e758715d17bb440fa801f98376930e31371e25fe9333d"
+        },
+        {
+          "profile": "M4",
+          "contentVersion": 5,
+          "ruleVersion": 2,
+          "sha256": "b3df245e76b3cf8947898a2cc5679f5daef0951a6924358df4fb76def15b53d9"
+        },
+        {
+          "profile": "M5",
+          "contentVersion": 5,
+          "ruleVersion": 2,
+          "sha256": "d856d2df411ec371bf420784c22f96311efba6ee450d81affd109df258bde6a5"
+        },
+        {
+          "profile": "M1",
+          "contentVersion": 2,
+          "ruleVersion": 3,
+          "sha256": "69e8a60a746b676a49661eac16c4008108f69f65753e7f1a8dfcd436b39be80a"
+        },
+        {
+          "profile": "M2",
+          "contentVersion": 3,
+          "ruleVersion": 3,
+          "sha256": "db991880907642cbaca13dcfa9b489edee2d36e5dd6c416033be27c8213045e2"
+        },
+        {
+          "profile": "M3",
+          "contentVersion": 4,
+          "ruleVersion": 3,
+          "sha256": "f790ed50378d5d5477ac0f6779ed991733a25fab64f76227717bfe0335eeeb2b"
+        },
+        {
+          "profile": "M4",
+          "contentVersion": 5,
+          "ruleVersion": 3,
+          "sha256": "d8c00e32d25b7e5db57ec890efc0b140265a6ae3b4dd0c5fbc2be54795011516"
+        },
+        {
+          "profile": "M5",
+          "contentVersion": 5,
+          "ruleVersion": 3,
+          "sha256": "357dd7a3385d93a86d97395e750f67ec180729edf3c275a3e3c21a1179494474"
+        }
+      ]
+    },
+    {
+      "source": "src/core/engine.ts",
+      "frozen": "src/content/history/pre-r1/engine.ts",
+      "sha256": "9aad72e0992d547b8a6bf9b33c34f2c57a0876c8e6ca82c1bd9c9c514d279149",
+      "originalSha256": "9aad72e0992d547b8a6bf9b33c34f2c57a0876c8e6ca82c1bd9c9c514d279149",
+      "conversion": "none"
+    },
+    {
+      "source": "src/core/types.ts",
+      "frozen": "src/content/history/pre-r1/types.ts",
+      "sha256": "c864a47f8c4650bda017ad52145c1b2db0bf300ed76c54490acf4c7647f43e2a",
+      "originalSha256": "c864a47f8c4650bda017ad52145c1b2db0bf300ed76c54490acf4c7647f43e2a",
+      "conversion": "none"
+    },
+    {
+      "source": "src/core/progress.ts",
+      "frozen": "src/content/history/pre-r1/progress.ts",
+      "sha256": "7d2cedb5f833067e4a7af7896659884e58e3687a41d37628699a70791bb5e454",
+      "originalSha256": "7d2cedb5f833067e4a7af7896659884e58e3687a41d37628699a70791bb5e454",
+      "conversion": "none"
+    },
+    {
+      "source": "src/core/clock.ts",
+      "frozen": "src/content/history/pre-r1/clock.ts",
+      "sha256": "67f409a5e4947fda1d01f00a1c1064cbe901ec931aebc4cc1d87211e57b6d1c7",
+      "originalSha256": "67f409a5e4947fda1d01f00a1c1064cbe901ec931aebc4cc1d87211e57b6d1c7",
+      "conversion": "none"
+    },
+    {
+      "source": "src/content/validate.ts",
+      "frozen": "src/content/history/pre-r1/validate.ts",
+      "sha256": "5cd3099dad3cdde57bd991bc0e40dbb3bb87aeb0f8ebbb3b6d9166b4953cc001",
+      "originalSha256": "5afd2cbda02c348c1c7238a3f73dd40448ac044f7a39a9f5933787b737dfdc00",
+      "conversion": "relative imports ../core/ to ./ only"
+    },
+    {
+      "source": "src/content/challenges/static.json",
+      "frozen": "src/content/history/pre-r1/static.json",
+      "sha256": "00cb1310a845083df6c088879dd8bc2f19227b62ad85c7b864892ac18c7d7cfa",
+      "originalSha256": "890512a795e5556e5fdc9fc026c85f46b193bfc57ad3db996529718321efbdb7",
+      "conversion": "legacy-static-references-v1: definition index/id references resolve only against pre-r1/releases.json shared.staticChallenges; witnesses, property and array order unchanged",
+      "expandedSha256": "9d2315add58ffc25be543dfbb520ad41bd072fd95bbb5b3856b3a253a3e0435e"
+    },
+    {
+      "source": "src/content/challenges/realtime.json",
+      "frozen": "src/content/history/pre-r1/realtime.json",
+      "sha256": "38cdfeb59ea6523ac40c1733cbef71dfc9f6cc89e9c67aca890b4cfbb46f8357",
+      "originalSha256": "7ac766389ec4e9a5de8bbf2638369df48372a2a6b030848e79dc5744f6e9fae7",
+      "conversion": "legacy-realtime-references-v1: definition index/id references resolve only against pre-r1/releases.json shared.realtimeChallenges; metadata, witnesses, property and array order unchanged",
+      "expandedSha256": "d8a9965eb2df8c2089ef6a45bba64f9e0350b71a244f3f143d53bfd93c506d87"
+    },
+    {
+      "source": "src/core/projection.ts",
+      "frozen": "src/content/history/pre-r1/projection.ts",
+      "sha256": "badaca80c7cfb6df253e5664637d1b6274a58bf4b82a3778f28313492e4933a1",
+      "originalSha256": "badaca80c7cfb6df253e5664637d1b6274a58bf4b82a3778f28313492e4933a1",
+      "conversion": "none"
+    },
+    {
+      "source": "src/core/firewall-feedback.ts",
+      "frozen": "src/content/history/pre-r1/firewall-feedback.ts",
+      "sha256": "f0301c09e954e2d4dc45dfc8397c50a95b0243bd2753e6b40a2ad111fc95c74f",
+      "originalSha256": "f0301c09e954e2d4dc45dfc8397c50a95b0243bd2753e6b40a2ad111fc95c74f",
+      "conversion": "none"
+    },
+    {
+      "source": "src/platform/save-payload.ts",
+      "frozen": "src/content/history/pre-r1/save-payload.ts",
+      "sha256": "4f68716affb84bf5000b2d74cbc5d0383ff350097a0356a47180059d39e7256a",
+      "originalSha256": "f1137563e92c9e7c82eddf5e13f86d6fe3cc85190fd1e6332bfbdc3a5302a952",
+      "conversion": "relative imports ../core/ to ./ only"
+    },
+    {
+      "source": "src/platform/migrations.ts",
+      "frozen": "src/content/history/pre-r1/migrations.ts",
+      "sha256": "2a6cfcaa7ab7f6b99ee5ed7ad24e9af18aa37e143e4abe31dcfbafcf27b11a4b",
+      "originalSha256": "f4a1b26535c2be734909ccbe99df781e674bb75a2fa0c49f7cb9c1a3a11f16ee",
+      "conversion": "relative imports ../core/ to ./ only"
+    },
+    {
+      "source": "src/content/witnesses/current.ts",
+      "frozen": "src/content/witnesses/v3.ts",
+      "sha256": "f985be5acc35a1c54b2f67f6daf6847a68595a96344054f4a7e48e5521c44f6d",
+      "originalSha256": "e9898a980fa20079f98d17fe5e59d5b4457e1b0108f833e6abbbd62723b0240c",
+      "conversion": "rename currentWorldWitness to v3WorldWitness; read frozen pre-r1/realtime.json; literal ruleVersion 3; TypeScript declaration/import adaptation only; frozen realtime-content.ts wrapper expands stored definition references"
+    },
+    {
+      "source": "src/content/history/realtime-v1.json",
+      "frozen": "src/content/history/realtime-v1.json",
+      "sha256": "30ce3da443f03f3ed1e746d1dff3fbece29b6af3f9e111e68dec3998ce87e723",
+      "originalSha256": "3600214a533fffc2152184ba99d30d008d36584bb73778c85745638915249edf",
+      "conversion": "legacy-realtime-references-v1: definition index/id references resolve only against pre-r1/releases.json shared.realtimeChallenges; metadata, witnesses, property and array order unchanged",
+      "expandedSha256": "f59ebdbbb47189ece517ce4e2409b10b710f1e43420eef8557a473e959f023cc"
+    },
+    {
+      "source": "src/content/history/realtime-v2.json",
+      "frozen": "src/content/history/realtime-v2.json",
+      "sha256": "68e01be91219944d8bc661bfb0ace3f5af7ffad4a7f9b7c069a8a341e3de77b5",
+      "originalSha256": "fe746e9e816a88a0956de297014e2ab19c7b3fccd3e883cf65ccfa04d666e353",
+      "conversion": "legacy-realtime-references-v1: definition index/id references resolve only against pre-r1/releases.json shared.realtimeChallenges; metadata, witnesses, property and array order unchanged",
+      "expandedSha256": "1783671de862d6a0b6651d258fc6b3fd5296305248d3a32972d326780f6aec90"
+    }
+  ],
+  "existingSaveEvidence": [
+    {
+      "path": "tests/fixtures/historical/m2-browser-save-schema1.json",
+      "sha256": "c6cfcc2c0870c855329a5dc5bc037b39296bdb2da5521fc078fbcf4088917b17",
+      "schemaVersion": 1,
+      "contentVersion": 2,
+      "ruleVersion": 1,
+      "profile": "M2"
+    },
+    {
+      "path": "tests/fixtures/historical/m5-chrome-final-production-restored-save.json",
+      "sha256": "fd8acfa125f7d828e5f521a066b781ccf9a92089b910f5e8203331a555c7c6e0",
+      "schemaVersion": 2,
+      "contentVersion": 4,
+      "ruleVersion": 1,
+      "profile": "M5"
+    },
+    {
+      "path": "tests/fixtures/historical/controls-readability/v1-full-collection-migration-save.json",
+      "sha256": "875124f82484520f3bc84c90e25dca69c3f5883b1184e923f66144333cdfcefb",
+      "schemaVersion": 2,
+      "contentVersion": 5,
+      "ruleVersion": 3,
+      "profile": "M5"
+    },
+    {
+      "path": "tests/fixtures/historical/controls-readability/firewall-music-levels-completed-save.json",
+      "sha256": "fc220564c5b01ac84e338c51e855ceb7c98190896a8443f56d42c961c11ba71c",
+      "schemaVersion": 2,
+      "contentVersion": 5,
+      "ruleVersion": 3,
+      "profile": "M5"
+    },
+    {
+      "path": "tests/fixtures/historical/m1-browser-save.json",
+      "sha256": "8f71c22f83a8783effaf3540fc0c142d3f83e08c94537080757a4734e311b187",
+      "schemaVersion": 1,
+      "contentVersion": 1,
+      "ruleVersion": 1,
+      "profile": "M1"
+    },
+    {
+      "path": "tests/fixtures/historical/m3-browser-save.json",
+      "sha256": "aa2ea52fc9c484f2c53ed1aae8161607bdff14b9adf3180796bdc2588050648a",
+      "schemaVersion": 2,
+      "contentVersion": 3,
+      "ruleVersion": 1,
+      "profile": "M3"
+    },
+    {
+      "path": "tests/fixtures/historical/m4-chrome-browser-full-save.json",
+      "sha256": "4e71abc34dae4b070d8c3846f56985d93d528a09027d6862e2606bae088a956b",
+      "schemaVersion": 2,
+      "contentVersion": 4,
+      "ruleVersion": 1,
+      "profile": "M4"
+    }
+  ]
+}

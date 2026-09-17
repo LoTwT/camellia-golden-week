@@ -1,0 +1,41 @@
+{
+  "scope": "R1 evidence relocation and history reconstruction verification; original game sources/resources are unchanged.",
+  "at": "2026-09-12T15:32:16.260884+00:00",
+  "originalSourceCommit": "083a9bec407259c015958392284b697c0c252220",
+  "verifyExitCode": 0,
+  "nativeTests": {
+    "tests": 682,
+    "passed": 682,
+    "failed": 0
+  },
+  "browserSuccess": true,
+  "browserVersion": "153.0.8010.36",
+  "browserStartedAt": "2026-09-12T14:44:40.786Z",
+  "browserFinishedAt": "2026-09-12T15:31:41.918Z",
+  "frozenInputs": 268,
+  "inputsUnchanged": true,
+  "runtimeFiles": 177,
+  "runtimeByteIdentical": true,
+  "productionFiles": 93,
+  "productionBytes": 6542361,
+  "productionByteIdentical": true,
+  "originalEvidenceFiles": 1266,
+  "originalEvidenceBytes": 803127964,
+  "retainedOriginalCopies": 13,
+  "retainedOriginalBytes": 1235445,
+  "retainedCopiesByteIdentical": true,
+  "additionalFailedAttempt": "Second full run stopped before M2 first tutorial key because the physical input timing budget was exceeded. M5/M1 full passed. Specific delay source was not reproduced; isolated valid timing probe delivered perfect at270.6ms. Added host timing diagnostics only, no threshold or game changes. Invalid intermediate diagnostic is identified separately.",
+  "successfulCleanupAttempt": 3,
+  "firstAttempt": "Failed at non-atomic transient firewall-light read; preserved in archive. Atomic capture verified with controlled normal browser-clock delay; no runtime changes or threshold relaxation.",
+  "archive": {
+    "name": "r1-cleanup-verification.zip",
+    "url": "https://github.com/LoTwT/camellia-golden-week/releases/download/v0.5.0-r1/r1-cleanup-verification.zip",
+    "bytes": 12906783,
+    "sha256": "ffd8d3ede9856b858be9e2043e40a5518697f18ff13ed2991cf3290c2fe360a2",
+    "originalFiles": 336
+  },
+  "limitations": [
+    "Historical acceptance limitations remain unchanged; V06 is not required and not counted as passed.",
+    "Fresh-clone and publication readback follow this verification snapshot."
+  ]
+}

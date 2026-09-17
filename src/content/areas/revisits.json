@@ -1,0 +1,363 @@
+{
+  "includedFrom": 4,
+  "areas": [
+    {
+      "areaId": "a",
+      "tiles": [
+        {
+          "id": "a.t.4.4",
+          "boardId": "a",
+          "x": 4,
+          "y": 4,
+          "terrain": "floor",
+          "initialDiscovery": false,
+          "etherGroupId": null,
+          "hiddenGroupId": null,
+          "overlayIds": [],
+          "includedFrom": 4
+        },
+        {
+          "id": "a.t.5.4",
+          "boardId": "a",
+          "x": 5,
+          "y": 4,
+          "terrain": "floor",
+          "initialDiscovery": false,
+          "etherGroupId": null,
+          "hiddenGroupId": null,
+          "overlayIds": [],
+          "includedFrom": 4
+        },
+        {
+          "id": "a.t.5.5",
+          "boardId": "a",
+          "x": 5,
+          "y": 5,
+          "terrain": "floor",
+          "initialDiscovery": false,
+          "etherGroupId": "a.revisit.nexus",
+          "hiddenGroupId": null,
+          "overlayIds": [],
+          "includedFrom": 4
+        },
+        {
+          "id": "a.t.5.6",
+          "boardId": "a",
+          "x": 5,
+          "y": 6,
+          "terrain": "floor",
+          "initialDiscovery": false,
+          "etherGroupId": "a.revisit.nexus",
+          "hiddenGroupId": null,
+          "overlayIds": [],
+          "includedFrom": 4
+        },
+        {
+          "id": "a.t.6.6",
+          "boardId": "a",
+          "x": 6,
+          "y": 6,
+          "terrain": "floor",
+          "initialDiscovery": false,
+          "etherGroupId": null,
+          "hiddenGroupId": null,
+          "overlayIds": [],
+          "includedFrom": 4
+        },
+        {
+          "id": "a.t.7.6",
+          "boardId": "a",
+          "x": 7,
+          "y": 6,
+          "terrain": "floor",
+          "initialDiscovery": false,
+          "etherGroupId": null,
+          "hiddenGroupId": null,
+          "overlayIds": [],
+          "includedFrom": 4
+        },
+        {
+          "id": "a.t.8.6",
+          "boardId": "a",
+          "x": 8,
+          "y": 6,
+          "terrain": "floor",
+          "initialDiscovery": false,
+          "etherGroupId": null,
+          "hiddenGroupId": null,
+          "overlayIds": [],
+          "includedFrom": 4
+        },
+        {
+          "id": "a.t.9.6",
+          "boardId": "a",
+          "x": 9,
+          "y": 6,
+          "terrain": "floor",
+          "initialDiscovery": false,
+          "etherGroupId": null,
+          "hiddenGroupId": null,
+          "overlayIds": [],
+          "includedFrom": 4
+        }
+      ],
+      "entities": [
+        {
+          "id": "a.revisit.door",
+          "kind": "door",
+          "tileId": "a.t.4.4",
+          "label": "A 区回访入口 · 四权限后开放",
+          "params": {
+            "closedBlocksMovement": true,
+            "lockedReasonKey": "d.main"
+          },
+          "gateId": "gate.d.main",
+          "effectBundleId": null,
+          "sourceRecordIds": ["map.a.revisit.reconstructed"],
+          "includedFrom": 4
+        },
+        {
+          "id": "a.revisit.nexus",
+          "kind": "nexus",
+          "tileId": "a.t.5.4",
+          "label": "回访富集节点 · 按 R 清除绕行覆盖",
+          "params": {
+            "clearsTileIds": ["a.t.5.5", "a.t.5.6"],
+            "revealsGroupIds": [],
+            "capabilityRequired": "amplifier",
+            "completionObjectiveId": "a.revisit.nexus"
+          },
+          "gateId": "always",
+          "effectBundleId": "a.revisit.nexus.effects",
+          "sourceRecordIds": ["map.a.revisit.reconstructed"],
+          "includedFrom": 4
+        },
+        {
+          "id": "a.revisit.terminal",
+          "kind": "terminal",
+          "tileId": "a.t.7.6",
+          "label": "A 区回访数据终端 · 按 F 确认",
+          "params": {
+            "interactionMode": "interact",
+            "prerequisites": {
+              "kind": "always"
+            },
+            "effectBundleId": "a.revisit.terminal.effects"
+          },
+          "gateId": "gate.d.main",
+          "effectBundleId": "a.revisit.terminal.effects",
+          "sourceRecordIds": ["map.a.revisit.reconstructed"],
+          "includedFrom": 4
+        },
+        {
+          "id": "a.revisit.supply.door",
+          "kind": "door",
+          "tileId": "a.t.8.6",
+          "label": "回访物资通路",
+          "params": {
+            "closedBlocksMovement": true,
+            "lockedReasonKey": "a.revisit.terminal"
+          },
+          "gateId": "gate.a.revisit.terminal",
+          "effectBundleId": null,
+          "sourceRecordIds": ["map.a.revisit.reconstructed"],
+          "includedFrom": 4
+        },
+        {
+          "id": "a.supply.revisit.pickup",
+          "kind": "supply",
+          "tileId": "a.t.9.6",
+          "label": "沙罗物资 · 5",
+          "params": {
+            "rewardId": "a.supply.revisit"
+          },
+          "gateId": "gate.a.supply.revisit",
+          "effectBundleId": null,
+          "sourceRecordIds": ["map.a.revisit.reconstructed"],
+          "includedFrom": 4
+        }
+      ],
+      "rooms": [],
+      "sourceRecordIds": ["map.a.revisit.reconstructed"]
+    },
+    {
+      "areaId": "b",
+      "tiles": [
+        {
+          "id": "b.t.2.3",
+          "boardId": "b",
+          "x": 2,
+          "y": 3,
+          "terrain": "floor",
+          "initialDiscovery": false,
+          "etherGroupId": null,
+          "hiddenGroupId": null,
+          "overlayIds": [],
+          "includedFrom": 4
+        },
+        {
+          "id": "b.t.3.3",
+          "boardId": "b",
+          "x": 3,
+          "y": 3,
+          "terrain": "floor",
+          "initialDiscovery": false,
+          "etherGroupId": null,
+          "hiddenGroupId": null,
+          "overlayIds": [],
+          "includedFrom": 4
+        },
+        {
+          "id": "b.t.3.4",
+          "boardId": "b",
+          "x": 3,
+          "y": 4,
+          "terrain": "floor",
+          "initialDiscovery": false,
+          "etherGroupId": "b.revisit.nexus",
+          "hiddenGroupId": null,
+          "overlayIds": [],
+          "includedFrom": 4
+        },
+        {
+          "id": "b.t.3.5",
+          "boardId": "b",
+          "x": 3,
+          "y": 5,
+          "terrain": "floor",
+          "initialDiscovery": false,
+          "etherGroupId": "b.revisit.nexus",
+          "hiddenGroupId": null,
+          "overlayIds": [],
+          "includedFrom": 4
+        },
+        {
+          "id": "b.t.4.5",
+          "boardId": "b",
+          "x": 4,
+          "y": 5,
+          "terrain": "floor",
+          "initialDiscovery": false,
+          "etherGroupId": null,
+          "hiddenGroupId": null,
+          "overlayIds": [],
+          "includedFrom": 4
+        },
+        {
+          "id": "b.t.5.5",
+          "boardId": "b",
+          "x": 5,
+          "y": 5,
+          "terrain": "floor",
+          "initialDiscovery": false,
+          "etherGroupId": null,
+          "hiddenGroupId": null,
+          "overlayIds": [],
+          "includedFrom": 4
+        },
+        {
+          "id": "b.t.6.5",
+          "boardId": "b",
+          "x": 6,
+          "y": 5,
+          "terrain": "floor",
+          "initialDiscovery": false,
+          "etherGroupId": null,
+          "hiddenGroupId": null,
+          "overlayIds": [],
+          "includedFrom": 4
+        },
+        {
+          "id": "b.t.7.5",
+          "boardId": "b",
+          "x": 7,
+          "y": 5,
+          "terrain": "floor",
+          "initialDiscovery": false,
+          "etherGroupId": null,
+          "hiddenGroupId": null,
+          "overlayIds": [],
+          "includedFrom": 4
+        }
+      ],
+      "entities": [
+        {
+          "id": "b.revisit.door",
+          "kind": "door",
+          "tileId": "b.t.2.3",
+          "label": "B 区回访入口 · 四权限后开放",
+          "params": {
+            "closedBlocksMovement": true,
+            "lockedReasonKey": "d.main"
+          },
+          "gateId": "gate.d.main",
+          "effectBundleId": null,
+          "sourceRecordIds": ["map.b.revisit.reconstructed"],
+          "includedFrom": 4
+        },
+        {
+          "id": "b.revisit.nexus",
+          "kind": "nexus",
+          "tileId": "b.t.3.3",
+          "label": "回访富集节点 · 按 R 清除绕行覆盖",
+          "params": {
+            "clearsTileIds": ["b.t.3.4", "b.t.3.5"],
+            "revealsGroupIds": [],
+            "capabilityRequired": "amplifier",
+            "completionObjectiveId": "b.revisit.nexus"
+          },
+          "gateId": "always",
+          "effectBundleId": "b.revisit.nexus.effects",
+          "sourceRecordIds": ["map.b.revisit.reconstructed"],
+          "includedFrom": 4
+        },
+        {
+          "id": "b.revisit.terminal",
+          "kind": "terminal",
+          "tileId": "b.t.5.5",
+          "label": "B 区回访数据终端 · 按 F 确认",
+          "params": {
+            "interactionMode": "interact",
+            "prerequisites": {
+              "kind": "always"
+            },
+            "effectBundleId": "b.revisit.terminal.effects"
+          },
+          "gateId": "gate.d.main",
+          "effectBundleId": "b.revisit.terminal.effects",
+          "sourceRecordIds": ["map.b.revisit.reconstructed"],
+          "includedFrom": 4
+        },
+        {
+          "id": "b.revisit.supply.door",
+          "kind": "door",
+          "tileId": "b.t.6.5",
+          "label": "回访物资通路",
+          "params": {
+            "closedBlocksMovement": true,
+            "lockedReasonKey": "b.revisit.terminal"
+          },
+          "gateId": "gate.b.revisit.terminal",
+          "effectBundleId": null,
+          "sourceRecordIds": ["map.b.revisit.reconstructed"],
+          "includedFrom": 4
+        },
+        {
+          "id": "b.supply.revisit.pickup",
+          "kind": "supply",
+          "tileId": "b.t.7.5",
+          "label": "沙罗物资 · 5",
+          "params": {
+            "rewardId": "b.supply.revisit"
+          },
+          "gateId": "gate.b.supply.revisit",
+          "effectBundleId": null,
+          "sourceRecordIds": ["map.b.revisit.reconstructed"],
+          "includedFrom": 4
+        }
+      ],
+      "rooms": [],
+      "sourceRecordIds": ["map.b.revisit.reconstructed"]
+    }
+  ]
+}
